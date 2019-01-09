@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'wololo.apps.WololoConfig',
+    'wololo',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'DjangoFirebaseProject.urls'
 TEMPLATES = [
     ***REMOVED***
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': ***REMOVED***
             'context_processors': [
@@ -67,6 +67,8 @@ TEMPLATES = [
         ***REMOVED***,
     ***REMOVED***,
 ]
+
+
 
 WSGI_APPLICATION = 'DjangoFirebaseProject.wsgi.application'
 
