@@ -22,7 +22,7 @@
     position: absolute;
     display: none;
     text-align: center;
-    background: url("../images/hoverBackground.png");
+    background: url("../mapAssets/hoverBackground.png");
     background-repeat: no-repeat;
     background-size: 100%;
     padding-top: 1.5%;

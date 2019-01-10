@@ -1,0 +1,345 @@
+/* global styles */
+.sunlight-container ***REMOVED***
+	clear: both !important;
+	position: relative !important;
+	margin: 10px 0 !important;
+***REMOVED***
+.sunlight-code-container ***REMOVED***
+	clear: both !important;
+	position: relative !important;
+	border: none;
+	border-color: #626262 !important;
+	background-color: #262626 !important;
+***REMOVED***
+.sunlight-highlighted, .sunlight-container, .sunlight-container textarea ***REMOVED***
+	font-family: Consolas, Inconsolata, Monaco, "Courier New" !important;
+	font-size: 12px !important;
+	line-height: 15px !important;
+***REMOVED***
+.sunlight-highlighted, .sunlight-container textarea ***REMOVED***
+	color: #FFFFFF !important;
+	margin: 0 !important;
+***REMOVED***
+.sunlight-container textarea ***REMOVED***
+	padding-left: 0 !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	padding-right: 0 !important;
+***REMOVED***
+.sunlight-code-container > .sunlight-highlighted ***REMOVED***
+	white-space: pre;
+	overflow-x: auto;
+	overflow-y: hidden; /* ie requires this wtf? */
+***REMOVED***
+.sunlight-highlighted ***REMOVED***
+	z-index: 1;
+	position: relative;
+***REMOVED***
+.sunlight-highlighted * ***REMOVED***
+	background: transparent;
+***REMOVED***
+.sunlight-line-number-margin ***REMOVED***
+	float: left !important;
+	margin-right: 5px !important;
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	padding: 0 !important;
+	padding-right: 4px !important;
+	padding-left: 4px !important;
+	border-right: 1px solid #9A9A9A !important;
+	background-color: #3E3E3E !important;
+	color: #9A9A9A !important;
+	text-align: right !important;
+	position: relative;
+	z-index: 3;
+***REMOVED***
+.sunlight-highlighted a, .sunlight-line-number-margin a ***REMOVED***
+	border: none !important;
+	text-decoration: none !important;
+	font-style: normal !important;
+	padding: 0 !important;
+***REMOVED***
+.sunlight-line-number-margin a ***REMOVED***
+	color: inherit !important;
+***REMOVED***
+.sunlight-line-highlight-overlay ***REMOVED***
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 0;
+***REMOVED***
+.sunlight-line-highlight-overlay div ***REMOVED***
+	height: 15px;
+	width: 100%;
+***REMOVED***
+.sunlight-line-highlight-overlay .sunlight-line-highlight-active ***REMOVED***
+	background-color: #4B4B4B;
+***REMOVED***
+
+/* menu */
+.sunlight-menu ***REMOVED***
+	background-color: #FFFFCC;
+	color: #000000;
+***REMOVED***
+.sunlight-menu ul ***REMOVED***
+	margin: 0 !important;
+	padding: 0 !important;
+	list-style-type: none !important;
+***REMOVED***
+.sunlight-menu li ***REMOVED***
+	float: right !important;
+	margin-left: 5px !important;
+***REMOVED***
+.sunlight-menu a, .sunlight-menu img ***REMOVED***
+	color: #000099 !important;
+	text-decoration: none !important;
+	border: none !important;
+***REMOVED***
+
+
+
+
+.sunlight-string,
+.sunlight-char,
+.sunlight-heredoc,
+.sunlight-heredocDeclaration,
+.sunlight-nowdoc,
+.sunlight-longString,
+.sunlight-rawString,
+.sunlight-binaryString,
+.sunlight-verbatimString,
+.sunlight-rawLongString,
+.sunlight-binaryLongString,
+.sunlight-diff .sunlight-added ***REMOVED***
+	color: #55EB54 !important;
+***REMOVED***
+.sunlight-operator,
+.sunlight-punctuation,
+.sunlight-delimiter ***REMOVED***
+	color: #B1EDEC !important;
+***REMOVED***
+.sunlight-ident,
+.sunlight-diff .sunlight-unchanged ***REMOVED***
+	color: #E0E0E0 !important;
+	font-weight: bold !important;
+***REMOVED***
+.sunlight-comment,
+.sunlight-xmlDocCommentContent,
+.sunlight-nginx .sunlight-ssiCommand,
+.sunlight-sln .sunlight-formatDeclaration,
+.sunlight-diff .sunlight-mergeHeader,
+.sunlight-diff .sunlight-noNewLine ***REMOVED***
+	color: #787D31 !important;
+***REMOVED***
+.sunlight-number,
+.sunlight-cdata,
+.sunlight-guid,
+.sunlight-diff .sunlight-modified ***REMOVED***
+	color: #F7BA7E !important;
+	font-weight: bold !important;
+***REMOVED***
+.sunlight-named-ident,
+.sunlight-xml .sunlight-attribute,
+.sunlight-constant,
+.sunlight-javascript .sunlight-globalVariable,
+.sunlight-globalObject,
+.sunlight-css .sunlight-id,
+.sunlight-python .sunlight-attribute,
+.sunlight-nginx .sunlight-context,
+.sunlight-httpd .sunlight-context,
+.sunlight-lisp .sunlight-declarationSpecifier,
+.sunlight-erlang .sunlight-userDefinedFunction,
+.sunlight-diff .sunlight-removed ***REMOVED***
+	color: #FBBDEE !important;
+	font-weight: bold !important;
+***REMOVED***
+.sunlight-keyword,
+.sunlight-languageConstruct,
+.sunlight-specialOperator,
+.sunlight-xml .sunlight-tagName,
+.sunlight-xml .sunlight-operator,
+.sunlight-bash .sunlight-command,
+.sunlight-erlang .sunlight-moduleAttribute ***REMOVED***
+	color: #A3CCF7 !important;
+	font-weight: bold !important;
+***REMOVED***
+.sunlight-shortOpenTag,
+.sunlight-openTag,
+.sunlight-closeTag,
+.sunlight-xmlOpenTag,
+.sunlight-xmlCloseTag,
+.sunlight-aspOpenTag,
+.sunlight-aspCloseTag,
+.sunlight-label,
+.sunlight-css .sunlight-importantFlag ***REMOVED***
+	background-color: #7373C1 !important;
+***REMOVED***
+.sunlight-content ***REMOVED***
+	color: #FFFFFF !important;
+	font-weight: bold !important;
+***REMOVED***
+.sunlight-function,
+.sunlight-globalFunction,
+.sunlight-objective-c .sunlight-messageDestination,
+.sunlight-ruby .sunlight-specialFunction,
+.sunlight-6502asm .sunlight-illegalOpcode,
+.sunlight-powershell .sunlight-switch,
+.sunlight-lisp .sunlight-macro,
+.sunlight-lisp .sunlight-specialForm,
+.sunlight-lisp .sunlight-type,
+.sunlight-sln .sunlight-sectionName,
+.sunlight-diff .sunlight-header ***REMOVED***
+	color: #C8BBF1 !important;
+	font-weight: bold !important;
+***REMOVED***
+.sunlight-variable,
+.sunlight-environmentVariable,
+.sunlight-specialVariable,
+.sunlight-objective-c .sunlight-messageArgumentName,
+.sunlight-lisp .sunlight-globalVariable,
+.sunlight-ruby .sunlight-globalVariable,
+.sunlight-ruby .sunlight-instanceVariable ***REMOVED***
+	color: #F5E5B0 !important;
+	font-weight: bold !important;
+***REMOVED***
+.sunlight-regexLiteral,
+.sunlight-lisp .sunlight-operator,
+.sunlight-6502asm .sunlight-pseudoOp,
+.sunlight-erlang .sunlight-macro,
+.sunlight-diff .sunlight-rangeInfo ***REMOVED***
+	color: #E0F16A !important;
+***REMOVED***
+.sunlight-specialVariable ***REMOVED***
+	font-style: italic !important;
+	font-weight: bold !important;
+***REMOVED***
+.sunlight-csharp .sunlight-pragma,
+.sunlight-preprocessorDirective,
+.sunlight-vb .sunlight-compilerDirective ***REMOVED***
+	color: #666363 !important;
+	font-style: italic !important;
+***REMOVED***
+.sunlight-xmlDocCommentMeta,
+.sunlight-java .sunlight-annotation,
+.sunlight-scala .sunlight-annotation,
+.sunlight-docComment ***REMOVED***
+	color: #666363 !important;
+***REMOVED***
+.sunlight-quotedIdent,
+.sunlight-ruby .sunlight-subshellCommand,
+.sunlight-lisp .sunlight-keywordArgument,
+.sunlight-haskell .sunlight-infixOperator,
+.sunlight-erlang .sunlight-quotedAtom ***REMOVED***
+	color: #F8CA16 !important;
+***REMOVED***
+
+
+
+
+/* html/xml */
+.sunlight-xml .sunlight-tagName,
+.sunlight-xml .sunlight-operator,
+.sunlight-xml .sunlight-attribute ***REMOVED***
+	font-weight: normal !important;
+***REMOVED***
+.sunlight-doctype ***REMOVED***
+	color: #DEB9B2 !important;
+	font-style: italic !important;
+***REMOVED***
+.sunlight-xml .sunlight-entity ***REMOVED***
+	background-color: #E6E585 !important;
+	color: #000000 !important;
+***REMOVED***
+
+/* javascript */
+.sunlight-javascript .sunlight-reservedWord ***REMOVED***
+	font-style: italic !important;
+***REMOVED***
+
+/* css */
+.sunlight-css .sunlight-element ***REMOVED***
+	color: #E9EE97 !important;
+***REMOVED***
+.sunlight-css .sunlight-microsoftFilterPrefix ***REMOVED***
+	color: #C9FF9F !important;
+***REMOVED***
+.sunlight-css .sunlight-rule ***REMOVED***
+	color: #0099FF !important;
+***REMOVED***
+.sunlight-css .sunlight-class ***REMOVED***
+	color: #E78282 !important;
+***REMOVED***
+.sunlight-css .sunlight-pseudoClass, .sunlight-css .sunlight-pseudoElement ***REMOVED***
+	color: #73D693 !important;
+***REMOVED***
+
+/* bash */
+.sunlight-bash .sunlight-hashBang ***REMOVED***
+	color: #FFFF00 !important;
+***REMOVED***
+
+.sunlight-bash .sunlight-verbatimCommand ***REMOVED***
+	color: #BBA4EE !important;
+***REMOVED***
+.sunlight-bash .sunlight-variable, 
+.sunlight-bash .sunlight-specialVariable ***REMOVED***
+	color: #ED8585 !important;
+***REMOVED***
+
+/* python */
+.sunlight-python .sunlight-specialMethod ***REMOVED***
+	font-weight: bold !important;
+	color: #B0A3C2;
+***REMOVED***
+
+/* ruby */
+.sunlight-ruby .sunlight-symbol ***REMOVED***
+	font-weight: bold !important;
+	color: #90EEA2 !important;
+***REMOVED***
+
+/* brainfuck */
+.sunlight-brainfuck ***REMOVED***
+	font-weight: bold !important;
+	color: #000000 !important;
+***REMOVED***
+.sunlight-brainfuck .sunlight-increment ***REMOVED***
+	background-color: #FF9900 !important;
+***REMOVED***
+.sunlight-brainfuck .sunlight-decrement ***REMOVED***
+	background-color: #FF99FF !important;
+***REMOVED***
+.sunlight-brainfuck .sunlight-incrementPointer ***REMOVED***
+	background-color: #FFFF99 !important;
+***REMOVED***
+.sunlight-brainfuck .sunlight-decrementPointer ***REMOVED***
+	background-color: #66CCFF !important;
+***REMOVED***
+.sunlight-brainfuck .sunlight-read ***REMOVED***
+	background-color: #FFFFFF !important;
+***REMOVED***
+.sunlight-brainfuck .sunlight-write ***REMOVED***
+	background-color: #99FF99 !important;
+***REMOVED***
+.sunlight-brainfuck .sunlight-openLoop, .sunlight-brainfuck .sunlight-closeLoop ***REMOVED***
+	background-color: #FFFFFF !important;
+***REMOVED***
+
+/* 6502 asm */
+.sunlight-6502asm .sunlight-label ***REMOVED***
+	background: none !important;
+	color: #FFFFFF !important;
+	text-decoration: underline !important;
+***REMOVED***
+
+/* lisp */
+.sunlight-lisp .sunlight-macro ***REMOVED***
+	font-style: italic !important;
+***REMOVED***
+
+/* erlang */
+.sunlight-erlang .sunlight-atom ***REMOVED***
+	color: #FFFFFF !important;
+	font-weight: bold !important;
+***REMOVED***
