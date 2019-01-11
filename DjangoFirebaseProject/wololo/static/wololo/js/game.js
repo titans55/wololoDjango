@@ -12,13 +12,12 @@ var infos = [
     ***REMOVED*** posX: 333, posY: 88, owner: 'Giannis', soldiers: 32 ***REMOVED***,
     ***REMOVED*** posX: 677, posY: 480, owner: 'Giannis', soldiers: 88 ***REMOVED***
 ]
-
 function preload() ***REMOVED***
     game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
-    game.load.image("tiles", "static/wololo/mapAssets/tilesets/overworld_tileset_grass.png");
-    game.load.tilemap('map', 'static/wololo/mapAssets/tilemaps/mapv2.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.spritesheet('castle', 'static/wololo/mapAssets/sprites/castle.png', ***REMOVED*** frameWidth: 48, frameHeight: 48 ***REMOVED***);
-    game.load.spritesheet('selected', 'static/wololo/mapAssets/sprites/selection-circle_1_64x64.png', ***REMOVED*** frameWidth: 64, frameHeight: 64 ***REMOVED***);
+    game.load.image("tiles", "../static/wololo/mapAssets/tilesets/overworld_tileset_grass.png");
+    game.load.tilemap('map', '../static/wololo/mapAssets/tilemaps/mapv2.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.spritesheet('castle', '../static/wololo/mapAssets/sprites/castle.png', ***REMOVED*** frameWidth: 48, frameHeight: 48 ***REMOVED***);
+    game.load.spritesheet('selected', '../static/wololo/mapAssets/sprites/selection-circle_1_64x64.png', ***REMOVED*** frameWidth: 64, frameHeight: 64 ***REMOVED***);
 ***REMOVED***
 
 function create() ***REMOVED***
