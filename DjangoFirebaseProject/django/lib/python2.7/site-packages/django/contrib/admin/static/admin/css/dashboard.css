@@ -1,0 +1,27 @@
+/* DASHBOARD */
+
+.dashboard .module table th ***REMOVED***
+    width: 100%;
+***REMOVED***
+
+.dashboard .module table td ***REMOVED***
+    white-space: nowrap;
+***REMOVED***
+
+.dashboard .module table td a ***REMOVED***
+    display: block;
+    padding-right: .6em;
+***REMOVED***
+
+/* RECENT ACTIONS MODULE */
+
+.module ul.actionlist ***REMOVED***
+    margin-left: 0;
+***REMOVED***
+
+ul.actionlist li ***REMOVED***
+    list-style-type: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+***REMOVED***

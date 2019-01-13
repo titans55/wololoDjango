@@ -2,9 +2,14 @@ from django.conf import settings
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
 
 import datetime
 import pyrebase
+import json
+
 config = ***REMOVED***
 ***REMOVED***
 ***REMOVED***
@@ -15,6 +20,22 @@ config = ***REMOVED***
   ***REMOVED***
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
+# Use a service account
+cred = credentials.Certificate(***REMOVED***
+        ***REMOVED***
+    ***REMOVED***
+    ***REMOVED***
+    ***REMOVED***
+    ***REMOVED***
+    ***REMOVED***
+    ***REMOVED***
+    ***REMOVED***
+    ***REMOVED***
+    ***REMOVED***
+        ***REMOVED***)
+firebase_admin.initialize_app(cred)
+
+db = firestore.client()
 # Create your views here.
 
 def landingPage(request):
@@ -52,11 +73,14 @@ def village(request):
     return render(request, 'village.html')
 
 def map(request):
-    # now = datetime.datetime.now()
-    # html = "<html><body>It is now %s.</body></html>" % now
+    print(auth.current_user['localId'])
+    users_ref = db.collection(u'villages')
+    villages = users_ref.get()
+    village_info = []
+    for village in villages:
+        village_info.append(village._data)
 
-    return render(request, 'map.html')
-
+    return render(request, 'map.html', ***REMOVED***'village_info' : json.dumps(village_info)***REMOVED***)
 def clans(request):
 
     return render(request, 'clans.html')
