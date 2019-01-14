@@ -13,6 +13,7 @@ urlpatterns = [
     
     #FORM CALL
     path('verifyLogin', views.verifyLogin, name='verifyLogin'),
+    path('logout', views.logout, name='verifyLogin'),
 
 
 ]
