@@ -33,6 +33,7 @@ function loadVillages(infos) ***REMOVED***
     var sprite
     infos.forEach(function(element) ***REMOVED***
         sprite = game.add.sprite(element.coords.x, element.coords.y, 'castle');
+        sprite.owner = element.owner ? 'yours' : ''
         sprite.villageName = element.villageName;
         sprite.playerName = element.playerName;
         sprite.x = element.coords.x;
@@ -56,7 +57,7 @@ function onClickListener(sprite) ***REMOVED***
 function onHoverListener(sprite, event) ***REMOVED***
     let mousePositionX = event.pageX;
     let mousePositionY = event.pageY;
-    $('#tooltip span').html(sprite.playerName + "<br>" + sprite.villageName);
+    $('#tooltip span').html(sprite.playerName + "<br>" + sprite.villageName + "<br>" + sprite.owner);
     $('#tooltip').stop(false, true).fadeIn(1000);
     $('#tooltip').css(***REMOVED*** 'top': mousePositionY - winH / 18, 'left': mousePositionX - winW / 40 + 40 ***REMOVED***);
 ***REMOVED***

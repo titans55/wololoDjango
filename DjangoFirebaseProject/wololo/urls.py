@@ -7,7 +7,7 @@ urlpatterns = [
     path('register', views.registerPage, name='registerPage'),
     path('createAccount', views.createAccount, name='createAccount'),
 
-    path('game', views.village, name='game'),
+    path('game', views.villages, name='game'),
     path('game/map', views.map, name='map'),
     path('game/clans', views.clans, name='clans'),
     

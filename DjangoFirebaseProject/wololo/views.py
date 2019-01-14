@@ -51,7 +51,7 @@ def createAccount(request):
         email=request.POST.get("email")
         password = request.POST.get("password")
 
-        user_add = auth.create_user_with_email_and_password(email, password)
+        auth.create_user_with_email_and_password(email, password)
         return render(request, 'beforeLogin/landingPage.html')
 
 def verifyLogin(request):
@@ -59,28 +59,32 @@ def verifyLogin(request):
         email=request.POST.get("email")
         password = request.POST.get("password")
         try:
-            user = auth.sign_in_with_email_and_password(email, password)
-            print (user)
+            auth.sign_in_with_email_and_password(email, password)
         except:
-            message="invalid credentials"
             messages.error(request,'Email or password is not correct.')
             return render(request, 'beforeLogin/landingPage.html')
         return redirect(settings.LOGIN_REDIRECT_URL)
         
 
-def village(request):
+def villages(request):
+    villages_ref = db.collection('players').document(auth.current_user['localId']).collection('villages')
+    villages = villages_ref.get()
+    villages_info = []
 
-    return render(request, 'village.html')
+    for village in villages:
+        village._data['id'] = village.reference.id
+        villages_info.append(village._data)
+    return render(request, 'villages.html', ***REMOVED***'villages_info' : json.dumps(villages_info)***REMOVED***)
 
 def map(request):
-    print(auth.current_user['localId'])
-    users_ref = db.collection(u'villages')
-    villages = users_ref.get()
+    villages_ref = db.collection('villages')
+    villages = villages_ref.get()
     village_info = []
     for village in villages:
+        if(village._data['user_id'] == auth.current_user['localId']):
+            village._data['owner'] = True
         village_info.append(village._data)
-
-    return render(request, 'map.html', ***REMOVED***'village_info' : json.dumps(village_info)***REMOVED***)
+    return render(request, 'map.html', ***REMOVED***'village_info' : village_info***REMOVED***)
 def clans(request):
 
     return render(request, 'clans.html')
