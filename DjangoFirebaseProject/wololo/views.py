@@ -22,20 +22,36 @@ firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
 # Use a service account
 cred = credentials.Certificate(***REMOVED***
-        ***REMOVED***
     ***REMOVED***
-    ***REMOVED***
-    ***REMOVED***
-    ***REMOVED***
-    ***REMOVED***
-    ***REMOVED***
-    ***REMOVED***
-    ***REMOVED***
-    ***REMOVED***
-        ***REMOVED***)
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***)
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
+
+def myuser_login_required(f):
+    def wrap(request, *args, **kwargs):
+        #this check the session if userid key exist, if not it will redirect to login page
+        if(auth.current_user):
+            print("ababa")
+        else:
+            message="invalid credentials"
+            messages.error(request,'Email or password is not correct.')
+            return render(request, 'beforeLogin/landingPage.html')
+        
+            
+        return f(request, *args, **kwargs)
+    wrap.__doc__=f.__doc__
+    wrap.__name__=f.__name__
+    return wrap
 # Create your views here.
 
 def landingPage(request):
@@ -64,7 +80,13 @@ def verifyLogin(request):
             messages.error(request,'Email or password is not correct.')
             return render(request, 'beforeLogin/landingPage.html')
         return redirect(settings.LOGIN_REDIRECT_URL)
-        
+    return HttpResponse("why y r here")
+
+def logout(request):
+    # print(auth)
+    print(vars(auth))
+    #auth.signOut()
+    return redirect(settings.LANDING_PAGE_REDIRECT_URL)
 
 def villages(request):
     villages_ref = db.collection('players').document(auth.current_user['localId']).collection('villages')
