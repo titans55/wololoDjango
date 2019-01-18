@@ -74,7 +74,7 @@ def villages(request):
     for village in villages:
         village._data['id'] = village.reference.id
         villages_info.append(village._data)
-    return render(request, 'villages.html', ***REMOVED***'villages_info' : json.dumps(villages_info)***REMOVED***)
+    return render(request, 'villages.html', ***REMOVED***'villages_info' : villages_info***REMOVED***)
 
 def map(request):
     villages_ref = db.collection('villages')
@@ -84,7 +84,7 @@ def map(request):
         if(village._data['user_id'] == auth.current_user['localId']):
             village._data['owner'] = True
         village_info.append(village._data)
-    return render(request, 'map.html', ***REMOVED***'village_info' : village_info***REMOVED***)
+    return render(request, 'map.html', ***REMOVED***'village_info' : json.dumps(village_info)***REMOVED***)
 def clans(request):
 
     return render(request, 'clans.html')
