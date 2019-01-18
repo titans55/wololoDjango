@@ -44,10 +44,9 @@ def myuser_login_required(f):
             print("ababa")
         else:
             message="invalid credentials"
-            messages.error(request,'Email or password is not correct.')
+            messages.error(request,'Log in in order to continue.')
             return render(request, 'beforeLogin/landingPage.html')
-        
-            
+             
         return f(request, *args, **kwargs)
     wrap.__doc__=f.__doc__
     wrap.__name__=f.__name__
@@ -83,11 +82,10 @@ def verifyLogin(request):
     return HttpResponse("why y r here")
 
 def logout(request):
-    # print(auth)
-    print(vars(auth))
-    #auth.signOut()
+    auth.current_user = None
     return redirect(settings.LANDING_PAGE_REDIRECT_URL)
 
+@myuser_login_required
 def villages(request):
     villages_ref = db.collection('players').document(auth.current_user['localId']).collection('villages')
     villages = villages_ref.get()
@@ -97,7 +95,7 @@ def villages(request):
         village._data['id'] = village.reference.id
         villages_info.append(village._data)
     return render(request, 'villages.html', ***REMOVED***'villages_info' : villages_info***REMOVED***)
-
+@myuser_login_required
 def map(request):
     villages_ref = db.collection('villages')
     villages = villages_ref.get()
