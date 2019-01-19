@@ -5,6 +5,8 @@ from django.contrib import messages
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+from .tasks import add_village
+import time
 
 import datetime
 import pyrebase
@@ -33,7 +35,7 @@ cred = credentials.Certificate(***REMOVED***
 ***REMOVED***
 ***REMOVED***
 ***REMOVED***)
-firebase_admin.initialize_app(cred)
+firebase_admin.initialize_app(cred, name='rroro')
 
 db = firestore.client()
 
@@ -43,7 +45,6 @@ def myuser_login_required(f):
         if(auth.current_user):
             print("ababa")
         else:
-            message="invalid credentials"
             messages.error(request,'Log in in order to continue.')
             return render(request, 'beforeLogin/landingPage.html')
              
@@ -54,7 +55,6 @@ def myuser_login_required(f):
 # Create your views here.
 
 def landingPage(request):
-
     return render(request, 'beforeLogin/landingPage.html')
 
 def registerPage(request):
@@ -87,9 +87,12 @@ def logout(request):
 
 @myuser_login_required
 def villages(request):
-    villages_ref = db.collection('players').document(auth.current_user['localId']).collection('villages')
+    user_id = auth.current_user['localId']
+    villages_ref = db.collection('players').document(user_id).collection('villages')
     villages = villages_ref.get()
     villages_info = []
+
+    #add_village.apply_async((user_id,'6thSense', 'Murat Kekili'),countdown = 5)
 
     for village in villages:
         village._data['id'] = village.reference.id
@@ -106,5 +109,4 @@ def map(request):
         village_info.append(village._data)
     return render(request, 'map.html', ***REMOVED***'village_info' : json.dumps(village_info)***REMOVED***)
 def clans(request):
-
     return render(request, 'clans.html')
