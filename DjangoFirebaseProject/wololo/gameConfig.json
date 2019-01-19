@@ -1,0 +1,58 @@
+***REMOVED***
+    "buildings" : ***REMOVED***
+        "townCenter" : ***REMOVED***
+            "buildingSpeed" : ***REMOVED***
+                "0" : 0,
+                "1" : 10,
+                "2" : 13,
+                "3" : 16,
+                "4" : 19,
+                "5" : 22,
+                "6" : 25,
+                "7" : 29,
+                "8" : 32,
+                "9" : 35,
+                "10" : 38
+            ***REMOVED***,
+            "upgradeTime" : ***REMOVED***
+                "1": 10, 
+                "2": 15, 
+                "3": 25, 
+                "4": 40, 
+                "5": 60, 
+                "6": 85, 
+                "7": 120, 
+                "8": 155, 
+                "9": 195,
+                "10": 240 
+            ***REMOVED***
+        ***REMOVED***,
+        "resources":***REMOVED*** 
+            "upgradeTime" : ***REMOVED***
+                "1": 10, 
+                "2": 15, 
+                "3": 25, 
+                "4": 40, 
+                "5": 60, 
+                "6": 85, 
+                "7": 120, 
+                "8": 155, 
+                "9": 195,
+                "10": 240  
+            ***REMOVED***,
+            "rateByHourIncrementByLevel" : ***REMOVED***
+                "1": 10, 
+                "2": 15, 
+                "3": 25, 
+                "4": 40, 
+                "5": 60, 
+                "6": 85, 
+                "7": 120, 
+                "8": 155, 
+                "9": 195,
+                "10": 240 
+            ***REMOVED***
+        ***REMOVED***,
+        "other building" : "other properties"
+    ***REMOVED***
+***REMOVED***
