@@ -1,9 +1,29 @@
-***REMOVED***% extends "partials/layout.html" %***REMOVED*** ***REMOVED***% load static %***REMOVED*** ***REMOVED***% block headcdn %***REMOVED*** ***REMOVED***% endblock %***REMOVED*** ***REMOVED***% block content %***REMOVED*** MY VILLAGES
+***REMOVED***% extends "partials/layout.html" %***REMOVED*** 
+***REMOVED***% load static %***REMOVED*** 
+
+***REMOVED***% block headcdn %***REMOVED*** 
+***REMOVED***% endblock %***REMOVED***
+
+ ***REMOVED***% block content %***REMOVED***
 <ul class="list-group">
+    List Of my villages
     ***REMOVED***% for village in villages_info %***REMOVED***
-    <li class="list-group-item"> ***REMOVED******REMOVED***village***REMOVED******REMOVED*** </li>
+    <li class="list-group-item"> ***REMOVED******REMOVED***village.villageName***REMOVED******REMOVED*** </li>
     ***REMOVED***%endfor%***REMOVED***
-</ul> ***REMOVED***% endblock %***REMOVED*** ***REMOVED***% block footerjs %***REMOVED***
+   
+</ul> 
+<ul class="list-group">
+    ***REMOVED******REMOVED***villages_info.0.villageName***REMOVED******REMOVED*** Overview
+    <li class="list-group-item">Town center level ***REMOVED******REMOVED***villages_info.0.townCenter.level***REMOVED******REMOVED***<button>upgrade</button></li>
+    <li class="list-group-item">Wood Camp level ***REMOVED******REMOVED***villages_info.0.resources.wood.level***REMOVED******REMOVED***<button>upgrade</button></li>
+    <li class="list-group-item">Iron Mine level ***REMOVED******REMOVED***villages_info.0.resources.iron.level***REMOVED******REMOVED***<button>upgrade</button></li>
+    <li class="list-group-item">Clay Pit level ***REMOVED******REMOVED***villages_info.0.resources.clay.level***REMOVED******REMOVED***<button>upgrade</button></li>
+        
+
+</ul> 
+
+***REMOVED***% endblock %***REMOVED*** 
+***REMOVED***% block footerjs %***REMOVED***
 
 
 
