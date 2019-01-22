@@ -4,22 +4,37 @@
 ***REMOVED***% block headcdn %***REMOVED*** 
 ***REMOVED***% endblock %***REMOVED***
 
- ***REMOVED***% block content %***REMOVED***
+***REMOVED***% block content %***REMOVED***
+<div id="villageDataJSON" data='***REMOVED******REMOVED***data.villages_info.0***REMOVED******REMOVED***'></div>
+<div id="gameConfigData" data='***REMOVED******REMOVED***data.gameConfig***REMOVED******REMOVED***'></div>
+<div class="row">
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col">
+        <span class="badge badge-warning">Wood <div id="wood">X</div></span>
+        <span class="badge badge-warning">Iron <div id="iron">Y</div></span>
+        <span class="badge badge-warning">Clay <div id="clay">Z</div></span>
+        <span class="badge badge-warning">Storage <div id="storage">T</div></span>
+
+    </div>
+</div>
+
 <ul class="list-group">
     List Of my villages
-    ***REMOVED***% for village in villages_info %***REMOVED***
+    ***REMOVED***% for village in data.villages_info %***REMOVED***
     <li class="list-group-item"> ***REMOVED******REMOVED***village.villageName***REMOVED******REMOVED*** </li>
     ***REMOVED***%endfor%***REMOVED***
    
 </ul> 
+***REMOVED******REMOVED***data.villages_info.0.resources***REMOVED******REMOVED***
 <ul class="list-group">
-    ***REMOVED******REMOVED***villages_info.0.villageName***REMOVED******REMOVED*** Overview
-    <li class="list-group-item">Town center level ***REMOVED******REMOVED***villages_info.0.townCenter.level***REMOVED******REMOVED***<button>upgrade</button></li>
-    <li class="list-group-item">Wood Camp level ***REMOVED******REMOVED***villages_info.0.resources.wood.level***REMOVED******REMOVED***<button>upgrade</button></li>
-    <li class="list-group-item">Iron Mine level ***REMOVED******REMOVED***villages_info.0.resources.iron.level***REMOVED******REMOVED***<button>upgrade</button></li>
-    <li class="list-group-item">Clay Pit level ***REMOVED******REMOVED***villages_info.0.resources.clay.level***REMOVED******REMOVED***<button>upgrade</button></li>
+    ***REMOVED******REMOVED***data.villages_info.0.villageName***REMOVED******REMOVED*** Overview
+    <li class="list-group-item">Town center level ***REMOVED******REMOVED***data.villages_info.0.townCenter.level***REMOVED******REMOVED***<button>upgrade</button></li>
+    <li class="list-group-item">Wood Camp level ***REMOVED******REMOVED***data.villages_info.0.resources.wood.level***REMOVED******REMOVED***<button>upgrade</button></li>
+    <li class="list-group-item">Iron Mine level ***REMOVED******REMOVED***data.villages_info.0.resources.iron.level***REMOVED******REMOVED***<button>upgrade</button></li>
+    <li class="list-group-item">Clay Pit level ***REMOVED******REMOVED***data.villages_info.0.resources.clay.level***REMOVED******REMOVED***<button>upgrade</button></li>
+    <li class="list-group-item">Storage level ***REMOVED******REMOVED***data.villages_info.0.storage.level***REMOVED******REMOVED***<button>upgrade</button></li>
         
-
 </ul> 
 
 ***REMOVED***% endblock %***REMOVED*** 
@@ -28,6 +43,6 @@
 
 
 <script type="text/javascript" src="***REMOVED***% static 'wololo/assets/js/phaser/build/phaser.min.js' %***REMOVED***"></script>
-<!-- <script type="text/javascript" src="***REMOVED***% static 'wololo/js/game.js' %***REMOVED***"></script> -->
+<script type="text/javascript" src="***REMOVED***% static 'wololo/js/villages.js' %***REMOVED***"></script>
 
 ***REMOVED***% endblock %***REMOVED***

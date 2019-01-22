@@ -7,10 +7,12 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 from .tasks import add_village
 import time
+import urllib.request
+import urllib.error
+import json
 
 import datetime
 import pyrebase
-import json
 
 config = ***REMOVED***
 ***REMOVED***
@@ -92,12 +94,25 @@ def villages(request):
     villages = villages_ref.get()
     villages_info = []
 
+    with open(r"C:\Users\3III's\Desktop\django-wololo\wololoDjango\DjangoFirebaseProject\wololo\gameConfig.json") as f:
+        gameConfig = json.load(f)
+    #print(gameConfig)
+
     #add_village.apply_async((user_id,'6thSense', 'Murat Kekili'),countdown = 5)
 
     for village in villages:
         village._data['id'] = village.reference.id
+        village._data['resources']['wood']['lastInteractionDate'] = str(village._data['resources']['wood']['lastInteractionDate'])
+        village._data['resources']['iron']['lastInteractionDate'] = str(village._data['resources']['iron']['lastInteractionDate'])
+        village._data['resources']['clay']['lastInteractionDate'] = str(village._data['resources']['clay']['lastInteractionDate'])
         villages_info.append(village._data)
-    return render(request, 'villages.html', ***REMOVED***'villages_info' : villages_info***REMOVED***)
+    #villages_info['gameConfig'] = gameConfig
+    print(villages_info)
+    data = ***REMOVED*** 
+        'villages_info' : villages_info,
+        'gameConfig' : gameConfig
+    ***REMOVED***
+    return render(request, 'villages.html', ***REMOVED***'data' : data***REMOVED***)
 @myuser_login_required
 def map(request):
     villages_ref = db.collection('villages')
