@@ -6,6 +6,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 from .tasks import add_village
+from .tasks import upgrade_building
 import time
 
 import datetime
@@ -35,16 +36,14 @@ cred = credentials.Certificate(***REMOVED***
 ***REMOVED***
 ***REMOVED***
 ***REMOVED***)
-firebase_admin.initialize_app(cred, name='rroro')
+firebase_admin.initialize_app(cred, name='wololo')
 
 db = firestore.client()
 
 def myuser_login_required(f):
     def wrap(request, *args, **kwargs):
         #this check the session if userid key exist, if not it will redirect to login page
-        if(auth.current_user):
-            print("ababa")
-        else:
+        if(not auth.current_user):
             messages.error(request,'Log in in order to continue.')
             return render(request, 'beforeLogin/landingPage.html')
              
@@ -110,3 +109,26 @@ def map(request):
     return render(request, 'map.html', ***REMOVED***'village_info' : json.dumps(village_info)***REMOVED***)
 def clans(request):
     return render(request, 'clans.html')
+
+@myuser_login_required
+def upgrade(request):
+    user_id = auth.current_user['localId']
+    village_id = 'UVQQm7Xg6Zh6NMMfrxkB' #this should come from request
+    building_name = 'townCenter' #this should also come from request
+
+    village = db.collection('players').document(user_id).collection('villages').document(village_id).get().to_dict()
+    upgrade_level = village[building_name]['level'] + 1
+    #retrieve required resources from gameConfig.json with upgrade_level
+    required_clay = 25
+    required_iron = 25
+    required_wood = 30
+    reqiured_time = 5
+    wood_sum = village['resources']['wood']['sum']
+    iron_sum = village['resources']['iron']['sum']
+    clay_sum = village['resources']['clay']['sum']
+    if(wood_sum >= required_wood and iron_sum >= required_iron and clay_sum >= required_clay):
+        upgrade_building.apply_async((user_id, village_id, building_name, upgrade_level),countdown = reqiured_time)
+    else:
+        messages.error(request,'Insufficent resources.')
+
+    return render(request, 'villages.html')

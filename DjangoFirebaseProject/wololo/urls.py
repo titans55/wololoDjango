@@ -10,6 +10,7 @@ urlpatterns = [
     path('game', views.villages, name='game'),
     path('game/map', views.map, name='map'),
     path('game/clans', views.clans, name='clans'),
+    path('game/upgrade', views.upgrade, name='upgrade'),
     
     #FORM CALL
     path('verifyLogin', views.verifyLogin, name='verifyLogin'),
