@@ -40,43 +40,150 @@
             ***REMOVED***
         ***REMOVED***,
         "resources":***REMOVED*** 
-            "upgradeTime" : ***REMOVED***
-                "1": 10, 
-                "2": 15, 
-                "3": 25, 
-                "4": 40, 
-                "5": 60, 
-                "6": 85, 
-                "7": 120, 
-                "8": 155, 
-                "9": 195,
-                "10": 240  
+            "woodCamp": ***REMOVED***
+                "upgradeTime" : ***REMOVED***
+                    "1": 10, 
+                    "2": 15, 
+                    "3": 25, 
+                    "4": 40, 
+                    "5": 60, 
+                    "6": 85, 
+                    "7": 120, 
+                    "8": 155, 
+                    "9": 195,
+                    "10": 240  
+                ***REMOVED***,
+                "hourlyProductionByLevel" : ***REMOVED***
+                    "0": 5,
+                    "1": 10, 
+                    "2": 15, 
+                    "3": 25, 
+                    "4": 40, 
+                    "5": 60, 
+                    "6": 85, 
+                    "7": 120, 
+                    "8": 155, 
+                    "9": 195,
+                    "10": 240 
+                ***REMOVED***,
+                "upgradingCosts": ***REMOVED***
+                    "1": ***REMOVED***"wood": 100, "iron":60, "clay":100***REMOVED***, 
+                    "2": ***REMOVED***"wood": 150, "iron":90, "clay":150***REMOVED***, 
+                    "3": ***REMOVED***"wood": 225, "iron":135, "clay":225***REMOVED***, 
+                    "4": ***REMOVED***"wood": 500, "iron":240, "clay":500***REMOVED***, 
+                    "5": ***REMOVED***"wood": 800, "iron":480, "clay":800***REMOVED***, 
+                    "6": ***REMOVED***"wood": 1000, "iron":600, "clay":1000***REMOVED***, 
+                    "7": ***REMOVED***"wood": 1500, "iron":800, "clay":1500***REMOVED***, 
+                    "8": ***REMOVED***"wood": 2000, "iron":1200, "clay":2000***REMOVED***, 
+                    "9": ***REMOVED***"wood": 2500, "iron":1600, "clay":2500***REMOVED***,
+                    "10": ***REMOVED***"wood": 3000, "iron":1900, "clay":3000***REMOVED*** 
+                ***REMOVED***
+
             ***REMOVED***,
-            "hourlyProductionByLevel" : ***REMOVED***
-                "0": 5,
-                "1": 10, 
-                "2": 15, 
-                "3": 25, 
-                "4": 40, 
-                "5": 60, 
-                "6": 85, 
-                "7": 120, 
-                "8": 155, 
-                "9": 195,
-                "10": 240 
-            ***REMOVED***
+            "ironMine": ***REMOVED***
+                "upgradeTime" : ***REMOVED***
+                    "1": 10, 
+                    "2": 15, 
+                    "3": 25, 
+                    "4": 40, 
+                    "5": 60, 
+                    "6": 85, 
+                    "7": 120, 
+                    "8": 155, 
+                    "9": 195,
+                    "10": 240  
+                ***REMOVED***,
+                "hourlyProductionByLevel" : ***REMOVED***
+                    "0": 5,
+                    "1": 10, 
+                    "2": 15, 
+                    "3": 25, 
+                    "4": 40, 
+                    "5": 60, 
+                    "6": 85, 
+                    "7": 120, 
+                    "8": 155, 
+                    "9": 195,
+                    "10": 240 
+                ***REMOVED***,
+                "upgradingCosts": ***REMOVED***
+                    "1": ***REMOVED***"wood": 100, "iron":60, "clay":100***REMOVED***, 
+                    "2": ***REMOVED***"wood": 150, "iron":90, "clay":150***REMOVED***, 
+                    "3": ***REMOVED***"wood": 225, "iron":135, "clay":225***REMOVED***, 
+                    "4": ***REMOVED***"wood": 500, "iron":240, "clay":500***REMOVED***, 
+                    "5": ***REMOVED***"wood": 800, "iron":480, "clay":800***REMOVED***, 
+                    "6": ***REMOVED***"wood": 1000, "iron":600, "clay":1000***REMOVED***, 
+                    "7": ***REMOVED***"wood": 1500, "iron":800, "clay":1500***REMOVED***, 
+                    "8": ***REMOVED***"wood": 2000, "iron":1200, "clay":2000***REMOVED***, 
+                    "9": ***REMOVED***"wood": 2500, "iron":1600, "clay":2500***REMOVED***,
+                    "10": ***REMOVED***"wood": 3000, "iron":1900, "clay":3000***REMOVED*** 
+                ***REMOVED***
+            ***REMOVED***,
+            "clayPit" : ***REMOVED***
+                "upgradeTime" : ***REMOVED***
+                    "1": 10, 
+                    "2": 15, 
+                    "3": 25, 
+                    "4": 40, 
+                    "5": 60, 
+                    "6": 85, 
+                    "7": 120, 
+                    "8": 155, 
+                    "9": 195,
+                    "10": 240  
+                ***REMOVED***,
+                "hourlyProductionByLevel" : ***REMOVED***
+                    "0": 5,
+                    "1": 10, 
+                    "2": 15, 
+                    "3": 25, 
+                    "4": 40, 
+                    "5": 60, 
+                    "6": 85, 
+                    "7": 120, 
+                    "8": 155, 
+                    "9": 195,
+                    "10": 240 
+                ***REMOVED***,
+                "upgradingCosts": ***REMOVED***
+                    "1": ***REMOVED***"wood": 100, "iron":60, "clay":100***REMOVED***, 
+                    "2": ***REMOVED***"wood": 150, "iron":90, "clay":150***REMOVED***, 
+                    "3": ***REMOVED***"wood": 225, "iron":135, "clay":225***REMOVED***, 
+                    "4": ***REMOVED***"wood": 500, "iron":240, "clay":500***REMOVED***, 
+                    "5": ***REMOVED***"wood": 800, "iron":480, "clay":800***REMOVED***, 
+                    "6": ***REMOVED***"wood": 1000, "iron":600, "clay":1000***REMOVED***, 
+                    "7": ***REMOVED***"wood": 1500, "iron":800, "clay":1500***REMOVED***, 
+                    "8": ***REMOVED***"wood": 2000, "iron":1200, "clay":2000***REMOVED***, 
+                    "9": ***REMOVED***"wood": 2500, "iron":1600, "clay":2500***REMOVED***,
+                    "10": ***REMOVED***"wood": 3000, "iron":1900, "clay":3000***REMOVED*** 
+                ***REMOVED***
+            ***REMOVED***            
         ***REMOVED***,
         "storage":***REMOVED***
-            "1": 500, 
-            "2": 1500, 
-            "3": 2500, 
-            "4": 4000, 
-            "5": 6000, 
-            "6": 8500, 
-            "7": 12000, 
-            "8": 15500, 
-            "9": 19500,
-            "10": 24000 
+            "capacity" : ***REMOVED***
+                "1": 500, 
+                "2": 1500, 
+                "3": 2500, 
+                "4": 4000, 
+                "5": 6000, 
+                "6": 8500, 
+                "7": 12000, 
+                "8": 15500, 
+                "9": 19500,
+                "10": 24000 
+            ***REMOVED***,
+            "upgradingCosts": ***REMOVED***
+                "1": ***REMOVED***"wood": 100, "iron":60, "clay":100***REMOVED***, 
+                "2": ***REMOVED***"wood": 150, "iron":90, "clay":150***REMOVED***, 
+                "3": ***REMOVED***"wood": 225, "iron":135, "clay":225***REMOVED***, 
+                "4": ***REMOVED***"wood": 500, "iron":240, "clay":500***REMOVED***, 
+                "5": ***REMOVED***"wood": 800, "iron":480, "clay":800***REMOVED***, 
+                "6": ***REMOVED***"wood": 1000, "iron":600, "clay":1000***REMOVED***, 
+                "7": ***REMOVED***"wood": 1500, "iron":800, "clay":1500***REMOVED***, 
+                "8": ***REMOVED***"wood": 2000, "iron":1200, "clay":2000***REMOVED***, 
+                "9": ***REMOVED***"wood": 2500, "iron":1600, "clay":2500***REMOVED***,
+                "10": ***REMOVED***"wood": 3000, "iron":1900, "clay":3000***REMOVED*** 
+            ***REMOVED***
         ***REMOVED***,
         "other building" : "wololo"
     ***REMOVED***

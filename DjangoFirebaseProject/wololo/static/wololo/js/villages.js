@@ -1,30 +1,32 @@
 "use strict";
 var village_id
+var gameConfigsJSON = JSON.parse(($("#gameConfigData").attr("data")).replace(/'/g, '"'))
+var villageDataJSON = JSON.parse(($("#villageDataJSON").attr("data")).replace(/'/g, '"'))
+
 $(function()***REMOVED***
+
+    village_id = villageDataJSON.id
     initVillage()
     initUpgradeButtons()
 
 ***REMOVED***)
 
 function initVillage()***REMOVED***
-    let villageData = $("#villageDataJSON").attr("data")
-    let gameConfigs = $("#gameConfigData").attr("data")
-    let villageDataJSON = JSON.parse(villageData.replace(/'/g, '"'))
-    let gameConfigsJSON = JSON.parse(gameConfigs.replace(/'/g, '"'))
-    village_id = villageDataJSON.id
+
     //console.log(villageDataJSON)
     //console.log(village_id)
 
-    incrementOfResorcesByTime(villageDataJSON, gameConfigsJSON)
+    incrementOfResorcesByTime()
 ***REMOVED***
 
-function incrementOfResorcesByTime(villageDataJSON, gameConfigsJSON)***REMOVED***
+function incrementOfResorcesByTime()***REMOVED***
     //console.log(gameConfigsJSON.buildings.resources, villageDataJSON.resources)
 
     let woodDate = moment(villageDataJSON.resources.wood.lastInteractionDate).format()
     let ironDate = moment(villageDataJSON.resources.iron.lastInteractionDate).format()
     let clayDate = moment(villageDataJSON.resources.clay.lastInteractionDate).format()
 
+    let storageCapacity = gameConfigsJSON.buildings.storage.capacity[villageDataJSON.storage.level]
     // console.log(woodDate)
     tick()
     setInterval(() => ***REMOVED***
@@ -36,20 +38,20 @@ function incrementOfResorcesByTime(villageDataJSON, gameConfigsJSON)***REMOVED**
         let woodHours = (now.diff(woodDate) / (1000 * 60 * 60))
         let ironHours = (now.diff(ironDate) / (1000 * 60 * 60))
         let clayHours = (now.diff(clayDate) / (1000 * 60 * 60))
-        let currentWood =( gameConfigsJSON.buildings.resources.hourlyProductionByLevel[villageDataJSON.resources.wood.level]*woodHours).toFixed()
+        let currentWood =( gameConfigsJSON.buildings.resources.woodCamp.hourlyProductionByLevel[villageDataJSON.resources.wood.level]*woodHours).toFixed()
         currentWood = parseInt(currentWood) + parseInt(villageDataJSON.resources.wood.sum)
-        checkCapacityAndWrite('#wood', currentWood, gameConfigsJSON.buildings.storage[villageDataJSON.storage.level])
+        checkCapacityAndWrite('#wood', currentWood, storageCapacity)
 
-        let currentIron =( gameConfigsJSON.buildings.resources.hourlyProductionByLevel[villageDataJSON.resources.iron.level]*ironHours).toFixed()
+        let currentIron =( gameConfigsJSON.buildings.resources.ironMine.hourlyProductionByLevel[villageDataJSON.resources.iron.level]*ironHours).toFixed()
         currentIron = parseInt(currentIron) + parseInt(villageDataJSON.resources.iron.sum)
-        checkCapacityAndWrite('#iron', currentIron, gameConfigsJSON.buildings.storage[villageDataJSON.storage.level])
+        checkCapacityAndWrite('#iron', currentIron, storageCapacity)
 
-        let currentClay =( gameConfigsJSON.buildings.resources.hourlyProductionByLevel[villageDataJSON.resources.clay.level]*clayHours).toFixed()
+        let currentClay =( gameConfigsJSON.buildings.resources.clayPit.hourlyProductionByLevel[villageDataJSON.resources.clay.level]*clayHours).toFixed()
         currentClay = parseInt(currentClay) + parseInt(villageDataJSON.resources.clay.sum)
-        checkCapacityAndWrite('#clay', currentClay, gameConfigsJSON.buildings.storage[villageDataJSON.storage.level])
+        checkCapacityAndWrite('#clay', currentClay, storageCapacity)
     ***REMOVED***
 
-    $("#storage").html(gameConfigsJSON.buildings.storage[villageDataJSON.storage.level])
+    $("#storage").html(gameConfigsJSON.buildings.storage.capacity[villageDataJSON.storage.level])
 ***REMOVED***
 
 function checkCapacityAndWrite(resourceHtmlID, currentAmount, storageLimit)***REMOVED***
@@ -68,6 +70,23 @@ function checkCapacityAndWrite(resourceHtmlID, currentAmount, storageLimit)***RE
 ***REMOVED***
 
 function initUpgradeButtons()***REMOVED***
+
+    $('.upgradeBuildings').each(function()***REMOVED***
+        let buildingName = $(this).attr('id')
+        let buildingLevel = String(parseInt(villageDataJSON[String(buildingName)].level) + 1)
+        let neededResources = gameConfigsJSON.buildings[String(buildingName)].upgradingCosts[buildingLevel]
+        $(this).find(".neededWood").html(neededResources.wood)
+        $(this).find(".neededIron").html(neededResources.iron)
+        $(this).find(".neededClay").html(neededResources.clay)
+    ***REMOVED***)
+    $('.upgradeResources').each(function()***REMOVED***
+        let upgradingCostPerResource = $(this).attr('id')
+        let buildingLevel = String(parseInt(villageDataJSON[String(buildingName)].level) + 1)
+        let neededResources = gameConfigsJSON.resources[String(upgradingCostPerResource)][buildingLevel]
+        $(this).find(".neededWood").html(neededResources.wood)
+        $(this).find(".neededIron").html(neededResources.iron)
+        $(this).find(".neededClay").html(neededResources.clay)
+    ***REMOVED***)
 
 
     let csrftoken = getCookie('csrftoken');
