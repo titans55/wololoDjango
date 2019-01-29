@@ -78,7 +78,7 @@ def verifyLogin(request):
             auth.sign_in_with_email_and_password(email, password)
         except:
             messages.error(request,'Email or password is not correct.')
-            return render(request, 'beforeLogin/landingPage.html')
+            return redirect("landingPage")
         return redirect(settings.LOGIN_REDIRECT_URL)
     return HttpResponse("why y r here")
 
@@ -127,23 +127,39 @@ def clans(request):
 
 @myuser_login_required
 def upgrade(request):
-    user_id = auth.current_user['localId']
-    village_id = 'UVQQm7Xg6Zh6NMMfrxkB' #this should come from request
-    building_name = 'townCenter' #this should also come from request
+    if request.method == "POST":
+        with open(r"C:\Users\3III's\Desktop\django-wololo\wololoDjango\DjangoFirebaseProject\wololo\gameConfig.json") as f:
+            gameConfig = json.load(f)
 
-    village = db.collection('players').document(user_id).collection('villages').document(village_id).get().to_dict()
-    upgrade_level = village[building_name]['level'] + 1
-    #retrieve required resources from gameConfig.json with upgrade_level
-    required_clay = 25
-    required_iron = 25
-    required_wood = 30
-    reqiured_time = 5
-    wood_sum = village['resources']['wood']['sum']
-    iron_sum = village['resources']['iron']['sum']
-    clay_sum = village['resources']['clay']['sum']
-    if(wood_sum >= required_wood and iron_sum >= required_iron and clay_sum >= required_clay):
-        upgrade_building.apply_async((user_id, village_id, building_name, upgrade_level),countdown = reqiured_time)
-    else:
-        messages.error(request,'Insufficent resources.')
+        user_id = auth.current_user['localId']
+        village_id = request.POST.get("village_id") #this should come from request
+        building_path = request.POST.get("building_path") #this should also come from request
+        firing_time = request.POST.get("firingTime")
+        print(firing_time)
 
-    return render(request, 'villages.html')
+        village = db.collection('players').document(user_id).collection('villages').document(village_id).get().to_dict()
+        #upgrade_levelTo = village[building_path]['level'] + 1
+        print(building_path)
+        if '.' in building_path : 
+            upgrade_levelTo = int(village[building_path.split[0]][building_path.split[1]]['level']) + 1
+        else :
+            upgrade_levelTo = str(int(village[building_path]['level']) + 1)
+
+            required_clay = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['clay']
+            required_iron = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['iron']
+            required_wood = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['wood']
+            reqiured_time = 5 #(seconds)
+        print(required_clay)
+        #retrieve required resources from gameConfig.json with upgrade_level
+
+        
+        wood_sum = village['resources']['wood']['sum']
+        iron_sum = village['resources']['iron']['sum']
+        clay_sum = village['resources']['clay']['sum']
+        if(wood_sum >= required_wood and iron_sum >= required_iron and clay_sum >= required_clay):
+            #update sum and lastInteractionDate of resources (-cost)
+            #upgrade_building.apply_async((user_id, village_id, building_name, upgrade_levelTo),countdown = reqiured_time)
+            return HttpResponse("Success")
+        else:
+            return HttpResponse("Fail")
+        # return render(request, 'villages.html')

@@ -29,13 +29,38 @@
 ***REMOVED******REMOVED***data.villages_info.0.resources***REMOVED******REMOVED***
 <ul class="list-group">
     ***REMOVED******REMOVED***data.villages_info.0.villageName***REMOVED******REMOVED*** Overview
-    <li class="list-group-item">Town center level ***REMOVED******REMOVED***data.villages_info.0.townCenter.level***REMOVED******REMOVED***<button>upgrade</button></li>
-    <li class="list-group-item">Wood Camp level ***REMOVED******REMOVED***data.villages_info.0.resources.wood.level***REMOVED******REMOVED***<button>upgrade</button></li>
-    <li class="list-group-item">Iron Mine level ***REMOVED******REMOVED***data.villages_info.0.resources.iron.level***REMOVED******REMOVED***<button>upgrade</button></li>
-    <li class="list-group-item">Clay Pit level ***REMOVED******REMOVED***data.villages_info.0.resources.clay.level***REMOVED******REMOVED***<button>upgrade</button></li>
-    <li class="list-group-item">Storage level ***REMOVED******REMOVED***data.villages_info.0.storage.level***REMOVED******REMOVED***<button>upgrade</button></li>
-        
+    <li class="list-group-item">Town center level ***REMOVED******REMOVED***data.villages_info.0.townCenter.level***REMOVED******REMOVED***
+        <button class="upgrade" id="townCenter">Upgrade</button>
+    </li>
+    <li class="list-group-item">Wood Camp level ***REMOVED******REMOVED***data.villages_info.0.resources.wood.level***REMOVED******REMOVED***
+        <button class="upgrade" id="resources.wood">Upgrade</button>
+    </li>
+    <li class="list-group-item">Iron Mine level ***REMOVED******REMOVED***data.villages_info.0.resources.iron.level***REMOVED******REMOVED***
+        <button class="upgrade" id="resources.iron">Upgrade</button>
+    </li>
+    <li class="list-group-item">Clay Pit level ***REMOVED******REMOVED***data.villages_info.0.resources.clay.level***REMOVED******REMOVED***
+        <button class="upgrade" id="resources.clay">Upgrade</button>
+    </li>
+    <li class="list-group-item">Storage level ***REMOVED******REMOVED***data.villages_info.0.storage.level***REMOVED******REMOVED***
+        <button class="upgrade .popover-dismiss" id="storage" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Upgrade</button>
+    </li>
 </ul> 
+
+<div class="modal fade" id="insufficentResources" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Insufficent Resources!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Ouh, okay</button>
+        </div>
+        </div>
+    </div>
+</div>
 
 ***REMOVED***% endblock %***REMOVED*** 
 ***REMOVED***% block footerjs %***REMOVED***

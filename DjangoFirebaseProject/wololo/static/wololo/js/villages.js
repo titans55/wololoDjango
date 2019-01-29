@@ -1,5 +1,9 @@
+"use strict";
+var village_id
 $(function()***REMOVED***
     initVillage()
+    initUpgradeButtons()
+
 ***REMOVED***)
 
 function initVillage()***REMOVED***
@@ -7,7 +11,10 @@ function initVillage()***REMOVED***
     let gameConfigs = $("#gameConfigData").attr("data")
     let villageDataJSON = JSON.parse(villageData.replace(/'/g, '"'))
     let gameConfigsJSON = JSON.parse(gameConfigs.replace(/'/g, '"'))
+    village_id = villageDataJSON.id
     //console.log(villageDataJSON)
+    //console.log(village_id)
+
     incrementOfResorcesByTime(villageDataJSON, gameConfigsJSON)
 ***REMOVED***
 
@@ -58,4 +65,52 @@ function checkCapacityAndWrite(resourceHtmlID, currentAmount, storageLimit)***RE
             $(resourceHtmlID).removeClass("text-danger")
         ***REMOVED***
     ***REMOVED***
+***REMOVED***
+
+function initUpgradeButtons()***REMOVED***
+
+
+    let csrftoken = getCookie('csrftoken');
+    
+    $(".upgrade").on('click', function()***REMOVED***
+        let now = new Date()
+        let building_path = $(this).attr('id')
+        $.ajax(***REMOVED***
+            type: 'POST',
+            url: '/game/upgrade',
+            data: ***REMOVED***
+                building_path: building_path,
+                village_id: village_id,
+                firingTime: now,
+                csrfmiddlewaretoken: csrftoken 
+            ***REMOVED***,
+            success:function(data)***REMOVED***
+
+                if(data == 'Success')***REMOVED***
+                    
+                ***REMOVED***else if(data == 'Fail')***REMOVED***
+                    // alert("Fail")
+                    console.log("WOLOLO")
+                    $('#insufficentResources').modal('show')
+                ***REMOVED***
+    
+            ***REMOVED***
+        ***REMOVED***)
+    ***REMOVED***);
+***REMOVED***
+
+function getCookie(name) ***REMOVED***
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') ***REMOVED***
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) ***REMOVED***
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) ***REMOVED***
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            ***REMOVED***
+        ***REMOVED***
+    ***REMOVED***
+    return cookieValue;
 ***REMOVED***
