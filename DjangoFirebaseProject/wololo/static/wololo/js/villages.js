@@ -1,32 +1,28 @@
 "use strict";
 var village_id
-var gameConfigsJSON = JSON.parse(($("#gameConfigData").attr("data")).replace(/'/g, '"'))
-var villageDataJSON = JSON.parse(($("#villageDataJSON").attr("data")).replace(/'/g, '"'))
+var gameConfigs = JSON.parse(($("#gameConfigData").attr("data")).replace(/'/g, '"'))
+var villageData = JSON.parse(($("#villageDataJSON").attr("data")).replace(/'/g, '"'))
 
 $(function()***REMOVED***
 
-    village_id = villageDataJSON.id
+    village_id = villageData.id
     initVillage()
-    initUpgradeButtons()
-
 ***REMOVED***)
 
 function initVillage()***REMOVED***
-
-    //console.log(villageDataJSON)
-    //console.log(village_id)
-
     incrementOfResorcesByTime()
+    initUpgradeButtons()
+    displayNeededResourcesAndTimeForUpgrading()
 ***REMOVED***
 
 function incrementOfResorcesByTime()***REMOVED***
-    //console.log(gameConfigsJSON.buildings.resources, villageDataJSON.resources)
+    //console.log(gameConfigs.buildings.resources, villageData.resources)
 
-    let woodDate = moment(villageDataJSON.resources.wood.lastInteractionDate).format()
-    let ironDate = moment(villageDataJSON.resources.iron.lastInteractionDate).format()
-    let clayDate = moment(villageDataJSON.resources.clay.lastInteractionDate).format()
+    let woodDate = moment(villageData.resources.wood.lastInteractionDate).format()
+    let ironDate = moment(villageData.resources.iron.lastInteractionDate).format()
+    let clayDate = moment(villageData.resources.clay.lastInteractionDate).format()
 
-    let storageCapacity = gameConfigsJSON.buildings.storage.capacity[villageDataJSON.storage.level]
+    let storageCapacity = gameConfigs.buildings.storage.capacity[villageData.storage.level]
     // console.log(woodDate)
     tick()
     setInterval(() => ***REMOVED***
@@ -38,20 +34,20 @@ function incrementOfResorcesByTime()***REMOVED***
         let woodHours = (now.diff(woodDate) / (1000 * 60 * 60))
         let ironHours = (now.diff(ironDate) / (1000 * 60 * 60))
         let clayHours = (now.diff(clayDate) / (1000 * 60 * 60))
-        let currentWood =( gameConfigsJSON.buildings.resources.woodCamp.hourlyProductionByLevel[villageDataJSON.resources.wood.level]*woodHours).toFixed()
-        currentWood = parseInt(currentWood) + parseInt(villageDataJSON.resources.wood.sum)
+        let currentWood =( gameConfigs.buildings.resources.woodCamp.hourlyProductionByLevel[villageData.resources.wood.level]*woodHours).toFixed()
+        currentWood = parseInt(currentWood) + parseInt(villageData.resources.wood.sum)
         checkCapacityAndWrite('#wood', currentWood, storageCapacity)
 
-        let currentIron =( gameConfigsJSON.buildings.resources.ironMine.hourlyProductionByLevel[villageDataJSON.resources.iron.level]*ironHours).toFixed()
-        currentIron = parseInt(currentIron) + parseInt(villageDataJSON.resources.iron.sum)
+        let currentIron =( gameConfigs.buildings.resources.ironMine.hourlyProductionByLevel[villageData.resources.iron.level]*ironHours).toFixed()
+        currentIron = parseInt(currentIron) + parseInt(villageData.resources.iron.sum)
         checkCapacityAndWrite('#iron', currentIron, storageCapacity)
 
-        let currentClay =( gameConfigsJSON.buildings.resources.clayPit.hourlyProductionByLevel[villageDataJSON.resources.clay.level]*clayHours).toFixed()
-        currentClay = parseInt(currentClay) + parseInt(villageDataJSON.resources.clay.sum)
+        let currentClay =( gameConfigs.buildings.resources.clayPit.hourlyProductionByLevel[villageData.resources.clay.level]*clayHours).toFixed()
+        currentClay = parseInt(currentClay) + parseInt(villageData.resources.clay.sum)
         checkCapacityAndWrite('#clay', currentClay, storageCapacity)
     ***REMOVED***
 
-    $("#storage").html(gameConfigsJSON.buildings.storage.capacity[villageDataJSON.storage.level])
+    $("#storage").html(gameConfigs.buildings.storage.capacity[villageData.storage.level])
 ***REMOVED***
 
 function checkCapacityAndWrite(resourceHtmlID, currentAmount, storageLimit)***REMOVED***
@@ -71,22 +67,6 @@ function checkCapacityAndWrite(resourceHtmlID, currentAmount, storageLimit)***RE
 
 function initUpgradeButtons()***REMOVED***
 
-    $('.upgradeBuildings').each(function()***REMOVED***
-        let buildingName = $(this).attr('id')
-        let buildingLevel = String(parseInt(villageDataJSON[String(buildingName)].level) + 1)
-        let neededResources = gameConfigsJSON.buildings[String(buildingName)].upgradingCosts[buildingLevel]
-        $(this).find(".neededWood").html(neededResources.wood)
-        $(this).find(".neededIron").html(neededResources.iron)
-        $(this).find(".neededClay").html(neededResources.clay)
-    ***REMOVED***)
-    $('.upgradeResources').each(function()***REMOVED***
-        let upgradingCostPerResource = $(this).attr('id')
-        let buildingLevel = String(parseInt(villageDataJSON[String(buildingName)].level) + 1)
-        let neededResources = gameConfigsJSON.resources[String(upgradingCostPerResource)][buildingLevel]
-        $(this).find(".neededWood").html(neededResources.wood)
-        $(this).find(".neededIron").html(neededResources.iron)
-        $(this).find(".neededClay").html(neededResources.clay)
-    ***REMOVED***)
 
 
     let csrftoken = getCookie('csrftoken');
@@ -132,4 +112,47 @@ function getCookie(name) ***REMOVED***
         ***REMOVED***
     ***REMOVED***
     return cookieValue;
+***REMOVED***
+
+function displayNeededResourcesAndTimeForUpgrading()***REMOVED***
+    //upgrading costs
+    $('.upgradeBuildings').each(function()***REMOVED***
+        let buildingName = $(this).attr('buildingName')
+        let buildingLevel = String(parseInt(villageData[String(buildingName)].level) + 1)
+        let neededResources = gameConfigs.buildings[String(buildingName)].upgradingCosts[buildingLevel]
+        let mins = gameConfigs.buildings[String(buildingName)].upgradeTime[buildingLevel]
+        let neededTime = calculateTimeFromMinutes(mins)
+        $(this).find(".neededWood").html(neededResources.wood)
+        $(this).find(".neededIron").html(neededResources.iron)
+        $(this).find(".neededClay").html(neededResources.clay)
+        $(this).find(".neededTime").html(neededTime)
+    ***REMOVED***)
+    $('.upgradeResources').each(function()***REMOVED***
+        let resourceBuilding = $(this).attr('buildingName')
+        let resourceType = $(this).attr('resourceType')
+        let buildingLevel = String(parseInt(villageData.resources[String(resourceType)].level) + 1)
+        let neededResources = gameConfigs.buildings.resources[String(resourceBuilding)].upgradingCosts[buildingLevel]
+        let mins = gameConfigs.buildings.resources[String(resourceBuilding)].upgradeTime[buildingLevel]
+        let neededTime = calculateTimeFromMinutes(mins)
+        $(this).find(".neededWood").html(neededResources.wood)
+        $(this).find(".neededIron").html(neededResources.iron)
+        $(this).find(".neededClay").html(neededResources.clay)
+        $(this).find(".neededTime").html(neededTime)
+    ***REMOVED***)
+
+    //upgrading times
+
+***REMOVED***
+
+function calculateTimeFromMinutes(mins)***REMOVED***
+    let mins_num = parseFloat(mins, 10); // don't forget the second param
+    let hours   = Math.floor(mins_num / 60);
+    let minutes = Math.floor((mins_num - ((hours * 3600)) / 60));
+    let seconds = Math.floor((mins_num * 60) - (hours * 3600) - (minutes * 60));
+
+    // Appends 0 when unit is less than 10
+    if (hours   < 10) ***REMOVED***hours   = "0"+hours;***REMOVED***
+    if (minutes < 10) ***REMOVED***minutes = "0"+minutes;***REMOVED***
+    if (seconds < 10) ***REMOVED***seconds = "0"+seconds;***REMOVED***
+    return hours+':'+minutes+':'+seconds;
 ***REMOVED***

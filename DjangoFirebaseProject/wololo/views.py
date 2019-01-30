@@ -118,6 +118,7 @@ def map(request):
     villages = villages_ref.get()
     village_info = []
     for village in villages:
+        village._data['village_id'] = village.reference.id
         if(village._data['user_id'] == auth.current_user['localId']):
             village._data['owner'] = True
         village_info.append(village._data)

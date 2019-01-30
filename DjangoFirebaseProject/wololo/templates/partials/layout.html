@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="***REMOVED***% static 'wololo/css/main.css' %***REMOVED***" type="text/css">
     <link rel="stylesheet" href="***REMOVED***% static 'wololo/css/game.css' %***REMOVED***" type="text/css">
     <!-- link(rel='shortcut icon', href='/favicon.png') -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 
     ***REMOVED***% block headcdn %***REMOVED*** ***REMOVED***% endblock %***REMOVED***
 
@@ -19,6 +20,15 @@
     ***REMOVED***% include "partials/navbar.html" %***REMOVED***
 
     <div class="container">
+        <div id="loader">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
         ***REMOVED***% block content %***REMOVED*** ***REMOVED***% endblock %***REMOVED***
     </div>
 
@@ -31,6 +41,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script type="text/javascript" src="***REMOVED***% static 'wololo/assets/js/popper.js/dist/umd/popper.min.js' %***REMOVED***"></script>
 
+    <script>
+        $(function()***REMOVED***
+            $("#loader").hide()
+        ***REMOVED***)
+    </script>
     ***REMOVED***% block footerjs %***REMOVED*** ***REMOVED***% endblock %***REMOVED***
 
 </body>

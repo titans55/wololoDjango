@@ -172,6 +172,18 @@
                 "9": 19500,
                 "10": 24000 
             ***REMOVED***,
+            "upgradeTime" : ***REMOVED***
+                "1": 10, 
+                "2": 15, 
+                "3": 25, 
+                "4": 40, 
+                "5": 60, 
+                "6": 85, 
+                "7": 120, 
+                "8": 155, 
+                "9": 195,
+                "10": 240  
+            ***REMOVED***,
             "upgradingCosts": ***REMOVED***
                 "1": ***REMOVED***"wood": 100, "iron":60, "clay":100***REMOVED***, 
                 "2": ***REMOVED***"wood": 150, "iron":90, "clay":150***REMOVED***, 

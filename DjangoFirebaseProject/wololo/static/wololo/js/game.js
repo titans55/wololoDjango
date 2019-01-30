@@ -33,6 +33,8 @@ function loadVillages(infos) ***REMOVED***
     var sprite
     infos.forEach(function(element) ***REMOVED***
         sprite = game.add.sprite(element.coords.x, element.coords.y, 'castle');
+        sprite.village_id = element.village_id;
+        sprite.user_id = element.user_id;
         sprite.owner = element.owner ? 'yours' : ''
         sprite.villageName = element.villageName;
         sprite.playerName = element.playerName;
@@ -47,11 +49,15 @@ function loadVillages(infos) ***REMOVED***
 
 function onClickListener(sprite) ***REMOVED***
     if (isVillageSelected) ***REMOVED***
+        console.log(selectedIndicator)
         selectedIndicator.kill();
         isVillageSelected = false;
+    ***REMOVED***else***REMOVED***
+        selectedIndicator = game.add.sprite(sprite.x - 10, sprite.y - 8, 'selected');
+        isVillageSelected = true;
+        initSideBar(sprite)
     ***REMOVED***
-    selectedIndicator = game.add.sprite(sprite.x - 10, sprite.y - 8, 'selected');
-    isVillageSelected = true;
+    
 ***REMOVED***
 
 function onHoverListener(sprite, event) ***REMOVED***
@@ -76,4 +82,11 @@ function drag() ***REMOVED***
     ***REMOVED*** else ***REMOVED***
         game.origDragPoint = null;
     ***REMOVED***
+***REMOVED***
+
+//--//
+
+function initSideBar(sprite)***REMOVED***
+    $("#villageOverview").find(".card-title").html(sprite.villageName)
+    $("#villageOverview").find(".card-text").html("Belongs to "+ sprite.playerName)
 ***REMOVED***
