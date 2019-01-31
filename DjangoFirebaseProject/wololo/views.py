@@ -93,7 +93,10 @@ def villages(request):
     villages = villages_ref.get()
     villages_info = []
 
-    with open(r"C:\Users\3III's\Desktop\django-wololo\wololoDjango\DjangoFirebaseProject\wololo\gameConfig.json") as f:
+    import os
+    script_dir = os.path.dirname(__file__)
+    file_path = os.path.join(script_dir, 'gameConfig.json')
+    with open(file_path, 'r') as f:
         gameConfig = json.load(f)
     #print(gameConfig)
 
