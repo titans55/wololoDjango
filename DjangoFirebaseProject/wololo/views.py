@@ -64,18 +64,27 @@ def registerPage(request):
 
 def createAccount(request):
     if request.method == "POST":
-        email=request.POST.get("email")
+        email = request.POST.get("email")
         password = request.POST.get("password")
 
         auth.create_user_with_email_and_password(email, password)
-        return render(request, 'beforeLogin/landingPage.html')
+        user = auth.sign_in_with_email_and_password(email, password)
+        user = auth.refresh(user['refreshToken']) #now we have 1 hour expiry token
+        auth.send_email_verification(user['idToken'])
+        print(user)
+        messages.error(request, 'Please verify your email.')
+        return redirect("landingPage")
 
 def verifyLogin(request):
     if request.method == 'POST':
         email=request.POST.get("email")
         password = request.POST.get("password")
         try:
-            auth.sign_in_with_email_and_password(email, password)
+            user = auth.sign_in_with_email_and_password(email, password)
+            if auth.get_account_info(auth.current_user['idToken'])['users'][0]['emailVerified'] is False:
+                messages.error(request,'Email is not verified.')
+                # auth.send_email_verification(user['idToken'])
+                return redirect("landingPage")
         except:
             messages.error(request,'Email or password is not correct.')
             return redirect("landingPage")
@@ -88,7 +97,10 @@ def logout(request):
 
 @myuser_login_required
 def villages(request):
+    
     user_id = auth.current_user['localId']
+
+
     villages_ref = db.collection('players').document(user_id).collection('villages')
     villages = villages_ref.get()
     villages_info = []
