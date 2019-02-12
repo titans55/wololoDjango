@@ -96,6 +96,11 @@ def logout(request):
     return redirect(settings.LANDING_PAGE_REDIRECT_URL)
 
 @myuser_login_required
+def selectRegionOnFirstLogin(request):
+    return render(request, "firstLogin/selectRegion.html")
+
+
+@myuser_login_required
 def villages(request):
     
     user_id = auth.current_user['localId']
