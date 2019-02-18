@@ -85,9 +85,18 @@ def verifyLogin(request):
                 messages.error(request,'Email is not verified.')
                 # auth.send_email_verification(user['idToken'])
                 return redirect("landingPage")
+            user_id = auth.current_user['localId']
+            userInfo= db.collection('players').document(user_id).get()._data
+            # print(userInfo['regionSelected'])
+            if userInfo['regionSelected'] is False :
+                return redirect("selectRegion")
+
+            
         except:
             messages.error(request,'Email or password is not correct.')
             return redirect("landingPage")
+        
+
         return redirect(settings.LOGIN_REDIRECT_URL)
     return HttpResponse("why y r here")
 
@@ -97,13 +106,21 @@ def logout(request):
 
 @myuser_login_required
 def selectRegionOnFirstLogin(request):
+    user_id = auth.current_user['localId']
+    userInfo= db.collection('players').document(user_id).get()._data
+    if userInfo['regionSelected'] is True :
+        return redirect('myVillage')
+
     return render(request, "firstLogin/selectRegion.html")
 
 
 @myuser_login_required
 def villages(request):
-    
     user_id = auth.current_user['localId']
+    userInfo= db.collection('players').document(user_id).get()._data
+    if userInfo['regionSelected'] is False :
+        return redirect("selectRegion")
+    
 
 
     villages_ref = db.collection('players').document(user_id).collection('villages')
@@ -126,7 +143,7 @@ def villages(request):
         village._data['resources']['clay']['lastInteractionDate'] = str(village._data['resources']['clay']['lastInteractionDate'])
         villages_info.append(village._data)
     #villages_info['gameConfig'] = gameConfig
-    print(villages_info)
+    # print(villages_info)
     data = ***REMOVED*** 
         'villages_info' : villages_info,
         'gameConfig' : gameConfig
@@ -134,6 +151,11 @@ def villages(request):
     return render(request, 'villages.html', ***REMOVED***'data' : data***REMOVED***)
 @myuser_login_required
 def map(request):
+    user_id = auth.current_user['localId']
+    userInfo= db.collection('players').document(user_id).get()._data
+    if userInfo['regionSelected'] is False :
+        return redirect("selectRegion")
+
     villages_ref = db.collection('villages')
     villages = villages_ref.get()
     village_info = []
@@ -144,6 +166,11 @@ def map(request):
         village_info.append(village._data)
     return render(request, 'map.html', ***REMOVED***'village_info' : json.dumps(village_info)***REMOVED***)
 def clans(request):
+    user_id = auth.current_user['localId']
+    userInfo= db.collection('players').document(user_id).get()._data
+    if userInfo['regionSelected'] is False :
+        return redirect("selectRegion")
+
     return render(request, 'clans.html')
 
 @myuser_login_required
