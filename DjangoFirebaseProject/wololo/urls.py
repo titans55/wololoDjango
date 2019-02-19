@@ -7,10 +7,12 @@ urlpatterns = [
     path('register', views.registerPage, name='registerPage'),
     path('createAccount', views.createAccount, name='createAccount'),
 
-    path('game/selectRegion', views.selectRegionOnFirstLogin, name='selectRegion'),
     path('game', views.villages, name='myVillage'),
     path('game/map', views.map, name='map'),
     path('game/clans', views.clans, name='clans'),
+
+    #NORMAL VIEW AND AJAX CALL
+    path('game/selectRegion', views.selectRegionOnFirstLogin, name='selectRegion'),
 
     #AJAX CALL
     path('game/upgrade', views.upgrade, name='upgrade'),

@@ -1,40 +1,117 @@
 "use strict";
+var selectedRegion = null
 
 $(function()***REMOVED***
 
     listenHoverAndClickToRegions()
+    initConfirmRegionButton()
 ***REMOVED***)
 
 function listenHoverAndClickToRegions()***REMOVED***
-    $(".italy").hover(function() ***REMOVED***
-        $(".italy").css("fill", "white")
-    ***REMOVED***,function() ***REMOVED***
-        $(".italy").css("fill", "red")
 
+    $(".italy").hover(function() ***REMOVED***
+        (selectedRegion!='italy' ? $(".italy").addClass("hoverRegion") : '')
+    ***REMOVED***,function() ***REMOVED***
+        (selectedRegion!='italy' ? $(".italy").removeClass("hoverRegion") : '')
+    ***REMOVED***)
+    $(".italy").on("click",function()***REMOVED***
+        if(selectedRegion!='italy')***REMOVED***
+            selectRegion('italy')
+        ***REMOVED***else***REMOVED***
+            unselectRegion('italy')
+        ***REMOVED***  
     ***REMOVED***)
     $(".thraceAndIllyria").hover(function() ***REMOVED***
-        $(".thraceAndIllyria").css("fill", "white")
+        (selectedRegion!='thraceAndIllyria' ? $(".thraceAndIllyria").addClass("hoverRegion") : '')
     ***REMOVED***,function() ***REMOVED***
-        $(".thraceAndIllyria").css("fill", "#c8ab37")
-
+        (selectedRegion!='thraceAndIllyria' ? $(".thraceAndIllyria").removeClass("hoverRegion") : '')
+    ***REMOVED***)
+    $(".thraceAndIllyria").on("click",function()***REMOVED***
+        if(selectedRegion!='thraceAndIllyria')***REMOVED***
+            selectRegion('thraceAndIllyria')
+        ***REMOVED***else***REMOVED***
+            unselectRegion('thraceAndIllyria')
+        ***REMOVED***  
     ***REMOVED***)
 
     $(".greece").hover(function() ***REMOVED***
-        $(".greece").css("fill", "white")
+        (selectedRegion!='greece' ? $(".greece").addClass("hoverRegion") : '')
     ***REMOVED***,function() ***REMOVED***
-        $(".greece").css("fill", "#0000ff")
-
+        (selectedRegion!='greece' ? $(".greece").removeClass("hoverRegion") : '')
     ***REMOVED***)
+    $(".greece").on("click",function()***REMOVED***
+        if(selectedRegion!='greece')***REMOVED***
+            selectRegion('greece')
+        ***REMOVED***else***REMOVED***
+            unselectRegion('greece')
+        ***REMOVED***  
+    ***REMOVED***)
+
     $(".anatolia").hover(function() ***REMOVED***
-        $(".anatolia").css("fill", "white")
+        (selectedRegion!='anatolia' ? $(".anatolia").addClass("hoverRegion") : '')
     ***REMOVED***,function() ***REMOVED***
-        $(".anatolia").css("fill", "#916f6f")
-
+        (selectedRegion!='anatolia' ? $(".anatolia").removeClass("hoverRegion") : '')
     ***REMOVED***)
-    $(".levant").hover(function() ***REMOVED***
-        $(".levant").css("fill", "white")
-    ***REMOVED***,function() ***REMOVED***
-        $(".levant").css("fill", "#aad400")
+    $(".anatolia").on("click",function()***REMOVED***
+        if(selectedRegion!='anatolia')***REMOVED***
+            selectRegion('anatolia')
+        ***REMOVED***else***REMOVED***
+            unselectRegion('anatolia')
+        ***REMOVED***  
+    ***REMOVED***)
 
+    $(".levant").hover(function() ***REMOVED***
+        (selectedRegion!='levant' ? $(".levant").addClass("hoverRegion") : '')
+    ***REMOVED***,function() ***REMOVED***
+        (selectedRegion!='levant' ? $(".levant").removeClass("hoverRegion") : '')
+    ***REMOVED***)
+    $(".levant").on("click",function()***REMOVED***
+        if(selectedRegion!='levant')***REMOVED***
+            selectRegion('levant')
+        ***REMOVED***else***REMOVED***
+            unselectRegion('levant')
+        ***REMOVED***  
+    ***REMOVED***)
+***REMOVED***
+function selectRegion(regionClassName)***REMOVED***
+    $("."+regionClassName).removeClass("hoverRegion")
+    $("path").removeClass('selectedRegion')
+    $("."+regionClassName).addClass('selectedRegion')
+    selectedRegion = regionClassName
+    console.log(regionClassName, "selected")
+    if(regionClassName=='italy')***REMOVED***
+        $(".selectingRegionText").html("Your first village will be located at <b><i>Italy</i></b>.")
+    ***REMOVED***else if(regionClassName=='thraceAndIllyria')***REMOVED***
+        $(".selectingRegionText").html("Your first village will be located at <b><i>Thrace & Illyria</i></b>.")
+    ***REMOVED***else if(regionClassName=='greece')***REMOVED***
+        $(".selectingRegionText").html("Your first village will be located at <b><i>Greece</i></b>.")
+    ***REMOVED***else if(regionClassName=='anatolia')***REMOVED***
+        $(".selectingRegionText").html("Your first village will be located at <b><i>Anatolia</i></b>.")
+    ***REMOVED***else if(regionClassName=='levant')***REMOVED***
+        $(".selectingRegionText").html("Your first village will be located at <b><i>Levant</i></b>.")
+    ***REMOVED***
+    $("#confirmRegion").removeClass("disabled")
+***REMOVED***
+function unselectRegion(regionClassName)***REMOVED***
+    selectedRegion = null
+    $("."+regionClassName).removeClass('selectedRegion')
+    $(".selectingRegionText").html("Choose the region of your first village.")
+    $("#confirmRegion").addClass("disabled")
+***REMOVED***
+function initConfirmRegionButton()***REMOVED***
+    $("#confirmRegion").on("click", function()***REMOVED***
+        console.log("clicking")
+        let csrftoken = getCookie('csrftoken');
+        $.ajax(***REMOVED***
+            type: 'POST',
+            url: '/game/selectRegion',
+            data: ***REMOVED***
+                selectedRegion: selectedRegion,
+                csrfmiddlewaretoken: csrftoken
+            ***REMOVED***,
+            success:function(data)***REMOVED***
+    
+            ***REMOVED***
+        ***REMOVED***)
     ***REMOVED***)
 ***REMOVED***

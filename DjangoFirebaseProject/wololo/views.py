@@ -69,6 +69,12 @@ def createAccount(request):
 
         auth.create_user_with_email_and_password(email, password)
         user = auth.sign_in_with_email_and_password(email, password)
+        user_id = auth.current_user['localId']
+        db.collection('players').document(user_id).set(***REMOVED***
+            "clan": "",
+            "regionSelected": False,
+            "username": "userrrr"
+        ***REMOVED***)
         user = auth.refresh(user['refreshToken']) #now we have 1 hour expiry token
         auth.send_email_verification(user['idToken'])
         print(user)
@@ -86,7 +92,7 @@ def verifyLogin(request):
                 # auth.send_email_verification(user['idToken'])
                 return redirect("landingPage")
             user_id = auth.current_user['localId']
-            userInfo= db.collection('players').document(user_id).get()._data
+            userInfo = db.collection('players').document(user_id).get()._data
             # print(userInfo['regionSelected'])
             if userInfo['regionSelected'] is False :
                 return redirect("selectRegion")
@@ -107,10 +113,65 @@ def logout(request):
 @myuser_login_required
 def selectRegionOnFirstLogin(request):
     user_id = auth.current_user['localId']
-    userInfo= db.collection('players').document(user_id).get()._data
+    userInfo = db.collection('players').document(user_id).get()._data
     if userInfo['regionSelected'] is True :
         return redirect('myVillage')
-
+    if request.method == "POST":
+        selectedRegion = request.POST.get("selectedRegion")
+        # regionSelected = 'italy'
+        print(selectedRegion)
+        allVillages = db.collection('villages').get()
+        emptyVillages = []
+        for village in allVillages:
+            if village._data['playerName'] == '' and village._data['region'] == selectedRegion:
+                emptyVillages.append(village)
+        import random
+        firstVillage = random.choice(emptyVillages)
+        print("selected")
+        firstVillage._data['id'] = firstVillage.reference.id
+        print(firstVillage._data['id'])
+        now = datetime.datetime.now()
+        villageInfo = ***REMOVED***
+            "villageName" : "Yigidin Harman Oldugu Yer",
+            "townCenter" : ***REMOVED***
+                "level" : "1"
+            ***REMOVED***,
+            "barracks" : ***REMOVED***
+                "level" : "0"
+            ***REMOVED***,
+            "stable" : ***REMOVED***
+                "level" : "0"
+            ***REMOVED***,
+            "workshop" : ***REMOVED***
+                "level" : "0"
+            ***REMOVED***,
+            "storage" : ***REMOVED***
+                "level" : "1"
+            ***REMOVED***,
+            "resources": ***REMOVED***
+                "clay" : ***REMOVED***
+                    "lastInteractionDate" : now,
+                    "level" : "0",
+                    "sum": 0
+                ***REMOVED***,
+                "iron" : ***REMOVED***
+                    "lastInteractionDate" : now,
+                    "level" : "0",
+                    "sum": 0
+                ***REMOVED***,
+                "wood" : ***REMOVED***
+                    "lastInteractionDate" : now,
+                    "level" : "0",
+                    "sum": 0
+                ***REMOVED***
+            ***REMOVED***
+        ***REMOVED***
+        db.collection('players').document(user_id).collection('villages').document(firstVillage._data['id']).set(villageInfo)
+        db.collection('villages').document(firstVillage._data['id']).update(***REMOVED***'user_id': user_id***REMOVED***)
+        db.collection('villages').document(firstVillage._data['id']).update(***REMOVED***'playerName':'Player Naaame'***REMOVED***)
+        db.collection('villages').document(firstVillage._data['id']).update(***REMOVED***'villageName':'village Naaame'***REMOVED***)
+        db.collection('players').document(user_id).update(***REMOVED***'regionSelected' : True***REMOVED***)
+        #return redirect('myVillage')
     return render(request, "firstLogin/selectRegion.html")
 
 

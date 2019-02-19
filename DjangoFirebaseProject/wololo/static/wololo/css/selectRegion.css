@@ -1,6 +1,8 @@
 .selectRegionMap***REMOVED***
     width : 100%;
     height: 100%;
+    margin-top: -80px;
+    margin-bottom: -65px;
 ***REMOVED***
 path***REMOVED***
     fill:none;
@@ -12,3 +14,11 @@ path***REMOVED***
 ***REMOVED*** */
 
 
+.selectedRegion***REMOVED***
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a7cfdf+0,23538a+100;Blue+3d+%238 */
+    fill: rgb(245, 207, 207)!important;
+***REMOVED***
+
+.hoverRegion***REMOVED***
+    opacity: 0.34!important;
+***REMOVED***
