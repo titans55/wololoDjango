@@ -111,14 +111,23 @@ def logout(request):
     return redirect(settings.LANDING_PAGE_REDIRECT_URL)
 
 @myuser_login_required
-def selectRegionOnFirstLogin(request):
+def selectRegionOnFirstLoginView(request):
     user_id = auth.current_user['localId']
     userInfo = db.collection('players').document(user_id).get()._data
     if userInfo['regionSelected'] is True :
         return redirect('myVillage')
-    if request.method == "POST":
-        selectedRegion = request.POST.get("selectedRegion")
-        # regionSelected = 'italy'
+
+    return render(request, "firstLogin/selectRegion.html")
+
+@myuser_login_required
+def selectingRegion(request):
+    user_id = auth.current_user['localId']
+    userInfo = db.collection('players').document(user_id).get()._data
+    if userInfo['regionSelected'] is True :
+        return redirect('myVillage')
+    
+    selectedRegion = request.POST.get("selectedRegion")
+    if selectedRegion != '':
         print(selectedRegion)
         allVillages = db.collection('villages').get()
         emptyVillages = []
@@ -171,8 +180,7 @@ def selectRegionOnFirstLogin(request):
         db.collection('villages').document(firstVillage._data['id']).update(***REMOVED***'playerName':'Player Naaame'***REMOVED***)
         db.collection('villages').document(firstVillage._data['id']).update(***REMOVED***'villageName':'village Naaame'***REMOVED***)
         db.collection('players').document(user_id).update(***REMOVED***'regionSelected' : True***REMOVED***)
-        #return redirect('myVillage')
-    return render(request, "firstLogin/selectRegion.html")
+    return redirect('myVillage')
 
 
 @myuser_login_required
@@ -221,10 +229,11 @@ def map(request):
     villages = villages_ref.get()
     village_info = []
     for village in villages:
-        village._data['village_id'] = village.reference.id
-        if(village._data['user_id'] == auth.current_user['localId']):
-            village._data['owner'] = True
-        village_info.append(village._data)
+        if(village._data['user_id']!=''):
+            village._data['village_id'] = village.reference.id
+            if(village._data['user_id'] == auth.current_user['localId']):
+                village._data['owner'] = True
+            village_info.append(village._data)
     return render(request, 'map.html', ***REMOVED***'village_info' : json.dumps(village_info)***REMOVED***)
 def clans(request):
     user_id = auth.current_user['localId']

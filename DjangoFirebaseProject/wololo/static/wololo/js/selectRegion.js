@@ -2,9 +2,7 @@
 var selectedRegion = null
 
 $(function()***REMOVED***
-
     listenHoverAndClickToRegions()
-    initConfirmRegionButton()
 ***REMOVED***)
 
 function listenHoverAndClickToRegions()***REMOVED***
@@ -91,27 +89,12 @@ function selectRegion(regionClassName)***REMOVED***
         $(".selectingRegionText").html("Your first village will be located at <b><i>Levant</i></b>.")
     ***REMOVED***
     $("#confirmRegion").removeClass("disabled")
+    $("#selectedRegionInput").attr("value", regionClassName)
 ***REMOVED***
 function unselectRegion(regionClassName)***REMOVED***
     selectedRegion = null
+    $("#selectedRegionInput").attr("value", "")
     $("."+regionClassName).removeClass('selectedRegion')
     $(".selectingRegionText").html("Choose the region of your first village.")
     $("#confirmRegion").addClass("disabled")
-***REMOVED***
-function initConfirmRegionButton()***REMOVED***
-    $("#confirmRegion").on("click", function()***REMOVED***
-        console.log("clicking")
-        let csrftoken = getCookie('csrftoken');
-        $.ajax(***REMOVED***
-            type: 'POST',
-            url: '/game/selectRegion',
-            data: ***REMOVED***
-                selectedRegion: selectedRegion,
-                csrfmiddlewaretoken: csrftoken
-            ***REMOVED***,
-            success:function(data)***REMOVED***
-    
-            ***REMOVED***
-        ***REMOVED***)
-    ***REMOVED***)
 ***REMOVED***

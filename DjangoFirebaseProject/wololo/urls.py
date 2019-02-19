@@ -10,14 +10,13 @@ urlpatterns = [
     path('game', views.villages, name='myVillage'),
     path('game/map', views.map, name='map'),
     path('game/clans', views.clans, name='clans'),
-
-    #NORMAL VIEW AND AJAX CALL
-    path('game/selectRegion', views.selectRegionOnFirstLogin, name='selectRegion'),
+    path('game/selectRegion', views.selectRegionOnFirstLoginView, name='selectRegion'),
 
     #AJAX CALL
     path('game/upgrade', views.upgrade, name='upgrade'),
     
     #FORM CALL
+    path('game/selectingRegion', views.selectingRegion),
     path('verifyLogin', views.verifyLogin, name='verifyLogin'),
     path('logout', views.logout, name='verifyLogin'),
 

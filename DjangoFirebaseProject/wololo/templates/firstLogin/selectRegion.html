@@ -273,8 +273,14 @@
             Choose the region of your first village.
         </div>
         <div class="col">
-            <button id="confirmRegion" type="button" class="btn btn-info w-100">Confirm The Region</button>
+            <!-- <button href="/game" id="confirmRegion" type="button" class="btn btn-info w-100">Confirm The Region</button> -->
+            <form action="selectingRegion" method="post">
+                ***REMOVED***% csrf_token %***REMOVED***
+                <input id="selectedRegionInput" type="hidden" name="selectedRegion" value="" />
+                <button id="confirmRegion" type="submit" class="btn btn-info w-100">Confirm The Region</button>
+            </form>
         </div>
+        
     </div>
 
 ***REMOVED***% endblock %***REMOVED***
