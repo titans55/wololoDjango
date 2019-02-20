@@ -99,12 +99,14 @@ function initUpgradeButtons()***REMOVED***
 ***REMOVED***
 
 function displayNeededResourcesAndTimeForUpgrading()***REMOVED***
+    let speedPercantageOfTownCenter = gameConfigs.buildings.townCenter.buildingSpeed[villageData.townCenter.level]
     //upgrading costs
     $('.upgradeBuildings').each(function()***REMOVED***
         let buildingName = $(this).attr('buildingName')
         let buildingLevel = String(parseInt(villageData[String(buildingName)].level) + 1)
         let neededResources = gameConfigs.buildings[String(buildingName)].upgradingCosts[buildingLevel]
         let mins = gameConfigs.buildings[String(buildingName)].upgradeTime[buildingLevel]
+        if(buildingName!='townCenter') mins = parseInt(mins - (mins * speedPercantageOfTownCenter / 100))
         let neededTime = calculateTimeFromMinutes(mins)
         $(this).find(".neededWood").html(neededResources.wood)
         $(this).find(".neededIron").html(neededResources.iron)
@@ -117,6 +119,7 @@ function displayNeededResourcesAndTimeForUpgrading()***REMOVED***
         let buildingLevel = String(parseInt(villageData.resources[String(resourceType)].level) + 1)
         let neededResources = gameConfigs.buildings.resources[String(resourceBuilding)].upgradingCosts[buildingLevel]
         let mins = gameConfigs.buildings.resources[String(resourceBuilding)].upgradeTime[buildingLevel]
+        mins = parseInt(mins - (mins * speedPercantageOfTownCenter / 100))
         let neededTime = calculateTimeFromMinutes(mins)
         $(this).find(".neededWood").html(neededResources.wood)
         $(this).find(".neededIron").html(neededResources.iron)
