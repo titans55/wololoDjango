@@ -8,7 +8,7 @@ var game = new Phaser.Game(winW / 2, winH / 3 * 2, Phaser.AUTO, 'game-container'
 function preload() ***REMOVED***
     game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
     game.load.image("tiles", "../static/wololo/mapAssets/tilesets/overworld_tileset_grass.png");
-    game.load.tilemap('map', '../static/wololo/mapAssets/tilemaps/mapv2.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.tilemap('map', '../static/wololo/mapAssets/tilemaps/mapv3.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.spritesheet('castle', '../static/wololo/mapAssets/sprites/castle.png', ***REMOVED*** frameWidth: 48, frameHeight: 48 ***REMOVED***);
     game.load.spritesheet('selected', '../static/wololo/mapAssets/sprites/selection-circle_1_64x64.png', ***REMOVED*** frameWidth: 64, frameHeight: 64 ***REMOVED***);
 ***REMOVED***
@@ -16,6 +16,25 @@ function preload() ***REMOVED***
 function create() ***REMOVED***
     createMap();
     loadVillages(infos);
+
+    
+
+    // initialize pathfinding
+    // console.log(map)
+    tile_dimensions = new Phaser.Point(map.tileWidth, map.tileHeight);
+    this.pathfinding = this.game.plugins.add(PathfindingExample.Pathfinding, map.layers[1].data, [-1], tile_dimensions);
+
+    let target_position = new Phaser.Point(100+30, 292+30)
+    let from = new Phaser.Point(113+30, 192+30)
+
+    seaTile = map.getTile(4, 0, seaLayer)
+    console.log(seaTile, "seaTile")
+    let path = this.pathfinding.find_path(from, target_position, this.move_through_path, this)
+    // console.log(path)
+  
+    // currentTile = map.getTile(layer.getTileX(marker.x), layer.getTileY(marker.y));
+
+  
 ***REMOVED***
 
 function update(time, delta) ***REMOVED***
@@ -25,8 +44,22 @@ function update(time, delta) ***REMOVED***
 function createMap() ***REMOVED***
     map = game.add.tilemap('map');
     const tileset = map.addTilesetImage("Tile", "tiles");
-    layer = map.createLayer('groundLayer');
-    layer.resizeWorld();
+    groundLayer = map.createLayer('groundLayer');
+    groundLayer.resizeWorld();
+    seaLayer = map.createLayer('seaLayer');
+    // collision layer
+    collision_tiles = [];
+    seaLayer.layer.data.forEach(function (data_row) ***REMOVED*** // find tiles used in the layer
+        data_row.forEach(function (tile) ***REMOVED***
+            // check if it's a valid tile index and isn't already in the list
+            if (tile.index > 0 && collision_tiles.indexOf(tile.index) === -1) ***REMOVED***
+                collision_tiles.push(tile.index);
+            ***REMOVED***
+        ***REMOVED***, this);
+    ***REMOVED***, this);
+    map.setCollision(collision_tiles, true, seaLayer.layer.name);
+    // console.log(collision_tiles, "bababa")    
+    seaLayer.resizeWorld();
 ***REMOVED***
 
 function loadVillages(infos) ***REMOVED***

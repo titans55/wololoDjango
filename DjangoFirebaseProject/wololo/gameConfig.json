@@ -226,58 +226,97 @@
         "other building" : "wololo"
     ***REMOVED***,
     "units" : ***REMOVED***
-        "Spearman" : ***REMOVED***
-            "Cost" : ***REMOVED***
-                "Wood" : 25,
-                "Iron" : 10,
-                "Clay" : 20
+        "infantry": ***REMOVED***
+            "Spearman" : ***REMOVED***
+                "Cost" : ***REMOVED***
+                    "Wood" : 25,
+                    "Iron" : 10,
+                    "Clay" : 20
+                ***REMOVED***,
+                "Skills" : ***REMOVED***
+                    "Attack" : 1,
+                    "Defence" : 3,
+                    "Cavalry Defence" : 7
+                ***REMOVED***
             ***REMOVED***,
-            "Skills" : ***REMOVED***
-                "Attack" : 1,
-                "Defence" : 3,
-                "Cavalry Defence" : 7
+            "Swordsman" : ***REMOVED***
+                "Cost" : ***REMOVED***
+                    "Wood" : 20,
+                    "Iron" : 30,
+                    "Clay" : 15
+                ***REMOVED***,
+                "Skills" : ***REMOVED***
+                    "Attack" : 2,
+                    "Defence" : 8,
+                    "Cavalry Defence" : 3
+                ***REMOVED***
+            ***REMOVED***,
+            "Axeman" : ***REMOVED***
+                "Cost" : ***REMOVED***
+                    "Wood" : 35,
+                    "Iron" : 10,
+                    "Clay" : 20
+                ***REMOVED***,
+                "Skills" : ***REMOVED***
+                    "Attack" : 11,
+                    "Defence" : 1,
+                    "Cavalry Defence" : 1
+                ***REMOVED***
+            ***REMOVED***,
+            "Archer" : ***REMOVED***
+                "Cost" : ***REMOVED***
+                    "Wood" : 35,
+                    "Iron" : 15,
+                    "Clay" : 20
+                ***REMOVED***,
+                "Skills" : ***REMOVED***
+                    "Attack" : 4,
+                    "Defence" : 8,
+                    "Cavalry Defence" : 2
+                ***REMOVED***
             ***REMOVED***
         ***REMOVED***,
-        "Swordsman" : ***REMOVED***
-            "Cost" : ***REMOVED***
-                "Wood" : 20,
-                "Iron" : 30,
-                "Clay" : 15
+        "cavalry":***REMOVED***
+            "Scout" : ***REMOVED***
+                "Cost" : ***REMOVED***
+                    "Wood" : 25,
+                    "Iron" : 15,
+                    "Clay" : 20
+                ***REMOVED***,
+                "Skills" : ***REMOVED***
+                    "Scouting Attack" : 4,
+                    "Scouting Defence" : 8,
+                    "Attack" : 0,
+                    "Defence" : 0,
+                    "Cavalry Defence" : 0
+                ***REMOVED***
             ***REMOVED***,
-            "Skills" : ***REMOVED***
-                "Attack" : 2,
-                "Defence" : 8,
-                "Cavalry Defence" : 3
+            "Light Cavalry" : ***REMOVED***
+                "Cost" : ***REMOVED***
+                    "Wood" : 25,
+                    "Iron" : 10,
+                    "Clay" : 20
+                ***REMOVED***,
+                "Skills" : ***REMOVED***
+                    "Attack" : 40,
+                    "Defence" : 5,
+                    "Cavalry Defence" : 5
+                ***REMOVED***
+            ***REMOVED***,
+            "Heavy Cavalry" : ***REMOVED***
+               
             ***REMOVED***
         ***REMOVED***,
-        "Axeman" : ***REMOVED***
-            "Cost" : ***REMOVED***
-                "Wood" : 35,
-                "Iron" : 10,
-                "Clay" : 20
+        "siegeWeapons":***REMOVED***
+            "Ram" : ***REMOVED***
+
             ***REMOVED***,
-            "Skills" : ***REMOVED***
-                "Attack" : 11,
-                "Defence" : 1,
-                "Cavalry Defence" : 1
+            "Catapult" : ***REMOVED***
+
             ***REMOVED***
         ***REMOVED***,
-        "Archer" : ***REMOVED***
-            "Cost" : ***REMOVED***
-                "Wood" : 35,
-                "Iron" : 15,
-                "Clay" : 20
-            ***REMOVED***,
-            "Skills" : ***REMOVED***
-                "Attack" : 4,
-                "Defence" : 8,
-                "Cavalry Defence" : 2
-            ***REMOVED***
-        ***REMOVED***,
-        "Light Cavalry" : ***REMOVED******REMOVED***,
-        "Heavy Cavalry" : ***REMOVED******REMOVED***,
-        "Ram" : ***REMOVED******REMOVED***,
-        "Catapult" : ***REMOVED******REMOVED***,
-        "Hero" : ***REMOVED******REMOVED***
+        "folkHero" : ***REMOVED***
+
+        ***REMOVED***
     ***REMOVED***
 ***REMOVED***
