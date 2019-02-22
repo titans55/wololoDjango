@@ -216,8 +216,10 @@ def villages(request, id=0):
         village._data['resources']['clay']['lastInteractionDate'] = str(village._data['resources']['clay']['lastInteractionDate'])
         villages_info.append(village._data)
         i += 1
-    #villages_info['gameConfig'] = gameConfig
-    # print(villages_info)
+
+    if i <= village_index:
+        return redirect('myVillage', id=0)
+
     data = ***REMOVED*** 
         'villages_info' : villages_info,
         'selectedVillage': villages_info[village_index],

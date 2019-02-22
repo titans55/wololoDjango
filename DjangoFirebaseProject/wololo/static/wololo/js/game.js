@@ -24,7 +24,7 @@ function create() ***REMOVED***
     tile_dimensions = new Phaser.Point(map.tileWidth, map.tileHeight);
     this.pathfinding = this.game.plugins.add(PathfindingExample.Pathfinding, map.layers[1].data, [-1], tile_dimensions);
     let targetX = 112
-    let targetY = 368
+    let targetY = 384
     let fromX = 0
     let fromY = 0
     let target_position = new Phaser.Point(targetX, targetY)

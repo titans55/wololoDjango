@@ -8,7 +8,18 @@
 <div id="villageDataJSON" data='***REMOVED******REMOVED***data.selectedVillage***REMOVED******REMOVED***'></div>
 <div id="gameConfigData" data='***REMOVED******REMOVED***data.gameConfig***REMOVED******REMOVED***'></div>
 <div class="row">
-    <div class="col"></div>
+    <div class="col">
+        <div class="btn-group">
+            <button id="switchVillage" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ***REMOVED******REMOVED***data.selectedVillage.villageName***REMOVED******REMOVED***
+            </button>
+            <div class="dropdown-menu">
+                ***REMOVED***% for village in data.villages_info %***REMOVED***
+                    <a class="dropdown-item" href="/game/***REMOVED******REMOVED***village.index***REMOVED******REMOVED***  ">***REMOVED******REMOVED***village.villageName***REMOVED******REMOVED***</a>
+                ***REMOVED***%endfor%***REMOVED***
+            </div>
+        </div>
+    </div>
     <div class="col"></div>
     <div class="col">
         <span class="badge badge-warning">Wood <div id="wood">X</div></span>
@@ -16,18 +27,6 @@
         <span class="badge badge-warning">Clay <div id="clay">Z</div></span>
         <span class="badge badge-warning">Storage <div id="storage">T</div></span>
 
-    </div>
-</div>
-<div class="row">
-    <div class="btn-group">
-        <button id="switchVillage" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            ***REMOVED******REMOVED***data.selectedVillage.villageName***REMOVED******REMOVED***
-        </button>
-        <div class="dropdown-menu">
-            ***REMOVED***% for village in data.villages_info %***REMOVED***
-                <a class="dropdown-item" href="/game/***REMOVED******REMOVED***village.index***REMOVED******REMOVED***  ">***REMOVED******REMOVED***village.villageName***REMOVED******REMOVED***</a>
-            ***REMOVED***%endfor%***REMOVED***
-        </div>
     </div>
 </div>
 ***REMOVED******REMOVED***data.selectedVillage***REMOVED******REMOVED***
@@ -60,7 +59,7 @@
                 </div>
             </div>
             <div class="col">
-                <button class="upgrade" id="townCenter">Upgrade</button>
+                <button class="upgrade btn btn-primary" id="townCenter">Upgrade</button>
             </div>
         </div>
     </li>
@@ -90,7 +89,7 @@
                 </div>
             </div>
             <div class="col">
-                <button class="upgrade" id="resources.wood">Upgrade</button>
+                <button class="upgrade btn btn-primary" id="resources.wood">Upgrade</button>
             </div>
         </div>
     </li>
@@ -120,7 +119,7 @@
                 </div>
             </div>
             <div class="col">
-                <button class="upgrade" id="resources.iron">Upgrade</button>
+                <button class="upgrade btn btn-primary" id="resources.iron">Upgrade</button>
             </div>
         </div>
     </li>
@@ -150,7 +149,7 @@
                 </div>
             </div>
             <div class="col">
-                <button class="upgrade" id="resources.clay">Upgrade</button>
+                <button class="upgrade btn btn-primary" id="resources.clay">Upgrade</button>
             </div>
         </div>
     </li>
@@ -180,7 +179,7 @@
                 </div> 
             </div>
             <div class="col">
-                <button class="upgrade .popover-dismiss" buildingName="storage" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Upgrade</button>
+                <button class="upgrade .popover-dismiss btn btn-primary" buildingName="storage" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Upgrade</button>
             </div>
         </div>
     </li>
@@ -210,7 +209,7 @@
                 </div> 
             </div>
             <div class="col">
-                <button class="upgrade" buildingName="barracks">Upgrade</button>
+                <button class="upgrade btn btn-primary" buildingName="barracks">Upgrade</button>
             </div>
         </div>
     </li>
