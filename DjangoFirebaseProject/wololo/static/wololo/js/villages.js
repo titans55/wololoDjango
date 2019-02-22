@@ -2,11 +2,11 @@
 var village_id
 var gameConfigs = JSON.parse(($("#gameConfigData").attr("data")).replace(/'/g, '"'))
 var villageData = JSON.parse(($("#villageDataJSON").attr("data")).replace(/'/g, '"'))
-
 $(function()***REMOVED***
-
+    // data = JSON.parse(data.replace(/'/g, '"'))
     village_id = villageData.id
     initVillage()
+    console.log(villageData)
 ***REMOVED***)
 
 function initVillage()***REMOVED***
@@ -142,4 +142,8 @@ function calculateTimeFromMinutes(mins)***REMOVED***
     if (minutes < 10) ***REMOVED***minutes = "0"+minutes;***REMOVED***
     if (seconds < 10) ***REMOVED***seconds = "0"+seconds;***REMOVED***
     return hours+':'+minutes+':'+seconds;
+***REMOVED***
+
+function initSwitchVillageDropdownButton()***REMOVED***
+    // $("#switchVillage")
 ***REMOVED***

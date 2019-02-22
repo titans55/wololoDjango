@@ -27,28 +27,12 @@ function create() ***REMOVED***
     let targetY = 368
     let fromX = 0
     let fromY = 0
-    if(fromX > targetX)***REMOVED***
-        // pathStartX = 
-        if(fromY > targetY)***REMOVED***
-            let target_position = new Phaser.Point(targetX, targetY)
-            let from = new Phaser.Point(fromX, fromY)
-            this.pathfinding.find_path(from, target_position, this.move_through_path, this)
-        ***REMOVED***else***REMOVED***
-            let target_position = new Phaser.Point(targetX, targetY)
-            let from = new Phaser.Point(fromX, fromY)
-            this.pathfinding.find_path(from, target_position, this.move_through_path, this)
-        ***REMOVED***
-    ***REMOVED***else***REMOVED***
-        if(fromY > targetY)***REMOVED***
-            let target_position = new Phaser.Point(targetX, targetY)
-            let from = new Phaser.Point(fromX, fromY)
-            this.pathfinding.find_path(from, target_position, this.move_through_path, this)
-        ***REMOVED***else***REMOVED***
-            let target_position = new Phaser.Point(targetX, targetY)
-            let from = new Phaser.Point(fromX, fromY)
-            this.pathfinding.find_path(from, target_position, this.move_through_path, this)
-        ***REMOVED***
-    ***REMOVED***
+    let target_position = new Phaser.Point(targetX, targetY)
+    let from = new Phaser.Point(fromX, fromY)
+    
+    this.pathfinding.find_path(from, target_position, this.move_through_path, this)
+
+    
     // let target_position = new Phaser.Point(targetX, targetY+16)
     // let from = new Phaser.Point(fromX, fromY+16)
     // this.pathfinding.find_path(from, target_position, this.move_through_path, this)

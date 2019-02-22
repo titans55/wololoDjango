@@ -13,3 +13,9 @@ function getCookie(name) ***REMOVED***
     ***REMOVED***
     return cookieValue;
 ***REMOVED***
+
+$(function()***REMOVED***
+    $('.dropdown-menu a').click(function()***REMOVED***
+        $('.dropdown-toggle').text($(this).text());
+    ***REMOVED***);
+***REMOVED***)

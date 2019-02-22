@@ -47,7 +47,7 @@ def myuser_login_required(f):
         #this check the session if userid key exist, if not it will redirect to login page
         if(not auth.current_user):
             messages.error(request,'Log in in order to continue.')
-            return render(request, 'beforeLogin/landingPage.html')
+            return redirect('landingPage')
              
         return f(request, *args, **kwargs)
     wrap.__doc__=f.__doc__
@@ -184,7 +184,9 @@ def selectingRegion(request):
 
 
 @myuser_login_required
-def villages(request):
+def villages(request, id=0):
+    village_index = int(id)
+    print(id)
     user_id = auth.current_user['localId']
     userInfo= db.collection('players').document(user_id).get()._data
     if userInfo['regionSelected'] is False :
@@ -205,16 +207,20 @@ def villages(request):
 
     #add_village.apply_async((user_id,'6thSense', 'Murat Kekili'),countdown = 5)
 
+    i = 0
     for village in villages:
+        village._data['index'] = i 
         village._data['id'] = village.reference.id
         village._data['resources']['wood']['lastInteractionDate'] = str(village._data['resources']['wood']['lastInteractionDate'])
         village._data['resources']['iron']['lastInteractionDate'] = str(village._data['resources']['iron']['lastInteractionDate'])
         village._data['resources']['clay']['lastInteractionDate'] = str(village._data['resources']['clay']['lastInteractionDate'])
         villages_info.append(village._data)
+        i += 1
     #villages_info['gameConfig'] = gameConfig
     # print(villages_info)
     data = ***REMOVED*** 
         'villages_info' : villages_info,
+        'selectedVillage': villages_info[village_index],
         'gameConfig' : gameConfig
     ***REMOVED***
     return render(request, 'villages.html', ***REMOVED***'data' : data***REMOVED***)
