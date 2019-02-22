@@ -3,13 +3,14 @@ var infos = JSON.parse($('.map-data').attr('map-data'))
 var winW = document.body.offsetWidth;
 var winH = document.body.offsetHeight;
 
-var game = new Phaser.Game(winW / 2, winH / 3 * 2, Phaser.AUTO, 'game-container', ***REMOVED*** preload: preload, create: create, update: update ***REMOVED***);
+game = new Phaser.Game(winW / 2, winH / 3 * 2, Phaser.AUTO, 'game-container', ***REMOVED*** preload: preload, create: create, update: update ***REMOVED***);
 
 function preload() ***REMOVED***
     game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
     game.load.image("tiles", "../static/wololo/mapAssets/tilesets/overworld_tileset_grass.png");
     game.load.tilemap('map', '../static/wololo/mapAssets/tilemaps/mapv3.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.spritesheet('castle', '../static/wololo/mapAssets/sprites/castle.png', ***REMOVED*** frameWidth: 48, frameHeight: 48 ***REMOVED***);
+    game.load.spritesheet('pathDot', '../static/wololo/mapAssets/sprites/pathDot.png', ***REMOVED*** frameWidth: 16, frameHeight: 16 ***REMOVED***);
     game.load.spritesheet('selected', '../static/wololo/mapAssets/sprites/selection-circle_1_64x64.png', ***REMOVED*** frameWidth: 64, frameHeight: 64 ***REMOVED***);
 ***REMOVED***
 
@@ -20,19 +21,38 @@ function create() ***REMOVED***
     
 
     // initialize pathfinding
-    // console.log(map)
     tile_dimensions = new Phaser.Point(map.tileWidth, map.tileHeight);
     this.pathfinding = this.game.plugins.add(PathfindingExample.Pathfinding, map.layers[1].data, [-1], tile_dimensions);
-
-    let target_position = new Phaser.Point(100+30, 292+30)
-    let from = new Phaser.Point(113+30, 192+30)
-
-    seaTile = map.getTile(4, 0, seaLayer)
-    console.log(seaTile, "seaTile")
-    let path = this.pathfinding.find_path(from, target_position, this.move_through_path, this)
-    // console.log(path)
+    let targetX = 112
+    let targetY = 368
+    let fromX = 0
+    let fromY = 0
+    if(fromX > targetX)***REMOVED***
+        // pathStartX = 
+        if(fromY > targetY)***REMOVED***
+            let target_position = new Phaser.Point(targetX, targetY)
+            let from = new Phaser.Point(fromX, fromY)
+            this.pathfinding.find_path(from, target_position, this.move_through_path, this)
+        ***REMOVED***else***REMOVED***
+            let target_position = new Phaser.Point(targetX, targetY)
+            let from = new Phaser.Point(fromX, fromY)
+            this.pathfinding.find_path(from, target_position, this.move_through_path, this)
+        ***REMOVED***
+    ***REMOVED***else***REMOVED***
+        if(fromY > targetY)***REMOVED***
+            let target_position = new Phaser.Point(targetX, targetY)
+            let from = new Phaser.Point(fromX, fromY)
+            this.pathfinding.find_path(from, target_position, this.move_through_path, this)
+        ***REMOVED***else***REMOVED***
+            let target_position = new Phaser.Point(targetX, targetY)
+            let from = new Phaser.Point(fromX, fromY)
+            this.pathfinding.find_path(from, target_position, this.move_through_path, this)
+        ***REMOVED***
+    ***REMOVED***
+    // let target_position = new Phaser.Point(targetX, targetY+16)
+    // let from = new Phaser.Point(fromX, fromY+16)
+    // this.pathfinding.find_path(from, target_position, this.move_through_path, this)
   
-    // currentTile = map.getTile(layer.getTileX(marker.x), layer.getTileY(marker.y));
 
   
 ***REMOVED***
