@@ -62,7 +62,6 @@ PathfindingExample.Pathfinding.prototype.call_callback_function = function (call
             pathSprites.push(pathSprite)
         ***REMOVED***, this);
         console.log(path, "path")
-        console.log(seaTile, "seaTIle in pathfinder")
         
         console.log(path_positions, "path positions")
         const pathLength = pathSprites.length

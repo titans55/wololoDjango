@@ -19,7 +19,7 @@ function create() ***REMOVED***
     loadVillages(infos);
 
     
-
+    console.log(infos)
     // initialize pathfinding
     tile_dimensions = new Phaser.Point(map.tileWidth, map.tileHeight);
     this.pathfinding = this.game.plugins.add(PathfindingExample.Pathfinding, map.layers[1].data, [-1], tile_dimensions);
@@ -89,6 +89,10 @@ function onClickListener(sprite) ***REMOVED***
         console.log(selectedIndicator)
         selectedIndicator.kill();
         isVillageSelected = false;
+        selectedIndicator = game.add.sprite(sprite.x - 10, sprite.y - 8, 'selected');
+        isVillageSelected = true;
+        initSideBar(sprite)
+
     ***REMOVED***else***REMOVED***
         selectedIndicator = game.add.sprite(sprite.x - 10, sprite.y - 8, 'selected');
         isVillageSelected = true;
@@ -124,6 +128,9 @@ function drag() ***REMOVED***
 //--//
 
 function initSideBar(sprite)***REMOVED***
+    // $("#villageOverview").show()
+    $("#villageOverview").removeClass("d-none")
+    $("#villageOverview").addClass("animated")
     $("#villageOverview").find(".card-title").html(sprite.villageName)
     $("#villageOverview").find(".card-text").html("Belongs to "+ sprite.playerName)
 ***REMOVED***

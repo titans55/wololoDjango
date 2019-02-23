@@ -186,6 +186,7 @@ def selectingRegion(request):
 @myuser_login_required
 def villages(request, id=0):
     village_index = int(id)
+    request.session['selected_village_index'] = village_index
     print(id)
     user_id = auth.current_user['localId']
     userInfo= db.collection('players').document(user_id).get()._data
@@ -228,21 +229,46 @@ def villages(request, id=0):
     return render(request, 'villages.html', ***REMOVED***'data' : data***REMOVED***)
 @myuser_login_required
 def map(request):
+
+    if 'selected_village_index' in request.session:
+        selected_village_index = request.session['selected_village_index']
+    else: 
+        selected_village_index = 0
+
     user_id = auth.current_user['localId']
     userInfo= db.collection('players').document(user_id).get()._data
     if userInfo['regionSelected'] is False :
         return redirect("selectRegion")
 
-    villages_ref = db.collection('villages')
-    villages = villages_ref.get()
-    village_info = []
-    for village in villages:
+    public_villages_ref = db.collection('villages')
+    publicVillages = public_villages_ref.get()
+    publicVillagesInfo = []
+    for village in publicVillages:
         if(village._data['user_id']!=''):
             village._data['village_id'] = village.reference.id
             if(village._data['user_id'] == auth.current_user['localId']):
                 village._data['owner'] = True
-            village_info.append(village._data)
-    return render(request, 'map.html', ***REMOVED***'village_info' : json.dumps(village_info)***REMOVED***)
+            publicVillagesInfo.append(village._data)
+
+    villages_ref = db.collection('players').document(user_id).collection('villages')
+    villages = villages_ref.get()
+    myVillages = []
+
+    i = 0
+    for village in villages:
+        village._data['index'] = i 
+        village._data['id'] = village.reference.id
+        village._data['resources']['wood']['lastInteractionDate'] = str(village._data['resources']['wood']['lastInteractionDate'])
+        village._data['resources']['iron']['lastInteractionDate'] = str(village._data['resources']['iron']['lastInteractionDate'])
+        village._data['resources']['clay']['lastInteractionDate'] = str(village._data['resources']['clay']['lastInteractionDate'])
+        myVillages.append(village._data)
+        i += 1
+
+    selectedVillage = myVillages[selected_village_index]
+
+    print(selected_village_index)
+
+    return render(request, 'map.html', ***REMOVED***'publicVillages' : json.dumps(publicVillagesInfo), 'myVillages':myVillages, 'selectedVillage': selectedVillage***REMOVED***)
 def clans(request):
     user_id = auth.current_user['localId']
     userInfo= db.collection('players').document(user_id).get()._data

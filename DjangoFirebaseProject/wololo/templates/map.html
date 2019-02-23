@@ -4,7 +4,17 @@
         <div id="game-container"></div>
     </div>
     <div class="col">
-        <div id="villageOverview" class="card">
+        <div class="btn-group mb-5">
+            <button id="switchVillage" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ***REMOVED******REMOVED***selectedVillage.villageName***REMOVED******REMOVED***
+            </button>
+            <div class="dropdown-menu">
+                ***REMOVED***% for village in myVillages %***REMOVED***
+                    <a class="dropdown-item" href="#">***REMOVED******REMOVED***village.villageName***REMOVED******REMOVED***</a>
+                ***REMOVED***%endfor%***REMOVED***
+            </div>
+        </div>
+        <div id="villageOverview" class="card fadeInRight d-none" >
             <div class="card-header">
                 Village Overview
             </div>
@@ -24,11 +34,9 @@
     <span></span>
 </div>
 
-<div class='map-data' map-data='***REMOVED******REMOVED***village_info***REMOVED******REMOVED***'></div>
-***REMOVED***% endblock %***REMOVED*** ***REMOVED***% block footerjs %***REMOVED***
-<script>
-    infos = '***REMOVED******REMOVED***village_info***REMOVED******REMOVED***'
-</script>
+<div class='map-data' map-data='***REMOVED******REMOVED***publicVillages***REMOVED******REMOVED***'></div>
+***REMOVED***% endblock %***REMOVED*** 
+***REMOVED***% block footerjs %***REMOVED***
 <script type="text/javascript" src="***REMOVED***% static 'wololo/assets/js/phaser/build/phaser.min.js' %***REMOVED***"></script>
 <script type="text/javascript" src="***REMOVED***% static 'wololo/assets/js/easystar-0.2.3.js' %***REMOVED***"></script>
 <script type="text/javascript" src="***REMOVED***% static 'wololo/assets/js/Pathfinding.js' %***REMOVED***"></script>
