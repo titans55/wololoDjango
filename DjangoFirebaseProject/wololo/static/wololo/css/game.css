@@ -39,3 +39,5 @@
     color: #fff;
     padding-top: 10px;
 ***REMOVED***
+
+html***REMOVED*** overflow-y: scroll;***REMOVED*** /* for avoiding shaking on reload */

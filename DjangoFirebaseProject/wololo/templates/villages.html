@@ -7,38 +7,41 @@
 ***REMOVED***% block content %***REMOVED***
 <div id="villageDataJSON" data='***REMOVED******REMOVED***data.selectedVillage***REMOVED******REMOVED***'></div>
 <div id="gameConfigData" data='***REMOVED******REMOVED***data.gameConfig***REMOVED******REMOVED***'></div>
-<div class="row">
-    <div class="col">
-        <div class="btn-group">
-            <button id="switchVillage" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                ***REMOVED******REMOVED***data.selectedVillage.villageName***REMOVED******REMOVED***
-            </button>
-            <div class="dropdown-menu">
-                ***REMOVED***% for village in data.villages_info %***REMOVED***
-                    <a class="dropdown-item" href="/game/***REMOVED******REMOVED***village.index***REMOVED******REMOVED***  ">***REMOVED******REMOVED***village.villageName***REMOVED******REMOVED***</a>
-                ***REMOVED***%endfor%***REMOVED***
+<div class="card">
+    <div class="row mt-3 mb-3 ml-2">
+        <div class="col">
+            <div class="btn-group">
+                <button id="switchVillage" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    ***REMOVED******REMOVED***data.selectedVillage.villageName***REMOVED******REMOVED***
+                </button>
+                <div class="dropdown-menu">
+                    ***REMOVED***% for village in data.villages_info %***REMOVED***
+                        <a class="dropdown-item" href="/game/***REMOVED******REMOVED***village.index***REMOVED******REMOVED***  ">***REMOVED******REMOVED***village.villageName***REMOVED******REMOVED***</a>
+                    ***REMOVED***%endfor%***REMOVED***
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col">
-        <div class="toggleVisualVillage custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="toggleVisualVillage">
-            <label class="custom-control-label" for="toggleVisualVillage">Toggle Visual Village</label>
-          </div>
-    </div>
-    <div class="col">
-        <span class="badge badge-warning">Wood <div id="wood">X</div></span>
-        <span class="badge badge-warning">Iron <div id="iron">Y</div></span>
-        <span class="badge badge-warning">Clay <div id="clay">Z</div></span>
-        <span class="badge badge-warning">Storage <div id="storage">T</div></span>
-
+        <div class="col">
+            <div class="toggleVisualVillage custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="toggleVisualVillage">
+                <label class="custom-control-label" for="toggleVisualVillage">Toggle Visual Village</label>
+              </div>
+        </div>
+        <div class="col">
+            <span class="badge badge-warning">Wood <div id="wood">X</div></span>
+            <span class="badge badge-warning">Iron <div id="iron">Y</div></span>
+            <span class="badge badge-warning">Clay <div id="clay">Z</div></span>
+            <span class="badge badge-warning">Storage <div id="storage">T</div></span>
+    
+        </div>
     </div>
 </div>
 
+
 <div class="village-content">
-    ***REMOVED******REMOVED***data.selectedVillage***REMOVED******REMOVED***
+    <!-- ***REMOVED******REMOVED***data.selectedVillage***REMOVED******REMOVED*** -->
     <ul class="list-group">
-        ***REMOVED******REMOVED***data.selectedVillage.villageName***REMOVED******REMOVED*** Overview
+        <!-- ***REMOVED******REMOVED***data.selectedVillage.villageName***REMOVED******REMOVED***  -->
         <li class="list-group-item">
             <div class="row">
                 <div class="col">

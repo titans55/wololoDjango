@@ -251,6 +251,14 @@ def clans(request):
 
     return render(request, 'clans.html')
 
+def reports(request):
+    user_id = auth.current_user['localId']
+    userInfo= db.collection('players').document(user_id).get()._data
+    if userInfo['regionSelected'] is False :
+        return redirect("selectRegion")
+
+    return render(request, 'reports.html')
+
 @myuser_login_required
 def upgrade(request):
     if request.method == "POST":
