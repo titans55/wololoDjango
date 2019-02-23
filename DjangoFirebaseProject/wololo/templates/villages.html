@@ -20,7 +20,12 @@
             </div>
         </div>
     </div>
-    <div class="col"></div>
+    <div class="col">
+        <div class="toggleVisualVillage custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="toggleVisualVillage">
+            <label class="custom-control-label" for="toggleVisualVillage">Toggle Visual Village</label>
+          </div>
+    </div>
     <div class="col">
         <span class="badge badge-warning">Wood <div id="wood">X</div></span>
         <span class="badge badge-warning">Iron <div id="iron">Y</div></span>
@@ -29,208 +34,210 @@
 
     </div>
 </div>
-***REMOVED******REMOVED***data.selectedVillage***REMOVED******REMOVED***
-<ul class="list-group">
-    ***REMOVED******REMOVED***data.selectedVillage.villageName***REMOVED******REMOVED*** Overview
-    <li class="list-group-item">
-        <div class="row">
-            <div class="col">
-                Town center level ***REMOVED******REMOVED***data.selectedVillage.townCenter.level***REMOVED******REMOVED***
-            </div>
-            <div class="col">
-                <div buildingName="townCenter" class="upgradeBuildings">
-                    <div class="row">
-                        <div class="col">
-                            <div class="neededWood">XXX</div> Wood
-                        </div>
-                        <div class="col">
-                            <div class="neededIron">XXX</div> Iron
 
-                        </div>
-                        <div class="col">
-                            <div class="neededClay">XXX</div> Clay
-                        </div>
-                        <div class="col">
-                            <div class="neededTime">
-                                XXX
+<div class="village-content">
+    ***REMOVED******REMOVED***data.selectedVillage***REMOVED******REMOVED***
+    <ul class="list-group">
+        ***REMOVED******REMOVED***data.selectedVillage.villageName***REMOVED******REMOVED*** Overview
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col">
+                    Town center level ***REMOVED******REMOVED***data.selectedVillage.townCenter.level***REMOVED******REMOVED***
+                </div>
+                <div class="col">
+                    <div buildingName="townCenter" class="upgradeBuildings">
+                        <div class="row">
+                            <div class="col">
+                                <div class="neededWood">XXX</div> Wood
+                            </div>
+                            <div class="col">
+                                <div class="neededIron">XXX</div> Iron
+    
+                            </div>
+                            <div class="col">
+                                <div class="neededClay">XXX</div> Clay
+                            </div>
+                            <div class="col">
+                                <div class="neededTime">
+                                    XXX
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col">
+                    <button class="upgrade btn btn-primary" id="townCenter">Upgrade</button>
+                </div>
             </div>
-            <div class="col">
-                <button class="upgrade btn btn-primary" id="townCenter">Upgrade</button>
-            </div>
-        </div>
-    </li>
-    <li class="list-group-item">
-        <div class="row">
-            <div class="col">
-                    Wood Camp level ***REMOVED******REMOVED***data.selectedVillage.resources.wood.level***REMOVED******REMOVED***
-            </div>
-            <div class="col">
-                <div buildingName="woodCamp" class="upgradeResources" resourceType="wood">
-                    <div class="row">
-                        <div class="col">
-                            <div class="neededWood">XXX</div> Wood
-                        </div>
-                        <div class="col">
-                            <div class="neededIron">XXX</div> Iron
-                        </div>
-                        <div class="col">
-                            <div class="neededClay">XXX</div> Clay
-                        </div>
-                        <div class="col">
-                            <div class="neededTime">
-                                XXX
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col">
+                        Wood Camp level ***REMOVED******REMOVED***data.selectedVillage.resources.wood.level***REMOVED******REMOVED***
+                </div>
+                <div class="col">
+                    <div buildingName="woodCamp" class="upgradeResources" resourceType="wood">
+                        <div class="row">
+                            <div class="col">
+                                <div class="neededWood">XXX</div> Wood
+                            </div>
+                            <div class="col">
+                                <div class="neededIron">XXX</div> Iron
+                            </div>
+                            <div class="col">
+                                <div class="neededClay">XXX</div> Clay
+                            </div>
+                            <div class="col">
+                                <div class="neededTime">
+                                    XXX
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col">
+                    <button class="upgrade btn btn-primary" id="resources.wood">Upgrade</button>
+                </div>
             </div>
-            <div class="col">
-                <button class="upgrade btn btn-primary" id="resources.wood">Upgrade</button>
-            </div>
-        </div>
-    </li>
-    <li class="list-group-item">
-        <div class="row">
-            <div class="col">
-                Iron Mine level ***REMOVED******REMOVED***data.selectedVillage.resources.iron.level***REMOVED******REMOVED***
-            </div>
-            <div class="col">
-                <div buildingName="ironMine" class="upgradeResources" resourceType="iron">
-                    <div class="row">
-                        <div class="col">
-                            <div class="neededWood">XXX</div> Wood
-                        </div>
-                        <div class="col">
-                            <div class="neededIron">XXX</div> Iron
-                        </div>
-                        <div class="col">
-                            <div class="neededClay">XXX</div> Clay
-                        </div>
-                        <div class="col">
-                            <div class="neededTime">
-                                XXX
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col">
+                    Iron Mine level ***REMOVED******REMOVED***data.selectedVillage.resources.iron.level***REMOVED******REMOVED***
+                </div>
+                <div class="col">
+                    <div buildingName="ironMine" class="upgradeResources" resourceType="iron">
+                        <div class="row">
+                            <div class="col">
+                                <div class="neededWood">XXX</div> Wood
+                            </div>
+                            <div class="col">
+                                <div class="neededIron">XXX</div> Iron
+                            </div>
+                            <div class="col">
+                                <div class="neededClay">XXX</div> Clay
+                            </div>
+                            <div class="col">
+                                <div class="neededTime">
+                                    XXX
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col">
+                    <button class="upgrade btn btn-primary" id="resources.iron">Upgrade</button>
+                </div>
             </div>
-            <div class="col">
-                <button class="upgrade btn btn-primary" id="resources.iron">Upgrade</button>
-            </div>
-        </div>
-    </li>
-    <li class="list-group-item">
-        <div class="row">
-            <div class="col">
-                Clay Pit level ***REMOVED******REMOVED***data.selectedVillage.resources.clay.level***REMOVED******REMOVED***
-            </div>
-            <div class="col">
-                <div buildingName="clayPit" class="upgradeResources" resourceType="clay">
-                    <div class="row">
-                        <div class="col">
-                            <div class="neededWood">XXX</div> Wood
-                        </div>
-                        <div class="col">
-                            <div class="neededIron">XXX</div> Iron
-                        </div>
-                        <div class="col">
-                            <div class="neededClay">XXX</div> Clay
-                        </div>
-                        <div class="col">
-                            <div class="neededTime">
-                                XXX
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col">
+                    Clay Pit level ***REMOVED******REMOVED***data.selectedVillage.resources.clay.level***REMOVED******REMOVED***
+                </div>
+                <div class="col">
+                    <div buildingName="clayPit" class="upgradeResources" resourceType="clay">
+                        <div class="row">
+                            <div class="col">
+                                <div class="neededWood">XXX</div> Wood
+                            </div>
+                            <div class="col">
+                                <div class="neededIron">XXX</div> Iron
+                            </div>
+                            <div class="col">
+                                <div class="neededClay">XXX</div> Clay
+                            </div>
+                            <div class="col">
+                                <div class="neededTime">
+                                    XXX
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col">
+                    <button class="upgrade btn btn-primary" id="resources.clay">Upgrade</button>
+                </div>
             </div>
-            <div class="col">
-                <button class="upgrade btn btn-primary" id="resources.clay">Upgrade</button>
-            </div>
-        </div>
-    </li>
-    <li class="list-group-item">
-        <div class="row">
-            <div class="col">
-                Storage level ***REMOVED******REMOVED***data.selectedVillage.storage.level***REMOVED******REMOVED***
-            </div>
-            <div class="col">
-                <div buildingName="storage" class="upgradeBuildings">
-                    <div class="row">
-                        <div class="col">
-                            <div class="neededWood">XXX</div> Wood
-                        </div>
-                        <div class="col">
-                            <div class="neededIron">XXX</div> Iron
-                        </div>
-                        <div class="col">
-                            <div class="neededClay">XXX</div> Clay
-                        </div>
-                        <div class="col">
-                            <div class="neededTime">
-                                XXX
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col">
+                    Storage level ***REMOVED******REMOVED***data.selectedVillage.storage.level***REMOVED******REMOVED***
+                </div>
+                <div class="col">
+                    <div buildingName="storage" class="upgradeBuildings">
+                        <div class="row">
+                            <div class="col">
+                                <div class="neededWood">XXX</div> Wood
+                            </div>
+                            <div class="col">
+                                <div class="neededIron">XXX</div> Iron
+                            </div>
+                            <div class="col">
+                                <div class="neededClay">XXX</div> Clay
+                            </div>
+                            <div class="col">
+                                <div class="neededTime">
+                                    XXX
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div> 
+                    </div> 
+                </div>
+                <div class="col">
+                    <button class="upgrade .popover-dismiss btn btn-primary" buildingName="storage" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Upgrade</button>
+                </div>
             </div>
-            <div class="col">
-                <button class="upgrade .popover-dismiss btn btn-primary" buildingName="storage" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Upgrade</button>
-            </div>
-        </div>
-    </li>
-    <li class="list-group-item">
-        <div class="row">
-            <div class="col">
-                Barracks level ***REMOVED******REMOVED***data.selectedVillage.barracks.level***REMOVED******REMOVED***
-            </div>
-            <div class="col">
-                <div buildingName="barracks" class="upgradeBuildings">
-                    <div class="row">
-                        <div class="col">
-                            <div class="neededWood">XXX</div> Wood
-                        </div>
-                        <div class="col">
-                            <div class="neededIron">XXX</div> Iron
-                        </div>
-                        <div class="col">
-                            <div class="neededClay">XXX</div> Clay
-                        </div>
-                        <div class="col">
-                            <div class="neededTime">
-                                XXX
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col">
+                    Barracks level ***REMOVED******REMOVED***data.selectedVillage.barracks.level***REMOVED******REMOVED***
+                </div>
+                <div class="col">
+                    <div buildingName="barracks" class="upgradeBuildings">
+                        <div class="row">
+                            <div class="col">
+                                <div class="neededWood">XXX</div> Wood
+                            </div>
+                            <div class="col">
+                                <div class="neededIron">XXX</div> Iron
+                            </div>
+                            <div class="col">
+                                <div class="neededClay">XXX</div> Clay
+                            </div>
+                            <div class="col">
+                                <div class="neededTime">
+                                    XXX
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div> 
+                    </div> 
+                </div>
+                <div class="col">
+                    <button class="upgrade btn btn-primary" buildingName="barracks">Upgrade</button>
+                </div>
             </div>
-            <div class="col">
-                <button class="upgrade btn btn-primary" buildingName="barracks">Upgrade</button>
+        </li>
+    </ul> 
+    
+    <div class="modal fade" id="insufficentResources" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Insufficent Resources!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-        </div>
-    </li>
-</ul> 
-
-<div class="modal fade" id="insufficentResources" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Insufficent Resources!</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Ouh, okay</button>
-        </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Ouh, okay</button>
+            </div>
+            </div>
         </div>
     </div>
 </div>
-
 ***REMOVED***% endblock %***REMOVED*** 
 ***REMOVED***% block footerjs %***REMOVED***
 

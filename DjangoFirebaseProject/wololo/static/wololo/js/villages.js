@@ -5,6 +5,7 @@ var villageData = JSON.parse(($("#villageDataJSON").attr("data")).replace(/'/g, 
 $(function()***REMOVED***
     // data = JSON.parse(data.replace(/'/g, '"'))
     village_id = villageData.id
+    initToggleVisualVillageSwitch()
     initVillage()
     console.log(villageData)
 ***REMOVED***)
@@ -13,6 +14,7 @@ function initVillage()***REMOVED***
     incrementOfResorcesByTime()
     initUpgradeButtons()
     displayNeededResourcesAndTimeForUpgrading()
+    
 ***REMOVED***
 
 function incrementOfResorcesByTime()***REMOVED***
@@ -146,4 +148,22 @@ function calculateTimeFromMinutes(mins)***REMOVED***
 
 function initSwitchVillageDropdownButton()***REMOVED***
     // $("#switchVillage")
+***REMOVED***
+
+function initToggleVisualVillageSwitch()***REMOVED***
+    let textBasedVillageContent = $(".village-content").html()
+    $("#toggleVisualVillage").val('off')
+
+    $(".toggleVisualVillage").on("change",function()***REMOVED***
+        ($("#toggleVisualVillage").val() == 'on' ? $("#toggleVisualVillage").val('off')   : $("#toggleVisualVillage").val('on') )
+        console.log($("#toggleVisualVillage").val())
+
+        if($("#toggleVisualVillage").val() == 'on')***REMOVED***
+            const string = '<div class="row mt-5 mb-5"><div class="col"></div><div class="col"><h5>COMING SOON!</h5></div><div class="col"></div></div>'
+            $(".village-content").html(string)
+        ***REMOVED***else***REMOVED***
+            $(".village-content").html(textBasedVillageContent)
+            initVillage()
+        ***REMOVED***
+    ***REMOVED***)
 ***REMOVED***
