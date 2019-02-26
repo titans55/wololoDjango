@@ -240,15 +240,7 @@ def map(request):
     if userInfo['regionSelected'] is False :
         return redirect("selectRegion")
 
-    public_villages_ref = db.collection('villages')
-    publicVillages = public_villages_ref.get()
-    publicVillagesInfo = []
-    for village in publicVillages:
-        if(village._data['user_id']!=''):
-            village._data['village_id'] = village.reference.id
-            if(village._data['user_id'] == auth.current_user['localId']):
-                village._data['owner'] = True
-            publicVillagesInfo.append(village._data)
+   
 
     villages_ref = db.collection('players').document(user_id).collection('villages')
     villages = villages_ref.get()
@@ -266,9 +258,25 @@ def map(request):
 
     selectedVillage = myVillages[selected_village_index]
 
+    public_villages_ref = db.collection('villages')
+    publicVillages = public_villages_ref.get()
+    publicVillagesInfo = []
+    for village in publicVillages:
+        if(village._data['user_id']!=''):
+            village._data['village_id'] = village.reference.id
+            if(village._data['user_id'] == auth.current_user['localId']):
+                village._data['owner'] = True
+                for myVillage in myVillages:
+                    if (village._data['village_id'] == myVillage['id']):
+                        myVillage['coords'] = ***REMOVED***
+                            'x' : village._data['coords']['x'],
+                            'y' : village._data['coords']['y']
+                        ***REMOVED***
+            publicVillagesInfo.append(village._data)
+
     print(selected_village_index)
 
-    return render(request, 'map.html', ***REMOVED***'publicVillages' : json.dumps(publicVillagesInfo), 'myVillages':myVillages, 'selectedVillage': selectedVillage***REMOVED***)
+    return render(request, 'map.html', ***REMOVED***'publicVillages' : json.dumps(publicVillagesInfo), 'myVillages':myVillages, 'selectedVillage': json.dumps(selectedVillage), 'selectedVillageHtml':selectedVillage ***REMOVED***)
 def clans(request):
     user_id = auth.current_user['localId']
     userInfo= db.collection('players').document(user_id).get()._data

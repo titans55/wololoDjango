@@ -2,6 +2,7 @@ var PathfindingExample = PathfindingExample || ***REMOVED******REMOVED***;
 var map
 var groundLayer
 var game
+var pathSprites
 
 PathfindingExample.Pathfinding = function (game, parent) ***REMOVED***
     "use strict";
@@ -52,7 +53,7 @@ PathfindingExample.Pathfinding.prototype.call_callback_function = function (call
     "use strict";
     var path_positions;
     path_positions = [];
-    var pathSprites = [];
+    pathSprites = [];
     if (path !== null) ***REMOVED***
         path.forEach(function (path_coord) ***REMOVED***
             let path_position = this.get_point_from_coord(***REMOVED***row: path_coord.y, column: path_coord.x***REMOVED***)

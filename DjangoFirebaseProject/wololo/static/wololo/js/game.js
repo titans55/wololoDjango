@@ -1,5 +1,7 @@
 var isVillageSelected = false;
 var infos = JSON.parse($('.map-data').attr('map-data'))
+var selectedVillage = JSON.parse($('.selected-village').attr('data'))
+
 var winW = document.body.offsetWidth;
 var winH = document.body.offsetHeight;
 
@@ -21,23 +23,15 @@ function create() ***REMOVED***
     
     console.log(infos)
     // initialize pathfinding
-    tile_dimensions = new Phaser.Point(map.tileWidth, map.tileHeight);
-    this.pathfinding = this.game.plugins.add(PathfindingExample.Pathfinding, map.layers[1].data, [-1], tile_dimensions);
-    let targetX = 112
-    let targetY = 384
-    let fromX = 0
-    let fromY = 0
-    let target_position = new Phaser.Point(targetX, targetY)
-    let from = new Phaser.Point(fromX, fromY)
-    
-    this.pathfinding.find_path(from, target_position, this.move_through_path, this)
 
+    // let targetX = 112
+    // let targetY = 384
+    // let fromX = 0
+    // let fromY = 0
+    // let target_position = new Phaser.Point(targetX, targetY)
+    // let from = new Phaser.Point(fromX, fromY)
     
-    // let target_position = new Phaser.Point(targetX, targetY+16)
-    // let from = new Phaser.Point(fromX, fromY+16)
     // this.pathfinding.find_path(from, target_position, this.move_through_path, this)
-  
-
   
 ***REMOVED***
 
@@ -68,6 +62,8 @@ function createMap() ***REMOVED***
 
 function loadVillages(infos) ***REMOVED***
     var sprite
+    tile_dimensions = new Phaser.Point(map.tileWidth, map.tileHeight);
+    pathfinding = this.game.plugins.add(PathfindingExample.Pathfinding, map.layers[1].data, [-1], tile_dimensions);
     infos.forEach(function(element) ***REMOVED***
         sprite = game.add.sprite(element.coords.x, element.coords.y, 'castle');
         sprite.village_id = element.village_id;
@@ -85,6 +81,7 @@ function loadVillages(infos) ***REMOVED***
 ***REMOVED***
 
 function onClickListener(sprite) ***REMOVED***
+    console.log(selectedVillage)
     if (isVillageSelected) ***REMOVED***
         console.log(selectedIndicator)
         selectedIndicator.kill();
@@ -93,10 +90,27 @@ function onClickListener(sprite) ***REMOVED***
         isVillageSelected = true;
         initSideBar(sprite)
 
+        pathSprites.forEach(sprite => ***REMOVED*** 
+            sprite.kill()
+            console.log(sprite, "killing")
+        ***REMOVED***);
+        if(!sprite.owner)***REMOVED***
+            let target_position = new Phaser.Point(sprite.x, sprite.y)
+            let from = new Phaser.Point(selectedVillage.coords.x, selectedVillage.coords.y)
+            pathfinding.find_path(from, target_position, this.move_through_path, this)
+        ***REMOVED***
+        
+
     ***REMOVED***else***REMOVED***
         selectedIndicator = game.add.sprite(sprite.x - 10, sprite.y - 8, 'selected');
         isVillageSelected = true;
         initSideBar(sprite)
+
+        if(!sprite.owner)***REMOVED***
+            let target_position = new Phaser.Point(sprite.x, sprite.y)
+            let from = new Phaser.Point(selectedVillage.coords.x, selectedVillage.coords.y)
+            pathfinding.find_path(from, target_position, this.move_through_path, this)
+        ***REMOVED***
     ***REMOVED***
     
 ***REMOVED***

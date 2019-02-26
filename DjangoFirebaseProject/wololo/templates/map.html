@@ -1,4 +1,7 @@
-***REMOVED***% extends "partials/layout.html" %***REMOVED*** ***REMOVED***% load static %***REMOVED*** ***REMOVED***% block headcdn %***REMOVED*** ***REMOVED***% endblock %***REMOVED*** ***REMOVED***% block content %***REMOVED*** WELCOME ***REMOVED******REMOVED***email***REMOVED******REMOVED***
+***REMOVED***% extends "partials/layout.html" %***REMOVED*** 
+***REMOVED***% load static %***REMOVED*** 
+***REMOVED***% block headcdn %***REMOVED*** ***REMOVED***% endblock %***REMOVED***
+ ***REMOVED***% block content %***REMOVED***
 <div class="row">
     <div class="col">
         <div id="game-container"></div>
@@ -6,7 +9,7 @@
     <div class="col">
         <div class="btn-group mb-5">
             <button id="switchVillage" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                ***REMOVED******REMOVED***selectedVillage.villageName***REMOVED******REMOVED***
+                ***REMOVED******REMOVED***selectedVillageHtml.villageName***REMOVED******REMOVED***
             </button>
             <div class="dropdown-menu">
                 ***REMOVED***% for village in myVillages %***REMOVED***
@@ -35,6 +38,7 @@
 </div>
 
 <div class='map-data' map-data='***REMOVED******REMOVED***publicVillages***REMOVED******REMOVED***'></div>
+<div class='selected-village' data='***REMOVED******REMOVED***selectedVillage***REMOVED******REMOVED***'></div>
 ***REMOVED***% endblock %***REMOVED*** 
 ***REMOVED***% block footerjs %***REMOVED***
 <script type="text/javascript" src="***REMOVED***% static 'wololo/assets/js/phaser/build/phaser.min.js' %***REMOVED***"></script>
