@@ -19,7 +19,7 @@ function preload() ***REMOVED***
 function create() ***REMOVED***
     createMap();
     loadVillages(infos);
-
+    initSwitchVillage()
     
     console.log(infos)
     // initialize pathfinding
@@ -90,17 +90,12 @@ function onClickListener(sprite) ***REMOVED***
         isVillageSelected = true;
         initSideBar(sprite)
 
-        pathSprites.forEach(sprite => ***REMOVED*** 
-            sprite.kill()
-            console.log(sprite, "killing")
-        ***REMOVED***);
+        removePathSprites()
         if(!sprite.owner)***REMOVED***
             let target_position = new Phaser.Point(sprite.x, sprite.y)
             let from = new Phaser.Point(selectedVillage.coords.x, selectedVillage.coords.y)
             pathfinding.find_path(from, target_position, this.move_through_path, this)
         ***REMOVED***
-        
-
     ***REMOVED***else***REMOVED***
         selectedIndicator = game.add.sprite(sprite.x - 10, sprite.y - 8, 'selected');
         isVillageSelected = true;
@@ -147,4 +142,23 @@ function initSideBar(sprite)***REMOVED***
     $("#villageOverview").addClass("animated")
     $("#villageOverview").find(".card-title").html(sprite.villageName)
     $("#villageOverview").find(".card-text").html("Belongs to "+ sprite.playerName)
+***REMOVED***
+
+function initSwitchVillage()***REMOVED***
+    $(".switchVillage").on('click', function()***REMOVED***
+        removePathSprites()
+        let switchedVillageCoords = JSON.parse($(this).attr('coords').replace(/'/g, '"'))
+        console.log(switchedVillageCoords)
+        selectedVillage.coords.x = switchedVillageCoords.x
+        selectedVillage.coords.y = switchedVillageCoords.y
+    ***REMOVED***)
+***REMOVED***
+
+function removePathSprites()***REMOVED***
+    if(pathSprites != undefined)***REMOVED***
+        pathSprites.forEach(sprite => ***REMOVED*** 
+            sprite.kill()
+            console.log(sprite, "killing")
+        ***REMOVED***);
+    ***REMOVED***
 ***REMOVED***
