@@ -1,6 +1,6 @@
 var isVillageSelected = false;
 var infos = JSON.parse($('.map-data').attr('map-data'))
-var selectedVillage = JSON.parse($('.selected-village').attr('data'))
+var selectedVillage = JSON.parse(($('.selected-village').attr('data')).replace(/'/g, '"'))
 
 var winW = document.body.offsetWidth;
 var winH = document.body.offsetHeight;
@@ -9,11 +9,16 @@ game = new Phaser.Game(winW / 2, winH / 3 * 2, Phaser.AUTO, 'game-container', **
 
 function preload() ***REMOVED***
     game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
-    game.load.image("tiles", "../static/wololo/mapAssets/tilesets/overworld_tileset_grass.png");
-    game.load.tilemap('map', '../static/wololo/mapAssets/tilemaps/mapv3.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.spritesheet('castle', '../static/wololo/mapAssets/sprites/castle.png', ***REMOVED*** frameWidth: 48, frameHeight: 48 ***REMOVED***);
-    game.load.spritesheet('pathDot', '../static/wololo/mapAssets/sprites/pathDot.png', ***REMOVED*** frameWidth: 16, frameHeight: 16 ***REMOVED***);
-    game.load.spritesheet('selected', '../static/wololo/mapAssets/sprites/selection-circle_1_64x64.png', ***REMOVED*** frameWidth: 64, frameHeight: 64 ***REMOVED***);
+    // game.load.image("tiles", "../static/wololo/mapAssets/tilesets/overworld_tileset_grass.png");
+    // game.load.tilemap('map', '../static/wololo/mapAssets/tilemaps/mapv3.json', null, Phaser.Tilemap.TILED_JSON);
+    // game.load.spritesheet('castle', '../static/wololo/mapAssets/sprites/castle.png', ***REMOVED*** frameWidth: 48, frameHeight: 48 ***REMOVED***);
+    // game.load.spritesheet('pathDot', '../static/wololo/mapAssets/sprites/pathDot.png', ***REMOVED*** frameWidth: 16, frameHeight: 16 ***REMOVED***);
+    // game.load.spritesheet('selected', '../static/wololo/mapAssets/sprites/selection-circle_1_64x64.png', ***REMOVED*** frameWidth: 64, frameHeight: 64 ***REMOVED***);
+    game.load.image("tiles", " http://localhost:8000/static/wololo/mapAssets/tilesets/overworld_tileset_grass.png");
+    game.load.tilemap('map', ' http://localhost:8000/static/wololo/mapAssets/tilemaps/mapv3.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.spritesheet('castle', ' http://localhost:8000/static/wololo/mapAssets/sprites/castle.png', ***REMOVED*** frameWidth: 48, frameHeight: 48 ***REMOVED***);
+    game.load.spritesheet('pathDot', ' http://localhost:8000/static/wololo/mapAssets/sprites/pathDot.png', ***REMOVED*** frameWidth: 16, frameHeight: 16 ***REMOVED***);
+    game.load.spritesheet('selected', ' http://localhost:8000/static/wololo/mapAssets/sprites/selection-circle_1_64x64.png', ***REMOVED*** frameWidth: 64, frameHeight: 64 ***REMOVED***);
 ***REMOVED***
 
 function create() ***REMOVED***

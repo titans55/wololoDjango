@@ -2,21 +2,37 @@
 ***REMOVED***% load static %***REMOVED*** 
 ***REMOVED***% block headcdn %***REMOVED*** ***REMOVED***% endblock %***REMOVED***
  ***REMOVED***% block content %***REMOVED***
+ <div id="villageDataJSON" data='***REMOVED******REMOVED***data.selectedVillage***REMOVED******REMOVED***'></div>
+ <div id="gameConfigData" data='***REMOVED******REMOVED***data.gameConfig***REMOVED******REMOVED***'></div>
+
+ <div class="card">
+    <div class="row mt-3 mb-3 ml-2">
+        <div class="col">
+            <div class="btn-group">
+                <button id="switchVillage" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    ***REMOVED******REMOVED***data.selectedVillage.villageName***REMOVED******REMOVED***
+                </button>
+                <div class="dropdown-menu">
+                    ***REMOVED***% for village in myVillages %***REMOVED***
+                        <a class="dropdown-item switchVillage" href="/game/***REMOVED******REMOVED***village.index***REMOVED******REMOVED***/map" coords="***REMOVED******REMOVED***village.coords***REMOVED******REMOVED***">***REMOVED******REMOVED***village.villageName***REMOVED******REMOVED***</a>
+                    ***REMOVED***%endfor%***REMOVED***
+                </div>
+            </div>
+        </div>
+        <div class="col">
+           
+        </div>
+        <div class="col">
+            ***REMOVED***% include "partials/villageResources.html" %***REMOVED***
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col">
         <div id="game-container"></div>
     </div>
     <div class="col">
-        <div class="btn-group mb-5">
-            <button id="switchVillage" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                ***REMOVED******REMOVED***selectedVillageHtml.villageName***REMOVED******REMOVED***
-            </button>
-            <div class="dropdown-menu">
-                ***REMOVED***% for village in myVillages %***REMOVED***
-                    <a class="dropdown-item switchVillage" href="#" coords="***REMOVED******REMOVED***village.coords***REMOVED******REMOVED***">***REMOVED******REMOVED***village.villageName***REMOVED******REMOVED***</a>
-                ***REMOVED***%endfor%***REMOVED***
-            </div>
-        </div>
+        
         <div id="villageOverview" class="card fadeInRight d-none" >
             <div class="card-header">
                 Village Overview
@@ -38,12 +54,14 @@
 </div>
 
 <div class='map-data' map-data='***REMOVED******REMOVED***publicVillages***REMOVED******REMOVED***'></div>
-<div class='selected-village' data='***REMOVED******REMOVED***selectedVillage***REMOVED******REMOVED***'></div>
+<div class='selected-village' data='***REMOVED******REMOVED***data.selectedVillage***REMOVED******REMOVED***'></div>
 ***REMOVED***% endblock %***REMOVED*** 
 ***REMOVED***% block footerjs %***REMOVED***
 <script type="text/javascript" src="***REMOVED***% static 'wololo/assets/js/phaser/build/phaser.min.js' %***REMOVED***"></script>
 <script type="text/javascript" src="***REMOVED***% static 'wololo/assets/js/easystar-0.2.3.js' %***REMOVED***"></script>
 <script type="text/javascript" src="***REMOVED***% static 'wololo/assets/js/Pathfinding.js' %***REMOVED***"></script>
 <script type="text/javascript" src="***REMOVED***% static 'wololo/js/game.js' %***REMOVED***"></script>
+<script type="text/javascript" src="***REMOVED***% static 'wololo/js/villageResources.js' %***REMOVED***"></script>
+
 
 ***REMOVED***% endblock %***REMOVED***

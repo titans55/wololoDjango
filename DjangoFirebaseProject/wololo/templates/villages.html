@@ -7,6 +7,8 @@
 ***REMOVED***% block content %***REMOVED***
 <div id="villageDataJSON" data='***REMOVED******REMOVED***data.selectedVillage***REMOVED******REMOVED***'></div>
 <div id="gameConfigData" data='***REMOVED******REMOVED***data.gameConfig***REMOVED******REMOVED***'></div>
+
+
 <div class="card">
     <div class="row mt-3 mb-3 ml-2">
         <div class="col">
@@ -15,7 +17,7 @@
                     ***REMOVED******REMOVED***data.selectedVillage.villageName***REMOVED******REMOVED***
                 </button>
                 <div class="dropdown-menu">
-                    ***REMOVED***% for village in data.villages_info %***REMOVED***
+                    ***REMOVED***% for village in myVillages %***REMOVED***
                         <a class="dropdown-item" href="/game/***REMOVED******REMOVED***village.index***REMOVED******REMOVED***  ">***REMOVED******REMOVED***village.villageName***REMOVED******REMOVED***</a>
                     ***REMOVED***%endfor%***REMOVED***
                 </div>
@@ -28,15 +30,10 @@
               </div>
         </div>
         <div class="col">
-            <span class="badge badge-warning">Wood <div id="wood">X</div></span>
-            <span class="badge badge-warning">Iron <div id="iron">Y</div></span>
-            <span class="badge badge-warning">Clay <div id="clay">Z</div></span>
-            <span class="badge badge-warning">Storage <div id="storage">T</div></span>
-    
+            ***REMOVED***% include "partials/villageResources.html" %***REMOVED***
         </div>
     </div>
 </div>
-
 
 <div class="village-content">
     <!-- ***REMOVED******REMOVED***data.selectedVillage***REMOVED******REMOVED*** -->
@@ -248,5 +245,6 @@
 
 <script type="text/javascript" src="***REMOVED***% static 'wololo/assets/js/phaser/build/phaser.min.js' %***REMOVED***"></script>
 <script type="text/javascript" src="***REMOVED***% static 'wololo/js/villages.js' %***REMOVED***"></script>
+<script type="text/javascript" src="***REMOVED***% static 'wololo/js/villageResources.js' %***REMOVED***"></script>
 
 ***REMOVED***% endblock %***REMOVED***
