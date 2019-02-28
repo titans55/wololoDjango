@@ -234,7 +234,8 @@ def villages(request, village_index=None):
     data = ***REMOVED*** 
         'villages_info' : myVillages,
         'selectedVillage': myVillages[selected_village_index],
-        'gameConfig' : gameConfig
+        'gameConfig' : gameConfig,
+        'page' : 'myVillages'
     ***REMOVED***
     return render(request, 'villages.html', ***REMOVED***'myVillages':myVillages, 'data' : data***REMOVED***)
 @myuser_login_required
@@ -295,7 +296,8 @@ def map(request, village_index=None):
 
     data = ***REMOVED*** 
         'selectedVillage': selectedVillage,
-        'gameConfig' : gameConfig
+        'gameConfig' : gameConfig,
+        'page' : 'map'
     ***REMOVED***
 
     return render(request, 'map.html', ***REMOVED***'publicVillages' : json.dumps(publicVillagesInfo), 'myVillages':myVillages, 'data' : data ***REMOVED***)
