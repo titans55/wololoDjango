@@ -230,7 +230,7 @@ def villages(request, village_index=None):
     if village_index is not None and i <= village_index:
         request.session['selected_village_index'] = 0
         return redirect('myVillage')
-        
+
     data = ***REMOVED*** 
         'villages_info' : myVillages,
         'selectedVillage': myVillages[selected_village_index],
@@ -322,7 +322,9 @@ def reports(request):
 @myuser_login_required
 def upgrade(request):
     if request.method == "POST":
-        with open(r"C:\Users\3III's\Desktop\django-wololo\wololoDjango\DjangoFirebaseProject\wololo\gameConfig.json") as f:
+        script_dir = os.path.dirname(__file__)
+        file_path = os.path.join(script_dir, 'gameConfig.json')
+        with open(file_path, 'r') as f:
             gameConfig = json.load(f)
 
         user_id = auth.current_user['localId']
