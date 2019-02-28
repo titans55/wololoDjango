@@ -11,6 +11,7 @@ import time
 import urllib.request
 import urllib.error
 import json
+import os
 
 import datetime
 import pyrebase
@@ -186,26 +187,14 @@ def selectingRegion(request):
 @myuser_login_required
 def villages(request, village_index=None):
 
-    if village_index is not None:
-        selected_village_index = int(village_index)
-        request.session['selected_village_index'] = selected_village_index
-    elif 'selected_village_index' in request.session:
-        selected_village_index = request.session['selected_village_index']
-    else: 
-        selected_village_index = 0
-        request.session['selected_village_index'] = 0
+    
 
-    print(selected_village_index)
     user_id = auth.current_user['localId']
     userInfo= db.collection('players').document(user_id).get()._data
     if userInfo['regionSelected'] is False :
         return redirect("selectRegion")
     
 
-
-    
-
-    import os
     script_dir = os.path.dirname(__file__)
     file_path = os.path.join(script_dir, 'gameConfig.json')
     with open(file_path, 'r') as f:
@@ -228,9 +217,20 @@ def villages(request, village_index=None):
         myVillages.append(village._data)
         i += 1
 
-    if i <= selected_village_index:
-        return redirect('myVillage', id=0)
+    if village_index is not None and i>=village_index:
+        selected_village_index = int(village_index)
+        request.session['selected_village_index'] = selected_village_index
+    elif 'selected_village_index' in request.session and i>request.session['selected_village_index']:
+        selected_village_index = request.session['selected_village_index']
+    else: 
+        selected_village_index = 0
+        request.session['selected_village_index'] = 0
+    print(selected_village_index)
 
+    if village_index is not None and i <= village_index:
+        request.session['selected_village_index'] = 0
+        return redirect('myVillage')
+        
     data = ***REMOVED*** 
         'villages_info' : myVillages,
         'selectedVillage': myVillages[selected_village_index],
@@ -241,22 +241,12 @@ def villages(request, village_index=None):
 @myuser_login_required
 def map(request, village_index=None):
 
-    if village_index is not None:
-        selected_village_index = int(village_index)
-        request.session['selected_village_index'] = selected_village_index
-    elif 'selected_village_index' in request.session:
-        selected_village_index = request.session['selected_village_index']
-    else: 
-        selected_village_index = 0
-        request.session['selected_village_index'] = 0
-
     user_id = auth.current_user['localId']
     userInfo= db.collection('players').document(user_id).get()._data
     if userInfo['regionSelected'] is False :
         return redirect("selectRegion")
 
    
-    import os
     script_dir = os.path.dirname(__file__)
     file_path = os.path.join(script_dir, 'gameConfig.json')
     with open(file_path, 'r') as f:
@@ -276,7 +266,15 @@ def map(request, village_index=None):
         myVillages.append(village._data)
         i += 1
 
-    selectedVillage = myVillages[selected_village_index]
+    if village_index is not None and i>=village_index:
+        selected_village_index = int(village_index)
+        request.session['selected_village_index'] = selected_village_index
+    elif 'selected_village_index' in request.session and i>request.session['selected_village_index']:
+        selected_village_index = request.session['selected_village_index']
+    else: 
+        selected_village_index = 0
+        request.session['selected_village_index'] = 0
+    print(selected_village_index)
 
     public_villages_ref = db.collection('villages')
     publicVillages = public_villages_ref.get()
@@ -294,8 +292,12 @@ def map(request, village_index=None):
                         ***REMOVED***
             publicVillagesInfo.append(village._data)
 
+    if village_index is not None and i <= village_index:
+        request.session['selected_village_index'] = 0
+        return redirect('map')
+
     data = ***REMOVED*** 
-        'selectedVillage': selectedVillage,
+        'selectedVillage': myVillages[selected_village_index],
         'gameConfig' : gameConfig,
         'page' : 'map'
     ***REMOVED***

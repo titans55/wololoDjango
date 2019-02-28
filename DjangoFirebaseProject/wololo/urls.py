@@ -10,9 +10,9 @@ urlpatterns = [
 
 
     path('game', views.villages, name='myVillage'),
-    path('game/<int:village_index>', views.villages, name='myVillage'),
+    path('game/<int:village_index>', views.villages),
     path('game/map', views.map, name='map'),
-    path('game/<int:village_index>/map', views.map, name='map'),
+    path('game/<int:village_index>/map', views.map),
     path('game/clans', views.clans, name='clans'),
     path('game/reports', views.reports, name='reports'),
 
