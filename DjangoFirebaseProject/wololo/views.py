@@ -158,6 +158,9 @@ def selectingRegion(request):
             "storage" : ***REMOVED***
                 "level" : "1"
             ***REMOVED***,
+            "farm" : ***REMOVED***
+                "level" : "1"
+            ***REMOVED***,
             "resources": ***REMOVED***
                 "clay" : ***REMOVED***
                     "lastInteractionDate" : now,
