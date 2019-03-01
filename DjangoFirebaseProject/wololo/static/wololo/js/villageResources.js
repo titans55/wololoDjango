@@ -7,7 +7,7 @@ $(function()***REMOVED***
     // data = JSON.parse(data.replace(/'/g, '"'))
     village_id = villageData.id
     incrementOfResorcesByTime()
-
+    calculatePopulationAndWrite()
 ***REMOVED***)
 
 function incrementOfResorcesByTime()***REMOVED***
@@ -58,4 +58,23 @@ function checkCapacityAndWrite(resourceHtmlID, currentAmount, storageLimit)***RE
             $(resourceHtmlID).removeClass("text-danger")
         ***REMOVED***
     ***REMOVED***
+***REMOVED***
+function calculatePopulationAndWrite()***REMOVED***
+    let farmLimit = gameConfigs.buildings.farm.populationLimit[villageData.farm.level]
+    let usedPopulation = 0
+    $(".building").each(function()***REMOVED***
+        let buildingName = $(this).attr("buildingName")
+        if(buildingName!='farm')***REMOVED***
+            let neededPopForEachBuilding = gameConfigs.buildings[buildingName].neededPopulation[villageData[buildingName].level]
+            usedPopulation += neededPopForEachBuilding
+        ***REMOVED***
+    ***REMOVED***)
+    $(".resources").each(function()***REMOVED***
+        let resourceBuildingName = $(this).attr("resourceBuildingName")
+        let reseourceType = $(this).attr("reseourceType")
+        let neededPopForEachBuilding = gameConfigs.buildings.resources[resourceBuildingName].neededPopulation[villageData.resources[reseourceType].level]
+        usedPopulation += neededPopForEachBuilding
+    ***REMOVED***)
+    console.log(usedPopulation,"wololo")
+    $("#population").html(usedPopulation + " / " + farmLimit)
 ***REMOVED***
