@@ -1,0 +1,59 @@
+***REMOVED***% extends "partials/layout.html" %***REMOVED***
+***REMOVED***% load static %***REMOVED***
+***REMOVED***% load custom_template_tags %***REMOVED***
+
+***REMOVED***% block headcdn %***REMOVED***
+
+***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% block content %***REMOVED***
+    <div id="villageDataJSON" data='***REMOVED******REMOVED***data.selectedVillage***REMOVED******REMOVED***'></div>
+    <div id="gameConfigData" data='***REMOVED******REMOVED***data.gameConfig***REMOVED******REMOVED***'></div>
+    ***REMOVED***% include "partials/villageResources.html" %***REMOVED***
+
+
+    <table class="table table-bordered text-center">
+        <thead>
+          <tr>
+            <th style="width: 20%">Unit</th>
+            <th style="width: 55%">Requirements</th>
+            <th style="width: 10%">In village/Total</th>
+            <th style="width: 15%">Train</th>
+
+          </tr>
+        </thead>
+        <tbody>
+            ***REMOVED***% for infantryUnitName, infantryUnit in data.gameConfig.units.infantry.items %***REMOVED***
+            <tr>
+                <th style="width: 20%">***REMOVED******REMOVED***infantryUnitName***REMOVED******REMOVED***</th>
+                <td style="width: 55%"> 
+                    ***REMOVED***% for resourceName, resourceAmount in infantryUnit.Cost.items %***REMOVED***
+                        <span class="badge badge-info">
+                            ***REMOVED******REMOVED***resourceAmount***REMOVED******REMOVED***<div>***REMOVED******REMOVED***resourceName***REMOVED******REMOVED***</div>
+                        </span>
+                    ***REMOVED***%endfor%***REMOVED***
+                    <span class="badge badge-info">
+                        ***REMOVED******REMOVED***infantryUnit.neededPopulation***REMOVED******REMOVED*** <div>Population</div>
+                    </span>
+                </td>
+
+                <td style="width: 10%">
+                    ***REMOVED******REMOVED***data.selectedVillage.troops.inVillage.infantry|keyvalue:infantryUnitName***REMOVED******REMOVED*** / ***REMOVED******REMOVED***data.selectedVillage.troops.total.infantry|keyvalue:infantryUnitName***REMOVED******REMOVED***
+                </td>
+                <td style="width: 15%">  
+                    <input type="number" class="form-control">
+                </td>
+            </tr>
+            ***REMOVED***%endfor%***REMOVED***
+
+        </tbody>
+    </table>
+
+
+***REMOVED***% endblock %***REMOVED***
+
+
+***REMOVED***% block footerjs %***REMOVED***
+<script type="text/javascript" src="***REMOVED***% static 'wololo/js/villageResources.js' %***REMOVED***"></script>
+
+***REMOVED***% endblock %***REMOVED***

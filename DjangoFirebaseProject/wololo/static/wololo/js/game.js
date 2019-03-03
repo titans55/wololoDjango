@@ -116,15 +116,33 @@ function onClickListener(sprite) ***REMOVED***
 ***REMOVED***
 
 function onHoverListener(sprite, event) ***REMOVED***
+    document.body.style.cursor = "pointer";
+
     let mousePositionX = event.pageX;
     let mousePositionY = event.pageY;
     $('#tooltip span').html(sprite.playerName + "<br>" + sprite.villageName + "<br>" + sprite.owner);
     $('#tooltip').stop(false, true).fadeIn(1000);
     $('#tooltip').css(***REMOVED*** 'top': mousePositionY - winH / 18, 'left': mousePositionX - winW / 40 + 40 ***REMOVED***);
+
+
+    var tooltip = document.querySelectorAll('#tooltip');
+
+    function fn(e) ***REMOVED***
+        for (var i=tooltip.length; i--;) ***REMOVED***
+            tooltip[i].style.left = e.pageX + 'px';
+            tooltip[i].style.top = e.pageY + 'px';
+        ***REMOVED***
+    ***REMOVED***
+
+    document.addEventListener('mousemove', fn, false);
+
 ***REMOVED***
 
 function onOutListener(sprite) ***REMOVED***
     $('#tooltip').stop(false, true).fadeOut(0);
+
+    document.body.style.cursor = "default";
+
 ***REMOVED***
 
 function drag() ***REMOVED***

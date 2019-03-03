@@ -354,7 +354,12 @@
                     "Defence" : 3,
                     "Cavalry Defence" : 7
                 ***REMOVED***,
-                "neededPopulation" : 1
+                "neededPopulation" : 1,
+                "neededBuildings": ***REMOVED***
+                    "barracks" : ***REMOVED***
+                        "level" : 1
+                    ***REMOVED***
+                ***REMOVED***
             ***REMOVED***,
             "Swordsman" : ***REMOVED***
                 "Cost" : ***REMOVED***
@@ -367,7 +372,12 @@
                     "Defence" : 8,
                     "Cavalry Defence" : 3
                 ***REMOVED***,
-                "neededPopulation" : 1
+                "neededPopulation" : 1,
+                "neededBuildings": ***REMOVED***
+                    "barracks" : ***REMOVED***
+                        "level" : 3
+                    ***REMOVED***
+                ***REMOVED***
             ***REMOVED***,
             "Axeman" : ***REMOVED***
                 "Cost" : ***REMOVED***
@@ -380,7 +390,12 @@
                     "Defence" : 1,
                     "Cavalry Defence" : 1
                 ***REMOVED***,
-                "neededPopulation" : 1
+                "neededPopulation" : 1,
+                "neededBuildings": ***REMOVED***
+                    "barracks" : ***REMOVED***
+                        "level" : 5
+                    ***REMOVED***
+                ***REMOVED***
             ***REMOVED***,
             "Archer" : ***REMOVED***
                 "Cost" : ***REMOVED***
@@ -393,7 +408,12 @@
                     "Defence" : 8,
                     "Cavalry Defence" : 2
                 ***REMOVED***,
-                "neededPopulation" : 1
+                "neededPopulation" : 1,
+                "neededBuildings": ***REMOVED***
+                    "barracks" : ***REMOVED***
+                        "level" : 7
+                    ***REMOVED***
+                ***REMOVED***
             ***REMOVED***
         ***REMOVED***,
         "cavalry":***REMOVED***

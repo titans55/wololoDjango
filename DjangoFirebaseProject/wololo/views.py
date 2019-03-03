@@ -177,6 +177,99 @@ def selectingRegion(request):
                     "level" : "0",
                     "sum": 0
                 ***REMOVED***
+            ***REMOVED***,
+            "troops" : ***REMOVED***
+                "inVillage" : ***REMOVED***
+                    "infantry" :  [
+                        ***REMOVED***
+                            "unitName" : "Spearman",
+                            "size" : 0
+                        ***REMOVED***,
+                        ***REMOVED***
+                            "unitName" : "Swordsman",
+                            "size" : 0
+                        ***REMOVED***,
+                        ***REMOVED***
+                            "unitName" : "Axeman",
+                            "size" : 0
+                        ***REMOVED***,
+                        ***REMOVED***
+                            "unitName" : "Archer",
+                            "size" : 0
+                        ***REMOVED***
+                    ],
+                    "cavalry" : [
+                        ***REMOVED***
+                            "unitName" : "Scout",
+                            "size" : 0
+                        ***REMOVED***,
+                        ***REMOVED***
+                            "unitName" : "Light Cavalry",
+                            "size" : 0
+                        ***REMOVED***,
+                        ***REMOVED***
+                            "unitName" : "Heavy Cavalry",
+                            "size" : 0
+                        ***REMOVED***
+                    ],
+                    "siegeWeapons" : [
+                        ***REMOVED***
+                            "unitName" : "Ram",
+                            "size" : 0
+                        ***REMOVED***,
+                        ***REMOVED***
+                            "unitName" : "Catapult",
+                            "size" : 0
+                        ***REMOVED***
+                    ]
+                ***REMOVED***,
+                "onMove" : [
+                    
+                ],
+                "total" : ***REMOVED***
+                    "infantry" :  [
+                        ***REMOVED***
+                            "unitName" : "Spearman",
+                            "size" : 0
+                        ***REMOVED***,
+                        ***REMOVED***
+                            "unitName" : "Swordsman",
+                            "size" : 0
+                        ***REMOVED***,
+                        ***REMOVED***
+                            "unitName" : "Axeman",
+                            "size" : 0
+                        ***REMOVED***,
+                        ***REMOVED***
+                            "unitName" : "Archer",
+                            "size" : 0
+                        ***REMOVED***
+                    ],
+                    "cavalry" : [
+                        ***REMOVED***
+                            "unitName" : "Scout",
+                            "size" : 0
+                        ***REMOVED***,
+                        ***REMOVED***
+                            "unitName" : "Light Cavalry",
+                            "size" : 0
+                        ***REMOVED***,
+                        ***REMOVED***
+                            "unitName" : "Heavy Cavalry",
+                            "size" : 0
+                        ***REMOVED***
+                    ],
+                    "siegeWeapons" : [
+                        ***REMOVED***
+                            "unitName" : "Ram",
+                            "size" : 0
+                        ***REMOVED***,
+                        ***REMOVED***
+                            "unitName" : "Catapult",
+                            "size" : 0
+                        ***REMOVED***
+                    ]
+                ***REMOVED***
             ***REMOVED***
         ***REMOVED***
         db.collection('players').document(user_id).collection('villages').document(firstVillage._data['id']).set(villageInfo)
@@ -186,7 +279,48 @@ def selectingRegion(request):
         db.collection('players').document(user_id).update(***REMOVED***'regionSelected' : True***REMOVED***)
     return redirect('myVillage')
 
+@myuser_login_required
+def upgrade(request):
+    if request.method == "POST":
+        script_dir = os.path.dirname(__file__)
+        file_path = os.path.join(script_dir, 'gameConfig.json')
+        with open(file_path, 'r') as f:
+            gameConfig = json.load(f)
 
+        user_id = auth.current_user['localId']
+        village_id = request.POST.get("village_id") #this should come from request
+        building_path = request.POST.get("building_path") #this should also come from request
+        firing_time = request.POST.get("firingTime")
+        print(firing_time)
+
+        village = db.collection('players').document(user_id).collection('villages').document(village_id).get().to_dict()
+        #upgrade_levelTo = village[building_path]['level'] + 1
+        print(building_path)
+        if '.' in building_path : 
+            upgrade_levelTo = int(village[building_path.split[0]][building_path.split[1]]['level']) + 1
+        else :
+            upgrade_levelTo = str(int(village[building_path]['level']) + 1)
+
+            required_clay = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['clay']
+            required_iron = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['iron']
+            required_wood = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['wood']
+            reqiured_time = 5 #(seconds)
+        print(required_clay)
+        #retrieve required resources from gameConfig.json with upgrade_level
+
+        
+        wood_sum = village['resources']['wood']['sum']
+        iron_sum = village['resources']['iron']['sum']
+        clay_sum = village['resources']['clay']['sum']
+        if(wood_sum >= required_wood and iron_sum >= required_iron and clay_sum >= required_clay):
+            #update sum and lastInteractionDate of resources (-cost)
+            #upgrade_building.apply_async((user_id, village_id, building_name, upgrade_levelTo),countdown = reqiured_time)
+            return HttpResponse("Success")
+        else:
+            return HttpResponse("Fail")
+        # return render(request, 'villages.html')
+
+######## MAIN PAGES ########
 @myuser_login_required
 def villages(request, village_index=None):
 
@@ -219,6 +353,67 @@ def villages(request, village_index=None):
         village._data['resources']['clay']['lastInteractionDate'] = str(village._data['resources']['clay']['lastInteractionDate'])
         myVillages.append(village._data)
         i += 1
+        db.collection('players').document(user_id).collection('villages').document(village._data['id']).update(
+            ***REMOVED***
+                "troops" : ***REMOVED***
+                    "inVillage" : ***REMOVED***
+                        "infantry" :  ***REMOVED***
+                            "Spearman" : 0,
+                            "Swordsman" : 0,
+                            "Axeman" : 0,
+                            "Archer" : 0
+                        ***REMOVED***,
+                        "cavalry" : ***REMOVED***
+                            "Scout" : 0,
+                            "Light Cavalry": 0,
+                            "Heavy Cavalry" : 0
+                        ***REMOVED***,
+                        "siegeWeapons" : ***REMOVED***
+                            "Ram" : 0,
+                            "Catapult": 0
+                        ***REMOVED***
+                    ***REMOVED***,
+                    "onMove" : [
+                        # ***REMOVED***
+                        #     "from" : "fromVillageID",
+                        #     "to" : "targetVillageID",
+                        #     "movementType" : "Attack/Support",
+                        #     "state" : "going/returning",
+                        #     "arrivalTime" : "timestamp"
+                        #     "troops": [
+                        #         ***REMOVED***
+                        #             "unitName" : "Spearman"
+                        #             "unitType" : "Infantry",
+                        #             "size" : 0
+                        #         ***REMOVED***,
+                        #         ***REMOVED***
+                        #             "unitName" : "Swordsman",
+                        #             "unitType" : "Infantry",
+                        #             "size" : 0
+                        #         ***REMOVED***
+                        #     ]
+                        # ***REMOVED***
+                    ],
+                    "total" : ***REMOVED***
+                        "infantry" :  ***REMOVED***
+                            "Spearman" : 40,
+                            "Swordsman" : 0,
+                            "Axeman" : 0,
+                            "Archer" : 0
+                        ***REMOVED***,
+                        "cavalry" : ***REMOVED***
+                            "Scout" : 0,
+                            "Light Cavalry": 0,
+                            "Heavy Cavalry" : 0
+                        ***REMOVED***,
+                        "siegeWeapons" : ***REMOVED***
+                            "Ram" : 0,
+                            "Catapult": 0
+                        ***REMOVED***
+                    ***REMOVED***,
+                ***REMOVED***
+            ***REMOVED***
+        )
 
     if village_index is not None and i>=village_index:
         selected_village_index = int(village_index)
@@ -306,6 +501,7 @@ def map(request, village_index=None):
     ***REMOVED***
 
     return render(request, 'map.html', ***REMOVED***'publicVillages' : json.dumps(publicVillagesInfo), 'myVillages':myVillages, 'data' : data ***REMOVED***)
+    
 def clans(request):
     user_id = auth.current_user['localId']
     userInfo= db.collection('players').document(user_id).get()._data
@@ -321,44 +517,55 @@ def reports(request):
         return redirect("selectRegion")
 
     return render(request, 'reports.html')
+##########
 
-@myuser_login_required
-def upgrade(request):
-    if request.method == "POST":
-        script_dir = os.path.dirname(__file__)
-        file_path = os.path.join(script_dir, 'gameConfig.json')
-        with open(file_path, 'r') as f:
-            gameConfig = json.load(f)
+######## BUILDING PAGES ######
 
-        user_id = auth.current_user['localId']
-        village_id = request.POST.get("village_id") #this should come from request
-        building_path = request.POST.get("building_path") #this should also come from request
-        firing_time = request.POST.get("firingTime")
-        print(firing_time)
+def barracks(request, village_index=None):
 
-        village = db.collection('players').document(user_id).collection('villages').document(village_id).get().to_dict()
-        #upgrade_levelTo = village[building_path]['level'] + 1
-        print(building_path)
-        if '.' in building_path : 
-            upgrade_levelTo = int(village[building_path.split[0]][building_path.split[1]]['level']) + 1
-        else :
-            upgrade_levelTo = str(int(village[building_path]['level']) + 1)
+    user_id = auth.current_user['localId']
+    userInfo= db.collection('players').document(user_id).get()._data
+    if userInfo['regionSelected'] is False :
+        return redirect("selectRegion")
 
-            required_clay = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['clay']
-            required_iron = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['iron']
-            required_wood = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['wood']
-            reqiured_time = 5 #(seconds)
-        print(required_clay)
-        #retrieve required resources from gameConfig.json with upgrade_level
+    user_id = auth.current_user['localId']
+    userInfo= db.collection('players').document(user_id).get()._data
+    if userInfo['regionSelected'] is False :
+        return redirect("selectRegion")
 
-        
-        wood_sum = village['resources']['wood']['sum']
-        iron_sum = village['resources']['iron']['sum']
-        clay_sum = village['resources']['clay']['sum']
-        if(wood_sum >= required_wood and iron_sum >= required_iron and clay_sum >= required_clay):
-            #update sum and lastInteractionDate of resources (-cost)
-            #upgrade_building.apply_async((user_id, village_id, building_name, upgrade_levelTo),countdown = reqiured_time)
-            return HttpResponse("Success")
-        else:
-            return HttpResponse("Fail")
-        # return render(request, 'villages.html')
+   
+    script_dir = os.path.dirname(__file__)
+    file_path = os.path.join(script_dir, 'gameConfig.json')
+    with open(file_path, 'r') as f:
+        gameConfig = json.load(f)
+
+    villages_ref = db.collection('players').document(user_id).collection('villages')
+    villages = villages_ref.get()
+    myVillages = []
+
+    i = 0
+    for village in villages:
+        village._data['index'] = i 
+        village._data['id'] = village.reference.id
+        village._data['resources']['wood']['lastInteractionDate'] = str(village._data['resources']['wood']['lastInteractionDate'])
+        village._data['resources']['iron']['lastInteractionDate'] = str(village._data['resources']['iron']['lastInteractionDate'])
+        village._data['resources']['clay']['lastInteractionDate'] = str(village._data['resources']['clay']['lastInteractionDate'])
+        myVillages.append(village._data)
+        i += 1
+
+    if village_index is not None and i>=village_index:
+        selected_village_index = int(village_index)
+        request.session['selected_village_index'] = selected_village_index
+    elif 'selected_village_index' in request.session and i>request.session['selected_village_index']:
+        selected_village_index = request.session['selected_village_index']
+    else: 
+        selected_village_index = 0
+        request.session['selected_village_index'] = 0
+
+    data = ***REMOVED*** 
+        'selectedVillage': myVillages[selected_village_index],
+        'gameConfig' : gameConfig,
+        'page' : 'barracks'
+    ***REMOVED***
+
+    return render(request, 'barracks.html', ***REMOVED***'myVillages':myVillages, 'data' : data ***REMOVED***)

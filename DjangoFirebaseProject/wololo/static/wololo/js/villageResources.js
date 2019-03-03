@@ -75,6 +75,13 @@ function calculatePopulationAndWrite()***REMOVED***
         let neededPopForEachBuilding = gameConfigs.buildings.resources[resourceBuildingName].neededPopulation[villageData.resources[reseourceType].level]
         usedPopulation += neededPopForEachBuilding
     ***REMOVED***)
+   
+    for(let [unitType, units] of Object.entries(villageData.troops.total))***REMOVED***
+        for(let [unit, unitSize] of Object.entries(units))***REMOVED***
+            usedPopulation += unitSize*gameConfigs.units[unitType][unit].neededPopulation
+        ***REMOVED***
+    ***REMOVED***
+    
     console.log(usedPopulation,"wololo")
     $("#population").html(usedPopulation + " / " + farmLimit)
 ***REMOVED***
