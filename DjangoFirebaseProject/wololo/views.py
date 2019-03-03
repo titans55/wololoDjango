@@ -180,95 +180,40 @@ def selectingRegion(request):
             ***REMOVED***,
             "troops" : ***REMOVED***
                 "inVillage" : ***REMOVED***
-                    "infantry" :  [
-                        ***REMOVED***
-                            "unitName" : "Spearman",
-                            "size" : 0
-                        ***REMOVED***,
-                        ***REMOVED***
-                            "unitName" : "Swordsman",
-                            "size" : 0
-                        ***REMOVED***,
-                        ***REMOVED***
-                            "unitName" : "Axeman",
-                            "size" : 0
-                        ***REMOVED***,
-                        ***REMOVED***
-                            "unitName" : "Archer",
-                            "size" : 0
-                        ***REMOVED***
-                    ],
-                    "cavalry" : [
-                        ***REMOVED***
-                            "unitName" : "Scout",
-                            "size" : 0
-                        ***REMOVED***,
-                        ***REMOVED***
-                            "unitName" : "Light Cavalry",
-                            "size" : 0
-                        ***REMOVED***,
-                        ***REMOVED***
-                            "unitName" : "Heavy Cavalry",
-                            "size" : 0
-                        ***REMOVED***
-                    ],
-                    "siegeWeapons" : [
-                        ***REMOVED***
-                            "unitName" : "Ram",
-                            "size" : 0
-                        ***REMOVED***,
-                        ***REMOVED***
-                            "unitName" : "Catapult",
-                            "size" : 0
-                        ***REMOVED***
-                    ]
+                    "infantry" :  ***REMOVED***
+                        "Spearman" : 0,
+                        "Swordsman" : 0,
+                        "Axeman" : 0,
+                        "Archer" : 0
+                    ***REMOVED***,
+                    "cavalry" : ***REMOVED***
+                        "Scout" : 0,
+                        "Light Cavalry": 0,
+                        "Heavy Cavalry" : 0
+                    ***REMOVED***,
+                    "siegeWeapons" : ***REMOVED***
+                        "Ram" : 0,
+                        "Catapult": 0
+                    ***REMOVED***
                 ***REMOVED***,
                 "onMove" : [
-                    
                 ],
                 "total" : ***REMOVED***
-                    "infantry" :  [
-                        ***REMOVED***
-                            "unitName" : "Spearman",
-                            "size" : 0
-                        ***REMOVED***,
-                        ***REMOVED***
-                            "unitName" : "Swordsman",
-                            "size" : 0
-                        ***REMOVED***,
-                        ***REMOVED***
-                            "unitName" : "Axeman",
-                            "size" : 0
-                        ***REMOVED***,
-                        ***REMOVED***
-                            "unitName" : "Archer",
-                            "size" : 0
-                        ***REMOVED***
-                    ],
-                    "cavalry" : [
-                        ***REMOVED***
-                            "unitName" : "Scout",
-                            "size" : 0
-                        ***REMOVED***,
-                        ***REMOVED***
-                            "unitName" : "Light Cavalry",
-                            "size" : 0
-                        ***REMOVED***,
-                        ***REMOVED***
-                            "unitName" : "Heavy Cavalry",
-                            "size" : 0
-                        ***REMOVED***
-                    ],
-                    "siegeWeapons" : [
-                        ***REMOVED***
-                            "unitName" : "Ram",
-                            "size" : 0
-                        ***REMOVED***,
-                        ***REMOVED***
-                            "unitName" : "Catapult",
-                            "size" : 0
-                        ***REMOVED***
-                    ]
+                    "infantry" :  ***REMOVED***
+                        "Spearman" : 0,
+                        "Swordsman" : 0,
+                        "Axeman" : 0,
+                        "Archer" : 0
+                    ***REMOVED***,
+                    "cavalry" : ***REMOVED***
+                        "Scout" : 0,
+                        "Light Cavalry": 0,
+                        "Heavy Cavalry" : 0
+                    ***REMOVED***,
+                    "siegeWeapons" : ***REMOVED***
+                        "Ram" : 0,
+                        "Catapult": 0
+                    ***REMOVED***
                 ***REMOVED***
             ***REMOVED***
         ***REMOVED***
