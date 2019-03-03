@@ -353,67 +353,67 @@ def villages(request, village_index=None):
         village._data['resources']['clay']['lastInteractionDate'] = str(village._data['resources']['clay']['lastInteractionDate'])
         myVillages.append(village._data)
         i += 1
-        db.collection('players').document(user_id).collection('villages').document(village._data['id']).update(
-            ***REMOVED***
-                "troops" : ***REMOVED***
-                    "inVillage" : ***REMOVED***
-                        "infantry" :  ***REMOVED***
-                            "Spearman" : 0,
-                            "Swordsman" : 0,
-                            "Axeman" : 0,
-                            "Archer" : 0
-                        ***REMOVED***,
-                        "cavalry" : ***REMOVED***
-                            "Scout" : 0,
-                            "Light Cavalry": 0,
-                            "Heavy Cavalry" : 0
-                        ***REMOVED***,
-                        "siegeWeapons" : ***REMOVED***
-                            "Ram" : 0,
-                            "Catapult": 0
-                        ***REMOVED***
-                    ***REMOVED***,
-                    "onMove" : [
-                        # ***REMOVED***
-                        #     "from" : "fromVillageID",
-                        #     "to" : "targetVillageID",
-                        #     "movementType" : "Attack/Support",
-                        #     "state" : "going/returning",
-                        #     "arrivalTime" : "timestamp"
-                        #     "troops": [
-                        #         ***REMOVED***
-                        #             "unitName" : "Spearman"
-                        #             "unitType" : "Infantry",
-                        #             "size" : 0
-                        #         ***REMOVED***,
-                        #         ***REMOVED***
-                        #             "unitName" : "Swordsman",
-                        #             "unitType" : "Infantry",
-                        #             "size" : 0
-                        #         ***REMOVED***
-                        #     ]
-                        # ***REMOVED***
-                    ],
-                    "total" : ***REMOVED***
-                        "infantry" :  ***REMOVED***
-                            "Spearman" : 40,
-                            "Swordsman" : 0,
-                            "Axeman" : 0,
-                            "Archer" : 0
-                        ***REMOVED***,
-                        "cavalry" : ***REMOVED***
-                            "Scout" : 0,
-                            "Light Cavalry": 0,
-                            "Heavy Cavalry" : 0
-                        ***REMOVED***,
-                        "siegeWeapons" : ***REMOVED***
-                            "Ram" : 0,
-                            "Catapult": 0
-                        ***REMOVED***
-                    ***REMOVED***,
-                ***REMOVED***
-            ***REMOVED***
-        )
+        # db.collection('players').document(user_id).collection('villages').document(village._data['id']).update(
+        #     ***REMOVED***
+        #         "troops" : ***REMOVED***
+        #             "inVillage" : ***REMOVED***
+        #                 "infantry" :  ***REMOVED***
+        #                     "Spearman" : 0,
+        #                     "Swordsman" : 0,
+        #                     "Axeman" : 0,
+        #                     "Archer" : 0
+        #                 ***REMOVED***,
+        #                 "cavalry" : ***REMOVED***
+        #                     "Scout" : 0,
+        #                     "Light Cavalry": 0,
+        #                     "Heavy Cavalry" : 0
+        #                 ***REMOVED***,
+        #                 "siegeWeapons" : ***REMOVED***
+        #                     "Ram" : 0,
+        #                     "Catapult": 0
+        #                 ***REMOVED***
+        #             ***REMOVED***,
+        #             "onMove" : [
+        #                 # ***REMOVED***
+        #                 #     "from" : "fromVillageID",
+        #                 #     "to" : "targetVillageID",
+        #                 #     "movementType" : "Attack/Support",
+        #                 #     "state" : "going/returning",
+        #                 #     "arrivalTime" : "timestamp"
+        #                 #     "troops": [
+        #                 #         ***REMOVED***
+        #                 #             "unitName" : "Spearman"
+        #                 #             "unitType" : "Infantry",
+        #                 #             "size" : 0
+        #                 #         ***REMOVED***,
+        #                 #         ***REMOVED***
+        #                 #             "unitName" : "Swordsman",
+        #                 #             "unitType" : "Infantry",
+        #                 #             "size" : 0
+        #                 #         ***REMOVED***
+        #                 #     ]
+        #                 # ***REMOVED***
+        #             ],
+        #             "total" : ***REMOVED***
+        #                 "infantry" :  ***REMOVED***
+        #                     "Spearman" : 40,
+        #                     "Swordsman" : 0,
+        #                     "Axeman" : 0,
+        #                     "Archer" : 0
+        #                 ***REMOVED***,
+        #                 "cavalry" : ***REMOVED***
+        #                     "Scout" : 0,
+        #                     "Light Cavalry": 0,
+        #                     "Heavy Cavalry" : 0
+        #                 ***REMOVED***,
+        #                 "siegeWeapons" : ***REMOVED***
+        #                     "Ram" : 0,
+        #                     "Catapult": 0
+        #                 ***REMOVED***
+        #             ***REMOVED***,
+        #         ***REMOVED***
+        #     ***REMOVED***
+        # )
 
     if village_index is not None and i>=village_index:
         selected_village_index = int(village_index)
