@@ -59,7 +59,7 @@ function displayNeededResourcesAndTimeForUpgrading()***REMOVED***
         let buildingLevel = String(parseInt(villageData[String(buildingName)].level) + 1)
         let neededResources = gameConfigs.buildings[String(buildingName)].upgradingCosts[buildingLevel]
         let mins = gameConfigs.buildings[String(buildingName)].upgradeTime[buildingLevel]
-        if(buildingName!='townCenter') mins = parseInt(mins - (mins * speedPercantageOfTownCenter / 100))
+        if(buildingName!='townCenter') mins = lowerByPercantage(mins, speedPercantageOfTownCenter)
         let neededTime = calculateTimeFromMinutes(mins)
         $(this).find(".neededWood").html(neededResources.wood)
         $(this).find(".neededIron").html(neededResources.iron)
@@ -72,7 +72,7 @@ function displayNeededResourcesAndTimeForUpgrading()***REMOVED***
         let buildingLevel = String(parseInt(villageData.resources[String(resourceType)].level) + 1)
         let neededResources = gameConfigs.buildings.resources[String(resourceBuilding)].upgradingCosts[buildingLevel]
         let mins = gameConfigs.buildings.resources[String(resourceBuilding)].upgradeTime[buildingLevel]
-        mins = parseInt(mins - (mins * speedPercantageOfTownCenter / 100))
+        mins = lowerByPercantage(mins, speedPercantageOfTownCenter)
         let neededTime = calculateTimeFromMinutes(mins)
         $(this).find(".neededWood").html(neededResources.wood)
         $(this).find(".neededIron").html(neededResources.iron)
@@ -84,18 +84,6 @@ function displayNeededResourcesAndTimeForUpgrading()***REMOVED***
 
 ***REMOVED***
 
-function calculateTimeFromMinutes(mins)***REMOVED***
-    let mins_num = parseFloat(mins, 10); // don't forget the second param
-    let hours   = Math.floor(mins_num / 60);
-    let minutes = Math.floor((mins_num - ((hours * 3600)) / 60));
-    let seconds = Math.floor((mins_num * 60) - (hours * 3600) - (minutes * 60));
-
-    // Appends 0 when unit is less than 10
-    if (hours   < 10) ***REMOVED***hours   = "0"+hours;***REMOVED***
-    if (minutes < 10) ***REMOVED***minutes = "0"+minutes;***REMOVED***
-    if (seconds < 10) ***REMOVED***seconds = "0"+seconds;***REMOVED***
-    return hours+':'+minutes+':'+seconds;
-***REMOVED***
 
 function initSwitchVillageDropdownButton()***REMOVED***
     // $("#switchVillage")

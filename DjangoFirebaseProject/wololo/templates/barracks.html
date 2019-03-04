@@ -35,6 +35,9 @@
                     <span class="badge badge-info">
                         ***REMOVED******REMOVED***infantryUnit.neededPopulation***REMOVED******REMOVED*** <div>Population</div>
                     </span>
+                    <span class="badge badge-info neededTime" unitName="***REMOVED******REMOVED***infantryUnitName***REMOVED******REMOVED***">
+                        
+                    </span>
                 </td>
 
                 <td style="width: 10%">
@@ -42,6 +45,9 @@
                 </td>
                 <td style="width: 15%">  
                     <input type="number" class="form-control">
+                    ***REMOVED***% if data.selectedVillage.barracks.level < infantryUnit.neededBuildings.barracks.level %***REMOVED***
+                            <a class="dropdown-item" href="/game/***REMOVED******REMOVED***village.index***REMOVED******REMOVED***">***REMOVED******REMOVED***village.villageName***REMOVED******REMOVED***</a>
+                    ***REMOVED***% endif %***REMOVED*** 
                 </td>
             </tr>
             ***REMOVED***%endfor%***REMOVED***
@@ -55,5 +61,6 @@
 
 ***REMOVED***% block footerjs %***REMOVED***
 <script type="text/javascript" src="***REMOVED***% static 'wololo/js/villageResources.js' %***REMOVED***"></script>
+<script type="text/javascript" src="***REMOVED***% static 'wololo/js/barracks.js' %***REMOVED***"></script>
 
 ***REMOVED***% endblock %***REMOVED***

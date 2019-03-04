@@ -301,6 +301,19 @@
             ***REMOVED***
         ***REMOVED***,
         "barracks":***REMOVED***
+            "trainingSpeed" : ***REMOVED***
+                "0" : 0,
+                "1" : 10,
+                "2" : 13,
+                "3" : 16,
+                "4" : 19,
+                "5" : 22,
+                "6" : 25,
+                "7" : 29,
+                "8" : 32,
+                "9" : 35,
+                "10" : 38
+            ***REMOVED***,
             "upgradeTime" : ***REMOVED***
                 "1": 10, 
                 "2": 15, 
@@ -359,7 +372,8 @@
                     "barracks" : ***REMOVED***
                         "level" : 1
                     ***REMOVED***
-                ***REMOVED***
+                ***REMOVED***,
+                "neededTrainingBaseTime" : 5
             ***REMOVED***,
             "Swordsman" : ***REMOVED***
                 "Cost" : ***REMOVED***
@@ -377,7 +391,8 @@
                     "barracks" : ***REMOVED***
                         "level" : 3
                     ***REMOVED***
-                ***REMOVED***
+                ***REMOVED***,
+                "neededTrainingBaseTime" : 5
             ***REMOVED***,
             "Axeman" : ***REMOVED***
                 "Cost" : ***REMOVED***
@@ -395,7 +410,8 @@
                     "barracks" : ***REMOVED***
                         "level" : 5
                     ***REMOVED***
-                ***REMOVED***
+                ***REMOVED***,
+                "neededTrainingBaseTime" : 6
             ***REMOVED***,
             "Archer" : ***REMOVED***
                 "Cost" : ***REMOVED***
@@ -413,7 +429,8 @@
                     "barracks" : ***REMOVED***
                         "level" : 7
                     ***REMOVED***
-                ***REMOVED***
+                ***REMOVED***,
+                "neededTrainingBaseTime" : 7
             ***REMOVED***
         ***REMOVED***,
         "cavalry":***REMOVED***
@@ -430,7 +447,8 @@
                     "Defence" : 0,
                     "Cavalry Defence" : 0
                 ***REMOVED***,
-                "neededPopulation" : 2
+                "neededPopulation" : 2,
+                "neededTrainingBaseTime" : 6
             ***REMOVED***,
             "Light Cavalry" : ***REMOVED***
                 "Cost" : ***REMOVED***
@@ -443,7 +461,8 @@
                     "Defence" : 5,
                     "Cavalry Defence" : 5
                 ***REMOVED***,
-                "neededPopulation" : 5
+                "neededPopulation" : 5,
+                "neededTrainingBaseTime" : 25
             ***REMOVED***,
             "Heavy Cavalry" : ***REMOVED***
                 "Cost" : ***REMOVED***
@@ -456,7 +475,8 @@
                     "Defence" : 40,
                     "Cavalry Defence" : 60
                 ***REMOVED***,
-                "neededPopulation" : 10
+                "neededPopulation" : 10,
+                "neededTrainingBaseTime" : 50
             ***REMOVED***
         ***REMOVED***,
         "siegeWeapons":***REMOVED***
@@ -472,7 +492,8 @@
                     "Defence" : 2,
                     "Cavalry Defence" : 1
                 ***REMOVED***,
-                "neededPopulation" : 8
+                "neededPopulation" : 8,
+                "neededTrainingBaseTime" : 20
             ***REMOVED***,
             "Catapult" : ***REMOVED***
                 "Cost" : ***REMOVED***
@@ -487,7 +508,8 @@
                     "Defence" : 50,
                     "Cavalry Defence" : 5
                 ***REMOVED***,
-                "neededPopulation" : 10
+                "neededPopulation" : 10,
+                "neededTrainingBaseTime" : 60
             ***REMOVED***
         ***REMOVED***,
         "folkHero" : ***REMOVED***
