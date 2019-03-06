@@ -161,21 +161,21 @@ def selectingRegion(request):
             "farm" : ***REMOVED***
                 "level" : "1"
             ***REMOVED***,
-            "resources": ***REMOVED***
-                "clay" : ***REMOVED***
+            "resources" : ***REMOVED***
+                "woodCamp" : ***REMOVED***
                     "lastInteractionDate" : now,
                     "level" : "0",
-                    "sum": 0
+                    "sum" : 0,
                 ***REMOVED***,
-                "iron" : ***REMOVED***
+                "ironMine" : ***REMOVED***
                     "lastInteractionDate" : now,
                     "level" : "0",
-                    "sum": 0
+                    "sum" : 0,
                 ***REMOVED***,
-                "wood" : ***REMOVED***
+                "clayPit" : ***REMOVED***
                     "lastInteractionDate" : now,
                     "level" : "0",
-                    "sum": 0
+                    "sum" : 0,
                 ***REMOVED***
             ***REMOVED***,
             "troops" : ***REMOVED***
@@ -242,7 +242,10 @@ def upgrade(request):
         #upgrade_levelTo = village[building_path]['level'] + 1
         print(building_path)
         if '.' in building_path : 
-            upgrade_levelTo = int(village[building_path.split[0]][building_path.split[1]]['level']) + 1
+            upgrade_levelTo = int(village[building_path.split('.')[0]][building_path.split('.')[1]]['level']) + 1
+            required_clay = gameConfig['buildings']['resources'][building_path.split('.')[1]]['upgradingCosts'][upgrade_levelTo]['clay']
+            required_iron = gameConfig['buildings']['resources'][building_path.split('.')[1]]['upgradingCosts'][upgrade_levelTo]['iron']
+            required_wood = gameConfig['buildings']['resources'][building_path.split('.')[1]]['upgradingCosts'][upgrade_levelTo]['wood']
         else :
             upgrade_levelTo = str(int(village[building_path]['level']) + 1)
 
@@ -259,7 +262,7 @@ def upgrade(request):
         clay_sum = village['resources']['clay']['sum']
         if(wood_sum >= required_wood and iron_sum >= required_iron and clay_sum >= required_clay):
             #update sum and lastInteractionDate of resources (-cost)
-            #upgrade_building.apply_async((user_id, village_id, building_name, upgrade_levelTo),countdown = reqiured_time)
+            upgrade_building.apply_async((user_id, village_id, building_path, upgrade_levelTo),countdown = reqiured_time)
             return HttpResponse("Success")
         else:
             return HttpResponse("Fail")
@@ -293,11 +296,12 @@ def villages(request, village_index=None):
     for village in villages:
         village._data['index'] = i 
         village._data['id'] = village.reference.id
-        village._data['resources']['wood']['lastInteractionDate'] = str(village._data['resources']['wood']['lastInteractionDate'])
-        village._data['resources']['iron']['lastInteractionDate'] = str(village._data['resources']['iron']['lastInteractionDate'])
-        village._data['resources']['clay']['lastInteractionDate'] = str(village._data['resources']['clay']['lastInteractionDate'])
+        village._data['resources']['woodCamp']['lastInteractionDate'] = str(village._data['resources']['woodCamp']['lastInteractionDate'])
+        village._data['resources']['ironMine']['lastInteractionDate'] = str(village._data['resources']['ironMine']['lastInteractionDate'])
+        village._data['resources']['clayPit']['lastInteractionDate'] = str(village._data['resources']['clayPit']['lastInteractionDate'])
         myVillages.append(village._data)
         i += 1
+
         # db.collection('players').document(user_id).collection('villages').document(village._data['id']).update(
         #     ***REMOVED***
         #         "troops" : ***REMOVED***
@@ -360,6 +364,29 @@ def villages(request, village_index=None):
         #     ***REMOVED***
         # )
 
+        # now = datetime.datetime.now()
+        # db.collection('players').document(user_id).collection('villages').document(village._data['id']).update(
+        #     ***REMOVED***
+        #         "resources" : ***REMOVED***
+        #             "woodCamp" : ***REMOVED***
+        #                 "lastInteractionDate" : now,
+        #                 "level" : "0",
+        #                 "sum" : 0,
+        #             ***REMOVED***,
+        #             "ironMine" : ***REMOVED***
+        #                 "lastInteractionDate" : now,
+        #                 "level" : "0",
+        #                 "sum" : 0,
+        #             ***REMOVED***,
+        #             "clayPit" : ***REMOVED***
+        #                 "lastInteractionDate" : now,
+        #                 "level" : "0",
+        #                 "sum" : 0,
+        #             ***REMOVED***
+        #         ***REMOVED***
+        #     ***REMOVED***
+        # )
+
     if village_index is not None and i>=village_index:
         selected_village_index = int(village_index)
         request.session['selected_village_index'] = selected_village_index
@@ -403,9 +430,9 @@ def map(request, village_index=None):
     for village in villages:
         village._data['index'] = i 
         village._data['id'] = village.reference.id
-        village._data['resources']['wood']['lastInteractionDate'] = str(village._data['resources']['wood']['lastInteractionDate'])
-        village._data['resources']['iron']['lastInteractionDate'] = str(village._data['resources']['iron']['lastInteractionDate'])
-        village._data['resources']['clay']['lastInteractionDate'] = str(village._data['resources']['clay']['lastInteractionDate'])
+        village._data['resources']['woodCamp']['lastInteractionDate'] = str(village._data['resources']['woodCamp']['lastInteractionDate'])
+        village._data['resources']['ironMine']['lastInteractionDate'] = str(village._data['resources']['ironMine']['lastInteractionDate'])
+        village._data['resources']['clayPit']['lastInteractionDate'] = str(village._data['resources']['clayPit']['lastInteractionDate'])
         myVillages.append(village._data)
         i += 1
 
@@ -492,9 +519,9 @@ def barracks(request, village_index=None):
     for village in villages:
         village._data['index'] = i 
         village._data['id'] = village.reference.id
-        village._data['resources']['wood']['lastInteractionDate'] = str(village._data['resources']['wood']['lastInteractionDate'])
-        village._data['resources']['iron']['lastInteractionDate'] = str(village._data['resources']['iron']['lastInteractionDate'])
-        village._data['resources']['clay']['lastInteractionDate'] = str(village._data['resources']['clay']['lastInteractionDate'])
+        village._data['resources']['woodCamp']['lastInteractionDate'] = str(village._data['resources']['woodCamp']['lastInteractionDate'])
+        village._data['resources']['ironMine']['lastInteractionDate'] = str(village._data['resources']['ironMine']['lastInteractionDate'])
+        village._data['resources']['clayPit']['lastInteractionDate'] = str(village._data['resources']['clayPit']['lastInteractionDate'])
         myVillages.append(village._data)
         i += 1
 

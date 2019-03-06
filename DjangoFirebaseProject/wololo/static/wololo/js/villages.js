@@ -68,8 +68,8 @@ function displayNeededResourcesAndTimeForUpgrading()***REMOVED***
     ***REMOVED***)
     $('.upgradeResources').each(function()***REMOVED***
         let resourceBuilding = $(this).attr('buildingName')
-        let resourceType = $(this).attr('resourceType')
-        let buildingLevel = String(parseInt(villageData.resources[String(resourceType)].level) + 1)
+        // let resourceType = $(this).attr('resourceType')
+        let buildingLevel = String(parseInt(villageData.resources[String(resourceBuilding)].level) + 1)
         let neededResources = gameConfigs.buildings.resources[String(resourceBuilding)].upgradingCosts[buildingLevel]
         let mins = gameConfigs.buildings.resources[String(resourceBuilding)].upgradeTime[buildingLevel]
         mins = lowerByPercantage(mins, speedPercantageOfTownCenter)
