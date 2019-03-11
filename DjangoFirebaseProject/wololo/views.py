@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from .tasks import add_village
 from .tasks import upgrade_building
-from .upgradeMethods import getCurrentResource, updateSumAndLastInteractionDateOfResource
+from .upgradeMethods import getCurrentResource, updateSumAndLastInteractionDateOfResource, getRequiredTimeForUpgrade
 from .initFirestore import get_db, get_auth
 import time
 import urllib.request
@@ -221,19 +221,16 @@ def upgrade(request):
         if '.' in building_path : 
             # print(village['resources'],"kololo")
             upgrade_levelTo = str(int(village['resources'][building_path.split('.')[1]]['level']) + 1)
-            print(upgrade_levelTo, "mololooooo")
             required_clay = gameConfig['buildings']['resources'][building_path.split('.')[1]]['upgradingCosts'][upgrade_levelTo]['clay']
             required_iron = gameConfig['buildings']['resources'][building_path.split('.')[1]]['upgradingCosts'][upgrade_levelTo]['iron']
             required_wood = gameConfig['buildings']['resources'][building_path.split('.')[1]]['upgradingCosts'][upgrade_levelTo]['wood']
         else :
             upgrade_levelTo = str(int(village[building_path]['level']) + 1)
-
             required_clay = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['clay']
             required_iron = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['iron']
             required_wood = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['wood']
         #retrieve required resources from gameConfig.json with upgrade_level
-        reqiured_time = 1 #(seconds)
-
+        reqiured_time = getRequiredTimeForUpgrade(village, building_path, upgrade_levelTo)
         now = datetime.datetime.now(pytz.utc)
         wood_total = getCurrentResource(village, 'woodCamp', now)
         clay_total = getCurrentResource(village, 'clayPit', now)

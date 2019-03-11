@@ -39,3 +39,15 @@ def updateSumAndLastInteractionDateOfResource(request, village_id, resourceBuild
 
 
     return True
+
+def getRequiredTimeForUpgrade(village, building_path, upgrade_levelTo):
+    
+    if '.' in building_path :
+        reqiured_time = gameConfig['buildings']['resources'][building_path.split('.')[1]]['upgradeTime'][upgrade_levelTo] 
+    else:
+        reqiured_time = gameConfig['buildings'][building_path]['upgradeTime'][upgrade_levelTo]
+
+    speedPercantageOfTownCenter = gameConfig['buildings']['townCenter']['buildingSpeed'][str(village['townCenter']['level'])]
+    reqiured_time = int(reqiured_time - (reqiured_time * speedPercantageOfTownCenter / 100 )) * 60 #seconds
+    
+    return reqiured_time
