@@ -1,24 +1,25 @@
+from __future__ import absolute_import, unicode_literals
 from celery import Celery
 import firebase_admin
 from firebase_admin import firestore
 from firebase_admin import credentials
-cred = credentials.Certificate(***REMOVED***
-    ***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***)
+import datetime
+import json
+import os
+from .initFirestore import get_db
+from .upgradeMethods import getCurrentResource
+import pytz
+from django.conf import settings
 
-firebase_admin.initialize_app(cred)
-db = firestore.client()
+db = get_db()
+script_dir = os.path.dirname(__file__)
+file_path = os.path.join(script_dir, 'gameConfig.json')
+
+# set the default Django settings module for the 'celery' program.
 
 app = Celery('tasks', broker='pyamqp://guest@localhost//',backend='amqp://guest@localhost//')
+
+# Load task modules from all registered Django app configs.
 
 @app.task(name='wololo.tasks.add_village')
 def add_village(user_id, user_name, village_name):
@@ -35,12 +36,26 @@ def add_village(user_id, user_name, village_name):
     return True
 
 @app.task(name='wololo.tasks.upgrade_building')
-def upgrade_building(user_id, village_id, building_name, upgrade_level):
+def upgrade_building(user_id, village_id, building_path, upgrade_level):
     village = db.collection('players').document(user_id).collection('villages').document(village_id)
-    village.update(***REMOVED***
-        building_name:***REMOVED***
-            "level": upgrade_level
-        ***REMOVED***
-    ***REMOVED***)
+    villageDict = db.collection('players').document(user_id).collection('villages').document(village_id).get().to_dict()
+    print(villageDict)
+    # print(building_path.split('.')[1],"tasdsada")
+    if '.' in villageDict :
+        now = datetime.datetime.now(pytz.utc)
+        newSum = getCurrentResource(villageDict, building_path.split('.')[1], now)
+        print("readyyty")
+
+        village.update(***REMOVED***
+            building_path+'.sum' : newSum,
+            building_path+'.lastInteractionDate' : now,
+            building_path+'.level' : upgrade_level
+        ***REMOVED***)
+        print("sueccesfullll")
+    else:
+        village.update(***REMOVED***
+            building_path+'.level' : upgrade_level
+        ***REMOVED***)
+    
     return True
 

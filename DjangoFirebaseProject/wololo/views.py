@@ -2,11 +2,10 @@ from django.conf import settings
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import firestore
 from .tasks import add_village
 from .tasks import upgrade_building
+from .upgradeMethods import getCurrentResource, updateSumAndLastInteractionDateOfResource
+from .initFirestore import get_db, get_auth
 import time
 import urllib.request
 import urllib.error
@@ -14,35 +13,12 @@ import json
 import os
 
 import datetime
-import pyrebase
+import pytz
+import dateutil.parser
 
-config = ***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-  ***REMOVED***
-firebase = pyrebase.initialize_app(config)
-auth = firebase.auth()
-# Use a service account
-cred = credentials.Certificate(***REMOVED***
-    ***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***)
-firebase_admin.initialize_app(cred, name='wololo')
 
-db = firestore.client()
-
+db = get_db()
+auth = get_auth()
 def myuser_login_required(f):
     def wrap(request, *args, **kwargs):
         #this check the session if userid key exist, if not it will redirect to login page
@@ -93,7 +69,9 @@ def verifyLogin(request):
                 # auth.send_email_verification(user['idToken'])
                 return redirect("landingPage")
             user_id = auth.current_user['localId']
+            request.session['user_id'] = user_id
             userInfo = db.collection('players').document(user_id).get()._data
+            
             # print(userInfo['regionSelected'])
             if userInfo['regionSelected'] is False :
                 return redirect("selectRegion")
@@ -240,9 +218,10 @@ def upgrade(request):
 
         village = db.collection('players').document(user_id).collection('villages').document(village_id).get().to_dict()
         #upgrade_levelTo = village[building_path]['level'] + 1
-        print(building_path)
         if '.' in building_path : 
-            upgrade_levelTo = int(village[building_path.split('.')[0]][building_path.split('.')[1]]['level']) + 1
+            # print(village['resources'],"kololo")
+            upgrade_levelTo = str(int(village['resources'][building_path.split('.')[1]]['level']) + 1)
+            print(upgrade_levelTo, "mololooooo")
             required_clay = gameConfig['buildings']['resources'][building_path.split('.')[1]]['upgradingCosts'][upgrade_levelTo]['clay']
             required_iron = gameConfig['buildings']['resources'][building_path.split('.')[1]]['upgradingCosts'][upgrade_levelTo]['iron']
             required_wood = gameConfig['buildings']['resources'][building_path.split('.')[1]]['upgradingCosts'][upgrade_levelTo]['wood']
@@ -252,19 +231,25 @@ def upgrade(request):
             required_clay = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['clay']
             required_iron = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['iron']
             required_wood = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['wood']
-            reqiured_time = 5 #(seconds)
-        print(required_clay)
         #retrieve required resources from gameConfig.json with upgrade_level
+        reqiured_time = 1 #(seconds)
 
-        
-        wood_sum = village['resources']['wood']['sum']
-        iron_sum = village['resources']['iron']['sum']
-        clay_sum = village['resources']['clay']['sum']
-        if(wood_sum >= required_wood and iron_sum >= required_iron and clay_sum >= required_clay):
+        now = datetime.datetime.now(pytz.utc)
+        wood_total = getCurrentResource(village, 'woodCamp', now)
+        clay_total = getCurrentResource(village, 'clayPit', now)
+        iron_total = getCurrentResource(village, 'ironMine', now)
+
+        if(wood_total >= required_wood and iron_total >= required_iron and clay_total >= required_clay):
             #update sum and lastInteractionDate of resources (-cost)
+            updateSumAndLastInteractionDateOfResource(request, village_id, 'woodCamp', wood_total-required_wood, now)
+            updateSumAndLastInteractionDateOfResource(request, village_id, 'clayPit', clay_total-required_clay, now)
+            updateSumAndLastInteractionDateOfResource(request, village_id, 'ironMine', iron_total-required_iron, now)
+
             upgrade_building.apply_async((user_id, village_id, building_path, upgrade_levelTo),countdown = reqiured_time)
+            print("upgrading")
             return HttpResponse("Success")
         else:
+            print("not enough resources")
             return HttpResponse("Fail")
         # return render(request, 'villages.html')
 
