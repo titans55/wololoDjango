@@ -1,0 +1,132 @@
+/* Tomorrow Theme */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+/* Pretty printing styles. Used with prettify.js. */
+/* SPAN elements with the classes below are added by prettyprint. */
+/* plain text */
+.pln ***REMOVED***
+  color: #4d4d4c; ***REMOVED***
+
+@media screen ***REMOVED***
+  /* string content */
+  .str ***REMOVED***
+    color: #718c00; ***REMOVED***
+
+  /* a keyword */
+  .kwd ***REMOVED***
+    color: #8959a8; ***REMOVED***
+
+  /* a comment */
+  .com ***REMOVED***
+    color: #8e908c; ***REMOVED***
+
+  /* a type name */
+  .typ ***REMOVED***
+    color: #4271ae; ***REMOVED***
+
+  /* a literal value */
+  .lit ***REMOVED***
+    color: #f5871f; ***REMOVED***
+
+  /* punctuation */
+  .pun ***REMOVED***
+    color: #4d4d4c; ***REMOVED***
+
+  /* lisp open bracket */
+  .opn ***REMOVED***
+    color: #4d4d4c; ***REMOVED***
+
+  /* lisp close bracket */
+  .clo ***REMOVED***
+    color: #4d4d4c; ***REMOVED***
+
+  /* a markup tag name */
+  .tag ***REMOVED***
+    color: #c82829; ***REMOVED***
+
+  /* a markup attribute name */
+  .atn ***REMOVED***
+    color: #f5871f; ***REMOVED***
+
+  /* a markup attribute value */
+  .atv ***REMOVED***
+    color: #3e999f; ***REMOVED***
+
+  /* a declaration */
+  .dec ***REMOVED***
+    color: #f5871f; ***REMOVED***
+
+  /* a variable name */
+  .var ***REMOVED***
+    color: #c82829; ***REMOVED***
+
+  /* a function name */
+  .fun ***REMOVED***
+    color: #4271ae; ***REMOVED*** ***REMOVED***
+/* Use higher contrast and text-weight for printable form. */
+@media print, projection ***REMOVED***
+  .str ***REMOVED***
+    color: #060; ***REMOVED***
+
+  .kwd ***REMOVED***
+    color: #006;
+    font-weight: bold; ***REMOVED***
+
+  .com ***REMOVED***
+    color: #600;
+    font-style: italic; ***REMOVED***
+
+  .typ ***REMOVED***
+    color: #404;
+    font-weight: bold; ***REMOVED***
+
+  .lit ***REMOVED***
+    color: #044; ***REMOVED***
+
+  .pun, .opn, .clo ***REMOVED***
+    color: #440; ***REMOVED***
+
+  .tag ***REMOVED***
+    color: #006;
+    font-weight: bold; ***REMOVED***
+
+  .atn ***REMOVED***
+    color: #404; ***REMOVED***
+
+  .atv ***REMOVED***
+    color: #060; ***REMOVED*** ***REMOVED***
+/* Style */
+/*
+pre.prettyprint ***REMOVED***
+  background: white;
+  font-family: Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  border: 1px solid #ccc;
+  padding: 10px; ***REMOVED***
+*/
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums ***REMOVED***
+  margin-top: 0;
+  margin-bottom: 0; ***REMOVED***
+
+/* IE indents via margin-left */
+li.L0,
+li.L1,
+li.L2,
+li.L3,
+li.L4,
+li.L5,
+li.L6,
+li.L7,
+li.L8,
+li.L9 ***REMOVED***
+  /* */ ***REMOVED***
+
+/* Alternate shading for lines */
+li.L1,
+li.L3,
+li.L5,
+li.L7,
+li.L9 ***REMOVED***
+  /* */ ***REMOVED***

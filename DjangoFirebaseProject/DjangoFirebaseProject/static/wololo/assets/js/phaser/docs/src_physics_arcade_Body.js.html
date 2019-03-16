@@ -1,0 +1,2842 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Phaser Source: src/physics/arcade/Body.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<link type="text/css" rel="stylesheet" href="styles/default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	
+	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+	
+</head>
+
+<body>
+
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top navbar-inverse">
+		<div style="position: absolute; width: 143px; height: 31px; right: 10px; top: 10px; z-index: 1050"><a href="http://phaser.io"><img src="img/phaser.png" border="0" /></a></div>
+		<div class="navbar-inner">
+			<a class="brand" href="index.html">Phaser API</a>
+			<ul class="nav">
+
+				
+				<li class="dropdown">
+					<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li class="class-depth-0">
+							<a href="Phaser.html">Phaser</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="PIXI.html">PIXI</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li class="class-depth-0">
+							<a href="Event.html">Event</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="EventTarget.html">EventTarget</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Animation.html">Animation</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.AnimationManager.html">AnimationManager</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.AnimationParser.html">AnimationParser</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.ArraySet.html">ArraySet</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.ArrayUtils.html">ArrayUtils</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.AudioSprite.html">AudioSprite</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.BitmapData.html">BitmapData</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.BitmapText.html">BitmapText</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Bullet.html">Bullet</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Button.html">Button</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Cache.html">Cache</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Camera.html">Camera</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Canvas.html">Canvas</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Circle.html">Circle</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Color.html">Color</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.Angle.html">Angle</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.Animation.html">Animation</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.AutoCull.html">AutoCull</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.Bounds.html">Bounds</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.BringToTop.html">BringToTop</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.Core.html">Core</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.Crop.html">Crop</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.Delta.html">Delta</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.Destroy.html">Destroy</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.FixedToCamera.html">FixedToCamera</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.Health.html">Health</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.InCamera.html">InCamera</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.InputEnabled.html">InputEnabled</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.InWorld.html">InWorld</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.LifeSpan.html">LifeSpan</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.LoadTexture.html">LoadTexture</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.Overlap.html">Overlap</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.PhysicsBody.html">PhysicsBody</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.Reset.html">Reset</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.ScaleMinMax.html">ScaleMinMax</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Component.Smoothed.html">Smoothed</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Create.html">Create</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Creature.html">Creature</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Device.html">Device</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.DeviceButton.html">DeviceButton</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.DOM.html">DOM</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Easing.html">Easing</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Easing.Back.html">Back</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Easing.Bounce.html">Bounce</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Easing.Circular.html">Circular</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Easing.Cubic.html">Cubic</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Easing.Elastic.html">Elastic</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Easing.Exponential.html">Exponential</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Easing.Linear.html">Linear</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Easing.Quadratic.html">Quadratic</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Easing.Quartic.html">Quartic</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Easing.Quintic.html">Quintic</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Easing.Sinusoidal.html">Sinusoidal</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Ellipse.html">Ellipse</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Events.html">Events</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Filter.html">Filter</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.FlexGrid.html">FlexGrid</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.FlexLayer.html">FlexLayer</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Frame.html">Frame</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.FrameData.html">FrameData</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Game.html">Game</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.GameObjectCreator.html">GameObjectCreator</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.GameObjectFactory.html">GameObjectFactory</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Gamepad.html">Gamepad</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Graphics.html">Graphics</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Group.html">Group</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Hermite.html">Hermite</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Image.html">Image</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.ImageCollection.html">ImageCollection</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Input.html">Input</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.InputHandler.html">InputHandler</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Key.html">Key</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Keyboard.html">Keyboard</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.KeyCode.html">KeyCode</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Line.html">Line</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.LinkedList.html">LinkedList</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Loader.html">Loader</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.LoaderParser.html">LoaderParser</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Math.html">Math</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Matrix.html">Matrix</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Mouse.html">Mouse</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.MSPointer.html">MSPointer</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Net.html">Net</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Particle.html">Particle</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Particles.html">Particles</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Particles.Arcade.html">Arcade</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Particles.Arcade.Emitter.html">Emitter</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Path.html">Path</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.PathFollower.html">PathFollower</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.PathPoint.html">PathPoint</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Physics.html">Physics</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Physics.Arcade.html">Arcade</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.Arcade.Body.html">Body</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.Arcade.TilemapCollision.html">TilemapCollision</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Physics.Ninja.html">Ninja</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.Ninja.AABB.html">AABB</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.Ninja.Body.html">Body</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.Ninja.Circle.html">Circle</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.Ninja.Tile.html">Tile</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Physics.P2.html">P2</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.P2.Body.html">Body</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.P2.BodyDebug.html">BodyDebug</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.P2.CollisionGroup.html">CollisionGroup</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.P2.ContactMaterial.html">ContactMaterial</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.P2.DistanceConstraint.html">DistanceConstraint</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.P2.FixtureList.html">FixtureList</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.P2.GearConstraint.html">GearConstraint</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.P2.InversePointProxy.html">InversePointProxy</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.P2.LockConstraint.html">LockConstraint</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.P2.Material.html">Material</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.P2.PointProxy.html">PointProxy</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.P2.PrismaticConstraint.html">PrismaticConstraint</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.P2.RevoluteConstraint.html">RevoluteConstraint</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.P2.RotationalSpring.html">RotationalSpring</a>
+						</li>
+						
+						<li class="class-depth-3">
+							<a href="Phaser.Physics.P2.Spring.html">Spring</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Plugin.html">Plugin</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Plugin.PathManager.html">PathManager</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.PluginManager.html">PluginManager</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Point.html">Point</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Pointer.html">Pointer</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.PointerMode.html">PointerMode</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Polygon.html">Polygon</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.QuadTree.html">QuadTree</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.RandomDataGenerator.html">RandomDataGenerator</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Rectangle.html">Rectangle</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.RenderTexture.html">RenderTexture</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.RequestAnimationFrame.html">RequestAnimationFrame</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.RetroFont.html">RetroFont</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Rope.html">Rope</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.RoundedRectangle.html">RoundedRectangle</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.ScaleManager.html">ScaleManager</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Signal.html">Signal</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.SignalBinding.html">SignalBinding</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.SinglePad.html">SinglePad</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Sound.html">Sound</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.SoundManager.html">SoundManager</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Sprite.html">Sprite</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.SpriteBatch.html">SpriteBatch</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Stage.html">Stage</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.State.html">State</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.StateManager.html">StateManager</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Text.html">Text</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Tile.html">Tile</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Tilemap.html">Tilemap</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.TilemapLayer.html">TilemapLayer</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.TilemapParser.html">TilemapParser</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Tileset.html">Tileset</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.TileSprite.html">TileSprite</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Time.html">Time</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Timer.html">Timer</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.TimerEvent.html">TimerEvent</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Touch.html">Touch</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Tween.html">Tween</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.TweenData.html">TweenData</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.TweenManager.html">TweenManager</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Utils.html">Utils</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="Phaser.Utils.Debug.html">Debug</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Video.html">Video</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.Weapon.html">Weapon</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="Phaser.World.html">World</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.AbstractFilter.html">AbstractFilter</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.BaseTexture.html">BaseTexture</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.CanvasBuffer.html">CanvasBuffer</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.CanvasGraphics.html">CanvasGraphics</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.CanvasMaskManager.html">CanvasMaskManager</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.CanvasPool.html">CanvasPool</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.CanvasRenderer.html">CanvasRenderer</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.CanvasTinter.html">CanvasTinter</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.ComplexPrimitiveShader.html">ComplexPrimitiveShader</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.DisplayObjectContainer.html">DisplayObjectContainer</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.EarCut.html">EarCut</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.Event.html">Event</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.EventTarget.html">EventTarget</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.FilterTexture.html">FilterTexture</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.Graphics.html">Graphics</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.GraphicsData.html">GraphicsData</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.PIXI.html">PIXI</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="PIXI.PIXI.DisplayObject.html">DisplayObject</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.PixiFastShader.html">PixiFastShader</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.PixiShader.html">PixiShader</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.PrimitiveShader.html">PrimitiveShader</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.RenderTexture.html">RenderTexture</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.Rope.html">Rope</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.Sprite.html">Sprite</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.SpriteBatch.html">SpriteBatch</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.Strip.html">Strip</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.StripShader.html">StripShader</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.Texture.html">Texture</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.TilingSprite.html">TilingSprite</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.WebGLBlendModeManager.html">WebGLBlendModeManager</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.WebGLFastSpriteBatch.html">WebGLFastSpriteBatch</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.WebGLFilterManager.html">WebGLFilterManager</a>
+						</li>
+						
+						<li class="class-depth-1">
+							<a href="PIXI.WebGLRenderer.html">WebGLRenderer</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li class="class-depth-0">
+							<a href="global.html#ANGLE_DOWN">ANGLE_DOWN</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#ANGLE_LEFT">ANGLE_LEFT</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#ANGLE_NORTH_EAST">ANGLE_NORTH_EAST</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#ANGLE_NORTH_WEST">ANGLE_NORTH_WEST</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#ANGLE_RIGHT">ANGLE_RIGHT</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#ANGLE_SOUTH_EAST">ANGLE_SOUTH_EAST</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#ANGLE_SOUTH_WEST">ANGLE_SOUTH_WEST</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#ANGLE_UP">ANGLE_UP</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#AUTO">AUTO</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#BITMAPDATA">BITMAPDATA</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#BITMAPTEXT">BITMAPTEXT</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#blendModes">blendModes</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#BOTTOM_CENTER">BOTTOM_CENTER</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#BOTTOM_LEFT">BOTTOM_LEFT</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#BOTTOM_RIGHT">BOTTOM_RIGHT</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#BUTTON">BUTTON</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#CANVAS">CANVAS</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#CANVAS_FILTER">CANVAS_FILTER</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#CENTER">CENTER</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#CIRCLE">CIRCLE</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#CREATURE">CREATURE</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#displayList">displayList</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#DOWN">DOWN</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#ELLIPSE">ELLIPSE</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#emit">emit</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#EMITTER">EMITTER</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#GAMES">GAMES</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#GRAPHICS">GRAPHICS</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#GROUP">GROUP</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#HEADLESS">HEADLESS</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#HORIZONTAL">HORIZONTAL</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#IMAGE">IMAGE</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#LANDSCAPE">LANDSCAPE</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#LEFT">LEFT</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#LEFT_BOTTOM">LEFT_BOTTOM</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#LEFT_CENTER">LEFT_CENTER</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#LEFT_TOP">LEFT_TOP</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#LINE">LINE</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#listeners">listeners</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#MATRIX">MATRIX</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#mixin">mixin</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#NONE">NONE</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#off">off</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#on">on</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#once">once</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#PENDING_ATLAS">PENDING_ATLAS</a>
+						</li>
+						
+						<li class="class-depth-2">
+							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
+return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#POINT">POINT</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#POINTER">POINTER</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#POLYGON">POLYGON</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#PORTRAIT">PORTRAIT</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#RECTANGLE">RECTANGLE</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#removeAllListeners">removeAllListeners</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#RENDERTEXTURE">RENDERTEXTURE</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#RETROFONT">RETROFONT</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#RIGHT">RIGHT</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#RIGHT_BOTTOM">RIGHT_BOTTOM</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#RIGHT_CENTER">RIGHT_CENTER</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#RIGHT_TOP">RIGHT_TOP</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#ROPE">ROPE</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#ROUNDEDRECTANGLE">ROUNDEDRECTANGLE</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#scaleModes">scaleModes</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#SPRITE">SPRITE</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#SPRITEBATCH">SPRITEBATCH</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#stopImmediatePropagation">stopImmediatePropagation</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#stopPropagation">stopPropagation</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#TEXT">TEXT</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#TILEMAP">TILEMAP</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#TILEMAPLAYER">TILEMAPLAYER</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#TILESPRITE">TILESPRITE</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#TOP_CENTER">TOP_CENTER</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#TOP_LEFT">TOP_LEFT</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#TOP_RIGHT">TOP_RIGHT</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#UP">UP</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#VERSION">VERSION</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#VERTICAL">VERTICAL</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#VIDEO">VIDEO</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#WEBGL">WEBGL</a>
+						</li>
+						
+						<li class="class-depth-0">
+							<a href="global.html#WEBGL_FILTER">WEBGL_FILTER</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Core<b class="caret"></b></a>
+					<ul class="dropdown-menu ">
+						<li class="class-depth-1"><a href="Phaser.Game.html">Game</a></li>
+						<li class="class-depth-1"><a href="Phaser.Group.html">Group</a></li>
+						<li class="class-depth-1"><a href="Phaser.World.html">World</a></li>
+						<li class="class-depth-1"><a href="Phaser.Loader.html">Loader</a></li>
+						<li class="class-depth-1"><a href="Phaser.Cache.html">Cache</a></li>
+						<li class="class-depth-1"><a href="Phaser.Time.html">Time</a></li>
+						<li class="class-depth-1"><a href="Phaser.Camera.html">Camera</a></li>
+						<li class="class-depth-1"><a href="Phaser.StateManager.html">State Manager</a></li>
+						<li class="class-depth-1"><a href="Phaser.TweenManager.html">Tween Manager</a></li>
+						<li class="class-depth-1"><a href="Phaser.SoundManager.html">Sound Manager</a></li>
+						<li class="class-depth-1"><a href="Phaser.Input.html">Input Manager</a></li>
+						<li class="class-depth-1"><a href="Phaser.ScaleManager.html">Scale Manager</a></li>
+					</ul>
+				</li>
+
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Game Objects<b class="caret"></b></a>
+					<ul class="dropdown-menu ">
+						<li class="class-depth-1"><a href="Phaser.GameObjectFactory.html">Factory (game.add)</a></li>
+						<li class="class-depth-1"><a href="Phaser.GameObjectCreator.html">Creator (game.make)</a></li>
+						<li class="class-depth-1"><a href="Phaser.Sprite.html">Sprite</a></li>
+						<li class="class-depth-1"><a href="Phaser.Image.html">Image</a></li>
+						<li class="class-depth-1"><a href="Phaser.Sound.html">Sound</a></li>
+						<li class="class-depth-1"><a href="Phaser.Video.html">Video</a></li>
+						<li class="class-depth-1"><a href="Phaser.Particles.Arcade.Emitter.html">Particle Emitter</a></li>
+						<li class="class-depth-1"><a href="Phaser.Particle.html">Particle</a></li>
+						<li class="class-depth-1"><a href="Phaser.Text.html">Text</a></li>
+						<li class="class-depth-1"><a href="Phaser.Tween.html">Tween</a></li>
+						<li class="class-depth-1"><a href="Phaser.BitmapText.html">BitmapText</a></li>
+						<li class="class-depth-1"><a href="Phaser.Tilemap.html">Tilemap</a></li>
+						<li class="class-depth-1"><a href="Phaser.BitmapData.html">BitmapData</a></li>
+						<li class="class-depth-1"><a href="Phaser.RetroFont.html">RetroFont</a></li>
+						<li class="class-depth-1"><a href="Phaser.Button.html">Button</a></li>
+						<li class="class-depth-1"><a href="Phaser.Animation.html">Animation</a></li>
+						<li class="class-depth-1"><a href="Phaser.Graphics.html">Graphics</a></li>
+						<li class="class-depth-1"><a href="Phaser.RenderTexture.html">RenderTexture</a></li>
+						<li class="class-depth-1"><a href="Phaser.TileSprite.html">TileSprite</a></li>
+					</ul>
+				</li>
+
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Geometry<b class="caret"></b></a>
+					<ul class="dropdown-menu ">
+						<li class="class-depth-1"><a href="Phaser.Circle.html">Circle</a></li>
+						<li class="class-depth-1"><a href="Phaser.Ellipse.html">Ellipse</a></li>
+						<li class="class-depth-1"><a href="Phaser.Line.html">Line</a></li>
+						<li class="class-depth-1"><a href="Phaser.Matrix.html">Matrix</a></li>
+						<li class="class-depth-1"><a href="Phaser.Point.html">Point</a></li>
+						<li class="class-depth-1"><a href="Phaser.Polygon.html">Polygon</a></li>
+						<li class="class-depth-1"><a href="Phaser.Rectangle.html">Rectangle</a></li>
+						<li class="class-depth-1"><a href="Phaser.RoundedRectangle.html">Rounded Rectangle</a></li>
+					</ul>
+				</li>
+
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Physics<b class="caret"></b></a>
+					<ul class="dropdown-menu ">
+						<li class="class-depth-1"><a href="Phaser.Physics.Arcade.html">Arcade Physics</a></li>
+						<li class="class-depth-2"><a href="Phaser.Physics.Arcade.Body.html">Body</a></li>
+						<li class="class-depth-2"><a href="Phaser.Weapon.html">Weapon</a></li>
+						<li class="class-depth-1"><a href="Phaser.Physics.P2.html">P2 Physics</a></li>
+						<li class="class-depth-2"><a href="Phaser.Physics.P2.Body.html">Body</a></li>
+						<li class="class-depth-2"><a href="Phaser.Physics.P2.Spring.html">Spring</a></li>
+						<li class="class-depth-2"><a href="Phaser.Physics.P2.CollisionGroup.html">CollisionGroup</a></li>
+						<li class="class-depth-2"><a href="Phaser.Physics.P2.ContactMaterial.html">ContactMaterial</a></li>
+						<li class="class-depth-1"><a href="Phaser.Physics.Ninja.html">Ninja Physics</a></li>
+						<li class="class-depth-2"><a href="Phaser.Physics.Body.html">Body</a></li>
+					</ul>
+				</li>
+
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Input<b class="caret"></b></a>
+					<ul class="dropdown-menu ">
+						<li class="class-depth-1"><a href="Phaser.InputHandler.html">Input Handler</a></li>
+						<li class="class-depth-1"><a href="Phaser.Pointer.html">Pointer</a></li>
+						<li class="class-depth-1"><a href="Phaser.DeviceButton.html">Device Button</a></li>
+						<li class="class-depth-1"><a href="Phaser.Mouse.html">Mouse</a></li>
+						<li class="class-depth-1"><a href="Phaser.Keyboard.html">Keyboard</a></li>
+						<li class="class-depth-1"><a href="Phaser.Key.html">Key</a></li>
+						<li class="class-depth-1"><a href="Phaser.KeyCode.html">Key Codes</a></li>
+						<li class="class-depth-1"><a href="Phaser.Gamepad.html">Gamepad</a></li>
+					</ul>
+				</li>
+
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Community<b class="caret"></b></a>
+					<ul class="dropdown-menu ">
+						<li class="class-depth-1"><a href="http://phaser.io">Phaser Web Site</a></li>
+						<li class="class-depth-1"><a href="https://github.com/photonstorm/phaser">Phaser Github</a></li>
+						<li class="class-depth-1"><a href="http://phaser.io/examples">Phaser Examples</a></li>
+						<li class="class-depth-1"><a href="https://github.com/photonstorm/phaser-plugins">Phaser Plugins</a></li>
+						<li class="class-depth-1"><a href="http://www.html5gamedevs.com/forum/14-phaser/">Forum</a></li>
+						<li class="class-depth-1"><a href="http://stackoverflow.com/questions/tagged/phaser-framework">Stack Overflow</a></li>
+						<li class="class-depth-1"><a href="http://phaser.io/learn">Tutorials</a></li>
+						<li class="class-depth-1"><a href="http://phaser.io/community/newsletter">Newsletter</a></li>
+						<li class="class-depth-1"><a href="http://phaser.io/community/twitter">Twitter</a></li>
+						<li class="class-depth-1"><a href="http://phaser.io/community/slack">Slack</a></li>
+						<li class="class-depth-1"><a href="http://phaser.io/community/donate">Donate</a></li>
+						<li class="class-depth-1"><a href="https://www.codeandweb.com/texturepacker/phaser">Texture Packer</a></li>
+					</ul>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		
+			<div class="span12">
+				
+				<div id="main">
+					
+
+
+		<h1 class="page-title">Source: src/physics/arcade/Body.js</h1>
+    
+    <section>
+        <article>
+            <pre class="sunlight-highlight-javascript linenums">/**
+* @author       Richard Davey &lt;rich@photonstorm.com>
+* @copyright    2016 Photon Storm Ltd.
+* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+*/
+
+/**
+* The Physics Body is linked to a single Sprite. All physics operations should be performed against the body rather than
+* the Sprite itself. For example you can set the velocity, acceleration, bounce values etc all on the Body.
+*
+* @class Phaser.Physics.Arcade.Body
+* @constructor
+* @param ***REMOVED***Phaser.Sprite***REMOVED*** sprite - The Sprite object this physics body belongs to.
+*/
+Phaser.Physics.Arcade.Body = function (sprite) ***REMOVED***
+
+    /**
+    * @property ***REMOVED***Phaser.Sprite***REMOVED*** sprite - Reference to the parent Sprite.
+    */
+    this.sprite = sprite;
+
+    /**
+    * @property ***REMOVED***Phaser.Game***REMOVED*** game - Local reference to game.
+    */
+    this.game = sprite.game;
+
+    /**
+    * @property ***REMOVED***number***REMOVED*** type - The type of physics system this body belongs to.
+    */
+    this.type = Phaser.Physics.ARCADE;
+
+    /**
+    * @property ***REMOVED***boolean***REMOVED*** enable - A disabled body won't be checked for any form of collision or overlap or have its pre/post updates run.
+    * @default
+    */
+    this.enable = true;
+
+    /**
+    * If `true` this Body is using circular collision detection. If `false` it is using rectangular.
+    * Use `Body.setCircle` to control the collision shape this Body uses.
+    * @property ***REMOVED***boolean***REMOVED*** isCircle
+    * @default
+    * @readOnly
+    */
+    this.isCircle = false;
+
+    /**
+    * The radius of the circular collision shape this Body is using if Body.setCircle has been enabled.
+    * If you wish to change the radius then call `setCircle` again with the new value.
+    * If you wish to stop the Body using a circle then call `setCircle` with a radius of zero (or undefined).
+    * @property ***REMOVED***number***REMOVED*** radius
+    * @default
+    * @readOnly
+    */
+    this.radius = 0;
+
+    /**
+    * @property ***REMOVED***Phaser.Point***REMOVED*** offset - The offset of the Physics Body from the Sprite x/y position.
+    */
+    this.offset = new Phaser.Point();
+
+    /**
+    * @property ***REMOVED***Phaser.Point***REMOVED*** position - The position of the physics body.
+    * @readonly
+    */
+    this.position = new Phaser.Point(sprite.x, sprite.y);
+
+    /**
+    * @property ***REMOVED***Phaser.Point***REMOVED*** prev - The previous position of the physics body.
+    * @readonly
+    */
+    this.prev = new Phaser.Point(this.position.x, this.position.y);
+
+    /**
+    * @property ***REMOVED***boolean***REMOVED*** allowRotation - Allow this Body to be rotated? (via angularVelocity, etc)
+    * @default
+    */
+    this.allowRotation = true;
+
+    /**
+    * The Body's rotation in degrees, as calculated by its angularVelocity and angularAcceleration. Please understand that the collision Body
+    * itself never rotates, it is always axis-aligned. However these values are passed up to the parent Sprite and updates its rotation.
+    * @property ***REMOVED***number***REMOVED*** rotation
+    */
+    this.rotation = sprite.angle;
+
+    /**
+    * @property ***REMOVED***number***REMOVED*** preRotation - The previous rotation of the physics body.
+    * @readonly
+    */
+    this.preRotation = sprite.angle;
+
+    /**
+    * @property ***REMOVED***number***REMOVED*** width - The calculated width of the physics body.
+    * @readonly
+    */
+    this.width = sprite.width;
+
+    /**
+    * @property ***REMOVED***number***REMOVED*** height - The calculated height of the physics body.
+    * @readonly
+    */
+    this.height = sprite.height;
+
+    /**
+    * @property ***REMOVED***number***REMOVED*** sourceWidth - The un-scaled original size.
+    * @readonly
+    */
+    this.sourceWidth = sprite.width;
+
+    /**
+    * @property ***REMOVED***number***REMOVED*** sourceHeight - The un-scaled original size.
+    * @readonly
+    */
+    this.sourceHeight = sprite.height;
+
+    if (sprite.texture)
+    ***REMOVED***
+        this.sourceWidth = sprite.texture.frame.width;
+        this.sourceHeight = sprite.texture.frame.height;
+    ***REMOVED***
+
+    /**
+    * @property ***REMOVED***number***REMOVED*** halfWidth - The calculated width / 2 of the physics body.
+    * @readonly
+    */
+    this.halfWidth = Math.abs(sprite.width / 2);
+
+    /**
+    * @property ***REMOVED***number***REMOVED*** halfHeight - The calculated height / 2 of the physics body.
+    * @readonly
+    */
+    this.halfHeight = Math.abs(sprite.height / 2);
+
+    /**
+    * @property ***REMOVED***Phaser.Point***REMOVED*** center - The center coordinate of the Physics Body.
+    * @readonly
+    */
+    this.center = new Phaser.Point(sprite.x + this.halfWidth, sprite.y + this.halfHeight);
+
+    /**
+    * @property ***REMOVED***Phaser.Point***REMOVED*** velocity - The velocity, or rate of change in speed of the Body. Measured in pixels per second.
+    */
+    this.velocity = new Phaser.Point();
+
+    /**
+    * @property ***REMOVED***Phaser.Point***REMOVED*** newVelocity - The new velocity. Calculated during the Body.preUpdate and applied to its position.
+    * @readonly
+    */
+    this.newVelocity = new Phaser.Point();
+
+    /**
+    * @property ***REMOVED***Phaser.Point***REMOVED*** deltaMax - The Sprite position is updated based on the delta x/y values. You can set a cap on those (both +-) using deltaMax.
+    */
+    this.deltaMax = new Phaser.Point();
+
+    /**
+    * @property ***REMOVED***Phaser.Point***REMOVED*** acceleration - The acceleration is the rate of change of the velocity. Measured in pixels per second squared.
+    */
+    this.acceleration = new Phaser.Point();
+
+    /**
+    * @property ***REMOVED***Phaser.Point***REMOVED*** drag - The drag applied to the motion of the Body.
+    */
+    this.drag = new Phaser.Point();
+
+    /**
+    * @property ***REMOVED***boolean***REMOVED*** allowGravity - Allow this Body to be influenced by gravity? Either world or local.
+    * @default
+    */
+    this.allowGravity = true;
+
+    /**
+    * @property ***REMOVED***Phaser.Point***REMOVED*** gravity - A local gravity applied to this Body. If non-zero this over rides any world gravity, unless Body.allowGravity is set to false.
+    */
+    this.gravity = new Phaser.Point();
+
+    /**
+    * @property ***REMOVED***Phaser.Point***REMOVED*** bounce - The elasticity of the Body when colliding. bounce.x/y = 1 means full rebound, bounce.x/y = 0.5 means 50% rebound velocity.
+    */
+    this.bounce = new Phaser.Point();
+
+    /**
+    * The elasticity of the Body when colliding with the World bounds.
+    * By default this property is `null`, in which case `Body.bounce` is used instead. Set this property
+    * to a Phaser.Point object in order to enable a World bounds specific bounce value.
+    * @property ***REMOVED***Phaser.Point***REMOVED*** worldBounce
+    */
+    this.worldBounce = null;
+
+    /**
+    * A Signal that is dispatched when this Body collides with the world bounds.
+    * Due to the potentially high volume of signals this could create it is disabled by default.
+    * To use this feature set this property to a Phaser.Signal: `sprite.body.onWorldBounds = new Phaser.Signal()`
+    * and it will be called when a collision happens, passing five arguments:
+    * `onWorldBounds(sprite, up, down, left, right)`
+    * where the Sprite is a reference to the Sprite that owns this Body, and the other arguments are booleans
+    * indicating on which side of the world the Body collided.
+    * @property ***REMOVED***Phaser.Signal***REMOVED*** onWorldBounds
+    */
+    this.onWorldBounds = null;
+
+    /**
+    * A Signal that is dispatched when this Body collides with another Body.
+    * 
+    * You still need to call `game.physics.arcade.collide` in your `update` method in order
+    * for this signal to be dispatched.
+    *
+    * Usually you'd pass a callback to the `collide` method, but this signal provides for
+    * a different level of notification.
+    * 
+    * Due to the potentially high volume of signals this could create it is disabled by default.
+    * 
+    * To use this feature set this property to a Phaser.Signal: `sprite.body.onCollide = new Phaser.Signal()`
+    * and it will be called when a collision happens, passing two arguments: the sprites which collided.
+    * The first sprite in the argument is always the owner of this Body.
+    * 
+    * If two Bodies with this Signal set collide, both will dispatch the Signal.
+    * @property ***REMOVED***Phaser.Signal***REMOVED*** onCollide
+    */
+    this.onCollide = null;
+
+    /**
+    * A Signal that is dispatched when this Body overlaps with another Body.
+    * 
+    * You still need to call `game.physics.arcade.overlap` in your `update` method in order
+    * for this signal to be dispatched.
+    *
+    * Usually you'd pass a callback to the `overlap` method, but this signal provides for
+    * a different level of notification.
+    * 
+    * Due to the potentially high volume of signals this could create it is disabled by default.
+    * 
+    * To use this feature set this property to a Phaser.Signal: `sprite.body.onOverlap = new Phaser.Signal()`
+    * and it will be called when a collision happens, passing two arguments: the sprites which collided.
+    * The first sprite in the argument is always the owner of this Body.
+    * 
+    * If two Bodies with this Signal set collide, both will dispatch the Signal.
+    * @property ***REMOVED***Phaser.Signal***REMOVED*** onOverlap
+    */
+    this.onOverlap = null;
+
+    /**
+    * @property ***REMOVED***Phaser.Point***REMOVED*** maxVelocity - The maximum velocity in pixels per second sq. that the Body can reach.
+    * @default
+    */
+    this.maxVelocity = new Phaser.Point(10000, 10000);
+
+    /**
+    * @property ***REMOVED***Phaser.Point***REMOVED*** friction - The amount of movement that will occur if another object 'rides' this one.
+    */
+    this.friction = new Phaser.Point(1, 0);
+
+    /**
+    * @property ***REMOVED***number***REMOVED*** angularVelocity - The angular velocity controls the rotation speed of the Body. It is measured in degrees per second.
+    * @default
+    */
+    this.angularVelocity = 0;
+
+    /**
+    * @property ***REMOVED***number***REMOVED*** angularAcceleration - The angular acceleration is the rate of change of the angular velocity. Measured in degrees per second squared.
+    * @default
+    */
+    this.angularAcceleration = 0;
+
+    /**
+    * @property ***REMOVED***number***REMOVED*** angularDrag - The drag applied during the rotation of the Body. Measured in degrees per second squared.
+    * @default
+    */
+    this.angularDrag = 0;
+
+    /**
+    * @property ***REMOVED***number***REMOVED*** maxAngular - The maximum angular velocity in degrees per second that the Body can reach.
+    * @default
+    */
+    this.maxAngular = 1000;
+
+    /**
+    * @property ***REMOVED***number***REMOVED*** mass - The mass of the Body. When two bodies collide their mass is used in the calculation to determine the exchange of velocity.
+    * @default
+    */
+    this.mass = 1;
+
+    /**
+    * @property ***REMOVED***number***REMOVED*** angle - The angle of the Body's velocity in radians.
+    * @readonly
+    */
+    this.angle = 0;
+
+    /**
+    * @property ***REMOVED***number***REMOVED*** speed - The speed of the Body as calculated by its velocity.
+    * @readonly
+    */
+    this.speed = 0;
+
+    /**
+    * @property ***REMOVED***number***REMOVED*** facing - A const reference to the direction the Body is traveling or facing.
+    * @default
+    */
+    this.facing = Phaser.NONE;
+
+    /**
+    * @property ***REMOVED***boolean***REMOVED*** immovable - An immovable Body will not receive any impacts from other bodies.
+    * @default
+    */
+    this.immovable = false;
+
+    /**
+    * If you have a Body that is being moved around the world via a tween or a Group motion, but its local x/y position never
+    * actually changes, then you should set Body.moves = false. Otherwise it will most likely fly off the screen.
+    * If you want the physics system to move the body around, then set moves to true.
+    * @property ***REMOVED***boolean***REMOVED*** moves - Set to true to allow the Physics system to move this Body, otherwise false to move it manually.
+    * @default
+    */
+    this.moves = true;
+
+    /**
+    * This flag allows you to disable the custom x separation that takes place by Physics.Arcade.separate.
+    * Used in combination with your own collision processHandler you can create whatever type of collision response you need.
+    * @property ***REMOVED***boolean***REMOVED*** customSeparateX - Use a custom separation system or the built-in one?
+    * @default
+    */
+    this.customSeparateX = false;
+
+    /**
+    * This flag allows you to disable the custom y separation that takes place by Physics.Arcade.separate.
+    * Used in combination with your own collision processHandler you can create whatever type of collision response you need.
+    * @property ***REMOVED***boolean***REMOVED*** customSeparateY - Use a custom separation system or the built-in one?
+    * @default
+    */
+    this.customSeparateY = false;
+
+    /**
+    * When this body collides with another, the amount of overlap is stored here.
+    * @property ***REMOVED***number***REMOVED*** overlapX - The amount of horizontal overlap during the collision.
+    */
+    this.overlapX = 0;
+
+    /**
+    * When this body collides with another, the amount of overlap is stored here.
+    * @property ***REMOVED***number***REMOVED*** overlapY - The amount of vertical overlap during the collision.
+    */
+    this.overlapY = 0;
+
+    /**
+    * If `Body.isCircle` is true, and this body collides with another circular body, the amount of overlap is stored here.
+    * @property ***REMOVED***number***REMOVED*** overlapR - The amount of overlap during the collision.
+    */
+    this.overlapR = 0;
+
+    /**
+    * If a body is overlapping with another body, but neither of them are moving (maybe they spawned on-top of each other?) this is set to true.
+    * @property ***REMOVED***boolean***REMOVED*** embedded - Body embed value.
+    */
+    this.embedded = false;
+
+    /**
+    * A Body can be set to collide against the World bounds automatically and rebound back into the World if this is set to true. Otherwise it will leave the World.
+    * @property ***REMOVED***boolean***REMOVED*** collideWorldBounds - Should the Body collide with the World bounds?
+    */
+    this.collideWorldBounds = false;
+
+    /**
+    * Set the checkCollision properties to control which directions collision is processed for this Body.
+    * For example checkCollision.up = false means it won't collide when the collision happened while moving up.
+    * If you need to disable a Body entirely, use `body.enable = false`, this will also disable motion.
+    * If you need to disable just collision and/or overlap checks, but retain motion, set `checkCollision.none = true`.
+    * @property ***REMOVED***object***REMOVED*** checkCollision - An object containing allowed collision.
+    */
+    this.checkCollision = ***REMOVED*** none: false, any: true, up: true, down: true, left: true, right: true ***REMOVED***;
+
+    /**
+    * This object is populated with boolean values when the Body collides with another.
+    * touching.up = true means the collision happened to the top of this Body for example.
+    * @property ***REMOVED***object***REMOVED*** touching - An object containing touching results.
+    */
+    this.touching = ***REMOVED*** none: true, up: false, down: false, left: false, right: false ***REMOVED***;
+
+    /**
+    * This object is populated with previous touching values from the bodies previous collision.
+    * @property ***REMOVED***object***REMOVED*** wasTouching - An object containing previous touching results.
+    */
+    this.wasTouching = ***REMOVED*** none: true, up: false, down: false, left: false, right: false ***REMOVED***;
+
+    /**
+    * This object is populated with boolean values when the Body collides with the World bounds or a Tile.
+    * For example if blocked.up is true then the Body cannot move up.
+    * @property ***REMOVED***object***REMOVED*** blocked - An object containing on which faces this Body is blocked from moving, if any.
+    */
+    this.blocked = ***REMOVED*** up: false, down: false, left: false, right: false ***REMOVED***;
+
+    /**
+    * If this is an especially small or fast moving object then it can sometimes skip over tilemap collisions if it moves through a tile in a step.
+    * Set this padding value to add extra padding to its bounds. tilePadding.x applied to its width, y to its height.
+    * @property ***REMOVED***Phaser.Point***REMOVED*** tilePadding - Extra padding to be added to this sprite's dimensions when checking for tile collision.
+    */
+    this.tilePadding = new Phaser.Point();
+
+    /**
+    * @property ***REMOVED***boolean***REMOVED*** dirty - If this Body in a preUpdate (true) or postUpdate (false) state?
+    */
+    this.dirty = false;
+
+    /**
+    * @property ***REMOVED***boolean***REMOVED*** skipQuadTree - If true and you collide this Sprite against a Group, it will disable the collision check from using a QuadTree.
+    */
+    this.skipQuadTree = false;
+
+    /**
+    * If true the Body will check itself against the Sprite.getBounds() dimensions and adjust its width and height accordingly.
+    * If false it will compare its dimensions against the Sprite scale instead, and adjust its width height if the scale has changed.
+    * Typically you would need to enable syncBounds if your sprite is the child of a responsive display object such as a FlexLayer, 
+    * or in any situation where the Sprite scale doesn't change, but its parents scale is effecting the dimensions regardless.
+    * @property ***REMOVED***boolean***REMOVED*** syncBounds
+    * @default
+    */
+    this.syncBounds = false;
+
+    /**
+    * @property ***REMOVED***boolean***REMOVED*** isMoving - Set by the `moveTo` and `moveFrom` methods.
+    */
+    this.isMoving = false;
+
+    /**
+    * @property ***REMOVED***boolean***REMOVED*** stopVelocityOnCollide - Set by the `moveTo` and `moveFrom` methods.
+    */
+    this.stopVelocityOnCollide = true;
+
+    /**
+    * @property ***REMOVED***integer***REMOVED*** moveTimer - Internal time used by the `moveTo` and `moveFrom` methods.
+    * @private
+    */
+    this.moveTimer = 0;
+
+    /**
+    * @property ***REMOVED***integer***REMOVED*** moveDistance - Internal distance value, used by the `moveTo` and `moveFrom` methods.
+    * @private
+    */
+    this.moveDistance = 0;
+
+    /**
+    * @property ***REMOVED***integer***REMOVED*** moveDuration - Internal duration value, used by the `moveTo` and `moveFrom` methods.
+    * @private
+    */
+    this.moveDuration = 0;
+
+    /**
+    * @property ***REMOVED***Phaser.Line***REMOVED*** moveTarget - Set by the `moveTo` method, and updated each frame.
+    * @private
+    */
+    this.moveTarget = null;
+
+    /**
+    * @property ***REMOVED***Phaser.Point***REMOVED*** moveEnd - Set by the `moveTo` method, and updated each frame.
+    * @private
+    */
+    this.moveEnd = null;
+
+    /**
+    * @property ***REMOVED***Phaser.Signal***REMOVED*** onMoveComplete - Listen for the completion of `moveTo` or `moveFrom` events.
+    */
+    this.onMoveComplete = new Phaser.Signal();
+
+    /**
+    * @property ***REMOVED***function***REMOVED*** movementCallback - Optional callback. If set, invoked during the running of `moveTo` or `moveFrom` events.
+    */
+    this.movementCallback = null;
+
+    /**
+    * @property ***REMOVED***object***REMOVED*** movementCallbackContext - Context in which to call the movementCallback.
+    */
+    this.movementCallbackContext = null;
+
+    /**
+    * @property ***REMOVED***boolean***REMOVED*** _reset - Internal cache var.
+    * @private
+    */
+    this._reset = true;
+
+    /**
+    * @property ***REMOVED***number***REMOVED*** _sx - Internal cache var.
+    * @private
+    */
+    this._sx = sprite.scale.x;
+
+    /**
+    * @property ***REMOVED***number***REMOVED*** _sy - Internal cache var.
+    * @private
+    */
+    this._sy = sprite.scale.y;
+
+    /**
+    * @property ***REMOVED***number***REMOVED*** _dx - Internal cache var.
+    * @private
+    */
+    this._dx = 0;
+
+    /**
+    * @property ***REMOVED***number***REMOVED*** _dy - Internal cache var.
+    * @private
+    */
+    this._dy = 0;
+
+***REMOVED***;
+
+Phaser.Physics.Arcade.Body.prototype = ***REMOVED***
+
+    /**
+    * Internal method.
+    *
+    * @method Phaser.Physics.Arcade.Body#updateBounds
+    * @protected
+    */
+    updateBounds: function () ***REMOVED***
+
+        if (this.syncBounds)
+        ***REMOVED***
+            var b = this.sprite.getBounds();
+            b.ceilAll();
+
+            if (b.width !== this.width || b.height !== this.height)
+            ***REMOVED***
+                this.width = b.width;
+                this.height = b.height;
+                this._reset = true;
+            ***REMOVED***
+        ***REMOVED***
+        else
+        ***REMOVED***
+            var asx = Math.abs(this.sprite.scale.x);
+            var asy = Math.abs(this.sprite.scale.y);
+
+            if (asx !== this._sx || asy !== this._sy)
+            ***REMOVED***
+                this.width = this.sourceWidth * asx;
+                this.height = this.sourceHeight * asy;
+                this._sx = asx;
+                this._sy = asy;
+                this._reset = true;
+            ***REMOVED***
+        ***REMOVED***
+
+        if (this._reset)
+        ***REMOVED***
+            this.halfWidth = Math.floor(this.width / 2);
+            this.halfHeight = Math.floor(this.height / 2);
+            this.center.setTo(this.position.x + this.halfWidth, this.position.y + this.halfHeight);
+        ***REMOVED***
+
+    ***REMOVED***,
+
+    /**
+    * Internal method.
+    *
+    * @method Phaser.Physics.Arcade.Body#preUpdate
+    * @protected
+    */
+    preUpdate: function () ***REMOVED***
+
+        if (!this.enable || this.game.physics.arcade.isPaused)
+        ***REMOVED***
+            return;
+        ***REMOVED***
+
+        this.dirty = true;
+
+        //  Store and reset collision flags
+        this.wasTouching.none = this.touching.none;
+        this.wasTouching.up = this.touching.up;
+        this.wasTouching.down = this.touching.down;
+        this.wasTouching.left = this.touching.left;
+        this.wasTouching.right = this.touching.right;
+
+        this.touching.none = true;
+        this.touching.up = false;
+        this.touching.down = false;
+        this.touching.left = false;
+        this.touching.right = false;
+
+        this.blocked.up = false;
+        this.blocked.down = false;
+        this.blocked.left = false;
+        this.blocked.right = false;
+
+        this.embedded = false;
+
+        this.updateBounds();
+
+        this.position.x = (this.sprite.world.x - (this.sprite.anchor.x * this.sprite.width)) + this.sprite.scale.x * this.offset.x;
+        this.position.x -= this.sprite.scale.x &lt; 0 ? this.width : 0;
+
+        this.position.y = (this.sprite.world.y - (this.sprite.anchor.y * this.sprite.height)) + this.sprite.scale.y * this.offset.y;
+        this.position.y -= this.sprite.scale.y &lt; 0 ? this.height : 0;
+
+        this.rotation = this.sprite.angle;
+
+        this.preRotation = this.rotation;
+
+        if (this._reset || this.sprite.fresh)
+        ***REMOVED***
+            this.prev.x = this.position.x;
+            this.prev.y = this.position.y;
+        ***REMOVED***
+
+        if (this.moves)
+        ***REMOVED***
+            this.game.physics.arcade.updateMotion(this);
+
+            this.newVelocity.set(this.velocity.x * this.game.time.physicsElapsed, this.velocity.y * this.game.time.physicsElapsed);
+
+            this.position.x += this.newVelocity.x;
+            this.position.y += this.newVelocity.y;
+
+            if (this.position.x !== this.prev.x || this.position.y !== this.prev.y)
+            ***REMOVED***
+                this.angle = Math.atan2(this.velocity.y, this.velocity.x);
+            ***REMOVED***
+
+            this.speed = Math.sqrt(this.velocity.x * this.velocity.x + this.velocity.y * this.velocity.y);
+
+            //  Now the State update will throw collision checks at the Body
+            //  And finally we'll integrate the new position back to the Sprite in postUpdate
+
+            if (this.collideWorldBounds)
+            ***REMOVED***
+                if (this.checkWorldBounds() &amp;&amp; this.onWorldBounds)
+                ***REMOVED***
+                    this.onWorldBounds.dispatch(this.sprite, this.blocked.up, this.blocked.down, this.blocked.left, this.blocked.right);
+                ***REMOVED***
+            ***REMOVED***
+        ***REMOVED***
+
+        this._dx = this.deltaX();
+        this._dy = this.deltaY();
+
+        this._reset = false;
+
+    ***REMOVED***,
+
+    /**
+    * Internal method.
+    *
+    * @method Phaser.Physics.Arcade.Body#updateMovement
+    * @protected
+    */
+    updateMovement: function () ***REMOVED***
+
+        var percent = 0;
+        var collided = (this.overlapX !== 0 || this.overlapY !== 0);
+
+        //  Duration or Distance based?
+
+        if (this.moveDuration > 0)
+        ***REMOVED***
+            this.moveTimer += this.game.time.elapsedMS;
+
+            percent = this.moveTimer / this.moveDuration;
+        ***REMOVED***
+        else
+        ***REMOVED***
+            this.moveTarget.end.set(this.position.x, this.position.y);
+
+            percent = this.moveTarget.length / this.moveDistance;
+        ***REMOVED***
+
+        if (this.movementCallback)
+        ***REMOVED***
+            var result = this.movementCallback.call(this.movementCallbackContext, this, this.velocity, percent);
+        ***REMOVED***
+
+        if (collided || percent >= 1 || (result !== undefined &amp;&amp; result !== true))
+        ***REMOVED***
+            this.stopMovement((percent >= 1) || (this.stopVelocityOnCollide &amp;&amp; collided));
+            return false;
+        ***REMOVED***
+
+        return true;
+
+    ***REMOVED***,
+
+    /**
+    * If this Body is moving as a result of a call to `moveTo` or `moveFrom` (i.e. it
+    * has Body.isMoving true), then calling this method will stop the movement before
+    * either the duration or distance counters expire.
+    *
+    * The `onMoveComplete` signal is dispatched.
+    *
+    * @method Phaser.Physics.Arcade.Body#stopMovement
+    * @param ***REMOVED***boolean***REMOVED*** [stopVelocity] - Should the Body.velocity be set to zero?
+    */
+    stopMovement: function (stopVelocity) ***REMOVED***
+
+        if (this.isMoving)
+        ***REMOVED***
+            this.isMoving = false;
+
+            if (stopVelocity)
+            ***REMOVED***
+                this.velocity.set(0);
+            ***REMOVED***
+
+            //  Send the Sprite this Body belongs to
+            //  and a boolean indicating if it stopped because of a collision or not
+            this.onMoveComplete.dispatch(this.sprite, (this.overlapX !== 0 || this.overlapY !== 0));
+        ***REMOVED***
+
+    ***REMOVED***,
+
+    /**
+    * Internal method.
+    *
+    * @method Phaser.Physics.Arcade.Body#postUpdate
+    * @protected
+    */
+    postUpdate: function () ***REMOVED***
+
+        //  Only allow postUpdate to be called once per frame
+        if (!this.enable || !this.dirty)
+        ***REMOVED***
+            return;
+        ***REMOVED***
+
+        //  Moving?
+        if (this.isMoving)
+        ***REMOVED***
+            this.updateMovement();
+        ***REMOVED***
+
+        this.dirty = false;
+
+        if (this.deltaX() &lt; 0)
+        ***REMOVED***
+            this.facing = Phaser.LEFT;
+        ***REMOVED***
+        else if (this.deltaX() > 0)
+        ***REMOVED***
+            this.facing = Phaser.RIGHT;
+        ***REMOVED***
+
+        if (this.deltaY() &lt; 0)
+        ***REMOVED***
+            this.facing = Phaser.UP;
+        ***REMOVED***
+        else if (this.deltaY() > 0)
+        ***REMOVED***
+            this.facing = Phaser.DOWN;
+        ***REMOVED***
+
+        if (this.moves)
+        ***REMOVED***
+            this._dx = this.deltaX();
+            this._dy = this.deltaY();
+
+            if (this.deltaMax.x !== 0 &amp;&amp; this._dx !== 0)
+            ***REMOVED***
+                if (this._dx &lt; 0 &amp;&amp; this._dx &lt; -this.deltaMax.x)
+                ***REMOVED***
+                    this._dx = -this.deltaMax.x;
+                ***REMOVED***
+                else if (this._dx > 0 &amp;&amp; this._dx > this.deltaMax.x)
+                ***REMOVED***
+                    this._dx = this.deltaMax.x;
+                ***REMOVED***
+            ***REMOVED***
+
+            if (this.deltaMax.y !== 0 &amp;&amp; this._dy !== 0)
+            ***REMOVED***
+                if (this._dy &lt; 0 &amp;&amp; this._dy &lt; -this.deltaMax.y)
+                ***REMOVED***
+                    this._dy = -this.deltaMax.y;
+                ***REMOVED***
+                else if (this._dy > 0 &amp;&amp; this._dy > this.deltaMax.y)
+                ***REMOVED***
+                    this._dy = this.deltaMax.y;
+                ***REMOVED***
+            ***REMOVED***
+
+            this.sprite.position.x += this._dx;
+            this.sprite.position.y += this._dy;
+            this._reset = true;
+        ***REMOVED***
+
+        this.center.setTo(this.position.x + this.halfWidth, this.position.y + this.halfHeight);
+
+        if (this.allowRotation)
+        ***REMOVED***
+            this.sprite.angle += this.deltaZ();
+        ***REMOVED***
+
+        this.prev.x = this.position.x;
+        this.prev.y = this.position.y;
+
+    ***REMOVED***,
+
+    /**
+    * Internal method.
+    *
+    * @method Phaser.Physics.Arcade.Body#checkWorldBounds
+    * @protected
+    * @return ***REMOVED***boolean***REMOVED*** True if the Body collided with the world bounds, otherwise false.
+    */
+    checkWorldBounds: function () ***REMOVED***
+
+        var pos = this.position;
+        var bounds = this.game.physics.arcade.bounds;
+        var check = this.game.physics.arcade.checkCollision;
+
+        var bx = (this.worldBounce) ? -this.worldBounce.x : -this.bounce.x;
+        var by = (this.worldBounce) ? -this.worldBounce.y : -this.bounce.y;
+
+        if (this.isCircle)
+        ***REMOVED***
+            var bodyBounds = ***REMOVED***
+                x: this.center.x - this.radius,
+                y: this.center.y - this.radius,
+                right: this.center.x + this.radius,
+                bottom: this.center.y + this.radius
+            ***REMOVED***;
+
+            if (bodyBounds.x &lt; bounds.x &amp;&amp; check.left)
+            ***REMOVED***
+                pos.x = bounds.x - this.halfWidth + this.radius;
+                this.velocity.x *= bx;
+                this.blocked.left = true;
+            ***REMOVED***
+            else if (bodyBounds.right > bounds.right &amp;&amp; check.right)
+            ***REMOVED***
+                pos.x = bounds.right - this.halfWidth - this.radius;
+                this.velocity.x *= bx;
+                this.blocked.right = true;
+            ***REMOVED***
+
+            if (bodyBounds.y &lt; bounds.y &amp;&amp; check.up)
+            ***REMOVED***
+                pos.y = bounds.y - this.halfHeight + this.radius;
+                this.velocity.y *= by;
+                this.blocked.up = true;
+            ***REMOVED***
+            else if (bodyBounds.bottom > bounds.bottom &amp;&amp; check.down)
+            ***REMOVED***
+                pos.y = bounds.bottom  - this.halfHeight - this.radius;
+                this.velocity.y *= by;
+                this.blocked.down = true;
+            ***REMOVED***
+        ***REMOVED***
+        else
+        ***REMOVED***
+            if (pos.x &lt; bounds.x &amp;&amp; check.left)
+            ***REMOVED***
+                pos.x = bounds.x;
+                this.velocity.x *= bx;
+                this.blocked.left = true;
+            ***REMOVED***
+            else if (this.right > bounds.right &amp;&amp; check.right)
+            ***REMOVED***
+                pos.x = bounds.right - this.width;
+                this.velocity.x *= bx;
+                this.blocked.right = true;
+            ***REMOVED***
+
+            if (pos.y &lt; bounds.y &amp;&amp; check.up)
+            ***REMOVED***
+                pos.y = bounds.y;
+                this.velocity.y *= by;
+                this.blocked.up = true;
+            ***REMOVED***
+            else if (this.bottom > bounds.bottom &amp;&amp; check.down)
+            ***REMOVED***
+                pos.y = bounds.bottom - this.height;
+                this.velocity.y *= by;
+                this.blocked.down = true;
+            ***REMOVED***
+        ***REMOVED***
+
+        return (this.blocked.up || this.blocked.down || this.blocked.left || this.blocked.right);
+
+    ***REMOVED***,
+
+    /**
+    * Note: This method is experimental, and may be changed or removed in a future release.
+    * 
+    * This method moves the Body in the given direction, for the duration specified.
+    * It works by setting the velocity on the Body, and an internal timer, and then
+    * monitoring the duration each frame. When the duration is up the movement is
+    * stopped and the `Body.onMoveComplete` signal is dispatched.
+    *
+    * Movement also stops if the Body collides or overlaps with any other Body.
+    * 
+    * You can control if the velocity should be reset to zero on collision, by using
+    * the property `Body.stopVelocityOnCollide`.
+    *
+    * Stop the movement at any time by calling `Body.stopMovement`.
+    *
+    * You can optionally set a speed in pixels per second. If not specified it
+    * will use the current `Body.speed` value. If this is zero, the function will return false.
+    *
+    * Please note that due to browser timings you should allow for a variance in 
+    * when the duration will actually expire. Depending on system it may be as much as
+    * +- 50ms. Also this method doesn't take into consideration any other forces acting
+    * on the Body, such as Gravity, drag or maxVelocity, all of which may impact the
+    * movement.
+    * 
+    * @method Phaser.Physics.Arcade.Body#moveFrom
+    * @param  ***REMOVED***integer***REMOVED*** duration  - The duration of the movement, in ms.
+    * @param  ***REMOVED***integer***REMOVED*** [speed] - The speed of the movement, in pixels per second. If not provided `Body.speed` is used.
+    * @param  ***REMOVED***integer***REMOVED*** [direction] - The angle of movement. If not provided `Body.angle` is used.
+    * @return ***REMOVED***boolean***REMOVED*** True if the movement successfully started, otherwise false.
+    */
+    moveFrom: function (duration, speed, direction) ***REMOVED***
+
+        if (speed === undefined) ***REMOVED*** speed = this.speed; ***REMOVED***
+
+        if (speed === 0)
+        ***REMOVED***
+            return false;
+        ***REMOVED***
+
+        var angle;
+
+        if (direction === undefined)
+        ***REMOVED***
+            angle = this.angle;
+            direction = this.game.math.radToDeg(angle);
+        ***REMOVED***
+        else
+        ***REMOVED***
+            angle = this.game.math.degToRad(direction);
+        ***REMOVED***
+
+        this.moveTimer = 0;
+        this.moveDuration = duration;
+
+        //  Avoid sin/cos
+        if (direction === 0 || direction === 180)
+        ***REMOVED***
+            this.velocity.set(Math.cos(angle) * speed, 0);
+        ***REMOVED***
+        else if (direction === 90 || direction === 270)
+        ***REMOVED***
+            this.velocity.set(0, Math.sin(angle) * speed);
+        ***REMOVED***
+        else
+        ***REMOVED***
+            this.velocity.set(Math.cos(angle) * speed, Math.sin(angle) * speed);
+        ***REMOVED***
+
+        this.isMoving = true;
+
+        return true;
+
+    ***REMOVED***,
+
+    /**
+    * Note: This method is experimental, and may be changed or removed in a future release.
+    * 
+    * This method moves the Body in the given direction, for the duration specified.
+    * It works by setting the velocity on the Body, and an internal distance counter.
+    * The distance is monitored each frame. When the distance equals the distance
+    * specified in this call, the movement is stopped, and the `Body.onMoveComplete` 
+    * signal is dispatched.
+    *
+    * Movement also stops if the Body collides or overlaps with any other Body.
+    * 
+    * You can control if the velocity should be reset to zero on collision, by using
+    * the property `Body.stopVelocityOnCollide`.
+    *
+    * Stop the movement at any time by calling `Body.stopMovement`.
+    *
+    * Please note that due to browser timings you should allow for a variance in 
+    * when the distance will actually expire.
+    * 
+    * Note: This method doesn't take into consideration any other forces acting
+    * on the Body, such as Gravity, drag or maxVelocity, all of which may impact the
+    * movement.
+    * 
+    * @method Phaser.Physics.Arcade.Body#moveTo
+    * @param  ***REMOVED***integer***REMOVED*** duration - The duration of the movement, in ms.
+    * @param  ***REMOVED***integer***REMOVED*** distance - The distance, in pixels, the Body will move.
+    * @param  ***REMOVED***integer***REMOVED*** [direction] - The angle of movement. If not provided `Body.angle` is used.
+    * @return ***REMOVED***boolean***REMOVED*** True if the movement successfully started, otherwise false.
+    */
+    moveTo: function (duration, distance, direction) ***REMOVED***
+
+        var speed = distance / (duration / 1000);
+
+        if (speed === 0)
+        ***REMOVED***
+            return false;
+        ***REMOVED***
+
+        var angle;
+
+        if (direction === undefined)
+        ***REMOVED***
+            angle = this.angle;
+            direction = this.game.math.radToDeg(angle);
+        ***REMOVED***
+        else
+        ***REMOVED***
+            angle = this.game.math.degToRad(direction);
+        ***REMOVED***
+
+        distance = Math.abs(distance);
+
+        this.moveDuration = 0;
+        this.moveDistance = distance;
+
+        if (this.moveTarget === null)
+        ***REMOVED***
+            this.moveTarget = new Phaser.Line();
+            this.moveEnd = new Phaser.Point();
+        ***REMOVED***
+
+        this.moveTarget.fromAngle(this.x, this.y, angle, distance);
+
+        this.moveEnd.set(this.moveTarget.end.x, this.moveTarget.end.y);
+
+        this.moveTarget.setTo(this.x, this.y, this.x, this.y);
+
+        //  Avoid sin/cos
+        if (direction === 0 || direction === 180)
+        ***REMOVED***
+            this.velocity.set(Math.cos(angle) * speed, 0);
+        ***REMOVED***
+        else if (direction === 90 || direction === 270)
+        ***REMOVED***
+            this.velocity.set(0, Math.sin(angle) * speed);
+        ***REMOVED***
+        else
+        ***REMOVED***
+            this.velocity.set(Math.cos(angle) * speed, Math.sin(angle) * speed);
+        ***REMOVED***
+
+        this.isMoving = true;
+
+        return true;
+
+    ***REMOVED***,
+
+    /**
+    * You can modify the size of the physics Body to be any dimension you need.
+    * This allows you to make it smaller, or larger, than the parent Sprite.
+    * You can also control the x and y offset of the Body. This is the position of the
+    * Body relative to the top-left of the Sprite _texture_.
+    *
+    * For example: If you have a Sprite with a texture that is 80x100 in size,
+    * and you want the physics body to be 32x32 pixels in the middle of the texture, you would do:
+    *
+    * `setSize(32, 32, 24, 34)`
+    *
+    * Where the first two parameters is the new Body size (32x32 pixels).
+    * 24 is the horizontal offset of the Body from the top-left of the Sprites texture, and 34
+    * is the vertical offset.
+    *
+    * Calling `setSize` on a Body that has already had `setCircle` will reset all of the Circle
+    * properties, making this Body rectangular again.
+    *
+    * @method Phaser.Physics.Arcade.Body#setSize
+    * @param ***REMOVED***number***REMOVED*** width - The width of the Body.
+    * @param ***REMOVED***number***REMOVED*** height - The height of the Body.
+    * @param ***REMOVED***number***REMOVED*** [offsetX] - The X offset of the Body from the top-left of the Sprites texture.
+    * @param ***REMOVED***number***REMOVED*** [offsetY] - The Y offset of the Body from the top-left of the Sprites texture.
+    */
+    setSize: function (width, height, offsetX, offsetY) ***REMOVED***
+
+        if (offsetX === undefined) ***REMOVED*** offsetX = this.offset.x; ***REMOVED***
+        if (offsetY === undefined) ***REMOVED*** offsetY = this.offset.y; ***REMOVED***
+
+        this.sourceWidth = width;
+        this.sourceHeight = height;
+        this.width = this.sourceWidth * this._sx;
+        this.height = this.sourceHeight * this._sy;
+        this.halfWidth = Math.floor(this.width / 2);
+        this.halfHeight = Math.floor(this.height / 2);
+        this.offset.setTo(offsetX, offsetY);
+
+        this.center.setTo(this.position.x + this.halfWidth, this.position.y + this.halfHeight);
+
+        this.isCircle = false;
+        this.radius = 0;
+
+    ***REMOVED***,
+
+    /**
+    * Sets this Body as using a circle, of the given radius, for all collision detection instead of a rectangle.
+    * The radius is given in pixels and is the distance from the center of the circle to the edge.
+    *
+    * You can also control the x and y offset, which is the position of the Body relative to the top-left of the Sprite.
+    *
+    * To change a Body back to being rectangular again call `Body.setSize`.
+    *
+    * Note: Circular collision only happens with other Arcade Physics bodies, it does not
+    * work against tile maps, where rectangular collision is the only method supported.
+    *
+    * @method Phaser.Physics.Arcade.Body#setCircle
+    * @param ***REMOVED***number***REMOVED*** [radius] - The radius of the Body in pixels. Pass a value of zero / undefined, to stop the Body using a circle for collision.
+    * @param ***REMOVED***number***REMOVED*** [offsetX] - The X offset of the Body from the Sprite position.
+    * @param ***REMOVED***number***REMOVED*** [offsetY] - The Y offset of the Body from the Sprite position.
+    */
+    setCircle: function (radius, offsetX, offsetY) ***REMOVED***
+
+        if (offsetX === undefined) ***REMOVED*** offsetX = this.offset.x; ***REMOVED***
+        if (offsetY === undefined) ***REMOVED*** offsetY = this.offset.y; ***REMOVED***
+
+        if (radius > 0)
+        ***REMOVED***
+            this.isCircle = true;
+            this.radius = radius;
+
+            this.sourceWidth = radius * 2;
+            this.sourceHeight = radius * 2;
+
+            this.width = this.sourceWidth * this._sx;
+            this.height = this.sourceHeight * this._sy;
+
+            this.halfWidth = Math.floor(this.width / 2);
+            this.halfHeight = Math.floor(this.height / 2);
+
+            this.offset.setTo(offsetX, offsetY);
+
+            this.center.setTo(this.position.x + this.halfWidth, this.position.y + this.halfHeight);
+        ***REMOVED***
+        else
+        ***REMOVED***
+            this.isCircle = false;
+        ***REMOVED***
+
+    ***REMOVED***,
+
+    /**
+    * Resets all Body values (velocity, acceleration, rotation, etc)
+    *
+    * @method Phaser.Physics.Arcade.Body#reset
+    * @param ***REMOVED***number***REMOVED*** x - The new x position of the Body.
+    * @param ***REMOVED***number***REMOVED*** y - The new y position of the Body.
+    */
+    reset: function (x, y) ***REMOVED***
+
+        this.velocity.set(0);
+        this.acceleration.set(0);
+
+        this.speed = 0;
+        this.angularVelocity = 0;
+        this.angularAcceleration = 0;
+
+        this.position.x = (x - (this.sprite.anchor.x * this.sprite.width)) + this.sprite.scale.x * this.offset.x;
+        this.position.x -= this.sprite.scale.x &lt; 0 ? this.width : 0;
+
+        this.position.y = (y - (this.sprite.anchor.y * this.sprite.height)) + this.sprite.scale.y * this.offset.y;
+        this.position.y -= this.sprite.scale.y &lt; 0 ? this.height : 0;
+
+        this.prev.x = this.position.x;
+        this.prev.y = this.position.y;
+
+        this.rotation = this.sprite.angle;
+        this.preRotation = this.rotation;
+
+        this._sx = this.sprite.scale.x;
+        this._sy = this.sprite.scale.y;
+
+        this.center.setTo(this.position.x + this.halfWidth, this.position.y + this.halfHeight);
+
+    ***REMOVED***,
+
+    /**
+    * Returns the bounds of this physics body.
+    * 
+    * Only used internally by the World collision methods.
+    *
+    * @method Phaser.Physics.Arcade.Body#getBounds
+    * @param ***REMOVED***object***REMOVED*** obj - The object in which to set the bounds values.
+    * @return ***REMOVED***object***REMOVED*** The object that was given to this method.
+    */
+    getBounds: function (obj) ***REMOVED***
+
+        if (this.isCircle)
+        ***REMOVED***
+            obj.x = this.center.x - this.radius;
+            obj.y = this.center.y - this.radius;
+            obj.right = this.center.x + this.radius;
+            obj.bottom = this.center.y + this.radius;
+        ***REMOVED***
+        else
+        ***REMOVED***
+            obj.x = this.x;
+            obj.y = this.y;
+            obj.right = this.right;
+            obj.bottom = this.bottom;
+        ***REMOVED***
+
+        return obj;
+
+    ***REMOVED***,
+
+    /**
+    * Tests if a world point lies within this Body.
+    *
+    * @method Phaser.Physics.Arcade.Body#hitTest
+    * @param ***REMOVED***number***REMOVED*** x - The world x coordinate to test.
+    * @param ***REMOVED***number***REMOVED*** y - The world y coordinate to test.
+    * @return ***REMOVED***boolean***REMOVED*** True if the given coordinates are inside this Body, otherwise false.
+    */
+    hitTest: function (x, y) ***REMOVED***
+
+        return (this.isCircle) ? Phaser.Circle.contains(this, x, y) : Phaser.Rectangle.contains(this, x, y);
+
+    ***REMOVED***,
+
+    /**
+    * Returns true if the bottom of this Body is in contact with either the world bounds or a tile.
+    *
+    * @method Phaser.Physics.Arcade.Body#onFloor
+    * @return ***REMOVED***boolean***REMOVED*** True if in contact with either the world bounds or a tile.
+    */
+    onFloor: function () ***REMOVED***
+
+        return this.blocked.down;
+
+    ***REMOVED***,
+    
+    /**
+    * Returns true if the top of this Body is in contact with either the world bounds or a tile.
+    *
+    * @method Phaser.Physics.Arcade.Body#onCeiling
+    * @return ***REMOVED***boolean***REMOVED*** True if in contact with either the world bounds or a tile.
+    */
+    onCeiling: function()***REMOVED***
+
+        return this.blocked.up;
+
+    ***REMOVED***,
+
+    /**
+    * Returns true if either side of this Body is in contact with either the world bounds or a tile.
+    *
+    * @method Phaser.Physics.Arcade.Body#onWall
+    * @return ***REMOVED***boolean***REMOVED*** True if in contact with either the world bounds or a tile.
+    */
+    onWall: function () ***REMOVED***
+
+        return (this.blocked.left || this.blocked.right);
+
+    ***REMOVED***,
+
+    /**
+    * Returns the absolute delta x value.
+    *
+    * @method Phaser.Physics.Arcade.Body#deltaAbsX
+    * @return ***REMOVED***number***REMOVED*** The absolute delta value.
+    */
+    deltaAbsX: function () ***REMOVED***
+
+        return (this.deltaX() > 0 ? this.deltaX() : -this.deltaX());
+
+    ***REMOVED***,
+
+    /**
+    * Returns the absolute delta y value.
+    *
+    * @method Phaser.Physics.Arcade.Body#deltaAbsY
+    * @return ***REMOVED***number***REMOVED*** The absolute delta value.
+    */
+    deltaAbsY: function () ***REMOVED***
+
+        return (this.deltaY() > 0 ? this.deltaY() : -this.deltaY());
+
+    ***REMOVED***,
+
+    /**
+    * Returns the delta x value. The difference between Body.x now and in the previous step.
+    *
+    * @method Phaser.Physics.Arcade.Body#deltaX
+    * @return ***REMOVED***number***REMOVED*** The delta value. Positive if the motion was to the right, negative if to the left.
+    */
+    deltaX: function () ***REMOVED***
+
+        return this.position.x - this.prev.x;
+
+    ***REMOVED***,
+
+    /**
+    * Returns the delta y value. The difference between Body.y now and in the previous step.
+    *
+    * @method Phaser.Physics.Arcade.Body#deltaY
+    * @return ***REMOVED***number***REMOVED*** The delta value. Positive if the motion was downwards, negative if upwards.
+    */
+    deltaY: function () ***REMOVED***
+
+        return this.position.y - this.prev.y;
+
+    ***REMOVED***,
+
+    /**
+    * Returns the delta z value. The difference between Body.rotation now and in the previous step.
+    *
+    * @method Phaser.Physics.Arcade.Body#deltaZ
+    * @return ***REMOVED***number***REMOVED*** The delta value. Positive if the motion was clockwise, negative if anti-clockwise.
+    */
+    deltaZ: function () ***REMOVED***
+
+        return this.rotation - this.preRotation;
+
+    ***REMOVED***,
+
+    /**
+    * Destroys this Body.
+    * 
+    * First it calls Group.removeFromHash if the Game Object this Body belongs to is part of a Group.
+    * Then it nulls the Game Objects body reference, and nulls this Body.sprite reference.
+    *
+    * @method Phaser.Physics.Arcade.Body#destroy
+    */
+    destroy: function () ***REMOVED***
+
+        if (this.sprite.parent &amp;&amp; this.sprite.parent instanceof Phaser.Group)
+        ***REMOVED***
+            this.sprite.parent.removeFromHash(this.sprite);
+        ***REMOVED***
+
+        this.sprite.body = null;
+        this.sprite = null;
+
+    ***REMOVED***
+
+***REMOVED***;
+
+/**
+* @name Phaser.Physics.Arcade.Body#left
+* @property ***REMOVED***number***REMOVED*** left - The x position of the Body. The same as `Body.x`.
+*/
+Object.defineProperty(Phaser.Physics.Arcade.Body.prototype, "left", ***REMOVED***
+
+    get: function () ***REMOVED***
+
+        return this.position.x;
+
+    ***REMOVED***
+
+***REMOVED***);
+
+/**
+* @name Phaser.Physics.Arcade.Body#right
+* @property ***REMOVED***number***REMOVED*** right - The right value of this Body (same as Body.x + Body.width)
+* @readonly
+*/
+Object.defineProperty(Phaser.Physics.Arcade.Body.prototype, "right", ***REMOVED***
+
+    get: function () ***REMOVED***
+
+        return this.position.x + this.width;
+
+    ***REMOVED***
+
+***REMOVED***);
+
+/**
+* @name Phaser.Physics.Arcade.Body#top
+* @property ***REMOVED***number***REMOVED*** top - The y position of the Body. The same as `Body.y`.
+*/
+Object.defineProperty(Phaser.Physics.Arcade.Body.prototype, "top", ***REMOVED***
+
+    get: function () ***REMOVED***
+
+        return this.position.y;
+
+    ***REMOVED***
+
+***REMOVED***);
+
+/**
+* @name Phaser.Physics.Arcade.Body#bottom
+* @property ***REMOVED***number***REMOVED*** bottom - The bottom value of this Body (same as Body.y + Body.height)
+* @readonly
+*/
+Object.defineProperty(Phaser.Physics.Arcade.Body.prototype, "bottom", ***REMOVED***
+
+    get: function () ***REMOVED***
+
+        return this.position.y + this.height;
+
+    ***REMOVED***
+
+***REMOVED***);
+
+/**
+* @name Phaser.Physics.Arcade.Body#x
+* @property ***REMOVED***number***REMOVED*** x - The x position.
+*/
+Object.defineProperty(Phaser.Physics.Arcade.Body.prototype, "x", ***REMOVED***
+
+    get: function () ***REMOVED***
+
+        return this.position.x;
+
+    ***REMOVED***,
+
+    set: function (value) ***REMOVED***
+
+        this.position.x = value;
+    ***REMOVED***
+
+***REMOVED***);
+
+/**
+* @name Phaser.Physics.Arcade.Body#y
+* @property ***REMOVED***number***REMOVED*** y - The y position.
+*/
+Object.defineProperty(Phaser.Physics.Arcade.Body.prototype, "y", ***REMOVED***
+
+    get: function () ***REMOVED***
+
+        return this.position.y;
+
+    ***REMOVED***,
+
+    set: function (value) ***REMOVED***
+
+        this.position.y = value;
+
+    ***REMOVED***
+
+***REMOVED***);
+
+/**
+* Render Sprite Body.
+*
+* @method Phaser.Physics.Arcade.Body#render
+* @param ***REMOVED***object***REMOVED*** context - The context to render to.
+* @param ***REMOVED***Phaser.Physics.Arcade.Body***REMOVED*** body - The Body to render the info of.
+* @param ***REMOVED***string***REMOVED*** [color='rgba(0,255,0,0.4)'] - color of the debug info to be rendered. (format is css color string).
+* @param ***REMOVED***boolean***REMOVED*** [filled=true] - Render the objected as a filled (default, true) or a stroked (false)
+*/
+Phaser.Physics.Arcade.Body.render = function (context, body, color, filled) ***REMOVED***
+
+    if (filled === undefined) ***REMOVED*** filled = true; ***REMOVED***
+
+    color = color || 'rgba(0,255,0,0.4)';
+
+    context.fillStyle = color;
+    context.strokeStyle = color;
+
+    if (body.isCircle)
+    ***REMOVED***
+        context.beginPath();
+        context.arc(body.center.x - body.game.camera.x, body.center.y - body.game.camera.y, body.radius, 0, 2 * Math.PI);
+
+        if (filled)
+        ***REMOVED***
+            context.fill();
+        ***REMOVED***
+        else
+        ***REMOVED***
+            context.stroke();
+        ***REMOVED***
+    ***REMOVED***
+    else
+    ***REMOVED***
+        if (filled)
+        ***REMOVED***
+            context.fillRect(body.position.x - body.game.camera.x, body.position.y - body.game.camera.y, body.width, body.height);
+        ***REMOVED***
+        else
+        ***REMOVED***
+            context.strokeRect(body.position.x - body.game.camera.x, body.position.y - body.game.camera.y, body.width, body.height);
+        ***REMOVED***
+    ***REMOVED***
+
+***REMOVED***;
+
+/**
+* Render Sprite Body Physics Data as text.
+*
+* @method Phaser.Physics.Arcade.Body#renderBodyInfo
+* @param ***REMOVED***Phaser.Physics.Arcade.Body***REMOVED*** body - The Body to render the info of.
+* @param ***REMOVED***number***REMOVED*** x - X position of the debug info to be rendered.
+* @param ***REMOVED***number***REMOVED*** y - Y position of the debug info to be rendered.
+* @param ***REMOVED***string***REMOVED*** [color='rgb(255,255,255)'] - color of the debug info to be rendered. (format is css color string).
+*/
+Phaser.Physics.Arcade.Body.renderBodyInfo = function (debug, body) ***REMOVED***
+
+    debug.line('x: ' + body.x.toFixed(2), 'y: ' + body.y.toFixed(2), 'width: ' + body.width, 'height: ' + body.height);
+    debug.line('velocity x: ' + body.velocity.x.toFixed(2), 'y: ' + body.velocity.y.toFixed(2), 'deltaX: ' + body._dx.toFixed(2), 'deltaY: ' + body._dy.toFixed(2));
+    debug.line('acceleration x: ' + body.acceleration.x.toFixed(2), 'y: ' + body.acceleration.y.toFixed(2), 'speed: ' + body.speed.toFixed(2), 'angle: ' + body.angle.toFixed(2));
+    debug.line('gravity x: ' + body.gravity.x, 'y: ' + body.gravity.y, 'bounce x: ' + body.bounce.x.toFixed(2), 'y: ' + body.bounce.y.toFixed(2));
+    debug.line('touching left: ' + body.touching.left, 'right: ' + body.touching.right, 'up: ' + body.touching.up, 'down: ' + body.touching.down);
+    debug.line('blocked left: ' + body.blocked.left, 'right: ' + body.blocked.right, 'up: ' + body.blocked.up, 'down: ' + body.blocked.down);
+
+***REMOVED***;
+
+Phaser.Physics.Arcade.Body.prototype.constructor = Phaser.Physics.Arcade.Body;
+</pre>
+        </article>
+    </section>
+
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					
+		<span class="copyright">
+		Phaser Copyright © 2012-2016 Photon Storm Ltd.
+		</span>
+					<br />
+					
+		<span class="jsdoc-message">
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
+		on Fri Aug 26 2016 01:16:09 GMT+0100 (BST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		</span>
+				</footer>
+			</div>
+
+			
+			<br clear="both">
+		</div>
+
+	</div>
+	<script src="scripts/sunlight.js"></script>
+	<script src="scripts/sunlight.javascript.js"></script>
+	<script src="scripts/sunlight-plugin.doclinks.js"></script>
+	<script src="scripts/sunlight-plugin.linenumbers.js"></script>
+	<script src="scripts/sunlight-plugin.menu.js"></script>
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/jquery.scrollTo.js"></script>
+	<script src="scripts/jquery.localScroll.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/toc.js"></script>
+
+	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+
+	<script>
+		$( function () ***REMOVED***
+			$( "#toc" ).toc( ***REMOVED***
+				anchorName  : function(i, heading, prefix) ***REMOVED***
+					return $(heading).attr("id") || ( prefix + i );
+				***REMOVED***,
+				selectors   : "h1,h2,h3,h4",
+				showAndHide : false,
+				scrollTo    : 60
+			***REMOVED*** );
+			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+
+		***REMOVED*** );
+	</script>
+
+	
+
+</body>
+</html>
