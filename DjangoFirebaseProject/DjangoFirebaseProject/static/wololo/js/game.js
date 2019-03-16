@@ -14,11 +14,11 @@ function preload() ***REMOVED***
     // game.load.spritesheet('castle', '../static/wololo/mapAssets/sprites/castle.png', ***REMOVED*** frameWidth: 48, frameHeight: 48 ***REMOVED***);
     // game.load.spritesheet('pathDot', '../static/wololo/mapAssets/sprites/pathDot.png', ***REMOVED*** frameWidth: 16, frameHeight: 16 ***REMOVED***);
     // game.load.spritesheet('selected', '../static/wololo/mapAssets/sprites/selection-circle_1_64x64.png', ***REMOVED*** frameWidth: 64, frameHeight: 64 ***REMOVED***);
-    game.load.image("tiles", " http://localhost:8000/static/wololo/mapAssets/tilesets/overworld_tileset_grass.png");
-    game.load.tilemap('map', ' http://localhost:8000/static/wololo/mapAssets/tilemaps/mapv3.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.spritesheet('castle', ' http://localhost:8000/static/wololo/mapAssets/sprites/castle.png', ***REMOVED*** frameWidth: 48, frameHeight: 48 ***REMOVED***);
-    game.load.spritesheet('pathDot', ' http://localhost:8000/static/wololo/mapAssets/sprites/pathDot.png', ***REMOVED*** frameWidth: 16, frameHeight: 16 ***REMOVED***);
-    game.load.spritesheet('selected', ' http://localhost:8000/static/wololo/mapAssets/sprites/selection-circle_1_64x64.png', ***REMOVED*** frameWidth: 64, frameHeight: 64 ***REMOVED***);
+    game.load.image("tiles", " http://titans55.pythonanywhere.com/static/wololo/mapAssets/tilesets/overworld_tileset_grass.png");
+    game.load.tilemap('map', ' http://titans55.pythonanywhere.com/static/wololo/mapAssets/tilemaps/mapv3.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.spritesheet('castle', ' http://titans55.pythonanywhere.com/static/wololo/mapAssets/sprites/castle.png', ***REMOVED*** frameWidth: 48, frameHeight: 48 ***REMOVED***);
+    game.load.spritesheet('pathDot', ' http://titans55.pythonanywhere.com/static/wololo/mapAssets/sprites/pathDot.png', ***REMOVED*** frameWidth: 16, frameHeight: 16 ***REMOVED***);
+    game.load.spritesheet('selected', ' http://titans55.pythonanywhere.com/static/wololo/mapAssets/sprites/selection-circle_1_64x64.png', ***REMOVED*** frameWidth: 64, frameHeight: 64 ***REMOVED***);
 ***REMOVED***
 
 function create() ***REMOVED***
