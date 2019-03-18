@@ -33,8 +33,9 @@ def myuser_login_required(f):
 # Create your views here.
 
 def landingPage(request):
-    if(request.session['user']):
-        return redirect('myVillage')
+    if('user' in request.session):
+        if (request.session['user']):
+            return redirect('myVillage')
 
     return render(request, 'beforeLogin/landingPage.html')
 
