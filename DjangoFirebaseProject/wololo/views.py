@@ -22,7 +22,7 @@ auth = get_auth()
 def myuser_login_required(f):
     def wrap(request, *args, **kwargs):
         #this check the session if userid key exist, if not it will redirect to login page
-        if(not auth.current_user):
+        if(not request.session['user']):
             messages.error(request,'Log in in order to continue.')
             return redirect('landingPage')
              
@@ -33,6 +33,9 @@ def myuser_login_required(f):
 # Create your views here.
 
 def landingPage(request):
+    if(request.session['user']):
+        return redirect('myVillage')
+
     return render(request, 'beforeLogin/landingPage.html')
 
 def registerPage(request):
@@ -68,14 +71,14 @@ def verifyLogin(request):
                 messages.error(request,'Email is not verified.')
                 # auth.send_email_verification(user['idToken'])
                 return redirect("landingPage")
-            user_id = auth.current_user['localId']
+                
+            request.session['user'] = user
+            user_id = request.session['user']['localId']
             request.session['user_id'] = user_id
             userInfo = db.collection('players').document(user_id).get()._data
-            
             # print(userInfo['regionSelected'])
             if userInfo['regionSelected'] is False :
                 return redirect("selectRegion")
-
             
         except:
             messages.error(request,'Email or password is not correct.')
@@ -86,12 +89,13 @@ def verifyLogin(request):
     return HttpResponse("why y r here")
 
 def logout(request):
-    auth.current_user = None
+    # auth.current_user = None
+    request.session['user'] = None
     return redirect(settings.LANDING_PAGE_REDIRECT_URL)
 
 @myuser_login_required
 def selectRegionOnFirstLoginView(request):
-    user_id = auth.current_user['localId']
+    user_id = request.session['user']['localId']
     userInfo = db.collection('players').document(user_id).get()._data
     if userInfo['regionSelected'] is True :
         return redirect('myVillage')
@@ -100,7 +104,7 @@ def selectRegionOnFirstLoginView(request):
 
 @myuser_login_required
 def selectingRegion(request):
-    user_id = auth.current_user['localId']
+    user_id = request.session['user']['localId']
     userInfo = db.collection('players').document(user_id).get()._data
     if userInfo['regionSelected'] is True :
         return redirect('myVillage')
@@ -210,7 +214,7 @@ def upgrade(request):
         with open(file_path, 'r') as f:
             gameConfig = json.load(f)
 
-        user_id = auth.current_user['localId']
+        user_id = request.session['user']['localId']
         village_id = request.POST.get("village_id") #this should come from request
         building_path = request.POST.get("building_path") #this should also come from request
         firing_time = request.POST.get("firingTime")
@@ -253,10 +257,10 @@ def upgrade(request):
 ######## MAIN PAGES ########
 @myuser_login_required
 def villages(request, village_index=None):
+    print(request.session['user'])
+    print(auth.current_user)
 
-    
-
-    user_id = auth.current_user['localId']
+    user_id = request.session['user']['localId']
     userInfo= db.collection('players').document(user_id).get()._data
     if userInfo['regionSelected'] is False :
         return redirect("selectRegion")
@@ -393,7 +397,7 @@ def villages(request, village_index=None):
 @myuser_login_required
 def map(request, village_index=None):
 
-    user_id = auth.current_user['localId']
+    user_id = request.session['user']['localId']
     userInfo= db.collection('players').document(user_id).get()._data
     if userInfo['regionSelected'] is False :
         return redirect("selectRegion")
@@ -434,7 +438,7 @@ def map(request, village_index=None):
     for village in publicVillages:
         if(village._data['user_id']!=''):
             village._data['village_id'] = village.reference.id
-            if(village._data['user_id'] == auth.current_user['localId']):
+            if(village._data['user_id'] == user_id):
                 village._data['owner'] = True
                 for myVillage in myVillages:
                     if (village._data['village_id'] == myVillage['id']):
@@ -457,7 +461,7 @@ def map(request, village_index=None):
     return render(request, 'map.html', ***REMOVED***'publicVillages' : json.dumps(publicVillagesInfo), 'myVillages':myVillages, 'data' : data ***REMOVED***)
     
 def clans(request):
-    user_id = auth.current_user['localId']
+    user_id = request.session['user']['localId']
     userInfo= db.collection('players').document(user_id).get()._data
     if userInfo['regionSelected'] is False :
         return redirect("selectRegion")
@@ -465,7 +469,7 @@ def clans(request):
     return render(request, 'clans.html')
 
 def reports(request):
-    user_id = auth.current_user['localId']
+    user_id = request.session['user']['localId']
     userInfo= db.collection('players').document(user_id).get()._data
     if userInfo['regionSelected'] is False :
         return redirect("selectRegion")
@@ -477,12 +481,12 @@ def reports(request):
 
 def barracks(request, village_index=None):
 
-    user_id = auth.current_user['localId']
+    user_id = request.session['user']['localId']
     userInfo= db.collection('players').document(user_id).get()._data
     if userInfo['regionSelected'] is False :
         return redirect("selectRegion")
 
-    user_id = auth.current_user['localId']
+    user_id = request.session['user']['localId']
     userInfo= db.collection('players').document(user_id).get()._data
     if userInfo['regionSelected'] is False :
         return redirect("selectRegion")
