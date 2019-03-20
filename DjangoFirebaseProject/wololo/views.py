@@ -26,7 +26,7 @@ gameConfig = getGameConfig()
 def myuser_login_required(f):
     def wrap(request, *args, **kwargs):
         #this check the session if userid key exist, if not it will redirect to login page
-        if(not 'loggedIn' in request.session):
+        if( 'loggedIn' not in request.session):
             messages.error(request,'Log in in order to continue.')
             return redirect('landingPage')
              
