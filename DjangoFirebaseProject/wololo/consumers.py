@@ -10,7 +10,7 @@ class ChatConsumer(WebsocketConsumer):
         # to the group `jokes`
         print(self.channel_name)
         async_to_sync ( self. channel_layer . group_add ) (
-            auth.current_user['localId'] , self. channel_name
+            self.scope["session"]['userID'] , self. channel_name
         )
         # Accepts connection
         self. accept ( )
@@ -18,7 +18,7 @@ class ChatConsumer(WebsocketConsumer):
         # Disables the channel named `self.channel_name`
         # from the group `jokes`
         async_to_sync ( self. channel_layer . group_discard ) (
-            auth.current_user['localId'] , self. channel_name
+            self.scope["session"]['userID'] , self. channel_name
         )
     # Method `notify_user` - event handler` notify.user`
     def notify_user ( self, event ) :
