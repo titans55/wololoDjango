@@ -230,7 +230,8 @@ def upgrade(request):
             required_iron = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['iron']
             required_wood = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['wood']
         #retrieve required resources from gameConfig.json with upgrade_level
-        reqiured_time = getRequiredTimeForUpgrade(village, building_path, upgrade_levelTo)
+        # reqiured_time = getRequiredTimeForUpgrade(village, building_path, upgrade_levelTo)
+        reqiured_time = 1
         now = datetime.datetime.now(pytz.utc)
         wood_total = getCurrentResource(village, 'woodCamp', now)
         clay_total = getCurrentResource(village, 'clayPit', now)
@@ -238,10 +239,10 @@ def upgrade(request):
 
         if(wood_total >= required_wood and iron_total >= required_iron and clay_total >= required_clay):
             #update sum and lastInteractionDate of resources (-cost)
-            updateSumAndLastInteractionDateOfResource(request, village_id, 'woodCamp', wood_total-required_wood, now)
-            updateSumAndLastInteractionDateOfResource(request, village_id, 'clayPit', clay_total-required_clay, now)
-            updateSumAndLastInteractionDateOfResource(request, village_id, 'ironMine', iron_total-required_iron, now)
-
+            # updateSumAndLastInteractionDateOfResource(request, village_id, 'woodCamp', wood_total-required_wood, now)
+            # updateSumAndLastInteractionDateOfResource(request, village_id, 'clayPit', clay_total-required_clay, now)
+            # updateSumAndLastInteractionDateOfResource(request, village_id, 'ironMine', iron_total-required_iron, now)
+            
             upgrade_building.apply_async((user_id, village_id, building_path, upgrade_levelTo),countdown = reqiured_time)
             print("upgrading")
             return HttpResponse("Success")

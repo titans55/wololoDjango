@@ -1,9 +1,33 @@
 $(function()***REMOVED***
+    initWebsockets()
     $('.dropdown-menu a').click(function()***REMOVED***
         $('.dropdown-toggle').text($(this).text());
     ***REMOVED***);
 ***REMOVED***)
 
+//Using django channels
+function initWebsockets()***REMOVED***
+
+    var socket = new WebSocket('ws://' + window.location.host +'/ws/game/');
+
+    socket.onopen = function(e)***REMOVED***
+        console.log("websocket connected", e)
+    ***REMOVED***
+    
+    socket.onmessage = function(e) ***REMOVED***
+        console.log("finallllyy!!!!",e)
+    ***REMOVED***;
+
+
+    socket.onerror = function(e)***REMOVED***
+        console.log("errorrr", e)
+    ***REMOVED***
+
+    socket.onclose = function(e) ***REMOVED***
+        console.error('Chat socket closed unexpectedly');
+    ***REMOVED***;
+
+***REMOVED***
 
 function calculateTimeFromMinutes(mins)***REMOVED***
     let mins_num = parseFloat(mins, 10); // don't forget the second param

@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'wololo',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,6 +52,15 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'DjangoFirebaseProject.urls'
+ASGI_APPLICATION = 'DjangoFirebaseProject.routing.application'
+CHANNEL_LAYERS = ***REMOVED***
+    'default': ***REMOVED***
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': ***REMOVED***
+            "hosts": [('localhost', 6379)],
+        ***REMOVED***,
+    ***REMOVED***,
+***REMOVED***
 
 TEMPLATES = [
     ***REMOVED***
