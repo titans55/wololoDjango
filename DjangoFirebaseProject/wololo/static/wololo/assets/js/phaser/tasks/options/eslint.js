@@ -1,9 +1,9 @@
-module.exports = ***REMOVED***
+module.exports = {
     target: [
         'plugins/**/*.js',
         'src/**/*.js'
     ],
-    options: ***REMOVED***
+    options: {
         configFile: '.eslintrc.json'
-    ***REMOVED***
-***REMOVED***;
+    }
+};

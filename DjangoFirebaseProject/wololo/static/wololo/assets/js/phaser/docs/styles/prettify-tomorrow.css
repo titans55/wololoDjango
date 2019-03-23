@@ -3,112 +3,112 @@
 /* Pretty printing styles. Used with prettify.js. */
 /* SPAN elements with the classes below are added by prettyprint. */
 /* plain text */
-.pln ***REMOVED***
-  color: #4d4d4c; ***REMOVED***
+.pln {
+  color: #4d4d4c; }
 
-@media screen ***REMOVED***
+@media screen {
   /* string content */
-  .str ***REMOVED***
-    color: #718c00; ***REMOVED***
+  .str {
+    color: #718c00; }
 
   /* a keyword */
-  .kwd ***REMOVED***
-    color: #8959a8; ***REMOVED***
+  .kwd {
+    color: #8959a8; }
 
   /* a comment */
-  .com ***REMOVED***
-    color: #8e908c; ***REMOVED***
+  .com {
+    color: #8e908c; }
 
   /* a type name */
-  .typ ***REMOVED***
-    color: #4271ae; ***REMOVED***
+  .typ {
+    color: #4271ae; }
 
   /* a literal value */
-  .lit ***REMOVED***
-    color: #f5871f; ***REMOVED***
+  .lit {
+    color: #f5871f; }
 
   /* punctuation */
-  .pun ***REMOVED***
-    color: #4d4d4c; ***REMOVED***
+  .pun {
+    color: #4d4d4c; }
 
   /* lisp open bracket */
-  .opn ***REMOVED***
-    color: #4d4d4c; ***REMOVED***
+  .opn {
+    color: #4d4d4c; }
 
   /* lisp close bracket */
-  .clo ***REMOVED***
-    color: #4d4d4c; ***REMOVED***
+  .clo {
+    color: #4d4d4c; }
 
   /* a markup tag name */
-  .tag ***REMOVED***
-    color: #c82829; ***REMOVED***
+  .tag {
+    color: #c82829; }
 
   /* a markup attribute name */
-  .atn ***REMOVED***
-    color: #f5871f; ***REMOVED***
+  .atn {
+    color: #f5871f; }
 
   /* a markup attribute value */
-  .atv ***REMOVED***
-    color: #3e999f; ***REMOVED***
+  .atv {
+    color: #3e999f; }
 
   /* a declaration */
-  .dec ***REMOVED***
-    color: #f5871f; ***REMOVED***
+  .dec {
+    color: #f5871f; }
 
   /* a variable name */
-  .var ***REMOVED***
-    color: #c82829; ***REMOVED***
+  .var {
+    color: #c82829; }
 
   /* a function name */
-  .fun ***REMOVED***
-    color: #4271ae; ***REMOVED*** ***REMOVED***
+  .fun {
+    color: #4271ae; } }
 /* Use higher contrast and text-weight for printable form. */
-@media print, projection ***REMOVED***
-  .str ***REMOVED***
-    color: #060; ***REMOVED***
+@media print, projection {
+  .str {
+    color: #060; }
 
-  .kwd ***REMOVED***
+  .kwd {
     color: #006;
-    font-weight: bold; ***REMOVED***
+    font-weight: bold; }
 
-  .com ***REMOVED***
+  .com {
     color: #600;
-    font-style: italic; ***REMOVED***
+    font-style: italic; }
 
-  .typ ***REMOVED***
+  .typ {
     color: #404;
-    font-weight: bold; ***REMOVED***
+    font-weight: bold; }
 
-  .lit ***REMOVED***
-    color: #044; ***REMOVED***
+  .lit {
+    color: #044; }
 
-  .pun, .opn, .clo ***REMOVED***
-    color: #440; ***REMOVED***
+  .pun, .opn, .clo {
+    color: #440; }
 
-  .tag ***REMOVED***
+  .tag {
     color: #006;
-    font-weight: bold; ***REMOVED***
+    font-weight: bold; }
 
-  .atn ***REMOVED***
-    color: #404; ***REMOVED***
+  .atn {
+    color: #404; }
 
-  .atv ***REMOVED***
-    color: #060; ***REMOVED*** ***REMOVED***
+  .atv {
+    color: #060; } }
 /* Style */
 /*
-pre.prettyprint ***REMOVED***
+pre.prettyprint {
   background: white;
   font-family: Menlo, Monaco, Consolas, monospace;
   font-size: 12px;
   line-height: 1.5;
   border: 1px solid #ccc;
-  padding: 10px; ***REMOVED***
+  padding: 10px; }
 */
 
 /* Specify class=linenums on a pre to get line numbering */
-ol.linenums ***REMOVED***
+ol.linenums {
   margin-top: 0;
-  margin-bottom: 0; ***REMOVED***
+  margin-bottom: 0; }
 
 /* IE indents via margin-left */
 li.L0,
@@ -120,13 +120,13 @@ li.L5,
 li.L6,
 li.L7,
 li.L8,
-li.L9 ***REMOVED***
-  /* */ ***REMOVED***
+li.L9 {
+  /* */ }
 
 /* Alternate shading for lines */
 li.L1,
 li.L3,
 li.L5,
 li.L7,
-li.L9 ***REMOVED***
-  /* */ ***REMOVED***
+li.L9 {
+  /* */ }

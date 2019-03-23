@@ -16,24 +16,24 @@
  * @class PIXI
  * @static
  */
-var PIXI = PIXI || ***REMOVED******REMOVED***;
+var PIXI = PIXI || {};
 
 /**
  * A reference to the Phaser Game instance that owns this Pixi renderer.
- * @property ***REMOVED***Phaser.Game***REMOVED*** game
+ * @property {Phaser.Game} game
  * @static 
  */
 PIXI.game = null;
 
 /**
- * @property ***REMOVED***Number***REMOVED*** WEBGL_RENDERER
+ * @property {Number} WEBGL_RENDERER
  * @protected
  * @static 
  */
 PIXI.WEBGL_RENDERER = 0;
 
 /**
- * @property ***REMOVED***Number***REMOVED*** CANVAS_RENDERER
+ * @property {Number} CANVAS_RENDERER
  * @protected
  * @static
  */
@@ -41,7 +41,7 @@ PIXI.CANVAS_RENDERER = 1;
 
 /**
  * Version of pixi that is loaded.
- * @property ***REMOVED***String***REMOVED*** VERSION
+ * @property {String} VERSION
  * @static 
  */
 PIXI.VERSION = "v2.2.9";
@@ -50,7 +50,7 @@ PIXI.VERSION = "v2.2.9";
 PIXI._UID = 0;
 
 if (typeof(Float32Array) != 'undefined')
-***REMOVED***
+{
     PIXI.Float32Array = Float32Array;
     PIXI.Uint16Array = Uint16Array;
 
@@ -61,33 +61,33 @@ if (typeof(Float32Array) != 'undefined')
     // see WebGL support: http://caniuse.com/#search=WebGL
     PIXI.Uint32Array = Uint32Array;
     PIXI.ArrayBuffer = ArrayBuffer;
-***REMOVED***
+}
 else
-***REMOVED***
+{
     PIXI.Float32Array = Array;
     PIXI.Uint16Array = Array;
-***REMOVED***
+}
 
 /**
- * @property ***REMOVED***Number***REMOVED*** PI_2
+ * @property {Number} PI_2
  * @static
  */
 PIXI.PI_2 = Math.PI * 2;
 
 /**
- * @property ***REMOVED***Number***REMOVED*** RAD_TO_DEG
+ * @property {Number} RAD_TO_DEG
  * @static
  */
 PIXI.RAD_TO_DEG = 180 / Math.PI;
 
 /**
- * @property ***REMOVED***Number***REMOVED*** DEG_TO_RAD
+ * @property {Number} DEG_TO_RAD
  * @static
  */
 PIXI.DEG_TO_RAD = Math.PI / 180;
 
 /**
- * @property ***REMOVED***String***REMOVED*** RETINA_PREFIX
+ * @property {String} RETINA_PREFIX
  * @protected
  * @static
  */
@@ -95,18 +95,18 @@ PIXI.RETINA_PREFIX = "@2x";
 
 /**
  * The default render options if none are supplied to
- * ***REMOVED******REMOVED***#crossLink "WebGLRenderer"***REMOVED******REMOVED******REMOVED******REMOVED***/crossLink***REMOVED******REMOVED*** or ***REMOVED******REMOVED***#crossLink "CanvasRenderer"***REMOVED******REMOVED******REMOVED******REMOVED***/crossLink***REMOVED******REMOVED***.
+ * {{#crossLink "WebGLRenderer"}}{{/crossLink}} or {{#crossLink "CanvasRenderer"}}{{/crossLink}}.
  *
- * @property ***REMOVED***Object***REMOVED*** defaultRenderOptions
- * @property ***REMOVED***Object***REMOVED*** defaultRenderOptions.view=null
- * @property ***REMOVED***Boolean***REMOVED*** defaultRenderOptions.transparent=false
- * @property ***REMOVED***Boolean***REMOVED*** defaultRenderOptions.antialias=false
- * @property ***REMOVED***Boolean***REMOVED*** defaultRenderOptions.preserveDrawingBuffer=false
- * @property ***REMOVED***Number***REMOVED*** defaultRenderOptions.resolution=1
- * @property ***REMOVED***Boolean***REMOVED*** defaultRenderOptions.clearBeforeRender=true
- * @property ***REMOVED***Boolean***REMOVED*** defaultRenderOptions.autoResize=false
+ * @property {Object} defaultRenderOptions
+ * @property {Object} defaultRenderOptions.view=null
+ * @property {Boolean} defaultRenderOptions.transparent=false
+ * @property {Boolean} defaultRenderOptions.antialias=false
+ * @property {Boolean} defaultRenderOptions.preserveDrawingBuffer=false
+ * @property {Number} defaultRenderOptions.resolution=1
+ * @property {Boolean} defaultRenderOptions.clearBeforeRender=true
+ * @property {Boolean} defaultRenderOptions.autoResize=false
  * @static
-PIXI.defaultRenderOptions = ***REMOVED***
+PIXI.defaultRenderOptions = {
     view: null,
     transparent: false,
     antialias: false, 
@@ -114,5 +114,5 @@ PIXI.defaultRenderOptions = ***REMOVED***
     resolution: 1,
     clearBeforeRender: true,
     autoResize: false
-***REMOVED***;
+};
  */

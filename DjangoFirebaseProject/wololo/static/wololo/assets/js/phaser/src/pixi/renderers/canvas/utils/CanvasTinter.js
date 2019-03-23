@@ -8,46 +8,46 @@
  * @class CanvasTinter
  * @static
  */
-PIXI.CanvasTinter = function() ***REMOVED******REMOVED***;
+PIXI.CanvasTinter = function() {};
 
 /**
  * Basically this method just needs a sprite and a color and tints the sprite with the given color.
  * 
  * @method getTintedTexture 
  * @static
- * @param sprite ***REMOVED***Sprite***REMOVED*** the sprite to tint
- * @param color ***REMOVED***Number***REMOVED*** the color to use to tint the sprite with
- * @return ***REMOVED***HTMLCanvasElement***REMOVED*** The tinted canvas
+ * @param sprite {Sprite} the sprite to tint
+ * @param color {Number} the color to use to tint the sprite with
+ * @return {HTMLCanvasElement} The tinted canvas
  */
 PIXI.CanvasTinter.getTintedTexture = function(sprite, color)
-***REMOVED***
+{
     var canvas = sprite.tintedTexture || PIXI.CanvasPool.create(this);
     
     PIXI.CanvasTinter.tintMethod(sprite.texture, color, canvas);
 
     return canvas;
-***REMOVED***;
+};
 
 /**
  * Tint a texture using the "multiply" operation.
  * 
  * @method tintWithMultiply
  * @static
- * @param texture ***REMOVED***Texture***REMOVED*** the texture to tint
- * @param color ***REMOVED***Number***REMOVED*** the color to use to tint the sprite with
- * @param canvas ***REMOVED***HTMLCanvasElement***REMOVED*** the current canvas
+ * @param texture {Texture} the texture to tint
+ * @param color {Number} the color to use to tint the sprite with
+ * @param canvas {HTMLCanvasElement} the current canvas
  */
 PIXI.CanvasTinter.tintWithMultiply = function(texture, color, canvas)
-***REMOVED***
+{
     var context = canvas.getContext("2d");
 
     var crop = texture.crop;
 
     if (canvas.width !== crop.width || canvas.height !== crop.height)
-    ***REMOVED***
+    {
         canvas.width = crop.width;
         canvas.height = crop.height;
-    ***REMOVED***
+    }
 
     context.clearRect(0, 0, crop.width, crop.height);
 
@@ -60,19 +60,19 @@ PIXI.CanvasTinter.tintWithMultiply = function(texture, color, canvas)
     context.globalCompositeOperation = "destination-atop";
     context.drawImage(texture.baseTexture.source, crop.x, crop.y, crop.width, crop.height, 0, 0, crop.width, crop.height);
 
-***REMOVED***;
+};
 
 /**
  * Tint a texture pixel per pixel.
  * 
  * @method tintPerPixel
  * @static
- * @param texture ***REMOVED***Texture***REMOVED*** the texture to tint
- * @param color ***REMOVED***Number***REMOVED*** the color to use to tint the sprite with
- * @param canvas ***REMOVED***HTMLCanvasElement***REMOVED*** the current canvas
+ * @param texture {Texture} the texture to tint
+ * @param color {Number} the color to use to tint the sprite with
+ * @param canvas {HTMLCanvasElement} the current canvas
  */ 
 PIXI.CanvasTinter.tintWithPerPixel = function(texture, color, canvas)
-***REMOVED***
+{
     var context = canvas.getContext("2d");
 
     var crop = texture.crop;
@@ -92,23 +92,23 @@ PIXI.CanvasTinter.tintWithPerPixel = function(texture, color, canvas)
     var pixels = pixelData.data;
 
     for (var i = 0; i < pixels.length; i += 4)
-    ***REMOVED***
+    {
         pixels[i + 0] *= r;
         pixels[i + 1] *= g;
         pixels[i + 2] *= b;
 
         if (!PIXI.CanvasTinter.canHandleAlpha)
-        ***REMOVED***
+        {
             var alpha = pixels[i + 3];
 
             pixels[i + 0] /= 255 / alpha;
             pixels[i + 1] /= 255 / alpha;
             pixels[i + 2] /= 255 / alpha;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     context.putImageData(pixelData, 0, 0);
-***REMOVED***;
+};
 
 /**
  * Checks if the browser correctly supports putImageData alpha channels.
@@ -117,7 +117,7 @@ PIXI.CanvasTinter.tintWithPerPixel = function(texture, color, canvas)
  * @static
  */
 PIXI.CanvasTinter.checkInverseAlpha = function()
-***REMOVED***
+{
     var canvas = new PIXI.CanvasBuffer(2, 1);
 
     canvas.context.fillStyle = "rgba(10, 20, 30, 0.5)";
@@ -129,9 +129,9 @@ PIXI.CanvasTinter.checkInverseAlpha = function()
     var s1 = canvas.context.getImageData(0, 0, 1, 1);
 
     if (s1 === null)
-    ***REMOVED***
+    {
         return false;
-    ***REMOVED***
+    }
 
     //  Plot them to x2
     canvas.context.putImageData(s1, 1, 0);
@@ -141,7 +141,7 @@ PIXI.CanvasTinter.checkInverseAlpha = function()
 
     //  Compare and return
     return (s2.data[0] === s1.data[0] && s2.data[1] === s1.data[1] && s2.data[2] === s1.data[2] && s2.data[3] === s1.data[3]);
-***REMOVED***;
+};
 
 /**
  * If the browser isn't capable of handling tinting with alpha this will be false.

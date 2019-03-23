@@ -2,23 +2,23 @@
 var village_id
 var gameConfigs = JSON.parse(($("#gameConfigData").attr("data")).replace(/'/g, '"'))
 var villageData = JSON.parse(($("#villageDataJSON").attr("data")).replace(/'/g, '"'))
-$(function()***REMOVED***
+$(function(){
     village_id = villageData.id
     displayNeededTimeForInfantryUnits()
-***REMOVED***)
+})
 
-function displayNeededTimeForInfantryUnits()***REMOVED***
-    for(let [unitName, units] of Object.entries(gameConfigs.units.infantry))***REMOVED***
+function displayNeededTimeForInfantryUnits(){
+    for(let [unitName, units] of Object.entries(gameConfigs.units.infantry)){
         units.neededTrainingBaseTime
         
-    ***REMOVED***;
+    };
 
-    $(".neededTime").each(function()***REMOVED***
+    $(".neededTime").each(function(){
         const unitName = $(this).attr("unitName");
         const baseTrainingTime = gameConfigs.units.infantry[unitName].neededTrainingBaseTime
         const barracksLevel = villageData.barracks.level
         const speedPercantageOfBarracks = gameConfigs.buildings.barracks.trainingSpeed[barracksLevel]
         const neededTrainingTime = calculateTimeFromMinutes(lowerByPercantage(baseTrainingTime, speedPercantageOfBarracks))
         $(this).html(neededTrainingTime)
-    ***REMOVED***)
-***REMOVED***
+    })
+}

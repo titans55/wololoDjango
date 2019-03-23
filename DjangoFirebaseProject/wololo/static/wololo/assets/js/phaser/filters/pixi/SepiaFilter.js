@@ -10,15 +10,15 @@
  * @constructor
  */
 PIXI.SepiaFilter = function()
-***REMOVED***
+{
     PIXI.AbstractFilter.call( this );
 
     this.passes = [this];
 
     // set the uniforms
-    this.uniforms = ***REMOVED***
-        sepia: ***REMOVED***type: '1f', value: 1***REMOVED***
-    ***REMOVED***;
+    this.uniforms = {
+        sepia: {type: '1f', value: 1}
+    };
 
     this.fragmentSrc = [
         'precision mediump float;',
@@ -29,13 +29,13 @@ PIXI.SepiaFilter = function()
 
         'const mat3 sepiaMatrix = mat3(0.3588, 0.7044, 0.1368, 0.2990, 0.5870, 0.1140, 0.2392, 0.4696, 0.0912);',
 
-        'void main(void) ***REMOVED***',
+        'void main(void) {',
         '   gl_FragColor = texture2D(uSampler, vTextureCoord);',
         '   gl_FragColor.rgb = mix( gl_FragColor.rgb, gl_FragColor.rgb * sepiaMatrix, sepia);',
        // '   gl_FragColor = gl_FragColor * vColor;',
-        '***REMOVED***'
+        '}'
     ];
-***REMOVED***;
+};
 
 PIXI.SepiaFilter.prototype = Object.create( PIXI.AbstractFilter.prototype );
 PIXI.SepiaFilter.prototype.constructor = PIXI.SepiaFilter;
@@ -45,11 +45,11 @@ PIXI.SepiaFilter.prototype.constructor = PIXI.SepiaFilter;
  * @property sepia
  * @type Number
 */
-Object.defineProperty(PIXI.SepiaFilter.prototype, 'sepia', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.SepiaFilter.prototype, 'sepia', {
+    get: function() {
         return this.uniforms.sepia.value;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.uniforms.sepia.value = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});

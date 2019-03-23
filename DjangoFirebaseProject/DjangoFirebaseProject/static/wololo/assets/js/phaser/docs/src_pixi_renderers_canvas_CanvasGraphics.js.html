@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1298,29 +1298,29 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
  * @static
  */
 PIXI.CanvasGraphics = function()
-***REMOVED***
-***REMOVED***;
+{
+};
 
 /*
  * Renders a PIXI.Graphics object to a canvas.
  *
  * @method renderGraphics
  * @static
- * @param graphics ***REMOVED***Graphics***REMOVED*** the actual graphics object to render
- * @param context ***REMOVED***CanvasRenderingContext2D***REMOVED*** the 2d drawing method of the canvas
+ * @param graphics {Graphics} the actual graphics object to render
+ * @param context {CanvasRenderingContext2D} the 2d drawing method of the canvas
  */
 PIXI.CanvasGraphics.renderGraphics = function(graphics, context)
-***REMOVED***
+{
     var worldAlpha = graphics.worldAlpha;
 
     if (graphics.dirty)
-    ***REMOVED***
+    {
         this.updateGraphicsTint(graphics);
         graphics.dirty = false;
-    ***REMOVED***
+    }
 
     for (var i = 0; i &lt; graphics.graphicsData.length; i++)
-    ***REMOVED***
+    {
         var data = graphics.graphicsData[i];
         var shape = data.shape;
 
@@ -1330,7 +1330,7 @@ PIXI.CanvasGraphics.renderGraphics = function(graphics, context)
         context.lineWidth = data.lineWidth;
 
         if (data.type === PIXI.Graphics.POLY)
-        ***REMOVED***
+        {
             context.beginPath();
 
             var points = shape.points;
@@ -1338,74 +1338,74 @@ PIXI.CanvasGraphics.renderGraphics = function(graphics, context)
             context.moveTo(points[0], points[1]);
 
             for (var j=1; j &lt; points.length/2; j++)
-            ***REMOVED***
+            {
                 context.lineTo(points[j * 2], points[j * 2 + 1]);
-            ***REMOVED***
+            }
 
             if (shape.closed)
-            ***REMOVED***
+            {
                 context.lineTo(points[0], points[1]);
-            ***REMOVED***
+            }
 
             // if the first and last point are the same close the path - much neater :)
             if (points[0] === points[points.length-2] &amp;&amp; points[1] === points[points.length-1])
-            ***REMOVED***
+            {
                 context.closePath();
-            ***REMOVED***
+            }
 
             if (data.fill)
-            ***REMOVED***
+            {
                 context.globalAlpha = data.fillAlpha * worldAlpha;
                 context.fillStyle = '#' + ('00000' + ( fillColor | 0).toString(16)).substr(-6);
                 context.fill();
-            ***REMOVED***
+            }
 
             if (data.lineWidth)
-            ***REMOVED***
+            {
                 context.globalAlpha = data.lineAlpha * worldAlpha;
                 context.strokeStyle = '#' + ('00000' + ( lineColor | 0).toString(16)).substr(-6);
                 context.stroke();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else if (data.type === PIXI.Graphics.RECT)
-        ***REMOVED***
+        {
             if (data.fillColor || data.fillColor === 0)
-            ***REMOVED***
+            {
                 context.globalAlpha = data.fillAlpha * worldAlpha;
                 context.fillStyle = '#' + ('00000' + ( fillColor | 0).toString(16)).substr(-6);
                 context.fillRect(shape.x, shape.y, shape.width, shape.height);
-            ***REMOVED***
+            }
 
             if (data.lineWidth)
-            ***REMOVED***
+            {
                 context.globalAlpha = data.lineAlpha * worldAlpha;
                 context.strokeStyle = '#' + ('00000' + ( lineColor | 0).toString(16)).substr(-6);
                 context.strokeRect(shape.x, shape.y, shape.width, shape.height);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else if (data.type === PIXI.Graphics.CIRC)
-        ***REMOVED***
+        {
             // TODO - need to be Undefined!
             context.beginPath();
             context.arc(shape.x, shape.y, shape.radius,0,2*Math.PI);
             context.closePath();
 
             if (data.fill)
-            ***REMOVED***
+            {
                 context.globalAlpha = data.fillAlpha * worldAlpha;
                 context.fillStyle = '#' + ('00000' + ( fillColor | 0).toString(16)).substr(-6);
                 context.fill();
-            ***REMOVED***
+            }
 
             if (data.lineWidth)
-            ***REMOVED***
+            {
                 context.globalAlpha = data.lineAlpha * worldAlpha;
                 context.strokeStyle = '#' + ('00000' + ( lineColor | 0).toString(16)).substr(-6);
                 context.stroke();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else if (data.type === PIXI.Graphics.ELIP)
-        ***REMOVED***
+        {
             // ellipse code taken from: http://stackoverflow.com/questions/2172798/how-to-draw-an-oval-in-html5-canvas
 
             var w = shape.width * 2;
@@ -1433,21 +1433,21 @@ PIXI.CanvasGraphics.renderGraphics = function(graphics, context)
             context.closePath();
 
             if (data.fill)
-            ***REMOVED***
+            {
                 context.globalAlpha = data.fillAlpha * worldAlpha;
                 context.fillStyle = '#' + ('00000' + ( fillColor | 0).toString(16)).substr(-6);
                 context.fill();
-            ***REMOVED***
+            }
 
             if (data.lineWidth)
-            ***REMOVED***
+            {
                 context.globalAlpha = data.lineAlpha * worldAlpha;
                 context.strokeStyle = '#' + ('00000' + ( lineColor | 0).toString(16)).substr(-6);
                 context.stroke();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else if (data.type === PIXI.Graphics.RREC)
-        ***REMOVED***
+        {
             var rx = shape.x;
             var ry = shape.y;
             var width = shape.width;
@@ -1470,22 +1470,22 @@ PIXI.CanvasGraphics.renderGraphics = function(graphics, context)
             context.closePath();
 
             if (data.fillColor || data.fillColor === 0)
-            ***REMOVED***
+            {
                 context.globalAlpha = data.fillAlpha * worldAlpha;
                 context.fillStyle = '#' + ('00000' + ( fillColor | 0).toString(16)).substr(-6);
                 context.fill();
-            ***REMOVED***
+            }
 
             if (data.lineWidth)
-            ***REMOVED***
+            {
                 context.globalAlpha = data.lineAlpha * worldAlpha;
                 context.strokeStyle = '#' + ('00000' + ( lineColor | 0).toString(16)).substr(-6);
                 context.stroke();
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
-***REMOVED***;
+};
 
 /*
  * Renders a graphics mask
@@ -1493,57 +1493,57 @@ PIXI.CanvasGraphics.renderGraphics = function(graphics, context)
  * @static
  * @private
  * @method renderGraphicsMask
- * @param graphics ***REMOVED***Graphics***REMOVED*** the graphics which will be used as a mask
- * @param context ***REMOVED***CanvasRenderingContext2D***REMOVED*** the context 2d method of the canvas
+ * @param graphics {Graphics} the graphics which will be used as a mask
+ * @param context {CanvasRenderingContext2D} the context 2d method of the canvas
  */
 PIXI.CanvasGraphics.renderGraphicsMask = function(graphics, context)
-***REMOVED***
+{
     var len = graphics.graphicsData.length;
 
     if (len === 0)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     context.beginPath();
 
     for (var i = 0; i &lt; len; i++)
-    ***REMOVED***
+    {
         var data = graphics.graphicsData[i];
         var shape = data.shape;
 
         if (data.type === PIXI.Graphics.POLY)
-        ***REMOVED***
+        {
 
             var points = shape.points;
         
             context.moveTo(points[0], points[1]);
 
             for (var j=1; j &lt; points.length/2; j++)
-            ***REMOVED***
+            {
                 context.lineTo(points[j * 2], points[j * 2 + 1]);
-            ***REMOVED***
+            }
 
             // if the first and last point are the same close the path - much neater :)
             if (points[0] === points[points.length-2] &amp;&amp; points[1] === points[points.length-1])
-            ***REMOVED***
+            {
                 context.closePath();
-            ***REMOVED***
+            }
 
-        ***REMOVED***
+        }
         else if (data.type === PIXI.Graphics.RECT)
-        ***REMOVED***
+        {
             context.rect(shape.x, shape.y, shape.width, shape.height);
             context.closePath();
-        ***REMOVED***
+        }
         else if (data.type === PIXI.Graphics.CIRC)
-        ***REMOVED***
+        {
             // TODO - need to be Undefined!
             context.arc(shape.x, shape.y, shape.radius, 0, 2 * Math.PI);
             context.closePath();
-        ***REMOVED***
+        }
         else if (data.type === PIXI.Graphics.ELIP)
-        ***REMOVED***
+        {
 
             // ellipse code taken from: http://stackoverflow.com/questions/2172798/how-to-draw-an-oval-in-html5-canvas
 
@@ -1567,9 +1567,9 @@ PIXI.CanvasGraphics.renderGraphicsMask = function(graphics, context)
             context.bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye);
             context.bezierCurveTo(xm - ox, ye, x, ym + oy, x, ym);
             context.closePath();
-        ***REMOVED***
+        }
         else if (data.type === PIXI.Graphics.RREC)
-        ***REMOVED***
+        {
 
             var rx = shape.x;
             var ry = shape.y;
@@ -1590,23 +1590,23 @@ PIXI.CanvasGraphics.renderGraphicsMask = function(graphics, context)
             context.lineTo(rx + radius, ry);
             context.quadraticCurveTo(rx, ry, rx, ry + radius);
             context.closePath();
-        ***REMOVED***
-    ***REMOVED***
-***REMOVED***;
+        }
+    }
+};
 
 PIXI.CanvasGraphics.updateGraphicsTint = function(graphics)
-***REMOVED***
+{
     if (graphics.tint === 0xFFFFFF)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     var tintR = (graphics.tint >> 16 &amp; 0xFF) / 255;
     var tintG = (graphics.tint >> 8 &amp; 0xFF) / 255;
     var tintB = (graphics.tint &amp; 0xFF)/ 255;
 
     for (var i = 0; i &lt; graphics.graphicsData.length; i++)
-    ***REMOVED***
+    {
         var data = graphics.graphicsData[i];
 
         var fillColor = data.fillColor | 0;
@@ -1615,9 +1615,9 @@ PIXI.CanvasGraphics.updateGraphicsTint = function(graphics)
         data._fillTint = (((fillColor >> 16 &amp; 0xFF) / 255 * tintR*255 &lt;&lt; 16) + ((fillColor >> 8 &amp; 0xFF) / 255 * tintG*255 &lt;&lt; 8) +  (fillColor &amp; 0xFF) / 255 * tintB*255);
         data._lineTint = (((lineColor >> 16 &amp; 0xFF) / 255 * tintR*255 &lt;&lt; 16) + ((lineColor >> 8 &amp; 0xFF) / 255 * tintG*255 &lt;&lt; 8) +  (lineColor &amp; 0xFF) / 255 * tintB*255);
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 </pre>
         </article>
     </section>
@@ -1660,22 +1660,22 @@ PIXI.CanvasGraphics.updateGraphicsTint = function(graphics)
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

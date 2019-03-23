@@ -1,5 +1,5 @@
-module.exports = ***REMOVED***
-    src: ***REMOVED***
+module.exports = {
+    src: {
         src: [
             'src/**/*.js',
             '!src/Intro.js',
@@ -12,23 +12,23 @@ module.exports = ***REMOVED***
             '!src/gameobjects/Creature.js',
             '!src/stubs/*.js'
         ],
-        options: ***REMOVED*** jshintrc: '.jshintrc' ***REMOVED***
-    ***REMOVED***,
+        options: { jshintrc: '.jshintrc' }
+    },
 
-    filters: ***REMOVED***
+    filters: {
         src: ['filters/**/*.js'],
-        options: ***REMOVED*** jshintrc: 'filters/.jshintrc', ***REMOVED***
-    ***REMOVED***,
+        options: { jshintrc: 'filters/.jshintrc', }
+    },
 
-    tooling: ***REMOVED***
+    tooling: {
         src: [
             'Gruntfile.js',
             'tasks/**/*.js'
         ],
-        options: ***REMOVED*** jshintrc: 'tasks/.jshintrc' ***REMOVED***
-    ***REMOVED***,
+        options: { jshintrc: 'tasks/.jshintrc' }
+    },
 
-    options: ***REMOVED***
+    options: {
         force: (process.env.NODE_ENV !== 'test')
-    ***REMOVED***
-***REMOVED***;
+    }
+};

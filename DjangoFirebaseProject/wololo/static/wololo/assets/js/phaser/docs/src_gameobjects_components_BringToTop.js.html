@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1289,7 +1289,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
             <pre class="sunlight-highlight-javascript linenums">/**
 * @author       Richard Davey &lt;rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1297,7 +1297,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 *
 * @class
 */
-Phaser.Component.BringToTop = function () ***REMOVED******REMOVED***;
+Phaser.Component.BringToTop = function () {};
 
 /**
 * Brings this Game Object to the top of its parents display list.
@@ -1307,18 +1307,18 @@ Phaser.Component.BringToTop = function () ***REMOVED******REMOVED***;
 * because the World is the root Group from which all Game Objects descend.
 *
 * @method
-* @return ***REMOVED***PIXI.DisplayObject***REMOVED*** This instance.
+* @return {PIXI.DisplayObject} This instance.
 */
-Phaser.Component.BringToTop.prototype.bringToTop = function() ***REMOVED***
+Phaser.Component.BringToTop.prototype.bringToTop = function() {
 
     if (this.parent)
-    ***REMOVED***
+    {
         this.parent.bringToTop(this);
-    ***REMOVED***
+    }
 
     return this;
 
-***REMOVED***;
+};
 
 /**
 * Sends this Game Object to the bottom of its parents display list.
@@ -1328,18 +1328,18 @@ Phaser.Component.BringToTop.prototype.bringToTop = function() ***REMOVED***
 * because the World is the root Group from which all Game Objects descend.
 *
 * @method
-* @return ***REMOVED***PIXI.DisplayObject***REMOVED*** This instance.
+* @return {PIXI.DisplayObject} This instance.
 */
-Phaser.Component.BringToTop.prototype.sendToBack = function() ***REMOVED***
+Phaser.Component.BringToTop.prototype.sendToBack = function() {
 
     if (this.parent)
-    ***REMOVED***
+    {
         this.parent.sendToBack(this);
-    ***REMOVED***
+    }
 
     return this;
 
-***REMOVED***;
+};
 
 /**
 * Moves this Game Object up one place in its parents display list.
@@ -1349,18 +1349,18 @@ Phaser.Component.BringToTop.prototype.sendToBack = function() ***REMOVED***
 * because the World is the root Group from which all Game Objects descend.
 *
 * @method
-* @return ***REMOVED***PIXI.DisplayObject***REMOVED*** This instance.
+* @return {PIXI.DisplayObject} This instance.
 */
-Phaser.Component.BringToTop.prototype.moveUp = function () ***REMOVED***
+Phaser.Component.BringToTop.prototype.moveUp = function () {
 
     if (this.parent)
-    ***REMOVED***
+    {
         this.parent.moveUp(this);
-    ***REMOVED***
+    }
 
     return this;
 
-***REMOVED***;
+};
 
 /**
 * Moves this Game Object down one place in its parents display list.
@@ -1370,18 +1370,18 @@ Phaser.Component.BringToTop.prototype.moveUp = function () ***REMOVED***
 * because the World is the root Group from which all Game Objects descend.
 *
 * @method
-* @return ***REMOVED***PIXI.DisplayObject***REMOVED*** This instance.
+* @return {PIXI.DisplayObject} This instance.
 */
-Phaser.Component.BringToTop.prototype.moveDown = function () ***REMOVED***
+Phaser.Component.BringToTop.prototype.moveDown = function () {
 
     if (this.parent)
-    ***REMOVED***
+    {
         this.parent.moveDown(this);
-    ***REMOVED***
+    }
 
     return this;
 
-***REMOVED***;
+};
 </pre>
         </article>
     </section>
@@ -1424,22 +1424,22 @@ Phaser.Component.BringToTop.prototype.moveDown = function () ***REMOVED***
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

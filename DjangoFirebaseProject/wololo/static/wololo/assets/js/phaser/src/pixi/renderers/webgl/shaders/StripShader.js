@@ -5,10 +5,10 @@
 /**
 * @class StripShader
 * @constructor
-* @param gl ***REMOVED***WebGLContext***REMOVED*** the current WebGL drawing context
+* @param gl {WebGLContext} the current WebGL drawing context
 */
 PIXI.StripShader = function(gl)
-***REMOVED***
+{
     /**
      * @property _UID
      * @type Number
@@ -41,10 +41,10 @@ PIXI.StripShader = function(gl)
         'uniform float alpha;',
         'uniform sampler2D uSampler;',
 
-        'void main(void) ***REMOVED***',
+        'void main(void) {',
         '   gl_FragColor = texture2D(uSampler, vec2(vTextureCoord.x, vTextureCoord.y)) * alpha;',
       //  '   gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);',//gl_FragColor * alpha;',
-        '***REMOVED***'
+        '}'
     ];
 
     /**
@@ -63,17 +63,17 @@ PIXI.StripShader = function(gl)
         'varying vec2 vTextureCoord;',
       //  'varying vec4 vColor;',
 
-        'void main(void) ***REMOVED***',
+        'void main(void) {',
         '   vec3 v = translationMatrix * vec3(aVertexPosition , 1.0);',
         '   v -= offsetVector.xyx;',
         '   gl_Position = vec4( v.x / projectionVector.x -1.0, v.y / -projectionVector.y + 1.0 , 0.0, 1.0);',
         '   vTextureCoord = aTextureCoord;',
        // '   vColor = aColor * vec4(tint * alpha, alpha);',
-        '***REMOVED***'
+        '}'
     ];
 
     this.init();
-***REMOVED***;
+};
 
 PIXI.StripShader.prototype.constructor = PIXI.StripShader;
 
@@ -83,7 +83,7 @@ PIXI.StripShader.prototype.constructor = PIXI.StripShader;
 * @method init
 */
 PIXI.StripShader.prototype.init = function()
-***REMOVED***
+{
     var gl = this.gl;
 
     var program = PIXI.compileProgram(gl, this.vertexSrc, this.fragmentSrc);
@@ -106,7 +106,7 @@ PIXI.StripShader.prototype.init = function()
     this.alpha = gl.getUniformLocation(program, 'alpha');
 
     this.program = program;
-***REMOVED***;
+};
 
 /**
 * Destroys the shader.
@@ -114,10 +114,10 @@ PIXI.StripShader.prototype.init = function()
 * @method destroy
 */
 PIXI.StripShader.prototype.destroy = function()
-***REMOVED***
+{
     this.gl.deleteProgram( this.program );
     this.uniforms = null;
     this.gl = null;
 
     this.attribute = null;
-***REMOVED***;
+};

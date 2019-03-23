@@ -11,17 +11,17 @@
  * @constructor
  */
 PIXI.DotScreenFilter = function()
-***REMOVED***
+{
     PIXI.AbstractFilter.call( this );
 
     this.passes = [this];
 
     // set the uniforms
-    this.uniforms = ***REMOVED***
-        scale: ***REMOVED***type: '1f', value:1***REMOVED***,
-        angle: ***REMOVED***type: '1f', value:5***REMOVED***,
-        dimensions:   ***REMOVED***type: '4fv', value:[0,0,0,0]***REMOVED***
-    ***REMOVED***;
+    this.uniforms = {
+        scale: {type: '1f', value:1},
+        angle: {type: '1f', value:5},
+        dimensions:   {type: '4fv', value:[0,0,0,0]}
+    };
 
     this.fragmentSrc = [
         'precision mediump float;',
@@ -33,7 +33,7 @@ PIXI.DotScreenFilter = function()
         'uniform float angle;',
         'uniform float scale;',
 
-        'float pattern() ***REMOVED***',
+        'float pattern() {',
         '   float s = sin(angle), c = cos(angle);',
         '   vec2 tex = vTextureCoord * dimensions.xy;',
         '   vec2 point = vec2(',
@@ -41,15 +41,15 @@ PIXI.DotScreenFilter = function()
         '       s * tex.x + c * tex.y',
         '   ) * scale;',
         '   return (sin(point.x) * sin(point.y)) * 4.0;',
-        '***REMOVED***',
+        '}',
 
-        'void main() ***REMOVED***',
+        'void main() {',
         '   vec4 color = texture2D(uSampler, vTextureCoord);',
         '   float average = (color.r + color.g + color.b) / 3.0;',
         '   gl_FragColor = vec4(vec3(average * 10.0 - 5.0 + pattern()), color.a);',
-        '***REMOVED***'
+        '}'
     ];
-***REMOVED***;
+};
 
 PIXI.DotScreenFilter.prototype = Object.create( PIXI.AbstractFilter.prototype );
 PIXI.DotScreenFilter.prototype.constructor = PIXI.DotScreenFilter;
@@ -59,27 +59,27 @@ PIXI.DotScreenFilter.prototype.constructor = PIXI.DotScreenFilter;
  * @property scale
  * @type Number
  */
-Object.defineProperty(PIXI.DotScreenFilter.prototype, 'scale', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.DotScreenFilter.prototype, 'scale', {
+    get: function() {
         return this.uniforms.scale.value;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.dirty = true;
         this.uniforms.scale.value = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});
 
 /**
  * The radius of the effect.
  * @property angle
  * @type Number
  */
-Object.defineProperty(PIXI.DotScreenFilter.prototype, 'angle', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.DotScreenFilter.prototype, 'angle', {
+    get: function() {
         return this.uniforms.angle.value;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.dirty = true;
         this.uniforms.angle.value = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});

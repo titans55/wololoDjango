@@ -1,102 +1,102 @@
 /* CHANGELISTS */
 
-#changelist ***REMOVED***
+#changelist {
     position: relative;
     width: 100%;
-***REMOVED***
+}
 
-#changelist table ***REMOVED***
+#changelist table {
     width: 100%;
-***REMOVED***
+}
 
-.change-list .hiddenfields ***REMOVED*** display:none; ***REMOVED***
+.change-list .hiddenfields { display:none; }
 
-.change-list .filtered table ***REMOVED***
+.change-list .filtered table {
     border-right: none;
-***REMOVED***
+}
 
-.change-list .filtered ***REMOVED***
+.change-list .filtered {
     min-height: 400px;
-***REMOVED***
+}
 
 .change-list .filtered .results, .change-list .filtered .paginator,
-.filtered #toolbar, .filtered div.xfull ***REMOVED***
+.filtered #toolbar, .filtered div.xfull {
     margin-right: 280px;
     width: auto;
-***REMOVED***
+}
 
-.change-list .filtered table tbody th ***REMOVED***
+.change-list .filtered table tbody th {
     padding-right: 1em;
-***REMOVED***
+}
 
-#changelist-form .results ***REMOVED***
+#changelist-form .results {
   overflow-x: auto;
-***REMOVED***
+}
 
-#changelist .toplinks ***REMOVED***
+#changelist .toplinks {
     border-bottom: 1px solid #ddd;
-***REMOVED***
+}
 
-#changelist .paginator ***REMOVED***
+#changelist .paginator {
     color: #666;
     border-bottom: 1px solid #eee;
     background: #fff;
     overflow: hidden;
-***REMOVED***
+}
 
 /* CHANGELIST TABLES */
 
-#changelist table thead th ***REMOVED***
+#changelist table thead th {
     padding: 0;
     white-space: nowrap;
     vertical-align: middle;
-***REMOVED***
+}
 
-#changelist table thead th.action-checkbox-column ***REMOVED***
+#changelist table thead th.action-checkbox-column {
     width: 1.5em;
     text-align: center;
-***REMOVED***
+}
 
-#changelist table tbody td.action-checkbox ***REMOVED***
+#changelist table tbody td.action-checkbox {
     text-align: center;
-***REMOVED***
+}
 
-#changelist table tfoot ***REMOVED***
+#changelist table tfoot {
     color: #666;
-***REMOVED***
+}
 
 /* TOOLBAR */
 
-#changelist #toolbar ***REMOVED***
+#changelist #toolbar {
     padding: 8px 10px;
     margin-bottom: 15px;
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
     background: #f8f8f8;
     color: #666;
-***REMOVED***
+}
 
-#changelist #toolbar form input ***REMOVED***
+#changelist #toolbar form input {
     border-radius: 4px;
     font-size: 14px;
     padding: 5px;
     color: #333;
-***REMOVED***
+}
 
-#changelist #toolbar form #searchbar ***REMOVED***
+#changelist #toolbar form #searchbar {
     height: 19px;
     border: 1px solid #ccc;
     padding: 2px 5px;
     margin: 0;
     vertical-align: top;
     font-size: 13px;
-***REMOVED***
+}
 
-#changelist #toolbar form #searchbar:focus ***REMOVED***
+#changelist #toolbar form #searchbar:focus {
     border-color: #999;
-***REMOVED***
+}
 
-#changelist #toolbar form input[type="submit"] ***REMOVED***
+#changelist #toolbar form input[type="submit"] {
     border: 1px solid #ccc;
     padding: 2px 10px;
     margin: 0;
@@ -105,21 +105,21 @@
     box-shadow: 0 -15px 20px -10px rgba(0, 0, 0, 0.15) inset;
     cursor: pointer;
     color: #333;
-***REMOVED***
+}
 
 #changelist #toolbar form input[type="submit"]:focus,
-#changelist #toolbar form input[type="submit"]:hover ***REMOVED***
+#changelist #toolbar form input[type="submit"]:hover {
     border-color: #999;
-***REMOVED***
+}
 
-#changelist #changelist-search img ***REMOVED***
+#changelist #changelist-search img {
     vertical-align: middle;
     margin-right: 4px;
-***REMOVED***
+}
 
 /* FILTER COLUMN */
 
-#changelist-filter ***REMOVED***
+#changelist-filter {
     position: absolute;
     top: 0;
     right: 0;
@@ -128,181 +128,181 @@
     background: #f8f8f8;
     border-left: none;
     margin: 0;
-***REMOVED***
+}
 
-#changelist-filter h2 ***REMOVED***
+#changelist-filter h2 {
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     padding: 5px 15px;
     margin-bottom: 12px;
     border-bottom: none;
-***REMOVED***
+}
 
-#changelist-filter h3 ***REMOVED***
+#changelist-filter h3 {
     font-weight: 400;
     font-size: 14px;
     padding: 0 15px;
     margin-bottom: 10px;
-***REMOVED***
+}
 
-#changelist-filter ul ***REMOVED***
+#changelist-filter ul {
     margin: 5px 0;
     padding: 0 15px 15px;
     border-bottom: 1px solid #eaeaea;
-***REMOVED***
+}
 
-#changelist-filter ul:last-child ***REMOVED***
+#changelist-filter ul:last-child {
     border-bottom: none;
     padding-bottom: none;
-***REMOVED***
+}
 
-#changelist-filter li ***REMOVED***
+#changelist-filter li {
     list-style-type: none;
     margin-left: 0;
     padding-left: 0;
-***REMOVED***
+}
 
-#changelist-filter a ***REMOVED***
+#changelist-filter a {
     display: block;
     color: #999;
     text-overflow: ellipsis;
     overflow-x: hidden;
-***REMOVED***
+}
 
-#changelist-filter li.selected ***REMOVED***
+#changelist-filter li.selected {
     border-left: 5px solid #eaeaea;
     padding-left: 10px;
     margin-left: -15px;
-***REMOVED***
+}
 
-#changelist-filter li.selected a ***REMOVED***
+#changelist-filter li.selected a {
     color: #5b80b2;
-***REMOVED***
+}
 
 #changelist-filter a:focus, #changelist-filter a:hover,
 #changelist-filter li.selected a:focus,
-#changelist-filter li.selected a:hover ***REMOVED***
+#changelist-filter li.selected a:hover {
     color: #036;
-***REMOVED***
+}
 
 /* DATE DRILLDOWN */
 
-.change-list ul.toplinks ***REMOVED***
+.change-list ul.toplinks {
     display: block;
     float: left;
     padding: 0;
     margin: 0;
     width: 100%;
-***REMOVED***
+}
 
-.change-list ul.toplinks li ***REMOVED***
+.change-list ul.toplinks li {
     padding: 3px 6px;
     font-weight: bold;
     list-style-type: none;
     display: inline-block;
-***REMOVED***
+}
 
-.change-list ul.toplinks .date-back a ***REMOVED***
+.change-list ul.toplinks .date-back a {
     color: #999;
-***REMOVED***
+}
 
 .change-list ul.toplinks .date-back a:focus,
-.change-list ul.toplinks .date-back a:hover ***REMOVED***
+.change-list ul.toplinks .date-back a:hover {
     color: #036;
-***REMOVED***
+}
 
 /* PAGINATOR */
 
-.paginator ***REMOVED***
+.paginator {
     font-size: 13px;
     padding-top: 10px;
     padding-bottom: 10px;
     line-height: 22px;
     margin: 0;
     border-top: 1px solid #ddd;
-***REMOVED***
+}
 
-.paginator a:link, .paginator a:visited ***REMOVED***
+.paginator a:link, .paginator a:visited {
     padding: 2px 6px;
     background: #79aec8;
     text-decoration: none;
     color: #fff;
-***REMOVED***
+}
 
-.paginator a.showall ***REMOVED***
+.paginator a.showall {
     padding: 0;
     border: none;
     background: none;
     color: #5b80b2;
-***REMOVED***
+}
 
-.paginator a.showall:focus, .paginator a.showall:hover ***REMOVED***
+.paginator a.showall:focus, .paginator a.showall:hover {
     background: none;
     color: #036;
-***REMOVED***
+}
 
-.paginator .end ***REMOVED***
+.paginator .end {
     margin-right: 6px;
-***REMOVED***
+}
 
-.paginator .this-page ***REMOVED***
+.paginator .this-page {
     padding: 2px 6px;
     font-weight: bold;
     font-size: 13px;
     vertical-align: top;
-***REMOVED***
+}
 
-.paginator a:focus, .paginator a:hover ***REMOVED***
+.paginator a:focus, .paginator a:hover {
     color: white;
     background: #036;
-***REMOVED***
+}
 
 /* ACTIONS */
 
-.filtered .actions ***REMOVED***
+.filtered .actions {
     margin-right: 280px;
     border-right: none;
-***REMOVED***
+}
 
-#changelist table input ***REMOVED***
+#changelist table input {
     margin: 0;
     vertical-align: baseline;
-***REMOVED***
+}
 
-#changelist table tbody tr.selected ***REMOVED***
+#changelist table tbody tr.selected {
     background-color: #FFFFCC;
-***REMOVED***
+}
 
-#changelist .actions ***REMOVED***
+#changelist .actions {
     padding: 10px;
     background: #fff;
     border-top: none;
     border-bottom: none;
     line-height: 24px;
     color: #999;
-***REMOVED***
+}
 
-#changelist .actions.selected ***REMOVED***
+#changelist .actions.selected {
     background: #fffccf;
     border-top: 1px solid #fffee8;
     border-bottom: 1px solid #edecd6;
-***REMOVED***
+}
 
 #changelist .actions span.all,
 #changelist .actions span.action-counter,
 #changelist .actions span.clear,
-#changelist .actions span.question ***REMOVED***
+#changelist .actions span.question {
     font-size: 13px;
     margin: 0 0.5em;
     display: none;
-***REMOVED***
+}
 
-#changelist .actions:last-child ***REMOVED***
+#changelist .actions:last-child {
     border-bottom: none;
-***REMOVED***
+}
 
-#changelist .actions select ***REMOVED***
+#changelist .actions select {
     vertical-align: top;
     height: 24px;
     background: none;
@@ -313,19 +313,19 @@
     padding: 0 0 0 4px;
     margin: 0;
     margin-left: 10px;
-***REMOVED***
+}
 
-#changelist .actions select:focus ***REMOVED***
+#changelist .actions select:focus {
     border-color: #999;
-***REMOVED***
+}
 
-#changelist .actions label ***REMOVED***
+#changelist .actions label {
     display: inline-block;
     vertical-align: middle;
     font-size: 13px;
-***REMOVED***
+}
 
-#changelist .actions .button ***REMOVED***
+#changelist .actions .button {
     font-size: 13px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -337,8 +337,8 @@
     padding: 4px 8px;
     margin: 0;
     color: #333;
-***REMOVED***
+}
 
-#changelist .actions .button:focus, #changelist .actions .button:hover ***REMOVED***
+#changelist .actions .button:focus, #changelist .actions .button:hover {
     border-color: #999;
-***REMOVED***
+}

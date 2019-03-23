@@ -2,7 +2,7 @@
  * @author       Timo Hausmann
  * @author       Richard Davey <rich@photonstorm.com>
  * @copyright    2016 Photon Storm Ltd.
- * @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
 
 /**
@@ -12,79 +12,79 @@
 *
 * @class Phaser.QuadTree
 * @constructor
-* @param ***REMOVED***number***REMOVED*** x - The top left coordinate of the quadtree.
-* @param ***REMOVED***number***REMOVED*** y - The top left coordinate of the quadtree.
-* @param ***REMOVED***number***REMOVED*** width - The width of the quadtree in pixels.
-* @param ***REMOVED***number***REMOVED*** height - The height of the quadtree in pixels.
-* @param ***REMOVED***number***REMOVED*** [maxObjects=10] - The maximum number of objects per node.
-* @param ***REMOVED***number***REMOVED*** [maxLevels=4] - The maximum number of levels to iterate to.
-* @param ***REMOVED***number***REMOVED*** [level=0] - Which level is this?
+* @param {number} x - The top left coordinate of the quadtree.
+* @param {number} y - The top left coordinate of the quadtree.
+* @param {number} width - The width of the quadtree in pixels.
+* @param {number} height - The height of the quadtree in pixels.
+* @param {number} [maxObjects=10] - The maximum number of objects per node.
+* @param {number} [maxLevels=4] - The maximum number of levels to iterate to.
+* @param {number} [level=0] - Which level is this?
 */
-Phaser.QuadTree = function(x, y, width, height, maxObjects, maxLevels, level) ***REMOVED***
+Phaser.QuadTree = function(x, y, width, height, maxObjects, maxLevels, level) {
 
     /**
-    * @property ***REMOVED***number***REMOVED*** maxObjects - The maximum number of objects per node.
+    * @property {number} maxObjects - The maximum number of objects per node.
     * @default
     */
     this.maxObjects = 10;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** maxLevels - The maximum number of levels to break down to.
+    * @property {number} maxLevels - The maximum number of levels to break down to.
     * @default
     */
     this.maxLevels = 4;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** level - The current level.
+    * @property {number} level - The current level.
     */
     this.level = 0;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** bounds - Object that contains the quadtree bounds.
+    * @property {object} bounds - Object that contains the quadtree bounds.
     */
-    this.bounds = ***REMOVED******REMOVED***;
+    this.bounds = {};
 
     /**
-    * @property ***REMOVED***array***REMOVED*** objects - Array of quadtree children.
+    * @property {array} objects - Array of quadtree children.
     */
     this.objects = [];
 
     /**
-    * @property ***REMOVED***array***REMOVED*** nodes - Array of associated child nodes.
+    * @property {array} nodes - Array of associated child nodes.
     */
     this.nodes = [];
 
     /**
-    * @property ***REMOVED***array***REMOVED*** _empty - Internal empty array.
+    * @property {array} _empty - Internal empty array.
     * @private
     */
     this._empty = [];
 
     this.reset(x, y, width, height, maxObjects, maxLevels, level);
 
-***REMOVED***;
+};
 
-Phaser.QuadTree.prototype = ***REMOVED***
+Phaser.QuadTree.prototype = {
 
     /**
     * Resets the QuadTree.
     *
     * @method Phaser.QuadTree#reset
-    * @param ***REMOVED***number***REMOVED*** x - The top left coordinate of the quadtree.
-    * @param ***REMOVED***number***REMOVED*** y - The top left coordinate of the quadtree.
-    * @param ***REMOVED***number***REMOVED*** width - The width of the quadtree in pixels.
-    * @param ***REMOVED***number***REMOVED*** height - The height of the quadtree in pixels.
-    * @param ***REMOVED***number***REMOVED*** [maxObjects=10] - The maximum number of objects per node.
-    * @param ***REMOVED***number***REMOVED*** [maxLevels=4] - The maximum number of levels to iterate to.
-    * @param ***REMOVED***number***REMOVED*** [level=0] - Which level is this?
+    * @param {number} x - The top left coordinate of the quadtree.
+    * @param {number} y - The top left coordinate of the quadtree.
+    * @param {number} width - The width of the quadtree in pixels.
+    * @param {number} height - The height of the quadtree in pixels.
+    * @param {number} [maxObjects=10] - The maximum number of objects per node.
+    * @param {number} [maxLevels=4] - The maximum number of levels to iterate to.
+    * @param {number} [level=0] - Which level is this?
     */
-    reset: function (x, y, width, height, maxObjects, maxLevels, level) ***REMOVED***
+    reset: function (x, y, width, height, maxObjects, maxLevels, level) {
 
         this.maxObjects = maxObjects || 10;
         this.maxLevels = maxLevels || 4;
         this.level = level || 0;
 
-        this.bounds = ***REMOVED***
+        this.bounds = {
             x: Math.round(x),
             y: Math.round(y),
             width: width,
@@ -93,46 +93,46 @@ Phaser.QuadTree.prototype = ***REMOVED***
             subHeight: Math.floor(height / 2),
             right: Math.round(x) + Math.floor(width / 2),
             bottom: Math.round(y) + Math.floor(height / 2)
-        ***REMOVED***;
+        };
 
         this.objects.length = 0;
         this.nodes.length = 0;
 
-    ***REMOVED***,
+    },
 
     /**
     * Populates this quadtree with the children of the given Group. In order to be added the child must exist and have a body property.
     *
     * @method Phaser.QuadTree#populate
-    * @param ***REMOVED***Phaser.Group***REMOVED*** group - The Group to add to the quadtree.
+    * @param {Phaser.Group} group - The Group to add to the quadtree.
     */
-    populate: function (group) ***REMOVED***
+    populate: function (group) {
 
         group.forEach(this.populateHandler, this, true);
 
-    ***REMOVED***,
+    },
 
     /**
     * Handler for the populate method.
     *
     * @method Phaser.QuadTree#populateHandler
-    * @param ***REMOVED***Phaser.Sprite|object***REMOVED*** sprite - The Sprite to check.
+    * @param {Phaser.Sprite|object} sprite - The Sprite to check.
     */
-    populateHandler: function (sprite) ***REMOVED***
+    populateHandler: function (sprite) {
 
         if (sprite.body && sprite.exists)
-        ***REMOVED***
+        {
             this.insert(sprite.body);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Split the node into 4 subnodes
     *
     * @method Phaser.QuadTree#split
     */
-    split: function () ***REMOVED***
+    split: function () {
 
         //  top right node
         this.nodes[0] = new Phaser.QuadTree(this.bounds.right, this.bounds.y, this.bounds.subWidth, this.bounds.subHeight, this.maxObjects, this.maxLevels, (this.level + 1));
@@ -146,172 +146,172 @@ Phaser.QuadTree.prototype = ***REMOVED***
         //  bottom right node
         this.nodes[3] = new Phaser.QuadTree(this.bounds.right, this.bounds.bottom, this.bounds.subWidth, this.bounds.subHeight, this.maxObjects, this.maxLevels, (this.level + 1));
 
-    ***REMOVED***,
+    },
 
     /**
     * Insert the object into the node. If the node exceeds the capacity, it will split and add all objects to their corresponding subnodes.
     *
     * @method Phaser.QuadTree#insert
-    * @param ***REMOVED***Phaser.Physics.Arcade.Body|object***REMOVED*** body - The Body object to insert into the quadtree. Can be any object so long as it exposes x, y, right and bottom properties.
+    * @param {Phaser.Physics.Arcade.Body|object} body - The Body object to insert into the quadtree. Can be any object so long as it exposes x, y, right and bottom properties.
     */
-    insert: function (body) ***REMOVED***
+    insert: function (body) {
 
         var i = 0;
         var index;
 
         //  if we have subnodes ...
         if (this.nodes[0] != null)
-        ***REMOVED***
+        {
             index = this.getIndex(body);
 
             if (index !== -1)
-            ***REMOVED***
+            {
                 this.nodes[index].insert(body);
                 return;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         this.objects.push(body);
 
         if (this.objects.length > this.maxObjects && this.level < this.maxLevels)
-        ***REMOVED***
+        {
             //  Split if we don't already have subnodes
             if (this.nodes[0] == null)
-            ***REMOVED***
+            {
                 this.split();
-            ***REMOVED***
+            }
 
             //  Add objects to subnodes
             while (i < this.objects.length)
-            ***REMOVED***
+            {
                 index = this.getIndex(this.objects[i]);
 
                 if (index !== -1)
-                ***REMOVED***
+                {
                     //  this is expensive - see what we can do about it
                     this.nodes[index].insert(this.objects.splice(i, 1)[0]);
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     i++;
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Determine which node the object belongs to.
     *
     * @method Phaser.QuadTree#getIndex
-    * @param ***REMOVED***Phaser.Rectangle|object***REMOVED*** rect - The bounds in which to check.
-    * @return ***REMOVED***number***REMOVED*** index - Index of the subnode (0-3), or -1 if rect cannot completely fit within a subnode and is part of the parent node.
+    * @param {Phaser.Rectangle|object} rect - The bounds in which to check.
+    * @return {number} index - Index of the subnode (0-3), or -1 if rect cannot completely fit within a subnode and is part of the parent node.
     */
-    getIndex: function (rect) ***REMOVED***
+    getIndex: function (rect) {
 
         //  default is that rect doesn't fit, i.e. it straddles the internal quadrants
         var index = -1;
 
         if (rect.x < this.bounds.right && rect.right < this.bounds.right)
-        ***REMOVED***
+        {
             if (rect.y < this.bounds.bottom && rect.bottom < this.bounds.bottom)
-            ***REMOVED***
+            {
                 //  rect fits within the top-left quadrant of this quadtree
                 index = 1;
-            ***REMOVED***
+            }
             else if (rect.y > this.bounds.bottom)
-            ***REMOVED***
+            {
                 //  rect fits within the bottom-left quadrant of this quadtree
                 index = 2;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else if (rect.x > this.bounds.right)
-        ***REMOVED***
+        {
             //  rect can completely fit within the right quadrants
             if (rect.y < this.bounds.bottom && rect.bottom < this.bounds.bottom)
-            ***REMOVED***
+            {
                 //  rect fits within the top-right quadrant of this quadtree
                 index = 0;
-            ***REMOVED***
+            }
             else if (rect.y > this.bounds.bottom)
-            ***REMOVED***
+            {
                 //  rect fits within the bottom-right quadrant of this quadtree
                 index = 3;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return index;
 
-    ***REMOVED***,
+    },
 
     /**
     * Return all objects that could collide with the given Sprite or Rectangle.
     *
     * @method Phaser.QuadTree#retrieve
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Rectangle***REMOVED*** source - The source object to check the QuadTree against. Either a Sprite or Rectangle.
-    * @return ***REMOVED***array***REMOVED*** - Array with all detected objects.
+    * @param {Phaser.Sprite|Phaser.Rectangle} source - The source object to check the QuadTree against. Either a Sprite or Rectangle.
+    * @return {array} - Array with all detected objects.
     */
-    retrieve: function (source) ***REMOVED***
+    retrieve: function (source) {
 
         if (source instanceof Phaser.Rectangle)
-        ***REMOVED***
+        {
             var returnObjects = this.objects;
 
             var index = this.getIndex(source);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             if (!source.body)
-            ***REMOVED***
+            {
                 return this._empty;
-            ***REMOVED***
+            }
 
             var returnObjects = this.objects;
 
             var index = this.getIndex(source.body);
-        ***REMOVED***
+        }
 
         if (this.nodes[0])
-        ***REMOVED***
+        {
             //  If rect fits into a subnode ..
             if (index !== -1)
-            ***REMOVED***
+            {
                 returnObjects = returnObjects.concat(this.nodes[index].retrieve(source));
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 //  If rect does not fit into a subnode, check it against all subnodes (unrolled for speed)
                 returnObjects = returnObjects.concat(this.nodes[0].retrieve(source));
                 returnObjects = returnObjects.concat(this.nodes[1].retrieve(source));
                 returnObjects = returnObjects.concat(this.nodes[2].retrieve(source));
                 returnObjects = returnObjects.concat(this.nodes[3].retrieve(source));
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return returnObjects;
 
-    ***REMOVED***,
+    },
 
     /**
     * Clear the quadtree.
     * @method Phaser.QuadTree#clear
     */
-    clear: function () ***REMOVED***
+    clear: function () {
 
         this.objects.length = 0;
 
         var i = this.nodes.length;
 
         while (i--)
-        ***REMOVED***
+        {
             this.nodes[i].clear();
             this.nodes.splice(i, 1);
-        ***REMOVED***
+        }
 
         this.nodes.length = 0;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.QuadTree.prototype.constructor = Phaser.QuadTree;
 

@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1289,7 +1289,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
             <pre class="sunlight-highlight-javascript linenums">/**
 * @author       Richard Davey &lt;rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1300,19 +1300,19 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 *
 * @class Phaser.Filter
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
-* @param ***REMOVED***object***REMOVED*** uniforms - Uniform mappings object
-* @param ***REMOVED***Array|string***REMOVED*** fragmentSrc - The fragment shader code. Either an array, one element per line of code, or a string.
+* @param {Phaser.Game} game - A reference to the currently running game.
+* @param {object} uniforms - Uniform mappings object
+* @param {Array|string} fragmentSrc - The fragment shader code. Either an array, one element per line of code, or a string.
 */
-Phaser.Filter = function (game, uniforms, fragmentSrc) ***REMOVED***
+Phaser.Filter = function (game, uniforms, fragmentSrc) {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
+    * @property {Phaser.Game} game - A reference to the currently running game.
     */
     this.game = game;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** type - The const type of this object, either Phaser.WEBGL_FILTER or Phaser.CANVAS_FILTER.
+    * @property {number} type - The const type of this object, either Phaser.WEBGL_FILTER or Phaser.CANVAS_FILTER.
     * @default
     */
     this.type = Phaser.WEBGL_FILTER;
@@ -1320,31 +1320,31 @@ Phaser.Filter = function (game, uniforms, fragmentSrc) ***REMOVED***
     /**
     * An array of passes - some filters contain a few steps this array simply stores the steps in a linear fashion.
     * For example the blur filter has two passes blurX and blurY.
-    * @property ***REMOVED***array***REMOVED*** passes - An array of filter objects.
+    * @property {array} passes - An array of filter objects.
     * @private
     */
     this.passes = [this];
 
     /**
-    * @property ***REMOVED***array***REMOVED*** shaders - Array an array of shaders.
+    * @property {array} shaders - Array an array of shaders.
     * @private
     */
     this.shaders = [];
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** dirty - Internal PIXI var.
+    * @property {boolean} dirty - Internal PIXI var.
     * @default
     */
     this.dirty = true;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** padding - Internal PIXI var.
+    * @property {number} padding - Internal PIXI var.
     * @default
     */
     this.padding = 0;
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** prevPoint - The previous position of the pointer (we don't update the uniform if the same)
+    * @property {Phaser.Point} prevPoint - The previous position of the pointer (we don't update the uniform if the same)
     */
     this.prevPoint = new Phaser.Point();
 
@@ -1355,84 +1355,84 @@ Phaser.Filter = function (game, uniforms, fragmentSrc) ***REMOVED***
     var d = new Date();
 
     /**
-    * @property ***REMOVED***object***REMOVED*** uniforms - Default uniform mappings. Compatible with ShaderToy and GLSLSandbox.
+    * @property {object} uniforms - Default uniform mappings. Compatible with ShaderToy and GLSLSandbox.
     */
-    this.uniforms = ***REMOVED***
+    this.uniforms = {
 
-        resolution: ***REMOVED*** type: '2f', value: ***REMOVED*** x: 256, y: 256 ***REMOVED******REMOVED***,
-        time: ***REMOVED*** type: '1f', value: 0 ***REMOVED***,
-        mouse: ***REMOVED*** type: '2f', value: ***REMOVED*** x: 0.0, y: 0.0 ***REMOVED*** ***REMOVED***,
-        date: ***REMOVED*** type: '4fv', value: [ d.getFullYear(),  d.getMonth(),  d.getDate(), d.getHours() *60 * 60 + d.getMinutes() * 60 + d.getSeconds() ] ***REMOVED***,
-        sampleRate: ***REMOVED*** type: '1f', value: 44100.0 ***REMOVED***,
-        iChannel0: ***REMOVED*** type: 'sampler2D', value: null, textureData: ***REMOVED*** repeat: true ***REMOVED*** ***REMOVED***,
-        iChannel1: ***REMOVED*** type: 'sampler2D', value: null, textureData: ***REMOVED*** repeat: true ***REMOVED*** ***REMOVED***,
-        iChannel2: ***REMOVED*** type: 'sampler2D', value: null, textureData: ***REMOVED*** repeat: true ***REMOVED*** ***REMOVED***,
-        iChannel3: ***REMOVED*** type: 'sampler2D', value: null, textureData: ***REMOVED*** repeat: true ***REMOVED*** ***REMOVED***
+        resolution: { type: '2f', value: { x: 256, y: 256 }},
+        time: { type: '1f', value: 0 },
+        mouse: { type: '2f', value: { x: 0.0, y: 0.0 } },
+        date: { type: '4fv', value: [ d.getFullYear(),  d.getMonth(),  d.getDate(), d.getHours() *60 * 60 + d.getMinutes() * 60 + d.getSeconds() ] },
+        sampleRate: { type: '1f', value: 44100.0 },
+        iChannel0: { type: 'sampler2D', value: null, textureData: { repeat: true } },
+        iChannel1: { type: 'sampler2D', value: null, textureData: { repeat: true } },
+        iChannel2: { type: 'sampler2D', value: null, textureData: { repeat: true } },
+        iChannel3: { type: 'sampler2D', value: null, textureData: { repeat: true } }
 
-    ***REMOVED***;
+    };
 
     //  Copy over/replace any passed in the constructor
     if (uniforms)
-    ***REMOVED***
+    {
         for (var key in uniforms)
-        ***REMOVED***
+        {
             this.uniforms[key] = uniforms[key];
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     /**
-    * @property ***REMOVED***array|string***REMOVED*** fragmentSrc - The fragment shader code.
+    * @property {array|string} fragmentSrc - The fragment shader code.
     */
     this.fragmentSrc = fragmentSrc || '';
 
-***REMOVED***;
+};
 
-Phaser.Filter.prototype = ***REMOVED***
+Phaser.Filter.prototype = {
 
     /**
     * Should be over-ridden.
     * @method Phaser.Filter#init
     */
-    init: function () ***REMOVED***
+    init: function () {
         //  This should be over-ridden. Will receive a variable number of arguments.
-    ***REMOVED***,
+    },
 
     /**
     * Set the resolution uniforms on the filter.
     * @method Phaser.Filter#setResolution
-    * @param ***REMOVED***number***REMOVED*** width - The width of the display.
-    * @param ***REMOVED***number***REMOVED*** height - The height of the display.
+    * @param {number} width - The width of the display.
+    * @param {number} height - The height of the display.
     */
-    setResolution: function (width, height) ***REMOVED***
+    setResolution: function (width, height) {
 
         this.uniforms.resolution.value.x = width;
         this.uniforms.resolution.value.y = height;
 
-    ***REMOVED***,
+    },
 
     /**
     * Updates the filter.
     * @method Phaser.Filter#update
-    * @param ***REMOVED***Phaser.Pointer***REMOVED*** [pointer] - A Pointer object to use for the filter. The coordinates are mapped to the mouse uniform.
+    * @param {Phaser.Pointer} [pointer] - A Pointer object to use for the filter. The coordinates are mapped to the mouse uniform.
     */
-    update: function (pointer) ***REMOVED***
+    update: function (pointer) {
 
         if (typeof pointer !== 'undefined')
-        ***REMOVED***
+        {
             var x = pointer.x / this.game.width;
             var y = 1 - pointer.y / this.game.height;
 
             if (x !== this.prevPoint.x || y !== this.prevPoint.y)
-            ***REMOVED***
+            {
                 this.uniforms.mouse.value.x = x.toFixed(2);
                 this.uniforms.mouse.value.y = y.toFixed(2);
                 this.prevPoint.set(x, y);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         this.uniforms.time.value = this.game.time.totalElapsedSeconds();
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a new Phaser.Image object using a blank texture and assigns 
@@ -1444,36 +1444,36 @@ Phaser.Filter.prototype = ***REMOVED***
     * values.
     *
     * @method Phaser.Filter#addToWorld
-    * @param ***REMOVED***number***REMOVED*** [x=0] - The x coordinate to place the Image at.
-    * @param ***REMOVED***number***REMOVED*** [y=0] - The y coordinate to place the Image at.
-    * @param ***REMOVED***number***REMOVED*** [width] - The width of the Image. If not specified (or null) it will use Filter.width. If specified Filter.width will be set to this value.
-    * @param ***REMOVED***number***REMOVED*** [height] - The height of the Image. If not specified (or null) it will use Filter.height. If specified Filter.height will be set to this value.
-    * @param ***REMOVED***number***REMOVED*** [anchorX=0] - Set the x anchor point of the Image. A value between 0 and 1, where 0 is the top-left and 1 is bottom-right.
-    * @param ***REMOVED***number***REMOVED*** [anchorY=0] - Set the y anchor point of the Image. A value between 0 and 1, where 0 is the top-left and 1 is bottom-right.
-    * @return ***REMOVED***Phaser.Image***REMOVED*** The newly added Image object.
+    * @param {number} [x=0] - The x coordinate to place the Image at.
+    * @param {number} [y=0] - The y coordinate to place the Image at.
+    * @param {number} [width] - The width of the Image. If not specified (or null) it will use Filter.width. If specified Filter.width will be set to this value.
+    * @param {number} [height] - The height of the Image. If not specified (or null) it will use Filter.height. If specified Filter.height will be set to this value.
+    * @param {number} [anchorX=0] - Set the x anchor point of the Image. A value between 0 and 1, where 0 is the top-left and 1 is bottom-right.
+    * @param {number} [anchorY=0] - Set the y anchor point of the Image. A value between 0 and 1, where 0 is the top-left and 1 is bottom-right.
+    * @return {Phaser.Image} The newly added Image object.
     */
-    addToWorld: function (x, y, width, height, anchorX, anchorY) ***REMOVED***
+    addToWorld: function (x, y, width, height, anchorX, anchorY) {
 
-        if (anchorX === undefined) ***REMOVED*** anchorX = 0; ***REMOVED***
-        if (anchorY === undefined) ***REMOVED*** anchorY = 0; ***REMOVED***
+        if (anchorX === undefined) { anchorX = 0; }
+        if (anchorY === undefined) { anchorY = 0; }
 
         if (width !== undefined &amp;&amp; width !== null)
-        ***REMOVED***
+        {
             this.width = width;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             width = this.width;
-        ***REMOVED***
+        }
 
         if (height !== undefined &amp;&amp; height !== null)
-        ***REMOVED***
+        {
             this.height = height;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             height = this.height;
-        ***REMOVED***
+        }
 
         var image = this.game.add.image(x, y, '__default');
 
@@ -1486,53 +1486,53 @@ Phaser.Filter.prototype = ***REMOVED***
 
         return image;
 
-    ***REMOVED***,
+    },
 
     /**
     * Clear down this Filter and null out references
     * @method Phaser.Filter#destroy
     */
-    destroy: function () ***REMOVED***
+    destroy: function () {
 
         this.game = null;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.Filter.prototype.constructor = Phaser.Filter;
 
 /**
 * @name Phaser.Filter#width
-* @property ***REMOVED***number***REMOVED*** width - The width (resolution uniform)
+* @property {number} width - The width (resolution uniform)
 */
-Object.defineProperty(Phaser.Filter.prototype, 'width', ***REMOVED***
+Object.defineProperty(Phaser.Filter.prototype, 'width', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.resolution.value.x;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.resolution.value.x = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Filter#height
-* @property ***REMOVED***number***REMOVED*** height - The height (resolution uniform)
+* @property {number} height - The height (resolution uniform)
 */
-Object.defineProperty(Phaser.Filter.prototype, 'height', ***REMOVED***
+Object.defineProperty(Phaser.Filter.prototype, 'height', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.resolution.value.y;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.resolution.value.y = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 </pre>
         </article>
     </section>
@@ -1575,22 +1575,22 @@ Object.defineProperty(Phaser.Filter.prototype, 'height', ***REMOVED***
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

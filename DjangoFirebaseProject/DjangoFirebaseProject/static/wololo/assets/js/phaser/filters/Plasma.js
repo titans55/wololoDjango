@@ -2,15 +2,15 @@
 * Original shader by TriggerHLM (https://www.shadertoy.com/view/MdXGDH)
 * Tweaked, uniforms added and converted to Phaser/PIXI by Richard Davey
 */
-Phaser.Filter.Plasma = function (game) ***REMOVED***
+Phaser.Filter.Plasma = function (game) {
 
     Phaser.Filter.call(this, game);
 
-    this.uniforms.alpha = ***REMOVED*** type: '1f', value: 1.0 ***REMOVED***;
-    this.uniforms.size = ***REMOVED*** type: '1f', value: 0.03 ***REMOVED***;
-    this.uniforms.redShift = ***REMOVED*** type: '1f', value: 0.5 ***REMOVED***;
-    this.uniforms.greenShift = ***REMOVED*** type: '1f', value: 0.5 ***REMOVED***;
-    this.uniforms.blueShift = ***REMOVED*** type: '1f', value: 0.9 ***REMOVED***;
+    this.uniforms.alpha = { type: '1f', value: 1.0 };
+    this.uniforms.size = { type: '1f', value: 0.03 };
+    this.uniforms.redShift = { type: '1f', value: 0.5 };
+    this.uniforms.greenShift = { type: '1f', value: 0.5 };
+    this.uniforms.blueShift = { type: '1f', value: 0.9 };
 
     this.fragmentSrc = [
 
@@ -26,7 +26,7 @@ Phaser.Filter.Plasma = function (game) ***REMOVED***
 
         "float ptime = time * 0.1;",
 
-        "void main(void) ***REMOVED***",
+        "void main(void) {",
 
             "float color1, color2, color;",
 
@@ -40,84 +40,84 @@ Phaser.Filter.Plasma = function (game) ***REMOVED***
             "float blue = (sin(PI * color / blueShift + ptime * 3.0) + 1.0) / 2.0;",
 
             "gl_FragColor = vec4(red, green, blue, alpha);",
-        "***REMOVED***"
+        "}"
     ];
 
-***REMOVED***;
+};
 
 Phaser.Filter.Plasma.prototype = Object.create(Phaser.Filter.prototype);
 Phaser.Filter.Plasma.prototype.constructor = Phaser.Filter.Plasma;
 
-Phaser.Filter.Plasma.prototype.init = function (width, height, alpha, size) ***REMOVED***
+Phaser.Filter.Plasma.prototype.init = function (width, height, alpha, size) {
 
     this.setResolution(width, height);
 
-    if (typeof alpha !== 'undefined') ***REMOVED***
+    if (typeof alpha !== 'undefined') {
         this.uniforms.alpha.value = alpha;
-    ***REMOVED***
+    }
 
-    if (typeof size !== 'undefined') ***REMOVED***
+    if (typeof size !== 'undefined') {
         this.uniforms.size.value = size;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
-Object.defineProperty(Phaser.Filter.Plasma.prototype, 'alpha', ***REMOVED***
+Object.defineProperty(Phaser.Filter.Plasma.prototype, 'alpha', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.alpha.value;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.alpha.value = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
-Object.defineProperty(Phaser.Filter.Plasma.prototype, 'size', ***REMOVED***
+Object.defineProperty(Phaser.Filter.Plasma.prototype, 'size', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.size.value;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.size.value = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
-Object.defineProperty(Phaser.Filter.Plasma.prototype, 'redShift', ***REMOVED***
+Object.defineProperty(Phaser.Filter.Plasma.prototype, 'redShift', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.redShift.value;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.redShift.value = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
-Object.defineProperty(Phaser.Filter.Plasma.prototype, 'greenShift', ***REMOVED***
+Object.defineProperty(Phaser.Filter.Plasma.prototype, 'greenShift', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.greenShift.value;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.greenShift.value = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
-Object.defineProperty(Phaser.Filter.Plasma.prototype, 'blueShift', ***REMOVED***
+Object.defineProperty(Phaser.Filter.Plasma.prototype, 'blueShift', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.blueShift.value;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.blueShift.value = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});

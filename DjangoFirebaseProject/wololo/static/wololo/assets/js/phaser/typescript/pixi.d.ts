@@ -1,13 +1,13 @@
 // Type definitions for PIXI with Phaser Deviations. 
 
-declare module PIXI ***REMOVED***
+declare module PIXI {
 
     export var game: Phaser.Game;
     export var WEBGL_RENDERER: number;
     export var CANVAS_RENDERER: number;
     export var VERSION: string;
 
-    export enum blendModes ***REMOVED***
+    export enum blendModes {
 
         NORMAL,
         ADD,
@@ -27,15 +27,15 @@ declare module PIXI ***REMOVED***
         COLOR,
         LUMINOSITY
 
-    ***REMOVED***
+    }
 
-    export enum scaleModes ***REMOVED***
+    export enum scaleModes {
 
         DEFAULT,
         LINEAR,
         NEAREST
 
-    ***REMOVED***
+    }
 
     export var defaultRenderOptions: PixiRendererOptions;
 
@@ -52,7 +52,7 @@ declare module PIXI ***REMOVED***
     export var instances: any[];
 
     export var TextureSilentFail: boolean;
-    export var BitmapText: ***REMOVED*** fonts: ***REMOVED******REMOVED*** ***REMOVED***;
+    export var BitmapText: { fonts: {} };
 
     export function isPowerOfTwo(width: number, height: number): boolean;
 
@@ -71,24 +71,24 @@ declare module PIXI ***REMOVED***
     export function CompileProgram(gl: WebGLRenderingContext, vertexSrc: string[], fragmentSrc: string[]): any;
 
 
-    export interface IEventCallback ***REMOVED***
+    export interface IEventCallback {
         (e?: IEvent): void;
-    ***REMOVED***
+    }
 
-    export interface IEvent ***REMOVED***
+    export interface IEvent {
         type: string;
         content: any;
-    ***REMOVED***
+    }
 
-    export interface HitArea ***REMOVED***
+    export interface HitArea {
         contains(x: number, y: number): boolean;
-    ***REMOVED***
+    }
 
-    export interface IInteractionDataCallback ***REMOVED***
+    export interface IInteractionDataCallback {
         (interactionData: InteractionData): void;
-    ***REMOVED***
+    }
 
-    export interface PixiRenderer ***REMOVED***
+    export interface PixiRenderer {
 
         autoResize: boolean;
         clearBeforeRender: boolean;
@@ -103,9 +103,9 @@ declare module PIXI ***REMOVED***
         render(stage: DisplayObjectContainer): void;
         resize(width: number, height: number): void;
 
-    ***REMOVED***
+    }
 
-    export interface PixiRendererOptions ***REMOVED***
+    export interface PixiRendererOptions {
 
         autoResize?: boolean;
         antialias?: boolean;
@@ -115,17 +115,17 @@ declare module PIXI ***REMOVED***
         transparent?: boolean;
         view?: HTMLCanvasElement;
 
-    ***REMOVED***
+    }
 
-    export interface BitmapTextStyle ***REMOVED***
+    export interface BitmapTextStyle {
 
         font?: string;
         align?: string;
         tint?: string;
 
-    ***REMOVED***
+    }
 
-    export interface TextStyle ***REMOVED***
+    export interface TextStyle {
 
         align?: string;
         dropShadow?: boolean;
@@ -140,22 +140,22 @@ declare module PIXI ***REMOVED***
         wordWrap?: boolean;
         wordWrapWidth?: number;
 
-    ***REMOVED***
+    }
 
-    export interface Loader ***REMOVED***
+    export interface Loader {
 
         load(): void;
 
-    ***REMOVED***
+    }
 
-    export interface MaskData ***REMOVED***
+    export interface MaskData {
 
         alpha: number;
         worldTransform: number[];
 
-    ***REMOVED***
+    }
 
-    export interface RenderSession ***REMOVED***
+    export interface RenderSession {
 
         context: CanvasRenderingContext2D;
         maskManager: CanvasMaskManager;
@@ -163,20 +163,20 @@ declare module PIXI ***REMOVED***
         smoothProperty: string;
         roundPixels: boolean;
 
-    ***REMOVED***
+    }
 
-    export interface ShaderAttribute ***REMOVED***
+    export interface ShaderAttribute {
         // TODO: Find signature of shader attributes
-    ***REMOVED***
+    }
 
-    export interface FilterBlock ***REMOVED***
+    export interface FilterBlock {
 
         visible: boolean;
         renderable: boolean;
 
-    ***REMOVED***
+    }
 
-    export class AbstractFilter ***REMOVED***
+    export class AbstractFilter {
 
         constructor(fragmentSrc: string | string[], uniforms: any);
 
@@ -188,9 +188,9 @@ declare module PIXI ***REMOVED***
         apply(frameBuffer: WebGLFramebuffer): void;
         syncUniforms(): void;
 
-    ***REMOVED***
+    }
 
-    export class AlphaMaskFilter extends AbstractFilter ***REMOVED***
+    export class AlphaMaskFilter extends AbstractFilter {
 
         constructor(texture: Texture);
 
@@ -198,19 +198,19 @@ declare module PIXI ***REMOVED***
 
         onTextureLoaded(): void;
 
-    ***REMOVED***
+    }
 
-    export class AsciiFilter extends AbstractFilter ***REMOVED***
+    export class AsciiFilter extends AbstractFilter {
 
         size: number;
 
-    ***REMOVED***
+    }
 
-    export class AssetLoader implements Mixin ***REMOVED***
+    export class AssetLoader implements Mixin {
 
         assetURLs: string[];
         crossorigin: boolean;
-        loadersByType: ***REMOVED*** [key: string]: Loader ***REMOVED***;
+        loadersByType: { [key: string]: Loader };
 
         constructor(assetURLs: string[], crossorigin: boolean);
 
@@ -226,9 +226,9 @@ declare module PIXI ***REMOVED***
         load(): void;
 
 
-    ***REMOVED***
+    }
 
-    export class AtlasLoader implements Mixin ***REMOVED***
+    export class AtlasLoader implements Mixin {
 
         url: string;
         baseUrl: string;
@@ -248,9 +248,9 @@ declare module PIXI ***REMOVED***
 
         load(): void;
 
-    ***REMOVED***
+    }
 
-    export class BaseTexture implements Mixin ***REMOVED***
+    export class BaseTexture implements Mixin {
 
         static fromCanvas(canvas: HTMLCanvasElement, scaleMode?: scaleModes): BaseTexture;
 
@@ -280,9 +280,9 @@ declare module PIXI ***REMOVED***
         dirty(): void;
         unloadFromGPU(): void;
 
-    ***REMOVED***
+    }
 
-    export class BitmapFontLoader implements Mixin ***REMOVED***
+    export class BitmapFontLoader implements Mixin {
 
         constructor(url: string, crossorigin: boolean);
 
@@ -302,29 +302,29 @@ declare module PIXI ***REMOVED***
 
         load(): void;
 
-    ***REMOVED***
+    }
 
-    export class BlurFilter extends AbstractFilter ***REMOVED***
+    export class BlurFilter extends AbstractFilter {
 
         blur: number;
         blurX: number;
         blurY: number;
 
-    ***REMOVED***
+    }
 
-    export class BlurXFilter extends AbstractFilter ***REMOVED***
-
-        blur: number;
-
-    ***REMOVED***
-
-    export class BlurYFilter extends AbstractFilter ***REMOVED***
+    export class BlurXFilter extends AbstractFilter {
 
         blur: number;
 
-    ***REMOVED***
+    }
 
-    export class CanvasBuffer ***REMOVED***
+    export class BlurYFilter extends AbstractFilter {
+
+        blur: number;
+
+    }
+
+    export class CanvasBuffer {
 
         constructor(width: number, height: number);
 
@@ -337,9 +337,9 @@ declare module PIXI ***REMOVED***
         clear(): void;
         resize(width: number, height: number): void;
 
-    ***REMOVED***
+    }
 
-    export class CanvasPool ***REMOVED***
+    export class CanvasPool {
 
         static create(parent: HTMLElement, width?: number, height?: number): HTMLCanvasElement;
         static getFirst(): HTMLCanvasElement;
@@ -348,16 +348,16 @@ declare module PIXI ***REMOVED***
         static getTotal(): number;
         static getFree(): number;
 
-    ***REMOVED***
+    }
 
-    export class CanvasMaskManager ***REMOVED***
+    export class CanvasMaskManager {
 
         pushMask(maskData: MaskData, renderSession: RenderSession): void;
         popMask(renderSession: RenderSession): void;
 
-    ***REMOVED***
+    }
 
-    export class CanvasRenderer implements PixiRenderer ***REMOVED***
+    export class CanvasRenderer implements PixiRenderer {
 
         constructor(game: Phaser.Game);
 
@@ -380,9 +380,9 @@ declare module PIXI ***REMOVED***
         resize(width: number, height: number): void;
         destroy(removeView?: boolean): void;
 
-    ***REMOVED***
+    }
 
-    export class CanvasTinter ***REMOVED***
+    export class CanvasTinter {
 
         static getTintedTexture(sprite: Sprite, color: number): HTMLCanvasElement;
         static tintWithMultiply(texture: Texture, color: number, canvas: HTMLCanvasElement): void;
@@ -392,9 +392,9 @@ declare module PIXI ***REMOVED***
         static canUseMultiply: boolean;
         static tintMethod: any;
 
-    ***REMOVED***
+    }
 
-    export class Circle implements HitArea ***REMOVED***
+    export class Circle implements HitArea {
 
         constructor(x: number, y: number, radius: number);
 
@@ -406,23 +406,23 @@ declare module PIXI ***REMOVED***
         contains(x: number, y: number): boolean;
         getBounds(): Rectangle;
 
-    ***REMOVED***
+    }
 
-    export class ColorMatrixFilter extends AbstractFilter ***REMOVED***
+    export class ColorMatrixFilter extends AbstractFilter {
 
         constructor();
 
         matrix: number[];
 
-    ***REMOVED***
+    }
 
-    export class ColorStepFilter extends AbstractFilter ***REMOVED***
+    export class ColorStepFilter extends AbstractFilter {
 
         step: number;
 
-    ***REMOVED***
+    }
 
-    export class ConvolutionFilter extends AbstractFilter ***REMOVED***
+    export class ConvolutionFilter extends AbstractFilter {
 
         constructor(matrix: number[], width: number, height: number);
 
@@ -430,15 +430,15 @@ declare module PIXI ***REMOVED***
         width: number;
         height: number;
 
-    ***REMOVED***
+    }
 
-    export class CrossHatchFilter extends AbstractFilter ***REMOVED***
+    export class CrossHatchFilter extends AbstractFilter {
 
         blur: number;
 
-    ***REMOVED***
+    }
 
-    export class DisplacementFilter extends AbstractFilter ***REMOVED***
+    export class DisplacementFilter extends AbstractFilter {
 
         constructor(texture: Texture);
 
@@ -446,16 +446,16 @@ declare module PIXI ***REMOVED***
         offset: Point;
         scale: Point;
 
-    ***REMOVED***
+    }
 
-    export class DotScreenFilter extends AbstractFilter ***REMOVED***
+    export class DotScreenFilter extends AbstractFilter {
 
         angle: number;
         scale: Point;
 
-    ***REMOVED***
+    }
 
-    export class DisplayObject ***REMOVED***
+    export class DisplayObject {
 
         alpha: number;
         buttonMode: boolean;
@@ -506,9 +506,9 @@ declare module PIXI ***REMOVED***
         touchmove(e: InteractionData): void;
         updateTransform(parent?: DisplayObjectContainer): void;
 
-    ***REMOVED***
+    }
 
-    export class DisplayObjectContainer extends DisplayObject ***REMOVED***
+    export class DisplayObjectContainer extends DisplayObject {
 
         constructor();
 
@@ -531,9 +531,9 @@ declare module PIXI ***REMOVED***
         swapChildren(child: DisplayObject, child2: DisplayObject): void;
         contains(child: DisplayObject): boolean;
 
-    ***REMOVED***
+    }
 
-    export class Ellipse implements HitArea ***REMOVED***
+    export class Ellipse implements HitArea {
 
         constructor(x: number, y: number, width: number, height: number);
 
@@ -546,9 +546,9 @@ declare module PIXI ***REMOVED***
         contains(x: number, y: number): boolean;
         getBounds(): Rectangle;
 
-    ***REMOVED***
+    }
 
-    export class Event ***REMOVED***
+    export class Event {
 
         constructor(target: any, name: string, data: any);
 
@@ -561,15 +561,15 @@ declare module PIXI ***REMOVED***
         preventDefault(): void;
         stopImmediatePropagation(): void;
 
-    ***REMOVED***
+    }
 
-    export class EventTarget ***REMOVED***
+    export class EventTarget {
 
         static mixin(obj: any): void;
 
-    ***REMOVED***
+    }
 
-    export class FilterTexture ***REMOVED***
+    export class FilterTexture {
 
         constructor(gl: WebGLRenderingContext, width: number, height: number, scaleMode: scaleModes);
 
@@ -584,9 +584,9 @@ declare module PIXI ***REMOVED***
         resize(width: number, height: number): void;
         destroy(): void;
 
-    ***REMOVED***
+    }
 
-    export class GraphicsData ***REMOVED***
+    export class GraphicsData {
 
         constructor(lineWidth?: number, lineColor?: number, lineAlpha?: number, fillColor?: number, fillAlpha?: number, fill?: boolean, shape?: any);
 
@@ -599,9 +599,9 @@ declare module PIXI ***REMOVED***
         shape: any;
         type: number;
 
-    ***REMOVED***
+    }
 
-    export class Graphics extends DisplayObjectContainer ***REMOVED***
+    export class Graphics extends DisplayObjectContainer {
 
         static POLY: number;
         static RECT: number;
@@ -640,15 +640,15 @@ declare module PIXI ***REMOVED***
         moveTo(x: number, y: number): Graphics;
         quadraticCurveTo(cpX: number, cpY: number, toX: number, toY: number): Graphics;
 
-    ***REMOVED***
+    }
 
-    export class GrayFilter extends AbstractFilter ***REMOVED***
+    export class GrayFilter extends AbstractFilter {
 
         gray: number;
 
-    ***REMOVED***
+    }
 
-    export class ImageLoader implements Mixin ***REMOVED***
+    export class ImageLoader implements Mixin {
 
         constructor(url: string, crossorigin?: boolean);
 
@@ -666,9 +666,9 @@ declare module PIXI ***REMOVED***
         load(): void;
         loadFramedSpriteSheet(frameWidth: number, frameHeight: number, textureName: string): void;
 
-    ***REMOVED***
+    }
 
-    export class InteractionData ***REMOVED***
+    export class InteractionData {
 
         global: Point;
         target: Sprite;
@@ -676,9 +676,9 @@ declare module PIXI ***REMOVED***
 
         getLocalPosition(displayObject: DisplayObject, point?: Point, globalPos?: Point): Point;
 
-    ***REMOVED***
+    }
 
-    export class InteractionManager ***REMOVED***
+    export class InteractionManager {
 
         currentCursorStyle: string;
         last: number;
@@ -695,18 +695,18 @@ declare module PIXI ***REMOVED***
         pool: InteractionData[];
         resolution: number;
         stage: DisplayObjectContainer;
-        touches: ***REMOVED*** [id: string]: InteractionData ***REMOVED***;
+        touches: { [id: string]: InteractionData };
 
         constructor(stage: DisplayObjectContainer);
-    ***REMOVED***
+    }
 
-    export class InvertFilter extends AbstractFilter ***REMOVED***
+    export class InvertFilter extends AbstractFilter {
 
         invert: number;
 
-    ***REMOVED***
+    }
 
-    export class JsonLoader implements Mixin ***REMOVED***
+    export class JsonLoader implements Mixin {
 
         constructor(url: string, crossorigin?: boolean);
 
@@ -726,9 +726,9 @@ declare module PIXI ***REMOVED***
 
         load(): void;
 
-    ***REMOVED***
+    }
 
-    export class Matrix ***REMOVED***
+    export class Matrix {
 
         a: number;
         b: number;
@@ -748,9 +748,9 @@ declare module PIXI ***REMOVED***
         toArray(transpose: boolean): number[];
         scale(x: number, y: number): Matrix;
 
-    ***REMOVED***
+    }
 
-    export interface Mixin ***REMOVED***
+    export interface Mixin {
 
         listeners(eventName: string): Function[];
         emit(eventName: string, data?: any): boolean;
@@ -761,29 +761,29 @@ declare module PIXI ***REMOVED***
         off(eventName: string, fn: Function): Function;
         removeAllEventListeners(eventName: string): void;
 
-    ***REMOVED***
+    }
 
-    export class NoiseFilter extends AbstractFilter ***REMOVED***
+    export class NoiseFilter extends AbstractFilter {
 
         noise: number;
 
-    ***REMOVED***
+    }
 
-    export class NormalMapFilter extends AbstractFilter ***REMOVED***
+    export class NormalMapFilter extends AbstractFilter {
 
         map: Texture;
         offset: Point;
         scale: Point;
 
-    ***REMOVED***
+    }
 
-    export class PixelateFilter extends AbstractFilter ***REMOVED***
+    export class PixelateFilter extends AbstractFilter {
 
         size: number;
 
-    ***REMOVED***
+    }
 
-    export interface IPixiShader ***REMOVED***
+    export interface IPixiShader {
 
         fragmentSrc: string[];
         gl: WebGLRenderingContext;
@@ -793,9 +793,9 @@ declare module PIXI ***REMOVED***
         destroy(): void;
         init(): void;
 
-    ***REMOVED***
+    }
 
-    export class PixiShader implements IPixiShader ***REMOVED***
+    export class PixiShader implements IPixiShader {
 
         constructor(gl: WebGLRenderingContext);
 
@@ -816,9 +816,9 @@ declare module PIXI ***REMOVED***
         destroy(): void;
         init(): void;
 
-    ***REMOVED***
+    }
 
-    export class PixiFastShader implements IPixiShader ***REMOVED***
+    export class PixiFastShader implements IPixiShader {
 
         constructor(gl: WebGLRenderingContext);
 
@@ -831,22 +831,9 @@ declare module PIXI ***REMOVED***
         destroy(): void;
         init(): void;
 
-    ***REMOVED***
+    }
 
-    export class PrimitiveShader implements IPixiShader ***REMOVED***
-
-        constructor(gl: WebGLRenderingContext);
-        fragmentSrc: string[];
-        gl: WebGLRenderingContext;
-        program: WebGLProgram;
-        vertexSrc: string[];
-
-        destroy(): void;
-        init(): void;
-
-    ***REMOVED***
-
-    export class ComplexPrimitiveShader implements IPixiShader ***REMOVED***
+    export class PrimitiveShader implements IPixiShader {
 
         constructor(gl: WebGLRenderingContext);
         fragmentSrc: string[];
@@ -857,9 +844,9 @@ declare module PIXI ***REMOVED***
         destroy(): void;
         init(): void;
 
-    ***REMOVED***
+    }
 
-    export class StripShader implements IPixiShader ***REMOVED***
+    export class ComplexPrimitiveShader implements IPixiShader {
 
         constructor(gl: WebGLRenderingContext);
         fragmentSrc: string[];
@@ -870,9 +857,22 @@ declare module PIXI ***REMOVED***
         destroy(): void;
         init(): void;
 
-    ***REMOVED***
+    }
 
-    export class Point ***REMOVED***
+    export class StripShader implements IPixiShader {
+
+        constructor(gl: WebGLRenderingContext);
+        fragmentSrc: string[];
+        gl: WebGLRenderingContext;
+        program: WebGLProgram;
+        vertexSrc: string[];
+
+        destroy(): void;
+        init(): void;
+
+    }
+
+    export class Point {
 
         constructor(x?: number, y?: number);
 
@@ -882,9 +882,9 @@ declare module PIXI ***REMOVED***
         clone(): Point;
         set(x: number, y: number): void;
 
-    ***REMOVED***
+    }
 
-    export class Polygon implements HitArea ***REMOVED***
+    export class Polygon implements HitArea {
 
         constructor(points: Point[]);
         constructor(points: number[]);
@@ -896,9 +896,9 @@ declare module PIXI ***REMOVED***
         clone(): Polygon;
         contains(x: number, y: number): boolean;
 
-    ***REMOVED***
+    }
 
-    export class Rectangle implements HitArea ***REMOVED***
+    export class Rectangle implements HitArea {
 
         constructor(x?: number, y?: number, width?: number, height?: number);
 
@@ -910,17 +910,17 @@ declare module PIXI ***REMOVED***
         clone(): Rectangle;
         contains(x: number, y: number): boolean;
 
-    ***REMOVED***
+    }
 
-    export class RGBSplitFilter extends AbstractFilter ***REMOVED***
+    export class RGBSplitFilter extends AbstractFilter {
 
         red: Point;
         green: Point;
         blue: Point;
 
-    ***REMOVED***
+    }
 
-    export class Rope extends Strip ***REMOVED***
+    export class Rope extends Strip {
 
         points: Point[];
         vertices: number[];
@@ -930,9 +930,9 @@ declare module PIXI ***REMOVED***
         refresh(): void;
         setTexture(texture: Texture): void;
 
-    ***REMOVED***
+    }
 
-    export class RoundedRectangle implements HitArea ***REMOVED***
+    export class RoundedRectangle implements HitArea {
 
         constructor(x?: number, y?: number, width?: number, height?: number, radius?: number);
 
@@ -945,21 +945,21 @@ declare module PIXI ***REMOVED***
         clone(): RoundedRectangle;
         contains(x: number, y: number): boolean;
 
-    ***REMOVED***
+    }
 
-    export class SepiaFilter extends AbstractFilter ***REMOVED***
+    export class SepiaFilter extends AbstractFilter {
 
         sepia: number;
 
-    ***REMOVED***
+    }
 
-    export class SmartBlurFilter extends AbstractFilter ***REMOVED***
+    export class SmartBlurFilter extends AbstractFilter {
 
         blur: number;
 
-    ***REMOVED***
+    }
 
-    export class SpineLoader implements Mixin ***REMOVED***
+    export class SpineLoader implements Mixin {
 
         url: string;
         crossorigin: boolean;
@@ -978,18 +978,18 @@ declare module PIXI ***REMOVED***
 
         load(): void;
 
-    ***REMOVED***
+    }
 
-    export class SpineTextureLoader ***REMOVED***
+    export class SpineTextureLoader {
 
         constructor(basePath: string, crossorigin: boolean);
 
         load(page: AtlasPage, file: string): void;
         unload(texture: BaseTexture): void;
 
-    ***REMOVED***
+    }
 
-    export class Sprite extends DisplayObjectContainer ***REMOVED***
+    export class Sprite extends DisplayObjectContainer {
 
         constructor(texture: Texture);
 
@@ -1002,9 +1002,9 @@ declare module PIXI ***REMOVED***
 
         setTexture(texture: Texture, destroyBase?: boolean): void;
 
-    ***REMOVED***
+    }
 
-    export class SpriteBatch extends DisplayObjectContainer ***REMOVED***
+    export class SpriteBatch extends DisplayObjectContainer {
 
         constructor(texture?: Texture);
 
@@ -1013,9 +1013,9 @@ declare module PIXI ***REMOVED***
 
         initWebGL(gl: WebGLRenderingContext): void;
 
-    ***REMOVED***
+    }
 
-    export class SpriteSheetLoader implements Mixin ***REMOVED***
+    export class SpriteSheetLoader implements Mixin {
 
         constructor(url: string, crossorigin?: boolean);
 
@@ -1036,16 +1036,16 @@ declare module PIXI ***REMOVED***
 
         load(): void;
 
-    ***REMOVED***
+    }
 
-    export class Strip extends DisplayObjectContainer ***REMOVED***
+    export class Strip extends DisplayObjectContainer {
 
-        static DrawModes: ***REMOVED***
+        static DrawModes: {
 
             TRIANGLE_STRIP: number;
             TRIANGLES: number;
 
-        ***REMOVED***;
+        };
 
         constructor(texture: Texture);
 
@@ -1060,9 +1060,9 @@ declare module PIXI ***REMOVED***
 
         getBounds(matrix?: Matrix): Rectangle;
 
-    ***REMOVED***
+    }
 
-    export class Texture implements Mixin ***REMOVED***
+    export class Texture implements Mixin {
 
         static emptyTexture: Texture;
 
@@ -1093,9 +1093,9 @@ declare module PIXI ***REMOVED***
         destroy(destroyBase: boolean): void;
         setFrame(frame: Rectangle): void;
 
-    ***REMOVED***
+    }
 
-    export class TilingSprite extends Sprite ***REMOVED***
+    export class TilingSprite extends Sprite {
 
         constructor(texture: Texture, width: number, height: number);
 
@@ -1114,29 +1114,18 @@ declare module PIXI ***REMOVED***
         generateTilingTexture(forcePowerOfTwo?: boolean): void;
         setTexture(texture: Texture): void;
 
-    ***REMOVED***
+    }
 
-    export class TiltShiftFilter extends AbstractFilter ***REMOVED***
-
-        blur: number;
-        gradientBlur: number;
-        start: number;
-        end: number;
-
-    ***REMOVED***
-
-    export class TiltShiftXFilter extends AbstractFilter ***REMOVED***
+    export class TiltShiftFilter extends AbstractFilter {
 
         blur: number;
         gradientBlur: number;
         start: number;
         end: number;
 
-        updateDelta(): void;
+    }
 
-    ***REMOVED***
-
-    export class TiltShiftYFilter extends AbstractFilter ***REMOVED***
+    export class TiltShiftXFilter extends AbstractFilter {
 
         blur: number;
         gradientBlur: number;
@@ -1145,17 +1134,28 @@ declare module PIXI ***REMOVED***
 
         updateDelta(): void;
 
-    ***REMOVED***
+    }
 
-    export class TwistFilter extends AbstractFilter ***REMOVED***
+    export class TiltShiftYFilter extends AbstractFilter {
+
+        blur: number;
+        gradientBlur: number;
+        start: number;
+        end: number;
+
+        updateDelta(): void;
+
+    }
+
+    export class TwistFilter extends AbstractFilter {
 
         angle: number;
         offset: Point;
         radius: number;
 
-    ***REMOVED***
+    }
 
-    export class VideoTexture extends BaseTexture ***REMOVED***
+    export class VideoTexture extends BaseTexture {
 
         static baseTextureFromVideo(video: HTMLVideoElement, scaleMode: number): BaseTexture;
         static textureFromVideo(video: HTMLVideoElement, scaleMode: number): Texture;
@@ -1175,9 +1175,9 @@ declare module PIXI ***REMOVED***
         onPlayStop: () => void;
         onCanPlay: (event: any) => void;
 
-    ***REMOVED***
+    }
 
-    export class WebGLBlendModeManager ***REMOVED***
+    export class WebGLBlendModeManager {
 
         currentBlendMode: number;
 
@@ -1185,9 +1185,9 @@ declare module PIXI ***REMOVED***
         setBlendMode(blendMode: number): boolean;
         setContext(gl: WebGLRenderingContext): void;
 
-    ***REMOVED***
+    }
 
-    export class WebGLFastSpriteBatch ***REMOVED***
+    export class WebGLFastSpriteBatch {
 
         constructor(gl: CanvasRenderingContext2D);
 
@@ -1217,9 +1217,9 @@ declare module PIXI ***REMOVED***
         start(): void;
         stop(): void;
 
-    ***REMOVED***
+    }
 
-    export class WebGLFilterManager ***REMOVED***
+    export class WebGLFilterManager {
 
         filterStack: AbstractFilter[];
         transparent: boolean;
@@ -1234,9 +1234,9 @@ declare module PIXI ***REMOVED***
         pushFilter(filterBlock: FilterBlock): void;
         setContext(gl: WebGLRenderingContext): void;
 
-    ***REMOVED***
+    }
 
-    export class WebGLGraphics ***REMOVED***
+    export class WebGLGraphics {
 
         static graphicsDataPool: any[];
 
@@ -1254,9 +1254,9 @@ declare module PIXI ***REMOVED***
         reset(): void;
         upload(): void;
 
-    ***REMOVED***
+    }
 
-    export class WebGLGraphicsData ***REMOVED***
+    export class WebGLGraphicsData {
 
         constructor(gl: WebGLRenderingContext);
 
@@ -1274,18 +1274,18 @@ declare module PIXI ***REMOVED***
         reset(): void;
         upload(): void;
 
-    ***REMOVED***
+    }
 
-    export class WebGLMaskManager ***REMOVED***
+    export class WebGLMaskManager {
 
         destroy(): void;
         popMask(renderSession: RenderSession): void;
         pushMask(maskData: any[], renderSession: RenderSession): void;
         setContext(gl: WebGLRenderingContext): void;
 
-    ***REMOVED***
+    }
 
-    export class WebGLRenderer implements PixiRenderer ***REMOVED***
+    export class WebGLRenderer implements PixiRenderer {
 
         static createWebGLTexture(texture: Texture, gl: WebGLRenderingContext): void;
 
@@ -1319,9 +1319,9 @@ declare module PIXI ***REMOVED***
         destroy(): void;
         mapBlendModes(): void;
 
-    ***REMOVED***
+    }
 
-    export class WebGLShaderManager ***REMOVED***
+    export class WebGLShaderManager {
 
         maxAttibs: number;
         attribState: any[];
@@ -1333,9 +1333,9 @@ declare module PIXI ***REMOVED***
         setContext(gl: WebGLRenderingContext): void;
         setShader(shader: IPixiShader): boolean;
 
-    ***REMOVED***
+    }
 
-    export class WebGLStencilManager ***REMOVED***
+    export class WebGLStencilManager {
 
         stencilStack: any[];
         reverse: boolean;
@@ -1347,9 +1347,9 @@ declare module PIXI ***REMOVED***
         pushStencil(graphics: Graphics, webGLData: any[], renderSession: RenderSession): void;
         setContext(gl: WebGLRenderingContext): void;
 
-    ***REMOVED***
+    }
 
-    export class WebGLSpriteBatch ***REMOVED***
+    export class WebGLSpriteBatch {
 
         blendModes: number[];
         colors: number[];
@@ -1380,9 +1380,9 @@ declare module PIXI ***REMOVED***
         start(): void;
         stop(): void;
 
-    ***REMOVED***
+    }
 
-    export class RenderTexture extends Texture ***REMOVED***
+    export class RenderTexture extends Texture {
 
         constructor(width?: number, height?: number, renderer?: PixiRenderer, scaleMode?: scaleModes, resolution?: number);
 
@@ -1399,11 +1399,11 @@ declare module PIXI ***REMOVED***
         resize(width: number, height: number, updateBase: boolean): void;
         render(displayObject: DisplayObject, matrix?: Matrix, clear?: boolean): void;
 
-    ***REMOVED***
+    }
 
     // SPINE
 
-    export class BoneData ***REMOVED***
+    export class BoneData {
 
         constructor(name: string, parent?: any);
 
@@ -1416,9 +1416,9 @@ declare module PIXI ***REMOVED***
         scaleX: number;
         scaleY: number;
 
-    ***REMOVED***
+    }
 
-    export class SlotData ***REMOVED***
+    export class SlotData {
 
         constructor(name: string, boneData: BoneData);
 
@@ -1430,9 +1430,9 @@ declare module PIXI ***REMOVED***
         a: number;
         attachmentName: string;
 
-    ***REMOVED***
+    }
 
-    export class Bone ***REMOVED***
+    export class Bone {
 
         constructor(boneData: BoneData, parent?: any);
 
@@ -1451,9 +1451,9 @@ declare module PIXI ***REMOVED***
         updateWorldTransform(flipX: boolean, flip: boolean): void;
         setToSetupPose(): void;
 
-    ***REMOVED***
+    }
 
-    export class Slot ***REMOVED***
+    export class Slot {
 
         constructor(slotData: SlotData, skeleton: Skeleton, bone: Bone);
 
@@ -1470,9 +1470,9 @@ declare module PIXI ***REMOVED***
         getAttachmentTime(): number;
         setToSetupPose(): void;
 
-    ***REMOVED***
+    }
 
-    export class Skin ***REMOVED***
+    export class Skin {
 
         constructor(name: string);
 
@@ -1482,9 +1482,9 @@ declare module PIXI ***REMOVED***
         addAttachment(slotIndex: number, name: string, attachment: RegionAttachment): void;
         getAttachment(slotIndex: number, name: string): void;
 
-    ***REMOVED***
+    }
 
-    export class Animation ***REMOVED***
+    export class Animation {
 
         constructor(name: string, timelines: ISpineTimeline[], duration: number);
 
@@ -1494,9 +1494,9 @@ declare module PIXI ***REMOVED***
         apply(skeleton: Skeleton, time: number, loop: boolean): void;
         min(skeleton: Skeleton, time: number, loop: boolean, alpha: number): void;
 
-    ***REMOVED***
+    }
 
-    export class Curves ***REMOVED***
+    export class Curves {
 
         constructor(frameCount: number);
 
@@ -1507,9 +1507,9 @@ declare module PIXI ***REMOVED***
         setCurve(frameIndex: number, cx1: number, cy1: number, cx2: number, cy2: number): void;
         getCurvePercent(frameIndex: number, percent: number): number;
 
-    ***REMOVED***
+    }
 
-    export interface ISpineTimeline ***REMOVED***
+    export interface ISpineTimeline {
 
         curves: Curves;
         frames: number[];
@@ -1517,9 +1517,9 @@ declare module PIXI ***REMOVED***
         getFrameCount(): number;
         apply(skeleton: Skeleton, time: number, alpha: number): void;
 
-    ***REMOVED***
+    }
 
-    export class RotateTimeline implements ISpineTimeline ***REMOVED***
+    export class RotateTimeline implements ISpineTimeline {
 
         constructor(frameCount: number);
 
@@ -1531,23 +1531,9 @@ declare module PIXI ***REMOVED***
         setFrame(frameIndex: number, time: number, angle: number): void;
         apply(skeleton: Skeleton, time: number, alpha: number): void;
 
-    ***REMOVED***
+    }
 
-    export class TranslateTimeline implements ISpineTimeline ***REMOVED***
-
-        constructor(frameCount: number);
-
-        curves: Curves;
-        frames: number[];
-        boneIndex: number;
-
-        getFrameCount(): number;
-        setFrame(frameIndex: number, time: number, x: number, y: number): void;
-        apply(skeleton: Skeleton, time: number, alpha: number): void;
-
-    ***REMOVED***
-
-    export class ScaleTimeline implements ISpineTimeline ***REMOVED***
+    export class TranslateTimeline implements ISpineTimeline {
 
         constructor(frameCount: number);
 
@@ -1559,9 +1545,23 @@ declare module PIXI ***REMOVED***
         setFrame(frameIndex: number, time: number, x: number, y: number): void;
         apply(skeleton: Skeleton, time: number, alpha: number): void;
 
-    ***REMOVED***
+    }
 
-    export class ColorTimeline implements ISpineTimeline ***REMOVED***
+    export class ScaleTimeline implements ISpineTimeline {
+
+        constructor(frameCount: number);
+
+        curves: Curves;
+        frames: number[];
+        boneIndex: number;
+
+        getFrameCount(): number;
+        setFrame(frameIndex: number, time: number, x: number, y: number): void;
+        apply(skeleton: Skeleton, time: number, alpha: number): void;
+
+    }
+
+    export class ColorTimeline implements ISpineTimeline {
 
         constructor(frameCount: number);
 
@@ -1573,9 +1573,9 @@ declare module PIXI ***REMOVED***
         setFrame(frameIndex: number, time: number, r: number, g: number, b: number, a: number): void;
         apply(skeleton: Skeleton, time: number, alpha: number): void;
 
-    ***REMOVED***
+    }
 
-    export class AttachmentTimeline implements ISpineTimeline ***REMOVED***
+    export class AttachmentTimeline implements ISpineTimeline {
 
         constructor(frameCount: number);
 
@@ -1588,9 +1588,9 @@ declare module PIXI ***REMOVED***
         setFrame(frameIndex: number, time: number, attachmentName: string): void;
         apply(skeleton: Skeleton, time: number, alpha: number): void;
 
-    ***REMOVED***
+    }
 
-    export class SkeletonData ***REMOVED***
+    export class SkeletonData {
 
         bones: Bone[];
         slots: Slot[];
@@ -1605,9 +1605,9 @@ declare module PIXI ***REMOVED***
         findSkin(skinName: string): Skin;
         findAnimation(animationName: string): Animation;
 
-    ***REMOVED***
+    }
 
-    export class Skeleton ***REMOVED***
+    export class Skeleton {
 
         constructor(skeletonData: SkeletonData);
 
@@ -1642,9 +1642,9 @@ declare module PIXI ***REMOVED***
         setAttachment(slotName: string, attachmentName: string): void;
         update(data: number): void;
 
-    ***REMOVED***
+    }
 
-    export class RegionAttachment ***REMOVED***
+    export class RegionAttachment {
 
         offset: number[];
         uvs: number[];
@@ -1667,9 +1667,9 @@ declare module PIXI ***REMOVED***
         updateOffset(): void;
         computeVertices(x: number, y: number, bone: Bone, vertices: number[]): void;
 
-    ***REMOVED***
+    }
 
-    export class AnimationStateData ***REMOVED***
+    export class AnimationStateData {
 
         constructor(skeletonData: SkeletonData);
 
@@ -1680,9 +1680,9 @@ declare module PIXI ***REMOVED***
         setMixByName(fromName: string, toName: string, duration: number): void;
         setMix(from: string, to: string): number;
 
-    ***REMOVED***
+    }
 
-    export class AnimationState ***REMOVED***
+    export class AnimationState {
 
         constructor(stateData: any);
 
@@ -1706,9 +1706,9 @@ declare module PIXI ***REMOVED***
         addAnimation(animation: any, loop: boolean, delay: number): void;
         isComplete(): number;
 
-    ***REMOVED***
+    }
 
-    export class SkeletonJson ***REMOVED***
+    export class SkeletonJson {
 
         constructor(attachmentLoader: AtlasAttachmentLoader);
 
@@ -1721,11 +1721,11 @@ declare module PIXI ***REMOVED***
         readCurve(timeline: ISpineTimeline, frameIndex: number, valueMap: any): void;
         toColor(hexString: string, colorIndex: number): number;
 
-    ***REMOVED***
+    }
 
-    export class Atlas ***REMOVED***
+    export class Atlas {
 
-        static FORMAT: ***REMOVED***
+        static FORMAT: {
 
             alpha: number;
             intensity: number;
@@ -1735,9 +1735,9 @@ declare module PIXI ***REMOVED***
             rgb888: number;
             rgba8888: number;
 
-        ***REMOVED***;
+        };
 
-        static TextureFilter: ***REMOVED***
+        static TextureFilter: {
 
             nearest: number;
             linear: number;
@@ -1747,15 +1747,15 @@ declare module PIXI ***REMOVED***
             mipMapNearestLinear: number;
             mipMapLinearLinear: number;
 
-        ***REMOVED***;
+        };
 
-        static textureWrap: ***REMOVED***
+        static textureWrap: {
 
             mirroredRepeat: number;
             clampToEdge: number;
             repeat: number;
 
-        ***REMOVED***;
+        };
 
         constructor(atlasText: string, textureLoader: AtlasLoader);
 
@@ -1767,9 +1767,9 @@ declare module PIXI ***REMOVED***
         dispose(): void;
         updateUVs(page: AtlasPage): void;
 
-    ***REMOVED***
+    }
 
-    export class AtlasPage ***REMOVED***
+    export class AtlasPage {
 
         name: string;
         format: number;
@@ -1781,9 +1781,9 @@ declare module PIXI ***REMOVED***
         width: number;
         height: number;
 
-    ***REMOVED***
+    }
 
-    export class AtlasRegion ***REMOVED***
+    export class AtlasRegion {
 
         page: AtlasPage;
         name: string;
@@ -1804,9 +1804,9 @@ declare module PIXI ***REMOVED***
         splits: any[];
         pads: any[];
 
-    ***REMOVED***
+    }
 
-    export class AtlasReader ***REMOVED***
+    export class AtlasReader {
 
         constructor(text: string);
 
@@ -1818,9 +1818,9 @@ declare module PIXI ***REMOVED***
         readValue(): string;
         readTuple(tuple: number): number;
 
-    ***REMOVED***
+    }
 
-    export class AtlasAttachmentLoader ***REMOVED***
+    export class AtlasAttachmentLoader {
 
         constructor(atlas: Atlas);
 
@@ -1828,9 +1828,9 @@ declare module PIXI ***REMOVED***
 
         newAttachment(skin: Skin, type: number, name: string): RegionAttachment;
 
-    ***REMOVED***
+    }
 
-    export class Spine extends DisplayObjectContainer ***REMOVED***
+    export class Spine extends DisplayObjectContainer {
 
         constructor(url: string);
 
@@ -1841,15 +1841,15 @@ declare module PIXI ***REMOVED***
         state: AnimationState;
         slotContainers: DisplayObjectContainer[];
 
-        createSprite(slot: Slot, descriptor: ***REMOVED*** name: string ***REMOVED***): Sprite[];
+        createSprite(slot: Slot, descriptor: { name: string }): Sprite[];
         update(dt: number): void;
 
-    ***REMOVED***
+    }
 
-***REMOVED***
+}
 
 declare function requestAnimFrame(callback: Function): void;
 
-declare module PIXI.PolyK ***REMOVED***
+declare module PIXI.PolyK {
     export function Triangulate(p: number[]): number[];
-***REMOVED***
+}

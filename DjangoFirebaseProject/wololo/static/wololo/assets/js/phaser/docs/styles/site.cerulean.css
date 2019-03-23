@@ -8,33 +8,33 @@
  *
  * Designed and built with all the love in the world by @mdo and @fat.
  */
-.clearfix ***REMOVED***
+.clearfix {
   *zoom: 1;
-***REMOVED***
+}
 .clearfix:before,
-.clearfix:after ***REMOVED***
+.clearfix:after {
   display: table;
   content: "";
   line-height: 0;
-***REMOVED***
-.clearfix:after ***REMOVED***
+}
+.clearfix:after {
   clear: both;
-***REMOVED***
-.hide-text ***REMOVED***
+}
+.hide-text {
   font: 0/0 a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;
   border: 0;
-***REMOVED***
-.input-block-level ***REMOVED***
+}
+.input-block-level {
   display: block;
   width: 100%;
   min-height: 30px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-***REMOVED***
+}
 article,
 aside,
 details,
@@ -44,47 +44,47 @@ footer,
 header,
 hgroup,
 nav,
-section ***REMOVED***
+section {
   display: block;
-***REMOVED***
+}
 audio,
 canvas,
-video ***REMOVED***
+video {
   display: inline-block;
   *display: inline;
   *zoom: 1;
-***REMOVED***
-audio:not([controls]) ***REMOVED***
+}
+audio:not([controls]) {
   display: none;
-***REMOVED***
-html ***REMOVED***
+}
+html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-***REMOVED***
-a:focus ***REMOVED***
+}
+a:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
-***REMOVED***
+}
 a:hover,
-a:active ***REMOVED***
+a:active {
   outline: 0;
-***REMOVED***
+}
 sub,
-sup ***REMOVED***
+sup {
   position: relative;
   font-size: 75%;
   line-height: 0;
   vertical-align: baseline;
-***REMOVED***
-sup ***REMOVED***
+}
+sup {
   top: -0.5em;
-***REMOVED***
-sub ***REMOVED***
+}
+sub {
   bottom: -0.25em;
-***REMOVED***
-img ***REMOVED***
+}
+img {
   /* Responsive images (ensure images don't scale beyond their parents) */
 
   max-width: 100%;
@@ -99,36 +99,36 @@ img ***REMOVED***
   vertical-align: middle;
   border: 0;
   -ms-interpolation-mode: bicubic;
-***REMOVED***
+}
 #map_canvas img,
-.google-maps img ***REMOVED***
+.google-maps img {
   max-width: none;
-***REMOVED***
+}
 button,
 input,
 select,
-textarea ***REMOVED***
+textarea {
   margin: 0;
   font-size: 100%;
   vertical-align: middle;
-***REMOVED***
+}
 button,
-input ***REMOVED***
+input {
   *overflow: visible;
   line-height: normal;
-***REMOVED***
+}
 button::-moz-focus-inner,
-input::-moz-focus-inner ***REMOVED***
+input::-moz-focus-inner {
   padding: 0;
   border: 0;
-***REMOVED***
+}
 button,
 html input[type="button"],
 input[type="reset"],
-input[type="submit"] ***REMOVED***
+input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
-***REMOVED***
+}
 label,
 select,
 button,
@@ -136,97 +136,97 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"],
 input[type="radio"],
-input[type="checkbox"] ***REMOVED***
+input[type="checkbox"] {
   cursor: pointer;
-***REMOVED***
-input[type="search"] ***REMOVED***
+}
+input[type="search"] {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
   -webkit-appearance: textfield;
-***REMOVED***
+}
 input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button ***REMOVED***
+input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
-***REMOVED***
-textarea ***REMOVED***
+}
+textarea {
   overflow: auto;
   vertical-align: top;
-***REMOVED***
-@media print ***REMOVED***
-  * ***REMOVED***
+}
+@media print {
+  * {
     text-shadow: none !important;
     color: #000 !important;
     background: transparent !important;
     box-shadow: none !important;
-  ***REMOVED***
+  }
   a,
-  a:visited ***REMOVED***
+  a:visited {
     text-decoration: underline;
-  ***REMOVED***
-  a[href]:after ***REMOVED***
+  }
+  a[href]:after {
     content: " (" attr(href) ")";
-  ***REMOVED***
-  abbr[title]:after ***REMOVED***
+  }
+  abbr[title]:after {
     content: " (" attr(title) ")";
-  ***REMOVED***
+  }
   .ir a:after,
   a[href^="javascript:"]:after,
-  a[href^="#"]:after ***REMOVED***
+  a[href^="#"]:after {
     content: "";
-  ***REMOVED***
+  }
   pre,
-  blockquote ***REMOVED***
+  blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
-  ***REMOVED***
-  thead ***REMOVED***
+  }
+  thead {
     display: table-header-group;
-  ***REMOVED***
+  }
   tr,
-  img ***REMOVED***
+  img {
     page-break-inside: avoid;
-  ***REMOVED***
-  img ***REMOVED***
+  }
+  img {
     max-width: 100% !important;
-  ***REMOVED***
-  @page  ***REMOVED***
+  }
+  @page  {
     margin: 0.5cm;
-  ***REMOVED***
+  }
   p,
   h2,
-  h3 ***REMOVED***
+  h3 {
     orphans: 3;
     widows: 3;
-  ***REMOVED***
+  }
   h2,
-  h3 ***REMOVED***
+  h3 {
     page-break-after: avoid;
-  ***REMOVED***
-***REMOVED***
-body ***REMOVED***
+  }
+}
+body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #555555;
   background-color: #ffffff;
-***REMOVED***
-a ***REMOVED***
+}
+a {
   color: #2fa4e7;
   text-decoration: none;
-***REMOVED***
+}
 a:hover,
-a:focus ***REMOVED***
+a:focus {
   color: #157ab5;
   text-decoration: underline;
-***REMOVED***
-.img-rounded ***REMOVED***
+}
+.img-rounded {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
-***REMOVED***
-.img-polaroid ***REMOVED***
+}
+.img-polaroid {
   padding: 4px;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -234,122 +234,122 @@ a:focus ***REMOVED***
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-***REMOVED***
-.img-circle ***REMOVED***
+}
+.img-circle {
   -webkit-border-radius: 500px;
   -moz-border-radius: 500px;
   border-radius: 500px;
-***REMOVED***
-.row ***REMOVED***
+}
+.row {
   margin-left: -20px;
   *zoom: 1;
-***REMOVED***
+}
 .row:before,
-.row:after ***REMOVED***
+.row:after {
   display: table;
   content: "";
   line-height: 0;
-***REMOVED***
-.row:after ***REMOVED***
+}
+.row:after {
   clear: both;
-***REMOVED***
-[class*="span"] ***REMOVED***
+}
+[class*="span"] {
   float: left;
   min-height: 1px;
   margin-left: 20px;
-***REMOVED***
+}
 .container,
 .navbar-static-top .container,
 .navbar-fixed-top .container,
-.navbar-fixed-bottom .container ***REMOVED***
+.navbar-fixed-bottom .container {
   width: 940px;
-***REMOVED***
-.span12 ***REMOVED***
+}
+.span12 {
   width: 940px;
-***REMOVED***
-.span11 ***REMOVED***
+}
+.span11 {
   width: 860px;
-***REMOVED***
-.span10 ***REMOVED***
+}
+.span10 {
   width: 780px;
-***REMOVED***
-.span9 ***REMOVED***
+}
+.span9 {
   width: 700px;
-***REMOVED***
-.span8 ***REMOVED***
+}
+.span8 {
   width: 620px;
-***REMOVED***
-.span7 ***REMOVED***
+}
+.span7 {
   width: 540px;
-***REMOVED***
-.span6 ***REMOVED***
+}
+.span6 {
   width: 460px;
-***REMOVED***
-.span5 ***REMOVED***
+}
+.span5 {
   width: 380px;
-***REMOVED***
-.span4 ***REMOVED***
+}
+.span4 {
   width: 300px;
-***REMOVED***
-.span3 ***REMOVED***
+}
+.span3 {
   width: 220px;
-***REMOVED***
-.span2 ***REMOVED***
+}
+.span2 {
   width: 140px;
-***REMOVED***
-.span1 ***REMOVED***
+}
+.span1 {
   width: 60px;
-***REMOVED***
-.offset12 ***REMOVED***
+}
+.offset12 {
   margin-left: 980px;
-***REMOVED***
-.offset11 ***REMOVED***
+}
+.offset11 {
   margin-left: 900px;
-***REMOVED***
-.offset10 ***REMOVED***
+}
+.offset10 {
   margin-left: 820px;
-***REMOVED***
-.offset9 ***REMOVED***
+}
+.offset9 {
   margin-left: 740px;
-***REMOVED***
-.offset8 ***REMOVED***
+}
+.offset8 {
   margin-left: 660px;
-***REMOVED***
-.offset7 ***REMOVED***
+}
+.offset7 {
   margin-left: 580px;
-***REMOVED***
-.offset6 ***REMOVED***
+}
+.offset6 {
   margin-left: 500px;
-***REMOVED***
-.offset5 ***REMOVED***
+}
+.offset5 {
   margin-left: 420px;
-***REMOVED***
-.offset4 ***REMOVED***
+}
+.offset4 {
   margin-left: 340px;
-***REMOVED***
-.offset3 ***REMOVED***
+}
+.offset3 {
   margin-left: 260px;
-***REMOVED***
-.offset2 ***REMOVED***
+}
+.offset2 {
   margin-left: 180px;
-***REMOVED***
-.offset1 ***REMOVED***
+}
+.offset1 {
   margin-left: 100px;
-***REMOVED***
-.row-fluid ***REMOVED***
+}
+.row-fluid {
   width: 100%;
   *zoom: 1;
-***REMOVED***
+}
 .row-fluid:before,
-.row-fluid:after ***REMOVED***
+.row-fluid:after {
   display: table;
   content: "";
   line-height: 0;
-***REMOVED***
-.row-fluid:after ***REMOVED***
+}
+.row-fluid:after {
   clear: both;
-***REMOVED***
-.row-fluid [class*="span"] ***REMOVED***
+}
+.row-fluid [class*="span"] {
   display: block;
   width: 100%;
   min-height: 30px;
@@ -359,347 +359,347 @@ a:focus ***REMOVED***
   float: left;
   margin-left: 2.127659574468085%;
   *margin-left: 2.074468085106383%;
-***REMOVED***
-.row-fluid [class*="span"]:first-child ***REMOVED***
+}
+.row-fluid [class*="span"]:first-child {
   margin-left: 0;
-***REMOVED***
-.row-fluid .controls-row [class*="span"] + [class*="span"] ***REMOVED***
+}
+.row-fluid .controls-row [class*="span"] + [class*="span"] {
   margin-left: 2.127659574468085%;
-***REMOVED***
-.row-fluid .span12 ***REMOVED***
+}
+.row-fluid .span12 {
   width: 100%;
   *width: 99.94680851063829%;
-***REMOVED***
-.row-fluid .span11 ***REMOVED***
+}
+.row-fluid .span11 {
   width: 91.48936170212765%;
   *width: 91.43617021276594%;
-***REMOVED***
-.row-fluid .span10 ***REMOVED***
+}
+.row-fluid .span10 {
   width: 82.97872340425532%;
   *width: 82.92553191489361%;
-***REMOVED***
-.row-fluid .span9 ***REMOVED***
+}
+.row-fluid .span9 {
   width: 74.46808510638297%;
   *width: 74.41489361702126%;
-***REMOVED***
-.row-fluid .span8 ***REMOVED***
+}
+.row-fluid .span8 {
   width: 65.95744680851064%;
   *width: 65.90425531914893%;
-***REMOVED***
-.row-fluid .span7 ***REMOVED***
+}
+.row-fluid .span7 {
   width: 57.44680851063829%;
   *width: 57.39361702127659%;
-***REMOVED***
-.row-fluid .span6 ***REMOVED***
+}
+.row-fluid .span6 {
   width: 48.93617021276595%;
   *width: 48.88297872340425%;
-***REMOVED***
-.row-fluid .span5 ***REMOVED***
+}
+.row-fluid .span5 {
   width: 40.42553191489362%;
   *width: 40.37234042553192%;
-***REMOVED***
-.row-fluid .span4 ***REMOVED***
+}
+.row-fluid .span4 {
   width: 31.914893617021278%;
   *width: 31.861702127659576%;
-***REMOVED***
-.row-fluid .span3 ***REMOVED***
+}
+.row-fluid .span3 {
   width: 23.404255319148934%;
   *width: 23.351063829787233%;
-***REMOVED***
-.row-fluid .span2 ***REMOVED***
+}
+.row-fluid .span2 {
   width: 14.893617021276595%;
   *width: 14.840425531914894%;
-***REMOVED***
-.row-fluid .span1 ***REMOVED***
+}
+.row-fluid .span1 {
   width: 6.382978723404255%;
   *width: 6.329787234042553%;
-***REMOVED***
-.row-fluid .offset12 ***REMOVED***
+}
+.row-fluid .offset12 {
   margin-left: 104.25531914893617%;
   *margin-left: 104.14893617021275%;
-***REMOVED***
-.row-fluid .offset12:first-child ***REMOVED***
+}
+.row-fluid .offset12:first-child {
   margin-left: 102.12765957446808%;
   *margin-left: 102.02127659574467%;
-***REMOVED***
-.row-fluid .offset11 ***REMOVED***
+}
+.row-fluid .offset11 {
   margin-left: 95.74468085106382%;
   *margin-left: 95.6382978723404%;
-***REMOVED***
-.row-fluid .offset11:first-child ***REMOVED***
+}
+.row-fluid .offset11:first-child {
   margin-left: 93.61702127659574%;
   *margin-left: 93.51063829787232%;
-***REMOVED***
-.row-fluid .offset10 ***REMOVED***
+}
+.row-fluid .offset10 {
   margin-left: 87.23404255319149%;
   *margin-left: 87.12765957446807%;
-***REMOVED***
-.row-fluid .offset10:first-child ***REMOVED***
+}
+.row-fluid .offset10:first-child {
   margin-left: 85.1063829787234%;
   *margin-left: 84.99999999999999%;
-***REMOVED***
-.row-fluid .offset9 ***REMOVED***
+}
+.row-fluid .offset9 {
   margin-left: 78.72340425531914%;
   *margin-left: 78.61702127659572%;
-***REMOVED***
-.row-fluid .offset9:first-child ***REMOVED***
+}
+.row-fluid .offset9:first-child {
   margin-left: 76.59574468085106%;
   *margin-left: 76.48936170212764%;
-***REMOVED***
-.row-fluid .offset8 ***REMOVED***
+}
+.row-fluid .offset8 {
   margin-left: 70.2127659574468%;
   *margin-left: 70.10638297872339%;
-***REMOVED***
-.row-fluid .offset8:first-child ***REMOVED***
+}
+.row-fluid .offset8:first-child {
   margin-left: 68.08510638297872%;
   *margin-left: 67.9787234042553%;
-***REMOVED***
-.row-fluid .offset7 ***REMOVED***
+}
+.row-fluid .offset7 {
   margin-left: 61.70212765957446%;
   *margin-left: 61.59574468085106%;
-***REMOVED***
-.row-fluid .offset7:first-child ***REMOVED***
+}
+.row-fluid .offset7:first-child {
   margin-left: 59.574468085106375%;
   *margin-left: 59.46808510638297%;
-***REMOVED***
-.row-fluid .offset6 ***REMOVED***
+}
+.row-fluid .offset6 {
   margin-left: 53.191489361702125%;
   *margin-left: 53.085106382978715%;
-***REMOVED***
-.row-fluid .offset6:first-child ***REMOVED***
+}
+.row-fluid .offset6:first-child {
   margin-left: 51.063829787234035%;
   *margin-left: 50.95744680851063%;
-***REMOVED***
-.row-fluid .offset5 ***REMOVED***
+}
+.row-fluid .offset5 {
   margin-left: 44.68085106382979%;
   *margin-left: 44.57446808510638%;
-***REMOVED***
-.row-fluid .offset5:first-child ***REMOVED***
+}
+.row-fluid .offset5:first-child {
   margin-left: 42.5531914893617%;
   *margin-left: 42.4468085106383%;
-***REMOVED***
-.row-fluid .offset4 ***REMOVED***
+}
+.row-fluid .offset4 {
   margin-left: 36.170212765957444%;
   *margin-left: 36.06382978723405%;
-***REMOVED***
-.row-fluid .offset4:first-child ***REMOVED***
+}
+.row-fluid .offset4:first-child {
   margin-left: 34.04255319148936%;
   *margin-left: 33.93617021276596%;
-***REMOVED***
-.row-fluid .offset3 ***REMOVED***
+}
+.row-fluid .offset3 {
   margin-left: 27.659574468085104%;
   *margin-left: 27.5531914893617%;
-***REMOVED***
-.row-fluid .offset3:first-child ***REMOVED***
+}
+.row-fluid .offset3:first-child {
   margin-left: 25.53191489361702%;
   *margin-left: 25.425531914893618%;
-***REMOVED***
-.row-fluid .offset2 ***REMOVED***
+}
+.row-fluid .offset2 {
   margin-left: 19.148936170212764%;
   *margin-left: 19.04255319148936%;
-***REMOVED***
-.row-fluid .offset2:first-child ***REMOVED***
+}
+.row-fluid .offset2:first-child {
   margin-left: 17.02127659574468%;
   *margin-left: 16.914893617021278%;
-***REMOVED***
-.row-fluid .offset1 ***REMOVED***
+}
+.row-fluid .offset1 {
   margin-left: 10.638297872340425%;
   *margin-left: 10.53191489361702%;
-***REMOVED***
-.row-fluid .offset1:first-child ***REMOVED***
+}
+.row-fluid .offset1:first-child {
   margin-left: 8.51063829787234%;
   *margin-left: 8.404255319148938%;
-***REMOVED***
+}
 [class*="span"].hide,
-.row-fluid [class*="span"].hide ***REMOVED***
+.row-fluid [class*="span"].hide {
   display: none;
-***REMOVED***
+}
 [class*="span"].pull-right,
-.row-fluid [class*="span"].pull-right ***REMOVED***
+.row-fluid [class*="span"].pull-right {
   float: right;
-***REMOVED***
-.container ***REMOVED***
+}
+.container {
   margin-right: auto;
   margin-left: auto;
   *zoom: 1;
-***REMOVED***
+}
 .container:before,
-.container:after ***REMOVED***
+.container:after {
   display: table;
   content: "";
   line-height: 0;
-***REMOVED***
-.container:after ***REMOVED***
+}
+.container:after {
   clear: both;
-***REMOVED***
-.container-fluid ***REMOVED***
+}
+.container-fluid {
   padding-right: 20px;
   padding-left: 20px;
   *zoom: 1;
-***REMOVED***
+}
 .container-fluid:before,
-.container-fluid:after ***REMOVED***
+.container-fluid:after {
   display: table;
   content: "";
   line-height: 0;
-***REMOVED***
-.container-fluid:after ***REMOVED***
+}
+.container-fluid:after {
   clear: both;
-***REMOVED***
-p ***REMOVED***
+}
+p {
   margin: 0 0 10px;
-***REMOVED***
-.lead ***REMOVED***
+}
+.lead {
   margin-bottom: 20px;
   font-size: 21px;
   font-weight: 200;
   line-height: 30px;
-***REMOVED***
-small ***REMOVED***
+}
+small {
   font-size: 85%;
-***REMOVED***
-strong ***REMOVED***
+}
+strong {
   font-weight: bold;
-***REMOVED***
-em ***REMOVED***
+}
+em {
   font-style: italic;
-***REMOVED***
-cite ***REMOVED***
+}
+cite {
   font-style: normal;
-***REMOVED***
-.muted ***REMOVED***
+}
+.muted {
   color: #999999;
-***REMOVED***
+}
 a.muted:hover,
-a.muted:focus ***REMOVED***
+a.muted:focus {
   color: #808080;
-***REMOVED***
-.text-warning ***REMOVED***
+}
+.text-warning {
   color: #dd5600;
-***REMOVED***
+}
 a.text-warning:hover,
-a.text-warning:focus ***REMOVED***
+a.text-warning:focus {
   color: #aa4200;
-***REMOVED***
-.text-error ***REMOVED***
+}
+.text-error {
   color: #bd4247;
-***REMOVED***
+}
 a.text-error:hover,
-a.text-error:focus ***REMOVED***
+a.text-error:focus {
   color: #983538;
-***REMOVED***
-.text-info ***REMOVED***
+}
+.text-info {
   color: #178acc;
-***REMOVED***
+}
 a.text-info:hover,
-a.text-info:focus ***REMOVED***
+a.text-info:focus {
   color: #126b9e;
-***REMOVED***
-.text-success ***REMOVED***
+}
+.text-success {
   color: #669533;
-***REMOVED***
+}
 a.text-success:hover,
-a.text-success:focus ***REMOVED***
+a.text-success:focus {
   color: #4c6f26;
-***REMOVED***
-.text-left ***REMOVED***
+}
+.text-left {
   text-align: left;
-***REMOVED***
-.text-right ***REMOVED***
+}
+.text-right {
   text-align: right;
-***REMOVED***
-.text-center ***REMOVED***
+}
+.text-center {
   text-align: center;
-***REMOVED***
+}
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 ***REMOVED***
+h6 {
   margin: 10px 0;
   font-family: 'Telex', sans-serif;
   font-weight: bold;
   line-height: 20px;
   color: #317eac;
   text-rendering: optimizelegibility;
-***REMOVED***
+}
 h1 small,
 h2 small,
 h3 small,
 h4 small,
 h5 small,
-h6 small ***REMOVED***
+h6 small {
   font-weight: normal;
   line-height: 1;
   color: #999999;
-***REMOVED***
+}
 h1,
 h2,
-h3 ***REMOVED***
+h3 {
   line-height: 40px;
-***REMOVED***
-h1 ***REMOVED***
+}
+h1 {
   font-size: 38.5px;
-***REMOVED***
-h2 ***REMOVED***
+}
+h2 {
   font-size: 31.5px;
-***REMOVED***
-h3 ***REMOVED***
+}
+h3 {
   font-size: 24.5px;
-***REMOVED***
-h4 ***REMOVED***
+}
+h4 {
   font-size: 17.5px;
-***REMOVED***
-h5 ***REMOVED***
+}
+h5 {
   font-size: 14px;
-***REMOVED***
-h6 ***REMOVED***
+}
+h6 {
   font-size: 11.9px;
-***REMOVED***
-h1 small ***REMOVED***
+}
+h1 small {
   font-size: 24.5px;
-***REMOVED***
-h2 small ***REMOVED***
+}
+h2 small {
   font-size: 17.5px;
-***REMOVED***
-h3 small ***REMOVED***
+}
+h3 small {
   font-size: 14px;
-***REMOVED***
-h4 small ***REMOVED***
+}
+h4 small {
   font-size: 14px;
-***REMOVED***
-.page-header ***REMOVED***
+}
+.page-header {
   padding-bottom: 9px;
   margin: 20px 0 30px;
   border-bottom: 1px solid #f5f5f5;
-***REMOVED***
+}
 ul,
-ol ***REMOVED***
+ol {
   padding: 0;
   margin: 0 0 10px 25px;
-***REMOVED***
+}
 ul ul,
 ul ol,
 ol ol,
-ol ul ***REMOVED***
+ol ul {
   margin-bottom: 0;
-***REMOVED***
-li ***REMOVED***
+}
+li {
   line-height: 20px;
-***REMOVED***
+}
 ul.unstyled,
-ol.unstyled ***REMOVED***
+ol.unstyled {
   margin-left: 0;
   list-style: none;
-***REMOVED***
+}
 ul.inline,
-ol.inline ***REMOVED***
+ol.inline {
   margin-left: 0;
   list-style: none;
-***REMOVED***
+}
 ul.inline > li,
-ol.inline > li ***REMOVED***
+ol.inline > li {
   display: inline-block;
   *display: inline;
   /* IE7 inline-block hack */
@@ -707,33 +707,33 @@ ol.inline > li ***REMOVED***
   *zoom: 1;
   padding-left: 5px;
   padding-right: 5px;
-***REMOVED***
-dl ***REMOVED***
+}
+dl {
   margin-bottom: 20px;
-***REMOVED***
+}
 dt,
-dd ***REMOVED***
+dd {
   line-height: 20px;
-***REMOVED***
-dt ***REMOVED***
+}
+dt {
   font-weight: bold;
-***REMOVED***
-dd ***REMOVED***
+}
+dd {
   margin-left: 10px;
-***REMOVED***
-.dl-horizontal ***REMOVED***
+}
+.dl-horizontal {
   *zoom: 1;
-***REMOVED***
+}
 .dl-horizontal:before,
-.dl-horizontal:after ***REMOVED***
+.dl-horizontal:after {
   display: table;
   content: "";
   line-height: 0;
-***REMOVED***
-.dl-horizontal:after ***REMOVED***
+}
+.dl-horizontal:after {
   clear: both;
-***REMOVED***
-.dl-horizontal dt ***REMOVED***
+}
+.dl-horizontal dt {
   float: left;
   width: 160px;
   clear: left;
@@ -741,75 +741,75 @@ dd ***REMOVED***
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-***REMOVED***
-.dl-horizontal dd ***REMOVED***
+}
+.dl-horizontal dd {
   margin-left: 180px;
-***REMOVED***
-hr ***REMOVED***
+}
+hr {
   margin: 20px 0;
   border: 0;
   border-top: 1px solid #f5f5f5;
   border-bottom: 1px solid #ffffff;
-***REMOVED***
+}
 abbr[title],
-abbr[data-original-title] ***REMOVED***
+abbr[data-original-title] {
   cursor: help;
   border-bottom: 1px dotted #999999;
-***REMOVED***
-abbr.initialism ***REMOVED***
+}
+abbr.initialism {
   font-size: 90%;
   text-transform: uppercase;
-***REMOVED***
-blockquote ***REMOVED***
+}
+blockquote {
   padding: 0 0 0 15px;
   margin: 0 0 20px;
   border-left: 5px solid #f5f5f5;
-***REMOVED***
-blockquote p ***REMOVED***
+}
+blockquote p {
   margin-bottom: 0;
   font-size: 17.5px;
   font-weight: 300;
   line-height: 1.25;
-***REMOVED***
-blockquote small ***REMOVED***
+}
+blockquote small {
   display: block;
   line-height: 20px;
   color: #999999;
-***REMOVED***
-blockquote small:before ***REMOVED***
+}
+blockquote small:before {
   content: '\2014 \00A0';
-***REMOVED***
-blockquote.pull-right ***REMOVED***
+}
+blockquote.pull-right {
   float: right;
   padding-right: 15px;
   padding-left: 0;
   border-right: 5px solid #f5f5f5;
   border-left: 0;
-***REMOVED***
+}
 blockquote.pull-right p,
-blockquote.pull-right small ***REMOVED***
+blockquote.pull-right small {
   text-align: right;
-***REMOVED***
-blockquote.pull-right small:before ***REMOVED***
+}
+blockquote.pull-right small:before {
   content: '';
-***REMOVED***
-blockquote.pull-right small:after ***REMOVED***
+}
+blockquote.pull-right small:after {
   content: '\00A0 \2014';
-***REMOVED***
+}
 q:before,
 q:after,
 blockquote:before,
-blockquote:after ***REMOVED***
+blockquote:after {
   content: "";
-***REMOVED***
-address ***REMOVED***
+}
+address {
   display: block;
   margin-bottom: 20px;
   font-style: normal;
   line-height: 20px;
-***REMOVED***
+}
 code,
-pre ***REMOVED***
+pre {
   padding: 0 3px 2px;
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   font-size: 12px;
@@ -817,15 +817,15 @@ pre ***REMOVED***
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-***REMOVED***
-code ***REMOVED***
+}
+code {
   padding: 2px 4px;
   color: #d14;
   background-color: #f7f7f9;
   border: 1px solid #e1e1e8;
   white-space: nowrap;
-***REMOVED***
-pre ***REMOVED***
+}
+pre {
   display: block;
   padding: 9.5px;
   margin: 0 0 10px;
@@ -841,31 +841,31 @@ pre ***REMOVED***
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-***REMOVED***
-pre.prettyprint ***REMOVED***
+}
+pre.prettyprint {
   margin-bottom: 20px;
-***REMOVED***
-pre code ***REMOVED***
+}
+pre code {
   padding: 0;
   color: inherit;
   white-space: pre;
   white-space: pre-wrap;
   background-color: transparent;
   border: 0;
-***REMOVED***
-.pre-scrollable ***REMOVED***
+}
+.pre-scrollable {
   max-height: 340px;
   overflow-y: scroll;
-***REMOVED***
-form ***REMOVED***
+}
+form {
   margin: 0 0 20px;
-***REMOVED***
-fieldset ***REMOVED***
+}
+fieldset {
   padding: 0;
   margin: 0;
   border: 0;
-***REMOVED***
-legend ***REMOVED***
+}
+legend {
   display: block;
   width: 100%;
   padding: 0;
@@ -875,30 +875,30 @@ legend ***REMOVED***
   color: #333333;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
-***REMOVED***
-legend small ***REMOVED***
+}
+legend small {
   font-size: 15px;
   color: #999999;
-***REMOVED***
+}
 label,
 input,
 button,
 select,
-textarea ***REMOVED***
+textarea {
   font-size: 14px;
   font-weight: normal;
   line-height: 20px;
-***REMOVED***
+}
 input,
 button,
 select,
-textarea ***REMOVED***
+textarea {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-***REMOVED***
-label ***REMOVED***
+}
+label {
   display: block;
   margin-bottom: 5px;
-***REMOVED***
+}
 select,
 textarea,
 input[type="text"],
@@ -915,7 +915,7 @@ input[type="url"],
 input[type="search"],
 input[type="tel"],
 input[type="color"],
-.uneditable-input ***REMOVED***
+.uneditable-input {
   display: inline-block;
   height: 20px;
   padding: 4px 6px;
@@ -927,15 +927,15 @@ input[type="color"],
   -moz-border-radius: 4px;
   border-radius: 4px;
   vertical-align: middle;
-***REMOVED***
+}
 input,
 textarea,
-.uneditable-input ***REMOVED***
+.uneditable-input {
   width: 206px;
-***REMOVED***
-textarea ***REMOVED***
+}
+textarea {
   height: auto;
-***REMOVED***
+}
 textarea,
 input[type="text"],
 input[type="password"],
@@ -951,7 +951,7 @@ input[type="url"],
 input[type="search"],
 input[type="tel"],
 input[type="color"],
-.uneditable-input ***REMOVED***
+.uneditable-input {
   background-color: #ffffff;
   border: 1px solid #cccccc;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -961,7 +961,7 @@ input[type="color"],
   -moz-transition: border linear .2s, box-shadow linear .2s;
   -o-transition: border linear .2s, box-shadow linear .2s;
   transition: border linear .2s, box-shadow linear .2s;
-***REMOVED***
+}
 textarea:focus,
 input[type="text"]:focus,
 input[type="password"]:focus,
@@ -977,7 +977,7 @@ input[type="url"]:focus,
 input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus,
-.uneditable-input:focus ***REMOVED***
+.uneditable-input:focus {
   border-color: rgba(82, 168, 236, 0.8);
   outline: 0;
   outline: thin dotted \9;
@@ -986,9 +986,9 @@ input[type="color"]:focus,
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
   -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
-***REMOVED***
+}
 input[type="radio"],
-input[type="checkbox"] ***REMOVED***
+input[type="checkbox"] {
   margin: 4px 0 0;
   *margin-top: 0;
   /* IE7 */
@@ -997,18 +997,18 @@ input[type="checkbox"] ***REMOVED***
   /* IE8-9 */
 
   line-height: normal;
-***REMOVED***
+}
 input[type="file"],
 input[type="image"],
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
 input[type="radio"],
-input[type="checkbox"] ***REMOVED***
+input[type="checkbox"] {
   width: auto;
-***REMOVED***
+}
 select,
-input[type="file"] ***REMOVED***
+input[type="file"] {
   height: 30px;
   /* In IE7, the height of the select element cannot be changed by height, only font-size */
 
@@ -1016,26 +1016,26 @@ input[type="file"] ***REMOVED***
   /* For IE7, add top margin to align select with labels */
 
   line-height: 30px;
-***REMOVED***
-select ***REMOVED***
+}
+select {
   width: 220px;
   border: 1px solid #cccccc;
   background-color: #ffffff;
-***REMOVED***
+}
 select[multiple],
-select[size] ***REMOVED***
+select[size] {
   height: auto;
-***REMOVED***
+}
 select:focus,
 input[type="file"]:focus,
 input[type="radio"]:focus,
-input[type="checkbox"]:focus ***REMOVED***
+input[type="checkbox"]:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
-***REMOVED***
+}
 .uneditable-input,
-.uneditable-textarea ***REMOVED***
+.uneditable-textarea {
   color: #999999;
   background-color: #fcfcfc;
   border-color: #cccccc;
@@ -1043,70 +1043,70 @@ input[type="checkbox"]:focus ***REMOVED***
   -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
   cursor: not-allowed;
-***REMOVED***
-.uneditable-input ***REMOVED***
+}
+.uneditable-input {
   overflow: hidden;
   white-space: nowrap;
-***REMOVED***
-.uneditable-textarea ***REMOVED***
+}
+.uneditable-textarea {
   width: auto;
   height: auto;
-***REMOVED***
+}
 input:-moz-placeholder,
-textarea:-moz-placeholder ***REMOVED***
+textarea:-moz-placeholder {
   color: #999999;
-***REMOVED***
+}
 input:-ms-input-placeholder,
-textarea:-ms-input-placeholder ***REMOVED***
+textarea:-ms-input-placeholder {
   color: #999999;
-***REMOVED***
+}
 input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder ***REMOVED***
+textarea::-webkit-input-placeholder {
   color: #999999;
-***REMOVED***
+}
 .radio,
-.checkbox ***REMOVED***
+.checkbox {
   min-height: 20px;
   padding-left: 20px;
-***REMOVED***
+}
 .radio input[type="radio"],
-.checkbox input[type="checkbox"] ***REMOVED***
+.checkbox input[type="checkbox"] {
   float: left;
   margin-left: -20px;
-***REMOVED***
+}
 .controls > .radio:first-child,
-.controls > .checkbox:first-child ***REMOVED***
+.controls > .checkbox:first-child {
   padding-top: 5px;
-***REMOVED***
+}
 .radio.inline,
-.checkbox.inline ***REMOVED***
+.checkbox.inline {
   display: inline-block;
   padding-top: 5px;
   margin-bottom: 0;
   vertical-align: middle;
-***REMOVED***
+}
 .radio.inline + .radio.inline,
-.checkbox.inline + .checkbox.inline ***REMOVED***
+.checkbox.inline + .checkbox.inline {
   margin-left: 10px;
-***REMOVED***
-.input-mini ***REMOVED***
+}
+.input-mini {
   width: 60px;
-***REMOVED***
-.input-small ***REMOVED***
+}
+.input-small {
   width: 90px;
-***REMOVED***
-.input-medium ***REMOVED***
+}
+.input-medium {
   width: 150px;
-***REMOVED***
-.input-large ***REMOVED***
+}
+.input-large {
   width: 210px;
-***REMOVED***
-.input-xlarge ***REMOVED***
+}
+.input-xlarge {
   width: 270px;
-***REMOVED***
-.input-xxlarge ***REMOVED***
+}
+.input-xxlarge {
   width: 530px;
-***REMOVED***
+}
 input[class*="span"],
 select[class*="span"],
 textarea[class*="span"],
@@ -1114,10 +1114,10 @@ textarea[class*="span"],
 .row-fluid input[class*="span"],
 .row-fluid select[class*="span"],
 .row-fluid textarea[class*="span"],
-.row-fluid .uneditable-input[class*="span"] ***REMOVED***
+.row-fluid .uneditable-input[class*="span"] {
   float: none;
   margin-left: 0;
-***REMOVED***
+}
 .input-append input[class*="span"],
 .input-append .uneditable-input[class*="span"],
 .input-prepend input[class*="span"],
@@ -1127,288 +1127,288 @@ textarea[class*="span"],
 .row-fluid textarea[class*="span"],
 .row-fluid .uneditable-input[class*="span"],
 .row-fluid .input-prepend [class*="span"],
-.row-fluid .input-append [class*="span"] ***REMOVED***
+.row-fluid .input-append [class*="span"] {
   display: inline-block;
-***REMOVED***
+}
 input,
 textarea,
-.uneditable-input ***REMOVED***
+.uneditable-input {
   margin-left: 0;
-***REMOVED***
-.controls-row [class*="span"] + [class*="span"] ***REMOVED***
+}
+.controls-row [class*="span"] + [class*="span"] {
   margin-left: 20px;
-***REMOVED***
+}
 input.span12,
 textarea.span12,
-.uneditable-input.span12 ***REMOVED***
+.uneditable-input.span12 {
   width: 926px;
-***REMOVED***
+}
 input.span11,
 textarea.span11,
-.uneditable-input.span11 ***REMOVED***
+.uneditable-input.span11 {
   width: 846px;
-***REMOVED***
+}
 input.span10,
 textarea.span10,
-.uneditable-input.span10 ***REMOVED***
+.uneditable-input.span10 {
   width: 766px;
-***REMOVED***
+}
 input.span9,
 textarea.span9,
-.uneditable-input.span9 ***REMOVED***
+.uneditable-input.span9 {
   width: 686px;
-***REMOVED***
+}
 input.span8,
 textarea.span8,
-.uneditable-input.span8 ***REMOVED***
+.uneditable-input.span8 {
   width: 606px;
-***REMOVED***
+}
 input.span7,
 textarea.span7,
-.uneditable-input.span7 ***REMOVED***
+.uneditable-input.span7 {
   width: 526px;
-***REMOVED***
+}
 input.span6,
 textarea.span6,
-.uneditable-input.span6 ***REMOVED***
+.uneditable-input.span6 {
   width: 446px;
-***REMOVED***
+}
 input.span5,
 textarea.span5,
-.uneditable-input.span5 ***REMOVED***
+.uneditable-input.span5 {
   width: 366px;
-***REMOVED***
+}
 input.span4,
 textarea.span4,
-.uneditable-input.span4 ***REMOVED***
+.uneditable-input.span4 {
   width: 286px;
-***REMOVED***
+}
 input.span3,
 textarea.span3,
-.uneditable-input.span3 ***REMOVED***
+.uneditable-input.span3 {
   width: 206px;
-***REMOVED***
+}
 input.span2,
 textarea.span2,
-.uneditable-input.span2 ***REMOVED***
+.uneditable-input.span2 {
   width: 126px;
-***REMOVED***
+}
 input.span1,
 textarea.span1,
-.uneditable-input.span1 ***REMOVED***
+.uneditable-input.span1 {
   width: 46px;
-***REMOVED***
-.controls-row ***REMOVED***
+}
+.controls-row {
   *zoom: 1;
-***REMOVED***
+}
 .controls-row:before,
-.controls-row:after ***REMOVED***
+.controls-row:after {
   display: table;
   content: "";
   line-height: 0;
-***REMOVED***
-.controls-row:after ***REMOVED***
+}
+.controls-row:after {
   clear: both;
-***REMOVED***
+}
 .controls-row [class*="span"],
-.row-fluid .controls-row [class*="span"] ***REMOVED***
+.row-fluid .controls-row [class*="span"] {
   float: left;
-***REMOVED***
+}
 .controls-row .checkbox[class*="span"],
-.controls-row .radio[class*="span"] ***REMOVED***
+.controls-row .radio[class*="span"] {
   padding-top: 5px;
-***REMOVED***
+}
 input[disabled],
 select[disabled],
 textarea[disabled],
 input[readonly],
 select[readonly],
-textarea[readonly] ***REMOVED***
+textarea[readonly] {
   cursor: not-allowed;
   background-color: #f5f5f5;
-***REMOVED***
+}
 input[type="radio"][disabled],
 input[type="checkbox"][disabled],
 input[type="radio"][readonly],
-input[type="checkbox"][readonly] ***REMOVED***
+input[type="checkbox"][readonly] {
   background-color: transparent;
-***REMOVED***
+}
 .control-group.warning .control-label,
 .control-group.warning .help-block,
-.control-group.warning .help-inline ***REMOVED***
+.control-group.warning .help-inline {
   color: #dd5600;
-***REMOVED***
+}
 .control-group.warning .checkbox,
 .control-group.warning .radio,
 .control-group.warning input,
 .control-group.warning select,
-.control-group.warning textarea ***REMOVED***
+.control-group.warning textarea {
   color: #dd5600;
-***REMOVED***
+}
 .control-group.warning input,
 .control-group.warning select,
-.control-group.warning textarea ***REMOVED***
+.control-group.warning textarea {
   border-color: #dd5600;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-***REMOVED***
+}
 .control-group.warning input:focus,
 .control-group.warning select:focus,
-.control-group.warning textarea:focus ***REMOVED***
+.control-group.warning textarea:focus {
   border-color: #aa4200;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ff8d44;
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ff8d44;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ff8d44;
-***REMOVED***
+}
 .control-group.warning .input-prepend .add-on,
-.control-group.warning .input-append .add-on ***REMOVED***
+.control-group.warning .input-append .add-on {
   color: #dd5600;
   background-color: #f1ceab;
   border-color: #dd5600;
-***REMOVED***
+}
 .control-group.error .control-label,
 .control-group.error .help-block,
-.control-group.error .help-inline ***REMOVED***
+.control-group.error .help-inline {
   color: #bd4247;
-***REMOVED***
+}
 .control-group.error .checkbox,
 .control-group.error .radio,
 .control-group.error input,
 .control-group.error select,
-.control-group.error textarea ***REMOVED***
+.control-group.error textarea {
   color: #bd4247;
-***REMOVED***
+}
 .control-group.error input,
 .control-group.error select,
-.control-group.error textarea ***REMOVED***
+.control-group.error textarea {
   border-color: #bd4247;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-***REMOVED***
+}
 .control-group.error input:focus,
 .control-group.error select:focus,
-.control-group.error textarea:focus ***REMOVED***
+.control-group.error textarea:focus {
   border-color: #983538;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d88e90;
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d88e90;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d88e90;
-***REMOVED***
+}
 .control-group.error .input-prepend .add-on,
-.control-group.error .input-append .add-on ***REMOVED***
+.control-group.error .input-append .add-on {
   color: #bd4247;
   background-color: #f2bdb1;
   border-color: #bd4247;
-***REMOVED***
+}
 .control-group.success .control-label,
 .control-group.success .help-block,
-.control-group.success .help-inline ***REMOVED***
+.control-group.success .help-inline {
   color: #669533;
-***REMOVED***
+}
 .control-group.success .checkbox,
 .control-group.success .radio,
 .control-group.success input,
 .control-group.success select,
-.control-group.success textarea ***REMOVED***
+.control-group.success textarea {
   color: #669533;
-***REMOVED***
+}
 .control-group.success input,
 .control-group.success select,
-.control-group.success textarea ***REMOVED***
+.control-group.success textarea {
   border-color: #669533;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-***REMOVED***
+}
 .control-group.success input:focus,
 .control-group.success select:focus,
-.control-group.success textarea:focus ***REMOVED***
+.control-group.success textarea:focus {
   border-color: #4c6f26;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #99ca63;
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #99ca63;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #99ca63;
-***REMOVED***
+}
 .control-group.success .input-prepend .add-on,
-.control-group.success .input-append .add-on ***REMOVED***
+.control-group.success .input-append .add-on {
   color: #669533;
   background-color: #d5ecbf;
   border-color: #669533;
-***REMOVED***
+}
 .control-group.info .control-label,
 .control-group.info .help-block,
-.control-group.info .help-inline ***REMOVED***
+.control-group.info .help-inline {
   color: #178acc;
-***REMOVED***
+}
 .control-group.info .checkbox,
 .control-group.info .radio,
 .control-group.info input,
 .control-group.info select,
-.control-group.info textarea ***REMOVED***
+.control-group.info textarea {
   color: #178acc;
-***REMOVED***
+}
 .control-group.info input,
 .control-group.info select,
-.control-group.info textarea ***REMOVED***
+.control-group.info textarea {
   border-color: #178acc;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-***REMOVED***
+}
 .control-group.info input:focus,
 .control-group.info select:focus,
-.control-group.info textarea:focus ***REMOVED***
+.control-group.info textarea:focus {
   border-color: #126b9e;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #5db8ec;
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #5db8ec;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #5db8ec;
-***REMOVED***
+}
 .control-group.info .input-prepend .add-on,
-.control-group.info .input-append .add-on ***REMOVED***
+.control-group.info .input-append .add-on {
   color: #178acc;
   background-color: #a7dff1;
   border-color: #178acc;
-***REMOVED***
+}
 input:focus:invalid,
 textarea:focus:invalid,
-select:focus:invalid ***REMOVED***
+select:focus:invalid {
   color: #b94a48;
   border-color: #ee5f5b;
-***REMOVED***
+}
 input:focus:invalid:focus,
 textarea:focus:invalid:focus,
-select:focus:invalid:focus ***REMOVED***
+select:focus:invalid:focus {
   border-color: #e9322d;
   -webkit-box-shadow: 0 0 6px #f8b9b7;
   -moz-box-shadow: 0 0 6px #f8b9b7;
   box-shadow: 0 0 6px #f8b9b7;
-***REMOVED***
-.form-actions ***REMOVED***
+}
+.form-actions {
   padding: 19px 20px 20px;
   margin-top: 20px;
   margin-bottom: 20px;
   background-color: #f5f5f5;
   border-top: 1px solid #e5e5e5;
   *zoom: 1;
-***REMOVED***
+}
 .form-actions:before,
-.form-actions:after ***REMOVED***
+.form-actions:after {
   display: table;
   content: "";
   line-height: 0;
-***REMOVED***
-.form-actions:after ***REMOVED***
+}
+.form-actions:after {
   clear: both;
-***REMOVED***
+}
 .help-block,
-.help-inline ***REMOVED***
+.help-inline {
   color: #7b7b7b;
-***REMOVED***
-.help-block ***REMOVED***
+}
+.help-block {
   display: block;
   margin-bottom: 10px;
-***REMOVED***
-.help-inline ***REMOVED***
+}
+.help-inline {
   display: inline-block;
   *display: inline;
   /* IE7 inline-block hack */
@@ -1416,15 +1416,15 @@ select:focus:invalid:focus ***REMOVED***
   *zoom: 1;
   vertical-align: middle;
   padding-left: 5px;
-***REMOVED***
+}
 .input-append,
-.input-prepend ***REMOVED***
+.input-prepend {
   display: inline-block;
   margin-bottom: 10px;
   vertical-align: middle;
   font-size: 0;
   white-space: nowrap;
-***REMOVED***
+}
 .input-append input,
 .input-prepend input,
 .input-append select,
@@ -1434,15 +1434,15 @@ select:focus:invalid:focus ***REMOVED***
 .input-append .dropdown-menu,
 .input-prepend .dropdown-menu,
 .input-append .popover,
-.input-prepend .popover ***REMOVED***
+.input-prepend .popover {
   font-size: 14px;
-***REMOVED***
+}
 .input-append input,
 .input-prepend input,
 .input-append select,
 .input-prepend select,
 .input-append .uneditable-input,
-.input-prepend .uneditable-input ***REMOVED***
+.input-prepend .uneditable-input {
   position: relative;
   margin-bottom: 0;
   *margin-left: 0;
@@ -1450,17 +1450,17 @@ select:focus:invalid:focus ***REMOVED***
   -webkit-border-radius: 0 4px 4px 0;
   -moz-border-radius: 0 4px 4px 0;
   border-radius: 0 4px 4px 0;
-***REMOVED***
+}
 .input-append input:focus,
 .input-prepend input:focus,
 .input-append select:focus,
 .input-prepend select:focus,
 .input-append .uneditable-input:focus,
-.input-prepend .uneditable-input:focus ***REMOVED***
+.input-prepend .uneditable-input:focus {
   z-index: 2;
-***REMOVED***
+}
 .input-append .add-on,
-.input-prepend .add-on ***REMOVED***
+.input-prepend .add-on {
   display: inline-block;
   width: auto;
   height: 20px;
@@ -1473,91 +1473,91 @@ select:focus:invalid:focus ***REMOVED***
   text-shadow: 0 1px 0 #ffffff;
   background-color: #f5f5f5;
   border: 1px solid #ccc;
-***REMOVED***
+}
 .input-append .add-on,
 .input-prepend .add-on,
 .input-append .btn,
 .input-prepend .btn,
 .input-append .btn-group > .dropdown-toggle,
-.input-prepend .btn-group > .dropdown-toggle ***REMOVED***
+.input-prepend .btn-group > .dropdown-toggle {
   vertical-align: top;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
-***REMOVED***
+}
 .input-append .active,
-.input-prepend .active ***REMOVED***
+.input-prepend .active {
   background-color: #bede9c;
   border-color: #73a839;
-***REMOVED***
+}
 .input-prepend .add-on,
-.input-prepend .btn ***REMOVED***
+.input-prepend .btn {
   margin-right: -1px;
-***REMOVED***
+}
 .input-prepend .add-on:first-child,
-.input-prepend .btn:first-child ***REMOVED***
+.input-prepend .btn:first-child {
   -webkit-border-radius: 4px 0 0 4px;
   -moz-border-radius: 4px 0 0 4px;
   border-radius: 4px 0 0 4px;
-***REMOVED***
+}
 .input-append input,
 .input-append select,
-.input-append .uneditable-input ***REMOVED***
+.input-append .uneditable-input {
   -webkit-border-radius: 4px 0 0 4px;
   -moz-border-radius: 4px 0 0 4px;
   border-radius: 4px 0 0 4px;
-***REMOVED***
+}
 .input-append input + .btn-group .btn:last-child,
 .input-append select + .btn-group .btn:last-child,
-.input-append .uneditable-input + .btn-group .btn:last-child ***REMOVED***
+.input-append .uneditable-input + .btn-group .btn:last-child {
   -webkit-border-radius: 0 4px 4px 0;
   -moz-border-radius: 0 4px 4px 0;
   border-radius: 0 4px 4px 0;
-***REMOVED***
+}
 .input-append .add-on,
 .input-append .btn,
-.input-append .btn-group ***REMOVED***
+.input-append .btn-group {
   margin-left: -1px;
-***REMOVED***
+}
 .input-append .add-on:last-child,
 .input-append .btn:last-child,
-.input-append .btn-group:last-child > .dropdown-toggle ***REMOVED***
+.input-append .btn-group:last-child > .dropdown-toggle {
   -webkit-border-radius: 0 4px 4px 0;
   -moz-border-radius: 0 4px 4px 0;
   border-radius: 0 4px 4px 0;
-***REMOVED***
+}
 .input-prepend.input-append input,
 .input-prepend.input-append select,
-.input-prepend.input-append .uneditable-input ***REMOVED***
+.input-prepend.input-append .uneditable-input {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
-***REMOVED***
+}
 .input-prepend.input-append input + .btn-group .btn,
 .input-prepend.input-append select + .btn-group .btn,
-.input-prepend.input-append .uneditable-input + .btn-group .btn ***REMOVED***
+.input-prepend.input-append .uneditable-input + .btn-group .btn {
   -webkit-border-radius: 0 4px 4px 0;
   -moz-border-radius: 0 4px 4px 0;
   border-radius: 0 4px 4px 0;
-***REMOVED***
+}
 .input-prepend.input-append .add-on:first-child,
-.input-prepend.input-append .btn:first-child ***REMOVED***
+.input-prepend.input-append .btn:first-child {
   margin-right: -1px;
   -webkit-border-radius: 4px 0 0 4px;
   -moz-border-radius: 4px 0 0 4px;
   border-radius: 4px 0 0 4px;
-***REMOVED***
+}
 .input-prepend.input-append .add-on:last-child,
-.input-prepend.input-append .btn:last-child ***REMOVED***
+.input-prepend.input-append .btn:last-child {
   margin-left: -1px;
   -webkit-border-radius: 0 4px 4px 0;
   -moz-border-radius: 0 4px 4px 0;
   border-radius: 0 4px 4px 0;
-***REMOVED***
-.input-prepend.input-append .btn-group:first-child ***REMOVED***
+}
+.input-prepend.input-append .btn-group:first-child {
   margin-left: 0;
-***REMOVED***
-input.search-query ***REMOVED***
+}
+input.search-query {
   padding-right: 14px;
   padding-right: 4px \9;
   padding-left: 14px;
@@ -1568,34 +1568,34 @@ input.search-query ***REMOVED***
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
-***REMOVED***
+}
 /* Allow for input prepend/append in search forms */
 .form-search .input-append .search-query,
-.form-search .input-prepend .search-query ***REMOVED***
+.form-search .input-prepend .search-query {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
-***REMOVED***
-.form-search .input-append .search-query ***REMOVED***
+}
+.form-search .input-append .search-query {
   -webkit-border-radius: 14px 0 0 14px;
   -moz-border-radius: 14px 0 0 14px;
   border-radius: 14px 0 0 14px;
-***REMOVED***
-.form-search .input-append .btn ***REMOVED***
+}
+.form-search .input-append .btn {
   -webkit-border-radius: 0 14px 14px 0;
   -moz-border-radius: 0 14px 14px 0;
   border-radius: 0 14px 14px 0;
-***REMOVED***
-.form-search .input-prepend .search-query ***REMOVED***
+}
+.form-search .input-prepend .search-query {
   -webkit-border-radius: 0 14px 14px 0;
   -moz-border-radius: 0 14px 14px 0;
   border-radius: 0 14px 14px 0;
-***REMOVED***
-.form-search .input-prepend .btn ***REMOVED***
+}
+.form-search .input-prepend .btn {
   -webkit-border-radius: 14px 0 0 14px;
   -moz-border-radius: 14px 0 0 14px;
   border-radius: 14px 0 0 14px;
-***REMOVED***
+}
 .form-search input,
 .form-inline input,
 .form-horizontal input,
@@ -1616,7 +1616,7 @@ input.search-query ***REMOVED***
 .form-horizontal .input-prepend,
 .form-search .input-append,
 .form-inline .input-append,
-.form-horizontal .input-append ***REMOVED***
+.form-horizontal .input-append {
   display: inline-block;
   *display: inline;
   /* IE7 inline-block hack */
@@ -1624,132 +1624,132 @@ input.search-query ***REMOVED***
   *zoom: 1;
   margin-bottom: 0;
   vertical-align: middle;
-***REMOVED***
+}
 .form-search .hide,
 .form-inline .hide,
-.form-horizontal .hide ***REMOVED***
+.form-horizontal .hide {
   display: none;
-***REMOVED***
+}
 .form-search label,
 .form-inline label,
 .form-search .btn-group,
-.form-inline .btn-group ***REMOVED***
+.form-inline .btn-group {
   display: inline-block;
-***REMOVED***
+}
 .form-search .input-append,
 .form-inline .input-append,
 .form-search .input-prepend,
-.form-inline .input-prepend ***REMOVED***
+.form-inline .input-prepend {
   margin-bottom: 0;
-***REMOVED***
+}
 .form-search .radio,
 .form-search .checkbox,
 .form-inline .radio,
-.form-inline .checkbox ***REMOVED***
+.form-inline .checkbox {
   padding-left: 0;
   margin-bottom: 0;
   vertical-align: middle;
-***REMOVED***
+}
 .form-search .radio input[type="radio"],
 .form-search .checkbox input[type="checkbox"],
 .form-inline .radio input[type="radio"],
-.form-inline .checkbox input[type="checkbox"] ***REMOVED***
+.form-inline .checkbox input[type="checkbox"] {
   float: left;
   margin-right: 3px;
   margin-left: 0;
-***REMOVED***
-.control-group ***REMOVED***
+}
+.control-group {
   margin-bottom: 10px;
-***REMOVED***
-legend + .control-group ***REMOVED***
+}
+legend + .control-group {
   margin-top: 20px;
   -webkit-margin-top-collapse: separate;
-***REMOVED***
-.form-horizontal .control-group ***REMOVED***
+}
+.form-horizontal .control-group {
   margin-bottom: 20px;
   *zoom: 1;
-***REMOVED***
+}
 .form-horizontal .control-group:before,
-.form-horizontal .control-group:after ***REMOVED***
+.form-horizontal .control-group:after {
   display: table;
   content: "";
   line-height: 0;
-***REMOVED***
-.form-horizontal .control-group:after ***REMOVED***
+}
+.form-horizontal .control-group:after {
   clear: both;
-***REMOVED***
-.form-horizontal .control-label ***REMOVED***
+}
+.form-horizontal .control-label {
   float: left;
   width: 160px;
   padding-top: 5px;
   text-align: right;
-***REMOVED***
-.form-horizontal .controls ***REMOVED***
+}
+.form-horizontal .controls {
   *display: inline-block;
   *padding-left: 20px;
   margin-left: 180px;
   *margin-left: 0;
-***REMOVED***
-.form-horizontal .controls:first-child ***REMOVED***
+}
+.form-horizontal .controls:first-child {
   *padding-left: 180px;
-***REMOVED***
-.form-horizontal .help-block ***REMOVED***
+}
+.form-horizontal .help-block {
   margin-bottom: 0;
-***REMOVED***
+}
 .form-horizontal input + .help-block,
 .form-horizontal select + .help-block,
 .form-horizontal textarea + .help-block,
 .form-horizontal .uneditable-input + .help-block,
 .form-horizontal .input-prepend + .help-block,
-.form-horizontal .input-append + .help-block ***REMOVED***
+.form-horizontal .input-append + .help-block {
   margin-top: 10px;
-***REMOVED***
-.form-horizontal .form-actions ***REMOVED***
+}
+.form-horizontal .form-actions {
   padding-left: 180px;
-***REMOVED***
-table ***REMOVED***
+}
+table {
   max-width: 100%;
   background-color: transparent;
   border-collapse: collapse;
   border-spacing: 0;
-***REMOVED***
-.table ***REMOVED***
+}
+.table {
   width: 100%;
   margin-bottom: 20px;
-***REMOVED***
+}
 .table th,
-.table td ***REMOVED***
+.table td {
   padding: 8px;
   line-height: 20px;
   text-align: left;
   vertical-align: top;
   border-top: 1px solid #dddddd;
-***REMOVED***
-.table th ***REMOVED***
+}
+.table th {
   font-weight: bold;
-***REMOVED***
-.table thead th ***REMOVED***
+}
+.table thead th {
   vertical-align: bottom;
-***REMOVED***
+}
 .table caption + thead tr:first-child th,
 .table caption + thead tr:first-child td,
 .table colgroup + thead tr:first-child th,
 .table colgroup + thead tr:first-child td,
 .table thead:first-child tr:first-child th,
-.table thead:first-child tr:first-child td ***REMOVED***
+.table thead:first-child tr:first-child td {
   border-top: 0;
-***REMOVED***
-.table tbody + tbody ***REMOVED***
+}
+.table tbody + tbody {
   border-top: 2px solid #dddddd;
-***REMOVED***
-.table .table ***REMOVED***
+}
+.table .table {
   background-color: #ffffff;
-***REMOVED***
+}
 .table-condensed th,
-.table-condensed td ***REMOVED***
+.table-condensed td {
   padding: 4px 5px;
-***REMOVED***
-.table-bordered ***REMOVED***
+}
+.table-bordered {
   border: 1px solid #dddddd;
   border-collapse: separate;
   *border-collapse: collapse;
@@ -1757,11 +1757,11 @@ table ***REMOVED***
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-***REMOVED***
+}
 .table-bordered th,
-.table-bordered td ***REMOVED***
+.table-bordered td {
   border-left: 1px solid #dddddd;
-***REMOVED***
+}
 .table-bordered caption + thead tr:first-child th,
 .table-bordered caption + tbody tr:first-child th,
 .table-bordered caption + tbody tr:first-child td,
@@ -1770,181 +1770,181 @@ table ***REMOVED***
 .table-bordered colgroup + tbody tr:first-child td,
 .table-bordered thead:first-child tr:first-child th,
 .table-bordered tbody:first-child tr:first-child th,
-.table-bordered tbody:first-child tr:first-child td ***REMOVED***
+.table-bordered tbody:first-child tr:first-child td {
   border-top: 0;
-***REMOVED***
+}
 .table-bordered thead:first-child tr:first-child > th:first-child,
 .table-bordered tbody:first-child tr:first-child > td:first-child,
-.table-bordered tbody:first-child tr:first-child > th:first-child ***REMOVED***
+.table-bordered tbody:first-child tr:first-child > th:first-child {
   -webkit-border-top-left-radius: 4px;
   -moz-border-radius-topleft: 4px;
   border-top-left-radius: 4px;
-***REMOVED***
+}
 .table-bordered thead:first-child tr:first-child > th:last-child,
 .table-bordered tbody:first-child tr:first-child > td:last-child,
-.table-bordered tbody:first-child tr:first-child > th:last-child ***REMOVED***
+.table-bordered tbody:first-child tr:first-child > th:last-child {
   -webkit-border-top-right-radius: 4px;
   -moz-border-radius-topright: 4px;
   border-top-right-radius: 4px;
-***REMOVED***
+}
 .table-bordered thead:last-child tr:last-child > th:first-child,
 .table-bordered tbody:last-child tr:last-child > td:first-child,
 .table-bordered tbody:last-child tr:last-child > th:first-child,
 .table-bordered tfoot:last-child tr:last-child > td:first-child,
-.table-bordered tfoot:last-child tr:last-child > th:first-child ***REMOVED***
+.table-bordered tfoot:last-child tr:last-child > th:first-child {
   -webkit-border-bottom-left-radius: 4px;
   -moz-border-radius-bottomleft: 4px;
   border-bottom-left-radius: 4px;
-***REMOVED***
+}
 .table-bordered thead:last-child tr:last-child > th:last-child,
 .table-bordered tbody:last-child tr:last-child > td:last-child,
 .table-bordered tbody:last-child tr:last-child > th:last-child,
 .table-bordered tfoot:last-child tr:last-child > td:last-child,
-.table-bordered tfoot:last-child tr:last-child > th:last-child ***REMOVED***
+.table-bordered tfoot:last-child tr:last-child > th:last-child {
   -webkit-border-bottom-right-radius: 4px;
   -moz-border-radius-bottomright: 4px;
   border-bottom-right-radius: 4px;
-***REMOVED***
-.table-bordered tfoot + tbody:last-child tr:last-child td:first-child ***REMOVED***
+}
+.table-bordered tfoot + tbody:last-child tr:last-child td:first-child {
   -webkit-border-bottom-left-radius: 0;
   -moz-border-radius-bottomleft: 0;
   border-bottom-left-radius: 0;
-***REMOVED***
-.table-bordered tfoot + tbody:last-child tr:last-child td:last-child ***REMOVED***
+}
+.table-bordered tfoot + tbody:last-child tr:last-child td:last-child {
   -webkit-border-bottom-right-radius: 0;
   -moz-border-radius-bottomright: 0;
   border-bottom-right-radius: 0;
-***REMOVED***
+}
 .table-bordered caption + thead tr:first-child th:first-child,
 .table-bordered caption + tbody tr:first-child td:first-child,
 .table-bordered colgroup + thead tr:first-child th:first-child,
-.table-bordered colgroup + tbody tr:first-child td:first-child ***REMOVED***
+.table-bordered colgroup + tbody tr:first-child td:first-child {
   -webkit-border-top-left-radius: 4px;
   -moz-border-radius-topleft: 4px;
   border-top-left-radius: 4px;
-***REMOVED***
+}
 .table-bordered caption + thead tr:first-child th:last-child,
 .table-bordered caption + tbody tr:first-child td:last-child,
 .table-bordered colgroup + thead tr:first-child th:last-child,
-.table-bordered colgroup + tbody tr:first-child td:last-child ***REMOVED***
+.table-bordered colgroup + tbody tr:first-child td:last-child {
   -webkit-border-top-right-radius: 4px;
   -moz-border-radius-topright: 4px;
   border-top-right-radius: 4px;
-***REMOVED***
+}
 .table-striped tbody > tr:nth-child(odd) > td,
-.table-striped tbody > tr:nth-child(odd) > th ***REMOVED***
+.table-striped tbody > tr:nth-child(odd) > th {
   background-color: #f9f9f9;
-***REMOVED***
+}
 .table-hover tbody tr:hover > td,
-.table-hover tbody tr:hover > th ***REMOVED***
+.table-hover tbody tr:hover > th {
   background-color: #f5f5f5;
-***REMOVED***
+}
 table td[class*="span"],
 table th[class*="span"],
 .row-fluid table td[class*="span"],
-.row-fluid table th[class*="span"] ***REMOVED***
+.row-fluid table th[class*="span"] {
   display: table-cell;
   float: none;
   margin-left: 0;
-***REMOVED***
+}
 .table td.span1,
-.table th.span1 ***REMOVED***
+.table th.span1 {
   float: none;
   width: 44px;
   margin-left: 0;
-***REMOVED***
+}
 .table td.span2,
-.table th.span2 ***REMOVED***
+.table th.span2 {
   float: none;
   width: 124px;
   margin-left: 0;
-***REMOVED***
+}
 .table td.span3,
-.table th.span3 ***REMOVED***
+.table th.span3 {
   float: none;
   width: 204px;
   margin-left: 0;
-***REMOVED***
+}
 .table td.span4,
-.table th.span4 ***REMOVED***
+.table th.span4 {
   float: none;
   width: 284px;
   margin-left: 0;
-***REMOVED***
+}
 .table td.span5,
-.table th.span5 ***REMOVED***
+.table th.span5 {
   float: none;
   width: 364px;
   margin-left: 0;
-***REMOVED***
+}
 .table td.span6,
-.table th.span6 ***REMOVED***
+.table th.span6 {
   float: none;
   width: 444px;
   margin-left: 0;
-***REMOVED***
+}
 .table td.span7,
-.table th.span7 ***REMOVED***
+.table th.span7 {
   float: none;
   width: 524px;
   margin-left: 0;
-***REMOVED***
+}
 .table td.span8,
-.table th.span8 ***REMOVED***
+.table th.span8 {
   float: none;
   width: 604px;
   margin-left: 0;
-***REMOVED***
+}
 .table td.span9,
-.table th.span9 ***REMOVED***
+.table th.span9 {
   float: none;
   width: 684px;
   margin-left: 0;
-***REMOVED***
+}
 .table td.span10,
-.table th.span10 ***REMOVED***
+.table th.span10 {
   float: none;
   width: 764px;
   margin-left: 0;
-***REMOVED***
+}
 .table td.span11,
-.table th.span11 ***REMOVED***
+.table th.span11 {
   float: none;
   width: 844px;
   margin-left: 0;
-***REMOVED***
+}
 .table td.span12,
-.table th.span12 ***REMOVED***
+.table th.span12 {
   float: none;
   width: 924px;
   margin-left: 0;
-***REMOVED***
-.table tbody tr.success > td ***REMOVED***
+}
+.table tbody tr.success > td {
   background-color: #d5ecbf;
-***REMOVED***
-.table tbody tr.error > td ***REMOVED***
+}
+.table tbody tr.error > td {
   background-color: #f2bdb1;
-***REMOVED***
-.table tbody tr.warning > td ***REMOVED***
+}
+.table tbody tr.warning > td {
   background-color: #f1ceab;
-***REMOVED***
-.table tbody tr.info > td ***REMOVED***
+}
+.table tbody tr.info > td {
   background-color: #a7dff1;
-***REMOVED***
-.table-hover tbody tr.success:hover > td ***REMOVED***
+}
+.table-hover tbody tr.success:hover > td {
   background-color: #c8e6ab;
-***REMOVED***
-.table-hover tbody tr.error:hover > td ***REMOVED***
+}
+.table-hover tbody tr.error:hover > td {
   background-color: #eeab9b;
-***REMOVED***
-.table-hover tbody tr.warning:hover > td ***REMOVED***
+}
+.table-hover tbody tr.warning:hover > td {
   background-color: #edc195;
-***REMOVED***
-.table-hover tbody tr.info:hover > td ***REMOVED***
+}
+.table-hover tbody tr.info:hover > td {
   background-color: #91d7ee;
-***REMOVED***
+}
 [class^="icon-"],
-[class*=" icon-"] ***REMOVED***
+[class*=" icon-"] {
   display: inline-block;
   width: 14px;
   height: 14px;
@@ -1955,7 +1955,7 @@ table th[class*="span"],
   background-position: 14px 14px;
   background-repeat: no-repeat;
   margin-top: 1px;
-***REMOVED***
+}
 /* White icons with optional class, or on hover/focus/active states of certain elements */
 .icon-white,
 .nav-pills > .active > a > [class^="icon-"],
@@ -1973,444 +1973,444 @@ table th[class*="span"],
 .dropdown-submenu:hover > a > [class^="icon-"],
 .dropdown-submenu:focus > a > [class^="icon-"],
 .dropdown-submenu:hover > a > [class*=" icon-"],
-.dropdown-submenu:focus > a > [class*=" icon-"] ***REMOVED***
+.dropdown-submenu:focus > a > [class*=" icon-"] {
   background-image: url("../img/glyphicons-halflings-white.png");
-***REMOVED***
-.icon-glass ***REMOVED***
+}
+.icon-glass {
   background-position: 0      0;
-***REMOVED***
-.icon-music ***REMOVED***
+}
+.icon-music {
   background-position: -24px 0;
-***REMOVED***
-.icon-search ***REMOVED***
+}
+.icon-search {
   background-position: -48px 0;
-***REMOVED***
-.icon-envelope ***REMOVED***
+}
+.icon-envelope {
   background-position: -72px 0;
-***REMOVED***
-.icon-heart ***REMOVED***
+}
+.icon-heart {
   background-position: -96px 0;
-***REMOVED***
-.icon-star ***REMOVED***
+}
+.icon-star {
   background-position: -120px 0;
-***REMOVED***
-.icon-star-empty ***REMOVED***
+}
+.icon-star-empty {
   background-position: -144px 0;
-***REMOVED***
-.icon-user ***REMOVED***
+}
+.icon-user {
   background-position: -168px 0;
-***REMOVED***
-.icon-film ***REMOVED***
+}
+.icon-film {
   background-position: -192px 0;
-***REMOVED***
-.icon-th-large ***REMOVED***
+}
+.icon-th-large {
   background-position: -216px 0;
-***REMOVED***
-.icon-th ***REMOVED***
+}
+.icon-th {
   background-position: -240px 0;
-***REMOVED***
-.icon-th-list ***REMOVED***
+}
+.icon-th-list {
   background-position: -264px 0;
-***REMOVED***
-.icon-ok ***REMOVED***
+}
+.icon-ok {
   background-position: -288px 0;
-***REMOVED***
-.icon-remove ***REMOVED***
+}
+.icon-remove {
   background-position: -312px 0;
-***REMOVED***
-.icon-zoom-in ***REMOVED***
+}
+.icon-zoom-in {
   background-position: -336px 0;
-***REMOVED***
-.icon-zoom-out ***REMOVED***
+}
+.icon-zoom-out {
   background-position: -360px 0;
-***REMOVED***
-.icon-off ***REMOVED***
+}
+.icon-off {
   background-position: -384px 0;
-***REMOVED***
-.icon-signal ***REMOVED***
+}
+.icon-signal {
   background-position: -408px 0;
-***REMOVED***
-.icon-cog ***REMOVED***
+}
+.icon-cog {
   background-position: -432px 0;
-***REMOVED***
-.icon-trash ***REMOVED***
+}
+.icon-trash {
   background-position: -456px 0;
-***REMOVED***
-.icon-home ***REMOVED***
+}
+.icon-home {
   background-position: 0 -24px;
-***REMOVED***
-.icon-file ***REMOVED***
+}
+.icon-file {
   background-position: -24px -24px;
-***REMOVED***
-.icon-time ***REMOVED***
+}
+.icon-time {
   background-position: -48px -24px;
-***REMOVED***
-.icon-road ***REMOVED***
+}
+.icon-road {
   background-position: -72px -24px;
-***REMOVED***
-.icon-download-alt ***REMOVED***
+}
+.icon-download-alt {
   background-position: -96px -24px;
-***REMOVED***
-.icon-download ***REMOVED***
+}
+.icon-download {
   background-position: -120px -24px;
-***REMOVED***
-.icon-upload ***REMOVED***
+}
+.icon-upload {
   background-position: -144px -24px;
-***REMOVED***
-.icon-inbox ***REMOVED***
+}
+.icon-inbox {
   background-position: -168px -24px;
-***REMOVED***
-.icon-play-circle ***REMOVED***
+}
+.icon-play-circle {
   background-position: -192px -24px;
-***REMOVED***
-.icon-repeat ***REMOVED***
+}
+.icon-repeat {
   background-position: -216px -24px;
-***REMOVED***
-.icon-refresh ***REMOVED***
+}
+.icon-refresh {
   background-position: -240px -24px;
-***REMOVED***
-.icon-list-alt ***REMOVED***
+}
+.icon-list-alt {
   background-position: -264px -24px;
-***REMOVED***
-.icon-lock ***REMOVED***
+}
+.icon-lock {
   background-position: -287px -24px;
-***REMOVED***
-.icon-flag ***REMOVED***
+}
+.icon-flag {
   background-position: -312px -24px;
-***REMOVED***
-.icon-headphones ***REMOVED***
+}
+.icon-headphones {
   background-position: -336px -24px;
-***REMOVED***
-.icon-volume-off ***REMOVED***
+}
+.icon-volume-off {
   background-position: -360px -24px;
-***REMOVED***
-.icon-volume-down ***REMOVED***
+}
+.icon-volume-down {
   background-position: -384px -24px;
-***REMOVED***
-.icon-volume-up ***REMOVED***
+}
+.icon-volume-up {
   background-position: -408px -24px;
-***REMOVED***
-.icon-qrcode ***REMOVED***
+}
+.icon-qrcode {
   background-position: -432px -24px;
-***REMOVED***
-.icon-barcode ***REMOVED***
+}
+.icon-barcode {
   background-position: -456px -24px;
-***REMOVED***
-.icon-tag ***REMOVED***
+}
+.icon-tag {
   background-position: 0 -48px;
-***REMOVED***
-.icon-tags ***REMOVED***
+}
+.icon-tags {
   background-position: -25px -48px;
-***REMOVED***
-.icon-book ***REMOVED***
+}
+.icon-book {
   background-position: -48px -48px;
-***REMOVED***
-.icon-bookmark ***REMOVED***
+}
+.icon-bookmark {
   background-position: -72px -48px;
-***REMOVED***
-.icon-print ***REMOVED***
+}
+.icon-print {
   background-position: -96px -48px;
-***REMOVED***
-.icon-camera ***REMOVED***
+}
+.icon-camera {
   background-position: -120px -48px;
-***REMOVED***
-.icon-font ***REMOVED***
+}
+.icon-font {
   background-position: -144px -48px;
-***REMOVED***
-.icon-bold ***REMOVED***
+}
+.icon-bold {
   background-position: -167px -48px;
-***REMOVED***
-.icon-italic ***REMOVED***
+}
+.icon-italic {
   background-position: -192px -48px;
-***REMOVED***
-.icon-text-height ***REMOVED***
+}
+.icon-text-height {
   background-position: -216px -48px;
-***REMOVED***
-.icon-text-width ***REMOVED***
+}
+.icon-text-width {
   background-position: -240px -48px;
-***REMOVED***
-.icon-align-left ***REMOVED***
+}
+.icon-align-left {
   background-position: -264px -48px;
-***REMOVED***
-.icon-align-center ***REMOVED***
+}
+.icon-align-center {
   background-position: -288px -48px;
-***REMOVED***
-.icon-align-right ***REMOVED***
+}
+.icon-align-right {
   background-position: -312px -48px;
-***REMOVED***
-.icon-align-justify ***REMOVED***
+}
+.icon-align-justify {
   background-position: -336px -48px;
-***REMOVED***
-.icon-list ***REMOVED***
+}
+.icon-list {
   background-position: -360px -48px;
-***REMOVED***
-.icon-indent-left ***REMOVED***
+}
+.icon-indent-left {
   background-position: -384px -48px;
-***REMOVED***
-.icon-indent-right ***REMOVED***
+}
+.icon-indent-right {
   background-position: -408px -48px;
-***REMOVED***
-.icon-facetime-video ***REMOVED***
+}
+.icon-facetime-video {
   background-position: -432px -48px;
-***REMOVED***
-.icon-picture ***REMOVED***
+}
+.icon-picture {
   background-position: -456px -48px;
-***REMOVED***
-.icon-pencil ***REMOVED***
+}
+.icon-pencil {
   background-position: 0 -72px;
-***REMOVED***
-.icon-map-marker ***REMOVED***
+}
+.icon-map-marker {
   background-position: -24px -72px;
-***REMOVED***
-.icon-adjust ***REMOVED***
+}
+.icon-adjust {
   background-position: -48px -72px;
-***REMOVED***
-.icon-tint ***REMOVED***
+}
+.icon-tint {
   background-position: -72px -72px;
-***REMOVED***
-.icon-edit ***REMOVED***
+}
+.icon-edit {
   background-position: -96px -72px;
-***REMOVED***
-.icon-share ***REMOVED***
+}
+.icon-share {
   background-position: -120px -72px;
-***REMOVED***
-.icon-check ***REMOVED***
+}
+.icon-check {
   background-position: -144px -72px;
-***REMOVED***
-.icon-move ***REMOVED***
+}
+.icon-move {
   background-position: -168px -72px;
-***REMOVED***
-.icon-step-backward ***REMOVED***
+}
+.icon-step-backward {
   background-position: -192px -72px;
-***REMOVED***
-.icon-fast-backward ***REMOVED***
+}
+.icon-fast-backward {
   background-position: -216px -72px;
-***REMOVED***
-.icon-backward ***REMOVED***
+}
+.icon-backward {
   background-position: -240px -72px;
-***REMOVED***
-.icon-play ***REMOVED***
+}
+.icon-play {
   background-position: -264px -72px;
-***REMOVED***
-.icon-pause ***REMOVED***
+}
+.icon-pause {
   background-position: -288px -72px;
-***REMOVED***
-.icon-stop ***REMOVED***
+}
+.icon-stop {
   background-position: -312px -72px;
-***REMOVED***
-.icon-forward ***REMOVED***
+}
+.icon-forward {
   background-position: -336px -72px;
-***REMOVED***
-.icon-fast-forward ***REMOVED***
+}
+.icon-fast-forward {
   background-position: -360px -72px;
-***REMOVED***
-.icon-step-forward ***REMOVED***
+}
+.icon-step-forward {
   background-position: -384px -72px;
-***REMOVED***
-.icon-eject ***REMOVED***
+}
+.icon-eject {
   background-position: -408px -72px;
-***REMOVED***
-.icon-chevron-left ***REMOVED***
+}
+.icon-chevron-left {
   background-position: -432px -72px;
-***REMOVED***
-.icon-chevron-right ***REMOVED***
+}
+.icon-chevron-right {
   background-position: -456px -72px;
-***REMOVED***
-.icon-plus-sign ***REMOVED***
+}
+.icon-plus-sign {
   background-position: 0 -96px;
-***REMOVED***
-.icon-minus-sign ***REMOVED***
+}
+.icon-minus-sign {
   background-position: -24px -96px;
-***REMOVED***
-.icon-remove-sign ***REMOVED***
+}
+.icon-remove-sign {
   background-position: -48px -96px;
-***REMOVED***
-.icon-ok-sign ***REMOVED***
+}
+.icon-ok-sign {
   background-position: -72px -96px;
-***REMOVED***
-.icon-question-sign ***REMOVED***
+}
+.icon-question-sign {
   background-position: -96px -96px;
-***REMOVED***
-.icon-info-sign ***REMOVED***
+}
+.icon-info-sign {
   background-position: -120px -96px;
-***REMOVED***
-.icon-screenshot ***REMOVED***
+}
+.icon-screenshot {
   background-position: -144px -96px;
-***REMOVED***
-.icon-remove-circle ***REMOVED***
+}
+.icon-remove-circle {
   background-position: -168px -96px;
-***REMOVED***
-.icon-ok-circle ***REMOVED***
+}
+.icon-ok-circle {
   background-position: -192px -96px;
-***REMOVED***
-.icon-ban-circle ***REMOVED***
+}
+.icon-ban-circle {
   background-position: -216px -96px;
-***REMOVED***
-.icon-arrow-left ***REMOVED***
+}
+.icon-arrow-left {
   background-position: -240px -96px;
-***REMOVED***
-.icon-arrow-right ***REMOVED***
+}
+.icon-arrow-right {
   background-position: -264px -96px;
-***REMOVED***
-.icon-arrow-up ***REMOVED***
+}
+.icon-arrow-up {
   background-position: -289px -96px;
-***REMOVED***
-.icon-arrow-down ***REMOVED***
+}
+.icon-arrow-down {
   background-position: -312px -96px;
-***REMOVED***
-.icon-share-alt ***REMOVED***
+}
+.icon-share-alt {
   background-position: -336px -96px;
-***REMOVED***
-.icon-resize-full ***REMOVED***
+}
+.icon-resize-full {
   background-position: -360px -96px;
-***REMOVED***
-.icon-resize-small ***REMOVED***
+}
+.icon-resize-small {
   background-position: -384px -96px;
-***REMOVED***
-.icon-plus ***REMOVED***
+}
+.icon-plus {
   background-position: -408px -96px;
-***REMOVED***
-.icon-minus ***REMOVED***
+}
+.icon-minus {
   background-position: -433px -96px;
-***REMOVED***
-.icon-asterisk ***REMOVED***
+}
+.icon-asterisk {
   background-position: -456px -96px;
-***REMOVED***
-.icon-exclamation-sign ***REMOVED***
+}
+.icon-exclamation-sign {
   background-position: 0 -120px;
-***REMOVED***
-.icon-gift ***REMOVED***
+}
+.icon-gift {
   background-position: -24px -120px;
-***REMOVED***
-.icon-leaf ***REMOVED***
+}
+.icon-leaf {
   background-position: -48px -120px;
-***REMOVED***
-.icon-fire ***REMOVED***
+}
+.icon-fire {
   background-position: -72px -120px;
-***REMOVED***
-.icon-eye-open ***REMOVED***
+}
+.icon-eye-open {
   background-position: -96px -120px;
-***REMOVED***
-.icon-eye-close ***REMOVED***
+}
+.icon-eye-close {
   background-position: -120px -120px;
-***REMOVED***
-.icon-warning-sign ***REMOVED***
+}
+.icon-warning-sign {
   background-position: -144px -120px;
-***REMOVED***
-.icon-plane ***REMOVED***
+}
+.icon-plane {
   background-position: -168px -120px;
-***REMOVED***
-.icon-calendar ***REMOVED***
+}
+.icon-calendar {
   background-position: -192px -120px;
-***REMOVED***
-.icon-random ***REMOVED***
+}
+.icon-random {
   background-position: -216px -120px;
   width: 16px;
-***REMOVED***
-.icon-comment ***REMOVED***
+}
+.icon-comment {
   background-position: -240px -120px;
-***REMOVED***
-.icon-magnet ***REMOVED***
+}
+.icon-magnet {
   background-position: -264px -120px;
-***REMOVED***
-.icon-chevron-up ***REMOVED***
+}
+.icon-chevron-up {
   background-position: -288px -120px;
-***REMOVED***
-.icon-chevron-down ***REMOVED***
+}
+.icon-chevron-down {
   background-position: -313px -119px;
-***REMOVED***
-.icon-retweet ***REMOVED***
+}
+.icon-retweet {
   background-position: -336px -120px;
-***REMOVED***
-.icon-shopping-cart ***REMOVED***
+}
+.icon-shopping-cart {
   background-position: -360px -120px;
-***REMOVED***
-.icon-folder-close ***REMOVED***
+}
+.icon-folder-close {
   background-position: -384px -120px;
   width: 16px;
-***REMOVED***
-.icon-folder-open ***REMOVED***
+}
+.icon-folder-open {
   background-position: -408px -120px;
   width: 16px;
-***REMOVED***
-.icon-resize-vertical ***REMOVED***
+}
+.icon-resize-vertical {
   background-position: -432px -119px;
-***REMOVED***
-.icon-resize-horizontal ***REMOVED***
+}
+.icon-resize-horizontal {
   background-position: -456px -118px;
-***REMOVED***
-.icon-hdd ***REMOVED***
+}
+.icon-hdd {
   background-position: 0 -144px;
-***REMOVED***
-.icon-bullhorn ***REMOVED***
+}
+.icon-bullhorn {
   background-position: -24px -144px;
-***REMOVED***
-.icon-bell ***REMOVED***
+}
+.icon-bell {
   background-position: -48px -144px;
-***REMOVED***
-.icon-certificate ***REMOVED***
+}
+.icon-certificate {
   background-position: -72px -144px;
-***REMOVED***
-.icon-thumbs-up ***REMOVED***
+}
+.icon-thumbs-up {
   background-position: -96px -144px;
-***REMOVED***
-.icon-thumbs-down ***REMOVED***
+}
+.icon-thumbs-down {
   background-position: -120px -144px;
-***REMOVED***
-.icon-hand-right ***REMOVED***
+}
+.icon-hand-right {
   background-position: -144px -144px;
-***REMOVED***
-.icon-hand-left ***REMOVED***
+}
+.icon-hand-left {
   background-position: -168px -144px;
-***REMOVED***
-.icon-hand-up ***REMOVED***
+}
+.icon-hand-up {
   background-position: -192px -144px;
-***REMOVED***
-.icon-hand-down ***REMOVED***
+}
+.icon-hand-down {
   background-position: -216px -144px;
-***REMOVED***
-.icon-circle-arrow-right ***REMOVED***
+}
+.icon-circle-arrow-right {
   background-position: -240px -144px;
-***REMOVED***
-.icon-circle-arrow-left ***REMOVED***
+}
+.icon-circle-arrow-left {
   background-position: -264px -144px;
-***REMOVED***
-.icon-circle-arrow-up ***REMOVED***
+}
+.icon-circle-arrow-up {
   background-position: -288px -144px;
-***REMOVED***
-.icon-circle-arrow-down ***REMOVED***
+}
+.icon-circle-arrow-down {
   background-position: -312px -144px;
-***REMOVED***
-.icon-globe ***REMOVED***
+}
+.icon-globe {
   background-position: -336px -144px;
-***REMOVED***
-.icon-wrench ***REMOVED***
+}
+.icon-wrench {
   background-position: -360px -144px;
-***REMOVED***
-.icon-tasks ***REMOVED***
+}
+.icon-tasks {
   background-position: -384px -144px;
-***REMOVED***
-.icon-filter ***REMOVED***
+}
+.icon-filter {
   background-position: -408px -144px;
-***REMOVED***
-.icon-briefcase ***REMOVED***
+}
+.icon-briefcase {
   background-position: -432px -144px;
-***REMOVED***
-.icon-fullscreen ***REMOVED***
+}
+.icon-fullscreen {
   background-position: -456px -144px;
-***REMOVED***
+}
 .dropup,
-.dropdown ***REMOVED***
+.dropdown {
   position: relative;
-***REMOVED***
-.dropdown-toggle ***REMOVED***
+}
+.dropdown-toggle {
   *margin-bottom: -3px;
-***REMOVED***
+}
 .dropdown-toggle:active,
-.open .dropdown-toggle ***REMOVED***
+.open .dropdown-toggle {
   outline: 0;
-***REMOVED***
-.caret ***REMOVED***
+}
+.caret {
   display: inline-block;
   width: 0;
   height: 0;
@@ -2419,12 +2419,12 @@ table th[class*="span"],
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
   content: "";
-***REMOVED***
-.dropdown .caret ***REMOVED***
+}
+.dropdown .caret {
   margin-top: 8px;
   margin-left: 2px;
-***REMOVED***
-.dropdown-menu ***REMOVED***
+}
+.dropdown-menu {
   position: absolute;
   top: 100%;
   left: 0;
@@ -2449,12 +2449,12 @@ table th[class*="span"],
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding;
   background-clip: padding-box;
-***REMOVED***
-.dropdown-menu.pull-right ***REMOVED***
+}
+.dropdown-menu.pull-right {
   right: 0;
   left: auto;
-***REMOVED***
-.dropdown-menu .divider ***REMOVED***
+}
+.dropdown-menu .divider {
   *width: 100%;
   height: 1px;
   margin: 9px 1px;
@@ -2462,8 +2462,8 @@ table th[class*="span"],
   overflow: hidden;
   background-color: #e5e5e5;
   border-bottom: 1px solid #ffffff;
-***REMOVED***
-.dropdown-menu > li > a ***REMOVED***
+}
+.dropdown-menu > li > a {
   display: block;
   padding: 3px 20px;
   clear: both;
@@ -2471,11 +2471,11 @@ table th[class*="span"],
   line-height: 20px;
   color: #333333;
   white-space: nowrap;
-***REMOVED***
+}
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus,
 .dropdown-submenu:hover > a,
-.dropdown-submenu:focus > a ***REMOVED***
+.dropdown-submenu:focus > a {
   text-decoration: none;
   color: #ffffff;
   background-color: #27a0e5;
@@ -2486,10 +2486,10 @@ table th[class*="span"],
   background-image: linear-gradient(to bottom, #2fa4e7, #1a99e2);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2fa4e7', endColorstr='#ff1a99e2', GradientType=0);
-***REMOVED***
+}
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
-.dropdown-menu > .active > a:focus ***REMOVED***
+.dropdown-menu > .active > a:focus {
   color: #ffffff;
   text-decoration: none;
   outline: 0;
@@ -2501,54 +2501,54 @@ table th[class*="span"],
   background-image: linear-gradient(to bottom, #2fa4e7, #1a99e2);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2fa4e7', endColorstr='#ff1a99e2', GradientType=0);
-***REMOVED***
+}
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,
-.dropdown-menu > .disabled > a:focus ***REMOVED***
+.dropdown-menu > .disabled > a:focus {
   color: #999999;
-***REMOVED***
+}
 .dropdown-menu > .disabled > a:hover,
-.dropdown-menu > .disabled > a:focus ***REMOVED***
+.dropdown-menu > .disabled > a:focus {
   text-decoration: none;
   background-color: transparent;
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   cursor: default;
-***REMOVED***
-.open ***REMOVED***
+}
+.open {
   *z-index: 1000;
-***REMOVED***
-.open > .dropdown-menu ***REMOVED***
+}
+.open > .dropdown-menu {
   display: block;
-***REMOVED***
-.dropdown-backdrop ***REMOVED***
+}
+.dropdown-backdrop {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   top: 0;
   z-index: 990;
-***REMOVED***
-.pull-right > .dropdown-menu ***REMOVED***
+}
+.pull-right > .dropdown-menu {
   right: 0;
   left: auto;
-***REMOVED***
+}
 .dropup .caret,
-.navbar-fixed-bottom .dropdown .caret ***REMOVED***
+.navbar-fixed-bottom .dropdown .caret {
   border-top: 0;
   border-bottom: 4px solid #000000;
   content: "";
-***REMOVED***
+}
 .dropup .dropdown-menu,
-.navbar-fixed-bottom .dropdown .dropdown-menu ***REMOVED***
+.navbar-fixed-bottom .dropdown .dropdown-menu {
   top: auto;
   bottom: 100%;
   margin-bottom: 1px;
-***REMOVED***
-.dropdown-submenu ***REMOVED***
+}
+.dropdown-submenu {
   position: relative;
-***REMOVED***
-.dropdown-submenu > .dropdown-menu ***REMOVED***
+}
+.dropdown-submenu > .dropdown-menu {
   top: 0;
   left: 100%;
   margin-top: -6px;
@@ -2556,11 +2556,11 @@ table th[class*="span"],
   -webkit-border-radius: 0 6px 6px 6px;
   -moz-border-radius: 0 6px 6px 6px;
   border-radius: 0 6px 6px 6px;
-***REMOVED***
-.dropdown-submenu:hover > .dropdown-menu ***REMOVED***
+}
+.dropdown-submenu:hover > .dropdown-menu {
   display: block;
-***REMOVED***
-.dropup .dropdown-submenu > .dropdown-menu ***REMOVED***
+}
+.dropup .dropdown-submenu > .dropdown-menu {
   top: auto;
   bottom: 0;
   margin-top: 0;
@@ -2568,8 +2568,8 @@ table th[class*="span"],
   -webkit-border-radius: 5px 5px 5px 0;
   -moz-border-radius: 5px 5px 5px 0;
   border-radius: 5px 5px 5px 0;
-***REMOVED***
-.dropdown-submenu > a:after ***REMOVED***
+}
+.dropdown-submenu > a:after {
   display: block;
   content: " ";
   float: right;
@@ -2581,32 +2581,32 @@ table th[class*="span"],
   border-left-color: #cccccc;
   margin-top: 5px;
   margin-right: -10px;
-***REMOVED***
-.dropdown-submenu:hover > a:after ***REMOVED***
+}
+.dropdown-submenu:hover > a:after {
   border-left-color: #ffffff;
-***REMOVED***
-.dropdown-submenu.pull-left ***REMOVED***
+}
+.dropdown-submenu.pull-left {
   float: none;
-***REMOVED***
-.dropdown-submenu.pull-left > .dropdown-menu ***REMOVED***
+}
+.dropdown-submenu.pull-left > .dropdown-menu {
   left: -100%;
   margin-left: 10px;
   -webkit-border-radius: 6px 0 6px 6px;
   -moz-border-radius: 6px 0 6px 6px;
   border-radius: 6px 0 6px 6px;
-***REMOVED***
-.dropdown .dropdown-menu .nav-header ***REMOVED***
+}
+.dropdown .dropdown-menu .nav-header {
   padding-left: 20px;
   padding-right: 20px;
-***REMOVED***
-.typeahead ***REMOVED***
+}
+.typeahead {
   z-index: 1051;
   margin-top: 2px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-***REMOVED***
-.well ***REMOVED***
+}
+.well {
   min-height: 20px;
   padding: 19px;
   margin-bottom: 20px;
@@ -2618,34 +2618,34 @@ table th[class*="span"],
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-***REMOVED***
-.well blockquote ***REMOVED***
+}
+.well blockquote {
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
-***REMOVED***
-.well-large ***REMOVED***
+}
+.well-large {
   padding: 24px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
-***REMOVED***
-.well-small ***REMOVED***
+}
+.well-small {
   padding: 9px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-***REMOVED***
-.fade ***REMOVED***
+}
+.fade {
   opacity: 0;
   -webkit-transition: opacity 0.15s linear;
   -moz-transition: opacity 0.15s linear;
   -o-transition: opacity 0.15s linear;
   transition: opacity 0.15s linear;
-***REMOVED***
-.fade.in ***REMOVED***
+}
+.fade.in {
   opacity: 1;
-***REMOVED***
-.collapse ***REMOVED***
+}
+.collapse {
   position: relative;
   height: 0;
   overflow: hidden;
@@ -2653,11 +2653,11 @@ table th[class*="span"],
   -moz-transition: height 0.35s ease;
   -o-transition: height 0.35s ease;
   transition: height 0.35s ease;
-***REMOVED***
-.collapse.in ***REMOVED***
+}
+.collapse.in {
   height: auto;
-***REMOVED***
-.close ***REMOVED***
+}
+.close {
   float: right;
   font-size: 20px;
   font-weight: bold;
@@ -2666,23 +2666,23 @@ table th[class*="span"],
   text-shadow: 0 1px 0 #ffffff;
   opacity: 0.2;
   filter: alpha(opacity=20);
-***REMOVED***
+}
 .close:hover,
-.close:focus ***REMOVED***
+.close:focus {
   color: #000000;
   text-decoration: none;
   cursor: pointer;
   opacity: 0.4;
   filter: alpha(opacity=40);
-***REMOVED***
-button.close ***REMOVED***
+}
+button.close {
   padding: 0;
   cursor: pointer;
   background: transparent;
   border: 0;
   -webkit-appearance: none;
-***REMOVED***
-.btn ***REMOVED***
+}
+.btn {
   display: inline-block;
   *display: inline;
   /* IE7 inline-block hack */
@@ -2721,26 +2721,26 @@ button.close ***REMOVED***
   -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-***REMOVED***
+}
 .btn:hover,
 .btn:focus,
 .btn:active,
 .btn.active,
 .btn.disabled,
-.btn[disabled] ***REMOVED***
+.btn[disabled] {
   color: #333333;
   background-color: #e6e6e6;
   *background-color: #d9d9d9;
-***REMOVED***
+}
 .btn:active,
-.btn.active ***REMOVED***
+.btn.active {
   background-color: #cccccc \9;
-***REMOVED***
-.btn:first-child ***REMOVED***
+}
+.btn:first-child {
   *margin-left: 0;
-***REMOVED***
+}
 .btn:hover,
-.btn:focus ***REMOVED***
+.btn:focus {
   color: #333333;
   text-decoration: none;
   background-position: 0 -15px;
@@ -2748,22 +2748,22 @@ button.close ***REMOVED***
   -moz-transition: background-position 0.1s linear;
   -o-transition: background-position 0.1s linear;
   transition: background-position 0.1s linear;
-***REMOVED***
-.btn:focus ***REMOVED***
+}
+.btn:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
-***REMOVED***
+}
 .btn.active,
-.btn:active ***REMOVED***
+.btn:active {
   background-image: none;
   outline: 0;
   -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
   -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
   box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-***REMOVED***
+}
 .btn.disabled,
-.btn[disabled] ***REMOVED***
+.btn[disabled] {
   cursor: default;
   background-image: none;
   opacity: 0.65;
@@ -2771,41 +2771,41 @@ button.close ***REMOVED***
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-***REMOVED***
-.btn-large ***REMOVED***
+}
+.btn-large {
   padding: 11px 19px;
   font-size: 17.5px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
-***REMOVED***
+}
 .btn-large [class^="icon-"],
-.btn-large [class*=" icon-"] ***REMOVED***
+.btn-large [class*=" icon-"] {
   margin-top: 4px;
-***REMOVED***
-.btn-small ***REMOVED***
+}
+.btn-small {
   padding: 2px 10px;
   font-size: 11.9px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-***REMOVED***
+}
 .btn-small [class^="icon-"],
-.btn-small [class*=" icon-"] ***REMOVED***
+.btn-small [class*=" icon-"] {
   margin-top: 0;
-***REMOVED***
+}
 .btn-mini [class^="icon-"],
-.btn-mini [class*=" icon-"] ***REMOVED***
+.btn-mini [class*=" icon-"] {
   margin-top: -1px;
-***REMOVED***
-.btn-mini ***REMOVED***
+}
+.btn-mini {
   padding: 0px 6px;
   font-size: 10.5px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-***REMOVED***
-.btn-block ***REMOVED***
+}
+.btn-block {
   display: block;
   width: 100%;
   padding-left: 0;
@@ -2813,24 +2813,24 @@ button.close ***REMOVED***
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-***REMOVED***
-.btn-block + .btn-block ***REMOVED***
+}
+.btn-block + .btn-block {
   margin-top: 5px;
-***REMOVED***
+}
 input[type="submit"].btn-block,
 input[type="reset"].btn-block,
-input[type="button"].btn-block ***REMOVED***
+input[type="button"].btn-block {
   width: 100%;
-***REMOVED***
+}
 .btn-primary.active,
 .btn-warning.active,
 .btn-danger.active,
 .btn-success.active,
 .btn-info.active,
-.btn-inverse.active ***REMOVED***
+.btn-inverse.active {
   color: rgba(255, 255, 255, 0.75);
-***REMOVED***
-.btn-primary ***REMOVED***
+}
+.btn-primary {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #2f92e7;
@@ -2847,22 +2847,22 @@ input[type="button"].btn-block ***REMOVED***
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-***REMOVED***
+}
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active,
 .btn-primary.disabled,
-.btn-primary[disabled] ***REMOVED***
+.btn-primary[disabled] {
   color: #ffffff;
   background-color: #2f76e7;
   *background-color: #1a67e2;
-***REMOVED***
+}
 .btn-primary:active,
-.btn-primary.active ***REMOVED***
+.btn-primary.active {
   background-color: #175dcc \9;
-***REMOVED***
-.btn-warning ***REMOVED***
+}
+.btn-warning {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #dd5600;
@@ -2879,22 +2879,22 @@ input[type="button"].btn-block ***REMOVED***
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-***REMOVED***
+}
 .btn-warning:hover,
 .btn-warning:focus,
 .btn-warning:active,
 .btn-warning.active,
 .btn-warning.disabled,
-.btn-warning[disabled] ***REMOVED***
+.btn-warning[disabled] {
   color: #ffffff;
   background-color: #dd5600;
   *background-color: #c44c00;
-***REMOVED***
+}
 .btn-warning:active,
-.btn-warning.active ***REMOVED***
+.btn-warning.active {
   background-color: #aa4200 \9;
-***REMOVED***
-.btn-danger ***REMOVED***
+}
+.btn-danger {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #c32627;
@@ -2911,22 +2911,22 @@ input[type="button"].btn-block ***REMOVED***
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-***REMOVED***
+}
 .btn-danger:hover,
 .btn-danger:focus,
 .btn-danger:active,
 .btn-danger.active,
 .btn-danger.disabled,
-.btn-danger[disabled] ***REMOVED***
+.btn-danger[disabled] {
   color: #ffffff;
   background-color: #bd362f;
   *background-color: #a9302a;
-***REMOVED***
+}
 .btn-danger:active,
-.btn-danger.active ***REMOVED***
+.btn-danger.active {
   background-color: #942a25 \9;
-***REMOVED***
-.btn-success ***REMOVED***
+}
+.btn-success {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #65a643;
@@ -2943,22 +2943,22 @@ input[type="button"].btn-block ***REMOVED***
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-***REMOVED***
+}
 .btn-success:hover,
 .btn-success:focus,
 .btn-success:active,
 .btn-success.active,
 .btn-success.disabled,
-.btn-success[disabled] ***REMOVED***
+.btn-success[disabled] {
   color: #ffffff;
   background-color: #51a351;
   *background-color: #499249;
-***REMOVED***
+}
 .btn-success:active,
-.btn-success.active ***REMOVED***
+.btn-success.active {
   background-color: #408140 \9;
-***REMOVED***
-.btn-info ***REMOVED***
+}
+.btn-info {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #6d76b3;
@@ -2975,22 +2975,22 @@ input[type="button"].btn-block ***REMOVED***
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-***REMOVED***
+}
 .btn-info:hover,
 .btn-info:focus,
 .btn-info:active,
 .btn-info.active,
 .btn-info.disabled,
-.btn-info[disabled] ***REMOVED***
+.btn-info[disabled] {
   color: #ffffff;
   background-color: #2f96b4;
   *background-color: #2a85a0;
-***REMOVED***
+}
 .btn-info:active,
-.btn-info.active ***REMOVED***
+.btn-info.active {
   background-color: #24748c \9;
-***REMOVED***
-.btn-inverse ***REMOVED***
+}
+.btn-inverse {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #0f3253;
@@ -3007,75 +3007,75 @@ input[type="button"].btn-block ***REMOVED***
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-***REMOVED***
+}
 .btn-inverse:hover,
 .btn-inverse:focus,
 .btn-inverse:active,
 .btn-inverse.active,
 .btn-inverse.disabled,
-.btn-inverse[disabled] ***REMOVED***
+.btn-inverse[disabled] {
   color: #ffffff;
   background-color: #222222;
   *background-color: #151515;
-***REMOVED***
+}
 .btn-inverse:active,
-.btn-inverse.active ***REMOVED***
+.btn-inverse.active {
   background-color: #080808 \9;
-***REMOVED***
+}
 button.btn,
-input[type="submit"].btn ***REMOVED***
+input[type="submit"].btn {
   *padding-top: 3px;
   *padding-bottom: 3px;
-***REMOVED***
+}
 button.btn::-moz-focus-inner,
-input[type="submit"].btn::-moz-focus-inner ***REMOVED***
+input[type="submit"].btn::-moz-focus-inner {
   padding: 0;
   border: 0;
-***REMOVED***
+}
 button.btn.btn-large,
-input[type="submit"].btn.btn-large ***REMOVED***
+input[type="submit"].btn.btn-large {
   *padding-top: 7px;
   *padding-bottom: 7px;
-***REMOVED***
+}
 button.btn.btn-small,
-input[type="submit"].btn.btn-small ***REMOVED***
+input[type="submit"].btn.btn-small {
   *padding-top: 3px;
   *padding-bottom: 3px;
-***REMOVED***
+}
 button.btn.btn-mini,
-input[type="submit"].btn.btn-mini ***REMOVED***
+input[type="submit"].btn.btn-mini {
   *padding-top: 1px;
   *padding-bottom: 1px;
-***REMOVED***
+}
 .btn-link,
 .btn-link:active,
-.btn-link[disabled] ***REMOVED***
+.btn-link[disabled] {
   background-color: transparent;
   background-image: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-***REMOVED***
-.btn-link ***REMOVED***
+}
+.btn-link {
   border-color: transparent;
   cursor: pointer;
   color: #2fa4e7;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
-***REMOVED***
+}
 .btn-link:hover,
-.btn-link:focus ***REMOVED***
+.btn-link:focus {
   color: #157ab5;
   text-decoration: underline;
   background-color: transparent;
-***REMOVED***
+}
 .btn-link[disabled]:hover,
-.btn-link[disabled]:focus ***REMOVED***
+.btn-link[disabled]:focus {
   color: #333333;
   text-decoration: none;
-***REMOVED***
-.btn-group ***REMOVED***
+}
+.btn-group {
   position: relative;
   display: inline-block;
   *display: inline;
@@ -3086,47 +3086,47 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   vertical-align: middle;
   white-space: nowrap;
   *margin-left: .3em;
-***REMOVED***
-.btn-group:first-child ***REMOVED***
+}
+.btn-group:first-child {
   *margin-left: 0;
-***REMOVED***
-.btn-group + .btn-group ***REMOVED***
+}
+.btn-group + .btn-group {
   margin-left: 5px;
-***REMOVED***
-.btn-toolbar ***REMOVED***
+}
+.btn-toolbar {
   font-size: 0;
   margin-top: 10px;
   margin-bottom: 10px;
-***REMOVED***
+}
 .btn-toolbar > .btn + .btn,
 .btn-toolbar > .btn-group + .btn,
-.btn-toolbar > .btn + .btn-group ***REMOVED***
+.btn-toolbar > .btn + .btn-group {
   margin-left: 5px;
-***REMOVED***
-.btn-group > .btn ***REMOVED***
+}
+.btn-group > .btn {
   position: relative;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
-***REMOVED***
-.btn-group > .btn + .btn ***REMOVED***
+}
+.btn-group > .btn + .btn {
   margin-left: -1px;
-***REMOVED***
+}
 .btn-group > .btn,
 .btn-group > .dropdown-menu,
-.btn-group > .popover ***REMOVED***
+.btn-group > .popover {
   font-size: 14px;
-***REMOVED***
-.btn-group > .btn-mini ***REMOVED***
+}
+.btn-group > .btn-mini {
   font-size: 10.5px;
-***REMOVED***
-.btn-group > .btn-small ***REMOVED***
+}
+.btn-group > .btn-small {
   font-size: 11.9px;
-***REMOVED***
-.btn-group > .btn-large ***REMOVED***
+}
+.btn-group > .btn-large {
   font-size: 17.5px;
-***REMOVED***
-.btn-group > .btn:first-child ***REMOVED***
+}
+.btn-group > .btn:first-child {
   margin-left: 0;
   -webkit-border-top-left-radius: 4px;
   -moz-border-radius-topleft: 4px;
@@ -3134,17 +3134,17 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -webkit-border-bottom-left-radius: 4px;
   -moz-border-radius-bottomleft: 4px;
   border-bottom-left-radius: 4px;
-***REMOVED***
+}
 .btn-group > .btn:last-child,
-.btn-group > .dropdown-toggle ***REMOVED***
+.btn-group > .dropdown-toggle {
   -webkit-border-top-right-radius: 4px;
   -moz-border-radius-topright: 4px;
   border-top-right-radius: 4px;
   -webkit-border-bottom-right-radius: 4px;
   -moz-border-radius-bottomright: 4px;
   border-bottom-right-radius: 4px;
-***REMOVED***
-.btn-group > .btn.large:first-child ***REMOVED***
+}
+.btn-group > .btn.large:first-child {
   margin-left: 0;
   -webkit-border-top-left-radius: 6px;
   -moz-border-radius-topleft: 6px;
@@ -3152,27 +3152,27 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -webkit-border-bottom-left-radius: 6px;
   -moz-border-radius-bottomleft: 6px;
   border-bottom-left-radius: 6px;
-***REMOVED***
+}
 .btn-group > .btn.large:last-child,
-.btn-group > .large.dropdown-toggle ***REMOVED***
+.btn-group > .large.dropdown-toggle {
   -webkit-border-top-right-radius: 6px;
   -moz-border-radius-topright: 6px;
   border-top-right-radius: 6px;
   -webkit-border-bottom-right-radius: 6px;
   -moz-border-radius-bottomright: 6px;
   border-bottom-right-radius: 6px;
-***REMOVED***
+}
 .btn-group > .btn:hover,
 .btn-group > .btn:focus,
 .btn-group > .btn:active,
-.btn-group > .btn.active ***REMOVED***
+.btn-group > .btn.active {
   z-index: 2;
-***REMOVED***
+}
 .btn-group .dropdown-toggle:active,
-.btn-group.open .dropdown-toggle ***REMOVED***
+.btn-group.open .dropdown-toggle {
   outline: 0;
-***REMOVED***
-.btn-group > .btn + .dropdown-toggle ***REMOVED***
+}
+.btn-group > .btn + .dropdown-toggle {
   padding-left: 8px;
   padding-right: 8px;
   -webkit-box-shadow: inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
@@ -3180,118 +3180,118 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   box-shadow: inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   *padding-top: 5px;
   *padding-bottom: 5px;
-***REMOVED***
-.btn-group > .btn-mini + .dropdown-toggle ***REMOVED***
+}
+.btn-group > .btn-mini + .dropdown-toggle {
   padding-left: 5px;
   padding-right: 5px;
   *padding-top: 2px;
   *padding-bottom: 2px;
-***REMOVED***
-.btn-group > .btn-small + .dropdown-toggle ***REMOVED***
+}
+.btn-group > .btn-small + .dropdown-toggle {
   *padding-top: 5px;
   *padding-bottom: 4px;
-***REMOVED***
-.btn-group > .btn-large + .dropdown-toggle ***REMOVED***
+}
+.btn-group > .btn-large + .dropdown-toggle {
   padding-left: 12px;
   padding-right: 12px;
   *padding-top: 7px;
   *padding-bottom: 7px;
-***REMOVED***
-.btn-group.open .dropdown-toggle ***REMOVED***
+}
+.btn-group.open .dropdown-toggle {
   background-image: none;
   -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
   -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
   box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-***REMOVED***
-.btn-group.open .btn.dropdown-toggle ***REMOVED***
+}
+.btn-group.open .btn.dropdown-toggle {
   background-color: #e6e6e6;
-***REMOVED***
-.btn-group.open .btn-primary.dropdown-toggle ***REMOVED***
+}
+.btn-group.open .btn-primary.dropdown-toggle {
   background-color: #2f76e7;
-***REMOVED***
-.btn-group.open .btn-warning.dropdown-toggle ***REMOVED***
+}
+.btn-group.open .btn-warning.dropdown-toggle {
   background-color: #dd5600;
-***REMOVED***
-.btn-group.open .btn-danger.dropdown-toggle ***REMOVED***
+}
+.btn-group.open .btn-danger.dropdown-toggle {
   background-color: #bd362f;
-***REMOVED***
-.btn-group.open .btn-success.dropdown-toggle ***REMOVED***
+}
+.btn-group.open .btn-success.dropdown-toggle {
   background-color: #51a351;
-***REMOVED***
-.btn-group.open .btn-info.dropdown-toggle ***REMOVED***
+}
+.btn-group.open .btn-info.dropdown-toggle {
   background-color: #2f96b4;
-***REMOVED***
-.btn-group.open .btn-inverse.dropdown-toggle ***REMOVED***
+}
+.btn-group.open .btn-inverse.dropdown-toggle {
   background-color: #222222;
-***REMOVED***
-.btn .caret ***REMOVED***
+}
+.btn .caret {
   margin-top: 8px;
   margin-left: 0;
-***REMOVED***
-.btn-large .caret ***REMOVED***
+}
+.btn-large .caret {
   margin-top: 6px;
-***REMOVED***
-.btn-large .caret ***REMOVED***
+}
+.btn-large .caret {
   border-left-width: 5px;
   border-right-width: 5px;
   border-top-width: 5px;
-***REMOVED***
+}
 .btn-mini .caret,
-.btn-small .caret ***REMOVED***
+.btn-small .caret {
   margin-top: 8px;
-***REMOVED***
-.dropup .btn-large .caret ***REMOVED***
+}
+.dropup .btn-large .caret {
   border-bottom-width: 5px;
-***REMOVED***
+}
 .btn-primary .caret,
 .btn-warning .caret,
 .btn-danger .caret,
 .btn-info .caret,
 .btn-success .caret,
-.btn-inverse .caret ***REMOVED***
+.btn-inverse .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
-***REMOVED***
-.btn-group-vertical ***REMOVED***
+}
+.btn-group-vertical {
   display: inline-block;
   *display: inline;
   /* IE7 inline-block hack */
 
   *zoom: 1;
-***REMOVED***
-.btn-group-vertical > .btn ***REMOVED***
+}
+.btn-group-vertical > .btn {
   display: block;
   float: none;
   max-width: 100%;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
-***REMOVED***
-.btn-group-vertical > .btn + .btn ***REMOVED***
+}
+.btn-group-vertical > .btn + .btn {
   margin-left: 0;
   margin-top: -1px;
-***REMOVED***
-.btn-group-vertical > .btn:first-child ***REMOVED***
+}
+.btn-group-vertical > .btn:first-child {
   -webkit-border-radius: 4px 4px 0 0;
   -moz-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
-***REMOVED***
-.btn-group-vertical > .btn:last-child ***REMOVED***
+}
+.btn-group-vertical > .btn:last-child {
   -webkit-border-radius: 0 0 4px 4px;
   -moz-border-radius: 0 0 4px 4px;
   border-radius: 0 0 4px 4px;
-***REMOVED***
-.btn-group-vertical > .btn-large:first-child ***REMOVED***
+}
+.btn-group-vertical > .btn-large:first-child {
   -webkit-border-radius: 6px 6px 0 0;
   -moz-border-radius: 6px 6px 0 0;
   border-radius: 6px 6px 0 0;
-***REMOVED***
-.btn-group-vertical > .btn-large:last-child ***REMOVED***
+}
+.btn-group-vertical > .btn-large:last-child {
   -webkit-border-radius: 0 0 6px 6px;
   -moz-border-radius: 0 0 6px 6px;
   border-radius: 0 0 6px 6px;
-***REMOVED***
-.alert ***REMOVED***
+}
+.alert {
   padding: 8px 35px 8px 14px;
   margin-bottom: 20px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -3300,77 +3300,77 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-***REMOVED***
+}
 .alert,
-.alert h4 ***REMOVED***
+.alert h4 {
   color: #dd5600;
-***REMOVED***
-.alert h4 ***REMOVED***
+}
+.alert h4 {
   margin: 0;
-***REMOVED***
-.alert .close ***REMOVED***
+}
+.alert .close {
   position: relative;
   top: -2px;
   right: -21px;
   line-height: 20px;
-***REMOVED***
-.alert-success ***REMOVED***
+}
+.alert-success {
   background-color: #d5ecbf;
   border-color: #d2e6ab;
   color: #669533;
-***REMOVED***
-.alert-success h4 ***REMOVED***
+}
+.alert-success h4 {
   color: #669533;
-***REMOVED***
+}
 .alert-danger,
-.alert-error ***REMOVED***
+.alert-error {
   background-color: #f2bdb1;
   border-color: #f0a5a4;
   color: #bd4247;
-***REMOVED***
+}
 .alert-danger h4,
-.alert-error h4 ***REMOVED***
+.alert-error h4 {
   color: #bd4247;
-***REMOVED***
-.alert-info ***REMOVED***
+}
+.alert-info {
   background-color: #a7dff1;
   border-color: #88e4ec;
   color: #178acc;
-***REMOVED***
-.alert-info h4 ***REMOVED***
+}
+.alert-info h4 {
   color: #178acc;
-***REMOVED***
-.alert-block ***REMOVED***
+}
+.alert-block {
   padding-top: 14px;
   padding-bottom: 14px;
-***REMOVED***
+}
 .alert-block > p,
-.alert-block > ul ***REMOVED***
+.alert-block > ul {
   margin-bottom: 0;
-***REMOVED***
-.alert-block p + p ***REMOVED***
+}
+.alert-block p + p {
   margin-top: 5px;
-***REMOVED***
-.nav ***REMOVED***
+}
+.nav {
   margin-left: 0;
   margin-bottom: 20px;
   list-style: none;
-***REMOVED***
-.nav > li > a ***REMOVED***
+}
+.nav > li > a {
   display: block;
-***REMOVED***
+}
 .nav > li > a:hover,
-.nav > li > a:focus ***REMOVED***
+.nav > li > a:focus {
   text-decoration: none;
   background-color: #f5f5f5;
-***REMOVED***
-.nav > li > a > img ***REMOVED***
+}
+.nav > li > a > img {
   max-width: none;
-***REMOVED***
-.nav > .pull-right ***REMOVED***
+}
+.nav > .pull-right {
   float: right;
-***REMOVED***
-.nav-header ***REMOVED***
+}
+.nav-header {
   display: block;
   padding: 3px 15px;
   font-size: 11px;
@@ -3379,36 +3379,36 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   color: #999999;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
-***REMOVED***
-.nav li + .nav-header ***REMOVED***
+}
+.nav li + .nav-header {
   margin-top: 9px;
-***REMOVED***
-.nav-list ***REMOVED***
+}
+.nav-list {
   padding-left: 15px;
   padding-right: 15px;
   margin-bottom: 0;
-***REMOVED***
+}
 .nav-list > li > a,
-.nav-list .nav-header ***REMOVED***
+.nav-list .nav-header {
   margin-left: -15px;
   margin-right: -15px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-***REMOVED***
-.nav-list > li > a ***REMOVED***
+}
+.nav-list > li > a {
   padding: 3px 15px;
-***REMOVED***
+}
 .nav-list > .active > a,
 .nav-list > .active > a:hover,
-.nav-list > .active > a:focus ***REMOVED***
+.nav-list > .active > a:focus {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
   background-color: #2fa4e7;
-***REMOVED***
+}
 .nav-list [class^="icon-"],
-.nav-list [class*=" icon-"] ***REMOVED***
+.nav-list [class*=" icon-"] {
   margin-right: 2px;
-***REMOVED***
-.nav-list .divider ***REMOVED***
+}
+.nav-list .divider {
   *width: 100%;
   height: 1px;
   margin: 9px 1px;
@@ -3416,41 +3416,41 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   overflow: hidden;
   background-color: #e5e5e5;
   border-bottom: 1px solid #ffffff;
-***REMOVED***
+}
 .nav-tabs,
-.nav-pills ***REMOVED***
+.nav-pills {
   *zoom: 1;
-***REMOVED***
+}
 .nav-tabs:before,
 .nav-pills:before,
 .nav-tabs:after,
-.nav-pills:after ***REMOVED***
+.nav-pills:after {
   display: table;
   content: "";
   line-height: 0;
-***REMOVED***
+}
 .nav-tabs:after,
-.nav-pills:after ***REMOVED***
+.nav-pills:after {
   clear: both;
-***REMOVED***
+}
 .nav-tabs > li,
-.nav-pills > li ***REMOVED***
+.nav-pills > li {
   float: left;
-***REMOVED***
+}
 .nav-tabs > li > a,
-.nav-pills > li > a ***REMOVED***
+.nav-pills > li > a {
   padding-right: 12px;
   padding-left: 12px;
   margin-right: 2px;
   line-height: 14px;
-***REMOVED***
-.nav-tabs ***REMOVED***
+}
+.nav-tabs {
   border-bottom: 1px solid #ddd;
-***REMOVED***
-.nav-tabs > li ***REMOVED***
+}
+.nav-tabs > li {
   margin-bottom: -1px;
-***REMOVED***
-.nav-tabs > li > a ***REMOVED***
+}
+.nav-tabs > li > a {
   padding-top: 8px;
   padding-bottom: 8px;
   line-height: 20px;
@@ -3458,21 +3458,21 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -webkit-border-radius: 4px 4px 0 0;
   -moz-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
-***REMOVED***
+}
 .nav-tabs > li > a:hover,
-.nav-tabs > li > a:focus ***REMOVED***
+.nav-tabs > li > a:focus {
   border-color: #f5f5f5 #f5f5f5 #dddddd;
-***REMOVED***
+}
 .nav-tabs > .active > a,
 .nav-tabs > .active > a:hover,
-.nav-tabs > .active > a:focus ***REMOVED***
+.nav-tabs > .active > a:focus {
   color: #555555;
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
   cursor: default;
-***REMOVED***
-.nav-pills > li > a ***REMOVED***
+}
+.nav-pills > li > a {
   padding-top: 8px;
   padding-bottom: 8px;
   margin-top: 2px;
@@ -3480,230 +3480,230 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-***REMOVED***
+}
 .nav-pills > .active > a,
 .nav-pills > .active > a:hover,
-.nav-pills > .active > a:focus ***REMOVED***
+.nav-pills > .active > a:focus {
   color: #ffffff;
   background-color: #2fa4e7;
-***REMOVED***
-.nav-stacked > li ***REMOVED***
+}
+.nav-stacked > li {
   float: none;
-***REMOVED***
-.nav-stacked > li > a ***REMOVED***
+}
+.nav-stacked > li > a {
   margin-right: 0;
-***REMOVED***
-.nav-tabs.nav-stacked ***REMOVED***
+}
+.nav-tabs.nav-stacked {
   border-bottom: 0;
-***REMOVED***
-.nav-tabs.nav-stacked > li > a ***REMOVED***
+}
+.nav-tabs.nav-stacked > li > a {
   border: 1px solid #ddd;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
-***REMOVED***
-.nav-tabs.nav-stacked > li:first-child > a ***REMOVED***
+}
+.nav-tabs.nav-stacked > li:first-child > a {
   -webkit-border-top-right-radius: 4px;
   -moz-border-radius-topright: 4px;
   border-top-right-radius: 4px;
   -webkit-border-top-left-radius: 4px;
   -moz-border-radius-topleft: 4px;
   border-top-left-radius: 4px;
-***REMOVED***
-.nav-tabs.nav-stacked > li:last-child > a ***REMOVED***
+}
+.nav-tabs.nav-stacked > li:last-child > a {
   -webkit-border-bottom-right-radius: 4px;
   -moz-border-radius-bottomright: 4px;
   border-bottom-right-radius: 4px;
   -webkit-border-bottom-left-radius: 4px;
   -moz-border-radius-bottomleft: 4px;
   border-bottom-left-radius: 4px;
-***REMOVED***
+}
 .nav-tabs.nav-stacked > li > a:hover,
-.nav-tabs.nav-stacked > li > a:focus ***REMOVED***
+.nav-tabs.nav-stacked > li > a:focus {
   border-color: #ddd;
   z-index: 2;
-***REMOVED***
-.nav-pills.nav-stacked > li > a ***REMOVED***
+}
+.nav-pills.nav-stacked > li > a {
   margin-bottom: 3px;
-***REMOVED***
-.nav-pills.nav-stacked > li:last-child > a ***REMOVED***
+}
+.nav-pills.nav-stacked > li:last-child > a {
   margin-bottom: 1px;
-***REMOVED***
-.nav-tabs .dropdown-menu ***REMOVED***
+}
+.nav-tabs .dropdown-menu {
   -webkit-border-radius: 0 0 6px 6px;
   -moz-border-radius: 0 0 6px 6px;
   border-radius: 0 0 6px 6px;
-***REMOVED***
-.nav-pills .dropdown-menu ***REMOVED***
+}
+.nav-pills .dropdown-menu {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
-***REMOVED***
-.nav .dropdown-toggle .caret ***REMOVED***
+}
+.nav .dropdown-toggle .caret {
   border-top-color: #2fa4e7;
   border-bottom-color: #2fa4e7;
   margin-top: 6px;
-***REMOVED***
+}
 .nav .dropdown-toggle:hover .caret,
-.nav .dropdown-toggle:focus .caret ***REMOVED***
+.nav .dropdown-toggle:focus .caret {
   border-top-color: #157ab5;
   border-bottom-color: #157ab5;
-***REMOVED***
+}
 /* move down carets for tabs */
-.nav-tabs .dropdown-toggle .caret ***REMOVED***
+.nav-tabs .dropdown-toggle .caret {
   margin-top: 8px;
-***REMOVED***
-.nav .active .dropdown-toggle .caret ***REMOVED***
+}
+.nav .active .dropdown-toggle .caret {
   border-top-color: #fff;
   border-bottom-color: #fff;
-***REMOVED***
-.nav-tabs .active .dropdown-toggle .caret ***REMOVED***
+}
+.nav-tabs .active .dropdown-toggle .caret {
   border-top-color: #555555;
   border-bottom-color: #555555;
-***REMOVED***
+}
 .nav > .dropdown.active > a:hover,
-.nav > .dropdown.active > a:focus ***REMOVED***
+.nav > .dropdown.active > a:focus {
   cursor: pointer;
-***REMOVED***
+}
 .nav-tabs .open .dropdown-toggle,
 .nav-pills .open .dropdown-toggle,
 .nav > li.dropdown.open.active > a:hover,
-.nav > li.dropdown.open.active > a:focus ***REMOVED***
+.nav > li.dropdown.open.active > a:focus {
   color: #ffffff;
   background-color: #999999;
   border-color: #999999;
-***REMOVED***
+}
 .nav li.dropdown.open .caret,
 .nav li.dropdown.open.active .caret,
 .nav li.dropdown.open a:hover .caret,
-.nav li.dropdown.open a:focus .caret ***REMOVED***
+.nav li.dropdown.open a:focus .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
   opacity: 1;
   filter: alpha(opacity=100);
-***REMOVED***
+}
 .tabs-stacked .open > a:hover,
-.tabs-stacked .open > a:focus ***REMOVED***
+.tabs-stacked .open > a:focus {
   border-color: #999999;
-***REMOVED***
-.tabbable ***REMOVED***
+}
+.tabbable {
   *zoom: 1;
-***REMOVED***
+}
 .tabbable:before,
-.tabbable:after ***REMOVED***
+.tabbable:after {
   display: table;
   content: "";
   line-height: 0;
-***REMOVED***
-.tabbable:after ***REMOVED***
+}
+.tabbable:after {
   clear: both;
-***REMOVED***
-.tab-content ***REMOVED***
+}
+.tab-content {
   overflow: auto;
-***REMOVED***
+}
 .tabs-below > .nav-tabs,
 .tabs-right > .nav-tabs,
-.tabs-left > .nav-tabs ***REMOVED***
+.tabs-left > .nav-tabs {
   border-bottom: 0;
-***REMOVED***
+}
 .tab-content > .tab-pane,
-.pill-content > .pill-pane ***REMOVED***
+.pill-content > .pill-pane {
   display: none;
-***REMOVED***
+}
 .tab-content > .active,
-.pill-content > .active ***REMOVED***
+.pill-content > .active {
   display: block;
-***REMOVED***
-.tabs-below > .nav-tabs ***REMOVED***
+}
+.tabs-below > .nav-tabs {
   border-top: 1px solid #ddd;
-***REMOVED***
-.tabs-below > .nav-tabs > li ***REMOVED***
+}
+.tabs-below > .nav-tabs > li {
   margin-top: -1px;
   margin-bottom: 0;
-***REMOVED***
-.tabs-below > .nav-tabs > li > a ***REMOVED***
+}
+.tabs-below > .nav-tabs > li > a {
   -webkit-border-radius: 0 0 4px 4px;
   -moz-border-radius: 0 0 4px 4px;
   border-radius: 0 0 4px 4px;
-***REMOVED***
+}
 .tabs-below > .nav-tabs > li > a:hover,
-.tabs-below > .nav-tabs > li > a:focus ***REMOVED***
+.tabs-below > .nav-tabs > li > a:focus {
   border-bottom-color: transparent;
   border-top-color: #ddd;
-***REMOVED***
+}
 .tabs-below > .nav-tabs > .active > a,
 .tabs-below > .nav-tabs > .active > a:hover,
-.tabs-below > .nav-tabs > .active > a:focus ***REMOVED***
+.tabs-below > .nav-tabs > .active > a:focus {
   border-color: transparent #ddd #ddd #ddd;
-***REMOVED***
+}
 .tabs-left > .nav-tabs > li,
-.tabs-right > .nav-tabs > li ***REMOVED***
+.tabs-right > .nav-tabs > li {
   float: none;
-***REMOVED***
+}
 .tabs-left > .nav-tabs > li > a,
-.tabs-right > .nav-tabs > li > a ***REMOVED***
+.tabs-right > .nav-tabs > li > a {
   min-width: 74px;
   margin-right: 0;
   margin-bottom: 3px;
-***REMOVED***
-.tabs-left > .nav-tabs ***REMOVED***
+}
+.tabs-left > .nav-tabs {
   float: left;
   margin-right: 19px;
   border-right: 1px solid #ddd;
-***REMOVED***
-.tabs-left > .nav-tabs > li > a ***REMOVED***
+}
+.tabs-left > .nav-tabs > li > a {
   margin-right: -1px;
   -webkit-border-radius: 4px 0 0 4px;
   -moz-border-radius: 4px 0 0 4px;
   border-radius: 4px 0 0 4px;
-***REMOVED***
+}
 .tabs-left > .nav-tabs > li > a:hover,
-.tabs-left > .nav-tabs > li > a:focus ***REMOVED***
+.tabs-left > .nav-tabs > li > a:focus {
   border-color: #f5f5f5 #dddddd #f5f5f5 #f5f5f5;
-***REMOVED***
+}
 .tabs-left > .nav-tabs .active > a,
 .tabs-left > .nav-tabs .active > a:hover,
-.tabs-left > .nav-tabs .active > a:focus ***REMOVED***
+.tabs-left > .nav-tabs .active > a:focus {
   border-color: #ddd transparent #ddd #ddd;
   *border-right-color: #ffffff;
-***REMOVED***
-.tabs-right > .nav-tabs ***REMOVED***
+}
+.tabs-right > .nav-tabs {
   float: right;
   margin-left: 19px;
   border-left: 1px solid #ddd;
-***REMOVED***
-.tabs-right > .nav-tabs > li > a ***REMOVED***
+}
+.tabs-right > .nav-tabs > li > a {
   margin-left: -1px;
   -webkit-border-radius: 0 4px 4px 0;
   -moz-border-radius: 0 4px 4px 0;
   border-radius: 0 4px 4px 0;
-***REMOVED***
+}
 .tabs-right > .nav-tabs > li > a:hover,
-.tabs-right > .nav-tabs > li > a:focus ***REMOVED***
+.tabs-right > .nav-tabs > li > a:focus {
   border-color: #f5f5f5 #f5f5f5 #f5f5f5 #dddddd;
-***REMOVED***
+}
 .tabs-right > .nav-tabs .active > a,
 .tabs-right > .nav-tabs .active > a:hover,
-.tabs-right > .nav-tabs .active > a:focus ***REMOVED***
+.tabs-right > .nav-tabs .active > a:focus {
   border-color: #ddd #ddd #ddd transparent;
   *border-left-color: #ffffff;
-***REMOVED***
-.nav > .disabled > a ***REMOVED***
+}
+.nav > .disabled > a {
   color: #999999;
-***REMOVED***
+}
 .nav > .disabled > a:hover,
-.nav > .disabled > a:focus ***REMOVED***
+.nav > .disabled > a:focus {
   text-decoration: none;
   background-color: transparent;
   cursor: default;
-***REMOVED***
-.navbar ***REMOVED***
+}
+.navbar {
   overflow: visible;
   margin-bottom: 20px;
   *position: relative;
   *z-index: 2;
-***REMOVED***
-.navbar-inner ***REMOVED***
+}
+.navbar-inner {
   min-height: 50px;
   padding-left: 20px;
   padding-right: 20px;
@@ -3723,24 +3723,24 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
   *zoom: 1;
-***REMOVED***
+}
 .navbar-inner:before,
-.navbar-inner:after ***REMOVED***
+.navbar-inner:after {
   display: table;
   content: "";
   line-height: 0;
-***REMOVED***
-.navbar-inner:after ***REMOVED***
+}
+.navbar-inner:after {
   clear: both;
-***REMOVED***
-.navbar .container ***REMOVED***
+}
+.navbar .container {
   width: auto;
-***REMOVED***
-.nav-collapse.collapse ***REMOVED***
+}
+.nav-collapse.collapse {
   height: auto;
   overflow: visible;
-***REMOVED***
-.navbar .brand ***REMOVED***
+}
+.navbar .brand {
   float: left;
   display: block;
   padding: 15px 20px 15px;
@@ -3749,86 +3749,86 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   font-weight: 200;
   color: #ffffff;
   text-shadow: 0 1px 0 #54b4eb;
-***REMOVED***
+}
 .navbar .brand:hover,
-.navbar .brand:focus ***REMOVED***
+.navbar .brand:focus {
   text-decoration: none;
-***REMOVED***
-.navbar-text ***REMOVED***
+}
+.navbar-text {
   margin-bottom: 0;
   line-height: 50px;
   color: #f5f5f5;
-***REMOVED***
-.navbar-link ***REMOVED***
+}
+.navbar-link {
   color: #ffffff;
-***REMOVED***
+}
 .navbar-link:hover,
-.navbar-link:focus ***REMOVED***
+.navbar-link:focus {
   color: #ffffff;
-***REMOVED***
-.navbar .divider-vertical ***REMOVED***
+}
+.navbar .divider-vertical {
   height: 50px;
   margin: 0 9px;
   border-left: 1px solid #2fa4e7;
   border-right: 1px solid #54b4eb;
-***REMOVED***
+}
 .navbar .btn,
-.navbar .btn-group ***REMOVED***
+.navbar .btn-group {
   margin-top: 10px;
-***REMOVED***
+}
 .navbar .btn-group .btn,
 .navbar .input-prepend .btn,
 .navbar .input-append .btn,
 .navbar .input-prepend .btn-group,
-.navbar .input-append .btn-group ***REMOVED***
+.navbar .input-append .btn-group {
   margin-top: 0;
-***REMOVED***
-.navbar-form ***REMOVED***
+}
+.navbar-form {
   margin-bottom: 0;
   *zoom: 1;
-***REMOVED***
+}
 .navbar-form:before,
-.navbar-form:after ***REMOVED***
+.navbar-form:after {
   display: table;
   content: "";
   line-height: 0;
-***REMOVED***
-.navbar-form:after ***REMOVED***
+}
+.navbar-form:after {
   clear: both;
-***REMOVED***
+}
 .navbar-form input,
 .navbar-form select,
 .navbar-form .radio,
-.navbar-form .checkbox ***REMOVED***
+.navbar-form .checkbox {
   margin-top: 10px;
-***REMOVED***
+}
 .navbar-form input,
 .navbar-form select,
-.navbar-form .btn ***REMOVED***
+.navbar-form .btn {
   display: inline-block;
   margin-bottom: 0;
-***REMOVED***
+}
 .navbar-form input[type="image"],
 .navbar-form input[type="checkbox"],
-.navbar-form input[type="radio"] ***REMOVED***
+.navbar-form input[type="radio"] {
   margin-top: 3px;
-***REMOVED***
+}
 .navbar-form .input-append,
-.navbar-form .input-prepend ***REMOVED***
+.navbar-form .input-prepend {
   margin-top: 5px;
   white-space: nowrap;
-***REMOVED***
+}
 .navbar-form .input-append input,
-.navbar-form .input-prepend input ***REMOVED***
+.navbar-form .input-prepend input {
   margin-top: 0;
-***REMOVED***
-.navbar-search ***REMOVED***
+}
+.navbar-search {
   position: relative;
   float: left;
   margin-top: 10px;
   margin-bottom: 0;
-***REMOVED***
-.navbar-search .search-query ***REMOVED***
+}
+.navbar-search .search-query {
   margin-bottom: 0;
   padding: 4px 14px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -3838,102 +3838,102 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
-***REMOVED***
-.navbar-static-top ***REMOVED***
+}
+.navbar-static-top {
   position: static;
   margin-bottom: 0;
-***REMOVED***
-.navbar-static-top .navbar-inner ***REMOVED***
+}
+.navbar-static-top .navbar-inner {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
-***REMOVED***
+}
 .navbar-fixed-top,
-.navbar-fixed-bottom ***REMOVED***
+.navbar-fixed-bottom {
   position: fixed;
   right: 0;
   left: 0;
   z-index: 1030;
   margin-bottom: 0;
-***REMOVED***
+}
 .navbar-fixed-top .navbar-inner,
-.navbar-static-top .navbar-inner ***REMOVED***
+.navbar-static-top .navbar-inner {
   border-width: 0 0 1px;
-***REMOVED***
-.navbar-fixed-bottom .navbar-inner ***REMOVED***
+}
+.navbar-fixed-bottom .navbar-inner {
   border-width: 1px 0 0;
-***REMOVED***
+}
 .navbar-fixed-top .navbar-inner,
-.navbar-fixed-bottom .navbar-inner ***REMOVED***
+.navbar-fixed-bottom .navbar-inner {
   padding-left: 0;
   padding-right: 0;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
-***REMOVED***
+}
 .navbar-static-top .container,
 .navbar-fixed-top .container,
-.navbar-fixed-bottom .container ***REMOVED***
+.navbar-fixed-bottom .container {
   width: 940px;
-***REMOVED***
-.navbar-fixed-top ***REMOVED***
+}
+.navbar-fixed-top {
   top: 0;
-***REMOVED***
+}
 .navbar-fixed-top .navbar-inner,
-.navbar-static-top .navbar-inner ***REMOVED***
+.navbar-static-top .navbar-inner {
   -webkit-box-shadow: 0 1px 10px rgba(0,0,0,.1);
   -moz-box-shadow: 0 1px 10px rgba(0,0,0,.1);
   box-shadow: 0 1px 10px rgba(0,0,0,.1);
-***REMOVED***
-.navbar-fixed-bottom ***REMOVED***
+}
+.navbar-fixed-bottom {
   bottom: 0;
-***REMOVED***
-.navbar-fixed-bottom .navbar-inner ***REMOVED***
+}
+.navbar-fixed-bottom .navbar-inner {
   -webkit-box-shadow: 0 -1px 10px rgba(0,0,0,.1);
   -moz-box-shadow: 0 -1px 10px rgba(0,0,0,.1);
   box-shadow: 0 -1px 10px rgba(0,0,0,.1);
-***REMOVED***
-.navbar .nav ***REMOVED***
+}
+.navbar .nav {
   position: relative;
   left: 0;
   display: block;
   float: left;
   margin: 0 10px 0 0;
-***REMOVED***
-.navbar .nav.pull-right ***REMOVED***
+}
+.navbar .nav.pull-right {
   float: right;
   margin-right: 0;
-***REMOVED***
-.navbar .nav > li ***REMOVED***
+}
+.navbar .nav > li {
   float: left;
-***REMOVED***
-.navbar .nav > li > a ***REMOVED***
+}
+.navbar .nav > li > a {
   float: none;
   padding: 15px 15px 15px;
   color: #ffffff;
   text-decoration: none;
   text-shadow: 0 1px 0 #54b4eb;
-***REMOVED***
-.navbar .nav .dropdown-toggle .caret ***REMOVED***
+}
+.navbar .nav .dropdown-toggle .caret {
   margin-top: 8px;
-***REMOVED***
+}
 .navbar .nav > li > a:focus,
-.navbar .nav > li > a:hover ***REMOVED***
+.navbar .nav > li > a:hover {
   background-color: #1684c2;
   color: #ffffff;
   text-decoration: none;
-***REMOVED***
+}
 .navbar .nav > .active > a,
 .navbar .nav > .active > a:hover,
-.navbar .nav > .active > a:focus ***REMOVED***
+.navbar .nav > .active > a:focus {
   color: #ffffff;
   text-decoration: none;
   background-color: #1684c2;
   -webkit-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
   -moz-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
   box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
-***REMOVED***
-.navbar .btn-navbar ***REMOVED***
+}
+.navbar .btn-navbar {
   display: none;
   float: right;
   padding: 7px 10px;
@@ -3958,22 +3958,22 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075);
   -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075);
-***REMOVED***
+}
 .navbar .btn-navbar:hover,
 .navbar .btn-navbar:focus,
 .navbar .btn-navbar:active,
 .navbar .btn-navbar.active,
 .navbar .btn-navbar.disabled,
-.navbar .btn-navbar[disabled] ***REMOVED***
+.navbar .btn-navbar[disabled] {
   color: #ffffff;
   background-color: #1a99e2;
   *background-color: #178acc;
-***REMOVED***
+}
 .navbar .btn-navbar:active,
-.navbar .btn-navbar.active ***REMOVED***
+.navbar .btn-navbar.active {
   background-color: #157ab5 \9;
-***REMOVED***
-.navbar .btn-navbar .icon-bar ***REMOVED***
+}
+.navbar .btn-navbar .icon-bar {
   display: block;
   width: 18px;
   height: 2px;
@@ -3984,11 +3984,11 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-***REMOVED***
-.btn-navbar .icon-bar + .icon-bar ***REMOVED***
+}
+.btn-navbar .icon-bar + .icon-bar {
   margin-top: 3px;
-***REMOVED***
-.navbar .nav > li > .dropdown-menu:before ***REMOVED***
+}
+.navbar .nav > li > .dropdown-menu:before {
   content: '';
   display: inline-block;
   border-left: 7px solid transparent;
@@ -3998,8 +3998,8 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   position: absolute;
   top: -7px;
   left: 9px;
-***REMOVED***
-.navbar .nav > li > .dropdown-menu:after ***REMOVED***
+}
+.navbar .nav > li > .dropdown-menu:after {
   content: '';
   display: inline-block;
   border-left: 6px solid transparent;
@@ -4008,58 +4008,58 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   position: absolute;
   top: -6px;
   left: 10px;
-***REMOVED***
-.navbar-fixed-bottom .nav > li > .dropdown-menu:before ***REMOVED***
+}
+.navbar-fixed-bottom .nav > li > .dropdown-menu:before {
   border-top: 7px solid #ccc;
   border-top-color: rgba(0, 0, 0, 0.2);
   border-bottom: 0;
   bottom: -7px;
   top: auto;
-***REMOVED***
-.navbar-fixed-bottom .nav > li > .dropdown-menu:after ***REMOVED***
+}
+.navbar-fixed-bottom .nav > li > .dropdown-menu:after {
   border-top: 6px solid #ffffff;
   border-bottom: 0;
   bottom: -6px;
   top: auto;
-***REMOVED***
+}
 .navbar .nav li.dropdown > a:hover .caret,
-.navbar .nav li.dropdown > a:focus .caret ***REMOVED***
+.navbar .nav li.dropdown > a:focus .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
-***REMOVED***
+}
 .navbar .nav li.dropdown.open > .dropdown-toggle,
 .navbar .nav li.dropdown.active > .dropdown-toggle,
-.navbar .nav li.dropdown.open.active > .dropdown-toggle ***REMOVED***
+.navbar .nav li.dropdown.open.active > .dropdown-toggle {
   background-color: #1684c2;
   color: #ffffff;
-***REMOVED***
-.navbar .nav li.dropdown > .dropdown-toggle .caret ***REMOVED***
+}
+.navbar .nav li.dropdown > .dropdown-toggle .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
-***REMOVED***
+}
 .navbar .nav li.dropdown.open > .dropdown-toggle .caret,
 .navbar .nav li.dropdown.active > .dropdown-toggle .caret,
-.navbar .nav li.dropdown.open.active > .dropdown-toggle .caret ***REMOVED***
+.navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
-***REMOVED***
+}
 .navbar .pull-right > li > .dropdown-menu,
-.navbar .nav > li > .dropdown-menu.pull-right ***REMOVED***
+.navbar .nav > li > .dropdown-menu.pull-right {
   left: auto;
   right: 0;
-***REMOVED***
+}
 .navbar .pull-right > li > .dropdown-menu:before,
-.navbar .nav > li > .dropdown-menu.pull-right:before ***REMOVED***
+.navbar .nav > li > .dropdown-menu.pull-right:before {
   left: auto;
   right: 12px;
-***REMOVED***
+}
 .navbar .pull-right > li > .dropdown-menu:after,
-.navbar .nav > li > .dropdown-menu.pull-right:after ***REMOVED***
+.navbar .nav > li > .dropdown-menu.pull-right:after {
   left: auto;
   right: 13px;
-***REMOVED***
+}
 .navbar .pull-right > li > .dropdown-menu .dropdown-menu,
-.navbar .nav > li > .dropdown-menu.pull-right .dropdown-menu ***REMOVED***
+.navbar .nav > li > .dropdown-menu.pull-right .dropdown-menu {
   left: auto;
   right: 100%;
   margin-left: 0;
@@ -4067,8 +4067,8 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -webkit-border-radius: 6px 0 6px 6px;
   -moz-border-radius: 6px 0 6px 6px;
   border-radius: 6px 0 6px 6px;
-***REMOVED***
-.navbar-inverse .navbar-inner ***REMOVED***
+}
+.navbar-inverse .navbar-inner {
   background-color: #034482;
   background-image: -moz-linear-gradient(top, #04498c, #033c73);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#04498c), to(#033c73));
@@ -4078,68 +4078,68 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff04498c', endColorstr='#ff033c73', GradientType=0);
   border-color: #033464;
-***REMOVED***
+}
 .navbar-inverse .brand,
-.navbar-inverse .nav > li > a ***REMOVED***
+.navbar-inverse .nav > li > a {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-***REMOVED***
+}
 .navbar-inverse .brand:hover,
 .navbar-inverse .nav > li > a:hover,
 .navbar-inverse .brand:focus,
-.navbar-inverse .nav > li > a:focus ***REMOVED***
+.navbar-inverse .nav > li > a:focus {
   color: #ffffff;
-***REMOVED***
-.navbar-inverse .brand ***REMOVED***
+}
+.navbar-inverse .brand {
   color: #ffffff;
-***REMOVED***
-.navbar-inverse .navbar-text ***REMOVED***
+}
+.navbar-inverse .navbar-text {
   color: #ffffff;
-***REMOVED***
+}
 .navbar-inverse .nav > li > a:focus,
-.navbar-inverse .nav > li > a:hover ***REMOVED***
+.navbar-inverse .nav > li > a:hover {
   background-color: #022c55;
   color: #ffffff;
-***REMOVED***
+}
 .navbar-inverse .nav .active > a,
 .navbar-inverse .nav .active > a:hover,
-.navbar-inverse .nav .active > a:focus ***REMOVED***
+.navbar-inverse .nav .active > a:focus {
   color: #ffffff;
   background-color: #022c55;
-***REMOVED***
-.navbar-inverse .navbar-link ***REMOVED***
+}
+.navbar-inverse .navbar-link {
   color: #ffffff;
-***REMOVED***
+}
 .navbar-inverse .navbar-link:hover,
-.navbar-inverse .navbar-link:focus ***REMOVED***
+.navbar-inverse .navbar-link:focus {
   color: #ffffff;
-***REMOVED***
-.navbar-inverse .divider-vertical ***REMOVED***
+}
+.navbar-inverse .divider-vertical {
   border-left-color: #033c73;
   border-right-color: #04498c;
-***REMOVED***
+}
 .navbar-inverse .nav li.dropdown.open > .dropdown-toggle,
 .navbar-inverse .nav li.dropdown.active > .dropdown-toggle,
-.navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle ***REMOVED***
+.navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
   background-color: #022c55;
   color: #ffffff;
-***REMOVED***
+}
 .navbar-inverse .nav li.dropdown > a:hover .caret,
-.navbar-inverse .nav li.dropdown > a:focus .caret ***REMOVED***
+.navbar-inverse .nav li.dropdown > a:focus .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
-***REMOVED***
-.navbar-inverse .nav li.dropdown > .dropdown-toggle .caret ***REMOVED***
+}
+.navbar-inverse .nav li.dropdown > .dropdown-toggle .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
-***REMOVED***
+}
 .navbar-inverse .nav li.dropdown.open > .dropdown-toggle .caret,
 .navbar-inverse .nav li.dropdown.active > .dropdown-toggle .caret,
-.navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle .caret ***REMOVED***
+.navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
-***REMOVED***
-.navbar-inverse .navbar-search .search-query ***REMOVED***
+}
+.navbar-inverse .navbar-search .search-query {
   color: #ffffff;
   background-color: #ffffff;
   border-color: #033c73;
@@ -4150,18 +4150,18 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -moz-transition: none;
   -o-transition: none;
   transition: none;
-***REMOVED***
-.navbar-inverse .navbar-search .search-query:-moz-placeholder ***REMOVED***
+}
+.navbar-inverse .navbar-search .search-query:-moz-placeholder {
   color: #999999;
-***REMOVED***
-.navbar-inverse .navbar-search .search-query:-ms-input-placeholder ***REMOVED***
+}
+.navbar-inverse .navbar-search .search-query:-ms-input-placeholder {
   color: #999999;
-***REMOVED***
-.navbar-inverse .navbar-search .search-query::-webkit-input-placeholder ***REMOVED***
+}
+.navbar-inverse .navbar-search .search-query::-webkit-input-placeholder {
   color: #999999;
-***REMOVED***
+}
 .navbar-inverse .navbar-search .search-query:focus,
-.navbar-inverse .navbar-search .search-query.focused ***REMOVED***
+.navbar-inverse .navbar-search .search-query.focused {
   padding: 5px 15px;
   color: #333333;
   text-shadow: 0 1px 0 #ffffff;
@@ -4171,8 +4171,8 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   outline: 0;
-***REMOVED***
-.navbar-inverse .btn-navbar ***REMOVED***
+}
+.navbar-inverse .btn-navbar {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #033769;
@@ -4189,22 +4189,22 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-***REMOVED***
+}
 .navbar-inverse .btn-navbar:hover,
 .navbar-inverse .btn-navbar:focus,
 .navbar-inverse .btn-navbar:active,
 .navbar-inverse .btn-navbar.active,
 .navbar-inverse .btn-navbar.disabled,
-.navbar-inverse .btn-navbar[disabled] ***REMOVED***
+.navbar-inverse .btn-navbar[disabled] {
   color: #ffffff;
   background-color: #022f5a;
   *background-color: #022241;
-***REMOVED***
+}
 .navbar-inverse .btn-navbar:active,
-.navbar-inverse .btn-navbar.active ***REMOVED***
+.navbar-inverse .btn-navbar.active {
   background-color: #011528 \9;
-***REMOVED***
-.breadcrumb ***REMOVED***
+}
+.breadcrumb {
   padding: 8px 15px;
   margin: 0 0 20px;
   list-style: none;
@@ -4212,26 +4212,26 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-***REMOVED***
-.breadcrumb > li ***REMOVED***
+}
+.breadcrumb > li {
   display: inline-block;
   *display: inline;
   /* IE7 inline-block hack */
 
   *zoom: 1;
   text-shadow: 0 1px 0 #ffffff;
-***REMOVED***
-.breadcrumb > li > .divider ***REMOVED***
+}
+.breadcrumb > li > .divider {
   padding: 0 5px;
   color: #ccc;
-***REMOVED***
-.breadcrumb > .active ***REMOVED***
+}
+.breadcrumb > .active {
   color: #999999;
-***REMOVED***
-.pagination ***REMOVED***
+}
+.pagination {
   margin: 20px 0;
-***REMOVED***
-.pagination ul ***REMOVED***
+}
+.pagination ul {
   display: inline-block;
   *display: inline;
   /* IE7 inline-block hack */
@@ -4245,12 +4245,12 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-***REMOVED***
-.pagination ul > li ***REMOVED***
+}
+.pagination ul > li {
   display: inline;
-***REMOVED***
+}
 .pagination ul > li > a,
-.pagination ul > li > span ***REMOVED***
+.pagination ul > li > span {
   float: left;
   padding: 4px 12px;
   line-height: 20px;
@@ -4258,28 +4258,28 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   background-color: #ffffff;
   border: 1px solid #dddddd;
   border-left-width: 0;
-***REMOVED***
+}
 .pagination ul > li > a:hover,
 .pagination ul > li > a:focus,
 .pagination ul > .active > a,
-.pagination ul > .active > span ***REMOVED***
+.pagination ul > .active > span {
   background-color: #f5f5f5;
-***REMOVED***
+}
 .pagination ul > .active > a,
-.pagination ul > .active > span ***REMOVED***
+.pagination ul > .active > span {
   color: #999999;
   cursor: default;
-***REMOVED***
+}
 .pagination ul > .disabled > span,
 .pagination ul > .disabled > a,
 .pagination ul > .disabled > a:hover,
-.pagination ul > .disabled > a:focus ***REMOVED***
+.pagination ul > .disabled > a:focus {
   color: #999999;
   background-color: transparent;
   cursor: default;
-***REMOVED***
+}
 .pagination ul > li:first-child > a,
-.pagination ul > li:first-child > span ***REMOVED***
+.pagination ul > li:first-child > span {
   border-left-width: 1px;
   -webkit-border-top-left-radius: 4px;
   -moz-border-radius-topleft: 4px;
@@ -4287,97 +4287,97 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -webkit-border-bottom-left-radius: 4px;
   -moz-border-radius-bottomleft: 4px;
   border-bottom-left-radius: 4px;
-***REMOVED***
+}
 .pagination ul > li:last-child > a,
-.pagination ul > li:last-child > span ***REMOVED***
+.pagination ul > li:last-child > span {
   -webkit-border-top-right-radius: 4px;
   -moz-border-radius-topright: 4px;
   border-top-right-radius: 4px;
   -webkit-border-bottom-right-radius: 4px;
   -moz-border-radius-bottomright: 4px;
   border-bottom-right-radius: 4px;
-***REMOVED***
-.pagination-centered ***REMOVED***
+}
+.pagination-centered {
   text-align: center;
-***REMOVED***
-.pagination-right ***REMOVED***
+}
+.pagination-right {
   text-align: right;
-***REMOVED***
+}
 .pagination-large ul > li > a,
-.pagination-large ul > li > span ***REMOVED***
+.pagination-large ul > li > span {
   padding: 11px 19px;
   font-size: 17.5px;
-***REMOVED***
+}
 .pagination-large ul > li:first-child > a,
-.pagination-large ul > li:first-child > span ***REMOVED***
+.pagination-large ul > li:first-child > span {
   -webkit-border-top-left-radius: 6px;
   -moz-border-radius-topleft: 6px;
   border-top-left-radius: 6px;
   -webkit-border-bottom-left-radius: 6px;
   -moz-border-radius-bottomleft: 6px;
   border-bottom-left-radius: 6px;
-***REMOVED***
+}
 .pagination-large ul > li:last-child > a,
-.pagination-large ul > li:last-child > span ***REMOVED***
+.pagination-large ul > li:last-child > span {
   -webkit-border-top-right-radius: 6px;
   -moz-border-radius-topright: 6px;
   border-top-right-radius: 6px;
   -webkit-border-bottom-right-radius: 6px;
   -moz-border-radius-bottomright: 6px;
   border-bottom-right-radius: 6px;
-***REMOVED***
+}
 .pagination-mini ul > li:first-child > a,
 .pagination-small ul > li:first-child > a,
 .pagination-mini ul > li:first-child > span,
-.pagination-small ul > li:first-child > span ***REMOVED***
+.pagination-small ul > li:first-child > span {
   -webkit-border-top-left-radius: 3px;
   -moz-border-radius-topleft: 3px;
   border-top-left-radius: 3px;
   -webkit-border-bottom-left-radius: 3px;
   -moz-border-radius-bottomleft: 3px;
   border-bottom-left-radius: 3px;
-***REMOVED***
+}
 .pagination-mini ul > li:last-child > a,
 .pagination-small ul > li:last-child > a,
 .pagination-mini ul > li:last-child > span,
-.pagination-small ul > li:last-child > span ***REMOVED***
+.pagination-small ul > li:last-child > span {
   -webkit-border-top-right-radius: 3px;
   -moz-border-radius-topright: 3px;
   border-top-right-radius: 3px;
   -webkit-border-bottom-right-radius: 3px;
   -moz-border-radius-bottomright: 3px;
   border-bottom-right-radius: 3px;
-***REMOVED***
+}
 .pagination-small ul > li > a,
-.pagination-small ul > li > span ***REMOVED***
+.pagination-small ul > li > span {
   padding: 2px 10px;
   font-size: 11.9px;
-***REMOVED***
+}
 .pagination-mini ul > li > a,
-.pagination-mini ul > li > span ***REMOVED***
+.pagination-mini ul > li > span {
   padding: 0px 6px;
   font-size: 10.5px;
-***REMOVED***
-.pager ***REMOVED***
+}
+.pager {
   margin: 20px 0;
   list-style: none;
   text-align: center;
   *zoom: 1;
-***REMOVED***
+}
 .pager:before,
-.pager:after ***REMOVED***
+.pager:after {
   display: table;
   content: "";
   line-height: 0;
-***REMOVED***
-.pager:after ***REMOVED***
+}
+.pager:after {
   clear: both;
-***REMOVED***
-.pager li ***REMOVED***
+}
+.pager li {
   display: inline;
-***REMOVED***
+}
 .pager li > a,
-.pager li > span ***REMOVED***
+.pager li > span {
   display: inline-block;
   padding: 5px 14px;
   background-color: #fff;
@@ -4385,29 +4385,29 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
-***REMOVED***
+}
 .pager li > a:hover,
-.pager li > a:focus ***REMOVED***
+.pager li > a:focus {
   text-decoration: none;
   background-color: #f5f5f5;
-***REMOVED***
+}
 .pager .next > a,
-.pager .next > span ***REMOVED***
+.pager .next > span {
   float: right;
-***REMOVED***
+}
 .pager .previous > a,
-.pager .previous > span ***REMOVED***
+.pager .previous > span {
   float: left;
-***REMOVED***
+}
 .pager .disabled > a,
 .pager .disabled > a:hover,
 .pager .disabled > a:focus,
-.pager .disabled > span ***REMOVED***
+.pager .disabled > span {
   color: #999999;
   background-color: #fff;
   cursor: default;
-***REMOVED***
-.modal-backdrop ***REMOVED***
+}
+.modal-backdrop {
   position: fixed;
   top: 0;
   right: 0;
@@ -4415,16 +4415,16 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   left: 0;
   z-index: 1040;
   background-color: #000000;
-***REMOVED***
-.modal-backdrop.fade ***REMOVED***
+}
+.modal-backdrop.fade {
   opacity: 0;
-***REMOVED***
+}
 .modal-backdrop,
-.modal-backdrop.fade.in ***REMOVED***
+.modal-backdrop.fade.in {
   opacity: 0.8;
   filter: alpha(opacity=80);
-***REMOVED***
-.modal ***REMOVED***
+}
+.modal {
   position: fixed;
   top: 10%;
   left: 50%;
@@ -4447,38 +4447,38 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -moz-background-clip: padding-box;
   background-clip: padding-box;
   outline: none;
-***REMOVED***
-.modal.fade ***REMOVED***
+}
+.modal.fade {
   -webkit-transition: opacity .3s linear, top .3s ease-out;
   -moz-transition: opacity .3s linear, top .3s ease-out;
   -o-transition: opacity .3s linear, top .3s ease-out;
   transition: opacity .3s linear, top .3s ease-out;
   top: -25%;
-***REMOVED***
-.modal.fade.in ***REMOVED***
+}
+.modal.fade.in {
   top: 10%;
-***REMOVED***
-.modal-header ***REMOVED***
+}
+.modal-header {
   padding: 9px 15px;
   border-bottom: 1px solid #eee;
-***REMOVED***
-.modal-header .close ***REMOVED***
+}
+.modal-header .close {
   margin-top: 2px;
-***REMOVED***
-.modal-header h3 ***REMOVED***
+}
+.modal-header h3 {
   margin: 0;
   line-height: 30px;
-***REMOVED***
-.modal-body ***REMOVED***
+}
+.modal-body {
   position: relative;
   overflow-y: auto;
   max-height: 400px;
   padding: 15px;
-***REMOVED***
-.modal-form ***REMOVED***
+}
+.modal-form {
   margin-bottom: 0;
-***REMOVED***
-.modal-footer ***REMOVED***
+}
+.modal-footer {
   padding: 14px 15px 15px;
   margin-bottom: 0;
   text-align: right;
@@ -4491,27 +4491,27 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -moz-box-shadow: inset 0 1px 0 #ffffff;
   box-shadow: inset 0 1px 0 #ffffff;
   *zoom: 1;
-***REMOVED***
+}
 .modal-footer:before,
-.modal-footer:after ***REMOVED***
+.modal-footer:after {
   display: table;
   content: "";
   line-height: 0;
-***REMOVED***
-.modal-footer:after ***REMOVED***
+}
+.modal-footer:after {
   clear: both;
-***REMOVED***
-.modal-footer .btn + .btn ***REMOVED***
+}
+.modal-footer .btn + .btn {
   margin-left: 5px;
   margin-bottom: 0;
-***REMOVED***
-.modal-footer .btn-group .btn + .btn ***REMOVED***
+}
+.modal-footer .btn-group .btn + .btn {
   margin-left: -1px;
-***REMOVED***
-.modal-footer .btn-block + .btn-block ***REMOVED***
+}
+.modal-footer .btn-block + .btn-block {
   margin-left: 0;
-***REMOVED***
-.tooltip ***REMOVED***
+}
+.tooltip {
   position: absolute;
   z-index: 1020;
   display: block;
@@ -4520,28 +4520,28 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   line-height: 1.4;
   opacity: 0;
   filter: alpha(opacity=0);
-***REMOVED***
-.tooltip.in ***REMOVED***
+}
+.tooltip.in {
   opacity: 0.8;
   filter: alpha(opacity=80);
-***REMOVED***
-.tooltip.top ***REMOVED***
+}
+.tooltip.top {
   margin-top: -3px;
   padding: 5px 0;
-***REMOVED***
-.tooltip.right ***REMOVED***
+}
+.tooltip.right {
   margin-left: 3px;
   padding: 0 5px;
-***REMOVED***
-.tooltip.bottom ***REMOVED***
+}
+.tooltip.bottom {
   margin-top: 3px;
   padding: 5px 0;
-***REMOVED***
-.tooltip.left ***REMOVED***
+}
+.tooltip.left {
   margin-left: -3px;
   padding: 0 5px;
-***REMOVED***
-.tooltip-inner ***REMOVED***
+}
+.tooltip-inner {
   max-width: 200px;
   padding: 8px;
   color: #ffffff;
@@ -4551,43 +4551,43 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-***REMOVED***
-.tooltip-arrow ***REMOVED***
+}
+.tooltip-arrow {
   position: absolute;
   width: 0;
   height: 0;
   border-color: transparent;
   border-style: solid;
-***REMOVED***
-.tooltip.top .tooltip-arrow ***REMOVED***
+}
+.tooltip.top .tooltip-arrow {
   bottom: 0;
   left: 50%;
   margin-left: -5px;
   border-width: 5px 5px 0;
   border-top-color: #000000;
-***REMOVED***
-.tooltip.right .tooltip-arrow ***REMOVED***
+}
+.tooltip.right .tooltip-arrow {
   top: 50%;
   left: 0;
   margin-top: -5px;
   border-width: 5px 5px 5px 0;
   border-right-color: #000000;
-***REMOVED***
-.tooltip.left .tooltip-arrow ***REMOVED***
+}
+.tooltip.left .tooltip-arrow {
   top: 50%;
   right: 0;
   margin-top: -5px;
   border-width: 5px 0 5px 5px;
   border-left-color: #000000;
-***REMOVED***
-.tooltip.bottom .tooltip-arrow ***REMOVED***
+}
+.tooltip.bottom .tooltip-arrow {
   top: 0;
   left: 50%;
   margin-left: -5px;
   border-width: 0 5px 5px;
   border-bottom-color: #000000;
-***REMOVED***
-.popover ***REMOVED***
+}
+.popover {
   position: absolute;
   top: 0;
   left: 0;
@@ -4609,20 +4609,20 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   white-space: normal;
-***REMOVED***
-.popover.top ***REMOVED***
+}
+.popover.top {
   margin-top: -10px;
-***REMOVED***
-.popover.right ***REMOVED***
+}
+.popover.right {
   margin-left: 10px;
-***REMOVED***
-.popover.bottom ***REMOVED***
+}
+.popover.bottom {
   margin-top: 10px;
-***REMOVED***
-.popover.left ***REMOVED***
+}
+.popover.left {
   margin-left: -10px;
-***REMOVED***
-.popover-title ***REMOVED***
+}
+.popover-title {
   margin: 0;
   padding: 8px 14px;
   font-size: 14px;
@@ -4633,108 +4633,108 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -webkit-border-radius: 5px 5px 0 0;
   -moz-border-radius: 5px 5px 0 0;
   border-radius: 5px 5px 0 0;
-***REMOVED***
-.popover-title:empty ***REMOVED***
+}
+.popover-title:empty {
   display: none;
-***REMOVED***
-.popover-content ***REMOVED***
+}
+.popover-content {
   padding: 9px 14px;
-***REMOVED***
+}
 .popover .arrow,
-.popover .arrow:after ***REMOVED***
+.popover .arrow:after {
   position: absolute;
   display: block;
   width: 0;
   height: 0;
   border-color: transparent;
   border-style: solid;
-***REMOVED***
-.popover .arrow ***REMOVED***
+}
+.popover .arrow {
   border-width: 11px;
-***REMOVED***
-.popover .arrow:after ***REMOVED***
+}
+.popover .arrow:after {
   border-width: 10px;
   content: "";
-***REMOVED***
-.popover.top .arrow ***REMOVED***
+}
+.popover.top .arrow {
   left: 50%;
   margin-left: -11px;
   border-bottom-width: 0;
   border-top-color: #999;
   border-top-color: rgba(0, 0, 0, 0.25);
   bottom: -11px;
-***REMOVED***
-.popover.top .arrow:after ***REMOVED***
+}
+.popover.top .arrow:after {
   bottom: 1px;
   margin-left: -10px;
   border-bottom-width: 0;
   border-top-color: #ffffff;
-***REMOVED***
-.popover.right .arrow ***REMOVED***
+}
+.popover.right .arrow {
   top: 50%;
   left: -11px;
   margin-top: -11px;
   border-left-width: 0;
   border-right-color: #999;
   border-right-color: rgba(0, 0, 0, 0.25);
-***REMOVED***
-.popover.right .arrow:after ***REMOVED***
+}
+.popover.right .arrow:after {
   left: 1px;
   bottom: -10px;
   border-left-width: 0;
   border-right-color: #ffffff;
-***REMOVED***
-.popover.bottom .arrow ***REMOVED***
+}
+.popover.bottom .arrow {
   left: 50%;
   margin-left: -11px;
   border-top-width: 0;
   border-bottom-color: #999;
   border-bottom-color: rgba(0, 0, 0, 0.25);
   top: -11px;
-***REMOVED***
-.popover.bottom .arrow:after ***REMOVED***
+}
+.popover.bottom .arrow:after {
   top: 1px;
   margin-left: -10px;
   border-top-width: 0;
   border-bottom-color: #ffffff;
-***REMOVED***
-.popover.left .arrow ***REMOVED***
+}
+.popover.left .arrow {
   top: 50%;
   right: -11px;
   margin-top: -11px;
   border-right-width: 0;
   border-left-color: #999;
   border-left-color: rgba(0, 0, 0, 0.25);
-***REMOVED***
-.popover.left .arrow:after ***REMOVED***
+}
+.popover.left .arrow:after {
   right: 1px;
   border-right-width: 0;
   border-left-color: #ffffff;
   bottom: -10px;
-***REMOVED***
-.thumbnails ***REMOVED***
+}
+.thumbnails {
   margin-left: -20px;
   list-style: none;
   *zoom: 1;
-***REMOVED***
+}
 .thumbnails:before,
-.thumbnails:after ***REMOVED***
+.thumbnails:after {
   display: table;
   content: "";
   line-height: 0;
-***REMOVED***
-.thumbnails:after ***REMOVED***
+}
+.thumbnails:after {
   clear: both;
-***REMOVED***
-.row-fluid .thumbnails ***REMOVED***
+}
+.row-fluid .thumbnails {
   margin-left: 0;
-***REMOVED***
-.thumbnails > li ***REMOVED***
+}
+.thumbnails > li {
   float: left;
   margin-bottom: 20px;
   margin-left: 20px;
-***REMOVED***
-.thumbnail ***REMOVED***
+}
+.thumbnail {
   display: block;
   padding: 4px;
   line-height: 20px;
@@ -4749,55 +4749,55 @@ input[type="submit"].btn.btn-mini ***REMOVED***
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-***REMOVED***
+}
 a.thumbnail:hover,
-a.thumbnail:focus ***REMOVED***
+a.thumbnail:focus {
   border-color: #2fa4e7;
   -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
-***REMOVED***
-.thumbnail > img ***REMOVED***
+}
+.thumbnail > img {
   display: block;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-***REMOVED***
-.thumbnail .caption ***REMOVED***
+}
+.thumbnail .caption {
   padding: 9px;
   color: #555555;
-***REMOVED***
+}
 .media,
-.media-body ***REMOVED***
+.media-body {
   overflow: hidden;
   *overflow: visible;
   zoom: 1;
-***REMOVED***
+}
 .media,
-.media .media ***REMOVED***
+.media .media {
   margin-top: 15px;
-***REMOVED***
-.media:first-child ***REMOVED***
+}
+.media:first-child {
   margin-top: 0;
-***REMOVED***
-.media-object ***REMOVED***
+}
+.media-object {
   display: block;
-***REMOVED***
-.media-heading ***REMOVED***
+}
+.media-heading {
   margin: 0 0 5px;
-***REMOVED***
-.media > .pull-left ***REMOVED***
+}
+.media > .pull-left {
   margin-right: 10px;
-***REMOVED***
-.media > .pull-right ***REMOVED***
+}
+.media > .pull-right {
   margin-left: 10px;
-***REMOVED***
-.media-list ***REMOVED***
+}
+.media-list {
   margin-left: 0;
   list-style: none;
-***REMOVED***
+}
 .label,
-.badge ***REMOVED***
+.badge {
   display: inline-block;
   padding: 2px 4px;
   font-size: 11.844px;
@@ -4808,121 +4808,121 @@ a.thumbnail:focus ***REMOVED***
   white-space: nowrap;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #999999;
-***REMOVED***
-.label ***REMOVED***
+}
+.label {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-***REMOVED***
-.badge ***REMOVED***
+}
+.badge {
   padding-left: 9px;
   padding-right: 9px;
   -webkit-border-radius: 9px;
   -moz-border-radius: 9px;
   border-radius: 9px;
-***REMOVED***
+}
 .label:empty,
-.badge:empty ***REMOVED***
+.badge:empty {
   display: none;
-***REMOVED***
+}
 a.label:hover,
 a.label:focus,
 a.badge:hover,
-a.badge:focus ***REMOVED***
+a.badge:focus {
   color: #ffffff;
   text-decoration: none;
   cursor: pointer;
-***REMOVED***
+}
 .label-important,
-.badge-important ***REMOVED***
+.badge-important {
   background-color: #bd4247;
-***REMOVED***
+}
 .label-important[href],
-.badge-important[href] ***REMOVED***
+.badge-important[href] {
   background-color: #983538;
-***REMOVED***
+}
 .label-warning,
-.badge-warning ***REMOVED***
+.badge-warning {
   background-color: #dd5600;
-***REMOVED***
+}
 .label-warning[href],
-.badge-warning[href] ***REMOVED***
+.badge-warning[href] {
   background-color: #aa4200;
-***REMOVED***
+}
 .label-success,
-.badge-success ***REMOVED***
+.badge-success {
   background-color: #669533;
-***REMOVED***
+}
 .label-success[href],
-.badge-success[href] ***REMOVED***
+.badge-success[href] {
   background-color: #4c6f26;
-***REMOVED***
+}
 .label-info,
-.badge-info ***REMOVED***
+.badge-info {
   background-color: #178acc;
-***REMOVED***
+}
 .label-info[href],
-.badge-info[href] ***REMOVED***
+.badge-info[href] {
   background-color: #126b9e;
-***REMOVED***
+}
 .label-inverse,
-.badge-inverse ***REMOVED***
+.badge-inverse {
   background-color: #333333;
-***REMOVED***
+}
 .label-inverse[href],
-.badge-inverse[href] ***REMOVED***
+.badge-inverse[href] {
   background-color: #1a1a1a;
-***REMOVED***
+}
 .btn .label,
-.btn .badge ***REMOVED***
+.btn .badge {
   position: relative;
   top: -1px;
-***REMOVED***
+}
 .btn-mini .label,
-.btn-mini .badge ***REMOVED***
+.btn-mini .badge {
   top: 0;
-***REMOVED***
-@-webkit-keyframes progress-bar-stripes ***REMOVED***
-  from ***REMOVED***
+}
+@-webkit-keyframes progress-bar-stripes {
+  from {
     background-position: 40px 0;
-  ***REMOVED***
-  to ***REMOVED***
+  }
+  to {
     background-position: 0 0;
-  ***REMOVED***
-***REMOVED***
-@-moz-keyframes progress-bar-stripes ***REMOVED***
-  from ***REMOVED***
+  }
+}
+@-moz-keyframes progress-bar-stripes {
+  from {
     background-position: 40px 0;
-  ***REMOVED***
-  to ***REMOVED***
+  }
+  to {
     background-position: 0 0;
-  ***REMOVED***
-***REMOVED***
-@-ms-keyframes progress-bar-stripes ***REMOVED***
-  from ***REMOVED***
+  }
+}
+@-ms-keyframes progress-bar-stripes {
+  from {
     background-position: 40px 0;
-  ***REMOVED***
-  to ***REMOVED***
+  }
+  to {
     background-position: 0 0;
-  ***REMOVED***
-***REMOVED***
-@-o-keyframes progress-bar-stripes ***REMOVED***
-  from ***REMOVED***
+  }
+}
+@-o-keyframes progress-bar-stripes {
+  from {
     background-position: 0 0;
-  ***REMOVED***
-  to ***REMOVED***
+  }
+  to {
     background-position: 40px 0;
-  ***REMOVED***
-***REMOVED***
-@keyframes progress-bar-stripes ***REMOVED***
-  from ***REMOVED***
+  }
+}
+@keyframes progress-bar-stripes {
+  from {
     background-position: 40px 0;
-  ***REMOVED***
-  to ***REMOVED***
+  }
+  to {
     background-position: 0 0;
-  ***REMOVED***
-***REMOVED***
-.progress ***REMOVED***
+  }
+}
+.progress {
   overflow: hidden;
   height: 20px;
   margin-bottom: 20px;
@@ -4940,8 +4940,8 @@ a.badge:focus ***REMOVED***
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-***REMOVED***
-.progress .bar ***REMOVED***
+}
+.progress .bar {
   width: 0%;
   height: 100%;
   color: #ffffff;
@@ -4967,13 +4967,13 @@ a.badge:focus ***REMOVED***
   -moz-transition: width 0.6s ease;
   -o-transition: width 0.6s ease;
   transition: width 0.6s ease;
-***REMOVED***
-.progress .bar + .bar ***REMOVED***
+}
+.progress .bar + .bar {
   -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.15), inset 0 -1px 0 rgba(0,0,0,.15);
   -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.15), inset 0 -1px 0 rgba(0,0,0,.15);
   box-shadow: inset 1px 0 0 rgba(0,0,0,.15), inset 0 -1px 0 rgba(0,0,0,.15);
-***REMOVED***
-.progress-striped .bar ***REMOVED***
+}
+.progress-striped .bar {
   background-color: #149bdf;
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
@@ -4984,16 +4984,16 @@ a.badge:focus ***REMOVED***
   -moz-background-size: 40px 40px;
   -o-background-size: 40px 40px;
   background-size: 40px 40px;
-***REMOVED***
-.progress.active .bar ***REMOVED***
+}
+.progress.active .bar {
   -webkit-animation: progress-bar-stripes 2s linear infinite;
   -moz-animation: progress-bar-stripes 2s linear infinite;
   -ms-animation: progress-bar-stripes 2s linear infinite;
   -o-animation: progress-bar-stripes 2s linear infinite;
   animation: progress-bar-stripes 2s linear infinite;
-***REMOVED***
+}
 .progress-danger .bar,
-.progress .bar-danger ***REMOVED***
+.progress .bar-danger {
   background-color: #dd514c;
   background-image: -moz-linear-gradient(top, #ee5f5b, #c43c35);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#c43c35));
@@ -5002,18 +5002,18 @@ a.badge:focus ***REMOVED***
   background-image: linear-gradient(to bottom, #ee5f5b, #c43c35);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffc43c35', GradientType=0);
-***REMOVED***
+}
 .progress-danger.progress-striped .bar,
-.progress-striped .bar-danger ***REMOVED***
+.progress-striped .bar-danger {
   background-color: #ee5f5b;
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-***REMOVED***
+}
 .progress-success .bar,
-.progress .bar-success ***REMOVED***
+.progress .bar-success {
   background-color: #5eb95e;
   background-image: -moz-linear-gradient(top, #62c462, #57a957);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#57a957));
@@ -5022,18 +5022,18 @@ a.badge:focus ***REMOVED***
   background-image: linear-gradient(to bottom, #62c462, #57a957);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff57a957', GradientType=0);
-***REMOVED***
+}
 .progress-success.progress-striped .bar,
-.progress-striped .bar-success ***REMOVED***
+.progress-striped .bar-success {
   background-color: #62c462;
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-***REMOVED***
+}
 .progress-info .bar,
-.progress .bar-info ***REMOVED***
+.progress .bar-info {
   background-color: #4bb1cf;
   background-image: -moz-linear-gradient(top, #5bc0de, #339bb9);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#339bb9));
@@ -5042,18 +5042,18 @@ a.badge:focus ***REMOVED***
   background-image: linear-gradient(to bottom, #5bc0de, #339bb9);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff339bb9', GradientType=0);
-***REMOVED***
+}
 .progress-info.progress-striped .bar,
-.progress-striped .bar-info ***REMOVED***
+.progress-striped .bar-info {
   background-color: #5bc0de;
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-***REMOVED***
+}
 .progress-warning .bar,
-.progress .bar-warning ***REMOVED***
+.progress .bar-warning {
   background-color: #f16e1a;
   background-image: -moz-linear-gradient(top, #ff7d2b, #dd5600);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ff7d2b), to(#dd5600));
@@ -5062,94 +5062,94 @@ a.badge:focus ***REMOVED***
   background-image: linear-gradient(to bottom, #ff7d2b, #dd5600);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff7d2b', endColorstr='#ffdd5600', GradientType=0);
-***REMOVED***
+}
 .progress-warning.progress-striped .bar,
-.progress-striped .bar-warning ***REMOVED***
+.progress-striped .bar-warning {
   background-color: #ff7d2b;
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-***REMOVED***
-.accordion ***REMOVED***
+}
+.accordion {
   margin-bottom: 20px;
-***REMOVED***
-.accordion-group ***REMOVED***
+}
+.accordion-group {
   margin-bottom: 2px;
   border: 1px solid #e5e5e5;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-***REMOVED***
-.accordion-heading ***REMOVED***
+}
+.accordion-heading {
   border-bottom: 0;
-***REMOVED***
-.accordion-heading .accordion-toggle ***REMOVED***
+}
+.accordion-heading .accordion-toggle {
   display: block;
   padding: 8px 15px;
-***REMOVED***
-.accordion-toggle ***REMOVED***
+}
+.accordion-toggle {
   cursor: pointer;
-***REMOVED***
-.accordion-inner ***REMOVED***
+}
+.accordion-inner {
   padding: 9px 15px;
   border-top: 1px solid #e5e5e5;
-***REMOVED***
-.carousel ***REMOVED***
+}
+.carousel {
   position: relative;
   margin-bottom: 20px;
   line-height: 1;
-***REMOVED***
-.carousel-inner ***REMOVED***
+}
+.carousel-inner {
   overflow: hidden;
   width: 100%;
   position: relative;
-***REMOVED***
-.carousel-inner > .item ***REMOVED***
+}
+.carousel-inner > .item {
   display: none;
   position: relative;
   -webkit-transition: 0.6s ease-in-out left;
   -moz-transition: 0.6s ease-in-out left;
   -o-transition: 0.6s ease-in-out left;
   transition: 0.6s ease-in-out left;
-***REMOVED***
+}
 .carousel-inner > .item > img,
-.carousel-inner > .item > a > img ***REMOVED***
+.carousel-inner > .item > a > img {
   display: block;
   line-height: 1;
-***REMOVED***
+}
 .carousel-inner > .active,
 .carousel-inner > .next,
-.carousel-inner > .prev ***REMOVED***
+.carousel-inner > .prev {
   display: block;
-***REMOVED***
-.carousel-inner > .active ***REMOVED***
+}
+.carousel-inner > .active {
   left: 0;
-***REMOVED***
+}
 .carousel-inner > .next,
-.carousel-inner > .prev ***REMOVED***
+.carousel-inner > .prev {
   position: absolute;
   top: 0;
   width: 100%;
-***REMOVED***
-.carousel-inner > .next ***REMOVED***
+}
+.carousel-inner > .next {
   left: 100%;
-***REMOVED***
-.carousel-inner > .prev ***REMOVED***
+}
+.carousel-inner > .prev {
   left: -100%;
-***REMOVED***
+}
 .carousel-inner > .next.left,
-.carousel-inner > .prev.right ***REMOVED***
+.carousel-inner > .prev.right {
   left: 0;
-***REMOVED***
-.carousel-inner > .active.left ***REMOVED***
+}
+.carousel-inner > .active.left {
   left: -100%;
-***REMOVED***
-.carousel-inner > .active.right ***REMOVED***
+}
+.carousel-inner > .active.right {
   left: 100%;
-***REMOVED***
-.carousel-control ***REMOVED***
+}
+.carousel-control {
   position: absolute;
   top: 40%;
   left: 15px;
@@ -5168,27 +5168,27 @@ a.badge:focus ***REMOVED***
   border-radius: 23px;
   opacity: 0.5;
   filter: alpha(opacity=50);
-***REMOVED***
-.carousel-control.right ***REMOVED***
+}
+.carousel-control.right {
   left: auto;
   right: 15px;
-***REMOVED***
+}
 .carousel-control:hover,
-.carousel-control:focus ***REMOVED***
+.carousel-control:focus {
   color: #ffffff;
   text-decoration: none;
   opacity: 0.9;
   filter: alpha(opacity=90);
-***REMOVED***
-.carousel-indicators ***REMOVED***
+}
+.carousel-indicators {
   position: absolute;
   top: 15px;
   right: 15px;
   z-index: 5;
   margin: 0;
   list-style: none;
-***REMOVED***
-.carousel-indicators li ***REMOVED***
+}
+.carousel-indicators li {
   display: block;
   float: left;
   width: 10px;
@@ -5198,11 +5198,11 @@ a.badge:focus ***REMOVED***
   background-color: #ccc;
   background-color: rgba(255, 255, 255, 0.25);
   border-radius: 5px;
-***REMOVED***
-.carousel-indicators .active ***REMOVED***
+}
+.carousel-indicators .active {
   background-color: #fff;
-***REMOVED***
-.carousel-caption ***REMOVED***
+}
+.carousel-caption {
   position: absolute;
   left: 0;
   right: 0;
@@ -5210,19 +5210,19 @@ a.badge:focus ***REMOVED***
   padding: 15px;
   background: #333333;
   background: rgba(0, 0, 0, 0.75);
-***REMOVED***
+}
 .carousel-caption h4,
-.carousel-caption p ***REMOVED***
+.carousel-caption p {
   color: #ffffff;
   line-height: 20px;
-***REMOVED***
-.carousel-caption h4 ***REMOVED***
+}
+.carousel-caption h4 {
   margin: 0 0 5px;
-***REMOVED***
-.carousel-caption p ***REMOVED***
+}
+.carousel-caption p {
   margin-bottom: 0;
-***REMOVED***
-.hero-unit ***REMOVED***
+}
+.hero-unit {
   padding: 60px;
   margin-bottom: 30px;
   font-size: 18px;
@@ -5233,109 +5233,109 @@ a.badge:focus ***REMOVED***
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
-***REMOVED***
-.hero-unit h1 ***REMOVED***
+}
+.hero-unit h1 {
   margin-bottom: 0;
   font-size: 60px;
   line-height: 1;
   color: inherit;
   letter-spacing: -1px;
-***REMOVED***
-.hero-unit li ***REMOVED***
+}
+.hero-unit li {
   line-height: 30px;
-***REMOVED***
-.pull-right ***REMOVED***
+}
+.pull-right {
   float: right;
-***REMOVED***
-.pull-left ***REMOVED***
+}
+.pull-left {
   float: left;
-***REMOVED***
-.hide ***REMOVED***
+}
+.hide {
   display: none;
-***REMOVED***
-.show ***REMOVED***
+}
+.show {
   display: block;
-***REMOVED***
-.invisible ***REMOVED***
+}
+.invisible {
   visibility: hidden;
-***REMOVED***
-.affix ***REMOVED***
+}
+.affix {
   position: fixed;
-***REMOVED***
-.navbar .brand ***REMOVED***
+}
+.navbar .brand {
   padding: 14px 20px 16px;
   font-family: 'Telex', sans-serif;
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
-***REMOVED***
-.navbar li ***REMOVED***
+}
+.navbar li {
   line-height: 20px;
-***REMOVED***
-.navbar .nav > li > a ***REMOVED***
+}
+.navbar .nav > li > a {
   padding: 16px 10px 14px;
   font-family: 'Telex', sans-serif;
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
-***REMOVED***
-.navbar .search-query ***REMOVED***
+}
+.navbar .search-query {
   border: 1px solid #178acc;
   line-height: normal;
-***REMOVED***
-.navbar .navbar-text ***REMOVED***
+}
+.navbar .navbar-text {
   padding: 19px 10px 18px;
   line-height: 13px;
   color: rgba(0, 0, 0, 0.5);
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
-***REMOVED***
-.navbar-inverse .navbar-search .search-query ***REMOVED***
+}
+.navbar-inverse .navbar-search .search-query {
   color: #555555;
-***REMOVED***
-@media (max-width: 979px) ***REMOVED***
-  .navbar .nav-collapse .nav li > a ***REMOVED***
+}
+@media (max-width: 979px) {
+  .navbar .nav-collapse .nav li > a {
     font-family: 'Telex', sans-serif;
     font-weight: normal;
     color: #ffffff;
     text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
-  ***REMOVED***
-  .navbar .nav-collapse .nav li > a:hover ***REMOVED***
+  }
+  .navbar .nav-collapse .nav li > a:hover {
     background-color: #2B7CAC;
-  ***REMOVED***
-  .navbar .nav-collapse .nav .active > a ***REMOVED***
+  }
+  .navbar .nav-collapse .nav .active > a {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
     background-color: #2B7CAC;
-  ***REMOVED***
+  }
   .navbar .nav-collapse .dropdown-menu li > a:hover,
   .navbar .nav-collapse .dropdown-menu li > a:focus,
-  .navbar .nav-collapse .dropdown-submenu:hover > a ***REMOVED***
+  .navbar .nav-collapse .dropdown-submenu:hover > a {
     background-image: none;
-  ***REMOVED***
+  }
   .navbar .nav-collapse .navbar-form,
-  .navbar .nav-collapse .navbar-search ***REMOVED***
+  .navbar .nav-collapse .navbar-search {
     border: none;
-  ***REMOVED***
-  .navbar .nav-collapse .nav-header ***REMOVED***
+  }
+  .navbar .nav-collapse .nav-header {
     color: #2B7CAC;
-  ***REMOVED***
-  .navbar-inverse .nav-collapse .nav li > a ***REMOVED***
+  }
+  .navbar-inverse .nav-collapse .nav li > a {
     color: #ffffff;
-  ***REMOVED***
-  .navbar-inverse .nav-collapse .nav li > a:hover ***REMOVED***
+  }
+  .navbar-inverse .nav-collapse .nav li > a:hover {
     background-color: rgba(0, 0, 0, 0.1);
-  ***REMOVED***
+  }
   .navbar-inverse .nav-collapse .nav .active > a,
   .navbar-inverse .nav-collapse .nav > li > a:hover,
-  .navbar-inverse .nav-collapse .dropdown-menu a:hover ***REMOVED***
+  .navbar-inverse .nav-collapse .dropdown-menu a:hover {
     background-color: rgba(0, 0, 0, 0.1) !important;
-  ***REMOVED***
-***REMOVED***
-div.subnav ***REMOVED***
+  }
+}
+div.subnav {
   font-family: 'Telex', sans-serif;
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.2);
-***REMOVED***
-div.subnav-fixed ***REMOVED***
+}
+div.subnav-fixed {
   top: 51px;
-***REMOVED***
-.btn ***REMOVED***
+}
+.btn {
   background-color: #ffffff;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(5%, #ffffff), to(#ffffff));
   background-image: -webkit-linear-gradient(#ffffff, #ffffff 5%, #ffffff);
@@ -5347,11 +5347,11 @@ div.subnav-fixed ***REMOVED***
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-***REMOVED***
-.btn:hover ***REMOVED***
+}
+.btn:hover {
   background-position: 0 0;
-***REMOVED***
-.btn-primary ***REMOVED***
+}
+.btn-primary {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #3daae9;
@@ -5368,22 +5368,22 @@ div.subnav-fixed ***REMOVED***
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-***REMOVED***
+}
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active,
 .btn-primary.disabled,
-.btn-primary[disabled] ***REMOVED***
+.btn-primary[disabled] {
   color: #ffffff;
   background-color: #2fa4e7;
   *background-color: #1a99e2;
-***REMOVED***
+}
 .btn-primary:active,
-.btn-primary.active ***REMOVED***
+.btn-primary.active {
   background-color: #178acc \9;
-***REMOVED***
-.btn-info ***REMOVED***
+}
+.btn-info {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #9e6ab8;
@@ -5400,22 +5400,22 @@ div.subnav-fixed ***REMOVED***
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-***REMOVED***
+}
 .btn-info:hover,
 .btn-info:focus,
 .btn-info:active,
 .btn-info.active,
 .btn-info.disabled,
-.btn-info[disabled] ***REMOVED***
+.btn-info[disabled] {
   color: #ffffff;
   background-color: #9760b3;
   *background-color: #8b51a9;
-***REMOVED***
+}
 .btn-info:active,
-.btn-info.active ***REMOVED***
+.btn-info.active {
   background-color: #7d4898 \9;
-***REMOVED***
-.btn-success ***REMOVED***
+}
+.btn-success {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #7bb33d;
@@ -5432,22 +5432,22 @@ div.subnav-fixed ***REMOVED***
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-***REMOVED***
+}
 .btn-success:hover,
 .btn-success:focus,
 .btn-success:active,
 .btn-success.active,
 .btn-success.disabled,
-.btn-success[disabled] ***REMOVED***
+.btn-success[disabled] {
   color: #ffffff;
   background-color: #73a839;
   *background-color: #669533;
-***REMOVED***
+}
 .btn-success:active,
-.btn-success.active ***REMOVED***
+.btn-success.active {
   background-color: #59822c \9;
-***REMOVED***
-.btn-warning ***REMOVED***
+}
+.btn-warning {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #ec5c00;
@@ -5464,22 +5464,22 @@ div.subnav-fixed ***REMOVED***
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-***REMOVED***
+}
 .btn-warning:hover,
 .btn-warning:focus,
 .btn-warning:active,
 .btn-warning.active,
 .btn-warning.disabled,
-.btn-warning[disabled] ***REMOVED***
+.btn-warning[disabled] {
   color: #ffffff;
   background-color: #dd5600;
   *background-color: #c44c00;
-***REMOVED***
+}
 .btn-warning:active,
-.btn-warning.active ***REMOVED***
+.btn-warning.active {
   background-color: #aa4200 \9;
-***REMOVED***
-.btn-danger ***REMOVED***
+}
+.btn-danger {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #d41e24;
@@ -5496,22 +5496,22 @@ div.subnav-fixed ***REMOVED***
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-***REMOVED***
+}
 .btn-danger:hover,
 .btn-danger:focus,
 .btn-danger:active,
 .btn-danger.active,
 .btn-danger.disabled,
-.btn-danger[disabled] ***REMOVED***
+.btn-danger[disabled] {
   color: #ffffff;
   background-color: #c71c22;
   *background-color: #b1191e;
-***REMOVED***
+}
 .btn-danger:active,
-.btn-danger.active ***REMOVED***
+.btn-danger.active {
   background-color: #9a161a \9;
-***REMOVED***
-.btn-inverse ***REMOVED***
+}
+.btn-inverse {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #034482;
@@ -5528,57 +5528,57 @@ div.subnav-fixed ***REMOVED***
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-***REMOVED***
+}
 .btn-inverse:hover,
 .btn-inverse:focus,
 .btn-inverse:active,
 .btn-inverse.active,
 .btn-inverse.disabled,
-.btn-inverse[disabled] ***REMOVED***
+.btn-inverse[disabled] {
   color: #ffffff;
   background-color: #033c73;
   *background-color: #022f5a;
-***REMOVED***
+}
 .btn-inverse:active,
-.btn-inverse.active ***REMOVED***
+.btn-inverse.active {
   background-color: #022241 \9;
-***REMOVED***
-i[class^="icon-"] ***REMOVED***
+}
+i[class^="icon-"] {
   opacity: 0.8;
-***REMOVED***
-#main ***REMOVED***
+}
+#main {
   margin-top: 56px;
-***REMOVED***
-.navbar-fixed-top .navbar-inner ***REMOVED***
+}
+.navbar-fixed-top .navbar-inner {
   padding-left: 20px;
   padding-right: 20px;
-***REMOVED***
-.navbar .dropdown-menu ***REMOVED***
+}
+.navbar .dropdown-menu {
   padding: 20px;
   max-height: 300px;
   overflow: auto;
   width: 300px;
   background-color: #033c73;
-***REMOVED***
+}
 .navbar .dropdown-menu a,
-.navbar .dropdown-menu a:visited ***REMOVED***
+.navbar .dropdown-menu a:visited {
   color: #ffffff;
-***REMOVED***
-.navbar .dropdown-menu a:hover ***REMOVED***
-  color: #ffffff;
-  background-color: #022c55;
-***REMOVED***
-.navbar .dropdown-menu a:active ***REMOVED***
+}
+.navbar .dropdown-menu a:hover {
   color: #ffffff;
   background-color: #022c55;
-***REMOVED***
-.navbar .dropdown-menu a ***REMOVED***
+}
+.navbar .dropdown-menu a:active {
+  color: #ffffff;
+  background-color: #022c55;
+}
+.navbar .dropdown-menu a {
   padding-left: 0;
   padding-right: 5px;
   font-weight: 500;
   font-size: 115%;
-***REMOVED***
-#toc ***REMOVED***
+}
+#toc {
   position: fixed;
   top: 56px;
   width: 29%;
@@ -5589,85 +5589,85 @@ i[class^="icon-"] ***REMOVED***
   border-radius: 5px;
   border: 1px #2fa4e7 solid;
   padding: 5px;
-***REMOVED***
-#toc .toc-active ***REMOVED***
+}
+#toc .toc-active {
   background-color: #1684c2;
   color: #ffffff;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-***REMOVED***
+}
 #toc .toc-active a,
 #toc .toc-active a:hover,
 #toc .toc-active a:active,
-#toc .toc-active a:visited ***REMOVED***
+#toc .toc-active a:visited {
   background-color: #1684c2;
   color: #ffffff;
-***REMOVED***
-.toc-shim ***REMOVED***
+}
+.toc-shim {
   padding-top: 56px;
   margin-top: -56px;
   display: block;
-***REMOVED***
-.toc-h1 ***REMOVED***
+}
+.toc-h1 {
   margin-left: 2px;
   margin-right: 2px;
-***REMOVED***
-.toc-h2 ***REMOVED***
+}
+.toc-h2 {
   margin-left: 7px;
   margin-right: 7px;
-***REMOVED***
-.toc-h3 ***REMOVED***
+}
+.toc-h3 {
   margin-left: 14px;
   margin-right: 7px;
-***REMOVED***
-.toc-h4 ***REMOVED***
+}
+.toc-h4 {
   margin-left: 21px;
   margin-right: 7px;
-***REMOVED***
-.copyright ***REMOVED***
+}
+.copyright {
   font-size: 90%;
   text-align: center;
   color: #033c73;
   width: 100%;
   display: block;
-***REMOVED***
-.jsdoc-message ***REMOVED***
+}
+.jsdoc-message {
   font-size: 90%;
   text-align: center;
   color: #033c73;
   width: 100%;
   display: block;
-***REMOVED***
-.page-title ***REMOVED***
+}
+.page-title {
   font-size: 220%;
   color: #033c73;
   font-weight: 700;
   padding-top: 10px;
   display: block;
-***REMOVED***
-footer ***REMOVED***
+}
+footer {
   border-top: 1px solid #04498c;
   padding-top: 15px;
-***REMOVED***
-code ***REMOVED***
+}
+code {
   background-color: none;
   border: none;
   color: #dd5600;
-***REMOVED***
-.buffered-name ***REMOVED***
+}
+.buffered-name {
   padding-top: 56px;
   margin-top: -56px;
-***REMOVED***
-.member-collapsed ***REMOVED***
+}
+.member-collapsed {
   background-color: #033c73;
   color: #ffffff;
-***REMOVED***
-.member-open ***REMOVED***
+}
+.member-open {
   background-color: inherit;
   color: inherit;
-***REMOVED***
-.member ***REMOVED***
+}
+.member {
   -webkit-transition: background-color 0.5s linear;
   -moz-transition: background-color 0.5s linear;
   -o-transition: background-color 0.5s linear;
@@ -5680,8 +5680,8 @@ code ***REMOVED***
   -moz-border-radius: 5px;
   border-radius: 5px;
   padding: 10px;
-***REMOVED***
-.sunlight-highlighted ***REMOVED***
+}
+.sunlight-highlighted {
   margin: 0;
   line-height: auto;
   word-break: normal;
@@ -5689,11 +5689,11 @@ code ***REMOVED***
   white-space: pre;
   background-color: transparent;
   border: none;
-***REMOVED***
-.sunlight-line-number-margin ***REMOVED***
+}
+.sunlight-line-number-margin {
   border-radius: 0;
   border-width: 0 1px 0 0;
   font-size: 12px;
   line-height: 15px;
   padding: 12px 4px !important;
-***REMOVED***
+}

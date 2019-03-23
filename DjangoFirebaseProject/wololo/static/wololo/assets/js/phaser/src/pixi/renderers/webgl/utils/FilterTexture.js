@@ -5,13 +5,13 @@
 /**
 * @class FilterTexture
 * @constructor
-* @param gl ***REMOVED***WebGLContext***REMOVED*** the current WebGL drawing context
-* @param width ***REMOVED***Number***REMOVED*** the horizontal range of the filter
-* @param height ***REMOVED***Number***REMOVED*** the vertical range of the filter
-* @param scaleMode ***REMOVED***Number***REMOVED*** See ***REMOVED******REMOVED***#crossLink "PIXI/scaleModes:property"***REMOVED******REMOVED***PIXI.scaleModes***REMOVED******REMOVED***/crossLink***REMOVED******REMOVED*** for possible values
+* @param gl {WebGLContext} the current WebGL drawing context
+* @param width {Number} the horizontal range of the filter
+* @param height {Number} the vertical range of the filter
+* @param scaleMode {Number} See {{#crossLink "PIXI/scaleModes:property"}}PIXI.scaleModes{{/crossLink}} for possible values
 */
 PIXI.FilterTexture = function(gl, width, height, scaleMode)
-***REMOVED***
+{
     /**
      * @property gl
      * @type WebGLContext
@@ -54,7 +54,7 @@ PIXI.FilterTexture = function(gl, width, height, scaleMode)
     gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_STENCIL_ATTACHMENT, gl.RENDERBUFFER, this.renderBuffer);
   
     this.resize(width, height);
-***REMOVED***;
+};
 
 PIXI.FilterTexture.prototype.constructor = PIXI.FilterTexture;
 
@@ -64,22 +64,22 @@ PIXI.FilterTexture.prototype.constructor = PIXI.FilterTexture;
 * @method clear
 */
 PIXI.FilterTexture.prototype.clear = function()
-***REMOVED***
+{
     var gl = this.gl;
     
     gl.clearColor(0,0,0, 0);
     gl.clear(gl.COLOR_BUFFER_BIT);
-***REMOVED***;
+};
 
 /**
  * Resizes the texture to the specified width and height
  *
  * @method resize
- * @param width ***REMOVED***Number***REMOVED*** the new width of the texture
- * @param height ***REMOVED***Number***REMOVED*** the new height of the texture
+ * @param width {Number} the new width of the texture
+ * @param height {Number} the new height of the texture
  */
 PIXI.FilterTexture.prototype.resize = function(width, height)
-***REMOVED***
+{
     if(this.width === width && this.height === height) return;
 
     this.width = width;
@@ -92,7 +92,7 @@ PIXI.FilterTexture.prototype.resize = function(width, height)
     // update the stencil buffer width and height
     gl.bindRenderbuffer(gl.RENDERBUFFER, this.renderBuffer);
     gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_STENCIL, width , height );
-***REMOVED***;
+};
 
 /**
 * Destroys the filter texture.
@@ -100,11 +100,11 @@ PIXI.FilterTexture.prototype.resize = function(width, height)
 * @method destroy
 */
 PIXI.FilterTexture.prototype.destroy = function()
-***REMOVED***
+{
     var gl = this.gl;
     gl.deleteFramebuffer( this.frameBuffer );
     gl.deleteTexture( this.texture );
 
     this.frameBuffer = null;
     this.texture = null;
-***REMOVED***;
+};

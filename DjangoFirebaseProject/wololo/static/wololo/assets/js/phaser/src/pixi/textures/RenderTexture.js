@@ -26,14 +26,14 @@
  * @class RenderTexture
  * @extends Texture
  * @constructor
- * @param width ***REMOVED***Number***REMOVED*** The width of the render texture
- * @param height ***REMOVED***Number***REMOVED*** The height of the render texture
- * @param renderer ***REMOVED***CanvasRenderer|WebGLRenderer***REMOVED*** The renderer used for this RenderTexture
- * @param scaleMode ***REMOVED***Number***REMOVED*** See ***REMOVED******REMOVED***#crossLink "PIXI/scaleModes:property"***REMOVED******REMOVED***PIXI.scaleModes***REMOVED******REMOVED***/crossLink***REMOVED******REMOVED*** for possible values
- * @param resolution ***REMOVED***Number***REMOVED*** The resolution of the texture being generated
+ * @param width {Number} The width of the render texture
+ * @param height {Number} The height of the render texture
+ * @param renderer {CanvasRenderer|WebGLRenderer} The renderer used for this RenderTexture
+ * @param scaleMode {Number} See {{#crossLink "PIXI/scaleModes:property"}}PIXI.scaleModes{{/crossLink}} for possible values
+ * @param resolution {Number} The resolution of the texture being generated
  */
 PIXI.RenderTexture = function(width, height, renderer, scaleMode, resolution)
-***REMOVED***
+{
     /**
      * The with of the render texture
      *
@@ -105,7 +105,7 @@ PIXI.RenderTexture = function(width, height, renderer, scaleMode, resolution)
     this.renderer = renderer || PIXI.defaultRenderer;
 
     if (this.renderer.type === PIXI.WEBGL_RENDERER)
-    ***REMOVED***
+    {
         var gl = this.renderer.gl;
         this.baseTexture._dirty[gl.id] = false;
 
@@ -114,13 +114,13 @@ PIXI.RenderTexture = function(width, height, renderer, scaleMode, resolution)
 
         this.render = this.renderWebGL;
         this.projection = new PIXI.Point(this.width * 0.5, -this.height * 0.5);
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         this.render = this.renderCanvas;
         this.textureBuffer = new PIXI.CanvasBuffer(this.width * this.resolution, this.height * this.resolution);
         this.baseTexture.source = this.textureBuffer.canvas;
-    ***REMOVED***
+    }
 
     /**
      * @property valid
@@ -131,7 +131,7 @@ PIXI.RenderTexture = function(width, height, renderer, scaleMode, resolution)
     this.tempMatrix = new Phaser.Matrix();
 
     this._updateUvs();
-***REMOVED***;
+};
 
 PIXI.RenderTexture.prototype = Object.create(PIXI.Texture.prototype);
 PIXI.RenderTexture.prototype.constructor = PIXI.RenderTexture;
@@ -140,12 +140,12 @@ PIXI.RenderTexture.prototype.constructor = PIXI.RenderTexture;
  * Resizes the RenderTexture.
  *
  * @method resize
- * @param width ***REMOVED***Number***REMOVED*** The width to resize to.
- * @param height ***REMOVED***Number***REMOVED*** The height to resize to.
- * @param updateBase ***REMOVED***Boolean***REMOVED*** Should the baseTexture.width and height values be resized as well?
+ * @param width {Number} The width to resize to.
+ * @param height {Number} The height to resize to.
+ * @param updateBase {Boolean} Should the baseTexture.width and height values be resized as well?
  */
 PIXI.RenderTexture.prototype.resize = function(width, height, updateBase)
-***REMOVED***
+{
     if (width === this.width && height === this.height)return;
 
     this.valid = (width > 0 && height > 0);
@@ -156,21 +156,21 @@ PIXI.RenderTexture.prototype.resize = function(width, height, updateBase)
     this.frame.height = this.crop.height = height * this.resolution;
 
     if (updateBase)
-    ***REMOVED***
+    {
         this.baseTexture.width = this.width * this.resolution;
         this.baseTexture.height = this.height * this.resolution;
-    ***REMOVED***
+    }
 
     if (this.renderer.type === PIXI.WEBGL_RENDERER)
-    ***REMOVED***
+    {
         this.projection.x = this.width / 2;
         this.projection.y = -this.height / 2;
-    ***REMOVED***
+    }
 
     if(!this.valid)return;
 
     this.textureBuffer.resize(this.width, this.height);
-***REMOVED***;
+};
 
 /**
  * Clears the RenderTexture.
@@ -178,35 +178,35 @@ PIXI.RenderTexture.prototype.resize = function(width, height, updateBase)
  * @method clear
  */
 PIXI.RenderTexture.prototype.clear = function()
-***REMOVED***
+{
     if (!this.valid)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     if (this.renderer.type === PIXI.WEBGL_RENDERER)
-    ***REMOVED***
+    {
         this.renderer.gl.bindFramebuffer(this.renderer.gl.FRAMEBUFFER, this.textureBuffer.frameBuffer);
-    ***REMOVED***
+    }
 
     this.textureBuffer.clear();
-***REMOVED***;
+};
 
 /**
  * This function will draw the display object to the texture.
  *
  * @method renderWebGL
- * @param displayObject ***REMOVED***DisplayObject***REMOVED*** The display object to render this texture on
- * @param [matrix] ***REMOVED***Matrix***REMOVED*** Optional matrix to apply to the display object before rendering.
- * @param [clear] ***REMOVED***Boolean***REMOVED*** If true the texture will be cleared before the displayObject is drawn
+ * @param displayObject {DisplayObject} The display object to render this texture on
+ * @param [matrix] {Matrix} Optional matrix to apply to the display object before rendering.
+ * @param [clear] {Boolean} If true the texture will be cleared before the displayObject is drawn
  * @private
  */
 PIXI.RenderTexture.prototype.renderWebGL = function(displayObject, matrix, clear)
-***REMOVED***
+{
     if (!this.valid || displayObject.alpha === 0)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
    
     //  Let's create a nice matrix to apply to our display object.
     //  Frame buffers come in upside down so we need to flip the matrix.
@@ -215,17 +215,17 @@ PIXI.RenderTexture.prototype.renderWebGL = function(displayObject, matrix, clear
     wt.translate(0, this.projection.y * 2);
 
     if (matrix)
-    ***REMOVED***
+    {
         wt.append(matrix);
-    ***REMOVED***
+    }
 
     wt.scale(1, -1);
 
     //  Time to update all the children of the displayObject with the new matrix.
     for (var i = 0; i < displayObject.children.length; i++)
-    ***REMOVED***
+    {
         displayObject.children[i].updateTransform();
-    ***REMOVED***
+    }
     
     //  Time for the webGL fun stuff!
     var gl = this.renderer.gl;
@@ -235,9 +235,9 @@ PIXI.RenderTexture.prototype.renderWebGL = function(displayObject, matrix, clear
     gl.bindFramebuffer(gl.FRAMEBUFFER, this.textureBuffer.frameBuffer );
 
     if (clear)
-    ***REMOVED***
+    {
         this.textureBuffer.clear();
-    ***REMOVED***
+    }
 
     this.renderer.spriteBatch.dirty = true;
 
@@ -245,23 +245,23 @@ PIXI.RenderTexture.prototype.renderWebGL = function(displayObject, matrix, clear
 
     this.renderer.spriteBatch.dirty = true;
 
-***REMOVED***;
+};
 
 /**
  * This function will draw the display object to the texture.
  *
  * @method renderCanvas
- * @param displayObject ***REMOVED***DisplayObject***REMOVED*** The display object to render this texture on
- * @param [matrix] ***REMOVED***Matrix***REMOVED*** Optional matrix to apply to the display object before rendering.
- * @param [clear] ***REMOVED***Boolean***REMOVED*** If true the texture will be cleared before the displayObject is drawn
+ * @param displayObject {DisplayObject} The display object to render this texture on
+ * @param [matrix] {Matrix} Optional matrix to apply to the display object before rendering.
+ * @param [clear] {Boolean} If true the texture will be cleared before the displayObject is drawn
  * @private
  */
 PIXI.RenderTexture.prototype.renderCanvas = function(displayObject, matrix, clear)
-***REMOVED***
+{
     if (!this.valid || displayObject.alpha === 0)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     //  Let's create a nice matrix to apply to our display object.
     //  Frame buffers come in upside down so we need to flip the matrix.
@@ -269,20 +269,20 @@ PIXI.RenderTexture.prototype.renderCanvas = function(displayObject, matrix, clea
     wt.identity();
 
     if (matrix)
-    ***REMOVED***
+    {
         wt.append(matrix);
-    ***REMOVED***
+    }
 
     // Time to update all the children of the displayObject with the new matrix (what new matrix? there isn't one!)
     for (var i = 0; i < displayObject.children.length; i++)
-    ***REMOVED***
+    {
         displayObject.children[i].updateTransform();
-    ***REMOVED***
+    }
 
     if (clear)
-    ***REMOVED***
+    {
         this.textureBuffer.clear();
-    ***REMOVED***
+    }
 
     var realResolution = this.renderer.resolution;
 
@@ -291,42 +291,42 @@ PIXI.RenderTexture.prototype.renderCanvas = function(displayObject, matrix, clea
     this.renderer.renderDisplayObject(displayObject, this.textureBuffer.context, matrix);
 
     this.renderer.resolution = realResolution;
-***REMOVED***;
+};
 
 /**
  * Will return a HTML Image of the texture
  *
  * @method getImage
- * @return ***REMOVED***Image***REMOVED***
+ * @return {Image}
  */
 PIXI.RenderTexture.prototype.getImage = function()
-***REMOVED***
+{
     var image = new Image();
     image.src = this.getBase64();
     return image;
-***REMOVED***;
+};
 
 /**
  * Will return a base64 encoded string of this texture. It works by calling RenderTexture.getCanvas and then running toDataURL on that.
  *
  * @method getBase64
- * @return ***REMOVED***String***REMOVED*** A base64 encoded string of the texture.
+ * @return {String} A base64 encoded string of the texture.
  */
 PIXI.RenderTexture.prototype.getBase64 = function()
-***REMOVED***
+{
     return this.getCanvas().toDataURL();
-***REMOVED***;
+};
 
 /**
  * Creates a Canvas element, renders this RenderTexture to it and then returns it.
  *
  * @method getCanvas
- * @return ***REMOVED***HTMLCanvasElement***REMOVED*** A Canvas element with the texture rendered on.
+ * @return {HTMLCanvasElement} A Canvas element with the texture rendered on.
  */
 PIXI.RenderTexture.prototype.getCanvas = function()
-***REMOVED***
+{
     if (this.renderer.type === PIXI.WEBGL_RENDERER)
-    ***REMOVED***
+    {
         var gl =  this.renderer.gl;
         var width = this.textureBuffer.width;
         var height = this.textureBuffer.height;
@@ -344,9 +344,9 @@ PIXI.RenderTexture.prototype.getCanvas = function()
         tempCanvas.context.putImageData(canvasData, 0, 0);
 
         return tempCanvas.canvas;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         return this.textureBuffer.canvas;
-    ***REMOVED***
-***REMOVED***;
+    }
+};

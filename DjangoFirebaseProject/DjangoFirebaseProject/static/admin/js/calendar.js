@@ -4,10 +4,10 @@ calendar.js - Calendar functions by Adrian Holovaty
 depends on core.js for utility functions like removeChildren or quickElement
 */
 
-(function() ***REMOVED***
+(function() {
     'use strict';
     // CalendarNamespace -- Provides a collection of HTML calendar-related helper functions
-    var CalendarNamespace = ***REMOVED***
+    var CalendarNamespace = {
         monthsOfYear: [
             gettext('January'),
             gettext('February'),
@@ -32,26 +32,26 @@ depends on core.js for utility functions like removeChildren or quickElement
             pgettext('one letter Saturday', 'S')
         ],
         firstDayOfWeek: parseInt(get_format('FIRST_DAY_OF_WEEK')),
-        isLeapYear: function(year) ***REMOVED***
+        isLeapYear: function(year) {
             return (((year % 4) === 0) && ((year % 100) !== 0 ) || ((year % 400) === 0));
-        ***REMOVED***,
-        getDaysInMonth: function(month, year) ***REMOVED***
+        },
+        getDaysInMonth: function(month, year) {
             var days;
-            if (month === 1 || month === 3 || month === 5 || month === 7 || month === 8 || month === 10 || month === 12) ***REMOVED***
+            if (month === 1 || month === 3 || month === 5 || month === 7 || month === 8 || month === 10 || month === 12) {
                 days = 31;
-            ***REMOVED***
-            else if (month === 4 || month === 6 || month === 9 || month === 11) ***REMOVED***
+            }
+            else if (month === 4 || month === 6 || month === 9 || month === 11) {
                 days = 30;
-            ***REMOVED***
-            else if (month === 2 && CalendarNamespace.isLeapYear(year)) ***REMOVED***
+            }
+            else if (month === 2 && CalendarNamespace.isLeapYear(year)) {
                 days = 29;
-            ***REMOVED***
-            else ***REMOVED***
+            }
+            else {
                 days = 28;
-            ***REMOVED***
+            }
             return days;
-        ***REMOVED***,
-        draw: function(month, year, div_id, callback, selected) ***REMOVED*** // month = 1-12, year = 1-9999
+        },
+        draw: function(month, year, div_id, callback, selected) { // month = 1-12, year = 1-9999
             var today = new Date();
             var todayDay = today.getDate();
             var todayMonth = today.getMonth() + 1;
@@ -70,9 +70,9 @@ depends on core.js for utility functions like removeChildren or quickElement
             // The day variable above will be 1 instead of 2 in, say, US Pacific time
             // zone.
             var isSelectedMonth = false;
-            if (typeof selected !== 'undefined') ***REMOVED***
+            if (typeof selected !== 'undefined') {
                 isSelectedMonth = (selected.getUTCFullYear() === year && (selected.getUTCMonth() + 1) === month);
-            ***REMOVED***
+            }
 
             month = parseInt(month);
             year = parseInt(year);
@@ -84,9 +84,9 @@ depends on core.js for utility functions like removeChildren or quickElement
 
             // Draw days-of-week header
             var tableRow = quickElement('tr', tableBody);
-            for (var i = 0; i < 7; i++) ***REMOVED***
+            for (var i = 0; i < 7; i++) {
                 quickElement('th', tableRow, CalendarNamespace.daysOfWeek[(i + CalendarNamespace.firstDayOfWeek) % 7]);
-            ***REMOVED***
+            }
 
             var startingPos = new Date(year, month - 1, 1 - CalendarNamespace.firstDayOfWeek).getDay();
             var days = CalendarNamespace.getDaysInMonth(month, year);
@@ -95,57 +95,57 @@ depends on core.js for utility functions like removeChildren or quickElement
 
             // Draw blanks before first of month
             tableRow = quickElement('tr', tableBody);
-            for (i = 0; i < startingPos; i++) ***REMOVED***
+            for (i = 0; i < startingPos; i++) {
                 nonDayCell = quickElement('td', tableRow, ' ');
                 nonDayCell.className = "nonday";
-            ***REMOVED***
+            }
 
-            function calendarMonth(y, m) ***REMOVED***
-                function onClick(e) ***REMOVED***
+            function calendarMonth(y, m) {
+                function onClick(e) {
                     e.preventDefault();
                     callback(y, m, this.textContent);
-                ***REMOVED***
+                }
                 return onClick;
-            ***REMOVED***
+            }
 
             // Draw days of month
             var currentDay = 1;
-            for (i = startingPos; currentDay <= days; i++) ***REMOVED***
-                if (i % 7 === 0 && currentDay !== 1) ***REMOVED***
+            for (i = startingPos; currentDay <= days; i++) {
+                if (i % 7 === 0 && currentDay !== 1) {
                     tableRow = quickElement('tr', tableBody);
-                ***REMOVED***
-                if ((currentDay === todayDay) && (month === todayMonth) && (year === todayYear)) ***REMOVED***
+                }
+                if ((currentDay === todayDay) && (month === todayMonth) && (year === todayYear)) {
                     todayClass = 'today';
-                ***REMOVED*** else ***REMOVED***
+                } else {
                     todayClass = '';
-                ***REMOVED***
+                }
 
                 // use UTC function; see above for explanation.
-                if (isSelectedMonth && currentDay === selected.getUTCDate()) ***REMOVED***
-                    if (todayClass !== '') ***REMOVED***
+                if (isSelectedMonth && currentDay === selected.getUTCDate()) {
+                    if (todayClass !== '') {
                         todayClass += " ";
-                    ***REMOVED***
+                    }
                     todayClass += "selected";
-                ***REMOVED***
+                }
 
                 var cell = quickElement('td', tableRow, '', 'class', todayClass);
                 var link = quickElement('a', cell, currentDay, 'href', '#');
                 link.addEventListener('click', calendarMonth(year, month));
                 currentDay++;
-            ***REMOVED***
+            }
 
             // Draw blanks after end of month (optional, but makes for valid code)
-            while (tableRow.childNodes.length < 7) ***REMOVED***
+            while (tableRow.childNodes.length < 7) {
                 nonDayCell = quickElement('td', tableRow, ' ');
                 nonDayCell.className = "nonday";
-            ***REMOVED***
+            }
 
             calDiv.appendChild(calTable);
-        ***REMOVED***
-    ***REMOVED***;
+        }
+    };
 
     // Calendar -- A calendar instance
-    function Calendar(div_id, callback, selected) ***REMOVED***
+    function Calendar(div_id, callback, selected) {
         // div_id (string) is the ID of the element in which the calendar will
         //     be displayed
         // callback (string) is the name of a JavaScript function that will be
@@ -156,53 +156,53 @@ depends on core.js for utility functions like removeChildren or quickElement
         this.today = new Date();
         this.currentMonth = this.today.getMonth() + 1;
         this.currentYear = this.today.getFullYear();
-        if (typeof selected !== 'undefined') ***REMOVED***
+        if (typeof selected !== 'undefined') {
             this.selected = selected;
-        ***REMOVED***
-    ***REMOVED***
-    Calendar.prototype = ***REMOVED***
-        drawCurrent: function() ***REMOVED***
+        }
+    }
+    Calendar.prototype = {
+        drawCurrent: function() {
             CalendarNamespace.draw(this.currentMonth, this.currentYear, this.div_id, this.callback, this.selected);
-        ***REMOVED***,
-        drawDate: function(month, year, selected) ***REMOVED***
+        },
+        drawDate: function(month, year, selected) {
             this.currentMonth = month;
             this.currentYear = year;
 
-            if(selected) ***REMOVED***
+            if(selected) {
                 this.selected = selected;
-            ***REMOVED***
+            }
 
             this.drawCurrent();
-        ***REMOVED***,
-        drawPreviousMonth: function() ***REMOVED***
-            if (this.currentMonth === 1) ***REMOVED***
+        },
+        drawPreviousMonth: function() {
+            if (this.currentMonth === 1) {
                 this.currentMonth = 12;
                 this.currentYear--;
-            ***REMOVED***
-            else ***REMOVED***
+            }
+            else {
                 this.currentMonth--;
-            ***REMOVED***
+            }
             this.drawCurrent();
-        ***REMOVED***,
-        drawNextMonth: function() ***REMOVED***
-            if (this.currentMonth === 12) ***REMOVED***
+        },
+        drawNextMonth: function() {
+            if (this.currentMonth === 12) {
                 this.currentMonth = 1;
                 this.currentYear++;
-            ***REMOVED***
-            else ***REMOVED***
+            }
+            else {
                 this.currentMonth++;
-            ***REMOVED***
+            }
             this.drawCurrent();
-        ***REMOVED***,
-        drawPreviousYear: function() ***REMOVED***
+        },
+        drawPreviousYear: function() {
             this.currentYear--;
             this.drawCurrent();
-        ***REMOVED***,
-        drawNextYear: function() ***REMOVED***
+        },
+        drawNextYear: function() {
             this.currentYear++;
             this.drawCurrent();
-        ***REMOVED***
-    ***REMOVED***;
+        }
+    };
     window.Calendar = Calendar;
     window.CalendarNamespace = CalendarNamespace;
-***REMOVED***)();
+})();

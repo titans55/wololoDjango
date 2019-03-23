@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -9,7 +9,7 @@
 *
 * @class
 */
-Phaser.Component.LifeSpan = function () ***REMOVED******REMOVED***;
+Phaser.Component.LifeSpan = function () {};
 
 /**
  * The LifeSpan component preUpdate handler.
@@ -17,24 +17,24 @@ Phaser.Component.LifeSpan = function () ***REMOVED******REMOVED***;
  *
  * @method
  */
-Phaser.Component.LifeSpan.preUpdate = function () ***REMOVED***
+Phaser.Component.LifeSpan.preUpdate = function () {
 
     if (this.lifespan > 0)
-    ***REMOVED***
+    {
         this.lifespan -= this.game.time.physicsElapsedMS;
 
         if (this.lifespan <= 0)
-        ***REMOVED***
+        {
             this.kill();
             return false;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return true;
 
-***REMOVED***;
+};
 
-Phaser.Component.LifeSpan.prototype = ***REMOVED***
+Phaser.Component.LifeSpan.prototype = {
 
     /**
     * A useful flag to control if the Game Object is alive or dead.
@@ -44,7 +44,7 @@ Phaser.Component.LifeSpan.prototype = ***REMOVED***
     *
     * This property is mostly just provided to be used by your game - it doesn't effect rendering or logic updates.
     * However you can use `Group.getFirstAlive` in conjunction with this property for fast object pooling and recycling.
-    * @property ***REMOVED***boolean***REMOVED*** alive
+    * @property {boolean} alive
     * @default
     */
     alive: true,
@@ -59,7 +59,7 @@ Phaser.Component.LifeSpan.prototype = ***REMOVED***
     *
     * Very handy for particles, bullets, collectibles, or any other short-lived entity.
     *
-    * @property ***REMOVED***number***REMOVED*** lifespan
+    * @property {number} lifespan
     * @default
     */
     lifespan: 0,
@@ -72,30 +72,30 @@ Phaser.Component.LifeSpan.prototype = ***REMOVED***
     * It will dispatch the `onRevived` event. Listen to `events.onRevived` for the signal.
     *
     * @method
-    * @param ***REMOVED***number***REMOVED*** [health=100] - The health to give the Game Object. Only set if the GameObject has the Health component.
-    * @return ***REMOVED***PIXI.DisplayObject***REMOVED*** This instance.
+    * @param {number} [health=100] - The health to give the Game Object. Only set if the GameObject has the Health component.
+    * @return {PIXI.DisplayObject} This instance.
     */
-    revive: function (health) ***REMOVED***
+    revive: function (health) {
 
-        if (health === undefined) ***REMOVED*** health = 100; ***REMOVED***
+        if (health === undefined) { health = 100; }
 
         this.alive = true;
         this.exists = true;
         this.visible = true;
 
         if (typeof this.setHealth === 'function')
-        ***REMOVED***
+        {
             this.setHealth(health);
-        ***REMOVED***
+        }
 
         if (this.events)
-        ***REMOVED***
+        {
             this.events.onRevived$dispatch(this);
-        ***REMOVED***
+        }
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Kills a Game Object. A killed Game Object has its `alive`, `exists` and `visible` properties all set to false.
@@ -108,21 +108,21 @@ Phaser.Component.LifeSpan.prototype = ***REMOVED***
     * If you don't need this Game Object any more you should call `destroy` instead.
     *
     * @method
-    * @return ***REMOVED***PIXI.DisplayObject***REMOVED*** This instance.
+    * @return {PIXI.DisplayObject} This instance.
     */
-    kill: function () ***REMOVED***
+    kill: function () {
 
         this.alive = false;
         this.exists = false;
         this.visible = false;
 
         if (this.events)
-        ***REMOVED***
+        {
             this.events.onKilled$dispatch(this);
-        ***REMOVED***
+        }
 
         return this;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};

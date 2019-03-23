@@ -113,9 +113,9 @@ var popper = document.querySelector('.my-popper');
 var anotherPopper = new Popper(
     reference,
     popper,
-    ***REMOVED***
+    {
         // popper options here
-    ***REMOVED***
+    }
 );
 ```
 
@@ -127,16 +127,16 @@ the popper has been initialized. The `onUpdate` one is called on any subsequent 
 ```js
 const reference = document.querySelector('.my-button');
 const popper = document.querySelector('.my-popper');
-new Popper(reference, popper, ***REMOVED***
-    onCreate: (data) => ***REMOVED***
+new Popper(reference, popper, {
+    onCreate: (data) => {
         // data is an object containing all the informations computed
         // by Popper.js and used to style the popper and its arrow
         // The complete description is available in Popper.js documentation
-    ***REMOVED***,
-    onUpdate: (data) => ***REMOVED***
+    },
+    onUpdate: (data) => {
         // same as `onCreate` but called on subsequent updates
-    ***REMOVED***
-***REMOVED***);
+    }
+});
 ```
 
 ### Writing your own modifiers
@@ -162,22 +162,22 @@ Alternatively, you may even override your own `applyStyles` with your custom one
 integrate Popper.js by yourself!
 
 ```js
-function applyReactStyle(data) ***REMOVED***
+function applyReactStyle(data) {
     // export data in your framework and use its content to apply the style to your popper
-***REMOVED***;
+};
 
 const reference = document.querySelector('.my-button');
 const popper = document.querySelector('.my-popper');
-new Popper(reference, popper, ***REMOVED***
-    modifiers: ***REMOVED***
-        applyStyle: ***REMOVED*** enabled: false ***REMOVED***,
-        applyReactStyle: ***REMOVED***
+new Popper(reference, popper, {
+    modifiers: {
+        applyStyle: { enabled: false },
+        applyReactStyle: {
             enabled: true,
             fn: applyReactStyle,
             order: 800,
-        ***REMOVED***,
-    ***REMOVED***,
-***REMOVED***);
+        },
+    },
+});
 
 ```
 

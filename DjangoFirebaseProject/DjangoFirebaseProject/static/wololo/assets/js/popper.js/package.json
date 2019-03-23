@@ -1,4 +1,4 @@
-***REMOVED***
+{
   "_args": [
     [
       "popper.js@1.14.4",
@@ -10,8 +10,8 @@
   "_inBundle": false,
   "_integrity": "sha1-juwdj/AqWjoVLdQ0FKFce3n9abY=",
   "_location": "/popper.js",
-  "_phantomChildren": ***REMOVED******REMOVED***,
-  "_requested": ***REMOVED***
+  "_phantomChildren": {},
+  "_requested": {
     "type": "version",
     "registry": true,
     "raw": "popper.js@1.14.4",
@@ -20,28 +20,28 @@
     "rawSpec": "1.14.4",
     "saveSpec": null,
     "fetchSpec": "1.14.4"
-  ***REMOVED***,
+  },
   "_requiredBy": [
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/popper.js/-/popper.js-1.14.4.tgz",
   "_spec": "1.14.4",
   "_where": "C:\\Users\\ASUS\\Desktop\\browser game\\project-wololo",
-  "author": ***REMOVED***
+  "author": {
     "name": "Federico Zivolo",
     "email": "federico.zivolo@gmail.com"
-  ***REMOVED***,
-  "bugs": ***REMOVED***
+  },
+  "bugs": {
     "url": "https://github.com/FezVrasta/popper.js/issues"
-  ***REMOVED***,
+  },
   "contributors": [
-    ***REMOVED***
+    {
       "name": "Contributors",
       "url": "https://github.com/FezVrasta/popper.js/graphs/contributors"
-    ***REMOVED***
+    }
   ],
   "description": "A kickass library to manage your poppers",
-  "devDependencies": ***REMOVED***
+  "devDependencies": {
     "@popperjs/bundle": "^1.0.2",
     "@popperjs/eslint-config-popper": "^1.0.0",
     "@popperjs/test": "^1.0.0",
@@ -49,7 +49,7 @@
     "eslint": "^4.1.1",
     "nuget-publish": "^1.0.3",
     "typescript": "^2.7.1"
-  ***REMOVED***,
+  },
   "homepage": "https://popper.js.org",
   "keywords": [
     "popperjs",
@@ -64,14 +64,14 @@
   "main": "dist/umd/popper.js",
   "module": "dist/esm/popper.js",
   "name": "popper.js",
-  "repository": ***REMOVED***
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/FezVrasta/popper.js.git"
-  ***REMOVED***,
-  "resolutions": ***REMOVED***
+  },
+  "resolutions": {
     "micromatch": "^3.0.3"
-  ***REMOVED***,
-  "scripts": ***REMOVED***
+  },
+  "scripts": {
     "build": "node bundle.js && cp index.js.flow dist/esm/poppper.js.flow",
     "coverage": "COVERAGE=true yarn test",
     "lint": "eslint .",
@@ -82,7 +82,7 @@
     "pretest": "yarn lint",
     "test": "popper-karma",
     "test:dev": "BROWSERS=Chrome NODE_ENV=development yarn test"
-  ***REMOVED***,
+  },
   "types": "index.d.ts",
   "version": "1.14.4"
-***REMOVED***
+}

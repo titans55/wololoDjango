@@ -12,7 +12,7 @@
 
 var path = require('path');
 
-function looksLikeItMightContain (haystack, needle) ***REMOVED***
+function looksLikeItMightContain (haystack, needle) {
 
     haystack = haystack || '';
     needle = needle || '';
@@ -22,10 +22,10 @@ function looksLikeItMightContain (haystack, needle) ***REMOVED***
 
     return haystack.indexOf(needle) > -1;
 
-***REMOVED***
+}
 
-exports.handlers = ***REMOVED******REMOVED***;
-exports.handlers.newDoclet = function (e) ***REMOVED***
+exports.handlers = {};
+exports.handlers.newDoclet = function (e) {
 
     var doclet = e.doclet;
     var props = e.doclet.properties;
@@ -33,28 +33,28 @@ exports.handlers.newDoclet = function (e) ***REMOVED***
     if (doclet.kind === 'member' &&
         props && props.length === 1 &&
         props[0].name === doclet.name)
-    ***REMOVED***
+    {
         // "Duplicate"
         var prop = props[0];
 
         if (!doclet.type)
-        ***REMOVED***
+        {
             doclet.type = prop.type;
-        ***REMOVED***
+        }
 
         if (!doclet.description)
-        ***REMOVED***
+        {
             doclet.description = prop.description;
-        ***REMOVED***
+        }
         else if (prop.description &&
             !looksLikeItMightContain(doclet.description, prop.description))
-        ***REMOVED***
+        {
             // Tack it on..
             doclet.description += " " + prop.description;
-        ***REMOVED***
+        }
 
         // And no more prop
         e.doclet.properties = undefined;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};

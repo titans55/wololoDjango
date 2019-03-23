@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -11,16 +11,16 @@
 *
 * @class
 */
-Phaser.Component.Health = function () ***REMOVED******REMOVED***;
+Phaser.Component.Health = function () {};
 
-Phaser.Component.Health.prototype = ***REMOVED***
+Phaser.Component.Health.prototype = {
 
     /**
     * The Game Objects health value. This is a handy property for setting and manipulating health on a Game Object.
     * 
     * It can be used in combination with the `damage` method or modified directly.
     * 
-    * @property ***REMOVED***number***REMOVED*** health
+    * @property {number} health
     * @default
     */
     health: 1,
@@ -29,7 +29,7 @@ Phaser.Component.Health.prototype = ***REMOVED***
     * The Game Objects maximum health value. This works in combination with the `heal` method to ensure
     * the health value never exceeds the maximum.
     * 
-    * @property ***REMOVED***number***REMOVED*** maxHealth
+    * @property {number} maxHealth
     * @default
     */
     maxHealth: 100,
@@ -40,67 +40,67 @@ Phaser.Component.Health.prototype = ***REMOVED***
     * If health is taken below or is equal to zero then the `kill` method is called.
     *
     * @member
-    * @param ***REMOVED***number***REMOVED*** amount - The amount to subtract from the current `health` value.
-    * @return ***REMOVED***Phaser.Sprite***REMOVED*** This instance.
+    * @param {number} amount - The amount to subtract from the current `health` value.
+    * @return {Phaser.Sprite} This instance.
     */
-    damage: function (amount) ***REMOVED***
+    damage: function (amount) {
 
         if (this.alive)
-        ***REMOVED***
+        {
             this.health -= amount;
 
             if (this.health <= 0)
-            ***REMOVED***
+            {
                 this.kill();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the health property of the Game Object to the given amount.
     * Will never exceed the `maxHealth` value.
     *
     * @member
-    * @param ***REMOVED***number***REMOVED*** amount - The amount to set the `health` value to. The total will never exceed `maxHealth`.
-    * @return ***REMOVED***Phaser.Sprite***REMOVED*** This instance.
+    * @param {number} amount - The amount to set the `health` value to. The total will never exceed `maxHealth`.
+    * @return {Phaser.Sprite} This instance.
     */
-    setHealth: function (amount) ***REMOVED***
+    setHealth: function (amount) {
 
         this.health = amount;
 
         if (this.health > this.maxHealth)
-        ***REMOVED***
+        {
             this.health = this.maxHealth;
-        ***REMOVED***
+        }
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Heal the Game Object. This adds the given amount of health to the `health` property.
     *
     * @member
-    * @param ***REMOVED***number***REMOVED*** amount - The amount to add to the current `health` value. The total will never exceed `maxHealth`.
-    * @return ***REMOVED***Phaser.Sprite***REMOVED*** This instance.
+    * @param {number} amount - The amount to add to the current `health` value. The total will never exceed `maxHealth`.
+    * @return {Phaser.Sprite} This instance.
     */
-    heal: function (amount) ***REMOVED***
+    heal: function (amount) {
 
         if (this.alive)
-        ***REMOVED***
+        {
             this.health += amount;
 
             if (this.health > this.maxHealth)
-            ***REMOVED***
+            {
                 this.health = this.maxHealth;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return this;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};

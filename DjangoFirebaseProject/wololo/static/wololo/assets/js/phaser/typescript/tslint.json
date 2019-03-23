@@ -1,5 +1,5 @@
-***REMOVED***
-    "rules": ***REMOVED***
+{
+    "rules": {
         "class-name": true,
         "comment-format": [
             true,
@@ -33,13 +33,13 @@
         ],
         "typedef-whitespace": [
             true,
-            ***REMOVED***
+            {
                 "call-signature": "nospace",
                 "index-signature": "nospace",
                 "parameter": "nospace",
                 "property-declaration": "nospace",
                 "variable-declaration": "nospace"
-            ***REMOVED***
+            }
         ],
         "variable-name": [
             true,
@@ -53,5 +53,5 @@
             "check-separator",
             "check-type"
         ]
-    ***REMOVED***
-***REMOVED***
+    }
+}

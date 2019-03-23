@@ -7,13 +7,13 @@
  * @class Strip
  * @extends DisplayObjectContainer
  * @constructor
- * @param texture ***REMOVED***Texture***REMOVED*** The texture to use
- * @param width ***REMOVED***Number***REMOVED*** the width
- * @param height ***REMOVED***Number***REMOVED*** the height
+ * @param texture {Texture} The texture to use
+ * @param width {Number} the width
+ * @param height {Number} the height
  *
  */
 PIXI.Strip = function(texture)
-***REMOVED***
+{
     PIXI.DisplayObjectContainer.call( this );
 
 
@@ -67,14 +67,14 @@ PIXI.Strip = function(texture)
 
     this.drawMode = PIXI.Strip.DrawModes.TRIANGLE_STRIP;
 
-***REMOVED***;
+};
 
 // constructor
 PIXI.Strip.prototype = Object.create(PIXI.DisplayObjectContainer.prototype);
 PIXI.Strip.prototype.constructor = PIXI.Strip;
 
 PIXI.Strip.prototype._renderWebGL = function(renderSession)
-***REMOVED***
+{
     // if the sprite is not visible or the alpha is 0 then no need to render this element
     if(!this.visible || this.alpha <= 0)return;
     // render triangle strip..
@@ -93,10 +93,10 @@ PIXI.Strip.prototype._renderWebGL = function(renderSession)
     renderSession.spriteBatch.start();
 
     //TODO check culling
-***REMOVED***;
+};
 
 PIXI.Strip.prototype._initWebGL = function(renderSession)
-***REMOVED***
+{
     // build the strip!
     var gl = renderSession.gl;
 
@@ -116,10 +116,10 @@ PIXI.Strip.prototype._initWebGL = function(renderSession)
 
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, this.indices, gl.STATIC_DRAW);
-***REMOVED***;
+};
 
 PIXI.Strip.prototype._renderStrip = function(renderSession)
-***REMOVED***
+{
     var gl = renderSession.gl;
     var projection = renderSession.projection,
         offset = renderSession.offset,
@@ -139,7 +139,7 @@ PIXI.Strip.prototype._renderStrip = function(renderSession)
     gl.uniform1f(shader.alpha, this.worldAlpha);
 
     if(!this.dirty)
-    ***REMOVED***
+    {
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this._vertexBuffer);
         gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.vertices);
@@ -153,22 +153,22 @@ PIXI.Strip.prototype._renderStrip = function(renderSession)
 
         // check if a texture is dirty..
         if(this.texture.baseTexture._dirty[gl.id])
-        ***REMOVED***
+        {
             renderSession.renderer.updateTexture(this.texture.baseTexture);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             // bind the current texture
             gl.bindTexture(gl.TEXTURE_2D, this.texture.baseTexture._glTextures[gl.id]);
-        ***REMOVED***
+        }
 
         // dont need to upload!
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
 
 
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
 
         this.dirty = false;
         gl.bindBuffer(gl.ARRAY_BUFFER, this._vertexBuffer);
@@ -184,31 +184,31 @@ PIXI.Strip.prototype._renderStrip = function(renderSession)
 
         // check if a texture is dirty..
         if(this.texture.baseTexture._dirty[gl.id])
-        ***REMOVED***
+        {
             renderSession.renderer.updateTexture(this.texture.baseTexture);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             gl.bindTexture(gl.TEXTURE_2D, this.texture.baseTexture._glTextures[gl.id]);
-        ***REMOVED***
+        }
 
         // dont need to upload!
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
         gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, this.indices, gl.STATIC_DRAW);
 
-    ***REMOVED***
+    }
     //console.log(gl.TRIANGLE_STRIP)
     //
     //
     gl.drawElements(drawMode, this.indices.length, gl.UNSIGNED_SHORT, 0);
 
 
-***REMOVED***;
+};
 
 
 
 PIXI.Strip.prototype._renderCanvas = function(renderSession)
-***REMOVED***
+{
     var context = renderSession.context;
 
     var transform = this.worldTransform;
@@ -217,26 +217,26 @@ PIXI.Strip.prototype._renderCanvas = function(renderSession)
     var ty = (transform.ty * renderSession.resolution) + renderSession.shakeY;
 
     if (renderSession.roundPixels)
-    ***REMOVED***
+    {
         context.setTransform(transform.a, transform.b, transform.c, transform.d, tx | 0, ty | 0);
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         context.setTransform(transform.a, transform.b, transform.c, transform.d, tx, ty);
-    ***REMOVED***
+    }
 
     if (this.drawMode === PIXI.Strip.DrawModes.TRIANGLE_STRIP)
-    ***REMOVED***
+    {
         this._renderCanvasTriangleStrip(context);
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         this._renderCanvasTriangles(context);
-    ***REMOVED***
-***REMOVED***;
+    }
+};
 
 PIXI.Strip.prototype._renderCanvasTriangleStrip = function(context)
-***REMOVED***
+{
     // draw triangles!!
     var vertices = this.vertices;
     var uvs = this.uvs;
@@ -244,15 +244,15 @@ PIXI.Strip.prototype._renderCanvasTriangleStrip = function(context)
     var length = vertices.length / 2;
     this.count++;
 
-    for (var i = 0; i < length - 2; i++) ***REMOVED***
+    for (var i = 0; i < length - 2; i++) {
         // draw some triangles!
         var index = i * 2;
         this._renderCanvasDrawTriangle(context, vertices, uvs, index, (index + 2), (index + 4));
-    ***REMOVED***
-***REMOVED***;
+    }
+};
 
 PIXI.Strip.prototype._renderCanvasTriangles = function(context)
-***REMOVED***
+{
     // draw triangles!!
     var vertices = this.vertices;
     var uvs = this.uvs;
@@ -261,15 +261,15 @@ PIXI.Strip.prototype._renderCanvasTriangles = function(context)
     var length = indices.length;
     this.count++;
 
-    for (var i = 0; i < length; i += 3) ***REMOVED***
+    for (var i = 0; i < length; i += 3) {
         // draw some triangles!
         var index0 = indices[i] * 2, index1 = indices[i + 1] * 2, index2 = indices[i + 2] * 2;
         this._renderCanvasDrawTriangle(context, vertices, uvs, index0, index1, index2);
-    ***REMOVED***
-***REMOVED***;
+    }
+};
 
 PIXI.Strip.prototype._renderCanvasDrawTriangle = function(context, vertices, uvs, index0, index1, index2)
-***REMOVED***
+{
     var textureSource = this.texture.baseTexture.source;
     var textureWidth = this.texture.width;
     var textureHeight = this.texture.height;
@@ -280,7 +280,7 @@ PIXI.Strip.prototype._renderCanvasDrawTriangle = function(context, vertices, uvs
     var u0 = uvs[index0] * textureWidth, u1 = uvs[index1] * textureWidth, u2 = uvs[index2] * textureWidth;
     var v0 = uvs[index0 + 1] * textureHeight, v1 = uvs[index1 + 1] * textureHeight, v2 = uvs[index2 + 1] * textureHeight;
 
-    if (this.canvasPadding > 0) ***REMOVED***
+    if (this.canvasPadding > 0) {
         var paddingX = this.canvasPadding / this.worldTransform.a;
         var paddingY = this.canvasPadding / this.worldTransform.d;
         var centerX = (x0 + x1 + x2) / 3;
@@ -308,7 +308,7 @@ PIXI.Strip.prototype._renderCanvasDrawTriangle = function(context, vertices, uvs
         dist = Math.sqrt(normX * normX + normY * normY);
         x2 = centerX + (normX / dist) * (dist + paddingX);
         y2 = centerY + (normY / dist) * (dist + paddingY);
-    ***REMOVED***
+    }
 
     context.save();
     context.beginPath();
@@ -337,7 +337,7 @@ PIXI.Strip.prototype._renderCanvasDrawTriangle = function(context, vertices, uvs
 
     context.drawImage(textureSource, 0, 0);
     context.restore();
-***REMOVED***;
+};
 
 
 
@@ -345,11 +345,11 @@ PIXI.Strip.prototype._renderCanvasDrawTriangle = function(context, vertices, uvs
  * Renders a flat strip
  *
  * @method renderStripFlat
- * @param strip ***REMOVED***Strip***REMOVED*** The Strip to render
+ * @param strip {Strip} The Strip to render
  * @private
  */
 PIXI.Strip.prototype.renderStripFlat = function(strip)
-***REMOVED***
+{
     var context = this.context;
     var vertices = strip.vertices;
 
@@ -358,7 +358,7 @@ PIXI.Strip.prototype.renderStripFlat = function(strip)
 
     context.beginPath();
     for (var i=1; i < length-2; i++)
-    ***REMOVED***
+    {
         // draw some triangles!
         var index = i*2;
 
@@ -368,16 +368,16 @@ PIXI.Strip.prototype.renderStripFlat = function(strip)
         context.moveTo(x0, y0);
         context.lineTo(x1, y1);
         context.lineTo(x2, y2);
-    ***REMOVED***
+    }
 
     context.fillStyle = '#FF0000';
     context.fill();
     context.closePath();
-***REMOVED***;
+};
 
 /*
 PIXI.Strip.prototype.setTexture = function(texture)
-***REMOVED***
+{
     //TODO SET THE TEXTURES
     //TODO VISIBILITY
 
@@ -386,7 +386,7 @@ PIXI.Strip.prototype.setTexture = function(texture)
     this.width   = texture.frame.width;
     this.height  = texture.frame.height;
     this.updateFrame = true;
-***REMOVED***;
+};
 */
 
 /**
@@ -398,19 +398,19 @@ PIXI.Strip.prototype.setTexture = function(texture)
  */
 
 PIXI.Strip.prototype.onTextureUpdate = function()
-***REMOVED***
+{
     this.updateFrame = true;
-***REMOVED***;
+};
 
 /**
  * Returns the bounds of the mesh as a rectangle. The bounds calculation takes the worldTransform into account.
  *
  * @method getBounds
- * @param matrix ***REMOVED***Matrix***REMOVED*** the transformation matrix of the sprite
- * @return ***REMOVED***Rectangle***REMOVED*** the framing rectangle
+ * @param matrix {Matrix} the transformation matrix of the sprite
+ * @return {Rectangle} the framing rectangle
  */
 PIXI.Strip.prototype.getBounds = function(matrix)
-***REMOVED***
+{
     var worldTransform = matrix || this.worldTransform;
 
     var a = worldTransform.a;
@@ -428,7 +428,7 @@ PIXI.Strip.prototype.getBounds = function(matrix)
 
     var vertices = this.vertices;
     for (var i = 0, n = vertices.length; i < n; i += 2)
-    ***REMOVED***
+    {
         var rawX = vertices[i], rawY = vertices[i + 1];
         var x = (a * rawX) + (c * rawY) + tx;
         var y = (d * rawY) + (b * rawX) + ty;
@@ -438,12 +438,12 @@ PIXI.Strip.prototype.getBounds = function(matrix)
 
         maxX = x > maxX ? x : maxX;
         maxY = y > maxY ? y : maxY;
-    ***REMOVED***
+    }
 
     if (minX === -Infinity || maxY === Infinity)
-    ***REMOVED***
+    {
         return PIXI.EmptyRectangle;
-    ***REMOVED***
+    }
 
     var bounds = this._bounds;
 
@@ -457,19 +457,19 @@ PIXI.Strip.prototype.getBounds = function(matrix)
     this._currentBounds = bounds;
 
     return bounds;
-***REMOVED***;
+};
 
 /**
  * Different drawing buffer modes supported
  *
  * @property
- * @type ***REMOVED******REMOVED***TRIANGLE_STRIP: number, TRIANGLES: number***REMOVED******REMOVED***
+ * @type {{TRIANGLE_STRIP: number, TRIANGLES: number}}
  * @static
  */
-PIXI.Strip.DrawModes = ***REMOVED***
+PIXI.Strip.DrawModes = {
     TRIANGLE_STRIP: 0,
     TRIANGLES: 1
-***REMOVED***;
+};
 
 /**
  * @author Mat Groves http://matgroves.com/ @Doormat23
@@ -481,12 +481,12 @@ PIXI.Strip.DrawModes = ***REMOVED***
  * @class Rope
  * @constructor
  * @extends Strip
- * @param ***REMOVED***Texture***REMOVED*** texture - The texture to use on the rope.
- * @param ***REMOVED***Array***REMOVED*** points - An array of ***REMOVED***PIXI.Point***REMOVED***.
+ * @param {Texture} texture - The texture to use on the rope.
+ * @param {Array} points - An array of {PIXI.Point}.
  *
  */
 PIXI.Rope = function(texture, points)
-***REMOVED***
+{
     PIXI.Strip.call( this, texture );
     this.points = points;
 
@@ -497,7 +497,7 @@ PIXI.Rope = function(texture, points)
 
 
     this.refresh();
-***REMOVED***;
+};
 
 
 // constructor
@@ -510,7 +510,7 @@ PIXI.Rope.prototype.constructor = PIXI.Rope;
  * @method refresh
  */
 PIXI.Rope.prototype.refresh = function()
-***REMOVED***
+{
     var points = this.points;
     if(points.length < 1) return;
 
@@ -537,28 +537,28 @@ PIXI.Rope.prototype.refresh = function()
         point, index, amount;
 
     for (var i = 1; i < total; i++)
-    ***REMOVED***
+    {
         point = points[i];
         index = i * 4;
         // time to do some smart drawing!
         amount = i / (total-1);
 
         if(i%2)
-        ***REMOVED***
+        {
             uvs[index] = amount;
             uvs[index+1] = 0;
 
             uvs[index+2] = amount;
             uvs[index+3] = 1;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             uvs[index] = amount;
             uvs[index+1] = 0;
 
             uvs[index+2] = amount;
             uvs[index+3] = 1;
-        ***REMOVED***
+        }
 
         index = i * 2;
         colors[index] = 1;
@@ -569,8 +569,8 @@ PIXI.Rope.prototype.refresh = function()
         indices[index + 1] = index + 1;
 
         lastPoint = point;
-    ***REMOVED***
-***REMOVED***;
+    }
+};
 
 /*
  * Updates the object transform for rendering
@@ -579,14 +579,14 @@ PIXI.Rope.prototype.refresh = function()
  * @private
  */
 PIXI.Rope.prototype.updateTransform = function()
-***REMOVED***
+{
 
     var points = this.points;
     if(points.length < 1)return;
 
     var lastPoint = points[0];
     var nextPoint;
-    var perp = ***REMOVED***x:0, y:0***REMOVED***;
+    var perp = {x:0, y:0};
 
     this.count-=0.2;
 
@@ -595,18 +595,18 @@ PIXI.Rope.prototype.updateTransform = function()
         point, index, ratio, perpLength, num;
 
     for (var i = 0; i < total; i++)
-    ***REMOVED***
+    {
         point = points[i];
         index = i * 4;
 
         if(i < points.length-1)
-        ***REMOVED***
+        {
             nextPoint = points[i+1];
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             nextPoint = point;
-        ***REMOVED***
+        }
 
         perp.y = -(nextPoint.x - lastPoint.x);
         perp.x = nextPoint.y - lastPoint.y;
@@ -629,19 +629,19 @@ PIXI.Rope.prototype.updateTransform = function()
         vertices[index+3] = point.y - perp.y;
 
         lastPoint = point;
-    ***REMOVED***
+    }
 
     PIXI.DisplayObjectContainer.prototype.updateTransform.call( this );
-***REMOVED***;
+};
 /*
  * Sets the texture that the Rope will use
  *
  * @method setTexture
- * @param texture ***REMOVED***Texture***REMOVED*** the texture that will be used
+ * @param texture {Texture} the texture that will be used
  */
 PIXI.Rope.prototype.setTexture = function(texture)
-***REMOVED***
+{
     // stop current texture
     this.texture = texture;
     //this.updateFrame = true;
-***REMOVED***;
+};

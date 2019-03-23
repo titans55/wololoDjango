@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -9,9 +9,9 @@
 *
 * @class
 */
-Phaser.Component.Angle = function () ***REMOVED******REMOVED***;
+Phaser.Component.Angle = function () {};
 
-Phaser.Component.Angle.prototype = ***REMOVED***
+Phaser.Component.Angle.prototype = {
 
     /**
     * The angle property is the rotation of the Game Object in *degrees* from its original orientation.
@@ -24,22 +24,22 @@ Phaser.Component.Angle.prototype = ***REMOVED***
     * If you wish to work in radians instead of degrees you can use the property `rotation` instead. 
     * Working in radians is slightly faster as it doesn't have to perform any calculations.
     *
-    * @property ***REMOVED***number***REMOVED*** angle
+    * @property {number} angle
     */
-    angle: ***REMOVED***
+    angle: {
 
-        get: function() ***REMOVED***
+        get: function() {
 
             return Phaser.Math.wrapAngle(Phaser.Math.radToDeg(this.rotation));
 
-        ***REMOVED***,
+        },
 
-        set: function(value) ***REMOVED***
+        set: function(value) {
 
             this.rotation = Phaser.Math.degToRad(Phaser.Math.wrapAngle(value));
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};

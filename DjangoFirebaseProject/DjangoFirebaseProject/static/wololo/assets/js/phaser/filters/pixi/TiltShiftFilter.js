@@ -10,14 +10,14 @@
  * @constructor
  */
 PIXI.TiltShiftFilter = function()
-***REMOVED***
+{
     this.tiltShiftXFilter = new PIXI.TiltShiftXFilter();
     this.tiltShiftYFilter = new PIXI.TiltShiftYFilter();
     this.tiltShiftXFilter.updateDelta();
     this.tiltShiftXFilter.updateDelta();
 
     this.passes = [this.tiltShiftXFilter, this.tiltShiftYFilter];
-***REMOVED***;
+};
 
 PIXI.TiltShiftFilter.prototype.constructor = PIXI.TiltShiftFilter;
 
@@ -27,14 +27,14 @@ PIXI.TiltShiftFilter.prototype.constructor = PIXI.TiltShiftFilter;
  * @property blur
  * @type Number
  */
-Object.defineProperty(PIXI.TiltShiftFilter.prototype, 'blur', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.TiltShiftFilter.prototype, 'blur', {
+    get: function() {
         return this.tiltShiftXFilter.blur;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.tiltShiftXFilter.blur = this.tiltShiftYFilter.blur = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});
 
 /**
  * The strength of the gradient blur.
@@ -42,14 +42,14 @@ Object.defineProperty(PIXI.TiltShiftFilter.prototype, 'blur', ***REMOVED***
  * @property gradientBlur
  * @type Number
  */
-Object.defineProperty(PIXI.TiltShiftFilter.prototype, 'gradientBlur', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.TiltShiftFilter.prototype, 'gradientBlur', {
+    get: function() {
         return this.tiltShiftXFilter.gradientBlur;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.tiltShiftXFilter.gradientBlur = this.tiltShiftYFilter.gradientBlur = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});
 
 /**
  * The Y value to start the effect at.
@@ -57,14 +57,14 @@ Object.defineProperty(PIXI.TiltShiftFilter.prototype, 'gradientBlur', ***REMOVED
  * @property start
  * @type Number
  */
-Object.defineProperty(PIXI.TiltShiftFilter.prototype, 'start', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.TiltShiftFilter.prototype, 'start', {
+    get: function() {
         return this.tiltShiftXFilter.start;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.tiltShiftXFilter.start = this.tiltShiftYFilter.start = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});
 
 /**
  * The Y value to end the effect at.
@@ -72,11 +72,11 @@ Object.defineProperty(PIXI.TiltShiftFilter.prototype, 'start', ***REMOVED***
  * @property end
  * @type Number
  */
-Object.defineProperty(PIXI.TiltShiftFilter.prototype, 'end', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.TiltShiftFilter.prototype, 'end', {
+    get: function() {
         return this.tiltShiftXFilter.end;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.tiltShiftXFilter.end = this.tiltShiftYFilter.end = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});

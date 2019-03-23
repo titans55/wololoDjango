@@ -6,22 +6,22 @@
 */
 'use strict';
 
-function generateYuiDoc (sourcePaths, grunt) ***REMOVED***
+function generateYuiDoc (sourcePaths, grunt) {
 
     var Y = require('yuidocjs');
 
-    var options = ***REMOVED***
+    var options = {
         parseOnly: true,
         quiet: true,
         paths: sourcePaths
-    ***REMOVED***;
+    };
 
     return (new Y.YUIDoc(options)).run();
-***REMOVED***
+}
 
-module.exports = function (grunt) ***REMOVED***
+module.exports = function (grunt) {
 
-  grunt.registerTask('pixidoc', 'Generates JSDoc from the PIXI YUIdocs', function () ***REMOVED***
+  grunt.registerTask('pixidoc', 'Generates JSDoc from the PIXI YUIdocs', function () {
 
       var sources = ['src/pixi'];
       var output = 'docs/pixi-jsdoc.js';
@@ -32,16 +32,16 @@ module.exports = function (grunt) ***REMOVED***
 
       // Right now yuidocsjs requires an absolute path so it emits an
       // absolute path in the jsdoc (or the JSDoc will error on missing files)
-      sources = sources.map(function (source) ***REMOVED***
+      sources = sources.map(function (source) {
         return path.resolve(source);
-      ***REMOVED***);
+      });
 
       var data = generateYuiDoc(sources);
 
-      if (!data) ***REMOVED***
+      if (!data) {
           grunt.fail.warn("PIXI YUIDoc not generated - nothing to do");
           return;
-      ***REMOVED***
+      }
 
       // Fake in namespace (current limitation)
       // A preamble/warning wrt the YUIDoc-to-JSDoc with proper link-outs could
@@ -55,6 +55,6 @@ module.exports = function (grunt) ***REMOVED***
       comments.unshift(header);
       fs.writeFileSync(output, comments.join("\n"));
 
-  ***REMOVED***);
+  });
 
-***REMOVED***;
+};

@@ -8,13 +8,13 @@
 * @class PixelateFilter
 * @constructor
 */
-Phaser.Filter.Pixelate = function(game) ***REMOVED***
+Phaser.Filter.Pixelate = function(game) {
 
     Phaser.Filter.call(this, game);
 
-    this.uniforms.invert = ***REMOVED*** type: '1f', value: 0 ***REMOVED***;
-    this.uniforms.pixelSize = ***REMOVED*** type: '2f', value: ***REMOVED*** x: 1.0, y: 1.0 ***REMOVED*** ***REMOVED***;
-    this.uniforms.dimensions = ***REMOVED*** type: '2f', value: ***REMOVED*** x: 1000.0, y: 1000.0 ***REMOVED*** ***REMOVED***;
+    this.uniforms.invert = { type: '1f', value: 0 };
+    this.uniforms.pixelSize = { type: '2f', value: { x: 1.0, y: 1.0 } };
+    this.uniforms.dimensions = { type: '2f', value: { x: 1000.0, y: 1000.0 } };
 
     this.fragmentSrc = [
 
@@ -25,15 +25,15 @@ Phaser.Filter.Pixelate = function(game) ***REMOVED***
         "uniform sampler2D uSampler;",
 
         "void main(void)",
-        "***REMOVED***",
+        "{",
 
             "vec2 coord = vTextureCoord;",
             "vec2 size = dimensions.xy/pixelSize;",
             "vec2 color = floor( ( vTextureCoord * size ) ) / size + pixelSize/dimensions.xy * 0.5;",
             "gl_FragColor = texture2D(uSampler, color);",
-        "***REMOVED***"
+        "}"
     ];
-***REMOVED***;
+};
 
 Phaser.Filter.Pixelate.prototype = Object.create(Phaser.Filter.prototype);
 Phaser.Filter.Pixelate.prototype.constructor = Phaser.Filter.Pixelate;
@@ -44,22 +44,22 @@ Phaser.Filter.Pixelate.prototype.constructor = Phaser.Filter.Pixelate;
 * @property size
 * @type Phaser.Point
 */
-Object.defineProperty(Phaser.Filter.Pixelate.prototype, 'size', ***REMOVED***
+Object.defineProperty(Phaser.Filter.Pixelate.prototype, 'size', {
 
-    get: function() ***REMOVED***
+    get: function() {
 
         return this.uniforms.pixelSize.value;
 
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
 
         this.dirty = true;
         this.uniforms.pixelSize.value = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * A value that defines the horizontal size of the filter effect per pixel.
@@ -67,22 +67,22 @@ Object.defineProperty(Phaser.Filter.Pixelate.prototype, 'size', ***REMOVED***
 * @property sizeX
 * @type number
 */
-Object.defineProperty(Phaser.Filter.Pixelate.prototype, 'sizeX', ***REMOVED***
+Object.defineProperty(Phaser.Filter.Pixelate.prototype, 'sizeX', {
 
-    get: function() ***REMOVED***
+    get: function() {
 
         return this.uniforms.pixelSize.value.x;
 
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
 
         this.dirty = true;
         this.uniforms.pixelSize.value.x = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * A value that defines the vertical size of the filter effect per pixel.
@@ -90,19 +90,19 @@ Object.defineProperty(Phaser.Filter.Pixelate.prototype, 'sizeX', ***REMOVED***
 * @property sizeY
 * @type number
 */
-Object.defineProperty(Phaser.Filter.Pixelate.prototype, 'sizeY', ***REMOVED***
+Object.defineProperty(Phaser.Filter.Pixelate.prototype, 'sizeY', {
 
-    get: function() ***REMOVED***
+    get: function() {
 
         return this.uniforms.pixelSize.value.y;
 
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
 
         this.dirty = true;
         this.uniforms.pixelSize.value.y = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});

@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1293,16 +1293,16 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 /**
 * @class WebGLBlendModeManager
 * @constructor
-* @param gl ***REMOVED***WebGLContext***REMOVED*** the current WebGL drawing context
+* @param gl {WebGLContext} the current WebGL drawing context
 */
 PIXI.WebGLBlendModeManager = function()
-***REMOVED***
+{
     /**
      * @property currentBlendMode
      * @type Number
      */
     this.currentBlendMode = 99999;
-***REMOVED***;
+};
 
 PIXI.WebGLBlendModeManager.prototype.constructor = PIXI.WebGLBlendModeManager;
 
@@ -1310,21 +1310,21 @@ PIXI.WebGLBlendModeManager.prototype.constructor = PIXI.WebGLBlendModeManager;
  * Sets the WebGL Context.
  *
  * @method setContext
- * @param gl ***REMOVED***WebGLContext***REMOVED*** the current WebGL drawing context
+ * @param gl {WebGLContext} the current WebGL drawing context
  */
 PIXI.WebGLBlendModeManager.prototype.setContext = function(gl)
-***REMOVED***
+{
     this.gl = gl;
-***REMOVED***;
+};
 
 /**
 * Sets-up the given blendMode from WebGL's point of view.
 * 
 * @method setBlendMode 
-* @param blendMode ***REMOVED***Number***REMOVED*** the blendMode, should be a Pixi const, such as PIXI.BlendModes.ADD
+* @param blendMode {Number} the blendMode, should be a Pixi const, such as PIXI.BlendModes.ADD
 */
 PIXI.WebGLBlendModeManager.prototype.setBlendMode = function(blendMode)
-***REMOVED***
+{
     if(this.currentBlendMode === blendMode)return false;
 
     this.currentBlendMode = blendMode;
@@ -1332,12 +1332,12 @@ PIXI.WebGLBlendModeManager.prototype.setBlendMode = function(blendMode)
     var blendModeWebGL = PIXI.blendModesWebGL[this.currentBlendMode];
 
     if (blendModeWebGL)
-    ***REMOVED***
+    {
         this.gl.blendFunc(blendModeWebGL[0], blendModeWebGL[1]);
-    ***REMOVED***
+    }
     
     return true;
-***REMOVED***;
+};
 
 /**
 * Destroys this object.
@@ -1345,9 +1345,9 @@ PIXI.WebGLBlendModeManager.prototype.setBlendMode = function(blendMode)
 * @method destroy
 */
 PIXI.WebGLBlendModeManager.prototype.destroy = function()
-***REMOVED***
+{
     this.gl = null;
-***REMOVED***;
+};
 </pre>
         </article>
     </section>
@@ -1390,22 +1390,22 @@ PIXI.WebGLBlendModeManager.prototype.destroy = function()
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

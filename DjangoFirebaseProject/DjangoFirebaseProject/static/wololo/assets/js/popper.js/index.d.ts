@@ -10,7 +10,7 @@
  * popper.js 1.x. It can be removed in 2.x so that the default export is simply the Popper class
  * and all the types / interfaces are top-level named exports.
  */
-declare namespace Popper ***REMOVED***
+declare namespace Popper {
   export type Position = 'top' | 'right' | 'bottom' | 'left';
 
   export type Placement = 'auto-start'
@@ -35,55 +35,55 @@ declare namespace Popper ***REMOVED***
 
   export type ModifierFn = (data: Data, options: Object) => Data;
 
-  export interface BaseModifier ***REMOVED***
+  export interface BaseModifier {
     order?: number;
     enabled?: boolean;
     fn?: ModifierFn;
-  ***REMOVED***
+  }
 
-  export interface Modifiers ***REMOVED***
+  export interface Modifiers {
     shift?: BaseModifier;
-    offset?: BaseModifier & ***REMOVED***
+    offset?: BaseModifier & {
       offset?: number | string,
-    ***REMOVED***;
-    preventOverflow?: BaseModifier & ***REMOVED***
+    };
+    preventOverflow?: BaseModifier & {
       priority?: Position[],
       padding?: number,
       boundariesElement?: Boundary | Element,
       escapeWithReference?: boolean
-    ***REMOVED***;
+    };
     keepTogether?: BaseModifier;
-    arrow?: BaseModifier & ***REMOVED***
+    arrow?: BaseModifier & {
       element?: string | Element,
-    ***REMOVED***;
-    flip?: BaseModifier & ***REMOVED***
+    };
+    flip?: BaseModifier & {
       behavior?: Behavior | Position[],
       padding?: number,
       boundariesElement?: Boundary | Element,
-    ***REMOVED***;
+    };
     inner?: BaseModifier;
     hide?: BaseModifier;
-    applyStyle?: BaseModifier & ***REMOVED***
+    applyStyle?: BaseModifier & {
       onLoad?: Function,
       gpuAcceleration?: boolean,
-    ***REMOVED***;
-    computeStyle?: BaseModifier & ***REMOVED***
+    };
+    computeStyle?: BaseModifier & {
       gpuAcceleration?: boolean;
       x?: 'bottom' | 'top',
       y?: 'left' | 'right'
-    ***REMOVED***;
+    };
 
     [name: string]: (BaseModifier & Record<string, any>) | undefined;
-  ***REMOVED***
+  }
 
-  export interface Offset ***REMOVED***
+  export interface Offset {
     top: number;
     left: number;
     width: number;
     height: number;
-  ***REMOVED***
+  }
 
-  export interface Data ***REMOVED***
+  export interface Data {
     instance: Popper;
     placement: Placement;
     originalPlacement: Placement;
@@ -93,17 +93,17 @@ declare namespace Popper ***REMOVED***
     styles: CSSStyleDeclaration;
     arrowStyles: CSSStyleDeclaration;
     boundaries: Object;
-    offsets: ***REMOVED***
+    offsets: {
       popper: Offset,
       reference: Offset,
-      arrow: ***REMOVED***
+      arrow: {
         top: number,
         left: number,
-      ***REMOVED***,
-    ***REMOVED***;
-  ***REMOVED***
+      },
+    };
+  }
 
-  export interface PopperOptions ***REMOVED***
+  export interface PopperOptions {
     placement?: Placement;
     positionFixed?: boolean;
     eventsEnabled?: boolean;
@@ -113,15 +113,15 @@ declare namespace Popper ***REMOVED***
     onCreate?(data: Data): void;
 
     onUpdate?(data: Data): void;
-  ***REMOVED***
+  }
 
-  export interface ReferenceObject ***REMOVED***
+  export interface ReferenceObject {
     clientHeight: number;
     clientWidth: number;
 
     getBoundingClientRect(): ClientRect;
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 // Re-export types in the Popper namespace so that they can be accessed as top-level named exports.
 // These re-exports should be removed in 2.x when the "declare namespace Popper" syntax is removed.
@@ -137,8 +137,8 @@ export type Data = Popper.Data;
 export type PopperOptions = Popper.PopperOptions;
 export type ReferenceObject = Popper.ReferenceObject;
 
-declare class Popper ***REMOVED***
-  static modifiers: (BaseModifier & ***REMOVED*** name: string ***REMOVED***)[];
+declare class Popper {
+  static modifiers: (BaseModifier & { name: string })[];
   static placements: Placement[];
   static Defaults: PopperOptions;
 
@@ -155,6 +155,6 @@ declare class Popper ***REMOVED***
   enableEventListeners(): void;
 
   disableEventListeners(): void;
-***REMOVED***
+}
 
 export default Popper;

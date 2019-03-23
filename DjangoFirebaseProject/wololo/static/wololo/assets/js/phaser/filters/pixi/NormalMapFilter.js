@@ -11,38 +11,38 @@
  * @class NormalMapFilter
  * @extends AbstractFilter
  * @constructor
- * @param texture ***REMOVED***Texture***REMOVED*** The texture used for the displacement map * must be power of 2 texture at the moment
+ * @param texture {Texture} The texture used for the displacement map * must be power of 2 texture at the moment
  */
 PIXI.NormalMapFilter = function(texture)
-***REMOVED***
+{
     PIXI.AbstractFilter.call( this );
     
     this.passes = [this];
     texture.baseTexture._powerOf2 = true;
 
     // set the uniforms
-    this.uniforms = ***REMOVED***
-        displacementMap: ***REMOVED***type: 'sampler2D', value:texture***REMOVED***,
-        scale:           ***REMOVED***type: '2f', value:***REMOVED***x:15, y:15***REMOVED******REMOVED***,
-        offset:          ***REMOVED***type: '2f', value:***REMOVED***x:0, y:0***REMOVED******REMOVED***,
-        mapDimensions:   ***REMOVED***type: '2f', value:***REMOVED***x:1, y:1***REMOVED******REMOVED***,
-        dimensions:   ***REMOVED***type: '4f', value:[0,0,0,0]***REMOVED***,
-    //  LightDir: ***REMOVED***type: 'f3', value:[0, 1, 0]***REMOVED***,
-        LightPos: ***REMOVED***type: '3f', value:[0, 1, 0]***REMOVED***
-    ***REMOVED***;
+    this.uniforms = {
+        displacementMap: {type: 'sampler2D', value:texture},
+        scale:           {type: '2f', value:{x:15, y:15}},
+        offset:          {type: '2f', value:{x:0, y:0}},
+        mapDimensions:   {type: '2f', value:{x:1, y:1}},
+        dimensions:   {type: '4f', value:[0,0,0,0]},
+    //  LightDir: {type: 'f3', value:[0, 1, 0]},
+        LightPos: {type: '3f', value:[0, 1, 0]}
+    };
     
 
     if(texture.baseTexture.hasLoaded)
-    ***REMOVED***
+    {
         this.uniforms.mapDimensions.value.x = texture.width;
         this.uniforms.mapDimensions.value.y = texture.height;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         this.boundLoadedFunction = this.onTextureLoaded.bind(this);
 
         texture.baseTexture.on("loaded", this.boundLoadedFunction);
-    ***REMOVED***
+    }
 
     this.fragmentSrc = [
       "precision mediump float;",
@@ -65,7 +65,7 @@ PIXI.NormalMapFilter = function(texture)
       "uniform vec2 mapDimensions;",// = vec2(256.0, 256.0);",
      
 
-      "void main(void) ***REMOVED***",
+      "void main(void) {",
         "vec2 mapCords = vTextureCoord.xy;",
 
         "vec4 color = texture2D(uSampler, vTextureCoord.st);",
@@ -129,10 +129,10 @@ PIXI.NormalMapFilter = function(texture)
 
         
 
-      "***REMOVED***"
+      "}"
     ];
     
-***REMOVED***;
+};
 
 PIXI.NormalMapFilter.prototype = Object.create( PIXI.AbstractFilter.prototype );
 PIXI.NormalMapFilter.prototype.constructor = PIXI.NormalMapFilter;
@@ -143,12 +143,12 @@ PIXI.NormalMapFilter.prototype.constructor = PIXI.NormalMapFilter;
  * @method onTextureLoaded
  */
 PIXI.NormalMapFilter.prototype.onTextureLoaded = function()
-***REMOVED***
+{
     this.uniforms.mapDimensions.value.x = this.uniforms.displacementMap.value.width;
     this.uniforms.mapDimensions.value.y = this.uniforms.displacementMap.value.height;
 
     this.uniforms.displacementMap.value.baseTexture.off("loaded", this.boundLoadedFunction);
-***REMOVED***;
+};
 
 /**
  * The texture used for the displacement map. Must be power of 2 texture.
@@ -156,14 +156,14 @@ PIXI.NormalMapFilter.prototype.onTextureLoaded = function()
  * @property map
  * @type Texture
  */
-Object.defineProperty(PIXI.NormalMapFilter.prototype, 'map', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.NormalMapFilter.prototype, 'map', {
+    get: function() {
         return this.uniforms.displacementMap.value;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.uniforms.displacementMap.value = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});
 
 /**
  * The multiplier used to scale the displacement result from the map calculation.
@@ -171,14 +171,14 @@ Object.defineProperty(PIXI.NormalMapFilter.prototype, 'map', ***REMOVED***
  * @property scale
  * @type Point
  */
-Object.defineProperty(PIXI.NormalMapFilter.prototype, 'scale', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.NormalMapFilter.prototype, 'scale', {
+    get: function() {
         return this.uniforms.scale.value;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.uniforms.scale.value = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});
 
 /**
  * The offset used to move the displacement map.
@@ -186,11 +186,11 @@ Object.defineProperty(PIXI.NormalMapFilter.prototype, 'scale', ***REMOVED***
  * @property offset
  * @type Point
  */
-Object.defineProperty(PIXI.NormalMapFilter.prototype, 'offset', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.NormalMapFilter.prototype, 'offset', {
+    get: function() {
         return this.uniforms.offset.value;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.uniforms.offset.value = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});

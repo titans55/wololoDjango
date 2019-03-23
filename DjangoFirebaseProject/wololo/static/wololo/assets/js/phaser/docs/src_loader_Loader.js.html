@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1290,7 +1290,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 /**
 * @author       Richard Davey &lt;rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1298,65 +1298,65 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 *
 * The loader uses a combination of tag loading (eg. Image elements) and XHR and provides progress and completion callbacks.
 *
-* Parallel loading (see ***REMOVED***@link #enableParallel***REMOVED***) is supported and enabled by default.
-* Load-before behavior of parallel resources is controlled by synchronization points as discussed in ***REMOVED***@link #withSyncPoint***REMOVED***.
+* Parallel loading (see {@link #enableParallel}) is supported and enabled by default.
+* Load-before behavior of parallel resources is controlled by synchronization points as discussed in {@link #withSyncPoint}.
 *
 * Texture Atlases can be created with tools such as [Texture Packer](https://www.codeandweb.com/texturepacker/phaser) and
 * [Shoebox](http://renderhjs.net/shoebox/)
 *
 * @class Phaser.Loader
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
+* @param {Phaser.Game} game - A reference to the currently running game.
 */
-Phaser.Loader = function (game) ***REMOVED***
+Phaser.Loader = function (game) {
 
     /**
     * Local reference to game.
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game
+    * @property {Phaser.Game} game
     * @protected
     */
     this.game = game;
 
     /**
     * Local reference to the Phaser.Cache.
-    * @property ***REMOVED***Phaser.Cache***REMOVED*** cache
+    * @property {Phaser.Cache} cache
     * @protected
     */
     this.cache = game.cache;
 
     /**
     * If true all calls to Loader.reset will be ignored. Useful if you need to create a load queue before swapping to a preloader state.
-    * @property ***REMOVED***boolean***REMOVED*** resetLocked
+    * @property {boolean} resetLocked
     * @default
     */
     this.resetLocked = false;
 
     /**
     * True if the Loader is in the process of loading the queue.
-    * @property ***REMOVED***boolean***REMOVED*** isLoading
+    * @property {boolean} isLoading
     * @default
     */
     this.isLoading = false;
 
     /**
     * True if all assets in the queue have finished loading.
-    * @property ***REMOVED***boolean***REMOVED*** hasLoaded
+    * @property {boolean} hasLoaded
     * @default
     */
     this.hasLoaded = false;
 
     /**
-    * You can optionally link a progress sprite with ***REMOVED***@link Phaser.Loader#setPreloadSprite setPreloadSprite***REMOVED***.
+    * You can optionally link a progress sprite with {@link Phaser.Loader#setPreloadSprite setPreloadSprite}.
     *
     * This property is an object containing: sprite, rect, direction, width and height
     *
-    * @property ***REMOVED***?object***REMOVED*** preloadSprite
+    * @property {?object} preloadSprite
     * @protected
     */
     this.preloadSprite = null;
 
     /**
     * The crossOrigin value applied to loaded images. Very often this needs to be set to 'anonymous'.
-    * @property ***REMOVED***boolean|string***REMOVED*** crossOrigin
+    * @property {boolean|string} crossOrigin
     * @default
     */
     this.crossOrigin = false;
@@ -1366,7 +1366,7 @@ Phaser.Loader = function (game) ***REMOVED***
     * Useful if allowing the asset base url to be configured outside of the game code.
     * The string _must_ end with a "/".
     *
-    * @property ***REMOVED***string***REMOVED*** baseURL
+    * @property {string} baseURL
     */
     this.baseURL = '';
 
@@ -1386,7 +1386,7 @@ Phaser.Loader = function (game) ***REMOVED***
     *
     * The string _must_ end with a "/".
     *
-    * @property ***REMOVED***string***REMOVED*** path
+    * @property {string} path
     */
     this.path = '';
 
@@ -1404,27 +1404,27 @@ Phaser.Loader = function (game) ***REMOVED***
     *
     * `setRequestHeader('X-Requested-With', this.headers['requestedWith'])`
     * 
-    * @property ***REMOVED***object***REMOVED*** headers
+    * @property {object} headers
     * @default
     */
-    this.headers = ***REMOVED***
+    this.headers = {
         "requestedWith": false,
         "json": "application/json",
         "xml": "application/xml"
-    ***REMOVED***;
+    };
 
     /**
      * This event is dispatched when the loading process starts: before the first file has been requested,
     * but after all the initial packs have been loaded.
     *
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onLoadStart
+    * @property {Phaser.Signal} onLoadStart
     */
     this.onLoadStart = new Phaser.Signal();
 
     /**
     * This event is dispatched when the final file in the load queue has either loaded or failed.
     *
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onLoadComplete
+    * @property {Phaser.Signal} onLoadComplete
     */
     this.onLoadComplete = new Phaser.Signal();
 
@@ -1435,7 +1435,7 @@ Phaser.Loader = function (game) ***REMOVED***
     *
     * Params: `(pack key, success?, total packs loaded, total packs)`
     *
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onPackComplete
+    * @property {Phaser.Signal} onPackComplete
     */
     this.onPackComplete = new Phaser.Signal();
 
@@ -1445,7 +1445,7 @@ Phaser.Loader = function (game) ***REMOVED***
     *
     * Params: `(progress, file key, file url)`
     *
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onFileStart
+    * @property {Phaser.Signal} onFileStart
     */
     this.onFileStart = new Phaser.Signal();
 
@@ -1458,7 +1458,7 @@ Phaser.Loader = function (game) ***REMOVED***
     *
     * Where progress is a number between 1 and 100 (inclusive) representing the percentage of the load.
     *
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onFileComplete
+    * @property {Phaser.Signal} onFileComplete
     */
     this.onFileComplete = new Phaser.Signal();
 
@@ -1469,7 +1469,7 @@ Phaser.Loader = function (game) ***REMOVED***
     *
     * Params: `(file key, file)`
     *
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onFileError
+    * @property {Phaser.Signal} onFileError
     */
     this.onFileError = new Phaser.Signal();
 
@@ -1478,14 +1478,14 @@ Phaser.Loader = function (game) ***REMOVED***
     *
     * This is only relevant for IE 9 and should _only_ be enabled for IE 9 clients when required by the server/CDN.
     *
-    * @property ***REMOVED***boolean***REMOVED*** useXDomainRequest
+    * @property {boolean} useXDomainRequest
     * @deprecated This is only relevant for IE 9.
     */
     this.useXDomainRequest = false;
 
     /**
     * @private
-    * @property ***REMOVED***boolean***REMOVED*** _warnedAboutXDomainRequest - Control number of warnings for using XDR outside of IE 9.
+    * @property {boolean} _warnedAboutXDomainRequest - Control number of warnings for using XDR outside of IE 9.
     */
     this._warnedAboutXDomainRequest = false;
 
@@ -1494,7 +1494,7 @@ Phaser.Loader = function (game) ***REMOVED***
     *
     * To disable all parallel downloads this must be set to false prior to any resource being loaded.
     *
-    * @property ***REMOVED***boolean***REMOVED*** enableParallel
+    * @property {boolean} enableParallel
     */
     this.enableParallel = true;
 
@@ -1503,14 +1503,14 @@ Phaser.Loader = function (game) ***REMOVED***
     *
     * Many current browsers limit 6 requests per domain; this is slightly conservative.
     *
-    * @property ***REMOVED***integer***REMOVED*** maxParallelDownloads
+    * @property {integer} maxParallelDownloads
     * @protected
     */
     this.maxParallelDownloads = 4;
 
     /**
     * A counter: if more than zero, files will be automatically added as a synchronization point.
-    * @property ***REMOVED***integer***REMOVED*** _withSyncPointDepth;
+    * @property {integer} _withSyncPointDepth;
     */
     this._withSyncPointDepth = 0;
 
@@ -1519,7 +1519,7 @@ Phaser.Loader = function (game) ***REMOVED***
     *
     * File/assets are only removed from the list after all loading completes.
     *
-    * @property ***REMOVED***file[]***REMOVED*** _fileList
+    * @property {file[]} _fileList
     * @private
     */
     this._fileList = [];
@@ -1533,7 +1533,7 @@ Phaser.Loader = function (game) ***REMOVED***
     * The files in the queue may have additional properties added to them,
     * including `requestObject` which is normally the associated XHR.
     *
-    * @property ***REMOVED***file[]***REMOVED*** _flightQueue
+    * @property {file[]} _flightQueue
     * @private
     */
     this._flightQueue = [];
@@ -1541,7 +1541,7 @@ Phaser.Loader = function (game) ***REMOVED***
     /**
     * The offset into the fileList past all the complete (loaded or error) entries.
     *
-    * @property ***REMOVED***integer***REMOVED*** _processingHead
+    * @property {integer} _processingHead
     * @private
     */
     this._processingHead = 0;
@@ -1550,78 +1550,78 @@ Phaser.Loader = function (game) ***REMOVED***
     * True when the first file (not pack) has loading started.
     * This used to to control dispatching `onLoadStart` which happens after any initial packs are loaded.
     *
-    * @property ***REMOVED***boolean***REMOVED*** _initialPacksLoaded
+    * @property {boolean} _initialPacksLoaded
     * @private
     */
     this._fileLoadStarted = false;
 
     /**
     * Total packs seen - adjusted when a pack is added.
-    * @property ***REMOVED***integer***REMOVED*** _totalPackCount
+    * @property {integer} _totalPackCount
     * @private
     */
     this._totalPackCount = 0;
 
     /**
     * Total files seen - adjusted when a file is added.
-    * @property ***REMOVED***integer***REMOVED*** _totalFileCount
+    * @property {integer} _totalFileCount
     * @private
     */
     this._totalFileCount = 0;
 
     /**
     * Total packs loaded - adjusted just prior to `onPackComplete`.
-    * @property ***REMOVED***integer***REMOVED*** _loadedPackCount
+    * @property {integer} _loadedPackCount
     * @private
     */
     this._loadedPackCount = 0;
 
     /**
     * Total files loaded - adjusted just prior to `onFileComplete`.
-    * @property ***REMOVED***integer***REMOVED*** _loadedFileCount
+    * @property {integer} _loadedFileCount
     * @private
     */
     this._loadedFileCount = 0;
 
-***REMOVED***;
+};
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY = 0;
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.Loader.TEXTURE_ATLAS_JSON_HASH = 1;
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.Loader.TEXTURE_ATLAS_XML_STARLING = 2;
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.Loader.PHYSICS_LIME_CORONA_JSON = 3;
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.Loader.PHYSICS_PHASER_JSON = 4;
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.Loader.TEXTURE_ATLAS_JSON_PYXEL = 5;
 
-Phaser.Loader.prototype = ***REMOVED***
+Phaser.Loader.prototype = {
 
     /**
     * Set a Sprite to be a "preload" sprite by passing it to this method.
@@ -1632,31 +1632,31 @@ Phaser.Loader.prototype = ***REMOVED***
     * The sprite will automatically be made visible when calling this.
     *
     * @method Phaser.Loader#setPreloadSprite
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Image***REMOVED*** sprite - The sprite or image that will be cropped during the load.
-    * @param ***REMOVED***number***REMOVED*** [direction=0] - A value of zero means the sprite will be cropped horizontally, a value of 1 means its will be cropped vertically.
+    * @param {Phaser.Sprite|Phaser.Image} sprite - The sprite or image that will be cropped during the load.
+    * @param {number} [direction=0] - A value of zero means the sprite will be cropped horizontally, a value of 1 means its will be cropped vertically.
     */
-    setPreloadSprite: function (sprite, direction) ***REMOVED***
+    setPreloadSprite: function (sprite, direction) {
 
         direction = direction || 0;
 
-        this.preloadSprite = ***REMOVED*** sprite: sprite, direction: direction, width: sprite.width, height: sprite.height, rect: null ***REMOVED***;
+        this.preloadSprite = { sprite: sprite, direction: direction, width: sprite.width, height: sprite.height, rect: null };
 
         if (direction === 0)
-        ***REMOVED***
+        {
             //  Horizontal rect
             this.preloadSprite.rect = new Phaser.Rectangle(0, 0, 1, sprite.height);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             //  Vertical rect
             this.preloadSprite.rect = new Phaser.Rectangle(0, 0, sprite.width, 1);
-        ***REMOVED***
+        }
 
         sprite.crop(this.preloadSprite.rect);
 
         sprite.visible = true;
 
-    ***REMOVED***,
+    },
 
     /**
     * Called automatically by ScaleManager when the game resizes in RESIZE scalemode.
@@ -1666,30 +1666,30 @@ Phaser.Loader.prototype = ***REMOVED***
     * @method Phaser.Loader#resize
     * @protected
     */
-    resize: function () ***REMOVED***
+    resize: function () {
 
         if (this.preloadSprite &amp;&amp; this.preloadSprite.height !== this.preloadSprite.sprite.height)
-        ***REMOVED***
+        {
             this.preloadSprite.rect.height = this.preloadSprite.sprite.height;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Check whether a file/asset with a specific key is queued to be loaded.
     *
-    * To access a loaded asset use Phaser.Cache, eg. ***REMOVED***@link Phaser.Cache#checkImageKey***REMOVED***
+    * To access a loaded asset use Phaser.Cache, eg. {@link Phaser.Cache#checkImageKey}
     *
     * @method Phaser.Loader#checkKeyExists
-    * @param ***REMOVED***string***REMOVED*** type - The type asset you want to check.
-    * @param ***REMOVED***string***REMOVED*** key - Key of the asset you want to check.
-    * @return ***REMOVED***boolean***REMOVED*** Return true if exists, otherwise return false.
+    * @param {string} type - The type asset you want to check.
+    * @param {string} key - Key of the asset you want to check.
+    * @return {boolean} Return true if exists, otherwise return false.
     */
-    checkKeyExists: function (type, key) ***REMOVED***
+    checkKeyExists: function (type, key) {
 
         return this.getAssetIndex(type, key) > -1;
 
-    ***REMOVED***,
+    },
 
     /**
     * Get the queue-index of the file/asset with a specific key.
@@ -1697,34 +1697,34 @@ Phaser.Loader.prototype = ***REMOVED***
     * Only assets in the download file queue will be found.
     *
     * @method Phaser.Loader#getAssetIndex
-    * @param ***REMOVED***string***REMOVED*** type - The type asset you want to check.
-    * @param ***REMOVED***string***REMOVED*** key - Key of the asset you want to check.
-    * @return ***REMOVED***number***REMOVED*** The index of this key in the filelist, or -1 if not found.
+    * @param {string} type - The type asset you want to check.
+    * @param {string} key - Key of the asset you want to check.
+    * @return {number} The index of this key in the filelist, or -1 if not found.
     *     The index may change and should only be used immediately following this call
     */
-    getAssetIndex: function (type, key) ***REMOVED***
+    getAssetIndex: function (type, key) {
 
         var bestFound = -1;
 
         for (var i = 0; i &lt; this._fileList.length; i++)
-        ***REMOVED***
+        {
             var file = this._fileList[i];
 
             if (file.type === type &amp;&amp; file.key === key)
-            ***REMOVED***
+            {
                 bestFound = i;
 
                 // An already loaded/loading file may be superceded.
                 if (!file.loaded &amp;&amp; !file.loading)
-                ***REMOVED***
+                {
                     break;
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
 
         return bestFound;
 
-    ***REMOVED***,
+    },
 
     /**
     * Find a file/asset with a specific key.
@@ -1732,23 +1732,23 @@ Phaser.Loader.prototype = ***REMOVED***
     * Only assets in the download file queue will be found.
     *
     * @method Phaser.Loader#getAsset
-    * @param ***REMOVED***string***REMOVED*** type - The type asset you want to check.
-    * @param ***REMOVED***string***REMOVED*** key - Key of the asset you want to check.
-    * @return ***REMOVED***any***REMOVED*** Returns an object if found that has 2 properties: `index` and `file`; otherwise a non-true value is returned.
+    * @param {string} type - The type asset you want to check.
+    * @param {string} key - Key of the asset you want to check.
+    * @return {any} Returns an object if found that has 2 properties: `index` and `file`; otherwise a non-true value is returned.
     *     The index may change and should only be used immediately following this call.
     */
-    getAsset: function (type, key) ***REMOVED***
+    getAsset: function (type, key) {
 
         var fileIndex = this.getAssetIndex(type, key);
 
         if (fileIndex > -1)
-        ***REMOVED***
-            return ***REMOVED*** index: fileIndex, file: this._fileList[fileIndex] ***REMOVED***;
-        ***REMOVED***
+        {
+            return { index: fileIndex, file: this._fileList[fileIndex] };
+        }
 
         return false;
 
-    ***REMOVED***,
+    },
 
     /**
     * Reset the loader and clear any queued assets. If `Loader.resetLocked` is true this operation will abort.
@@ -1759,22 +1759,22 @@ Phaser.Loader.prototype = ***REMOVED***
     *
     * @method Phaser.Loader#reset
     * @protected
-    * @param ***REMOVED***boolean***REMOVED*** [hard=false] - If true then the preload sprite and other artifacts may also be cleared.
-    * @param ***REMOVED***boolean***REMOVED*** [clearEvents=false] - If true then the all Loader signals will have removeAll called on them.
+    * @param {boolean} [hard=false] - If true then the preload sprite and other artifacts may also be cleared.
+    * @param {boolean} [clearEvents=false] - If true then the all Loader signals will have removeAll called on them.
     */
-    reset: function (hard, clearEvents) ***REMOVED***
+    reset: function (hard, clearEvents) {
 
-        if (clearEvents === undefined) ***REMOVED*** clearEvents = false; ***REMOVED***
+        if (clearEvents === undefined) { clearEvents = false; }
 
         if (this.resetLocked)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         if (hard)
-        ***REMOVED***
+        {
             this.preloadSprite = null;
-        ***REMOVED***
+        }
 
         this.isLoading = false;
 
@@ -1789,54 +1789,54 @@ Phaser.Loader.prototype = ***REMOVED***
         this._loadedFileCount = 0;
 
         if (clearEvents)
-        ***REMOVED***
+        {
             this.onLoadStart.removeAll();
             this.onLoadComplete.removeAll();
             this.onPackComplete.removeAll();
             this.onFileStart.removeAll();
             this.onFileComplete.removeAll();
             this.onFileError.removeAll();
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Internal function that adds a new entry to the file list. Do not call directly.
     *
     * @method Phaser.Loader#addToFileList
     * @protected
-    * @param ***REMOVED***string***REMOVED*** type - The type of resource to add to the list (image, audio, xml, etc).
-    * @param ***REMOVED***string***REMOVED*** key - The unique Cache ID key of this resource.
-    * @param ***REMOVED***string***REMOVED*** [url] - The URL the asset will be loaded from.
-    * @param ***REMOVED***object***REMOVED*** [properties=(none)] - Any additional properties needed to load the file. These are added directly to the added file object and overwrite any defaults.
-    * @param ***REMOVED***boolean***REMOVED*** [overwrite=false] - If true then this will overwrite a file asset of the same type/key. Otherwise it will only add a new asset. If overwrite is true, and the asset is already being loaded (or has been loaded), then it is appended instead.
-    * @param ***REMOVED***string***REMOVED*** [extension] - If no URL is given the Loader will sometimes auto-generate the URL based on the key, using this as the extension.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This instance of the Phaser Loader.
+    * @param {string} type - The type of resource to add to the list (image, audio, xml, etc).
+    * @param {string} key - The unique Cache ID key of this resource.
+    * @param {string} [url] - The URL the asset will be loaded from.
+    * @param {object} [properties=(none)] - Any additional properties needed to load the file. These are added directly to the added file object and overwrite any defaults.
+    * @param {boolean} [overwrite=false] - If true then this will overwrite a file asset of the same type/key. Otherwise it will only add a new asset. If overwrite is true, and the asset is already being loaded (or has been loaded), then it is appended instead.
+    * @param {string} [extension] - If no URL is given the Loader will sometimes auto-generate the URL based on the key, using this as the extension.
+    * @return {Phaser.Loader} This instance of the Phaser Loader.
     */
-    addToFileList: function (type, key, url, properties, overwrite, extension) ***REMOVED***
+    addToFileList: function (type, key, url, properties, overwrite, extension) {
 
-        if (overwrite === undefined) ***REMOVED*** overwrite = false; ***REMOVED***
+        if (overwrite === undefined) { overwrite = false; }
 
         if (key === undefined || key === '')
-        ***REMOVED***
+        {
             console.warn("Phaser.Loader: Invalid or no key given of type " + type);
             return this;
-        ***REMOVED***
+        }
 
         if (url === undefined || url === null)
-        ***REMOVED***
+        {
             if (extension)
-            ***REMOVED***
+            {
                 url = key + extension;
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 console.warn("Phaser.Loader: No URL given for file type: " + type + " key: " + key);
                 return this;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-        var file = ***REMOVED***
+        var file = {
             type: type,
             key: key,
             path: this.path,
@@ -1846,57 +1846,57 @@ Phaser.Loader.prototype = ***REMOVED***
             loading: false,
             loaded: false,
             error: false
-        ***REMOVED***;
+        };
 
         if (properties)
-        ***REMOVED***
+        {
             for (var prop in properties)
-            ***REMOVED***
+            {
                 file[prop] = properties[prop];
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         var fileIndex = this.getAssetIndex(type, key);
 
         if (overwrite &amp;&amp; fileIndex > -1)
-        ***REMOVED***
+        {
             var currentFile = this._fileList[fileIndex];
 
             if (!currentFile.loading &amp;&amp; !currentFile.loaded)
-            ***REMOVED***
+            {
                 this._fileList[fileIndex] = file;
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this._fileList.push(file);
                 this._totalFileCount++;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else if (fileIndex === -1)
-        ***REMOVED***
+        {
             this._fileList.push(file);
             this._totalFileCount++;
-        ***REMOVED***
+        }
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Internal function that replaces an existing entry in the file list with a new one. Do not call directly.
     *
     * @method Phaser.Loader#replaceInFileList
     * @protected
-    * @param ***REMOVED***string***REMOVED*** type - The type of resource to add to the list (image, audio, xml, etc).
-    * @param ***REMOVED***string***REMOVED*** key - The unique Cache ID key of this resource.
-    * @param ***REMOVED***string***REMOVED*** url - The URL the asset will be loaded from.
-    * @param ***REMOVED***object***REMOVED*** properties - Any additional properties needed to load the file.
+    * @param {string} type - The type of resource to add to the list (image, audio, xml, etc).
+    * @param {string} key - The unique Cache ID key of this resource.
+    * @param {string} url - The URL the asset will be loaded from.
+    * @param {object} properties - Any additional properties needed to load the file.
     */
-    replaceInFileList: function (type, key, url, properties) ***REMOVED***
+    replaceInFileList: function (type, key, url, properties) {
 
         return this.addToFileList(type, key, url, properties, true);
 
-    ***REMOVED***,
+    },
 
     /**
     * Add a JSON resource pack ('packfile') to the Loader.
@@ -1914,26 +1914,26 @@ Phaser.Loader.prototype = ***REMOVED***
     * The URL of the packfile can be relative or absolute. If the URL is relative the `Loader.baseURL` and `Loader.path` values will be prepended to it.
     *
     * @method Phaser.Loader#pack
-    * @param ***REMOVED***string***REMOVED*** key - Unique asset key of this resource pack.
-    * @param ***REMOVED***string***REMOVED*** [url] - URL of the Asset Pack JSON file. If you wish to pass a json object instead set this to null and pass the object as the data parameter.
-    * @param ***REMOVED***object***REMOVED*** [data] - The Asset Pack JSON data. Use this to pass in a json data object rather than loading it from a URL. TODO
-    * @param ***REMOVED***object***REMOVED*** [callbackContext=(loader)] - Some Loader operations, like Binary and Script require a context for their callbacks. Pass the context here.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @param {string} key - Unique asset key of this resource pack.
+    * @param {string} [url] - URL of the Asset Pack JSON file. If you wish to pass a json object instead set this to null and pass the object as the data parameter.
+    * @param {object} [data] - The Asset Pack JSON data. Use this to pass in a json data object rather than loading it from a URL. TODO
+    * @param {object} [callbackContext=(loader)] - Some Loader operations, like Binary and Script require a context for their callbacks. Pass the context here.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    pack: function (key, url, data, callbackContext) ***REMOVED***
+    pack: function (key, url, data, callbackContext) {
 
-        if (url === undefined) ***REMOVED*** url = null; ***REMOVED***
-        if (data === undefined) ***REMOVED*** data = null; ***REMOVED***
-        if (callbackContext === undefined) ***REMOVED*** callbackContext = null; ***REMOVED***
+        if (url === undefined) { url = null; }
+        if (data === undefined) { data = null; }
+        if (callbackContext === undefined) { callbackContext = null; }
 
         if (!url &amp;&amp; !data)
-        ***REMOVED***
+        {
             console.warn('Phaser.Loader.pack - Both url and data are null. One must be set.');
 
             return this;
-        ***REMOVED***
+        }
 
-        var pack = ***REMOVED***
+        var pack = {
             type: 'packfile',
             key: key,
             url: url,
@@ -1944,39 +1944,39 @@ Phaser.Loader.prototype = ***REMOVED***
             loaded: false,
             error: false,
             callbackContext: callbackContext
-        ***REMOVED***;
+        };
 
         //  A data object has been given
         if (data)
-        ***REMOVED***
+        {
             if (typeof data === 'string')
-            ***REMOVED***
+            {
                 data = JSON.parse(data);
-            ***REMOVED***
+            }
 
-            pack.data = data || ***REMOVED******REMOVED***;
+            pack.data = data || {};
 
             //  Already consider 'loaded'
             pack.loaded = true;
-        ***REMOVED***
+        }
 
         // Add before first non-pack/no-loaded ~ last pack from start prior to loading
         // (Read one past for splice-to-end)
         for (var i = 0; i &lt; this._fileList.length + 1; i++)
-        ***REMOVED***
+        {
             var file = this._fileList[i];
 
             if (!file || (!file.loaded &amp;&amp; !file.loading &amp;&amp; file.type !== 'packfile'))
-            ***REMOVED***
+            {
                 this._fileList.splice(i, 0, pack);
                 this._totalPackCount++;
                 break;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds an Image to the current load queue.
@@ -1996,16 +1996,16 @@ Phaser.Loader.prototype = ***REMOVED***
     * If you do not desire this action then provide a URL.
     *
     * @method Phaser.Loader#image
-    * @param ***REMOVED***string***REMOVED*** key - Unique asset key of this image file.
-    * @param ***REMOVED***string***REMOVED*** [url] - URL of an image file. If undefined or `null` the url will be set to `&lt;key>.png`, i.e. if `key` was "alien" then the URL will be "alien.png".
-    * @param ***REMOVED***boolean***REMOVED*** [overwrite=false] - If an unloaded file with a matching key already exists in the queue, this entry will overwrite it.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @param {string} key - Unique asset key of this image file.
+    * @param {string} [url] - URL of an image file. If undefined or `null` the url will be set to `&lt;key>.png`, i.e. if `key` was "alien" then the URL will be "alien.png".
+    * @param {boolean} [overwrite=false] - If an unloaded file with a matching key already exists in the queue, this entry will overwrite it.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    image: function (key, url, overwrite) ***REMOVED***
+    image: function (key, url, overwrite) {
 
         return this.addToFileList('image', key, url, undefined, overwrite, '.png');
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds an array of images to the current load queue.
@@ -2027,30 +2027,30 @@ Phaser.Loader.prototype = ***REMOVED***
     * If you do not desire this action then provide a URL.
     *
     * @method Phaser.Loader#images
-    * @param ***REMOVED***array***REMOVED*** keys - An array of unique asset keys of the image files.
-    * @param ***REMOVED***array***REMOVED*** [urls] - Optional array of URLs. If undefined or `null` the url will be set to `&lt;key>.png`, i.e. if `key` was "alien" then the URL will be "alien.png". If provided the URLs array length must match the keys array length.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @param {array} keys - An array of unique asset keys of the image files.
+    * @param {array} [urls] - Optional array of URLs. If undefined or `null` the url will be set to `&lt;key>.png`, i.e. if `key` was "alien" then the URL will be "alien.png". If provided the URLs array length must match the keys array length.
+    * @return {Phaser.Loader} This Loader instance.
      */
-    images: function (keys, urls) ***REMOVED***
+    images: function (keys, urls) {
 
         if (Array.isArray(urls))
-        ***REMOVED***
+        {
             for (var i = 0; i &lt; keys.length; i++)
-            ***REMOVED***
+            {
                 this.image(keys[i], urls[i]);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             for (var i = 0; i &lt; keys.length; i++)
-            ***REMOVED***
+            {
                 this.image(keys[i]);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a Text file to the current load queue.
@@ -2068,16 +2068,16 @@ Phaser.Loader.prototype = ***REMOVED***
     * If you do not desire this action then provide a URL.
     *
     * @method Phaser.Loader#text
-    * @param ***REMOVED***string***REMOVED*** key - Unique asset key of the text file.
-    * @param ***REMOVED***string***REMOVED*** [url] - URL of the text file. If undefined or `null` the url will be set to `&lt;key>.txt`, i.e. if `key` was "alien" then the URL will be "alien.txt".
-    * @param ***REMOVED***boolean***REMOVED*** [overwrite=false] - If an unloaded file with a matching key already exists in the queue, this entry will overwrite it.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @param {string} key - Unique asset key of the text file.
+    * @param {string} [url] - URL of the text file. If undefined or `null` the url will be set to `&lt;key>.txt`, i.e. if `key` was "alien" then the URL will be "alien.txt".
+    * @param {boolean} [overwrite=false] - If an unloaded file with a matching key already exists in the queue, this entry will overwrite it.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    text: function (key, url, overwrite) ***REMOVED***
+    text: function (key, url, overwrite) {
 
         return this.addToFileList('text', key, url, undefined, overwrite, '.txt');
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a JSON file to the current load queue.
@@ -2096,16 +2096,16 @@ Phaser.Loader.prototype = ***REMOVED***
     * If you do not desire this action then provide a URL.
     *
     * @method Phaser.Loader#json
-    * @param ***REMOVED***string***REMOVED*** key - Unique asset key of the json file.
-    * @param ***REMOVED***string***REMOVED*** [url] - URL of the JSON file. If undefined or `null` the url will be set to `&lt;key>.json`, i.e. if `key` was "alien" then the URL will be "alien.json".
-    * @param ***REMOVED***boolean***REMOVED*** [overwrite=false] - If an unloaded file with a matching key already exists in the queue, this entry will overwrite it.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @param {string} key - Unique asset key of the json file.
+    * @param {string} [url] - URL of the JSON file. If undefined or `null` the url will be set to `&lt;key>.json`, i.e. if `key` was "alien" then the URL will be "alien.json".
+    * @param {boolean} [overwrite=false] - If an unloaded file with a matching key already exists in the queue, this entry will overwrite it.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    json: function (key, url, overwrite) ***REMOVED***
+    json: function (key, url, overwrite) {
 
         return this.addToFileList('json', key, url, undefined, overwrite, '.json');
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a fragment shader file to the current load queue.
@@ -2123,16 +2123,16 @@ Phaser.Loader.prototype = ***REMOVED***
     * If you do not desire this action then provide a URL.
     *
     * @method Phaser.Loader#shader
-    * @param ***REMOVED***string***REMOVED*** key - Unique asset key of the fragment file.
-    * @param ***REMOVED***string***REMOVED*** [url] - URL of the fragment file. If undefined or `null` the url will be set to `&lt;key>.frag`, i.e. if `key` was "blur" then the URL will be "blur.frag".
-    * @param ***REMOVED***boolean***REMOVED*** [overwrite=false] - If an unloaded file with a matching key already exists in the queue, this entry will overwrite it.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @param {string} key - Unique asset key of the fragment file.
+    * @param {string} [url] - URL of the fragment file. If undefined or `null` the url will be set to `&lt;key>.frag`, i.e. if `key` was "blur" then the URL will be "blur.frag".
+    * @param {boolean} [overwrite=false] - If an unloaded file with a matching key already exists in the queue, this entry will overwrite it.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    shader: function (key, url, overwrite) ***REMOVED***
+    shader: function (key, url, overwrite) {
 
         return this.addToFileList('shader', key, url, undefined, overwrite, '.frag');
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds an XML file to the current load queue.
@@ -2150,16 +2150,16 @@ Phaser.Loader.prototype = ***REMOVED***
     * If you do not desire this action then provide a URL.
     *
     * @method Phaser.Loader#xml
-    * @param ***REMOVED***string***REMOVED*** key - Unique asset key of the xml file.
-    * @param ***REMOVED***string***REMOVED*** [url] - URL of the XML file. If undefined or `null` the url will be set to `&lt;key>.xml`, i.e. if `key` was "alien" then the URL will be "alien.xml".
-    * @param ***REMOVED***boolean***REMOVED*** [overwrite=false] - If an unloaded file with a matching key already exists in the queue, this entry will overwrite it.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @param {string} key - Unique asset key of the xml file.
+    * @param {string} [url] - URL of the XML file. If undefined or `null` the url will be set to `&lt;key>.xml`, i.e. if `key` was "alien" then the URL will be "alien.xml".
+    * @param {boolean} [overwrite=false] - If an unloaded file with a matching key already exists in the queue, this entry will overwrite it.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    xml: function (key, url, overwrite) ***REMOVED***
+    xml: function (key, url, overwrite) {
 
         return this.addToFileList('xml', key, url, undefined, overwrite, '.xml');
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a JavaScript file to the current load queue.
@@ -2180,21 +2180,21 @@ Phaser.Loader.prototype = ***REMOVED***
     * The callback must return relevant `data`.
     *
     * @method Phaser.Loader#script
-    * @param ***REMOVED***string***REMOVED*** key - Unique asset key of the script file.
-    * @param ***REMOVED***string***REMOVED*** [url] - URL of the JavaScript file. If undefined or `null` the url will be set to `&lt;key>.js`, i.e. if `key` was "alien" then the URL will be "alien.js".
-    * @param ***REMOVED***function***REMOVED*** [callback=(none)] - Optional callback that will be called after the script tag has loaded, so you can perform additional processing.
-    * @param ***REMOVED***object***REMOVED*** [callbackContext=(loader)] - The context under which the callback will be applied. If not specified it will use the Phaser Loader as the context.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @param {string} key - Unique asset key of the script file.
+    * @param {string} [url] - URL of the JavaScript file. If undefined or `null` the url will be set to `&lt;key>.js`, i.e. if `key` was "alien" then the URL will be "alien.js".
+    * @param {function} [callback=(none)] - Optional callback that will be called after the script tag has loaded, so you can perform additional processing.
+    * @param {object} [callbackContext=(loader)] - The context under which the callback will be applied. If not specified it will use the Phaser Loader as the context.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    script: function (key, url, callback, callbackContext) ***REMOVED***
+    script: function (key, url, callback, callbackContext) {
 
-        if (callback === undefined) ***REMOVED*** callback = false; ***REMOVED***
+        if (callback === undefined) { callback = false; }
 
-        if (callback !== false &amp;&amp; callbackContext === undefined) ***REMOVED*** callbackContext = this; ***REMOVED***
+        if (callback !== false &amp;&amp; callbackContext === undefined) { callbackContext = this; }
 
-        return this.addToFileList('script', key, url, ***REMOVED*** syncPoint: true, callback: callback, callbackContext: callbackContext ***REMOVED***, false, '.js');
+        return this.addToFileList('script', key, url, { syncPoint: true, callback: callback, callbackContext: callbackContext }, false, '.js');
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a binary file to the current load queue.
@@ -2217,22 +2217,22 @@ Phaser.Loader.prototype = ***REMOVED***
     * WARNING: If a callback is specified the data will be set to whatever it returns. Always return the data object, even if you didn't modify it.
     *
     * @method Phaser.Loader#binary
-    * @param ***REMOVED***string***REMOVED*** key - Unique asset key of the binary file.
-    * @param ***REMOVED***string***REMOVED*** [url] - URL of the binary file. If undefined or `null` the url will be set to `&lt;key>.bin`, i.e. if `key` was "alien" then the URL will be "alien.bin".
-    * @param ***REMOVED***function***REMOVED*** [callback=(none)] - Optional callback that will be passed the file after loading, so you can perform additional processing on it.
-    * @param ***REMOVED***object***REMOVED*** [callbackContext] - The context under which the callback will be applied. If not specified it will use the callback itself as the context.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @param {string} key - Unique asset key of the binary file.
+    * @param {string} [url] - URL of the binary file. If undefined or `null` the url will be set to `&lt;key>.bin`, i.e. if `key` was "alien" then the URL will be "alien.bin".
+    * @param {function} [callback=(none)] - Optional callback that will be passed the file after loading, so you can perform additional processing on it.
+    * @param {object} [callbackContext] - The context under which the callback will be applied. If not specified it will use the callback itself as the context.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    binary: function (key, url, callback, callbackContext) ***REMOVED***
+    binary: function (key, url, callback, callbackContext) {
 
-        if (callback === undefined) ***REMOVED*** callback = false; ***REMOVED***
+        if (callback === undefined) { callback = false; }
 
         // Why is the default callback context the ..callback?
-        if (callback !== false &amp;&amp; callbackContext === undefined) ***REMOVED*** callbackContext = callback; ***REMOVED***
+        if (callback !== false &amp;&amp; callbackContext === undefined) { callbackContext = callback; }
 
-        return this.addToFileList('binary', key, url, ***REMOVED*** callback: callback, callbackContext: callbackContext ***REMOVED***, false, '.bin');
+        return this.addToFileList('binary', key, url, { callback: callback, callbackContext: callbackContext }, false, '.bin');
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a Sprite Sheet to the current load queue.
@@ -2257,24 +2257,24 @@ Phaser.Loader.prototype = ***REMOVED***
     * If you do not desire this action then provide a URL.
     *
     * @method Phaser.Loader#spritesheet
-    * @param ***REMOVED***string***REMOVED*** key - Unique asset key of the sheet file.
-    * @param ***REMOVED***string***REMOVED*** url - URL of the sprite sheet file. If undefined or `null` the url will be set to `&lt;key>.png`, i.e. if `key` was "alien" then the URL will be "alien.png".
-    * @param ***REMOVED***number***REMOVED*** frameWidth - Width in pixels of a single frame in the sprite sheet.
-    * @param ***REMOVED***number***REMOVED*** frameHeight - Height in pixels of a single frame in the sprite sheet.
-    * @param ***REMOVED***number***REMOVED*** [frameMax=-1] - How many frames in this sprite sheet. If not specified it will divide the whole image into frames.
-    * @param ***REMOVED***number***REMOVED*** [margin=0] - If the frames have been drawn with a margin, specify the amount here.
-    * @param ***REMOVED***number***REMOVED*** [spacing=0] - If the frames have been drawn with spacing between them, specify the amount here.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @param {string} key - Unique asset key of the sheet file.
+    * @param {string} url - URL of the sprite sheet file. If undefined or `null` the url will be set to `&lt;key>.png`, i.e. if `key` was "alien" then the URL will be "alien.png".
+    * @param {number} frameWidth - Width in pixels of a single frame in the sprite sheet.
+    * @param {number} frameHeight - Height in pixels of a single frame in the sprite sheet.
+    * @param {number} [frameMax=-1] - How many frames in this sprite sheet. If not specified it will divide the whole image into frames.
+    * @param {number} [margin=0] - If the frames have been drawn with a margin, specify the amount here.
+    * @param {number} [spacing=0] - If the frames have been drawn with spacing between them, specify the amount here.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    spritesheet: function (key, url, frameWidth, frameHeight, frameMax, margin, spacing) ***REMOVED***
+    spritesheet: function (key, url, frameWidth, frameHeight, frameMax, margin, spacing) {
 
-        if (frameMax === undefined) ***REMOVED*** frameMax = -1; ***REMOVED***
-        if (margin === undefined) ***REMOVED*** margin = 0; ***REMOVED***
-        if (spacing === undefined) ***REMOVED*** spacing = 0; ***REMOVED***
+        if (frameMax === undefined) { frameMax = -1; }
+        if (margin === undefined) { margin = 0; }
+        if (spacing === undefined) { spacing = 0; }
 
-        return this.addToFileList('spritesheet', key, url, ***REMOVED*** frameWidth: frameWidth, frameHeight: frameHeight, frameMax: frameMax, margin: margin, spacing: spacing ***REMOVED***, false, '.png');
+        return this.addToFileList('spritesheet', key, url, { frameWidth: frameWidth, frameHeight: frameHeight, frameMax: frameMax, margin: margin, spacing: spacing }, false, '.png');
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds an audio file to the current load queue.
@@ -2292,32 +2292,32 @@ Phaser.Loader.prototype = ***REMOVED***
     * The solution is to use a lower encoding rate such as 44100 Hz.
     *
     * @method Phaser.Loader#audio
-    * @param ***REMOVED***string***REMOVED*** key - Unique asset key of the audio file.
-    * @param ***REMOVED***string|string[]|object[]***REMOVED*** urls - Either a single string or an array of URIs or pairs of `***REMOVED***uri: .., type: ..***REMOVED***`.
+    * @param {string} key - Unique asset key of the audio file.
+    * @param {string|string[]|object[]} urls - Either a single string or an array of URIs or pairs of `{uri: .., type: ..}`.
     *    If an array is specified then the first URI (or URI + mime pair) that is device-compatible will be selected.
-    *    For example: `"jump.mp3"`, `['jump.mp3', 'jump.ogg', 'jump.m4a']`, or `[***REMOVED***uri: "data:&lt;opus_resource>", type: 'opus'***REMOVED***, 'fallback.mp3']`.
+    *    For example: `"jump.mp3"`, `['jump.mp3', 'jump.ogg', 'jump.m4a']`, or `[{uri: "data:&lt;opus_resource>", type: 'opus'}, 'fallback.mp3']`.
     *    BLOB and DATA URIs can be used but only support automatic detection when used in the pair form; otherwise the format must be manually checked before adding the resource.
-    * @param ***REMOVED***boolean***REMOVED*** [autoDecode=true] - When using Web Audio the audio files can either be decoded at load time or run-time.
+    * @param {boolean} [autoDecode=true] - When using Web Audio the audio files can either be decoded at load time or run-time.
     *    Audio files can't be played until they are decoded and, if specified, this enables immediate decoding. Decoding is a non-blocking async process, however it consumes huge amounts of CPU time on mobiles especially.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    audio: function (key, urls, autoDecode) ***REMOVED***
+    audio: function (key, urls, autoDecode) {
 
         if (this.game.sound.noAudio)
-        ***REMOVED***
+        {
             return this;
-        ***REMOVED***
+        }
 
-        if (autoDecode === undefined) ***REMOVED*** autoDecode = true; ***REMOVED***
+        if (autoDecode === undefined) { autoDecode = true; }
 
         if (typeof urls === 'string')
-        ***REMOVED***
+        {
             urls = [urls];
-        ***REMOVED***
+        }
 
-        return this.addToFileList('audio', key, urls, ***REMOVED*** buffer: null, autoDecode: autoDecode ***REMOVED***);
+        return this.addToFileList('audio', key, urls, { buffer: null, autoDecode: autoDecode });
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds an audio sprite file to the current load queue.
@@ -2335,66 +2335,66 @@ Phaser.Loader.prototype = ***REMOVED***
     * The URL can be relative or absolute. If the URL is relative the `Loader.baseURL` and `Loader.path` values will be prepended to it.
     *
     * @method Phaser.Loader#audioSprite
-    * @param ***REMOVED***string***REMOVED*** key - Unique asset key of the audio file.
-    * @param ***REMOVED***Array|string***REMOVED*** urls - An array containing the URLs of the audio files, i.e.: [ 'audiosprite.mp3', 'audiosprite.ogg', 'audiosprite.m4a' ] or a single string containing just one URL.
-    * @param ***REMOVED***string***REMOVED*** [jsonURL=null] - The URL of the audiosprite configuration JSON object. If you wish to pass the data directly set this parameter to null.
-    * @param ***REMOVED***string|object***REMOVED*** [jsonData=null] - A JSON object or string containing the audiosprite configuration data. This is ignored if jsonURL is not null.
-    * @param ***REMOVED***boolean***REMOVED*** [autoDecode=true] - When using Web Audio the audio files can either be decoded at load time or run-time.
+    * @param {string} key - Unique asset key of the audio file.
+    * @param {Array|string} urls - An array containing the URLs of the audio files, i.e.: [ 'audiosprite.mp3', 'audiosprite.ogg', 'audiosprite.m4a' ] or a single string containing just one URL.
+    * @param {string} [jsonURL=null] - The URL of the audiosprite configuration JSON object. If you wish to pass the data directly set this parameter to null.
+    * @param {string|object} [jsonData=null] - A JSON object or string containing the audiosprite configuration data. This is ignored if jsonURL is not null.
+    * @param {boolean} [autoDecode=true] - When using Web Audio the audio files can either be decoded at load time or run-time.
     *    Audio files can't be played until they are decoded and, if specified, this enables immediate decoding. Decoding is a non-blocking async process, however it consumes huge amounts of CPU time on mobiles especially.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    audioSprite: function (key, urls, jsonURL, jsonData, autoDecode) ***REMOVED***
+    audioSprite: function (key, urls, jsonURL, jsonData, autoDecode) {
 
         if (this.game.sound.noAudio)
-        ***REMOVED***
+        {
             return this;
-        ***REMOVED***
+        }
 
-        if (jsonURL === undefined) ***REMOVED*** jsonURL = null; ***REMOVED***
-        if (jsonData === undefined) ***REMOVED*** jsonData = null; ***REMOVED***
-        if (autoDecode === undefined) ***REMOVED*** autoDecode = true; ***REMOVED***
+        if (jsonURL === undefined) { jsonURL = null; }
+        if (jsonData === undefined) { jsonData = null; }
+        if (autoDecode === undefined) { autoDecode = true; }
 
         this.audio(key, urls, autoDecode);
 
         if (jsonURL)
-        ***REMOVED***
+        {
             this.json(key + '-audioatlas', jsonURL);
-        ***REMOVED***
+        }
         else if (jsonData)
-        ***REMOVED***
+        {
             if (typeof jsonData === 'string')
-            ***REMOVED***
+            {
                 jsonData = JSON.parse(jsonData);
-            ***REMOVED***
+            }
 
             this.cache.addJSON(key + '-audioatlas', '', jsonData);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             console.warn('Phaser.Loader.audiosprite - You must specify either a jsonURL or provide a jsonData object');
-        ***REMOVED***
+        }
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * A legacy alias for Loader.audioSprite. Please see that method for documentation.
     *
     * @method Phaser.Loader#audiosprite
-    * @param ***REMOVED***string***REMOVED*** key - Unique asset key of the audio file.
-    * @param ***REMOVED***Array|string***REMOVED*** urls - An array containing the URLs of the audio files, i.e.: [ 'audiosprite.mp3', 'audiosprite.ogg', 'audiosprite.m4a' ] or a single string containing just one URL.
-    * @param ***REMOVED***string***REMOVED*** [jsonURL=null] - The URL of the audiosprite configuration JSON object. If you wish to pass the data directly set this parameter to null.
-    * @param ***REMOVED***string|object***REMOVED*** [jsonData=null] - A JSON object or string containing the audiosprite configuration data. This is ignored if jsonURL is not null.
-    * @param ***REMOVED***boolean***REMOVED*** [autoDecode=true] - When using Web Audio the audio files can either be decoded at load time or run-time.
+    * @param {string} key - Unique asset key of the audio file.
+    * @param {Array|string} urls - An array containing the URLs of the audio files, i.e.: [ 'audiosprite.mp3', 'audiosprite.ogg', 'audiosprite.m4a' ] or a single string containing just one URL.
+    * @param {string} [jsonURL=null] - The URL of the audiosprite configuration JSON object. If you wish to pass the data directly set this parameter to null.
+    * @param {string|object} [jsonData=null] - A JSON object or string containing the audiosprite configuration data. This is ignored if jsonURL is not null.
+    * @param {boolean} [autoDecode=true] - When using Web Audio the audio files can either be decoded at load time or run-time.
     *    Audio files can't be played until they are decoded and, if specified, this enables immediate decoding. Decoding is a non-blocking async process, however it consumes huge amounts of CPU time on mobiles especially.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    audiosprite: function (key, urls, jsonURL, jsonData, autoDecode) ***REMOVED***
+    audiosprite: function (key, urls, jsonURL, jsonData, autoDecode) {
 
         return this.audioSprite(key, urls, jsonURL, jsonData, autoDecode);
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a video file to the current load queue.
@@ -2410,45 +2410,45 @@ Phaser.Loader.prototype = ***REMOVED***
     * You don't need to preload a video in order to play it in your game. See `Video.createVideoFromURL` for details.
     *
     * @method Phaser.Loader#video
-    * @param ***REMOVED***string***REMOVED*** key - Unique asset key of the video file.
-    * @param ***REMOVED***string|string[]|object[]***REMOVED*** urls - Either a single string or an array of URIs or pairs of `***REMOVED***uri: .., type: ..***REMOVED***`.
+    * @param {string} key - Unique asset key of the video file.
+    * @param {string|string[]|object[]} urls - Either a single string or an array of URIs or pairs of `{uri: .., type: ..}`.
     *    If an array is specified then the first URI (or URI + mime pair) that is device-compatible will be selected.
-    *    For example: `"boom.mp4"`, `['boom.mp4', 'boom.ogg', 'boom.webm']`, or `[***REMOVED***uri: "data:&lt;opus_resource>", type: 'opus'***REMOVED***, 'fallback.mp4']`.
+    *    For example: `"boom.mp4"`, `['boom.mp4', 'boom.ogg', 'boom.webm']`, or `[{uri: "data:&lt;opus_resource>", type: 'opus'}, 'fallback.mp4']`.
     *    BLOB and DATA URIs can be used but only support automatic detection when used in the pair form; otherwise the format must be manually checked before adding the resource.
-    * @param ***REMOVED***string***REMOVED*** [loadEvent='canplaythrough'] - This sets the Video source event to listen for before the load is considered complete.
+    * @param {string} [loadEvent='canplaythrough'] - This sets the Video source event to listen for before the load is considered complete.
     *    'canplaythrough' implies the video has downloaded enough, and bandwidth is high enough that it can be played to completion.
     *    'canplay' implies the video has downloaded enough to start playing, but not necessarily to finish.
     *    'loadeddata' just makes sure that the video meta data and first frame have downloaded. Phaser uses this value automatically if the
     *    browser is detected as being Firefox and no `loadEvent` is given, otherwise it defaults to `canplaythrough`.
-    * @param ***REMOVED***boolean***REMOVED*** [asBlob=false] - Video files can either be loaded via the creation of a video element which has its src property set.
+    * @param {boolean} [asBlob=false] - Video files can either be loaded via the creation of a video element which has its src property set.
     *    Or they can be loaded via xhr, stored as binary data in memory and then converted to a Blob. This isn't supported in IE9 or Android 2.
     *    If you need to have the same video playing at different times across multiple Sprites then you need to load it as a Blob.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    video: function (key, urls, loadEvent, asBlob) ***REMOVED***
+    video: function (key, urls, loadEvent, asBlob) {
 
         if (loadEvent === undefined)
-        ***REMOVED***
+        {
             if (this.game.device.firefox)
-            ***REMOVED***
+            {
                 loadEvent = 'loadeddata';
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 loadEvent = 'canplaythrough';
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-        if (asBlob === undefined) ***REMOVED*** asBlob = false; ***REMOVED***
+        if (asBlob === undefined) { asBlob = false; }
 
         if (typeof urls === 'string')
-        ***REMOVED***
+        {
             urls = [urls];
-        ***REMOVED***
+        }
 
-        return this.addToFileList('video', key, urls, ***REMOVED*** buffer: null, asBlob: asBlob, loadEvent: loadEvent ***REMOVED***);
+        return this.addToFileList('video', key, urls, { buffer: null, asBlob: asBlob, loadEvent: loadEvent });
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a Tile Map data file to the current load queue.
@@ -2477,35 +2477,35 @@ Phaser.Loader.prototype = ***REMOVED***
     * If you do not desire this action then provide a URL or data object.
     *
     * @method Phaser.Loader#tilemap
-    * @param ***REMOVED***string***REMOVED*** key - Unique asset key of the tilemap data.
-    * @param ***REMOVED***string***REMOVED*** [url] - URL of the tile map file. If undefined or `null` and no data is given the url will be set to `&lt;key>.json`, i.e. if `key` was "level1" then the URL will be "level1.json".
-    * @param ***REMOVED***object|string***REMOVED*** [data] - An optional JSON data object. If given then the url is ignored and this JSON object is used for map data instead.
-    * @param ***REMOVED***number***REMOVED*** [format=Phaser.Tilemap.CSV] - The format of the map data. Either Phaser.Tilemap.CSV or Phaser.Tilemap.TILED_JSON.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @param {string} key - Unique asset key of the tilemap data.
+    * @param {string} [url] - URL of the tile map file. If undefined or `null` and no data is given the url will be set to `&lt;key>.json`, i.e. if `key` was "level1" then the URL will be "level1.json".
+    * @param {object|string} [data] - An optional JSON data object. If given then the url is ignored and this JSON object is used for map data instead.
+    * @param {number} [format=Phaser.Tilemap.CSV] - The format of the map data. Either Phaser.Tilemap.CSV or Phaser.Tilemap.TILED_JSON.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    tilemap: function (key, url, data, format) ***REMOVED***
+    tilemap: function (key, url, data, format) {
 
-        if (url === undefined) ***REMOVED*** url = null; ***REMOVED***
-        if (data === undefined) ***REMOVED*** data = null; ***REMOVED***
-        if (format === undefined) ***REMOVED*** format = Phaser.Tilemap.CSV; ***REMOVED***
+        if (url === undefined) { url = null; }
+        if (data === undefined) { data = null; }
+        if (format === undefined) { format = Phaser.Tilemap.CSV; }
 
         if (!url &amp;&amp; !data)
-        ***REMOVED***
+        {
             if (format === Phaser.Tilemap.CSV)
-            ***REMOVED***
+            {
                 url = key + '.csv';
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 url = key + '.json';
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         //  A map data object has been given
         if (data)
-        ***REMOVED***
+        {
             switch (format)
-            ***REMOVED***
+            {
                 //  A csv string or object has been given
                 case Phaser.Tilemap.CSV:
                     break;
@@ -2514,22 +2514,22 @@ Phaser.Loader.prototype = ***REMOVED***
                 case Phaser.Tilemap.TILED_JSON:
 
                     if (typeof data === 'string')
-                    ***REMOVED***
+                    {
                         data = JSON.parse(data);
-                    ***REMOVED***
+                    }
                     break;
-            ***REMOVED***
+            }
 
             this.cache.addTilemap(key, null, data, format);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
-            this.addToFileList('tilemap', key, url, ***REMOVED*** format: format ***REMOVED***);
-        ***REMOVED***
+        {
+            this.addToFileList('tilemap', key, url, { format: format });
+        }
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a physics data file to the current load queue.
@@ -2556,41 +2556,41 @@ Phaser.Loader.prototype = ***REMOVED***
     * If you do not desire this action then provide a URL or data object.
     *
     * @method Phaser.Loader#physics
-    * @param ***REMOVED***string***REMOVED*** key - Unique asset key of the physics json data.
-    * @param ***REMOVED***string***REMOVED*** [url] - URL of the physics data file. If undefined or `null` and no data is given the url will be set to `&lt;key>.json`, i.e. if `key` was "alien" then the URL will be "alien.json".
-    * @param ***REMOVED***object|string***REMOVED*** [data] - An optional JSON data object. If given then the url is ignored and this JSON object is used for physics data instead.
-    * @param ***REMOVED***string***REMOVED*** [format=Phaser.Physics.LIME_CORONA_JSON] - The format of the physics data.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @param {string} key - Unique asset key of the physics json data.
+    * @param {string} [url] - URL of the physics data file. If undefined or `null` and no data is given the url will be set to `&lt;key>.json`, i.e. if `key` was "alien" then the URL will be "alien.json".
+    * @param {object|string} [data] - An optional JSON data object. If given then the url is ignored and this JSON object is used for physics data instead.
+    * @param {string} [format=Phaser.Physics.LIME_CORONA_JSON] - The format of the physics data.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    physics: function (key, url, data, format) ***REMOVED***
+    physics: function (key, url, data, format) {
 
-        if (url === undefined) ***REMOVED*** url = null; ***REMOVED***
-        if (data === undefined) ***REMOVED*** data = null; ***REMOVED***
-        if (format === undefined) ***REMOVED*** format = Phaser.Physics.LIME_CORONA_JSON; ***REMOVED***
+        if (url === undefined) { url = null; }
+        if (data === undefined) { data = null; }
+        if (format === undefined) { format = Phaser.Physics.LIME_CORONA_JSON; }
 
         if (!url &amp;&amp; !data)
-        ***REMOVED***
+        {
             url = key + '.json';
-        ***REMOVED***
+        }
 
         //  A map data object has been given
         if (data)
-        ***REMOVED***
+        {
             if (typeof data === 'string')
-            ***REMOVED***
+            {
                 data = JSON.parse(data);
-            ***REMOVED***
+            }
 
             this.cache.addPhysicsData(key, null, data, format);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
-            this.addToFileList('physics', key, url, ***REMOVED*** format: format ***REMOVED***);
-        ***REMOVED***
+        {
+            this.addToFileList('physics', key, url, { format: format });
+        }
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds Bitmap Font files to the current load queue.
@@ -2622,66 +2622,66 @@ Phaser.Loader.prototype = ***REMOVED***
     * If you do not desire this action then provide URLs and / or a data object.
     *
     * @method Phaser.Loader#bitmapFont
-    * @param ***REMOVED***string***REMOVED*** key - Unique asset key of the bitmap font.
-    * @param ***REMOVED***string***REMOVED*** textureURL -  URL of the Bitmap Font texture file. If undefined or `null` the url will be set to `&lt;key>.png`, i.e. if `key` was "megaFont" then the URL will be "megaFont.png".
-    * @param ***REMOVED***string***REMOVED*** atlasURL - URL of the Bitmap Font atlas file (xml/json). If undefined or `null` AND `atlasData` is null, the url will be set to `&lt;key>.xml`, i.e. if `key` was "megaFont" then the URL will be "megaFont.xml".
-    * @param ***REMOVED***object***REMOVED*** atlasData - An optional Bitmap Font atlas in string form (stringified xml/json).
-    * @param ***REMOVED***number***REMOVED*** [xSpacing=0] - If you'd like to add additional horizontal spacing between the characters then set the pixel value here.
-    * @param ***REMOVED***number***REMOVED*** [ySpacing=0] - If you'd like to add additional vertical spacing between the lines then set the pixel value here.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @param {string} key - Unique asset key of the bitmap font.
+    * @param {string} textureURL -  URL of the Bitmap Font texture file. If undefined or `null` the url will be set to `&lt;key>.png`, i.e. if `key` was "megaFont" then the URL will be "megaFont.png".
+    * @param {string} atlasURL - URL of the Bitmap Font atlas file (xml/json). If undefined or `null` AND `atlasData` is null, the url will be set to `&lt;key>.xml`, i.e. if `key` was "megaFont" then the URL will be "megaFont.xml".
+    * @param {object} atlasData - An optional Bitmap Font atlas in string form (stringified xml/json).
+    * @param {number} [xSpacing=0] - If you'd like to add additional horizontal spacing between the characters then set the pixel value here.
+    * @param {number} [ySpacing=0] - If you'd like to add additional vertical spacing between the lines then set the pixel value here.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    bitmapFont: function (key, textureURL, atlasURL, atlasData, xSpacing, ySpacing) ***REMOVED***
+    bitmapFont: function (key, textureURL, atlasURL, atlasData, xSpacing, ySpacing) {
 
         if (textureURL === undefined || textureURL === null)
-        ***REMOVED***
+        {
             textureURL = key + '.png';
-        ***REMOVED***
+        }
 
-        if (atlasURL === undefined) ***REMOVED*** atlasURL = null; ***REMOVED***
-        if (atlasData === undefined) ***REMOVED*** atlasData = null; ***REMOVED***
+        if (atlasURL === undefined) { atlasURL = null; }
+        if (atlasData === undefined) { atlasData = null; }
 
         if (atlasURL === null &amp;&amp; atlasData === null)
-        ***REMOVED***
+        {
             atlasURL = key + '.xml';
-        ***REMOVED***
+        }
 
-        if (xSpacing === undefined) ***REMOVED*** xSpacing = 0; ***REMOVED***
-        if (ySpacing === undefined) ***REMOVED*** ySpacing = 0; ***REMOVED***
+        if (xSpacing === undefined) { xSpacing = 0; }
+        if (ySpacing === undefined) { ySpacing = 0; }
 
         //  A URL to a json/xml atlas has been given
         if (atlasURL)
-        ***REMOVED***
-            this.addToFileList('bitmapfont', key, textureURL, ***REMOVED*** atlasURL: atlasURL, xSpacing: xSpacing, ySpacing: ySpacing ***REMOVED***);
-        ***REMOVED***
+        {
+            this.addToFileList('bitmapfont', key, textureURL, { atlasURL: atlasURL, xSpacing: xSpacing, ySpacing: ySpacing });
+        }
         else
-        ***REMOVED***
+        {
             //  A stringified xml/json atlas has been given
             if (typeof atlasData === 'string')
-            ***REMOVED***
+            {
                 var json, xml;
 
                 try
-                ***REMOVED***
+                {
                     json = JSON.parse(atlasData);
-                ***REMOVED***
+                }
                 catch ( e )
-                ***REMOVED***
+                {
                     xml = this.parseXml(atlasData);
-                ***REMOVED***
+                }
 
                 if (!xml &amp;&amp; !json)
-                ***REMOVED***
+                {
                     throw new Error("Phaser.Loader. Invalid Bitmap Font atlas given");
-                ***REMOVED***
+                }
 
-                this.addToFileList('bitmapfont', key, textureURL, ***REMOVED*** atlasURL: null, atlasData: json || xml,
-                    atlasType: (!!json ? 'json' : 'xml'), xSpacing: xSpacing, ySpacing: ySpacing ***REMOVED***);
-            ***REMOVED***
-        ***REMOVED***
+                this.addToFileList('bitmapfont', key, textureURL, { atlasURL: null, atlasData: json || xml,
+                    atlasType: (!!json ? 'json' : 'xml'), xSpacing: xSpacing, ySpacing: ySpacing });
+            }
+        }
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a Texture Atlas file to the current load queue.
@@ -2717,17 +2717,17 @@ Phaser.Loader.prototype = ***REMOVED***
     * If you do not desire this action then provide URLs and / or a data object.
     *
     * @method Phaser.Loader#atlasJSONArray
-    * @param ***REMOVED***string***REMOVED*** key - Unique asset key of the texture atlas file.
-    * @param ***REMOVED***string***REMOVED*** [textureURL] - URL of the texture atlas image file. If undefined or `null` the url will be set to `&lt;key>.png`, i.e. if `key` was "alien" then the URL will be "alien.png".
-    * @param ***REMOVED***string***REMOVED*** [atlasURL] - URL of the texture atlas data file. If undefined or `null` and no atlasData is given, the url will be set to `&lt;key>.json`, i.e. if `key` was "alien" then the URL will be "alien.json".
-    * @param ***REMOVED***object***REMOVED*** [atlasData] - A JSON data object. You don't need this if the data is being loaded from a URL.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @param {string} key - Unique asset key of the texture atlas file.
+    * @param {string} [textureURL] - URL of the texture atlas image file. If undefined or `null` the url will be set to `&lt;key>.png`, i.e. if `key` was "alien" then the URL will be "alien.png".
+    * @param {string} [atlasURL] - URL of the texture atlas data file. If undefined or `null` and no atlasData is given, the url will be set to `&lt;key>.json`, i.e. if `key` was "alien" then the URL will be "alien.json".
+    * @param {object} [atlasData] - A JSON data object. You don't need this if the data is being loaded from a URL.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    atlasJSONArray: function (key, textureURL, atlasURL, atlasData) ***REMOVED***
+    atlasJSONArray: function (key, textureURL, atlasURL, atlasData) {
 
         return this.atlas(key, textureURL, atlasURL, atlasData, Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY);
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a Texture Atlas file to the current load queue.
@@ -2763,17 +2763,17 @@ Phaser.Loader.prototype = ***REMOVED***
     * If you do not desire this action then provide URLs and / or a data object.
     *
     * @method Phaser.Loader#atlasJSONHash
-    * @param ***REMOVED***string***REMOVED*** key - Unique asset key of the texture atlas file.
-    * @param ***REMOVED***string***REMOVED*** [textureURL] - URL of the texture atlas image file. If undefined or `null` the url will be set to `&lt;key>.png`, i.e. if `key` was "alien" then the URL will be "alien.png".
-    * @param ***REMOVED***string***REMOVED*** [atlasURL] - URL of the texture atlas data file. If undefined or `null` and no atlasData is given, the url will be set to `&lt;key>.json`, i.e. if `key` was "alien" then the URL will be "alien.json".
-    * @param ***REMOVED***object***REMOVED*** [atlasData] - A JSON data object. You don't need this if the data is being loaded from a URL.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @param {string} key - Unique asset key of the texture atlas file.
+    * @param {string} [textureURL] - URL of the texture atlas image file. If undefined or `null` the url will be set to `&lt;key>.png`, i.e. if `key` was "alien" then the URL will be "alien.png".
+    * @param {string} [atlasURL] - URL of the texture atlas data file. If undefined or `null` and no atlasData is given, the url will be set to `&lt;key>.json`, i.e. if `key` was "alien" then the URL will be "alien.json".
+    * @param {object} [atlasData] - A JSON data object. You don't need this if the data is being loaded from a URL.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    atlasJSONHash: function (key, textureURL, atlasURL, atlasData) ***REMOVED***
+    atlasJSONHash: function (key, textureURL, atlasURL, atlasData) {
 
         return this.atlas(key, textureURL, atlasURL, atlasData, Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a Texture Atlas file to the current load queue.
@@ -2809,25 +2809,25 @@ Phaser.Loader.prototype = ***REMOVED***
     * If you do not desire this action then provide URLs and / or a data object.
     *
     * @method Phaser.Loader#atlasXML
-    * @param ***REMOVED***string***REMOVED*** key - Unique asset key of the texture atlas file.
-    * @param ***REMOVED***string***REMOVED*** [textureURL] - URL of the texture atlas image file. If undefined or `null` the url will be set to `&lt;key>.png`, i.e. if `key` was "alien" then the URL will be "alien.png".
-    * @param ***REMOVED***string***REMOVED*** [atlasURL] - URL of the texture atlas data file. If undefined or `null` and no atlasData is given, the url will be set to `&lt;key>.json`, i.e. if `key` was "alien" then the URL will be "alien.xml".
-    * @param ***REMOVED***object***REMOVED*** [atlasData] - An XML data object. You don't need this if the data is being loaded from a URL.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @param {string} key - Unique asset key of the texture atlas file.
+    * @param {string} [textureURL] - URL of the texture atlas image file. If undefined or `null` the url will be set to `&lt;key>.png`, i.e. if `key` was "alien" then the URL will be "alien.png".
+    * @param {string} [atlasURL] - URL of the texture atlas data file. If undefined or `null` and no atlasData is given, the url will be set to `&lt;key>.json`, i.e. if `key` was "alien" then the URL will be "alien.xml".
+    * @param {object} [atlasData] - An XML data object. You don't need this if the data is being loaded from a URL.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    atlasXML: function (key, textureURL, atlasURL, atlasData) ***REMOVED***
+    atlasXML: function (key, textureURL, atlasURL, atlasData) {
 
-        if (atlasURL === undefined) ***REMOVED*** atlasURL = null; ***REMOVED***
-        if (atlasData === undefined) ***REMOVED*** atlasData = null; ***REMOVED***
+        if (atlasURL === undefined) { atlasURL = null; }
+        if (atlasData === undefined) { atlasData = null; }
 
         if (!atlasURL &amp;&amp; !atlasData)
-        ***REMOVED***
+        {
             atlasURL = key + '.xml';
-        ***REMOVED***
+        }
 
         return this.atlas(key, textureURL, atlasURL, atlasData, Phaser.Loader.TEXTURE_ATLAS_XML_STARLING);
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a Texture Atlas file to the current load queue.
@@ -2861,78 +2861,78 @@ Phaser.Loader.prototype = ***REMOVED***
     * If you do not desire this action then provide URLs and / or a data object.
     *
     * @method Phaser.Loader#atlas
-    * @param ***REMOVED***string***REMOVED*** key - Unique asset key of the texture atlas file.
-    * @param ***REMOVED***string***REMOVED*** [textureURL] - URL of the texture atlas image file. If undefined or `null` the url will be set to `&lt;key>.png`, i.e. if `key` was "alien" then the URL will be "alien.png".
-    * @param ***REMOVED***string***REMOVED*** [atlasURL] - URL of the texture atlas data file. If undefined or `null` and no atlasData is given, the url will be set to `&lt;key>.json`, i.e. if `key` was "alien" then the URL will be "alien.json".
-    * @param ***REMOVED***object***REMOVED*** [atlasData] - A JSON or XML data object. You don't need this if the data is being loaded from a URL.
-    * @param ***REMOVED***number***REMOVED*** [format] - The format of the data. Can be Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY (the default), Phaser.Loader.TEXTURE_ATLAS_JSON_HASH or Phaser.Loader.TEXTURE_ATLAS_XML_STARLING.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @param {string} key - Unique asset key of the texture atlas file.
+    * @param {string} [textureURL] - URL of the texture atlas image file. If undefined or `null` the url will be set to `&lt;key>.png`, i.e. if `key` was "alien" then the URL will be "alien.png".
+    * @param {string} [atlasURL] - URL of the texture atlas data file. If undefined or `null` and no atlasData is given, the url will be set to `&lt;key>.json`, i.e. if `key` was "alien" then the URL will be "alien.json".
+    * @param {object} [atlasData] - A JSON or XML data object. You don't need this if the data is being loaded from a URL.
+    * @param {number} [format] - The format of the data. Can be Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY (the default), Phaser.Loader.TEXTURE_ATLAS_JSON_HASH or Phaser.Loader.TEXTURE_ATLAS_XML_STARLING.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    atlas: function (key, textureURL, atlasURL, atlasData, format) ***REMOVED***
+    atlas: function (key, textureURL, atlasURL, atlasData, format) {
 
         if (textureURL === undefined || textureURL === null)
-        ***REMOVED***
+        {
             textureURL = key + '.png';
-        ***REMOVED***
+        }
 
-        if (atlasURL === undefined) ***REMOVED*** atlasURL = null; ***REMOVED***
-        if (atlasData === undefined) ***REMOVED*** atlasData = null; ***REMOVED***
-        if (format === undefined) ***REMOVED*** format = Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY; ***REMOVED***
+        if (atlasURL === undefined) { atlasURL = null; }
+        if (atlasData === undefined) { atlasData = null; }
+        if (format === undefined) { format = Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY; }
 
         if (!atlasURL &amp;&amp; !atlasData)
-        ***REMOVED***
+        {
             if (format === Phaser.Loader.TEXTURE_ATLAS_XML_STARLING)
-            ***REMOVED***
+            {
                 atlasURL = key + '.xml';
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 atlasURL = key + '.json';
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         //  A URL to a json/xml file has been given
         if (atlasURL)
-        ***REMOVED***
-            this.addToFileList('textureatlas', key, textureURL, ***REMOVED*** atlasURL: atlasURL, format: format ***REMOVED***);
-        ***REMOVED***
+        {
+            this.addToFileList('textureatlas', key, textureURL, { atlasURL: atlasURL, format: format });
+        }
         else
-        ***REMOVED***
+        {
             switch (format)
-            ***REMOVED***
+            {
                 //  A json string or object has been given
                 case Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY:
 
                     if (typeof atlasData === 'string')
-                    ***REMOVED***
+                    {
                         atlasData = JSON.parse(atlasData);
-                    ***REMOVED***
+                    }
                     break;
 
                 //  An xml string or object has been given
                 case Phaser.Loader.TEXTURE_ATLAS_XML_STARLING:
 
                     if (typeof atlasData === 'string')
-                    ***REMOVED***
+                    {
                         var xml = this.parseXml(atlasData);
 
                         if (!xml)
-                        ***REMOVED***
+                        {
                             throw new Error("Phaser.Loader. Invalid Texture Atlas XML given");
-                        ***REMOVED***
+                        }
 
                         atlasData = xml;
-                    ***REMOVED***
+                    }
                     break;
-            ***REMOVED***
+            }
 
-            this.addToFileList('textureatlas', key, textureURL, ***REMOVED*** atlasURL: null, atlasData: atlasData, format: format ***REMOVED***);
+            this.addToFileList('textureatlas', key, textureURL, { atlasURL: null, atlasData: atlasData, format: format });
 
-        ***REMOVED***
+        }
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Add a synchronization point to the assets/files added within the supplied callback.
@@ -2943,22 +2943,22 @@ Phaser.Loader.prototype = ***REMOVED***
     * be downloaded around sync-points, as long as they do not finalize loading.
     *
     * @method Phaser.Loader#withSyncPoints
-    * @param ***REMOVED***function***REMOVED*** callback - The callback is invoked and is supplied with a single argument: the loader.
-    * @param ***REMOVED***object***REMOVED*** [callbackContext=(loader)] - Context for the callback.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
+    * @param {function} callback - The callback is invoked and is supplied with a single argument: the loader.
+    * @param {object} [callbackContext=(loader)] - Context for the callback.
+    * @return {Phaser.Loader} This Loader instance.
     */
-    withSyncPoint: function (callback, callbackContext) ***REMOVED***
+    withSyncPoint: function (callback, callbackContext) {
 
         this._withSyncPointDepth++;
 
-        try ***REMOVED***
+        try {
             callback.call(callbackContext || this, this);
-        ***REMOVED*** finally ***REMOVED***
+        } finally {
             this._withSyncPointDepth--;
-        ***REMOVED***
+        }
 
         return this;
-    ***REMOVED***,
+    },
 
     /**
     * Add a synchronization point to a specific file/asset in the load queue.
@@ -2966,22 +2966,22 @@ Phaser.Loader.prototype = ***REMOVED***
     * This has no effect on already loaded assets.
     *
     * @method Phaser.Loader#addSyncPoint
-    * @param ***REMOVED***string***REMOVED*** type - The type of resource to turn into a sync point (image, audio, xml, etc).
-    * @param ***REMOVED***string***REMOVED*** key - Key of the file you want to turn into a sync point.
-    * @return ***REMOVED***Phaser.Loader***REMOVED*** This Loader instance.
-    * @see ***REMOVED***@link Phaser.Loader#withSyncPoint withSyncPoint***REMOVED***
+    * @param {string} type - The type of resource to turn into a sync point (image, audio, xml, etc).
+    * @param {string} key - Key of the file you want to turn into a sync point.
+    * @return {Phaser.Loader} This Loader instance.
+    * @see {@link Phaser.Loader#withSyncPoint withSyncPoint}
     */
-    addSyncPoint: function (type, key) ***REMOVED***
+    addSyncPoint: function (type, key) {
 
         var asset = this.getAsset(type, key);
 
         if (asset)
-        ***REMOVED***
+        {
             asset.file.syncPoint = true;
-        ***REMOVED***
+        }
 
         return this;
-    ***REMOVED***,
+    },
 
     /**
     * Remove a file/asset from the loading queue.
@@ -2990,22 +2990,22 @@ Phaser.Loader.prototype = ***REMOVED***
     *
     * @method Phaser.Loader#removeFile
     * @protected
-    * @param ***REMOVED***string***REMOVED*** type - The type of resource to add to the list (image, audio, xml, etc).
-    * @param ***REMOVED***string***REMOVED*** key - Key of the file you want to remove.
+    * @param {string} type - The type of resource to add to the list (image, audio, xml, etc).
+    * @param {string} key - Key of the file you want to remove.
     */
-    removeFile: function (type, key) ***REMOVED***
+    removeFile: function (type, key) {
 
         var asset = this.getAsset(type, key);
 
         if (asset)
-        ***REMOVED***
+        {
             if (!asset.loaded &amp;&amp; !asset.loading)
-            ***REMOVED***
+            {
                 this._fileList.splice(asset.index, 1);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Remove all file loading requests - this is _insufficient_ to stop current loading. Use `reset` instead.
@@ -3013,24 +3013,24 @@ Phaser.Loader.prototype = ***REMOVED***
     * @method Phaser.Loader#removeAll
     * @protected
     */
-    removeAll: function () ***REMOVED***
+    removeAll: function () {
 
         this._fileList.length = 0;
         this._flightQueue.length = 0;
 
-    ***REMOVED***,
+    },
 
     /**
     * Start loading the assets. Normally you don't need to call this yourself as the StateManager will do so.
     *
     * @method Phaser.Loader#start
     */
-    start: function () ***REMOVED***
+    start: function () {
 
         if (this.isLoading)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         this.hasLoaded = false;
         this.isLoading = true;
@@ -3039,7 +3039,7 @@ Phaser.Loader.prototype = ***REMOVED***
 
         this.processLoadQueue();
 
-    ***REMOVED***,
+    },
 
     /**
     * Process the next item(s) in the file/asset queue.
@@ -3054,22 +3054,22 @@ Phaser.Loader.prototype = ***REMOVED***
     * @method Phaser.Loader#processLoadQueue
     * @private
     */
-    processLoadQueue: function () ***REMOVED***
+    processLoadQueue: function () {
 
         if (!this.isLoading)
-        ***REMOVED***
+        {
             console.warn('Phaser.Loader - active loading canceled / reset');
             this.finishedLoading(true);
             return;
-        ***REMOVED***
+        }
 
         // Empty the flight queue as applicable
         for (var i = 0; i &lt; this._flightQueue.length; i++)
-        ***REMOVED***
+        {
             var file = this._flightQueue[i];
 
             if (file.loaded || file.error)
-            ***REMOVED***
+            {
                 this._flightQueue.splice(i, 1);
                 i--;
 
@@ -3078,24 +3078,24 @@ Phaser.Loader.prototype = ***REMOVED***
                 file.requestObject = null;
 
                 if (file.error)
-                ***REMOVED***
+                {
                     this.onFileError.dispatch(file.key, file);
-                ***REMOVED***
+                }
 
                 if (file.type !== 'packfile')
-                ***REMOVED***
+                {
                     this._loadedFileCount++;
                     this.onFileComplete.dispatch(this.progress, file.key, !file.error, this._loadedFileCount, this._totalFileCount);
-                ***REMOVED***
+                }
                 else if (file.type === 'packfile' &amp;&amp; file.error)
-                ***REMOVED***
+                {
                     // Non-error pack files are handled when processing the file queue
                     this._loadedPackCount++;
                     this.onPackComplete.dispatch(file.key, !file.error, this._loadedPackCount, this._totalPackCount);
-                ***REMOVED***
+                }
 
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         // When true further non-pack file downloads are suppressed
         var syncblock = false;
@@ -3103,115 +3103,115 @@ Phaser.Loader.prototype = ***REMOVED***
         var inflightLimit = this.enableParallel ? Phaser.Math.clamp(this.maxParallelDownloads, 1, 12) : 1;
 
         for (var i = this._processingHead; i &lt; this._fileList.length; i++)
-        ***REMOVED***
+        {
             var file = this._fileList[i];
 
             // Pack is fetched (ie. has data) and is currently at the start of the process queue.
             if (file.type === 'packfile' &amp;&amp; !file.error &amp;&amp; file.loaded &amp;&amp; i === this._processingHead)
-            ***REMOVED***
+            {
                 // Processing the pack / adds more files
                 this.processPack(file);
 
                 this._loadedPackCount++;
                 this.onPackComplete.dispatch(file.key, !file.error, this._loadedPackCount, this._totalPackCount);
-            ***REMOVED***
+            }
 
             if (file.loaded || file.error)
-            ***REMOVED***
+            {
                 // Item at the start of file list finished, can skip it in future
                 if (i === this._processingHead)
-                ***REMOVED***
+                {
                     this._processingHead = i + 1;
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
             else if (!file.loading &amp;&amp; this._flightQueue.length &lt; inflightLimit)
-            ***REMOVED***
+            {
                 // -> not loaded/failed, not loading
                 if (file.type === 'packfile' &amp;&amp; !file.data)
-                ***REMOVED***
+                {
                     // Fetches the pack data: the pack is processed above as it reaches queue-start.
                     // (Packs do not trigger onLoadStart or onFileStart.)
                     this._flightQueue.push(file);
                     file.loading = true;
 
                     this.loadFile(file);
-                ***REMOVED***
+                }
                 else if (!syncblock)
-                ***REMOVED***
+                {
                     if (!this._fileLoadStarted)
-                    ***REMOVED***
+                    {
                         this._fileLoadStarted = true;
                         this.onLoadStart.dispatch();
-                    ***REMOVED***
+                    }
 
                     this._flightQueue.push(file);
                     file.loading = true;
                     this.onFileStart.dispatch(this.progress, file.key, file.url);
 
                     this.loadFile(file);
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
 
             if (!file.loaded &amp;&amp; file.syncPoint)
-            ***REMOVED***
+            {
                 syncblock = true;
-            ***REMOVED***
+            }
 
             // Stop looking if queue full - or if syncblocked and there are no more packs.
             // (As only packs can be loaded around a syncblock)
             if (this._flightQueue.length >= inflightLimit ||
                 (syncblock &amp;&amp; this._loadedPackCount === this._totalPackCount))
-            ***REMOVED***
+            {
                 break;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         this.updateProgress();
 
         // True when all items in the queue have been advanced over
         // (There should be no inflight items as they are complete - loaded/error.)
         if (this._processingHead >= this._fileList.length)
-        ***REMOVED***
+        {
             this.finishedLoading();
-        ***REMOVED***
+        }
         else if (!this._flightQueue.length)
-        ***REMOVED***
+        {
             // Flight queue is empty but file list is not done being processed.
             // This indicates a critical internal error with no known recovery.
             console.warn("Phaser.Loader - aborting: processing queue empty, loading may have stalled");
 
             var _this = this;
 
-            setTimeout(function () ***REMOVED***
+            setTimeout(function () {
                 _this.finishedLoading(true);
-            ***REMOVED***, 2000);
-        ***REMOVED***
+            }, 2000);
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The loading is all finished.
     *
     * @method Phaser.Loader#finishedLoading
     * @private
-    * @param ***REMOVED***boolean***REMOVED*** [abnormal=true] - True if the loading finished abnormally.
+    * @param {boolean} [abnormal=true] - True if the loading finished abnormally.
     */
-    finishedLoading: function (abnormal) ***REMOVED***
+    finishedLoading: function (abnormal) {
 
         if (this.hasLoaded)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         this.hasLoaded = true;
         this.isLoading = false;
 
         // If there were no files make sure to trigger the event anyway, for consistency
         if (!abnormal &amp;&amp; !this._fileLoadStarted)
-        ***REMOVED***
+        {
             this._fileLoadStarted = true;
             this.onLoadStart.dispatch();
-        ***REMOVED***
+        }
 
         this.onLoadComplete.dispatch();
 
@@ -3219,7 +3219,7 @@ Phaser.Loader.prototype = ***REMOVED***
 
         this.reset();
 
-    ***REMOVED***,
+    },
 
     /**
     * Informs the loader that the given file resource has been fetched and processed;
@@ -3227,51 +3227,51 @@ Phaser.Loader.prototype = ***REMOVED***
     *
     * @method Phaser.Loader#asyncComplete
     * @private
-    * @param ***REMOVED***object***REMOVED*** file
-    * @param ***REMOVED***string***REMOVED*** [error=''] - The error message, if any. No message implies no error.
+    * @param {object} file
+    * @param {string} [error=''] - The error message, if any. No message implies no error.
     */
-    asyncComplete: function (file, errorMessage) ***REMOVED***
+    asyncComplete: function (file, errorMessage) {
 
-        if (errorMessage === undefined) ***REMOVED*** errorMessage = ''; ***REMOVED***
+        if (errorMessage === undefined) { errorMessage = ''; }
 
         file.loaded = true;
         file.error = !!errorMessage;
 
         if (errorMessage)
-        ***REMOVED***
+        {
             file.errorMessage = errorMessage;
 
             console.warn('Phaser.Loader - ' + file.type + '[' + file.key + ']' + ': ' + errorMessage);
             // debugger;
-        ***REMOVED***
+        }
 
         this.processLoadQueue();
 
-    ***REMOVED***,
+    },
 
     /**
     * Process pack data. This will usually modify the file list.
     *
     * @method Phaser.Loader#processPack
     * @private
-    * @param ***REMOVED***object***REMOVED*** pack
+    * @param {object} pack
     */
-    processPack: function (pack) ***REMOVED***
+    processPack: function (pack) {
 
         var packData = pack.data[pack.key];
 
         if (!packData)
-        ***REMOVED***
+        {
             console.warn('Phaser.Loader - ' + pack.key + ': pack has data, but not for pack key');
             return;
-        ***REMOVED***
+        }
 
         for (var i = 0; i &lt; packData.length; i++)
-        ***REMOVED***
+        {
             var file = packData[i];
 
             switch (file.type)
-            ***REMOVED***
+            {
                 case "image":
                     this.image(file.key, file.url, file.overwrite);
                     break;
@@ -3343,10 +3343,10 @@ Phaser.Loader.prototype = ***REMOVED***
                 case "shader":
                     this.shader(file.key, file.url, file.overwrite);
                     break;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Transforms the asset URL.
@@ -3355,27 +3355,27 @@ Phaser.Loader.prototype = ***REMOVED***
     *
     * @method Phaser.Loader#transformUrl
     * @protected
-    * @param ***REMOVED***string***REMOVED*** url - The url to transform.
-    * @param ***REMOVED***object***REMOVED*** file - The file object being transformed.
-    * @return ***REMOVED***string***REMOVED*** The transformed url. In rare cases where the url isn't specified it will return false instead.
+    * @param {string} url - The url to transform.
+    * @param {object} file - The file object being transformed.
+    * @return {string} The transformed url. In rare cases where the url isn't specified it will return false instead.
     */
-    transformUrl: function (url, file) ***REMOVED***
+    transformUrl: function (url, file) {
 
         if (!url)
-        ***REMOVED***
+        {
             return false;
-        ***REMOVED***
+        }
 
         if (url.match(/^(?:blob:|data:|http:\/\/|https:\/\/|\/\/)/))
-        ***REMOVED***
+        {
             return url;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return this.baseURL + file.path + url;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Start fetching a resource.
@@ -3384,13 +3384,13 @@ Phaser.Loader.prototype = ***REMOVED***
     *
     * @method Phaser.Loader#loadFile
     * @private
-    * @param ***REMOVED***object***REMOVED*** file
+    * @param {object} file
     */
-    loadFile: function (file) ***REMOVED***
+    loadFile: function (file) {
 
         //  Image or Data?
         switch (file.type)
-        ***REMOVED***
+        {
             case 'packfile':
                 this.xhrLoad(file, this.transformUrl(file.url, file), 'text', this.fileComplete);
                 break;
@@ -3406,41 +3406,41 @@ Phaser.Loader.prototype = ***REMOVED***
                 file.url = this.getAudioURL(file.url);
 
                 if (file.url)
-                ***REMOVED***
+                {
                     //  WebAudio or Audio Tag?
                     if (this.game.sound.usingWebAudio)
-                    ***REMOVED***
+                    {
                         this.xhrLoad(file, this.transformUrl(file.url, file), 'arraybuffer', this.fileComplete);
-                    ***REMOVED***
+                    }
                     else if (this.game.sound.usingAudioTag)
-                    ***REMOVED***
+                    {
                         this.loadAudioTag(file);
-                    ***REMOVED***
-                ***REMOVED***
+                    }
+                }
                 else
-                ***REMOVED***
+                {
                     this.fileError(file, null, 'No supported audio URL specified or device does not have audio playback support');
-                ***REMOVED***
+                }
                 break;
 
             case 'video':
                 file.url = this.getVideoURL(file.url);
 
                 if (file.url)
-                ***REMOVED***
+                {
                     if (file.asBlob)
-                    ***REMOVED***
+                    {
                         this.xhrLoad(file, this.transformUrl(file.url, file), 'blob', this.fileComplete);
-                    ***REMOVED***
+                    }
                     else
-                    ***REMOVED***
+                    {
                         this.loadVideoTag(file);
-                    ***REMOVED***
-                ***REMOVED***
+                    }
+                }
                 else
-                ***REMOVED***
+                {
                     this.fileError(file, null, 'No supported video URL specified or device does not have video playback support');
-                ***REMOVED***
+                }
                 break;
 
             case 'json':
@@ -3456,17 +3456,17 @@ Phaser.Loader.prototype = ***REMOVED***
             case 'tilemap':
 
                 if (file.format === Phaser.Tilemap.TILED_JSON)
-                ***REMOVED***
+                {
                     this.xhrLoad(file, this.transformUrl(file.url, file), 'text', this.jsonLoadComplete);
-                ***REMOVED***
+                }
                 else if (file.format === Phaser.Tilemap.CSV)
-                ***REMOVED***
+                {
                     this.xhrLoad(file, this.transformUrl(file.url, file), 'text', this.csvLoadComplete);
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     this.asyncComplete(file, "invalid Tilemap format: " + file.format);
-                ***REMOVED***
+                }
                 break;
 
             case 'text':
@@ -3479,15 +3479,15 @@ Phaser.Loader.prototype = ***REMOVED***
             case 'binary':
                 this.xhrLoad(file, this.transformUrl(file.url, file), 'arraybuffer', this.fileComplete);
                 break;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Continue async loading through an Image tag.
     * @private
     */
-    loadImageTag: function (file) ***REMOVED***
+    loadImageTag: function (file) {
 
         var _this = this;
 
@@ -3495,45 +3495,45 @@ Phaser.Loader.prototype = ***REMOVED***
         file.data.name = file.key;
 
         if (this.crossOrigin)
-        ***REMOVED***
+        {
             file.data.crossOrigin = this.crossOrigin;
-        ***REMOVED***
+        }
 
-        file.data.onload = function () ***REMOVED***
+        file.data.onload = function () {
             if (file.data.onload)
-            ***REMOVED***
+            {
                 file.data.onload = null;
                 file.data.onerror = null;
                 _this.fileComplete(file);
-            ***REMOVED***
-        ***REMOVED***;
+            }
+        };
 
-        file.data.onerror = function () ***REMOVED***
+        file.data.onerror = function () {
             if (file.data.onload)
-            ***REMOVED***
+            {
                 file.data.onload = null;
                 file.data.onerror = null;
                 _this.fileError(file);
-            ***REMOVED***
-        ***REMOVED***;
+            }
+        };
 
         file.data.src = this.transformUrl(file.url, file);
 
         // Image is immediately-available/cached
         if (file.data.complete &amp;&amp; file.data.width &amp;&amp; file.data.height)
-        ***REMOVED***
+        {
             file.data.onload = null;
             file.data.onerror = null;
             this.fileComplete(file);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Continue async loading through a Video tag.
     * @private
     */
-    loadVideoTag: function (file) ***REMOVED***
+    loadVideoTag: function (file) {
 
         var _this = this;
 
@@ -3542,39 +3542,39 @@ Phaser.Loader.prototype = ***REMOVED***
         file.data.controls = false;
         file.data.autoplay = false;
 
-        var videoLoadEvent = function () ***REMOVED***
+        var videoLoadEvent = function () {
 
             file.data.removeEventListener(file.loadEvent, videoLoadEvent, false);
             file.data.onerror = null;
             file.data.canplay = true;
             Phaser.GAMES[_this.game.id].load.fileComplete(file);
 
-        ***REMOVED***;
+        };
 
-        file.data.onerror = function () ***REMOVED***
+        file.data.onerror = function () {
             file.data.removeEventListener(file.loadEvent, videoLoadEvent, false);
             file.data.onerror = null;
             file.data.canplay = false;
             _this.fileError(file);
-        ***REMOVED***;
+        };
 
         file.data.addEventListener(file.loadEvent, videoLoadEvent, false);
 
         file.data.src = this.transformUrl(file.url, file);
         file.data.load();
 
-    ***REMOVED***,
+    },
 
     /**
     * Continue async loading through an Audio tag.
     * @private
     */
-    loadAudioTag: function (file) ***REMOVED***
+    loadAudioTag: function (file) {
 
         var _this = this;
 
         if (this.game.sound.touchLocked)
-        ***REMOVED***
+        {
             //  If audio is locked we can't do this yet, so need to queue this load request. Bum.
             file.data = new Audio();
             file.data.name = file.key;
@@ -3582,31 +3582,31 @@ Phaser.Loader.prototype = ***REMOVED***
             file.data.src = this.transformUrl(file.url, file);
 
             this.fileComplete(file);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             file.data = new Audio();
             file.data.name = file.key;
 
-            var playThroughEvent = function () ***REMOVED***
+            var playThroughEvent = function () {
                 file.data.removeEventListener('canplaythrough', playThroughEvent, false);
                 file.data.onerror = null;
                 _this.fileComplete(file);
-            ***REMOVED***;
+            };
 
-            file.data.onerror = function () ***REMOVED***
+            file.data.onerror = function () {
                 file.data.removeEventListener('canplaythrough', playThroughEvent, false);
                 file.data.onerror = null;
                 _this.fileError(file);
-            ***REMOVED***;
+            };
 
             file.data.preload = 'auto';
             file.data.src = this.transformUrl(file.url, file);
             file.data.addEventListener('canplaythrough', playThroughEvent, false);
             file.data.load();
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Starts the xhr loader.
@@ -3615,95 +3615,95 @@ Phaser.Loader.prototype = ***REMOVED***
     *
     * @method Phaser.Loader#xhrLoad
     * @private
-    * @param ***REMOVED***object***REMOVED*** file - The file/pack to load.
-    * @param ***REMOVED***string***REMOVED*** url - The URL of the file.
-    * @param ***REMOVED***string***REMOVED*** type - The xhr responseType.
-    * @param ***REMOVED***function***REMOVED*** onload - The function to call on success. Invoked in `this` context and supplied with `(file, xhr)` arguments.
-    * @param ***REMOVED***function***REMOVED*** [onerror=fileError]  The function to call on error. Invoked in `this` context and supplied with `(file, xhr)` arguments.
+    * @param {object} file - The file/pack to load.
+    * @param {string} url - The URL of the file.
+    * @param {string} type - The xhr responseType.
+    * @param {function} onload - The function to call on success. Invoked in `this` context and supplied with `(file, xhr)` arguments.
+    * @param {function} [onerror=fileError]  The function to call on error. Invoked in `this` context and supplied with `(file, xhr)` arguments.
     */
-    xhrLoad: function (file, url, type, onload, onerror) ***REMOVED***
+    xhrLoad: function (file, url, type, onload, onerror) {
 
         if (this.useXDomainRequest &amp;&amp; window.XDomainRequest)
-        ***REMOVED***
+        {
             this.xhrLoadWithXDR(file, url, type, onload, onerror);
             return;
-        ***REMOVED***
+        }
 
         var xhr = new XMLHttpRequest();
         xhr.open("GET", url, true);
         xhr.responseType = type;
 
         if (this.headers['requestedWith'] !== false)
-        ***REMOVED***
+        {
             xhr.setRequestHeader('X-Requested-With', this.headers['requestedWith']);
-        ***REMOVED***
+        }
 
         if (this.headers[file.type])
-        ***REMOVED***
+        {
             xhr.setRequestHeader('Accept', this.headers[file.type]);
-        ***REMOVED***
+        }
 
         onerror = onerror || this.fileError;
 
         var _this = this;
 
-        xhr.onload = function () ***REMOVED***
+        xhr.onload = function () {
 
-            try ***REMOVED***
-                if (xhr.readyState === 4 &amp;&amp; xhr.status >= 400 &amp;&amp; xhr.status &lt;= 599) ***REMOVED*** // Handle HTTP status codes of 4xx and 5xx as errors, even if xhr.onerror was not called.
+            try {
+                if (xhr.readyState === 4 &amp;&amp; xhr.status >= 400 &amp;&amp; xhr.status &lt;= 599) { // Handle HTTP status codes of 4xx and 5xx as errors, even if xhr.onerror was not called.
                     return onerror.call(_this, file, xhr);
-                ***REMOVED***
-                else ***REMOVED***
+                }
+                else {
                     return onload.call(_this, file, xhr);
-                ***REMOVED***
-            ***REMOVED*** catch (e) ***REMOVED***
+                }
+            } catch (e) {
 
                 //  If this was the last file in the queue and an error is thrown in the create method
                 //  then it's caught here, so be sure we don't carry on processing it
 
                 if (!_this.hasLoaded)
-                ***REMOVED***
+                {
                     _this.asyncComplete(file, e.message || 'Exception');
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     if (window['console'])
-                    ***REMOVED***
+                    {
                         console.error(e);
-                    ***REMOVED***
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***;
+                    }
+                }
+            }
+        };
 
-        xhr.onerror = function () ***REMOVED***
+        xhr.onerror = function () {
 
-            try ***REMOVED***
+            try {
 
                 return onerror.call(_this, file, xhr);
 
-            ***REMOVED*** catch (e) ***REMOVED***
+            } catch (e) {
 
                 if (!_this.hasLoaded)
-                ***REMOVED***
+                {
                     _this.asyncComplete(file, e.message || 'Exception');
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     if (window['console'])
-                    ***REMOVED***
+                    {
                         console.error(e);
-                    ***REMOVED***
-                ***REMOVED***
+                    }
+                }
 
-            ***REMOVED***
-        ***REMOVED***;
+            }
+        };
 
         file.requestObject = xhr;
         file.requestUrl = url;
 
         xhr.send();
 
-    ***REMOVED***,
+    },
 
     /**
     * Starts the xhr loader - using XDomainRequest.
@@ -3713,22 +3713,22 @@ Phaser.Loader.prototype = ***REMOVED***
     *
     * @method Phaser.Loader#xhrLoad
     * @private
-    * @param ***REMOVED***object***REMOVED*** file - The file/pack to load.
-    * @param ***REMOVED***string***REMOVED*** url - The URL of the file.
-    * @param ***REMOVED***string***REMOVED*** type - The xhr responseType.
-    * @param ***REMOVED***function***REMOVED*** onload - The function to call on success. Invoked in `this` context and supplied with `(file, xhr)` arguments.
-    * @param ***REMOVED***function***REMOVED*** [onerror=fileError]  The function to call on error. Invoked in `this` context and supplied with `(file, xhr)` arguments.
+    * @param {object} file - The file/pack to load.
+    * @param {string} url - The URL of the file.
+    * @param {string} type - The xhr responseType.
+    * @param {function} onload - The function to call on success. Invoked in `this` context and supplied with `(file, xhr)` arguments.
+    * @param {function} [onerror=fileError]  The function to call on error. Invoked in `this` context and supplied with `(file, xhr)` arguments.
     * @deprecated This is only relevant for IE 9.
     */
-    xhrLoadWithXDR: function (file, url, type, onload, onerror) ***REMOVED***
+    xhrLoadWithXDR: function (file, url, type, onload, onerror) {
 
         // Special IE9 magic .. only
         if (!this._warnedAboutXDomainRequest &amp;&amp;
             (!this.game.device.ie || this.game.device.ieVersion >= 10))
-        ***REMOVED***
+        {
             this._warnedAboutXDomainRequest = true;
             console.warn("Phaser.Loader - using XDomainRequest outside of IE 9");
-        ***REMOVED***
+        }
 
         // Ref: http://blogs.msdn.com/b/ieinternals/archive/2010/05/13/xdomainrequest-restrictions-limitations-and-workarounds.aspx
         var xhr = new window.XDomainRequest();
@@ -3744,48 +3744,48 @@ Phaser.Loader.prototype = ***REMOVED***
 
         var _this = this;
 
-        xhr.onerror = function () ***REMOVED***
-            try ***REMOVED***
+        xhr.onerror = function () {
+            try {
                 return onerror.call(_this, file, xhr);
-            ***REMOVED*** catch (e) ***REMOVED***
+            } catch (e) {
                 _this.asyncComplete(file, e.message || 'Exception');
-            ***REMOVED***
-        ***REMOVED***;
+            }
+        };
 
-        xhr.ontimeout = function () ***REMOVED***
-            try ***REMOVED***
+        xhr.ontimeout = function () {
+            try {
                 return onerror.call(_this, file, xhr);
-            ***REMOVED*** catch (e) ***REMOVED***
+            } catch (e) {
                 _this.asyncComplete(file, e.message || 'Exception');
-            ***REMOVED***
-        ***REMOVED***;
+            }
+        };
 
-        xhr.onprogress = function() ***REMOVED******REMOVED***;
+        xhr.onprogress = function() {};
 
-        xhr.onload = function () ***REMOVED***
-            try ***REMOVED***
-                if (xhr.readyState === 4 &amp;&amp; xhr.status >= 400 &amp;&amp; xhr.status &lt;= 599) ***REMOVED*** // Handle HTTP status codes of 4xx and 5xx as errors, even if xhr.onerror was not called.
+        xhr.onload = function () {
+            try {
+                if (xhr.readyState === 4 &amp;&amp; xhr.status >= 400 &amp;&amp; xhr.status &lt;= 599) { // Handle HTTP status codes of 4xx and 5xx as errors, even if xhr.onerror was not called.
                     return onerror.call(_this, file, xhr);
-                ***REMOVED***
-                else ***REMOVED***
+                }
+                else {
                     return onload.call(_this, file, xhr);
-                ***REMOVED***
+                }
                 return onload.call(_this, file, xhr);
-            ***REMOVED*** catch (e) ***REMOVED***
+            } catch (e) {
                 _this.asyncComplete(file, e.message || 'Exception');
-            ***REMOVED***
-        ***REMOVED***;
+            }
+        };
 
         file.requestObject = xhr;
         file.requestUrl = url;
 
         //  Note: The xdr.send() call is wrapped in a timeout to prevent an issue with the interface where some requests are lost
         //  if multiple XDomainRequests are being sent at the same time.
-        setTimeout(function () ***REMOVED***
+        setTimeout(function () {
             xhr.send();
-        ***REMOVED***, 0);
+        }, 0);
 
-    ***REMOVED***,
+    },
 
     /**
     * Give a bunch of URLs, return the first URL that has an extension this device thinks it can play.
@@ -3794,53 +3794,53 @@ Phaser.Loader.prototype = ***REMOVED***
     *
     * @method Phaser.Loader#getVideoURL
     * @private
-    * @param ***REMOVED***object[]|string[]***REMOVED*** urls - See ***REMOVED***@link #video***REMOVED*** for format.
-    * @return ***REMOVED***string***REMOVED*** The URL to try and fetch; or null.
+    * @param {object[]|string[]} urls - See {@link #video} for format.
+    * @return {string} The URL to try and fetch; or null.
     */
-    getVideoURL: function (urls) ***REMOVED***
+    getVideoURL: function (urls) {
 
         for (var i = 0; i &lt; urls.length; i++)
-        ***REMOVED***
+        {
             var url = urls[i];
             var videoType;
 
-            if (url.uri) // ***REMOVED***uri: .., type: ..***REMOVED*** pair
-            ***REMOVED***
+            if (url.uri) // {uri: .., type: ..} pair
+            {
                 videoType = url.type;
                 url = url.uri;
 
                 if (this.game.device.canPlayVideo(videoType))
-                ***REMOVED***
+                {
                     return url;
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
             else
-            ***REMOVED***
+            {
                 // Assume direct-data URI can be played if not in a paired form; select immediately
                 if (url.indexOf("blob:") === 0 || url.indexOf("data:") === 0)
-                ***REMOVED***
+                {
                     return url;
-                ***REMOVED***
+                }
 
                 if (url.indexOf("?") >= 0) // Remove query from URL
-                ***REMOVED***
+                {
                     url = url.substr(0, url.indexOf("?"));
-                ***REMOVED***
+                }
 
                 var extension = url.substr((Math.max(0, url.lastIndexOf(".")) || Infinity) + 1);
 
                 videoType = extension.toLowerCase();
 
                 if (this.game.device.canPlayVideo(videoType))
-                ***REMOVED***
+                {
                     return urls[i];
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
 
         return null;
 
-    ***REMOVED***,
+    },
 
     /**
     * Give a bunch of URLs, return the first URL that has an extension this device thinks it can play.
@@ -3849,106 +3849,106 @@ Phaser.Loader.prototype = ***REMOVED***
     *
     * @method Phaser.Loader#getAudioURL
     * @private
-    * @param ***REMOVED***object[]|string[]***REMOVED*** urls - See ***REMOVED***@link #audio***REMOVED*** for format.
-    * @return ***REMOVED***string***REMOVED*** The URL to try and fetch; or null.
+    * @param {object[]|string[]} urls - See {@link #audio} for format.
+    * @return {string} The URL to try and fetch; or null.
     */
-    getAudioURL: function (urls) ***REMOVED***
+    getAudioURL: function (urls) {
 
         if (this.game.sound.noAudio)
-        ***REMOVED***
+        {
             return null;
-        ***REMOVED***
+        }
 
         for (var i = 0; i &lt; urls.length; i++)
-        ***REMOVED***
+        {
             var url = urls[i];
             var audioType;
 
-            if (url.uri) // ***REMOVED***uri: .., type: ..***REMOVED*** pair
-            ***REMOVED***
+            if (url.uri) // {uri: .., type: ..} pair
+            {
                 audioType = url.type;
                 url = url.uri;
 
                 if (this.game.device.canPlayAudio(audioType))
-                ***REMOVED***
+                {
                     return url;
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
             else
-            ***REMOVED***
+            {
                 // Assume direct-data URI can be played if not in a paired form; select immediately
                 if (url.indexOf("blob:") === 0 || url.indexOf("data:") === 0)
-                ***REMOVED***
+                {
                     return url;
-                ***REMOVED***
+                }
 
                 if (url.indexOf("?") >= 0) // Remove query from URL
-                ***REMOVED***
+                {
                     url = url.substr(0, url.indexOf("?"));
-                ***REMOVED***
+                }
 
                 var extension = url.substr((Math.max(0, url.lastIndexOf(".")) || Infinity) + 1);
 
                 audioType = extension.toLowerCase();
 
                 if (this.game.device.canPlayAudio(audioType))
-                ***REMOVED***
+                {
                     return urls[i];
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
 
         return null;
 
-    ***REMOVED***,
+    },
 
     /**
     * Error occurred when loading a file.
     *
     * @method Phaser.Loader#fileError
     * @private
-    * @param ***REMOVED***object***REMOVED*** file
-    * @param ***REMOVED***?XMLHttpRequest***REMOVED*** xhr - XHR request, unspecified if loaded via other means (eg. tags)
-    * @param ***REMOVED***string***REMOVED*** reason
+    * @param {object} file
+    * @param {?XMLHttpRequest} xhr - XHR request, unspecified if loaded via other means (eg. tags)
+    * @param {string} reason
     */
-    fileError: function (file, xhr, reason) ***REMOVED***
+    fileError: function (file, xhr, reason) {
 
         var url = file.requestUrl || this.transformUrl(file.url, file);
         var message = 'error loading asset from URL ' + url;
 
         if (!reason &amp;&amp; xhr)
-        ***REMOVED***
+        {
             reason = xhr.status;
-        ***REMOVED***
+        }
 
         if (reason)
-        ***REMOVED***
+        {
             message = message + ' (' + reason + ')';
-        ***REMOVED***
+        }
 
         this.asyncComplete(file, message);
 
-    ***REMOVED***,
+    },
 
     /**
     * Called when a file/resources had been downloaded and needs to be processed further.
     *
     * @method Phaser.Loader#fileComplete
     * @private
-    * @param ***REMOVED***object***REMOVED*** file - File loaded
-    * @param ***REMOVED***?XMLHttpRequest***REMOVED*** xhr - XHR request, unspecified if loaded via other means (eg. tags)
+    * @param {object} file - File loaded
+    * @param {?XMLHttpRequest} xhr - XHR request, unspecified if loaded via other means (eg. tags)
     */
-    fileComplete: function (file, xhr) ***REMOVED***
+    fileComplete: function (file, xhr) {
 
         var loadNext = true;
 
         switch (file.type)
-        ***REMOVED***
+        {
             case 'packfile':
 
                 // Pack data must never be false-ish after it is fetched without error
                 var data = JSON.parse(xhr.responseText);
-                file.data = data || ***REMOVED******REMOVED***;
+                file.data = data || {};
                 break;
 
             case 'image':
@@ -3964,76 +3964,76 @@ Phaser.Loader.prototype = ***REMOVED***
             case 'textureatlas':
 
                 if (file.atlasURL == null)
-                ***REMOVED***
+                {
                     this.cache.addTextureAtlas(file.key, file.url, file.data, file.atlasData, file.format);
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     //  Load the JSON or XML before carrying on with the next file
                     loadNext = false;
 
                     if (file.format === Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY || file.format === Phaser.Loader.TEXTURE_ATLAS_JSON_HASH || file.format === Phaser.Loader.TEXTURE_ATLAS_JSON_PYXEL)
-                    ***REMOVED***
+                    {
                         this.xhrLoad(file, this.transformUrl(file.atlasURL, file), 'text', this.jsonLoadComplete);
-                    ***REMOVED***
+                    }
                     else if (file.format === Phaser.Loader.TEXTURE_ATLAS_XML_STARLING)
-                    ***REMOVED***
+                    {
                         this.xhrLoad(file, this.transformUrl(file.atlasURL, file), 'text', this.xmlLoadComplete);
-                    ***REMOVED***
+                    }
                     else
-                    ***REMOVED***
+                    {
                         throw new Error("Phaser.Loader. Invalid Texture Atlas format: " + file.format);
-                    ***REMOVED***
-                ***REMOVED***
+                    }
+                }
                 break;
 
             case 'bitmapfont':
 
                 if (!file.atlasURL)
-                ***REMOVED***
+                {
                     this.cache.addBitmapFont(file.key, file.url, file.data, file.atlasData, file.atlasType, file.xSpacing, file.ySpacing);
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     //  Load the XML before carrying on with the next file
                     loadNext = false;
-                    this.xhrLoad(file, this.transformUrl(file.atlasURL, file), 'text', function (file, xhr) ***REMOVED***
+                    this.xhrLoad(file, this.transformUrl(file.atlasURL, file), 'text', function (file, xhr) {
                         var json;
 
                         try
-                        ***REMOVED***
+                        {
                             // Try to parse as JSON, if it fails, then it's hopefully XML
                             json = JSON.parse(xhr.responseText);
-                        ***REMOVED***
-                        catch (e) ***REMOVED******REMOVED***
+                        }
+                        catch (e) {}
 
                         if (!!json)
-                        ***REMOVED***
+                        {
                             file.atlasType = 'json';
                             this.jsonLoadComplete(file, xhr);
-                        ***REMOVED***
+                        }
                         else
-                        ***REMOVED***
+                        {
                             file.atlasType = 'xml';
                             this.xmlLoadComplete(file, xhr);
-                        ***REMOVED***
-                    ***REMOVED***);
-                ***REMOVED***
+                        }
+                    });
+                }
                 break;
 
             case 'video':
 
                 if (file.asBlob)
-                ***REMOVED***
+                {
                     try
-                    ***REMOVED***
+                    {
                         file.data = xhr.response;
-                    ***REMOVED***
+                    }
                     catch (e)
-                    ***REMOVED***
+                    {
                         throw new Error("Phaser.Loader. Unable to parse video file as Blob: " + file.key);
-                    ***REMOVED***
-                ***REMOVED***
+                    }
+                }
 
                 this.cache.addVideo(file.key, file.url, file.data, file.asBlob);
                 break;
@@ -4041,20 +4041,20 @@ Phaser.Loader.prototype = ***REMOVED***
             case 'audio':
 
                 if (this.game.sound.usingWebAudio)
-                ***REMOVED***
+                {
                     file.data = xhr.response;
 
                     this.cache.addSound(file.key, file.url, file.data, true, false);
 
                     if (file.autoDecode)
-                    ***REMOVED***
+                    {
                         this.game.sound.decode(file.key);
-                    ***REMOVED***
-                ***REMOVED***
+                    }
+                }
                 else
-                ***REMOVED***
+                {
                     this.cache.addSound(file.key, file.url, file.data, false, true);
-                ***REMOVED***
+                }
                 break;
 
             case 'text':
@@ -4080,74 +4080,74 @@ Phaser.Loader.prototype = ***REMOVED***
                 file.data.text = xhr.responseText;
                 document.head.appendChild(file.data);
                 if (file.callback)
-                ***REMOVED***
+                {
                     file.data = file.callback.call(file.callbackContext, file.key, xhr.responseText);
-                ***REMOVED***
+                }
                 break;
 
             case 'binary':
                 if (file.callback)
-                ***REMOVED***
+                {
                     file.data = file.callback.call(file.callbackContext, file.key, xhr.response);
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     file.data = xhr.response;
-                ***REMOVED***
+                }
 
                 this.cache.addBinary(file.key, file.data);
 
                 break;
-        ***REMOVED***
+        }
 
         if (loadNext)
-        ***REMOVED***
+        {
             this.asyncComplete(file);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Successfully loaded a JSON file - only used for certain types.
     *
     * @method Phaser.Loader#jsonLoadComplete
     * @private
-    * @param ***REMOVED***object***REMOVED*** file - File associated with this request
-    * @param ***REMOVED***XMLHttpRequest***REMOVED*** xhr
+    * @param {object} file - File associated with this request
+    * @param {XMLHttpRequest} xhr
     */
-    jsonLoadComplete: function (file, xhr) ***REMOVED***
+    jsonLoadComplete: function (file, xhr) {
 
         var data = JSON.parse(xhr.responseText);
 
         if (file.type === 'tilemap')
-        ***REMOVED***
+        {
             this.cache.addTilemap(file.key, file.url, data, file.format);
-        ***REMOVED***
+        }
         else if (file.type === 'bitmapfont')
-        ***REMOVED***
+        {
             this.cache.addBitmapFont(file.key, file.url, file.data, data, file.atlasType, file.xSpacing, file.ySpacing);
-        ***REMOVED***
+        }
         else if (file.type === 'json')
-        ***REMOVED***
+        {
             this.cache.addJSON(file.key, file.url, data);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this.cache.addTextureAtlas(file.key, file.url, file.data, data, file.format);
-        ***REMOVED***
+        }
 
         this.asyncComplete(file);
-    ***REMOVED***,
+    },
 
     /**
     * Successfully loaded a CSV file - only used for certain types.
     *
     * @method Phaser.Loader#csvLoadComplete
     * @private
-    * @param ***REMOVED***object***REMOVED*** file - File associated with this request
-    * @param ***REMOVED***XMLHttpRequest***REMOVED*** xhr
+    * @param {object} file - File associated with this request
+    * @param {XMLHttpRequest} xhr
     */
-    csvLoadComplete: function (file, xhr) ***REMOVED***
+    csvLoadComplete: function (file, xhr) {
 
         var data = xhr.responseText;
 
@@ -4155,177 +4155,177 @@ Phaser.Loader.prototype = ***REMOVED***
 
         this.asyncComplete(file);
 
-    ***REMOVED***,
+    },
 
     /**
     * Successfully loaded an XML file - only used for certain types.
     *
     * @method Phaser.Loader#xmlLoadComplete
     * @private
-    * @param ***REMOVED***object***REMOVED*** file - File associated with this request
-    * @param ***REMOVED***XMLHttpRequest***REMOVED*** xhr
+    * @param {object} file - File associated with this request
+    * @param {XMLHttpRequest} xhr
     */
-    xmlLoadComplete: function (file, xhr) ***REMOVED***
+    xmlLoadComplete: function (file, xhr) {
 
         // Always try parsing the content as XML, regardless of actually response type
         var data = xhr.responseText;
         var xml = this.parseXml(data);
 
         if (!xml)
-        ***REMOVED***
+        {
             var responseType = xhr.responseType || xhr.contentType; // contentType for MS-XDomainRequest
             console.warn('Phaser.Loader - ' + file.key + ': invalid XML (' + responseType + ')');
             this.asyncComplete(file, "invalid XML");
             return;
-        ***REMOVED***
+        }
 
         if (file.type === 'bitmapfont')
-        ***REMOVED***
+        {
             this.cache.addBitmapFont(file.key, file.url, file.data, xml, file.atlasType, file.xSpacing, file.ySpacing);
-        ***REMOVED***
+        }
         else if (file.type === 'textureatlas')
-        ***REMOVED***
+        {
             this.cache.addTextureAtlas(file.key, file.url, file.data, xml, file.format);
-        ***REMOVED***
+        }
         else if (file.type === 'xml')
-        ***REMOVED***
+        {
             this.cache.addXML(file.key, file.url, xml);
-        ***REMOVED***
+        }
 
         this.asyncComplete(file);
 
-    ***REMOVED***,
+    },
 
     /**
     * Parses string data as XML.
     *
     * @method Phaser.Loader#parseXml
     * @private
-    * @param ***REMOVED***string***REMOVED*** data - The XML text to parse
-    * @return ***REMOVED***?XMLDocument***REMOVED*** Returns the xml document, or null if such could not parsed to a valid document.
+    * @param {string} data - The XML text to parse
+    * @return {?XMLDocument} Returns the xml document, or null if such could not parsed to a valid document.
     */
-    parseXml: function (data) ***REMOVED***
+    parseXml: function (data) {
 
         var xml;
 
         try
-        ***REMOVED***
+        {
             if (window['DOMParser'])
-            ***REMOVED***
+            {
                 var domparser = new DOMParser();
                 xml = domparser.parseFromString(data, "text/xml");
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 xml = new ActiveXObject("Microsoft.XMLDOM");
                 // Why is this 'false'?
                 xml.async = 'false';
                 xml.loadXML(data);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         catch (e)
-        ***REMOVED***
+        {
             xml = null;
-        ***REMOVED***
+        }
 
         if (!xml || !xml.documentElement || xml.getElementsByTagName("parsererror").length)
-        ***REMOVED***
+        {
             return null;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return xml;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Update the loading sprite progress.
     *
     * @method Phaser.Loader#nextFile
     * @private
-    * @param ***REMOVED***object***REMOVED*** previousFile
-    * @param ***REMOVED***boolean***REMOVED*** success - Whether the previous asset loaded successfully or not.
+    * @param {object} previousFile
+    * @param {boolean} success - Whether the previous asset loaded successfully or not.
     */
-    updateProgress: function () ***REMOVED***
+    updateProgress: function () {
 
         if (this.preloadSprite)
-        ***REMOVED***
+        {
             if (this.preloadSprite.direction === 0)
-            ***REMOVED***
+            {
                 this.preloadSprite.rect.width = Math.floor((this.preloadSprite.width / 100) * this.progress);
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this.preloadSprite.rect.height = Math.floor((this.preloadSprite.height / 100) * this.progress);
-            ***REMOVED***
+            }
 
             if (this.preloadSprite.sprite)
-            ***REMOVED***
+            {
                 this.preloadSprite.sprite.updateCrop();
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 //  We seem to have lost our sprite - maybe it was destroyed?
                 this.preloadSprite = null;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns the number of files that have already been loaded, even if they errored.
     *
     * @method Phaser.Loader#totalLoadedFiles
     * @protected
-    * @return ***REMOVED***number***REMOVED*** The number of files that have already been loaded (even if they errored)
+    * @return {number} The number of files that have already been loaded (even if they errored)
     */
-    totalLoadedFiles: function () ***REMOVED***
+    totalLoadedFiles: function () {
 
         return this._loadedFileCount;
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns the number of files still waiting to be processed in the load queue. This value decreases as each file in the queue is loaded.
     *
     * @method Phaser.Loader#totalQueuedFiles
     * @protected
-    * @return ***REMOVED***number***REMOVED*** The number of files that still remain in the load queue.
+    * @return {number} The number of files that still remain in the load queue.
     */
-    totalQueuedFiles: function () ***REMOVED***
+    totalQueuedFiles: function () {
 
         return this._totalFileCount - this._loadedFileCount;
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns the number of asset packs that have already been loaded, even if they errored.
     *
     * @method Phaser.Loader#totalLoadedPacks
     * @protected
-    * @return ***REMOVED***number***REMOVED*** The number of asset packs that have already been loaded (even if they errored)
+    * @return {number} The number of asset packs that have already been loaded (even if they errored)
     */
-    totalLoadedPacks: function () ***REMOVED***
+    totalLoadedPacks: function () {
 
         return this._totalPackCount;
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns the number of asset packs still waiting to be processed in the load queue. This value decreases as each pack in the queue is loaded.
     *
     * @method Phaser.Loader#totalQueuedPacks
     * @protected
-    * @return ***REMOVED***number***REMOVED*** The number of asset packs that still remain in the load queue.
+    * @return {number} The number of asset packs that still remain in the load queue.
     */
-    totalQueuedPacks: function () ***REMOVED***
+    totalQueuedPacks: function () {
 
         return this._totalPackCount - this._loadedPackCount;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * The non-rounded load progress value (from 0.0 to 100.0).
@@ -4334,30 +4334,30 @@ Phaser.Loader.prototype = ***REMOVED***
 * It is possible for the progress to decrease, after `onLoadStart`, if more files are dynamically added.
 *
 * @name Phaser.Loader#progressFloat
-* @property ***REMOVED***number***REMOVED***
+* @property {number}
 */
-Object.defineProperty(Phaser.Loader.prototype, "progressFloat", ***REMOVED***
+Object.defineProperty(Phaser.Loader.prototype, "progressFloat", {
 
-    get: function () ***REMOVED***
+    get: function () {
         var progress = (this._loadedFileCount / this._totalFileCount) * 100;
         return Phaser.Math.clamp(progress || 0, 0, 100);
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
-* The rounded load progress percentage value (from 0 to 100). See ***REMOVED***@link Phaser.Loader#progressFloat***REMOVED***.
+* The rounded load progress percentage value (from 0 to 100). See {@link Phaser.Loader#progressFloat}.
 *
 * @name Phaser.Loader#progress
-* @property ***REMOVED***integer***REMOVED***
+* @property {integer}
 */
-Object.defineProperty(Phaser.Loader.prototype, "progress", ***REMOVED***
+Object.defineProperty(Phaser.Loader.prototype, "progress", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return Math.round(this.progressFloat);
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 Phaser.Loader.prototype.constructor = Phaser.Loader;
 </pre>
@@ -4402,22 +4402,22 @@ Phaser.Loader.prototype.constructor = Phaser.Loader;
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

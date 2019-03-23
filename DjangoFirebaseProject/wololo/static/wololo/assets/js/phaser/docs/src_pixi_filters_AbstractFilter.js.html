@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1296,11 +1296,11 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
  * 
  * @class AbstractFilter
  * @constructor
- * @param fragmentSrc ***REMOVED***Array***REMOVED*** The fragment source in an array of strings.
- * @param uniforms ***REMOVED***Object***REMOVED*** An object containing the uniforms for this filter.
+ * @param fragmentSrc {Array} The fragment source in an array of strings.
+ * @param uniforms {Object} An object containing the uniforms for this filter.
  */
 PIXI.AbstractFilter = function(fragmentSrc, uniforms)
-***REMOVED***
+{
     /**
     * An array of passes - some filters contain a few steps this array simply stores the steps in a liniear fashion.
     * For example the blur filter has two passes blurX and blurY.
@@ -1334,7 +1334,7 @@ PIXI.AbstractFilter = function(fragmentSrc, uniforms)
     * @type Object
     * @private
     */
-    this.uniforms = uniforms || ***REMOVED******REMOVED***;
+    this.uniforms = uniforms || {};
 
     /**
     * @property fragmentSrc
@@ -1342,7 +1342,7 @@ PIXI.AbstractFilter = function(fragmentSrc, uniforms)
     * @private
     */
     this.fragmentSrc = fragmentSrc || [];
-***REMOVED***;
+};
 
 PIXI.AbstractFilter.prototype.constructor = PIXI.AbstractFilter;
 
@@ -1352,12 +1352,12 @@ PIXI.AbstractFilter.prototype.constructor = PIXI.AbstractFilter;
  * @method syncUniforms
  */
 PIXI.AbstractFilter.prototype.syncUniforms = function()
-***REMOVED***
+{
     for(var i=0,j=this.shaders.length; i&lt;j; i++)
-    ***REMOVED***
+    {
         this.shaders[i].dirty = true;
-    ***REMOVED***
-***REMOVED***;
+    }
+};
 </pre>
         </article>
     </section>
@@ -1400,22 +1400,22 @@ PIXI.AbstractFilter.prototype.syncUniforms = function()
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

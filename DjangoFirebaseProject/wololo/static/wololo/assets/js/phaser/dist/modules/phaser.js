@@ -1,473 +1,473 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
 * @namespace Phaser
 */
-var Phaser = Phaser || ***REMOVED***    // jshint ignore:line
+var Phaser = Phaser || {    // jshint ignore:line
 
     /**
     * The Phaser version number.
     * @constant
-    * @type ***REMOVED***string***REMOVED***
+    * @type {string}
     */
     VERSION: '2.6.2',
 
     /**
     * An array of Phaser game instances.
     * @constant
-    * @type ***REMOVED***array***REMOVED***
+    * @type {array}
     */
     GAMES: [],
 
     /**
     * AUTO renderer - picks between WebGL or Canvas based on device.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     AUTO: 0,
 
     /**
     * Canvas Renderer.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     CANVAS: 1,
 
     /**
     * WebGL Renderer.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     WEBGL: 2,
 
     /**
     * Headless renderer (not visual output)
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     HEADLESS: 3,
 
     /**
     * Direction constant.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     NONE: 0,
 
     /**
     * Direction constant.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     LEFT: 1,
 
     /**
     * Direction constant.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     RIGHT: 2,
 
     /**
     * Direction constant.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     UP: 3,
 
     /**
     * Direction constant.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     DOWN: 4,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     SPRITE: 0,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     BUTTON: 1,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     IMAGE: 2,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     GRAPHICS: 3,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     TEXT: 4,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     TILESPRITE: 5,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     BITMAPTEXT: 6,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     GROUP: 7,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     RENDERTEXTURE: 8,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     TILEMAP: 9,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     TILEMAPLAYER: 10,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     EMITTER: 11,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     POLYGON: 12,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     BITMAPDATA: 13,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     CANVAS_FILTER: 14,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     WEBGL_FILTER: 15,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ELLIPSE: 16,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     SPRITEBATCH: 17,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     RETROFONT: 18,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     POINTER: 19,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ROPE: 20,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     CIRCLE: 21,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     RECTANGLE: 22,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     LINE: 23,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     MATRIX: 24,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     POINT: 25,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ROUNDEDRECTANGLE: 26,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     CREATURE: 27,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     VIDEO: 28,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     PENDING_ATLAS: -1,
 
     /**
     * A horizontal orientation
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     HORIZONTAL: 0,
 
     /**
     * A vertical orientation
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     VERTICAL: 1,
 
     /**
     * A landscape orientation
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     LANDSCAPE: 0,
 
     /**
     * A portrait orientation
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     PORTRAIT: 1,
 
     /**
     * The Angle (in degrees) a Game Object needs to be set to in order to face up.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ANGLE_UP: 270,
 
     /**
     * The Angle (in degrees) a Game Object needs to be set to in order to face down.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ANGLE_DOWN: 90,
 
     /**
     * The Angle (in degrees) a Game Object needs to be set to in order to face left.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ANGLE_LEFT: 180,
 
     /**
     * The Angle (in degrees) a Game Object needs to be set to in order to face right.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ANGLE_RIGHT: 0,
 
     /**
     * The Angle (in degrees) a Game Object needs to be set to in order to face north east.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ANGLE_NORTH_EAST: 315,
 
     /**
     * The Angle (in degrees) a Game Object needs to be set to in order to face north west.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ANGLE_NORTH_WEST: 225,
 
     /**
     * The Angle (in degrees) a Game Object needs to be set to in order to face south east.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ANGLE_SOUTH_EAST: 45,
 
     /**
     * The Angle (in degrees) a Game Object needs to be set to in order to face south west.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ANGLE_SOUTH_WEST: 135,
 
     /**
     * A constant representing a top-left alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     TOP_LEFT: 0,
 
     /**
     * A constant representing a top-center alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     TOP_CENTER: 1,
 
     /**
     * A constant representing a top-right alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     TOP_RIGHT: 2,
 
     /**
     * A constant representing a left-top alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     LEFT_TOP: 3,
 
     /**
     * A constant representing a left-center alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     LEFT_CENTER: 4,
 
     /**
     * A constant representing a left-bottom alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     LEFT_BOTTOM: 5,
 
     /**
     * A constant representing a center alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     CENTER: 6,
 
     /**
     * A constant representing a right-top alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     RIGHT_TOP: 7,
 
     /**
     * A constant representing a right-center alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     RIGHT_CENTER: 8,
 
     /**
     * A constant representing a right-bottom alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     RIGHT_BOTTOM: 9,
 
     /**
     * A constant representing a bottom-left alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     BOTTOM_LEFT: 10,
 
     /**
     * A constant representing a bottom-center alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     BOTTOM_CENTER: 11,
 
     /**
     * A constant representing a bottom-right alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     BOTTOM_RIGHT: 12,
 
@@ -477,26 +477,26 @@ var Phaser = Phaser || ***REMOVED***    // jshint ignore:line
      * IMPORTANT: The WebGL renderer only supports the NORMAL, ADD, MULTIPLY and SCREEN blend modes.
      * 
      * @constant
-     * @property ***REMOVED***Number***REMOVED*** blendModes.NORMAL
-     * @property ***REMOVED***Number***REMOVED*** blendModes.ADD
-     * @property ***REMOVED***Number***REMOVED*** blendModes.MULTIPLY
-     * @property ***REMOVED***Number***REMOVED*** blendModes.SCREEN
-     * @property ***REMOVED***Number***REMOVED*** blendModes.OVERLAY
-     * @property ***REMOVED***Number***REMOVED*** blendModes.DARKEN
-     * @property ***REMOVED***Number***REMOVED*** blendModes.LIGHTEN
-     * @property ***REMOVED***Number***REMOVED*** blendModes.COLOR_DODGE
-     * @property ***REMOVED***Number***REMOVED*** blendModes.COLOR_BURN
-     * @property ***REMOVED***Number***REMOVED*** blendModes.HARD_LIGHT
-     * @property ***REMOVED***Number***REMOVED*** blendModes.SOFT_LIGHT
-     * @property ***REMOVED***Number***REMOVED*** blendModes.DIFFERENCE
-     * @property ***REMOVED***Number***REMOVED*** blendModes.EXCLUSION
-     * @property ***REMOVED***Number***REMOVED*** blendModes.HUE
-     * @property ***REMOVED***Number***REMOVED*** blendModes.SATURATION
-     * @property ***REMOVED***Number***REMOVED*** blendModes.COLOR
-     * @property ***REMOVED***Number***REMOVED*** blendModes.LUMINOSITY
+     * @property {Number} blendModes.NORMAL
+     * @property {Number} blendModes.ADD
+     * @property {Number} blendModes.MULTIPLY
+     * @property {Number} blendModes.SCREEN
+     * @property {Number} blendModes.OVERLAY
+     * @property {Number} blendModes.DARKEN
+     * @property {Number} blendModes.LIGHTEN
+     * @property {Number} blendModes.COLOR_DODGE
+     * @property {Number} blendModes.COLOR_BURN
+     * @property {Number} blendModes.HARD_LIGHT
+     * @property {Number} blendModes.SOFT_LIGHT
+     * @property {Number} blendModes.DIFFERENCE
+     * @property {Number} blendModes.EXCLUSION
+     * @property {Number} blendModes.HUE
+     * @property {Number} blendModes.SATURATION
+     * @property {Number} blendModes.COLOR
+     * @property {Number} blendModes.LUMINOSITY
      * @static
      */
-    blendModes: ***REMOVED***
+    blendModes: {
         NORMAL:0,
         ADD:1,
         MULTIPLY:2,
@@ -514,7 +514,7 @@ var Phaser = Phaser || ***REMOVED***    // jshint ignore:line
         SATURATION:14,
         COLOR:15,
         LUMINOSITY:16
-    ***REMOVED***,
+    },
 
     /**
      * The scale modes that are supported by Pixi.
@@ -523,121 +523,121 @@ var Phaser = Phaser || ***REMOVED***    // jshint ignore:line
      * It can be re-assigned to either LINEAR or NEAREST, depending upon suitability.
      *
      * @constant
-     * @property ***REMOVED***Object***REMOVED*** Phaser.scaleModes
-     * @property ***REMOVED***Number***REMOVED*** scaleModes.DEFAULT=LINEAR
-     * @property ***REMOVED***Number***REMOVED*** scaleModes.LINEAR Smooth scaling
-     * @property ***REMOVED***Number***REMOVED*** scaleModes.NEAREST Pixelating scaling
+     * @property {Object} Phaser.scaleModes
+     * @property {Number} scaleModes.DEFAULT=LINEAR
+     * @property {Number} scaleModes.LINEAR Smooth scaling
+     * @property {Number} scaleModes.NEAREST Pixelating scaling
      * @static
      */
-    scaleModes: ***REMOVED***
+    scaleModes: {
         DEFAULT:0,
         LINEAR:0,
         NEAREST:1
-    ***REMOVED***,
+    },
 
-    PIXI: PIXI || ***REMOVED******REMOVED***
+    PIXI: PIXI || {}
 
-***REMOVED***;
+};
 
 /**
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 // ES6 Math.trunc - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/trunc
-if (!Math.trunc) ***REMOVED***
-    Math.trunc = function trunc(x) ***REMOVED***
+if (!Math.trunc) {
+    Math.trunc = function trunc(x) {
         return x < 0 ? Math.ceil(x) : Math.floor(x);
-    ***REMOVED***;
-***REMOVED***
+    };
+}
 
 /**
 * A polyfill for Function.prototype.bind
 */
-if (!Function.prototype.bind) ***REMOVED***
+if (!Function.prototype.bind) {
 
     /* jshint freeze: false */
-    Function.prototype.bind = (function () ***REMOVED***
+    Function.prototype.bind = (function () {
 
         var slice = Array.prototype.slice;
 
-        return function (thisArg) ***REMOVED***
+        return function (thisArg) {
 
             var target = this, boundArgs = slice.call(arguments, 1);
 
             if (typeof target !== 'function')
-            ***REMOVED***
+            {
                 throw new TypeError();
-            ***REMOVED***
+            }
 
-            function bound() ***REMOVED***
+            function bound() {
                 var args = boundArgs.concat(slice.call(arguments));
                 target.apply(this instanceof bound ? this : thisArg, args);
-            ***REMOVED***
+            }
 
-            bound.prototype = (function F(proto) ***REMOVED***
+            bound.prototype = (function F(proto) {
                 if (proto)
-                ***REMOVED***
+                {
                     F.prototype = proto;
-                ***REMOVED***
+                }
 
                 if (!(this instanceof F))
-                ***REMOVED***
+                {
                     /* jshint supernew: true */
                     return new F;
-                ***REMOVED***
-            ***REMOVED***)(target.prototype);
+                }
+            })(target.prototype);
 
             return bound;
-        ***REMOVED***;
-    ***REMOVED***)();
-***REMOVED***
+        };
+    })();
+}
 
 /**
 * A polyfill for Array.isArray
 */
 if (!Array.isArray)
-***REMOVED***
+{
     Array.isArray = function (arg)
-    ***REMOVED***
+    {
         return Object.prototype.toString.call(arg) === '[object Array]';
-    ***REMOVED***;
-***REMOVED***
+    };
+}
 
 /**
 * A polyfill for Array.forEach
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
 */
 if (!Array.prototype.forEach)
-***REMOVED***
+{
     Array.prototype.forEach = function(fun /*, thisArg */)
-    ***REMOVED***
+    {
         "use strict";
 
         if (this === void 0 || this === null)
-        ***REMOVED***
+        {
             throw new TypeError();
-        ***REMOVED***
+        }
 
         var t = Object(this);
         var len = t.length >>> 0;
 
         if (typeof fun !== "function")
-        ***REMOVED***
+        {
             throw new TypeError();
-        ***REMOVED***
+        }
 
         var thisArg = arguments.length >= 2 ? arguments[1] : void 0;
 
         for (var i = 0; i < len; i++)
-        ***REMOVED***
+        {
             if (i in t)
-            ***REMOVED***
+            {
                 fun.call(thisArg, t[i], i, t);
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***;
-***REMOVED***
+            }
+        }
+    };
+}
 
 /**
 * Low-budget Float32Array knock-off, suitable for use with P2.js in IE9
@@ -645,89 +645,89 @@ if (!Array.prototype.forEach)
 * Cameron Foale (http://www.kibibu.com)
 */
 if (typeof window.Uint32Array !== "function" && typeof window.Uint32Array !== "object")
-***REMOVED***
+{
     var CheapArray = function(type)
-    ***REMOVED***
+    {
         var proto = new Array(); // jshint ignore:line
 
-        window[type] = function(arg) ***REMOVED***
+        window[type] = function(arg) {
 
             if (typeof(arg) === "number")
-            ***REMOVED***
+            {
                 Array.call(this, arg);
                 this.length = arg;
 
                 for (var i = 0; i < this.length; i++)
-                ***REMOVED***
+                {
                     this[i] = 0;
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
             else
-            ***REMOVED***
+            {
                 Array.call(this, arg.length);
 
                 this.length = arg.length;
 
                 for (var i = 0; i < this.length; i++)
-                ***REMOVED***
+                {
                     this[i] = arg[i];
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***;
+                }
+            }
+        };
 
         window[type].prototype = proto;
         window[type].constructor = window[type];
-    ***REMOVED***;
+    };
 
     CheapArray('Uint32Array'); // jshint ignore:line
     CheapArray('Int16Array');  // jshint ignore:line
-***REMOVED***
+}
 
 /**
  * Also fix for the absent console in IE9
  */
 if (!window.console)
-***REMOVED***
-    window.console = ***REMOVED******REMOVED***;
-    window.console.log = window.console.assert = function()***REMOVED******REMOVED***;
-    window.console.warn = window.console.assert = function()***REMOVED******REMOVED***;
-***REMOVED***
+{
+    window.console = {};
+    window.console.log = window.console.assert = function(){};
+    window.console.warn = window.console.assert = function(){};
+}
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
 * @class Phaser.Utils
 * @static
 */
-Phaser.Utils = ***REMOVED***
+Phaser.Utils = {
 
     /**
     * Takes the given string and reverses it, returning the reversed string.
     * For example if given the string `Atari 520ST` it would return `TS025 iratA`.
     *
     * @method Phaser.Utils.reverseString
-    * @param ***REMOVED***string***REMOVED*** string - The string to be reversed.
-    * @return ***REMOVED***string***REMOVED*** The reversed string.
+    * @param {string} string - The string to be reversed.
+    * @return {string} The reversed string.
     */
-    reverseString: function (string) ***REMOVED***
+    reverseString: function (string) {
 
         return string.split('').reverse().join('');
 
-    ***REMOVED***,
+    },
 
     /**
      * Gets an objects property by string.
      *
      * @method Phaser.Utils.getProperty
-     * @param ***REMOVED***object***REMOVED*** obj - The object to traverse.
-     * @param ***REMOVED***string***REMOVED*** prop - The property whose value will be returned.
-     * @return ***REMOVED*******REMOVED*** the value of the property or null if property isn't found .
+     * @param {object} obj - The object to traverse.
+     * @param {string} prop - The property whose value will be returned.
+     * @return {*} the value of the property or null if property isn't found .
      */
-    getProperty: function(obj, prop) ***REMOVED***
+    getProperty: function(obj, prop) {
 
         var parts = prop.split('.'),
             last = parts.pop(),
@@ -736,31 +736,31 @@ Phaser.Utils = ***REMOVED***
             current = parts[0];
 
         while (i < l && (obj = obj[current]))
-        ***REMOVED***
+        {
             current = parts[i];
             i++;
-        ***REMOVED***
+        }
 
         if (obj)
-        ***REMOVED***
+        {
             return obj[last];
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return null;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
      * Sets an objects property by string.
      *
      * @method Phaser.Utils.setProperty
-     * @param ***REMOVED***object***REMOVED*** obj - The object to traverse
-     * @param ***REMOVED***string***REMOVED*** prop - The property whose value will be changed
-     * @return ***REMOVED***object***REMOVED*** The object on which the property was set.
+     * @param {object} obj - The object to traverse
+     * @param {string} prop - The property whose value will be changed
+     * @return {object} The object on which the property was set.
      */
-    setProperty: function(obj, prop, value) ***REMOVED***
+    setProperty: function(obj, prop, value) {
 
         var parts = prop.split('.'),
             last = parts.pop(),
@@ -769,19 +769,19 @@ Phaser.Utils = ***REMOVED***
             current = parts[0];
 
         while (i < l && (obj = obj[current]))
-        ***REMOVED***
+        {
             current = parts[i];
             i++;
-        ***REMOVED***
+        }
 
         if (obj)
-        ***REMOVED***
+        {
             obj[last] = value;
-        ***REMOVED***
+        }
 
         return obj;
 
-    ***REMOVED***,
+    },
 
     /**
     * Generate a random bool result based on the chance value.
@@ -790,68 +790,68 @@ Phaser.Utils = ***REMOVED***
     * of getting a bonus, call chanceRoll(30) - true means the chance passed, false means it failed.
     *
     * @method Phaser.Utils#chanceRoll
-    * @param ***REMOVED***number***REMOVED*** chance - The chance of receiving the value. A number between 0 and 100 (effectively 0% to 100%).
-    * @return ***REMOVED***boolean***REMOVED*** True if the roll passed, or false otherwise.
+    * @param {number} chance - The chance of receiving the value. A number between 0 and 100 (effectively 0% to 100%).
+    * @return {boolean} True if the roll passed, or false otherwise.
     */
-    chanceRoll: function (chance) ***REMOVED***
-        if (chance === undefined) ***REMOVED*** chance = 50; ***REMOVED***
+    chanceRoll: function (chance) {
+        if (chance === undefined) { chance = 50; }
         return chance > 0 && (Math.random() * 100 <= chance);
-    ***REMOVED***,
+    },
 
     /**
     * Choose between one of two values randomly.
     *
     * @method Phaser.Utils#randomChoice
-    * @param ***REMOVED***any***REMOVED*** choice1
-    * @param ***REMOVED***any***REMOVED*** choice2
-    * @return ***REMOVED***any***REMOVED*** The randomly selected choice
+    * @param {any} choice1
+    * @param {any} choice2
+    * @return {any} The randomly selected choice
     */
-    randomChoice: function (choice1, choice2) ***REMOVED***
+    randomChoice: function (choice1, choice2) {
         return (Math.random() < 0.5) ? choice1 : choice2;
-    ***REMOVED***,
+    },
 
     /**
     * Get a unit dimension from a string.
     *
     * @method Phaser.Utils.parseDimension
-    * @param ***REMOVED***string|number***REMOVED*** size - The size to parse.
-    * @param ***REMOVED***number***REMOVED*** dimension - The window dimension to check.
-    * @return ***REMOVED***number***REMOVED*** The parsed dimension.
+    * @param {string|number} size - The size to parse.
+    * @param {number} dimension - The window dimension to check.
+    * @return {number} The parsed dimension.
     */
-    parseDimension: function (size, dimension) ***REMOVED***
+    parseDimension: function (size, dimension) {
 
         var f = 0;
         var px = 0;
 
         if (typeof size === 'string')
-        ***REMOVED***
+        {
             //  %?
             if (size.substr(-1) === '%')
-            ***REMOVED***
+            {
                 f = parseInt(size, 10) / 100;
 
                 if (dimension === 0)
-                ***REMOVED***
+                {
                     px = window.innerWidth * f;
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     px = window.innerHeight * f;
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
             else
-            ***REMOVED***
+            {
                 px = parseInt(size, 10);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             px = size;
-        ***REMOVED***
+        }
 
         return px;
 
-    ***REMOVED***,
+    },
 
     /**
     * Takes the given string and pads it out, to the length required, using the character
@@ -874,26 +874,26 @@ Phaser.Utils = ***REMOVED***
     * Would return: `**c64**`
     *
     * @method Phaser.Utils.pad
-    * @param ***REMOVED***string***REMOVED*** str - The target string. `toString()` will be called on the string, which means you can also pass in common data types like numbers.
-    * @param ***REMOVED***integer***REMOVED*** [len=0] - The number of characters to be added.
-    * @param ***REMOVED***string***REMOVED*** [pad=" "] - The string to pad it out with (defaults to a space).
-    * @param ***REMOVED***integer***REMOVED*** [dir=3] - The direction dir = 1 (left), 2 (right), 3 (both).
-    * @return ***REMOVED***string***REMOVED*** The padded string.
+    * @param {string} str - The target string. `toString()` will be called on the string, which means you can also pass in common data types like numbers.
+    * @param {integer} [len=0] - The number of characters to be added.
+    * @param {string} [pad=" "] - The string to pad it out with (defaults to a space).
+    * @param {integer} [dir=3] - The direction dir = 1 (left), 2 (right), 3 (both).
+    * @return {string} The padded string.
     */
-    pad: function (str, len, pad, dir) ***REMOVED***
+    pad: function (str, len, pad, dir) {
 
-        if (len === undefined) ***REMOVED*** var len = 0; ***REMOVED***
-        if (pad === undefined) ***REMOVED*** var pad = ' '; ***REMOVED***
-        if (dir === undefined) ***REMOVED*** var dir = 3; ***REMOVED***
+        if (len === undefined) { var len = 0; }
+        if (pad === undefined) { var pad = ' '; }
+        if (dir === undefined) { var dir = 3; }
 
         str = str.toString();
 
         var padlen = 0;
 
         if (len + 1 >= str.length)
-        ***REMOVED***
+        {
             switch (dir)
-            ***REMOVED***
+            {
                 case 1:
                     str = new Array(len + 1 - str.length).join(pad) + str;
                     break;
@@ -907,128 +907,128 @@ Phaser.Utils = ***REMOVED***
                 default:
                     str = str + new Array(len + 1 - str.length).join(pad);
                     break;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return str;
 
-    ***REMOVED***,
+    },
 
     /**
     * This is a slightly modified version of jQuery.isPlainObject.
     * A plain object is an object whose internal class property is [object Object].
     * @method Phaser.Utils.isPlainObject
-    * @param ***REMOVED***object***REMOVED*** obj - The object to inspect.
-    * @return ***REMOVED***boolean***REMOVED*** - true if the object is plain, otherwise false.
+    * @param {object} obj - The object to inspect.
+    * @return {boolean} - true if the object is plain, otherwise false.
     */
-    isPlainObject: function (obj) ***REMOVED***
+    isPlainObject: function (obj) {
 
         // Not plain objects:
         // - Any object or value whose internal [[Class]] property is not "[object Object]"
         // - DOM nodes
         // - window
         if (typeof(obj) !== "object" || obj.nodeType || obj === obj.window)
-        ***REMOVED***
+        {
             return false;
-        ***REMOVED***
+        }
 
         // Support: Firefox <20
         // The try/catch suppresses exceptions thrown when attempting to access
         // the "constructor" property of certain host objects, ie. |window.location|
         // https://bugzilla.mozilla.org/show_bug.cgi?id=814622
-        try ***REMOVED***
-            if (obj.constructor && !(***REMOVED******REMOVED***).hasOwnProperty.call(obj.constructor.prototype, "isPrototypeOf"))
-            ***REMOVED***
+        try {
+            if (obj.constructor && !({}).hasOwnProperty.call(obj.constructor.prototype, "isPrototypeOf"))
+            {
                 return false;
-            ***REMOVED***
-        ***REMOVED*** catch (e) ***REMOVED***
+            }
+        } catch (e) {
             return false;
-        ***REMOVED***
+        }
 
         // If the function hasn't returned already, we're confident that
-        // |obj| is a plain object, created by ***REMOVED******REMOVED*** or constructed with new Object
+        // |obj| is a plain object, created by {} or constructed with new Object
         return true;
-    ***REMOVED***,
+    },
 
     /**
     * This is a slightly modified version of http://api.jquery.com/jQuery.extend/
     * 
     * @method Phaser.Utils.extend
-    * @param ***REMOVED***boolean***REMOVED*** deep - Perform a deep copy?
-    * @param ***REMOVED***object***REMOVED*** target - The target object to copy to.
-    * @return ***REMOVED***object***REMOVED*** The extended object.
+    * @param {boolean} deep - Perform a deep copy?
+    * @param {object} target - The target object to copy to.
+    * @return {object} The extended object.
     */
-    extend: function () ***REMOVED***
+    extend: function () {
 
         var options, name, src, copy, copyIsArray, clone,
-            target = arguments[0] || ***REMOVED******REMOVED***,
+            target = arguments[0] || {},
             i = 1,
             length = arguments.length,
             deep = false;
 
         // Handle a deep copy situation
         if (typeof target === "boolean")
-        ***REMOVED***
+        {
             deep = target;
-            target = arguments[1] || ***REMOVED******REMOVED***;
+            target = arguments[1] || {};
             // skip the boolean and the target
             i = 2;
-        ***REMOVED***
+        }
 
         // extend Phaser if only one argument is passed
         if (length === i)
-        ***REMOVED***
+        {
             target = this;
             --i;
-        ***REMOVED***
+        }
 
         for (; i < length; i++)
-        ***REMOVED***
+        {
             // Only deal with non-null/undefined values
             if ((options = arguments[i]) != null)
-            ***REMOVED***
+            {
                 // Extend the base object
                 for (name in options)
-                ***REMOVED***
+                {
                     src = target[name];
                     copy = options[name];
 
                     // Prevent never-ending loop
                     if (target === copy)
-                    ***REMOVED***
+                    {
                         continue;
-                    ***REMOVED***
+                    }
 
                     // Recurse if we're merging plain objects or arrays
                     if (deep && copy && (Phaser.Utils.isPlainObject(copy) || (copyIsArray = Array.isArray(copy))))
-                    ***REMOVED***
+                    {
                         if (copyIsArray)
-                        ***REMOVED***
+                        {
                             copyIsArray = false;
                             clone = src && Array.isArray(src) ? src : [];
-                        ***REMOVED***
+                        }
                         else
-                        ***REMOVED***
-                            clone = src && Phaser.Utils.isPlainObject(src) ? src : ***REMOVED******REMOVED***;
-                        ***REMOVED***
+                        {
+                            clone = src && Phaser.Utils.isPlainObject(src) ? src : {};
+                        }
 
                         // Never move original objects, clone them
                         target[name] = Phaser.Utils.extend(deep, clone, copy);
 
                     // Don't bring in undefined values
-                    ***REMOVED***
+                    }
                     else if (copy !== undefined)
-                    ***REMOVED***
+                    {
                         target[name] = copy;
-                    ***REMOVED***
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                    }
+                }
+            }
+        }
 
         // Return the modified object
         return target;
 
-    ***REMOVED***,
+    },
 
     /**
     * Mixes in an existing mixin object with the target.
@@ -1038,97 +1038,97 @@ Phaser.Utils = ***REMOVED***
     * the result is assigned directly.
     *
     * @method Phaser.Utils.mixinPrototype
-    * @param ***REMOVED***object***REMOVED*** target - The target object to receive the new functions.
-    * @param ***REMOVED***object***REMOVED*** mixin - The object to copy the functions from.
-    * @param ***REMOVED***boolean***REMOVED*** [replace=false] - If the target object already has a matching function should it be overwritten or not?
+    * @param {object} target - The target object to receive the new functions.
+    * @param {object} mixin - The object to copy the functions from.
+    * @param {boolean} [replace=false] - If the target object already has a matching function should it be overwritten or not?
     */
-    mixinPrototype: function (target, mixin, replace) ***REMOVED***
+    mixinPrototype: function (target, mixin, replace) {
     
-        if (replace === undefined) ***REMOVED*** replace = false; ***REMOVED***
+        if (replace === undefined) { replace = false; }
 
         var mixinKeys = Object.keys(mixin);
 
         for (var i = 0; i < mixinKeys.length; i++)
-        ***REMOVED***
+        {
             var key = mixinKeys[i];
             var value = mixin[key];
 
             if (!replace && (key in target))
-            ***REMOVED***
+            {
                 //  Not overwriting existing property
                 continue;
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 if (value &&
                     (typeof value.get === 'function' || typeof value.set === 'function'))
-                ***REMOVED***
+                {
                     //  Special case for classes like Phaser.Point which has a 'set' function!
                     if (typeof value.clone === 'function')
-                    ***REMOVED***
+                    {
                         target[key] = value.clone();
-                    ***REMOVED***
+                    }
                     else
-                    ***REMOVED***
+                    {
                         Object.defineProperty(target, key, value);
-                    ***REMOVED***
-                ***REMOVED***
+                    }
+                }
                 else
-                ***REMOVED***
+                {
                     target[key] = value;
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Mixes the source object into the destination object, returning the newly modified destination object.
     * Based on original code by @mudcube
     *
     * @method Phaser.Utils.mixin
-    * @param ***REMOVED***object***REMOVED*** from - The object to copy (the source object).
-    * @param ***REMOVED***object***REMOVED*** to - The object to copy to (the destination object).
-    * @return ***REMOVED***object***REMOVED*** The modified destination object.
+    * @param {object} from - The object to copy (the source object).
+    * @param {object} to - The object to copy to (the destination object).
+    * @return {object} The modified destination object.
     */
-    mixin: function (from, to) ***REMOVED***
+    mixin: function (from, to) {
 
         if (!from || typeof (from) !== "object")
-        ***REMOVED***
+        {
             return to;
-        ***REMOVED***
+        }
 
         for (var key in from)
-        ***REMOVED***
+        {
             var o = from[key];
 
             if (o.childNodes || o.cloneNode)
-            ***REMOVED***
+            {
                 continue;
-            ***REMOVED***
+            }
 
             var type = typeof (from[key]);
 
             if (!from[key] || type !== "object")
-            ***REMOVED***
+            {
                 to[key] = from[key];
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 //  Clone sub-object
                 if (typeof (to[key]) === type)
-                ***REMOVED***
+                {
                     to[key] = Phaser.Utils.mixin(from[key], to[key]);
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     to[key] = Phaser.Utils.mixin(from[key], new o.constructor());
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
 
         return to;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};

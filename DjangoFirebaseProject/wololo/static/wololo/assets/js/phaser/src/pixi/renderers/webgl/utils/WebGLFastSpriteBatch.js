@@ -13,7 +13,7 @@
 * @constructor
 */
 PIXI.WebGLFastSpriteBatch = function(gl)
-***REMOVED***
+{
     /**
      * @property vertSize
      * @type Number
@@ -71,14 +71,14 @@ PIXI.WebGLFastSpriteBatch = function(gl)
     this.lastIndexCount = 0;
 
     for (var i=0, j=0; i < numIndices; i += 6, j += 4)
-    ***REMOVED***
+    {
         this.indices[i + 0] = j + 0;
         this.indices[i + 1] = j + 1;
         this.indices[i + 2] = j + 2;
         this.indices[i + 3] = j + 0;
         this.indices[i + 4] = j + 2;
         this.indices[i + 5] = j + 3;
-    ***REMOVED***
+    }
 
     /**
      * @property drawing
@@ -123,7 +123,7 @@ PIXI.WebGLFastSpriteBatch = function(gl)
     this.matrix = null;
 
     this.setContext(gl);
-***REMOVED***;
+};
 
 PIXI.WebGLFastSpriteBatch.prototype.constructor = PIXI.WebGLFastSpriteBatch;
 
@@ -131,10 +131,10 @@ PIXI.WebGLFastSpriteBatch.prototype.constructor = PIXI.WebGLFastSpriteBatch;
  * Sets the WebGL Context.
  *
  * @method setContext
- * @param gl ***REMOVED***WebGLContext***REMOVED*** the current WebGL drawing context
+ * @param gl {WebGLContext} the current WebGL drawing context
  */
 PIXI.WebGLFastSpriteBatch.prototype.setContext = function(gl)
-***REMOVED***
+{
     this.gl = gl;
 
     // create a couple of buffers
@@ -149,37 +149,37 @@ PIXI.WebGLFastSpriteBatch.prototype.setContext = function(gl)
 
     gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, this.vertices, gl.DYNAMIC_DRAW);
-***REMOVED***;
+};
 
 /**
  * @method begin
- * @param spriteBatch ***REMOVED***WebGLSpriteBatch***REMOVED***
- * @param renderSession ***REMOVED***Object***REMOVED***
+ * @param spriteBatch {WebGLSpriteBatch}
+ * @param renderSession {Object}
  */
 PIXI.WebGLFastSpriteBatch.prototype.begin = function(spriteBatch, renderSession)
-***REMOVED***
+{
     this.renderSession = renderSession;
     this.shader = this.renderSession.shaderManager.fastShader;
 
     this.matrix = spriteBatch.worldTransform.toArray(true);
 
     this.start();
-***REMOVED***;
+};
 
 /**
  * @method end
  */
 PIXI.WebGLFastSpriteBatch.prototype.end = function()
-***REMOVED***
+{
     this.flush();
-***REMOVED***;
+};
 
 /**
  * @method render
- * @param spriteBatch ***REMOVED***WebGLSpriteBatch***REMOVED***
+ * @param spriteBatch {WebGLSpriteBatch}
  */
 PIXI.WebGLFastSpriteBatch.prototype.render = function(spriteBatch)
-***REMOVED***
+{
     var children = spriteBatch.children;
     var sprite = children[0];
 
@@ -192,36 +192,36 @@ PIXI.WebGLFastSpriteBatch.prototype.render = function(spriteBatch)
     
     // check blend mode
     if(sprite.blendMode !== this.renderSession.blendModeManager.currentBlendMode)
-    ***REMOVED***
+    {
         this.flush();
         this.renderSession.blendModeManager.setBlendMode(sprite.blendMode);
-    ***REMOVED***
+    }
     
     for(var i=0,j= children.length; i<j; i++)
-    ***REMOVED***
+    {
         this.renderSprite(children[i]);
-    ***REMOVED***
+    }
 
     this.flush();
-***REMOVED***;
+};
 
 /**
  * @method renderSprite
- * @param sprite ***REMOVED***Sprite***REMOVED***
+ * @param sprite {Sprite}
  */
 PIXI.WebGLFastSpriteBatch.prototype.renderSprite = function(sprite)
-***REMOVED***
+{
     //sprite = children[i];
     if(!sprite.visible)return;
     
     // TODO trim??
     if(sprite.texture.baseTexture !== this.currentBaseTexture && !sprite.texture.baseTexture.skipRender)
-    ***REMOVED***
+    {
         this.flush();
         this.currentBaseTexture = sprite.texture.baseTexture;
         
         if(!sprite.texture._uvs)return;
-    ***REMOVED***
+    }
 
     var uvs, vertices = this.vertices, width, height, w0, w1, h0, h1, index;
 
@@ -231,7 +231,7 @@ PIXI.WebGLFastSpriteBatch.prototype.renderSprite = function(sprite)
     height = sprite.texture.frame.height;
 
     if (sprite.texture.trim)
-    ***REMOVED***
+    {
         // if the sprite is trimmed then we need to add the extra space before transforming the sprite coords..
         var trim = sprite.texture.trim;
 
@@ -240,15 +240,15 @@ PIXI.WebGLFastSpriteBatch.prototype.renderSprite = function(sprite)
 
         h1 = trim.y - sprite.anchor.y * trim.height;
         h0 = h1 + sprite.texture.crop.height;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         w0 = (sprite.texture.frame.width ) * (1-sprite.anchor.x);
         w1 = (sprite.texture.frame.width ) * -sprite.anchor.x;
 
         h0 = sprite.texture.frame.height * (1-sprite.anchor.y);
         h1 = sprite.texture.frame.height * -sprite.anchor.y;
-    ***REMOVED***
+    }
 
     index = this.currentBatchSize * 4 * this.vertSize;
 
@@ -341,16 +341,16 @@ PIXI.WebGLFastSpriteBatch.prototype.renderSprite = function(sprite)
     this.currentBatchSize++;
 
     if(this.currentBatchSize >= this.size)
-    ***REMOVED***
+    {
         this.flush();
-    ***REMOVED***
-***REMOVED***;
+    }
+};
 
 /**
  * @method flush
  */
 PIXI.WebGLFastSpriteBatch.prototype.flush = function()
-***REMOVED***
+{
     // If the batch is length 0 then return as there is nothing to draw
     if (this.currentBatchSize===0)return;
 
@@ -365,15 +365,15 @@ PIXI.WebGLFastSpriteBatch.prototype.flush = function()
     // upload the verts to the buffer
    
     if(this.currentBatchSize > ( this.size * 0.5 ) )
-    ***REMOVED***
+    {
         gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.vertices);
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         var view = this.vertices.subarray(0, this.currentBatchSize * 4 * this.vertSize);
 
         gl.bufferSubData(gl.ARRAY_BUFFER, 0, view);
-    ***REMOVED***
+    }
     
     // now draw those suckas!
     gl.drawElements(gl.TRIANGLES, this.currentBatchSize * 6, gl.UNSIGNED_SHORT, 0);
@@ -383,22 +383,22 @@ PIXI.WebGLFastSpriteBatch.prototype.flush = function()
 
     // increment the draw count
     this.renderSession.drawCount++;
-***REMOVED***;
+};
 
 
 /**
  * @method stop
  */
 PIXI.WebGLFastSpriteBatch.prototype.stop = function()
-***REMOVED***
+{
     this.flush();
-***REMOVED***;
+};
 
 /**
  * @method start
  */
 PIXI.WebGLFastSpriteBatch.prototype.start = function()
-***REMOVED***
+{
     var gl = this.gl;
 
     // bind the main texture
@@ -425,4 +425,4 @@ PIXI.WebGLFastSpriteBatch.prototype.start = function()
     gl.vertexAttribPointer(this.shader.aTextureCoord, 2, gl.FLOAT, false, stride, 7 * 4);
     gl.vertexAttribPointer(this.shader.colorAttribute, 1, gl.FLOAT, false, stride, 9 * 4);
     
-***REMOVED***;
+};

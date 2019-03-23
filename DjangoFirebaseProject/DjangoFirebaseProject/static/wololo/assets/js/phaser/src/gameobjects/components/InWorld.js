@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -11,7 +11,7 @@
 *
 * @class
 */
-Phaser.Component.InWorld = function () ***REMOVED******REMOVED***;
+Phaser.Component.InWorld = function () {};
 
 /**
  * The InWorld component preUpdate handler.
@@ -19,64 +19,64 @@ Phaser.Component.InWorld = function () ***REMOVED******REMOVED***;
  *
  * @method
  */
-Phaser.Component.InWorld.preUpdate = function () ***REMOVED***
+Phaser.Component.InWorld.preUpdate = function () {
 
     //  Cache the bounds if we need it
     if (this.autoCull || this.checkWorldBounds)
-    ***REMOVED***
+    {
         this._bounds.copyFrom(this.getBounds());
 
         this._bounds.x += this.game.camera.view.x;
         this._bounds.y += this.game.camera.view.y;
 
         if (this.autoCull)
-        ***REMOVED***
+        {
             //  Won't get rendered but will still get its transform updated
             if (this.game.world.camera.view.intersects(this._bounds))
-            ***REMOVED***
+            {
                 this.renderable = true;
                 this.game.world.camera.totalInView++;
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this.renderable = false;
 
                 if (this.outOfCameraBoundsKill)
-                ***REMOVED***
+                {
                     this.kill();
                     return false;
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
 
         if (this.checkWorldBounds)
-        ***REMOVED***
+        {
             //  The Sprite is already out of the world bounds, so let's check to see if it has come back again
             if (this._outOfBoundsFired && this.game.world.bounds.intersects(this._bounds))
-            ***REMOVED***
+            {
                 this._outOfBoundsFired = false;
                 this.events.onEnterBounds$dispatch(this);
-            ***REMOVED***
+            }
             else if (!this._outOfBoundsFired && !this.game.world.bounds.intersects(this._bounds))
-            ***REMOVED***
+            {
                 //  The Sprite WAS in the screen, but has now left.
                 this._outOfBoundsFired = true;
                 this.events.onOutOfBounds$dispatch(this);
 
                 if (this.outOfBoundsKill)
-                ***REMOVED***
+                {
                     this.kill();
                     return false;
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+                }
+            }
+        }
+    }
 
     return true;
 
-***REMOVED***;
+};
 
-Phaser.Component.InWorld.prototype = ***REMOVED***
+Phaser.Component.InWorld.prototype = {
 
     /**
     * If this is set to `true` the Game Object checks if it is within the World bounds each frame. 
@@ -92,7 +92,7 @@ Phaser.Component.InWorld.prototype = ***REMOVED***
     * This is a relatively expensive operation, especially if enabled on hundreds of Game Objects. So enable it only if you know it's required,
     * or you have tested performance and find it acceptable.
     * 
-    * @property ***REMOVED***boolean***REMOVED*** checkWorldBounds
+    * @property {boolean} checkWorldBounds
     * @default
     */
     checkWorldBounds: false,
@@ -100,7 +100,7 @@ Phaser.Component.InWorld.prototype = ***REMOVED***
     /**
     * If this and the `checkWorldBounds` property are both set to `true` then the `kill` method is called as soon as `inWorld` returns false.
     * 
-    * @property ***REMOVED***boolean***REMOVED*** outOfBoundsKill
+    * @property {boolean} outOfBoundsKill
     * @default
     */
     outOfBoundsKill: false,
@@ -109,13 +109,13 @@ Phaser.Component.InWorld.prototype = ***REMOVED***
      * If this and the `autoCull` property are both set to `true`, then the `kill` method
      * is called as soon as the Game Object leaves the camera bounds.
      *
-     * @property ***REMOVED***boolean***REMOVED*** outOfCameraBoundsKill
+     * @property {boolean} outOfCameraBoundsKill
      * @default
      */
     outOfCameraBoundsKill: false,
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _outOfBoundsFired - Internal state var.
+    * @property {boolean} _outOfBoundsFired - Internal state var.
     * @private
     */
     _outOfBoundsFired: false,
@@ -123,17 +123,17 @@ Phaser.Component.InWorld.prototype = ***REMOVED***
     /**
     * Checks if the Game Objects bounds are within, or intersect at any point with the Game World bounds.
     *
-    * @property ***REMOVED***boolean***REMOVED*** inWorld
+    * @property {boolean} inWorld
     * @readonly
     */
-    inWorld: ***REMOVED***
+    inWorld: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return this.game.world.bounds.intersects(this.getBounds());
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};

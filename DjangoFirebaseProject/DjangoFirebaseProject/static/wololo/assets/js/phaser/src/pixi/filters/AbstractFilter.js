@@ -8,11 +8,11 @@
  * 
  * @class AbstractFilter
  * @constructor
- * @param fragmentSrc ***REMOVED***Array***REMOVED*** The fragment source in an array of strings.
- * @param uniforms ***REMOVED***Object***REMOVED*** An object containing the uniforms for this filter.
+ * @param fragmentSrc {Array} The fragment source in an array of strings.
+ * @param uniforms {Object} An object containing the uniforms for this filter.
  */
 PIXI.AbstractFilter = function(fragmentSrc, uniforms)
-***REMOVED***
+{
     /**
     * An array of passes - some filters contain a few steps this array simply stores the steps in a liniear fashion.
     * For example the blur filter has two passes blurX and blurY.
@@ -46,7 +46,7 @@ PIXI.AbstractFilter = function(fragmentSrc, uniforms)
     * @type Object
     * @private
     */
-    this.uniforms = uniforms || ***REMOVED******REMOVED***;
+    this.uniforms = uniforms || {};
 
     /**
     * @property fragmentSrc
@@ -54,7 +54,7 @@ PIXI.AbstractFilter = function(fragmentSrc, uniforms)
     * @private
     */
     this.fragmentSrc = fragmentSrc || [];
-***REMOVED***;
+};
 
 PIXI.AbstractFilter.prototype.constructor = PIXI.AbstractFilter;
 
@@ -64,9 +64,9 @@ PIXI.AbstractFilter.prototype.constructor = PIXI.AbstractFilter;
  * @method syncUniforms
  */
 PIXI.AbstractFilter.prototype.syncUniforms = function()
-***REMOVED***
+{
     for(var i=0,j=this.shaders.length; i<j; i++)
-    ***REMOVED***
+    {
         this.shaders[i].dirty = true;
-    ***REMOVED***
-***REMOVED***;
+    }
+};

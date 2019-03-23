@@ -9,7 +9,7 @@ PR.registerLangHandler(PR.createSimpleLexer([
   ["com", /^\/\*[^*]*\*+(?:[^*/][^*]*\*+)*\//],
   ["com", /^(?:<\!--|--\>)/],
   ["lit", /^(?:\d+|\d*\.\d+)(?:%|[a-z]+)?/i],
-  ["lit", /^#[\da-f]***REMOVED***3,6***REMOVED***/i],
+  ["lit", /^#[\da-f]{3,6}/i],
   ["pln", /^-?(?:[_a-z]|\\[\da-f]+ ?)(?:[\w-]|\\\\[\da-f]+ ?)*/i],
   ["pun", /^[^\s\w"']+/]
 ]), ["css"]);

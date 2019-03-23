@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -9,9 +9,9 @@
 *
 * @class
 */
-Phaser.Component.Smoothed = function () ***REMOVED******REMOVED***;
+Phaser.Component.Smoothed = function () {};
 
-Phaser.Component.Smoothed.prototype = ***REMOVED***
+Phaser.Component.Smoothed.prototype = {
 
     /**
     * Enable or disable texture smoothing for this Game Object.
@@ -20,34 +20,34 @@ Phaser.Component.Smoothed.prototype = ***REMOVED***
     * 
     * Smoothing is enabled by default.
     *
-    * @property ***REMOVED***boolean***REMOVED*** smoothed
+    * @property {boolean} smoothed
     */
-    smoothed: ***REMOVED***
+    smoothed: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return !this.texture.baseTexture.scaleMode;
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             if (value)
-            ***REMOVED***
+            {
                 if (this.texture)
-                ***REMOVED***
+                {
                     this.texture.baseTexture.scaleMode = 0;
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
             else
-            ***REMOVED***
+            {
                 if (this.texture)
-                ***REMOVED***
+                {
                     this.texture.baseTexture.scaleMode = 1;
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};

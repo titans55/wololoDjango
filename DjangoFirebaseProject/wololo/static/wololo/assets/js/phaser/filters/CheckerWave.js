@@ -2,14 +2,14 @@
 * Original shader from http://glsl.heroku.com/e#12260.0
 * Tweaked, uniforms added and converted to Phaser/PIXI by Richard Davey
 */
-Phaser.Filter.CheckerWave = function (game) ***REMOVED***
+Phaser.Filter.CheckerWave = function (game) {
 
     Phaser.Filter.call(this, game);
 
-    this.uniforms.alpha = ***REMOVED*** type: '1f', value: 1.0 ***REMOVED***;
-    this.uniforms.vrp = ***REMOVED*** type: '3f', value: ***REMOVED*** x: 0.0, y: -5.0, z: 0.0 ***REMOVED******REMOVED***;
-    this.uniforms.color1 = ***REMOVED*** type: '3f', value: ***REMOVED*** x: 0, y: 1, z: 1 ***REMOVED******REMOVED***;
-    this.uniforms.color2 = ***REMOVED*** type: '3f', value: ***REMOVED*** x: 1, y: 1, z: 1 ***REMOVED******REMOVED***;
+    this.uniforms.alpha = { type: '1f', value: 1.0 };
+    this.uniforms.vrp = { type: '3f', value: { x: 0.0, y: -5.0, z: 0.0 }};
+    this.uniforms.color1 = { type: '3f', value: { x: 0, y: 1, z: 1 }};
+    this.uniforms.color2 = { type: '3f', value: { x: 1, y: 1, z: 1 }};
 
     this.fragmentSrc = [
 
@@ -24,15 +24,15 @@ Phaser.Filter.CheckerWave = function (game) ***REMOVED***
         "// Scene Start",
 
         "// Floor",
-        "vec2 obj0(in vec3 p) ***REMOVED***",
+        "vec2 obj0(in vec3 p) {",
             "// obj deformation",
             "p.y=p.y+sin(sqrt(p.x*p.x+p.z*p.z)-time*4.0)*0.5;",
             "//plane",
             "return vec2(p.y+3.0,0);",
-        "***REMOVED***",
+        "}",
 
         "// Floor Color (checkerboard)",
-        "vec3 obj0_c(in vec3 p) ***REMOVED***",
+        "vec3 obj0_c(in vec3 p) {",
             "if (fract(p.x*.5)>.5)",
                 "if (fract(p.z*.5)>.5)",
                     "return color1;",
@@ -43,11 +43,11 @@ Phaser.Filter.CheckerWave = function (game) ***REMOVED***
                     "return color2;",
                 "else",
                     "return color1;",
-        "***REMOVED***",
+        "}",
 
         "// Scene End",
 
-        "void main(void) ***REMOVED***",
+        "void main(void) {",
             "vec2 vPos=-1.0+2.0*gl_FragCoord.xy/resolution.xy;",
 
             "// Camera animation",
@@ -71,14 +71,14 @@ Phaser.Filter.CheckerWave = function (game) ***REMOVED***
 
             "float f=1.0;",
 
-            "for (int i=0;i<156;i++) ***REMOVED***",
+            "for (int i=0;i<156;i++) {",
                 "if (abs(s.x)<.01||f>maxd) break;",
                 "f+=s.x;",
                 "p=prp+scp*f;",
                 "s=obj0(p);",
-            "***REMOVED***",
+            "}",
 
-            "if (f<maxd) ***REMOVED***",
+            "if (f<maxd) {",
                 "if (s.y==0.0)",
                 "c=obj0_c(p);",
                 "n=normalize(",
@@ -89,83 +89,83 @@ Phaser.Filter.CheckerWave = function (game) ***REMOVED***
                 "vec4 color = vec4(( b * c + pow(b, 8.0)) * (1.0 - f *  .02), 1.0); //simple phong LightPosition=CameraPosition",
                 "color.a = alpha;",
                 "gl_FragColor=color;",
-            "***REMOVED***",
+            "}",
             "else gl_FragColor=vec4(0,0,0.1,alpha); //background color",
-        "***REMOVED***"
+        "}"
 
     ];
 
-***REMOVED***;
+};
 
 Phaser.Filter.CheckerWave.prototype = Object.create(Phaser.Filter.prototype);
 Phaser.Filter.CheckerWave.prototype.constructor = Phaser.Filter.CheckerWave;
 
-Phaser.Filter.CheckerWave.prototype.init = function (width, height) ***REMOVED***
+Phaser.Filter.CheckerWave.prototype.init = function (width, height) {
 
     this.setResolution(width, height);
 
-***REMOVED***;
+};
 
-Phaser.Filter.CheckerWave.prototype.setColor1 = function (red, green, blue) ***REMOVED***
+Phaser.Filter.CheckerWave.prototype.setColor1 = function (red, green, blue) {
 
     this.uniforms.color1.value.x = red;
     this.uniforms.color1.value.y = green;
     this.uniforms.color1.value.z = blue;
 
-***REMOVED***;
+};
 
-Phaser.Filter.CheckerWave.prototype.setColor2 = function (red, green, blue) ***REMOVED***
+Phaser.Filter.CheckerWave.prototype.setColor2 = function (red, green, blue) {
 
     this.uniforms.color2.value.x = red;
     this.uniforms.color2.value.y = green;
     this.uniforms.color2.value.z = blue;
 
-***REMOVED***;
+};
 
-Object.defineProperty(Phaser.Filter.CheckerWave.prototype, 'alpha', ***REMOVED***
+Object.defineProperty(Phaser.Filter.CheckerWave.prototype, 'alpha', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.alpha.value;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.alpha.value = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
-Object.defineProperty(Phaser.Filter.CheckerWave.prototype, 'cameraX', ***REMOVED***
+Object.defineProperty(Phaser.Filter.CheckerWave.prototype, 'cameraX', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.vrp.value.x;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.vrp.value.x = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
-Object.defineProperty(Phaser.Filter.CheckerWave.prototype, 'cameraY', ***REMOVED***
+Object.defineProperty(Phaser.Filter.CheckerWave.prototype, 'cameraY', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.vrp.value.y;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.vrp.value.y = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
-Object.defineProperty(Phaser.Filter.CheckerWave.prototype, 'cameraZ', ***REMOVED***
+Object.defineProperty(Phaser.Filter.CheckerWave.prototype, 'cameraZ', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.vrp.value.z;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.vrp.value.z = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});

@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1290,7 +1290,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 * @author       Richard Davey &lt;rich@photonstorm.com>
 * @author       Pete Baron &lt;pete@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1298,156 +1298,156 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 *
 * @class Phaser.PathPoint
 * @constructor
-* @param ***REMOVED***number***REMOVED*** x - The x coordinate of the PathPoint.
-* @param ***REMOVED***number***REMOVED*** y - The y coordinate of the PathPoint.
-* @param ***REMOVED***number***REMOVED*** vx - The x coordinate of the tangent vector to create the curve from.
-* @param ***REMOVED***number***REMOVED*** vy - The y coordinate of the tangent vector to create the curve from.
-* @param ***REMOVED***number***REMOVED*** [speed=1] - The speed multiplier for PathFollowers on this Path segment.
-* @param ***REMOVED***object***REMOVED*** [data] - The data associated with this point, e.g.: ***REMOVED*** type: PathPoint.DATA_VALUE, value: XXX ***REMOVED***
-* @param ***REMOVED***Phaser.Path***REMOVED*** [branchPath] - A branched path which is attached to this point.
-* @param ***REMOVED***number***REMOVED*** [branchPointIndex] - The index where the branch is attached to on the new path.
+* @param {number} x - The x coordinate of the PathPoint.
+* @param {number} y - The y coordinate of the PathPoint.
+* @param {number} vx - The x coordinate of the tangent vector to create the curve from.
+* @param {number} vy - The y coordinate of the tangent vector to create the curve from.
+* @param {number} [speed=1] - The speed multiplier for PathFollowers on this Path segment.
+* @param {object} [data] - The data associated with this point, e.g.: { type: PathPoint.DATA_VALUE, value: XXX }
+* @param {Phaser.Path} [branchPath] - A branched path which is attached to this point.
+* @param {number} [branchPointIndex] - The index where the branch is attached to on the new path.
 */
-Phaser.PathPoint = function (x, y, vx, vy, speed, data, branchPath, branchPointIndex) ***REMOVED***
+Phaser.PathPoint = function (x, y, vx, vy, speed, data, branchPath, branchPointIndex) {
 
-    if (speed === undefined) ***REMOVED*** speed = 1; ***REMOVED***
-    if (data === undefined) ***REMOVED*** data = ***REMOVED*** type: 0, value: 0 ***REMOVED***; ***REMOVED***
-    if (branchPath === undefined) ***REMOVED*** branchPath = null; ***REMOVED***
-    if (branchPointIndex === undefined) ***REMOVED*** branchPointIndex = 0; ***REMOVED***
+    if (speed === undefined) { speed = 1; }
+    if (data === undefined) { data = { type: 0, value: 0 }; }
+    if (branchPath === undefined) { branchPath = null; }
+    if (branchPointIndex === undefined) { branchPointIndex = 0; }
 
     /**
-    * @property ***REMOVED***number***REMOVED*** x - The x coordinate of the PathPoint.
+    * @property {number} x - The x coordinate of the PathPoint.
     */
     this.x = x;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** y - The y coordinate of the PathPoint.
+    * @property {number} y - The y coordinate of the PathPoint.
     */
     this.y = y;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** vx - The x coordinate of the tangent vector to create the curve from.
+    * @property {number} vx - The x coordinate of the tangent vector to create the curve from.
     */
     this.vx = vx;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** vy - The y coordinate of the tangent vector to create the curve from.
+    * @property {number} vy - The y coordinate of the tangent vector to create the curve from.
     */
     this.vy = vy;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** speed - The speed multiplier for PathFollowers on this path segment.
+    * @property {number} speed - The speed multiplier for PathFollowers on this path segment.
     */
     this.speed = speed;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** data - Data associated with this point eg: ***REMOVED*** type: PathPoint.DATA_VALUE, value: XXX ***REMOVED***
+    * @property {object} data - Data associated with this point eg: { type: PathPoint.DATA_VALUE, value: XXX }
     */
     this.data = data;
 
     /**
-    * @property ***REMOVED***Phaser.Path***REMOVED*** branchPath - A branched path which is attached at this point.
+    * @property {Phaser.Path} branchPath - A branched path which is attached at this point.
     */
     this.branchPath = branchPath;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** branchPointIndex - The index where the branch is attached to on the new path.
+    * @property {number} branchPointIndex - The index where the branch is attached to on the new path.
     */
     this.branchPointIndex = branchPointIndex;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** branchType - The branch type of the path this point is on. Either 0 (attached) or 1 (joined)
+    * @property {number} branchType - The branch type of the path this point is on. Either 0 (attached) or 1 (joined)
     */
     this.branchType = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** curve - Once the Hermite curve is calculated, store it to avoid recalculation later.
+    * @property {number} curve - Once the Hermite curve is calculated, store it to avoid recalculation later.
     * @protected
     */
     this.curve = null;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** active - Is this point a selected (or active) point?
+    * @property {boolean} active - Is this point a selected (or active) point?
     * @warn For Path Editor use only
     */
     this.active = false;
 
     /**
-    * @property ***REMOVED***array***REMOVED*** controlPoints - A list of Phaser.Point objects representing the control points on the segment.
+    * @property {array} controlPoints - A list of Phaser.Point objects representing the control points on the segment.
     * @warn For Path Editor use only
     */
     this.controlPoints = null;
 
-***REMOVED***;
+};
 
 Phaser.PathPoint.prototype.constructor = Phaser.PathPoint;
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.PathPoint.DATA_NONE = 0;
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.PathPoint.DATA_PAUSE = 1;
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.PathPoint.DATA_VALUE = 2;
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.PathPoint.DATA_COUNTER = 3;
 
-Phaser.PathPoint.prototype = ***REMOVED***
+Phaser.PathPoint.prototype = {
 
     /**
     * Sets the x, y and optionally vx and vy properties of this PathPoint.
     * 
     * @method Phaser.PathPoint#setTo
-    * @param ***REMOVED***number***REMOVED*** x - The x coordinate of the PathPoint.
-    * @param ***REMOVED***number***REMOVED*** y - The y coordinate of the PathPoint.
-    * @param ***REMOVED***number***REMOVED*** [vx] - The x coordinate of the tangent vector to create the curve from.
-    * @param ***REMOVED***number***REMOVED*** [vy] - The y coordinate of the tangent vector to create the curve from.
-    * @return ***REMOVED***Phaser.PathPoint***REMOVED*** This object.
+    * @param {number} x - The x coordinate of the PathPoint.
+    * @param {number} y - The y coordinate of the PathPoint.
+    * @param {number} [vx] - The x coordinate of the tangent vector to create the curve from.
+    * @param {number} [vy] - The y coordinate of the tangent vector to create the curve from.
+    * @return {Phaser.PathPoint} This object.
     */
-    setTo: function (x, y, vx, vy) ***REMOVED***
+    setTo: function (x, y, vx, vy) {
 
         this.x = x;
         this.y = y;
 
         if (vx !== undefined)
-        ***REMOVED***
+        {
             this.vx = vx;
-        ***REMOVED***
+        }
 
         if (vy !== undefined)
-        ***REMOVED***
+        {
             this.vy = vy;
-        ***REMOVED***
+        }
 
         //  Invalidate the pre-calculated curve to force it to recalculate with these new settings
         this.curve = null;
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the tangent vector properties of this PathPoint.
     * 
     * @method Phaser.PathPoint#setTangent
-    * @param ***REMOVED***number***REMOVED*** vx - The x coordinate of the tangent vector to create the curve from.
-    * @param ***REMOVED***number***REMOVED*** vy - The y coordinate of the tangent vector to create the curve from.
-    * @return ***REMOVED***Phaser.PathPoint***REMOVED*** This object.
+    * @param {number} vx - The x coordinate of the tangent vector to create the curve from.
+    * @param {number} vy - The y coordinate of the tangent vector to create the curve from.
+    * @return {Phaser.PathPoint} This object.
     */
-    setTangent: function (vx, vy) ***REMOVED***
+    setTangent: function (vx, vy) {
 
         this.vx = vx;
         this.vy = vy;
@@ -1457,32 +1457,32 @@ Phaser.PathPoint.prototype = ***REMOVED***
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a clone of this PathPoint object.
     *
     * @method Phaser.PathPoint#clone
-    * @param ***REMOVED***Phaser.PathPoint***REMOVED*** [out] - An optional PathPoint object into which this object is cloned. If no object is provided a new PathPoint is created.
-    * @return ***REMOVED***Phaser.PathPoint***REMOVED*** A clone of this PathPoint.
+    * @param {Phaser.PathPoint} [out] - An optional PathPoint object into which this object is cloned. If no object is provided a new PathPoint is created.
+    * @return {Phaser.PathPoint} A clone of this PathPoint.
     */
-    clone: function (out) ***REMOVED***
+    clone: function (out) {
 
-        if (out === undefined) ***REMOVED*** out = new Phaser.PathPoint(); ***REMOVED***
+        if (out === undefined) { out = new Phaser.PathPoint(); }
 
         return out.copy(this);
 
-    ***REMOVED***,
+    },
 
     /**
     * Copies all of the values from the given PathPoint object into this PathPoint.
     * The source PathPoint is untouched by this operation.
     *
     * @method Phaser.PathPoint#copy
-    * @param ***REMOVED***Phaser.PathPoint***REMOVED*** source - The PathPoint object to copy the values from.
-    * @return ***REMOVED***Phaser.PathPoint***REMOVED*** This PathPoint object.
+    * @param {Phaser.PathPoint} source - The PathPoint object to copy the values from.
+    * @return {Phaser.PathPoint} This PathPoint object.
     */
-    copy: function (source) ***REMOVED***
+    copy: function (source) {
 
         this.x = source.x;
         this.y = source.y;
@@ -1497,7 +1497,7 @@ Phaser.PathPoint.prototype = ***REMOVED***
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Compare this PathPoint with another PathPoint object and return `true` 
@@ -1505,31 +1505,31 @@ Phaser.PathPoint.prototype = ***REMOVED***
     * offset values into consideration.
     *
     * @method Phaser.PathPoint#equals
-    * @param ***REMOVED***Phaser.PathPoint***REMOVED*** pathPoint - The PathPoint to compare against this PathPoint.
-    * @param ***REMOVED***number***REMOVED*** [offsetX=0] - A value to apply to the x coordinate before comparison.
-    * @param ***REMOVED***number***REMOVED*** [offsetY=0] - A value to apply to the y coordinate before comparison.
-    * @return ***REMOVED***boolean***REMOVED*** True if the two PathPoint objects match, after the offsets are applied, or false if they don't.
+    * @param {Phaser.PathPoint} pathPoint - The PathPoint to compare against this PathPoint.
+    * @param {number} [offsetX=0] - A value to apply to the x coordinate before comparison.
+    * @param {number} [offsetY=0] - A value to apply to the y coordinate before comparison.
+    * @return {boolean} True if the two PathPoint objects match, after the offsets are applied, or false if they don't.
     */
-    equals: function (pathPoint, offsetX, offsetY) ***REMOVED***
+    equals: function (pathPoint, offsetX, offsetY) {
 
-        if (offsetX === undefined) ***REMOVED*** offsetX = 0; ***REMOVED***
-        if (offsetY === undefined) ***REMOVED*** offsetY = 0; ***REMOVED***
+        if (offsetX === undefined) { offsetX = 0; }
+        if (offsetY === undefined) { offsetY = 0; }
 
         return (this.x === pathPoint.x + offsetX &amp;&amp; 
                 this.y === pathPoint.y + offsetY &amp;&amp; 
                 this.speed === pathPoint.speed);
 
-    ***REMOVED***,
+    },
 
     /**
     * Serializes this PathPoint into a JSON object and returns it.
     * 
     * @method Phaser.PathPoint#toJSON
-    * @return ***REMOVED***Object***REMOVED*** A JSON object representing this PathPoint.
+    * @return {Object} A JSON object representing this PathPoint.
     */
-    toJSON: function () ***REMOVED***
+    toJSON: function () {
 
-        return ***REMOVED***
+        return {
             x: this.x,
             y: this.y,
             vx: this.vx,
@@ -1539,11 +1539,11 @@ Phaser.PathPoint.prototype = ***REMOVED***
             branchPath: !!this.branchPath ? this.branchPath.name : null,
             branchPointIndex: this.branchPointIndex,
             branchType: this.branchType
-        ***REMOVED***;
+        };
 
-    ***REMOVED***
+    }
 
-***REMOVED***;</pre>
+};</pre>
         </article>
     </section>
 
@@ -1585,22 +1585,22 @@ Phaser.PathPoint.prototype = ***REMOVED***
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

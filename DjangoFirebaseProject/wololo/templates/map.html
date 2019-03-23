@@ -1,11 +1,11 @@
-***REMOVED***% extends "partials/layout.html" %***REMOVED*** 
-***REMOVED***% load static %***REMOVED*** 
-***REMOVED***% block headcdn %***REMOVED*** ***REMOVED***% endblock %***REMOVED***
- ***REMOVED***% block content %***REMOVED***
- <div id="villageDataJSON" data='***REMOVED******REMOVED***data.selectedVillage***REMOVED******REMOVED***'></div>
- <div id="gameConfigData" data='***REMOVED******REMOVED***data.gameConfig***REMOVED******REMOVED***'></div>
+{% extends "partials/layout.html" %} 
+{% load static %} 
+{% block headcdn %} {% endblock %}
+ {% block content %}
+ <div id="villageDataJSON" data='{{data.selectedVillage}}'></div>
+ <div id="gameConfigData" data='{{data.gameConfig}}'></div>
 
- ***REMOVED***% include "partials/villageResources.html" %***REMOVED***
+ {% include "partials/villageResources.html" %}
 
 <div class="row">
     <div class="col">
@@ -33,15 +33,15 @@
     <span></span>
 </div>
 
-<div class='map-data' map-data='***REMOVED******REMOVED***publicVillages***REMOVED******REMOVED***'></div>
-<div class='selected-village' data='***REMOVED******REMOVED***data.selectedVillage***REMOVED******REMOVED***'></div>
-***REMOVED***% endblock %***REMOVED*** 
-***REMOVED***% block footerjs %***REMOVED***
-<script type="text/javascript" src="***REMOVED***% static 'wololo/assets/js/phaser/build/phaser.min.js' %***REMOVED***"></script>
-<script type="text/javascript" src="***REMOVED***% static 'wololo/assets/js/easystar-0.2.3.js' %***REMOVED***"></script>
-<script type="text/javascript" src="***REMOVED***% static 'wololo/assets/js/Pathfinding.js' %***REMOVED***"></script>
-<script type="text/javascript" src="***REMOVED***% static 'wololo/js/game.js' %***REMOVED***"></script>
-<script type="text/javascript" src="***REMOVED***% static 'wololo/js/villageResources.js' %***REMOVED***"></script>
+<div class='map-data' map-data='{{publicVillages}}'></div>
+<div class='selected-village' data='{{data.selectedVillage}}'></div>
+{% endblock %} 
+{% block footerjs %}
+<script type="text/javascript" src="{% static 'wololo/assets/js/phaser/build/phaser.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'wololo/assets/js/easystar-0.2.3.js' %}"></script>
+<script type="text/javascript" src="{% static 'wololo/assets/js/Pathfinding.js' %}"></script>
+<script type="text/javascript" src="{% static 'wololo/js/game.js' %}"></script>
+<script type="text/javascript" src="{% static 'wololo/js/villageResources.js' %}"></script>
 
 
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}

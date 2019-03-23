@@ -4,39 +4,39 @@
 
 var path = require('path');
 
-function docletParamsAcceptInteractionData (doclet) ***REMOVED***
+function docletParamsAcceptInteractionData (doclet) {
 
-    if (Array.isArray(doclet.params)) ***REMOVED***
-        return doclet.params.some(function (p) ***REMOVED***
-            return p.type && p.type.names.some(function (n) ***REMOVED***
+    if (Array.isArray(doclet.params)) {
+        return doclet.params.some(function (p) {
+            return p.type && p.type.names.some(function (n) {
                 return n === 'PIXI.InteractionData';
-            ***REMOVED***);
-        ***REMOVED***);
-    ***REMOVED***
+            });
+        });
+    }
 
-***REMOVED***
+}
 
-var unwantedNames = ***REMOVED***
+var unwantedNames = {
     'PIXI.DisplayObject#defaultCursor': 1,
     'PIXI.DisplayObject#interactive' : 1
-***REMOVED***;
+};
 
-function hasUnwantedName (doclet) ***REMOVED***
+function hasUnwantedName (doclet) {
 
     var longname = doclet.longname;
     return unwantedNames[longname];
 
-***REMOVED***
+}
 
-exports.handlers = ***REMOVED******REMOVED***;
-exports.handlers.newDoclet = function (e) ***REMOVED***
+exports.handlers = {};
+exports.handlers.newDoclet = function (e) {
 
     var doclet = e.doclet;
 
     if (docletParamsAcceptInteractionData(doclet) ||
         hasUnwantedName(doclet))
-    ***REMOVED***
+    {
         doclet.access = 'private';
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};

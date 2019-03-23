@@ -1,5 +1,5 @@
 /**
-* Transform '***REMOVED***@link #x***REMOVED***' to '***REMOVED***@link longname#x x***REMOVED***' which saves lots of cumersome typing.
+* Transform '{@link #x}' to '{@link longname#x x}' which saves lots of cumersome typing.
 *
 * This looks in @description, @classdesc and @see tags only.
 *
@@ -8,43 +8,43 @@
  
 var path = require('path');
  
-function expandLinks (text, parent) ***REMOVED***
+function expandLinks (text, parent) {
  
-    return text.replace(/\***REMOVED***\s*@link\s+([#.])([\w$.]+)\s*\***REMOVED***/g, function (m, mod, name) ***REMOVED***
-        var expanded = "***REMOVED***@link " + parent + mod + name + " " + name + "***REMOVED***";
+    return text.replace(/\{\s*@link\s+([#.])([\w$.]+)\s*\}/g, function (m, mod, name) {
+        var expanded = "{@link " + parent + mod + name + " " + name + "}";
         return expanded;
-    ***REMOVED***);
+    });
  
-***REMOVED***
+}
  
-exports.handlers = ***REMOVED******REMOVED***;
-exports.handlers.newDoclet = function (e) ***REMOVED***
+exports.handlers = {};
+exports.handlers.newDoclet = function (e) {
  
     var doclet = e.doclet;
     var parent;
     if (doclet.kind === 'class' || doclet.kind === 'interface')
-    ***REMOVED***
+    {
         parent = doclet.longname;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         // member, method, property, etc.
         parent = doclet.memberof;
-    ***REMOVED***
+    }
  
-    ['description', 'classdesc'].forEach(function (p) ***REMOVED***
+    ['description', 'classdesc'].forEach(function (p) {
         if (doclet[p])
-        ***REMOVED***
+        {
             doclet[p] = expandLinks(doclet[p], parent);
-        ***REMOVED***
-    ***REMOVED***);
+        }
+    });
 
     if (doclet.see && doclet.see.length)
-    ***REMOVED***
+    {
         for (var i = 0; i < doclet.see.length; i++)
-        ***REMOVED***
+        {
             doclet.see[i] = expandLinks(doclet.see[i], parent);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
  
-***REMOVED***;
+};

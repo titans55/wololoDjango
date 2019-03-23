@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -9,13 +9,13 @@
 *
 * Provides a useful Window and Element functions as well as cross-browser compatibility buffer.
 *
-* Some code originally derived from ***REMOVED***@link https://github.com/ryanve/verge verge***REMOVED***.
+* Some code originally derived from {@link https://github.com/ryanve/verge verge}.
 * Some parts were inspired by the research of Ryan Van Etten, released under MIT License 2013.
 * 
 * @class Phaser.DOM
 * @static
 */
-Phaser.DOM = ***REMOVED***
+Phaser.DOM = {
 
     /**
     * Get the [absolute] position of the element relative to the Document.
@@ -23,11 +23,11 @@ Phaser.DOM = ***REMOVED***
     * The value may vary slightly as the page is scrolled due to rounding errors.
     *
     * @method Phaser.DOM.getOffset
-    * @param ***REMOVED***DOMElement***REMOVED*** element - The targeted element that we want to retrieve the offset.
-    * @param ***REMOVED***Phaser.Point***REMOVED*** [point] - The point we want to take the x/y values of the offset.
-    * @return ***REMOVED***Phaser.Point***REMOVED*** - A point objet with the offsetX and Y as its properties.
+    * @param {DOMElement} element - The targeted element that we want to retrieve the offset.
+    * @param {Phaser.Point} [point] - The point we want to take the x/y values of the offset.
+    * @return {Phaser.Point} - A point objet with the offsetX and Y as its properties.
     */
-    getOffset: function (element, point) ***REMOVED***
+    getOffset: function (element, point) {
 
         point = point || new Phaser.Point();
 
@@ -43,43 +43,43 @@ Phaser.DOM = ***REMOVED***
 
         return point;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
-Phaser.Device.whenReady(function (device) ***REMOVED***
+Phaser.Device.whenReady(function (device) {
 
     // All target browsers should support page[XY]Offset.
     var scrollX = window && ('pageXOffset' in window) ?
-        function () ***REMOVED*** return window.pageXOffset; ***REMOVED*** :
-        function () ***REMOVED*** return document.documentElement.scrollLeft; ***REMOVED***;
+        function () { return window.pageXOffset; } :
+        function () { return document.documentElement.scrollLeft; };
 
     var scrollY = window && ('pageYOffset' in window) ?
-        function () ***REMOVED*** return window.pageYOffset; ***REMOVED*** :
-        function () ***REMOVED*** return document.documentElement.scrollTop; ***REMOVED***;
+        function () { return window.pageYOffset; } :
+        function () { return document.documentElement.scrollTop; };
 
     /**
     * A cross-browser window.scrollX.
     *
     * @name Phaser.DOM.scrollX
-    * @property ***REMOVED***number***REMOVED*** scrollX
+    * @property {number} scrollX
     * @readonly
     * @protected
     */
-    Object.defineProperty(Phaser.DOM, "scrollX", ***REMOVED***
+    Object.defineProperty(Phaser.DOM, "scrollX", {
         get: scrollX
-    ***REMOVED***);
+    });
 
     /**
     * A cross-browser window.scrollY.
     *
     * @name Phaser.DOM.scrollY
-    * @property ***REMOVED***number***REMOVED*** scrollY
+    * @property {number} scrollY
     * @readonly
     * @protected
     */
-    Object.defineProperty(Phaser.DOM, "scrollY", ***REMOVED***
+    Object.defineProperty(Phaser.DOM, "scrollY", {
         get: scrollY
-    ***REMOVED***);
+    });
 
-***REMOVED***, null, true);
+}, null, true);

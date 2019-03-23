@@ -4,15 +4,15 @@
  * by Tommy Montgomery http://tmont.com/
  * licensed under WTFPL http://sam.zoy.org/wtfpl/
  */
-(function($, window)***REMOVED***
+(function($, window){
 	
-	$.fn.sunlight = function(options) ***REMOVED***
+	$.fn.sunlight = function(options) {
 		var highlighter = new window.Sunlight.Highlighter(options);
-		this.each(function() ***REMOVED***
+		this.each(function() {
 			highlighter.highlightNode(this);
-		***REMOVED***);
+		});
 		
 		return this;
-	***REMOVED***;
+	};
 	
-***REMOVED***(jQuery, this));
+}(jQuery, this));

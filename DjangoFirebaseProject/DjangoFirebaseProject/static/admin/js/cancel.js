@@ -1,13 +1,13 @@
-(function($) ***REMOVED***
+(function($) {
     'use strict';
-    $(function() ***REMOVED***
-        $('.cancel-link').on('click', function(e) ***REMOVED***
+    $(function() {
+        $('.cancel-link').on('click', function(e) {
             e.preventDefault();
-            if (window.location.search.indexOf('&_popup=1') === -1) ***REMOVED***
+            if (window.location.search.indexOf('&_popup=1') === -1) {
                 window.history.back();  // Go back if not a popup.
-            ***REMOVED*** else ***REMOVED***
+            } else {
                 window.close(); // Otherwise, close the popup.
-            ***REMOVED***
-        ***REMOVED***);
-    ***REMOVED***);
-***REMOVED***)(django.jQuery);
+            }
+        });
+    });
+})(django.jQuery);

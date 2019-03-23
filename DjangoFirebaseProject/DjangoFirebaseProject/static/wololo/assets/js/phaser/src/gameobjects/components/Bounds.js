@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -9,177 +9,177 @@
 *
 * @class
 */
-Phaser.Component.Bounds = function () ***REMOVED******REMOVED***;
+Phaser.Component.Bounds = function () {};
 
-Phaser.Component.Bounds.prototype = ***REMOVED***
+Phaser.Component.Bounds.prototype = {
 
     /**
     * The amount the Game Object is visually offset from its x coordinate.
     * This is the same as `width * anchor.x`.
     * It will only be > 0 if anchor.x is not equal to zero.
     *
-    * @property ***REMOVED***number***REMOVED*** offsetX
+    * @property {number} offsetX
     * @readOnly
     */
-    offsetX: ***REMOVED***
+    offsetX: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return this.anchor.x * this.width;
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The amount the Game Object is visually offset from its y coordinate.
     * This is the same as `height * anchor.y`.
     * It will only be > 0 if anchor.y is not equal to zero.
     *
-    * @property ***REMOVED***number***REMOVED*** offsetY
+    * @property {number} offsetY
     * @readOnly
     */
-    offsetY: ***REMOVED***
+    offsetY: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return this.anchor.y * this.height;
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The center x coordinate of the Game Object.
     * This is the same as `(x - offsetX) + (width / 2)`.
     *
-    * @property ***REMOVED***number***REMOVED*** centerX
+    * @property {number} centerX
     */
-    centerX: ***REMOVED***
+    centerX: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return (this.x - this.offsetX) + (this.width * 0.5);
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             this.x = (value + this.offsetX) - (this.width * 0.5);
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The center y coordinate of the Game Object.
     * This is the same as `(y - offsetY) + (height / 2)`.
     *
-    * @property ***REMOVED***number***REMOVED*** centerY
+    * @property {number} centerY
     */
-    centerY: ***REMOVED***
+    centerY: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return (this.y - this.offsetY) + (this.height * 0.5);
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             this.y = (value + this.offsetY) - (this.height * 0.5);
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The left coordinate of the Game Object.
     * This is the same as `x - offsetX`.
     *
-    * @property ***REMOVED***number***REMOVED*** left
+    * @property {number} left
     */
-    left: ***REMOVED***
+    left: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return this.x - this.offsetX;
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             this.x = value + this.offsetX;
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The right coordinate of the Game Object.
     * This is the same as `x + width - offsetX`.
     *
-    * @property ***REMOVED***number***REMOVED*** right
+    * @property {number} right
     */
-    right: ***REMOVED***
+    right: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return (this.x + this.width) - this.offsetX;
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             this.x = value - (this.width) + this.offsetX;
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The y coordinate of the Game Object.
     * This is the same as `y - offsetY`.
     *
-    * @property ***REMOVED***number***REMOVED*** top
+    * @property {number} top
     */
-    top: ***REMOVED***
+    top: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return this.y - this.offsetY;
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             this.y = value + this.offsetY;
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The sum of the y and height properties.
     * This is the same as `y + height - offsetY`.
     *
-    * @property ***REMOVED***number***REMOVED*** bottom
+    * @property {number} bottom
     */
-    bottom: ***REMOVED***
+    bottom: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return (this.y + this.height) - this.offsetY;
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             this.y = value - (this.height) + this.offsetY;
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Aligns this Game Object within another Game Object, or Rectangle, known as the
@@ -214,19 +214,19 @@ Phaser.Component.Bounds.prototype = ***REMOVED***
     * one expands it.
     *
     * @method
-    * @param ***REMOVED***Phaser.Rectangle|Phaser.Sprite|Phaser.Image|Phaser.Text|Phaser.BitmapText|Phaser.Button|Phaser.Graphics|Phaser.TileSprite***REMOVED*** container - The Game Object or Rectangle with which to align this Game Object to. Can also include properties such as `World.bounds` or `Camera.view`.
-    * @param ***REMOVED***integer***REMOVED*** [position] - The position constant. One of `Phaser.TOP_LEFT` (default), `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_CENTER`, `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-    * @param ***REMOVED***integer***REMOVED*** [offsetX=0] - A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-    * @param ***REMOVED***integer***REMOVED*** [offsetY=0] - A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-    * @return ***REMOVED***Object***REMOVED*** This Game Object.
+    * @param {Phaser.Rectangle|Phaser.Sprite|Phaser.Image|Phaser.Text|Phaser.BitmapText|Phaser.Button|Phaser.Graphics|Phaser.TileSprite} container - The Game Object or Rectangle with which to align this Game Object to. Can also include properties such as `World.bounds` or `Camera.view`.
+    * @param {integer} [position] - The position constant. One of `Phaser.TOP_LEFT` (default), `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_CENTER`, `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
+    * @param {integer} [offsetX=0] - A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
+    * @param {integer} [offsetY=0] - A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
+    * @return {Object} This Game Object.
     */
-    alignIn: function (container, position, offsetX, offsetY) ***REMOVED***
+    alignIn: function (container, position, offsetX, offsetY) {
 
-        if (offsetX === undefined) ***REMOVED*** offsetX = 0; ***REMOVED***
-        if (offsetY === undefined) ***REMOVED*** offsetY = 0; ***REMOVED***
+        if (offsetX === undefined) { offsetX = 0; }
+        if (offsetY === undefined) { offsetY = 0; }
 
         switch (position)
-        ***REMOVED***
+        {
             default:
             case Phaser.TOP_LEFT:
                 this.left = container.left - offsetX;
@@ -272,11 +272,11 @@ Phaser.Component.Bounds.prototype = ***REMOVED***
                 this.right = container.right + offsetX;
                 this.bottom = container.bottom + offsetY;
                 break;
-        ***REMOVED***
+        }
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Aligns this Game Object to the side of another Game Object, or Rectangle, known as the
@@ -312,19 +312,19 @@ Phaser.Component.Bounds.prototype = ***REMOVED***
     * one expands it.
     *
     * @method
-    * @param ***REMOVED***Phaser.Rectangle|Phaser.Sprite|Phaser.Image|Phaser.Text|Phaser.BitmapText|Phaser.Button|Phaser.Graphics|Phaser.TileSprite***REMOVED*** parent - The Game Object or Rectangle with which to align this Game Object to. Can also include properties such as `World.bounds` or `Camera.view`.
-    * @param ***REMOVED***integer***REMOVED*** [position] - The position constant. One of `Phaser.TOP_LEFT`, `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_TOP`, `Phaser.LEFT_CENTER`, `Phaser.LEFT_BOTTOM`, `Phaser.RIGHT_TOP`, `Phaser.RIGHT_CENTER`, `Phaser.RIGHT_BOTTOM`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-    * @param ***REMOVED***integer***REMOVED*** [offsetX=0] - A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-    * @param ***REMOVED***integer***REMOVED*** [offsetY=0] - A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-    * @return ***REMOVED***Object***REMOVED*** This Game Object.
+    * @param {Phaser.Rectangle|Phaser.Sprite|Phaser.Image|Phaser.Text|Phaser.BitmapText|Phaser.Button|Phaser.Graphics|Phaser.TileSprite} parent - The Game Object or Rectangle with which to align this Game Object to. Can also include properties such as `World.bounds` or `Camera.view`.
+    * @param {integer} [position] - The position constant. One of `Phaser.TOP_LEFT`, `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_TOP`, `Phaser.LEFT_CENTER`, `Phaser.LEFT_BOTTOM`, `Phaser.RIGHT_TOP`, `Phaser.RIGHT_CENTER`, `Phaser.RIGHT_BOTTOM`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
+    * @param {integer} [offsetX=0] - A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
+    * @param {integer} [offsetY=0] - A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
+    * @return {Object} This Game Object.
     */
-    alignTo: function (parent, position, offsetX, offsetY) ***REMOVED***
+    alignTo: function (parent, position, offsetX, offsetY) {
 
-        if (offsetX === undefined) ***REMOVED*** offsetX = 0; ***REMOVED***
-        if (offsetY === undefined) ***REMOVED*** offsetY = 0; ***REMOVED***
+        if (offsetX === undefined) { offsetX = 0; }
+        if (offsetY === undefined) { offsetY = 0; }
 
         switch (position)
-        ***REMOVED***
+        {
             default:
             case Phaser.TOP_LEFT:
                 this.left = parent.left - offsetX;
@@ -385,13 +385,13 @@ Phaser.Component.Bounds.prototype = ***REMOVED***
                 this.right = parent.right + offsetX;
                 this.top = parent.bottom + offsetY;
                 break;
-        ***REMOVED***
+        }
 
         return this;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 //  Phaser.Group extensions
 

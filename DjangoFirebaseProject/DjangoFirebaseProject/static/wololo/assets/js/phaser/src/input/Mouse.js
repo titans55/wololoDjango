@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -16,53 +16,53 @@
 *
 * @class Phaser.Mouse
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
+* @param {Phaser.Game} game - A reference to the currently running game.
 */
-Phaser.Mouse = function (game) ***REMOVED***
+Phaser.Mouse = function (game) {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
+    * @property {Phaser.Game} game - A reference to the currently running game.
     */
     this.game = game;
 
     /**
-    * @property ***REMOVED***Phaser.Input***REMOVED*** input - A reference to the Phaser Input Manager.
+    * @property {Phaser.Input} input - A reference to the Phaser Input Manager.
     * @protected
     */
     this.input = game.input;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** callbackContext - The context under which callbacks are called.
+    * @property {object} callbackContext - The context under which callbacks are called.
     */
     this.callbackContext = this.game;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** mouseDownCallback - A callback that can be fired when the mouse is pressed down.
+    * @property {function} mouseDownCallback - A callback that can be fired when the mouse is pressed down.
     */
     this.mouseDownCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** mouseUpCallback - A callback that can be fired when the mouse is released from a pressed down state.
+    * @property {function} mouseUpCallback - A callback that can be fired when the mouse is released from a pressed down state.
     */
     this.mouseUpCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** mouseOutCallback - A callback that can be fired when the mouse is no longer over the game canvas.
+    * @property {function} mouseOutCallback - A callback that can be fired when the mouse is no longer over the game canvas.
     */
     this.mouseOutCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** mouseOverCallback - A callback that can be fired when the mouse enters the game canvas (usually after a mouseout).
+    * @property {function} mouseOverCallback - A callback that can be fired when the mouse enters the game canvas (usually after a mouseout).
     */
     this.mouseOverCallback = null;
 
     /**
-     * @property ***REMOVED***function***REMOVED*** mouseWheelCallback - A callback that can be fired when the mousewheel is used.
+     * @property {function} mouseWheelCallback - A callback that can be fired when the mousewheel is used.
      */
     this.mouseWheelCallback = null;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** capture - If true the DOM mouse events will have event.preventDefault applied to them, if false they will propagate fully.
+    * @property {boolean} capture - If true the DOM mouse events will have event.preventDefault applied to them, if false they will propagate fully.
     */
     this.capture = false;
 
@@ -70,38 +70,38 @@ Phaser.Mouse = function (game) ***REMOVED***
     * This property was removed in Phaser 2.4 and should no longer be used.
     * Instead please see the Pointer button properties such as `Pointer.leftButton`, `Pointer.rightButton` and so on.
     * Or Pointer.button holds the DOM event button value if you require that.
-    * @property ***REMOVED***number***REMOVED*** button
+    * @property {number} button
     * @default
     */
     this.button = -1;
 
     /**
      * The direction of the _last_ mousewheel usage 1 for up -1 for down.
-     * @property ***REMOVED***number***REMOVED*** wheelDelta
+     * @property {number} wheelDelta
      */
     this.wheelDelta = 0;
 
     /**
     * Mouse input will only be processed if enabled.
-    * @property ***REMOVED***boolean***REMOVED*** enabled
+    * @property {boolean} enabled
     * @default
     */
     this.enabled = true;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** locked - If the mouse has been Pointer Locked successfully this will be set to true.
+    * @property {boolean} locked - If the mouse has been Pointer Locked successfully this will be set to true.
     * @default
     */
     this.locked = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** stopOnGameOut - If true Pointer.stop will be called if the mouse leaves the game canvas.
+    * @property {boolean} stopOnGameOut - If true Pointer.stop will be called if the mouse leaves the game canvas.
     * @default
     */
     this.stopOnGameOut = false;
 
     /**
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** pointerLock - This event is dispatched when the browser enters or leaves pointer lock state.
+    * @property {Phaser.Signal} pointerLock - This event is dispatched when the browser enters or leaves pointer lock state.
     * @default
     */
     this.pointerLock = new Phaser.Signal();
@@ -109,157 +109,157 @@ Phaser.Mouse = function (game) ***REMOVED***
     /**
     * The browser mouse DOM event. Will be null if no mouse event has ever been received.
     * Access this property only inside a Mouse event handler and do not keep references to it.
-    * @property ***REMOVED***MouseEvent|null***REMOVED*** event
+    * @property {MouseEvent|null} event
     * @default
     */
     this.event = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** _onMouseDown - Internal event handler reference.
+    * @property {function} _onMouseDown - Internal event handler reference.
     * @private
     */
     this._onMouseDown = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** _onMouseMove - Internal event handler reference.
+    * @property {function} _onMouseMove - Internal event handler reference.
     * @private
     */
     this._onMouseMove = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** _onMouseUp - Internal event handler reference.
+    * @property {function} _onMouseUp - Internal event handler reference.
     * @private
     */
     this._onMouseUp = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** _onMouseOut - Internal event handler reference.
+    * @property {function} _onMouseOut - Internal event handler reference.
     * @private
     */
     this._onMouseOut = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** _onMouseOver - Internal event handler reference.
+    * @property {function} _onMouseOver - Internal event handler reference.
     * @private
     */
     this._onMouseOver = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** _onMouseWheel - Internal event handler reference.
+    * @property {function} _onMouseWheel - Internal event handler reference.
     * @private
     */
     this._onMouseWheel = null;
 
     /**
     * Wheel proxy event object, if required. Shared for all wheel events for this mouse.
-    * @property ***REMOVED***Phaser.Mouse~WheelEventProxy***REMOVED*** _wheelEvent
+    * @property {Phaser.Mouse~WheelEventProxy} _wheelEvent
     * @private
     */
     this._wheelEvent = null;
 
-***REMOVED***;
+};
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.Mouse.NO_BUTTON = -1;
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.Mouse.LEFT_BUTTON = 0;
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.Mouse.MIDDLE_BUTTON = 1;
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.Mouse.RIGHT_BUTTON = 2;
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.Mouse.BACK_BUTTON = 3;
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.Mouse.FORWARD_BUTTON = 4;
 
 /**
  * @constant
- * @type ***REMOVED***number***REMOVED***
+ * @type {number}
  */
 Phaser.Mouse.WHEEL_UP = 1;
 
 /**
  * @constant
- * @type ***REMOVED***number***REMOVED***
+ * @type {number}
  */
 Phaser.Mouse.WHEEL_DOWN = -1;
 
-Phaser.Mouse.prototype = ***REMOVED***
+Phaser.Mouse.prototype = {
 
     /**
     * Starts the event listeners running.
     * @method Phaser.Mouse#start
     */
-    start: function () ***REMOVED***
+    start: function () {
 
         if (this.game.device.android && this.game.device.chrome === false)
-        ***REMOVED***
+        {
             //  Android stock browser fires mouse events even if you preventDefault on the touchStart, so ...
             return;
-        ***REMOVED***
+        }
 
         if (this._onMouseDown !== null)
-        ***REMOVED***
+        {
             //  Avoid setting multiple listeners
             return;
-        ***REMOVED***
+        }
 
         var _this = this;
 
-        this._onMouseDown = function (event) ***REMOVED***
+        this._onMouseDown = function (event) {
             return _this.onMouseDown(event);
-        ***REMOVED***;
+        };
 
-        this._onMouseMove = function (event) ***REMOVED***
+        this._onMouseMove = function (event) {
             return _this.onMouseMove(event);
-        ***REMOVED***;
+        };
 
-        this._onMouseUp = function (event) ***REMOVED***
+        this._onMouseUp = function (event) {
             return _this.onMouseUp(event);
-        ***REMOVED***;
+        };
 
-        this._onMouseUpGlobal = function (event) ***REMOVED***
+        this._onMouseUpGlobal = function (event) {
             return _this.onMouseUpGlobal(event);
-        ***REMOVED***;
+        };
 
-        this._onMouseOutGlobal = function (event) ***REMOVED***
+        this._onMouseOutGlobal = function (event) {
             return _this.onMouseOutGlobal(event);
-        ***REMOVED***;
+        };
 
-        this._onMouseOut = function (event) ***REMOVED***
+        this._onMouseOut = function (event) {
             return _this.onMouseOut(event);
-        ***REMOVED***;
+        };
 
-        this._onMouseOver = function (event) ***REMOVED***
+        this._onMouseOver = function (event) {
             return _this.onMouseOver(event);
-        ***REMOVED***;
+        };
 
-        this._onMouseWheel = function (event) ***REMOVED***
+        this._onMouseWheel = function (event) {
             return _this.onMouseWheel(event);
-        ***REMOVED***;
+        };
 
         var canvas = this.game.canvas;
 
@@ -268,164 +268,164 @@ Phaser.Mouse.prototype = ***REMOVED***
         canvas.addEventListener('mouseup', this._onMouseUp, true);
 
         if (!this.game.device.cocoonJS)
-        ***REMOVED***
+        {
             window.addEventListener('mouseup', this._onMouseUpGlobal, true);
             window.addEventListener('mouseout', this._onMouseOutGlobal, true);
             canvas.addEventListener('mouseover', this._onMouseOver, true);
             canvas.addEventListener('mouseout', this._onMouseOut, true);
-        ***REMOVED***
+        }
 
         var wheelEvent = this.game.device.wheelEvent;
 
         if (wheelEvent)
-        ***REMOVED***
+        {
             canvas.addEventListener(wheelEvent, this._onMouseWheel, true);
 
             if (wheelEvent === 'mousewheel')
-            ***REMOVED***
+            {
                 this._wheelEvent = new WheelEventProxy(-1/40, 1);
-            ***REMOVED***
+            }
             else if (wheelEvent === 'DOMMouseScroll')
-            ***REMOVED***
+            {
                 this._wheelEvent = new WheelEventProxy(1, 1);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The internal method that handles the mouse down event from the browser.
     * @method Phaser.Mouse#onMouseDown
-    * @param ***REMOVED***MouseEvent***REMOVED*** event - The native event from the browser. This gets stored in Mouse.event.
+    * @param {MouseEvent} event - The native event from the browser. This gets stored in Mouse.event.
     */
-    onMouseDown: function (event) ***REMOVED***
+    onMouseDown: function (event) {
 
         this.event = event;
 
         if (this.capture)
-        ***REMOVED***
+        {
             event.preventDefault();
-        ***REMOVED***
+        }
 
         if (this.mouseDownCallback)
-        ***REMOVED***
+        {
             this.mouseDownCallback.call(this.callbackContext, event);
-        ***REMOVED***
+        }
 
         if (!this.input.enabled || !this.enabled)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         event['identifier'] = 0;
 
         this.input.mousePointer.start(event);
 
-    ***REMOVED***,
+    },
 
     /**
     * The internal method that handles the mouse move event from the browser.
     * @method Phaser.Mouse#onMouseMove
-    * @param ***REMOVED***MouseEvent***REMOVED*** event - The native event from the browser. This gets stored in Mouse.event.
+    * @param {MouseEvent} event - The native event from the browser. This gets stored in Mouse.event.
     */
-    onMouseMove: function (event) ***REMOVED***
+    onMouseMove: function (event) {
 
         this.event = event;
 
         if (this.capture)
-        ***REMOVED***
+        {
             event.preventDefault();
-        ***REMOVED***
+        }
 
         if (this.mouseMoveCallback)
-        ***REMOVED***
+        {
             this.mouseMoveCallback.call(this.callbackContext, event);
-        ***REMOVED***
+        }
 
         if (!this.input.enabled || !this.enabled)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         event['identifier'] = 0;
 
         this.input.mousePointer.move(event);
 
-    ***REMOVED***,
+    },
 
     /**
     * The internal method that handles the mouse up event from the browser.
     * @method Phaser.Mouse#onMouseUp
-    * @param ***REMOVED***MouseEvent***REMOVED*** event - The native event from the browser. This gets stored in Mouse.event.
+    * @param {MouseEvent} event - The native event from the browser. This gets stored in Mouse.event.
     */
-    onMouseUp: function (event) ***REMOVED***
+    onMouseUp: function (event) {
 
         this.event = event;
 
         if (this.capture)
-        ***REMOVED***
+        {
             event.preventDefault();
-        ***REMOVED***
+        }
 
         if (this.mouseUpCallback)
-        ***REMOVED***
+        {
             this.mouseUpCallback.call(this.callbackContext, event);
-        ***REMOVED***
+        }
 
         if (!this.input.enabled || !this.enabled)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         event['identifier'] = 0;
 
         this.input.mousePointer.stop(event);
 
-    ***REMOVED***,
+    },
 
     /**
     * The internal method that handles the mouse up event from the window.
     *
     * @method Phaser.Mouse#onMouseUpGlobal
-    * @param ***REMOVED***MouseEvent***REMOVED*** event - The native event from the browser. This gets stored in Mouse.event.
+    * @param {MouseEvent} event - The native event from the browser. This gets stored in Mouse.event.
     */
-    onMouseUpGlobal: function (event) ***REMOVED***
+    onMouseUpGlobal: function (event) {
 
         if (!this.input.mousePointer.withinGame)
-        ***REMOVED***
+        {
             if (this.mouseUpCallback)
-            ***REMOVED***
+            {
                 this.mouseUpCallback.call(this.callbackContext, event);
-            ***REMOVED***
+            }
 
             event['identifier'] = 0;
 
             this.input.mousePointer.stop(event);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The internal method that handles the mouse out event from the window.
     *
     * @method Phaser.Mouse#onMouseOutGlobal
-    * @param ***REMOVED***MouseEvent***REMOVED*** event - The native event from the browser. This gets stored in Mouse.event.
+    * @param {MouseEvent} event - The native event from the browser. This gets stored in Mouse.event.
     */
-    onMouseOutGlobal: function (event) ***REMOVED***
+    onMouseOutGlobal: function (event) {
 
         this.event = event;
 
         if (this.capture)
-        ***REMOVED***
+        {
             event.preventDefault();
-        ***REMOVED***
+        }
 
         this.input.mousePointer.withinGame = false;
 
         if (!this.input.enabled || !this.enabled)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         //  If we get a mouseout event from the window then basically
         //  something serious has gone down, usually along the lines of
@@ -439,96 +439,96 @@ Phaser.Mouse.prototype = ***REMOVED***
         this.input.mousePointer.leftButton.stop(event);
         this.input.mousePointer.rightButton.stop(event);
 
-    ***REMOVED***,
+    },
 
     /**
     * The internal method that handles the mouse out event from the browser.
     *
     * @method Phaser.Mouse#onMouseOut
-    * @param ***REMOVED***MouseEvent***REMOVED*** event - The native event from the browser. This gets stored in Mouse.event.
+    * @param {MouseEvent} event - The native event from the browser. This gets stored in Mouse.event.
     */
-    onMouseOut: function (event) ***REMOVED***
+    onMouseOut: function (event) {
 
         this.event = event;
 
         if (this.capture)
-        ***REMOVED***
+        {
             event.preventDefault();
-        ***REMOVED***
+        }
 
         this.input.mousePointer.withinGame = false;
 
         if (this.mouseOutCallback)
-        ***REMOVED***
+        {
             this.mouseOutCallback.call(this.callbackContext, event);
-        ***REMOVED***
+        }
 
         if (!this.input.enabled || !this.enabled)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         if (this.stopOnGameOut)
-        ***REMOVED***
+        {
             event['identifier'] = 0;
 
             this.input.mousePointer.stop(event);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The internal method that handles the mouse over event from the browser.
     *
     * @method Phaser.Mouse#onMouseOver
-    * @param ***REMOVED***MouseEvent***REMOVED*** event - The native event from the browser. This gets stored in Mouse.event.
+    * @param {MouseEvent} event - The native event from the browser. This gets stored in Mouse.event.
     */
-    onMouseOver: function (event) ***REMOVED***
+    onMouseOver: function (event) {
 
         this.event = event;
 
         if (this.capture)
-        ***REMOVED***
+        {
             event.preventDefault();
-        ***REMOVED***
+        }
 
         this.input.mousePointer.withinGame = true;
 
         if (this.mouseOverCallback)
-        ***REMOVED***
+        {
             this.mouseOverCallback.call(this.callbackContext, event);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
      * The internal method that handles the mouse wheel event from the browser.
      *
      * @method Phaser.Mouse#onMouseWheel
-     * @param ***REMOVED***MouseEvent***REMOVED*** event - The native event from the browser.
+     * @param {MouseEvent} event - The native event from the browser.
      */
-    onMouseWheel: function (event) ***REMOVED***
+    onMouseWheel: function (event) {
 
-        if (this._wheelEvent) ***REMOVED***
+        if (this._wheelEvent) {
             event = this._wheelEvent.bindEvent(event);
-        ***REMOVED***
+        }
 
         this.event = event;
 
         if (this.capture)
-        ***REMOVED***
+        {
             event.preventDefault();
-        ***REMOVED***
+        }
 
         // reverse detail for firefox
         this.wheelDelta = Phaser.Math.clamp(-event.deltaY, -1, 1);
 
         if (this.mouseWheelCallback)
-        ***REMOVED***
+        {
             this.mouseWheelCallback.call(this.callbackContext, event);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * If the browser supports it you can request that the pointer be locked to the browser window.
@@ -536,10 +536,10 @@ Phaser.Mouse.prototype = ***REMOVED***
     * If the browser successfully enters a locked state the event Phaser.Mouse.pointerLock will be dispatched and the first parameter will be 'true'.
     * @method Phaser.Mouse#requestPointerLock
     */
-    requestPointerLock: function () ***REMOVED***
+    requestPointerLock: function () {
 
         if (this.game.device.pointerLock)
-        ***REMOVED***
+        {
             var element = this.game.canvas;
 
             element.requestPointerLock = element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock;
@@ -548,47 +548,47 @@ Phaser.Mouse.prototype = ***REMOVED***
 
             var _this = this;
 
-            this._pointerLockChange = function (event) ***REMOVED***
+            this._pointerLockChange = function (event) {
                 return _this.pointerLockChange(event);
-            ***REMOVED***;
+            };
 
             document.addEventListener('pointerlockchange', this._pointerLockChange, true);
             document.addEventListener('mozpointerlockchange', this._pointerLockChange, true);
             document.addEventListener('webkitpointerlockchange', this._pointerLockChange, true);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Internal pointerLockChange handler.
     *
     * @method Phaser.Mouse#pointerLockChange
-    * @param ***REMOVED***Event***REMOVED*** event - The native event from the browser. This gets stored in Mouse.event.
+    * @param {Event} event - The native event from the browser. This gets stored in Mouse.event.
     */
-    pointerLockChange: function (event) ***REMOVED***
+    pointerLockChange: function (event) {
 
         var element = this.game.canvas;
 
         if (document.pointerLockElement === element || document.mozPointerLockElement === element || document.webkitPointerLockElement === element)
-        ***REMOVED***
+        {
             //  Pointer was successfully locked
             this.locked = true;
             this.pointerLock.dispatch(true, event);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             //  Pointer was unlocked
             this.locked = false;
             this.pointerLock.dispatch(false, event);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Internal release pointer lock handler.
     * @method Phaser.Mouse#releasePointerLock
     */
-    releasePointerLock: function () ***REMOVED***
+    releasePointerLock: function () {
 
         document.exitPointerLock = document.exitPointerLock || document.mozExitPointerLock || document.webkitExitPointerLock;
 
@@ -598,13 +598,13 @@ Phaser.Mouse.prototype = ***REMOVED***
         document.removeEventListener('mozpointerlockchange', this._pointerLockChange, true);
         document.removeEventListener('webkitpointerlockchange', this._pointerLockChange, true);
 
-    ***REMOVED***,
+    },
 
     /**
     * Stop the event listeners.
     * @method Phaser.Mouse#stop
     */
-    stop: function () ***REMOVED***
+    stop: function () {
 
         var canvas = this.game.canvas;
 
@@ -617,9 +617,9 @@ Phaser.Mouse.prototype = ***REMOVED***
         var wheelEvent = this.game.device.wheelEvent;
 
         if (wheelEvent)
-        ***REMOVED***
+        {
             canvas.removeEventListener(wheelEvent, this._onMouseWheel, true);
-        ***REMOVED***
+        }
 
         window.removeEventListener('mouseup', this._onMouseUpGlobal, true);
         window.removeEventListener('mouseout', this._onMouseOutGlobal, true);
@@ -628,9 +628,9 @@ Phaser.Mouse.prototype = ***REMOVED***
         document.removeEventListener('mozpointerlockchange', this._pointerLockChange, true);
         document.removeEventListener('webkitpointerlockchange', this._pointerLockChange, true);
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.Mouse.prototype.constructor = Phaser.Mouse;
 
@@ -643,77 +643,77 @@ Phaser.Mouse.prototype.constructor = Phaser.Mouse;
 *
 * @method Phaser.Mouse#WheelEventProxy
 * @private
-* @param ***REMOVED***number***REMOVED*** scaleFactor - Scale factor as applied to wheelDelta/wheelDeltaX or details.
-* @param ***REMOVED***integer***REMOVED*** deltaMode - The reported delta mode.
+* @param {number} scaleFactor - Scale factor as applied to wheelDelta/wheelDeltaX or details.
+* @param {integer} deltaMode - The reported delta mode.
 */
-function WheelEventProxy (scaleFactor, deltaMode) ***REMOVED***
+function WheelEventProxy (scaleFactor, deltaMode) {
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _scaleFactor - Scale factor as applied to wheelDelta/wheelDeltaX or details.
+    * @property {number} _scaleFactor - Scale factor as applied to wheelDelta/wheelDeltaX or details.
     * @private
     */
     this._scaleFactor = scaleFactor;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _deltaMode - The reported delta mode.
+    * @property {number} _deltaMode - The reported delta mode.
     * @private
     */
     this._deltaMode = deltaMode;
 
     /**
-    * @property ***REMOVED***any***REMOVED*** originalEvent - The original event _currently_ being proxied; the getters will follow suit.
+    * @property {any} originalEvent - The original event _currently_ being proxied; the getters will follow suit.
     * @private
     */
     this.originalEvent = null;
 
-***REMOVED***
+}
 
-WheelEventProxy.prototype = ***REMOVED******REMOVED***;
+WheelEventProxy.prototype = {};
 WheelEventProxy.prototype.constructor = WheelEventProxy;
 
-WheelEventProxy.prototype.bindEvent = function (event) ***REMOVED***
+WheelEventProxy.prototype.bindEvent = function (event) {
 
     // Generate stubs automatically
     if (!WheelEventProxy._stubsGenerated && event)
-    ***REMOVED***
-        var makeBinder = function (name) ***REMOVED***
+    {
+        var makeBinder = function (name) {
 
-            return function () ***REMOVED***
+            return function () {
                 var v = this.originalEvent[name];
                 return typeof v !== 'function' ? v : v.bind(this.originalEvent);
-            ***REMOVED***;
+            };
 
-        ***REMOVED***;
+        };
 
         for (var prop in event)
-        ***REMOVED***
+        {
             if (!(prop in WheelEventProxy.prototype))
-            ***REMOVED***
-                Object.defineProperty(WheelEventProxy.prototype, prop, ***REMOVED***
+            {
+                Object.defineProperty(WheelEventProxy.prototype, prop, {
                     get: makeBinder(prop)
-                ***REMOVED***);
-            ***REMOVED***
-        ***REMOVED***
+                });
+            }
+        }
         WheelEventProxy._stubsGenerated = true;
-    ***REMOVED***
+    }
 
     this.originalEvent = event;
     return this;
 
-***REMOVED***;
+};
 
-Object.defineProperties(WheelEventProxy.prototype, ***REMOVED***
-    "type": ***REMOVED*** value: "wheel" ***REMOVED***,
-    "deltaMode": ***REMOVED*** get: function () ***REMOVED*** return this._deltaMode; ***REMOVED*** ***REMOVED***,
-    "deltaY": ***REMOVED***
-        get: function () ***REMOVED***
+Object.defineProperties(WheelEventProxy.prototype, {
+    "type": { value: "wheel" },
+    "deltaMode": { get: function () { return this._deltaMode; } },
+    "deltaY": {
+        get: function () {
             return (this._scaleFactor * (this.originalEvent.wheelDelta || this.originalEvent.detail)) || 0;
-        ***REMOVED***
-    ***REMOVED***,
-    "deltaX": ***REMOVED***
-        get: function () ***REMOVED***
+        }
+    },
+    "deltaX": {
+        get: function () {
             return (this._scaleFactor * this.originalEvent.wheelDeltaX) || 0;
-        ***REMOVED***
-    ***REMOVED***,
-    "deltaZ": ***REMOVED*** value: 0 ***REMOVED***
-***REMOVED***);
+        }
+    },
+    "deltaZ": { value: 0 }
+});

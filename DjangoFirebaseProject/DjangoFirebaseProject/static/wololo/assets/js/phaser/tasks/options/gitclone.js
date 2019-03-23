@@ -1,9 +1,9 @@
-﻿module.exports = ***REMOVED***
-    plugins: ***REMOVED***
-        options: ***REMOVED***
+﻿module.exports = {
+    plugins: {
+        options: {
             repository: "https://github.com/photonstorm/phaser-plugins",
             branch: "master",
             directory: "out/plugins"
-        ***REMOVED***
-    ***REMOVED***
-***REMOVED***;
+        }
+    }
+};

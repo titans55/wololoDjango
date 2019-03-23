@@ -2,12 +2,12 @@
 * Original shader by thygate@gmail.com, rotation and color mix modifications by malc (mlashley@gmail.com)
 * Tweaked, uniforms added and converted to Phaser/PIXI by Richard Davey
 */
-Phaser.Filter.ColorBars = function (game) ***REMOVED***
+Phaser.Filter.ColorBars = function (game) {
 
     Phaser.Filter.call(this, game);
 
-    this.uniforms.alpha = ***REMOVED*** type: '1f', value: 1 ***REMOVED***;
-    // this.uniforms.origin = ***REMOVED*** type: '1f', value: 2.0 ***REMOVED***
+    this.uniforms.alpha = { type: '1f', value: 1 };
+    // this.uniforms.origin = { type: '1f', value: 2.0 }
 
     this.fragmentSrc = [
 
@@ -35,12 +35,12 @@ Phaser.Filter.ColorBars = function (game) ***REMOVED***
         "//float barsangle = 200.0 * sin(time * 0.001);",
         "float barsangle = 200.0 * cos(time * 0.001);",
 
-        "vec4 bar(float pos, float r, float g, float b) ***REMOVED***",
+        "vec4 bar(float pos, float r, float g, float b) {",
             "return max(0.0, 1.0 - abs(pos - position.y) / barsize) * vec4(r, g, b, 1.0);",
-        "***REMOVED***",
+        "}",
 
         "void main(void)",
-        "***REMOVED***",
+        "{",
             "position = (gl_FragCoord.xy - 0.5 * resolution.xy) / resolution.xx;",
             "//position = 2.0 * position * R; // R = rotation",
             "position = 2.5 * position * R;",
@@ -57,30 +57,30 @@ Phaser.Filter.ColorBars = function (game) ***REMOVED***
             "color += bar(sin(t + barsangle / f * 14.), 1.0, 0.0, 1.0);",
             "color.a = alpha;",
             "gl_FragColor = color;",
-        "***REMOVED***"
+        "}"
 
     ];
 
-***REMOVED***;
+};
 
 Phaser.Filter.ColorBars.prototype = Object.create(Phaser.Filter.prototype);
 Phaser.Filter.ColorBars.prototype.constructor = Phaser.Filter.ColorBars;
 
-Phaser.Filter.ColorBars.prototype.init = function (width, height) ***REMOVED***
+Phaser.Filter.ColorBars.prototype.init = function (width, height) {
 
     this.setResolution(width, height);
 
-***REMOVED***;
+};
 
-Object.defineProperty(Phaser.Filter.ColorBars.prototype, 'alpha', ***REMOVED***
+Object.defineProperty(Phaser.Filter.ColorBars.prototype, 'alpha', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.alpha.value;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.alpha.value = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 

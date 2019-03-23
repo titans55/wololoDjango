@@ -8,11 +8,11 @@
  * @class BaseTexture
  * @uses EventTarget
  * @constructor
- * @param source ***REMOVED***String|Canvas***REMOVED*** the source object (image or canvas)
- * @param scaleMode ***REMOVED***Number***REMOVED*** See ***REMOVED******REMOVED***#crossLink "PIXI/scaleModes:property"***REMOVED******REMOVED***PIXI.scaleModes***REMOVED******REMOVED***/crossLink***REMOVED******REMOVED*** for possible values
+ * @param source {String|Canvas} the source object (image or canvas)
+ * @param scaleMode {Number} See {{#crossLink "PIXI/scaleModes:property"}}PIXI.scaleModes{{/crossLink}} for possible values
  */
 PIXI.BaseTexture = function(source, scaleMode)
-***REMOVED***
+{
     /**
      * The Resolution of the texture. 
      *
@@ -43,7 +43,7 @@ PIXI.BaseTexture = function(source, scaleMode)
      * The scale mode to apply when scaling this texture
      * 
      * @property scaleMode
-     * @type ***REMOVED***Number***REMOVED***
+     * @type {Number}
      * @default PIXI.scaleModes.LINEAR
      */
     this.scaleMode = scaleMode || PIXI.scaleModes.DEFAULT;
@@ -88,7 +88,7 @@ PIXI.BaseTexture = function(source, scaleMode)
      * Also the texture must be a power of two size to work
      * 
      * @property mipmap
-     * @type ***REMOVED***Boolean***REMOVED***
+     * @type {Boolean}
      */
     this.mipmap = false;
 
@@ -100,17 +100,17 @@ PIXI.BaseTexture = function(source, scaleMode)
     this._dirty = [true, true, true, true];
 
     if (!source)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     if ((this.source.complete || this.source.getContext) && this.source.width && this.source.height)
-    ***REMOVED***
+    {
         this.hasLoaded = true;
         this.width = this.source.naturalWidth || this.source.width;
         this.height = this.source.naturalHeight || this.source.height;
         this.dirty();
-    ***REMOVED***
+    }
 
     /**
      * A BaseTexture can be set to skip the rendering phase in the WebGL Sprite Batch.
@@ -130,7 +130,7 @@ PIXI.BaseTexture = function(source, scaleMode)
      */
     this._powerOf2 = false;
 
-***REMOVED***;
+};
 
 PIXI.BaseTexture.prototype.constructor = PIXI.BaseTexture;
 
@@ -140,16 +140,16 @@ PIXI.BaseTexture.prototype.constructor = PIXI.BaseTexture;
  * Important for when you don't want to modify the source object by forcing in `complete` or dimension properties it may not have.
  *
  * @method forceLoaded
- * @param ***REMOVED***number***REMOVED*** width - The new width to force the BaseTexture to be.
- * @param ***REMOVED***number***REMOVED*** height - The new height to force the BaseTexture to be.
+ * @param {number} width - The new width to force the BaseTexture to be.
+ * @param {number} height - The new height to force the BaseTexture to be.
  */
 PIXI.BaseTexture.prototype.forceLoaded = function(width, height)
-***REMOVED***
+{
     this.hasLoaded = true;
     this.width = width;
     this.height = height;
     this.dirty();
-***REMOVED***;
+};
 
 /**
  * Destroys this base texture
@@ -157,28 +157,28 @@ PIXI.BaseTexture.prototype.forceLoaded = function(width, height)
  * @method destroy
  */
 PIXI.BaseTexture.prototype.destroy = function()
-***REMOVED***
+{
     if (this.source)
-    ***REMOVED***
+    {
         PIXI.CanvasPool.removeByCanvas(this.source);
-    ***REMOVED***
+    }
 
     this.source = null;
 
     this.unloadFromGPU();
-***REMOVED***;
+};
 
 /**
  * Changes the source image of the texture
  *
  * @method updateSourceImage
- * @param newSrc ***REMOVED***String***REMOVED*** the path of the image
+ * @param newSrc {String} the path of the image
  * @deprecated This method is deprecated. Please use Phaser.Sprite.loadTexture instead.
  */
 PIXI.BaseTexture.prototype.updateSourceImage = function(newSrc)
-***REMOVED***
+{
     console.warn("PIXI.BaseTexture.updateSourceImage is deprecated. Use Phaser.Sprite.loadTexture instead.");
-***REMOVED***;
+};
 
 /**
  * Sets all glTextures to be dirty.
@@ -186,12 +186,12 @@ PIXI.BaseTexture.prototype.updateSourceImage = function(newSrc)
  * @method dirty
  */
 PIXI.BaseTexture.prototype.dirty = function()
-***REMOVED***
+{
     for (var i = 0; i < this._glTextures.length; i++)
-    ***REMOVED***
+    {
         this._dirty[i] = true;
-    ***REMOVED***
-***REMOVED***;
+    }
+};
 
 /**
  * Removes the base texture from the GPU, useful for managing resources on the GPU.
@@ -200,47 +200,47 @@ PIXI.BaseTexture.prototype.dirty = function()
  * @method unloadFromGPU
  */
 PIXI.BaseTexture.prototype.unloadFromGPU = function()
-***REMOVED***
+{
     this.dirty();
 
     // delete the webGL textures if any.
     for (var i = this._glTextures.length - 1; i >= 0; i--)
-    ***REMOVED***
+    {
         var glTexture = this._glTextures[i];
         var gl = PIXI.glContexts[i];
 
         if(gl && glTexture)
-        ***REMOVED***
+        {
             gl.deleteTexture(glTexture);
-        ***REMOVED***
+        }
         
-    ***REMOVED***
+    }
 
     this._glTextures.length = 0;
 
     this.dirty();
-***REMOVED***;
+};
 
 /**
  * Helper function that creates a base texture from the given canvas element.
  *
  * @static
  * @method fromCanvas
- * @param canvas ***REMOVED***Canvas***REMOVED*** The canvas element source of the texture
- * @param scaleMode ***REMOVED***Number***REMOVED*** See ***REMOVED******REMOVED***#crossLink "PIXI/scaleModes:property"***REMOVED******REMOVED***PIXI.scaleModes***REMOVED******REMOVED***/crossLink***REMOVED******REMOVED*** for possible values
- * @return ***REMOVED***BaseTexture***REMOVED***
+ * @param canvas {Canvas} The canvas element source of the texture
+ * @param scaleMode {Number} See {{#crossLink "PIXI/scaleModes:property"}}PIXI.scaleModes{{/crossLink}} for possible values
+ * @return {BaseTexture}
  */
 PIXI.BaseTexture.fromCanvas = function(canvas, scaleMode)
-***REMOVED***
+{
     if (canvas.width === 0)
-    ***REMOVED***
+    {
         canvas.width = 1;
-    ***REMOVED***
+    }
 
     if (canvas.height === 0)
-    ***REMOVED***
+    {
         canvas.height = 1;
-    ***REMOVED***
+    }
 
     return new PIXI.BaseTexture(canvas, scaleMode);
-***REMOVED***;
+};

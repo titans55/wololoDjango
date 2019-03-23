@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1289,7 +1289,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
             <pre class="sunlight-highlight-javascript linenums">/**
 * @author       Richard Davey &lt;rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1297,9 +1297,9 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 *
 * @class
 */
-Phaser.Component.Animation = function () ***REMOVED******REMOVED***;
+Phaser.Component.Animation = function () {};
 
-Phaser.Component.Animation.prototype = ***REMOVED***
+Phaser.Component.Animation.prototype = {
 
     /**
     * Plays an Animation.
@@ -1310,22 +1310,22 @@ Phaser.Component.Animation.prototype = ***REMOVED***
     * If you need to reset an already running animation do so directly on the Animation object itself or via `AnimationManager.stop`.
     *
     * @method
-    * @param ***REMOVED***string***REMOVED*** name - The name of the animation to be played, e.g. "fire", "walk", "jump". Must have been previously created via 'AnimationManager.add'.
-    * @param ***REMOVED***number***REMOVED*** [frameRate=null] - The framerate to play the animation at. The speed is given in frames per second. If not provided the previously set frameRate of the Animation is used.
-    * @param ***REMOVED***boolean***REMOVED*** [loop=false] - Should the animation be looped after playback. If not provided the previously set loop value of the Animation is used.
-    * @param ***REMOVED***boolean***REMOVED*** [killOnComplete=false] - If set to true when the animation completes (only happens if loop=false) the parent Sprite will be killed.
-    * @return ***REMOVED***Phaser.Animation***REMOVED*** A reference to playing Animation.
+    * @param {string} name - The name of the animation to be played, e.g. "fire", "walk", "jump". Must have been previously created via 'AnimationManager.add'.
+    * @param {number} [frameRate=null] - The framerate to play the animation at. The speed is given in frames per second. If not provided the previously set frameRate of the Animation is used.
+    * @param {boolean} [loop=false] - Should the animation be looped after playback. If not provided the previously set loop value of the Animation is used.
+    * @param {boolean} [killOnComplete=false] - If set to true when the animation completes (only happens if loop=false) the parent Sprite will be killed.
+    * @return {Phaser.Animation} A reference to playing Animation.
     */
-    play: function (name, frameRate, loop, killOnComplete) ***REMOVED***
+    play: function (name, frameRate, loop, killOnComplete) {
 
         if (this.animations)
-        ***REMOVED***
+        {
             return this.animations.play(name, frameRate, loop, killOnComplete);
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 </pre>
         </article>
     </section>
@@ -1368,22 +1368,22 @@ Phaser.Component.Animation.prototype = ***REMOVED***
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

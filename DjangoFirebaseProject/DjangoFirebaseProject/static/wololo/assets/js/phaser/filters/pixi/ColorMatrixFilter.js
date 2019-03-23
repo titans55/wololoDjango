@@ -12,18 +12,18 @@
  * @constructor
  */
 PIXI.ColorMatrixFilter = function()
-***REMOVED***
+{
     PIXI.AbstractFilter.call( this );
 
     this.passes = [this];
 
     // set the uniforms
-    this.uniforms = ***REMOVED***
-        matrix: ***REMOVED***type: 'mat4', value: [1,0,0,0,
+    this.uniforms = {
+        matrix: {type: 'mat4', value: [1,0,0,0,
                                        0,1,0,0,
                                        0,0,1,0,
-                                       0,0,0,1]***REMOVED***
-    ***REMOVED***;
+                                       0,0,0,1]}
+    };
 
     this.fragmentSrc = [
         'precision mediump float;',
@@ -33,12 +33,12 @@ PIXI.ColorMatrixFilter = function()
         'uniform mat4 matrix;',
         'uniform sampler2D uSampler;',
 
-        'void main(void) ***REMOVED***',
+        'void main(void) {',
         '   gl_FragColor = texture2D(uSampler, vTextureCoord) * matrix;',
       //  '   gl_FragColor = gl_FragColor;',
-        '***REMOVED***'
+        '}'
     ];
-***REMOVED***;
+};
 
 PIXI.ColorMatrixFilter.prototype = Object.create( PIXI.AbstractFilter.prototype );
 PIXI.ColorMatrixFilter.prototype.constructor = PIXI.ColorMatrixFilter;
@@ -50,11 +50,11 @@ PIXI.ColorMatrixFilter.prototype.constructor = PIXI.ColorMatrixFilter;
  * @type Array(Number)
  * @default [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]
  */
-Object.defineProperty(PIXI.ColorMatrixFilter.prototype, 'matrix', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.ColorMatrixFilter.prototype, 'matrix', {
+    get: function() {
         return this.uniforms.matrix.value;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.uniforms.matrix.value = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});

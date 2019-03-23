@@ -1,8 +1,8 @@
-module.exports = ***REMOVED***
-    root: ***REMOVED***
-        options: ***REMOVED***
+module.exports = {
+    root: {
+        options: {
             keepalive: true,
             hostname: '*'
-        ***REMOVED***
-    ***REMOVED***
-***REMOVED***;
+        }
+    }
+};

@@ -1,4 +1,4 @@
-***REMOVED***% extends "beforeLogin/partials/layout.html" %***REMOVED*** ***REMOVED***% load static %***REMOVED*** ***REMOVED***% block headcdn %***REMOVED*** ***REMOVED***% endblock %***REMOVED*** ***REMOVED***% block content %***REMOVED***
+{% extends "beforeLogin/partials/layout.html" %} {% load static %} {% block headcdn %} {% endblock %} {% block content %}
 
 <!-- Header with Background Image -->
 <header class="business-header">
@@ -26,7 +26,7 @@
         <div class="col-sm-4">
             <div class="login-form mt-4">
                 <form action="verifyLogin" method="post">
-                    ***REMOVED***% csrf_token %***REMOVED***
+                    {% csrf_token %}
                     <h2 class="text-center">Log in</h2>
                     <div class="form-group">
                         <input type="text" class="form-control" name="email" placeholder="Email" required="required" />
@@ -40,11 +40,11 @@
                     <div class="clearfix">
                         <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
                         <a href="#" class="pull-right">Forgot Password?</a> 
-                        ***REMOVED***% for message in messages %***REMOVED***
+                        {% for message in messages %}
                         <div class="alert alert-danger">
-                            <a class="close" href="#" data-dismiss="alert">×</a> ***REMOVED******REMOVED*** message ***REMOVED******REMOVED***
+                            <a class="close" href="#" data-dismiss="alert">×</a> {{ message }}
                         </div>
-                        ***REMOVED***% endfor %***REMOVED***
+                        {% endfor %}
                     </div>
                 </form>
                 <p class="text-center"><a href="/register">Create an Account</a></p>
@@ -95,8 +95,8 @@
     <!-- /.row -->
 </div>
 <!-- /.container -->
-***REMOVED***% endblock %***REMOVED*** ***REMOVED***% block footerjs %***REMOVED***
-<!-- <script type="text/javascript" src="***REMOVED***% static 'wololo/assets/js/phaser/build/phaser.min.js' %***REMOVED***"></script>
-    <script type="text/javascript" src="***REMOVED***% static 'wololo/js/game.js' %***REMOVED***"></script> -->
+{% endblock %} {% block footerjs %}
+<!-- <script type="text/javascript" src="{% static 'wololo/assets/js/phaser/build/phaser.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'wololo/js/game.js' %}"></script> -->
 
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}

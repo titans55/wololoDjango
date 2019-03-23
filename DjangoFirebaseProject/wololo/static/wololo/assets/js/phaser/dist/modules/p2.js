@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 //  Add an extra properties to p2 that we need
@@ -14,85 +14,85 @@ p2.Spring.prototype.parent = null;
 * 
 * @class Phaser.Physics.P2
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - Reference to the current game instance.
-* @param ***REMOVED***object***REMOVED*** [config] - Physics configuration object passed in from the game constructor.
+* @param {Phaser.Game} game - Reference to the current game instance.
+* @param {object} [config] - Physics configuration object passed in from the game constructor.
 */
-Phaser.Physics.P2 = function (game, config) ***REMOVED***
+Phaser.Physics.P2 = function (game, config) {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - Local reference to game.
+    * @property {Phaser.Game} game - Local reference to game.
     */
     this.game = game;
 
     if (config === undefined)
-    ***REMOVED***
-        config = ***REMOVED*** gravity: [0, 0], broadphase: new p2.SAPBroadphase() ***REMOVED***;
-    ***REMOVED***
+    {
+        config = { gravity: [0, 0], broadphase: new p2.SAPBroadphase() };
+    }
     else
-    ***REMOVED***
+    {
         if (!config.hasOwnProperty('gravity'))
-        ***REMOVED***
+        {
             config.gravity = [0, 0];
-        ***REMOVED***
+        }
 
         if (!config.hasOwnProperty('broadphase'))
-        ***REMOVED***
+        {
             config.broadphase = new p2.SAPBroadphase();
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     /**
-    * @property ***REMOVED***object***REMOVED*** config - The p2 World configuration object.
+    * @property {object} config - The p2 World configuration object.
     * @protected
     */
     this.config = config;
 
     /**
-    * @property ***REMOVED***p2.World***REMOVED*** world - The p2 World in which the simulation is run.
+    * @property {p2.World} world - The p2 World in which the simulation is run.
     * @protected
     */
     this.world = new p2.World(this.config);
 
     /**
-    * @property ***REMOVED***number***REMOVED*** frameRate - The frame rate the world will be stepped at. Defaults to 1 / 60, but you can change here. Also see useElapsedTime property.
+    * @property {number} frameRate - The frame rate the world will be stepped at. Defaults to 1 / 60, but you can change here. Also see useElapsedTime property.
     * @default
     */
     this.frameRate = 1 / 60;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** useElapsedTime - If true the frameRate value will be ignored and instead p2 will step with the value of Game.Time.physicsElapsed, which is a delta time value.
+    * @property {boolean} useElapsedTime - If true the frameRate value will be ignored and instead p2 will step with the value of Game.Time.physicsElapsed, which is a delta time value.
     * @default
     */
     this.useElapsedTime = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** paused - The paused state of the P2 World.
+    * @property {boolean} paused - The paused state of the P2 World.
     * @default
     */
     this.paused = false;
 
     /**
-    * @property ***REMOVED***array<Phaser.Physics.P2.Material>***REMOVED*** materials - A local array of all created Materials.
+    * @property {array<Phaser.Physics.P2.Material>} materials - A local array of all created Materials.
     * @protected
     */
     this.materials = [];
 
     /**
-    * @property ***REMOVED***Phaser.Physics.P2.InversePointProxy***REMOVED*** gravity - The gravity applied to all bodies each step.
+    * @property {Phaser.Physics.P2.InversePointProxy} gravity - The gravity applied to all bodies each step.
     */
     this.gravity = new Phaser.Physics.P2.InversePointProxy(this, this.world.gravity);
 
     /**
-    * @property ***REMOVED***object***REMOVED*** walls - An object containing the 4 wall bodies that bound the physics world.
+    * @property {object} walls - An object containing the 4 wall bodies that bound the physics world.
     */
-    this.walls = ***REMOVED*** left: null, right: null, top: null, bottom: null ***REMOVED***;
+    this.walls = { left: null, right: null, top: null, bottom: null };
 
     /**
     * This signal is dispatched when a new Body is added to the World.
     *
     * It sends 1 argument: `body` which is the `Phaser.Physics.P2.Body` that was added to the world.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onBodyAdded
+    * @property {Phaser.Signal} onBodyAdded
     */
     this.onBodyAdded = new Phaser.Signal();
 
@@ -101,7 +101,7 @@ Phaser.Physics.P2 = function (game, config) ***REMOVED***
     *
     * It sends 1 argument: `body` which is the `Phaser.Physics.P2.Body` that was removed from the world.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onBodyRemoved
+    * @property {Phaser.Signal} onBodyRemoved
     */
     this.onBodyRemoved = new Phaser.Signal();
 
@@ -110,7 +110,7 @@ Phaser.Physics.P2 = function (game, config) ***REMOVED***
     *
     * It sends 1 argument: `spring` which is either a `Phaser.Physics.P2.Spring`, `p2.LinearSpring` or `p2.RotationalSpring` that was added to the world.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onSpringAdded
+    * @property {Phaser.Signal} onSpringAdded
     */
     this.onSpringAdded = new Phaser.Signal();
 
@@ -119,7 +119,7 @@ Phaser.Physics.P2 = function (game, config) ***REMOVED***
     *
     * It sends 1 argument: `spring` which is either a `Phaser.Physics.P2.Spring`, `p2.LinearSpring` or `p2.RotationalSpring` that was removed from the world.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onSpringRemoved
+    * @property {Phaser.Signal} onSpringRemoved
     */
     this.onSpringRemoved = new Phaser.Signal();
 
@@ -128,7 +128,7 @@ Phaser.Physics.P2 = function (game, config) ***REMOVED***
     *
     * It sends 1 argument: `constraint` which is the `Phaser.Physics.P2.Constraint` that was added to the world.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onConstraintAdded
+    * @property {Phaser.Signal} onConstraintAdded
     */
     this.onConstraintAdded = new Phaser.Signal();
 
@@ -137,7 +137,7 @@ Phaser.Physics.P2 = function (game, config) ***REMOVED***
     *
     * It sends 1 argument: `constraint` which is the `Phaser.Physics.P2.Constraint` that was removed from the world.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onConstraintRemoved
+    * @property {Phaser.Signal} onConstraintRemoved
     */
     this.onConstraintRemoved = new Phaser.Signal();
 
@@ -146,7 +146,7 @@ Phaser.Physics.P2 = function (game, config) ***REMOVED***
     *
     * It sends 1 argument: `material` which is the `Phaser.Physics.P2.ContactMaterial` that was added to the world.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onContactMaterialAdded
+    * @property {Phaser.Signal} onContactMaterialAdded
     */
     this.onContactMaterialAdded = new Phaser.Signal();
 
@@ -155,17 +155,17 @@ Phaser.Physics.P2 = function (game, config) ***REMOVED***
     *
     * It sends 1 argument: `material` which is the `Phaser.Physics.P2.ContactMaterial` that was removed from the world.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onContactMaterialRemoved
+    * @property {Phaser.Signal} onContactMaterialRemoved
     */
     this.onContactMaterialRemoved = new Phaser.Signal();
 
     /**
-    * @property ***REMOVED***function***REMOVED*** postBroadphaseCallback - A postBroadphase callback.
+    * @property {function} postBroadphaseCallback - A postBroadphase callback.
     */
     this.postBroadphaseCallback = null;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** callbackContext - The context under which the callbacks are fired.
+    * @property {object} callbackContext - The context under which the callbacks are fired.
     */
     this.callbackContext = null;
 
@@ -177,7 +177,7 @@ Phaser.Physics.P2 = function (game, config) ***REMOVED***
     * It is possible that in certain situations the `bodyA` or `bodyB` values are `null`. You should check for this
     * in your own code to avoid processing potentially null physics bodies.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onBeginContact
+    * @property {Phaser.Signal} onBeginContact
     */
     this.onBeginContact = new Phaser.Signal();
 
@@ -189,86 +189,86 @@ Phaser.Physics.P2 = function (game, config) ***REMOVED***
     * It is possible that in certain situations the `bodyA` or `bodyB` values are `null`. You should check for this
     * in your own code to avoid processing potentially null physics bodies.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onEndContact
+    * @property {Phaser.Signal} onEndContact
     */
     this.onEndContact = new Phaser.Signal();
 
     //  Pixel to meter function overrides
     if (config.hasOwnProperty('mpx') && config.hasOwnProperty('pxm') && config.hasOwnProperty('mpxi') && config.hasOwnProperty('pxmi'))
-    ***REMOVED***
+    {
         this.mpx = config.mpx;
         this.mpxi = config.mpxi;
         this.pxm = config.pxm;
         this.pxmi = config.pxmi;
-    ***REMOVED***
+    }
 
     //  Hook into the World events
     this.world.on("beginContact", this.beginContactHandler, this);
     this.world.on("endContact", this.endContactHandler, this);
 
     /**
-    * @property ***REMOVED***array***REMOVED*** collisionGroups - An array containing the collision groups that have been defined in the World.
+    * @property {array} collisionGroups - An array containing the collision groups that have been defined in the World.
     */
     this.collisionGroups = [];
 
     /**
-    * @property ***REMOVED***Phaser.Physics.P2.CollisionGroup***REMOVED*** nothingCollisionGroup - A default collision group.
+    * @property {Phaser.Physics.P2.CollisionGroup} nothingCollisionGroup - A default collision group.
     */
     this.nothingCollisionGroup = new Phaser.Physics.P2.CollisionGroup(1);
 
     /**
-    * @property ***REMOVED***Phaser.Physics.P2.CollisionGroup***REMOVED*** boundsCollisionGroup - A default collision group.
+    * @property {Phaser.Physics.P2.CollisionGroup} boundsCollisionGroup - A default collision group.
     */
     this.boundsCollisionGroup = new Phaser.Physics.P2.CollisionGroup(2);
 
     /**
-    * @property ***REMOVED***Phaser.Physics.P2.CollisionGroup***REMOVED*** everythingCollisionGroup - A default collision group.
+    * @property {Phaser.Physics.P2.CollisionGroup} everythingCollisionGroup - A default collision group.
     */
     this.everythingCollisionGroup = new Phaser.Physics.P2.CollisionGroup(2147483648);
 
     /**
-    * @property ***REMOVED***array***REMOVED*** boundsCollidesWith - An array of the bodies the world bounds collides with.
+    * @property {array} boundsCollidesWith - An array of the bodies the world bounds collides with.
     */
     this.boundsCollidesWith = [];
 
     /**
-    * @property ***REMOVED***array***REMOVED*** _toRemove - Internal var used to hold references to bodies to remove from the world on the next step.
+    * @property {array} _toRemove - Internal var used to hold references to bodies to remove from the world on the next step.
     * @private
     */
     this._toRemove = [];
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _collisionGroupID - Internal var.
+    * @property {number} _collisionGroupID - Internal var.
     * @private
     */
     this._collisionGroupID = 2;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _boundsLeft - Internal var that keeps track of world bounds settings.
+    * @property {boolean} _boundsLeft - Internal var that keeps track of world bounds settings.
     * @private
     */
     this._boundsLeft = true;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _boundsRight - Internal var that keeps track of world bounds settings.
+    * @property {boolean} _boundsRight - Internal var that keeps track of world bounds settings.
     * @private
     */
     this._boundsRight = true;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _boundsTop - Internal var that keeps track of world bounds settings.
+    * @property {boolean} _boundsTop - Internal var that keeps track of world bounds settings.
     * @private
     */
     this._boundsTop = true;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _boundsBottom - Internal var that keeps track of world bounds settings.
+    * @property {boolean} _boundsBottom - Internal var that keeps track of world bounds settings.
     * @private
     */
     this._boundsBottom = true;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _boundsOwnGroup - Internal var that keeps track of world bounds settings.
+    * @property {boolean} _boundsOwnGroup - Internal var that keeps track of world bounds settings.
     * @private
     */
     this._boundsOwnGroup = false;
@@ -276,39 +276,39 @@ Phaser.Physics.P2 = function (game, config) ***REMOVED***
     //  By default we want everything colliding with everything
     this.setBoundsToWorld(true, true, true, true, false);
 
-***REMOVED***;
+};
 
-Phaser.Physics.P2.prototype = ***REMOVED***
+Phaser.Physics.P2.prototype = {
 
     /**
     * This will add a P2 Physics body into the removal list for the next step.
     *
     * @method Phaser.Physics.P2#removeBodyNextStep
-    * @param ***REMOVED***Phaser.Physics.P2.Body***REMOVED*** body - The body to remove at the start of the next step.
+    * @param {Phaser.Physics.P2.Body} body - The body to remove at the start of the next step.
     */
-    removeBodyNextStep: function (body) ***REMOVED***
+    removeBodyNextStep: function (body) {
 
         this._toRemove.push(body);
 
-    ***REMOVED***,
+    },
 
     /**
     * Called at the start of the core update loop. Purges flagged bodies from the world.
     *
     * @method Phaser.Physics.P2#preUpdate
     */
-    preUpdate: function () ***REMOVED***
+    preUpdate: function () {
 
         var i = this._toRemove.length;
 
         while (i--)
-        ***REMOVED***
+        {
             this.removeBody(this._toRemove[i]);
-        ***REMOVED***
+        }
 
         this._toRemove.length = 0;
 
-    ***REMOVED***,
+    },
 
     /**
     * This will create a P2 Physics body on the given game object or array of game objects.
@@ -316,99 +316,99 @@ Phaser.Physics.P2.prototype = ***REMOVED***
     * Note: When the game object is enabled for P2 physics it has its anchor x/y set to 0.5 so it becomes centered.
     *
     * @method Phaser.Physics.P2#enable
-    * @param ***REMOVED***object|array|Phaser.Group***REMOVED*** object - The game object to create the physics body on. Can also be an array or Group of objects, a body will be created on every child that has a `body` property.
-    * @param ***REMOVED***boolean***REMOVED*** [debug=false] - Create a debug object to go with this body?
-    * @param ***REMOVED***boolean***REMOVED*** [children=true] - Should a body be created on all children of this object? If true it will recurse down the display list as far as it can go.
+    * @param {object|array|Phaser.Group} object - The game object to create the physics body on. Can also be an array or Group of objects, a body will be created on every child that has a `body` property.
+    * @param {boolean} [debug=false] - Create a debug object to go with this body?
+    * @param {boolean} [children=true] - Should a body be created on all children of this object? If true it will recurse down the display list as far as it can go.
     */
-    enable: function (object, debug, children) ***REMOVED***
+    enable: function (object, debug, children) {
 
-        if (debug === undefined) ***REMOVED*** debug = false; ***REMOVED***
-        if (children === undefined) ***REMOVED*** children = true; ***REMOVED***
+        if (debug === undefined) { debug = false; }
+        if (children === undefined) { children = true; }
 
         var i = 1;
 
         if (Array.isArray(object))
-        ***REMOVED***
+        {
             i = object.length;
 
             while (i--)
-            ***REMOVED***
+            {
                 if (object[i] instanceof Phaser.Group)
-                ***REMOVED***
+                {
                     //  If it's a Group then we do it on the children regardless
                     this.enable(object[i].children, debug, children);
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     this.enableBody(object[i], debug);
 
                     if (children && object[i].hasOwnProperty('children') && object[i].children.length > 0)
-                    ***REMOVED***
+                    {
                         this.enable(object[i], debug, true);
-                    ***REMOVED***
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                    }
+                }
+            }
+        }
         else
-        ***REMOVED***
+        {
             if (object instanceof Phaser.Group)
-            ***REMOVED***
+            {
                 //  If it's a Group then we do it on the children regardless
                 this.enable(object.children, debug, children);
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this.enableBody(object, debug);
 
                 if (children && object.hasOwnProperty('children') && object.children.length > 0)
-                ***REMOVED***
+                {
                     this.enable(object.children, debug, true);
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a P2 Physics body on the given game object.
     * A game object can only have 1 physics body active at any one time, and it can't be changed until the body is nulled.
     *
     * @method Phaser.Physics.P2#enableBody
-    * @param ***REMOVED***object***REMOVED*** object - The game object to create the physics body on. A body will only be created if this object has a null `body` property.
-    * @param ***REMOVED***boolean***REMOVED*** debug - Create a debug object to go with this body?
+    * @param {object} object - The game object to create the physics body on. A body will only be created if this object has a null `body` property.
+    * @param {boolean} debug - Create a debug object to go with this body?
     */
-    enableBody: function (object, debug) ***REMOVED***
+    enableBody: function (object, debug) {
 
         if (object.hasOwnProperty('body') && object.body === null)
-        ***REMOVED***
+        {
             object.body = new Phaser.Physics.P2.Body(this.game, object, object.x, object.y, 1);
             object.body.debug = debug;
-			if (typeof object.anchor !== 'undefined') ***REMOVED***
+			if (typeof object.anchor !== 'undefined') {
 				object.anchor.set(0.5);
-			***REMOVED***
-        ***REMOVED***
+			}
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Impact event handling is disabled by default. Enable it before any impact events will be dispatched.
     * In a busy world hundreds of impact events can be generated every step, so only enable this if you cannot do what you need via beginContact or collision masks.
     *
     * @method Phaser.Physics.P2#setImpactEvents
-    * @param ***REMOVED***boolean***REMOVED*** state - Set to true to enable impact events, or false to disable.
+    * @param {boolean} state - Set to true to enable impact events, or false to disable.
     */
-    setImpactEvents: function (state) ***REMOVED***
+    setImpactEvents: function (state) {
 
         if (state)
-        ***REMOVED***
+        {
             this.world.on("impact", this.impactHandler, this);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this.world.off("impact", this.impactHandler, this);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets a callback to be fired after the Broadphase has collected collision pairs in the world.
@@ -417,193 +417,193 @@ Phaser.Physics.P2.prototype = ***REMOVED***
     * Returning `true` from the callback will ensure they are checked in the narrowphase.
     *
     * @method Phaser.Physics.P2#setPostBroadphaseCallback
-    * @param ***REMOVED***function***REMOVED*** callback - The callback that will receive the postBroadphase event data. It must return a boolean. Set to null to disable an existing callback.
-    * @param ***REMOVED***object***REMOVED*** context - The context under which the callback will be fired.
+    * @param {function} callback - The callback that will receive the postBroadphase event data. It must return a boolean. Set to null to disable an existing callback.
+    * @param {object} context - The context under which the callback will be fired.
     */
-    setPostBroadphaseCallback: function (callback, context) ***REMOVED***
+    setPostBroadphaseCallback: function (callback, context) {
 
         this.postBroadphaseCallback = callback;
         this.callbackContext = context;
 
         if (callback !== null)
-        ***REMOVED***
+        {
             this.world.on("postBroadphase", this.postBroadphaseHandler, this);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this.world.off("postBroadphase", this.postBroadphaseHandler, this);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Internal handler for the postBroadphase event.
     *
     * @method Phaser.Physics.P2#postBroadphaseHandler
     * @private
-    * @param ***REMOVED***object***REMOVED*** event - The event data.
+    * @param {object} event - The event data.
     */
-    postBroadphaseHandler: function (event) ***REMOVED***
+    postBroadphaseHandler: function (event) {
 
         if (!this.postBroadphaseCallback || event.pairs.length === 0)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         for (var i = event.pairs.length - 2; i >= 0; i -= 2)
-        ***REMOVED***
+        {
             if (event.pairs[i].parent && event.pairs[i+1].parent && !this.postBroadphaseCallback.call(this.callbackContext, event.pairs[i].parent, event.pairs[i+1].parent))
-            ***REMOVED***
+            {
                 event.pairs.splice(i, 2);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Handles a p2 impact event.
     *
     * @method Phaser.Physics.P2#impactHandler
     * @private
-    * @param ***REMOVED***object***REMOVED*** event - The event data.
+    * @param {object} event - The event data.
     */
-    impactHandler: function (event) ***REMOVED***
+    impactHandler: function (event) {
 
         if (event.bodyA.parent && event.bodyB.parent)
-        ***REMOVED***
+        {
             //  Body vs. Body callbacks
             var a = event.bodyA.parent;
             var b = event.bodyB.parent;
 
             if (a._bodyCallbacks[event.bodyB.id])
-            ***REMOVED***
+            {
                 a._bodyCallbacks[event.bodyB.id].call(a._bodyCallbackContext[event.bodyB.id], a, b, event.shapeA, event.shapeB);
-            ***REMOVED***
+            }
 
             if (b._bodyCallbacks[event.bodyA.id])
-            ***REMOVED***
+            {
                 b._bodyCallbacks[event.bodyA.id].call(b._bodyCallbackContext[event.bodyA.id], b, a, event.shapeB, event.shapeA);
-            ***REMOVED***
+            }
 
             //  Body vs. Group callbacks
             if (a._groupCallbacks[event.shapeB.collisionGroup])
-            ***REMOVED***
+            {
                 a._groupCallbacks[event.shapeB.collisionGroup].call(a._groupCallbackContext[event.shapeB.collisionGroup], a, b, event.shapeA, event.shapeB);
-            ***REMOVED***
+            }
 
             if (b._groupCallbacks[event.shapeA.collisionGroup])
-            ***REMOVED***
+            {
                 b._groupCallbacks[event.shapeA.collisionGroup].call(b._groupCallbackContext[event.shapeA.collisionGroup], b, a, event.shapeB, event.shapeA);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Handles a p2 begin contact event.
     *
     * @method Phaser.Physics.P2#beginContactHandler
-    * @param ***REMOVED***object***REMOVED*** event - The event data.
+    * @param {object} event - The event data.
     */
-    beginContactHandler: function (event) ***REMOVED***
+    beginContactHandler: function (event) {
 
         if (event.bodyA && event.bodyB)
-        ***REMOVED***
+        {
             this.onBeginContact.dispatch(event.bodyA, event.bodyB, event.shapeA, event.shapeB, event.contactEquations);
 
             if (event.bodyA.parent)
-            ***REMOVED***
+            {
                 event.bodyA.parent.onBeginContact.dispatch(event.bodyB.parent, event.bodyB, event.shapeA, event.shapeB, event.contactEquations);
-            ***REMOVED***
+            }
 
             if (event.bodyB.parent)
-            ***REMOVED***
+            {
                 event.bodyB.parent.onBeginContact.dispatch(event.bodyA.parent, event.bodyA, event.shapeB, event.shapeA, event.contactEquations);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Handles a p2 end contact event.
     *
     * @method Phaser.Physics.P2#endContactHandler
-    * @param ***REMOVED***object***REMOVED*** event - The event data.
+    * @param {object} event - The event data.
     */
-    endContactHandler: function (event) ***REMOVED***
+    endContactHandler: function (event) {
 
         if (event.bodyA && event.bodyB)
-        ***REMOVED***
+        {
             this.onEndContact.dispatch(event.bodyA, event.bodyB, event.shapeA, event.shapeB);
 
             if (event.bodyA.parent)
-            ***REMOVED***
+            {
                 event.bodyA.parent.onEndContact.dispatch(event.bodyB.parent, event.bodyB, event.shapeA, event.shapeB);
-            ***REMOVED***
+            }
 
             if (event.bodyB.parent)
-            ***REMOVED***
+            {
                 event.bodyB.parent.onEndContact.dispatch(event.bodyA.parent, event.bodyA, event.shapeB, event.shapeA);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the bounds of the Physics world to match the Game.World dimensions.
     * You can optionally set which 'walls' to create: left, right, top or bottom.
     *
     * @method Phaser.Physics#setBoundsToWorld
-    * @param ***REMOVED***boolean***REMOVED*** [left=true] - If true will create the left bounds wall.
-    * @param ***REMOVED***boolean***REMOVED*** [right=true] - If true will create the right bounds wall.
-    * @param ***REMOVED***boolean***REMOVED*** [top=true] - If true will create the top bounds wall.
-    * @param ***REMOVED***boolean***REMOVED*** [bottom=true] - If true will create the bottom bounds wall.
-    * @param ***REMOVED***boolean***REMOVED*** [setCollisionGroup=true] - If true the Bounds will be set to use its own Collision Group.
+    * @param {boolean} [left=true] - If true will create the left bounds wall.
+    * @param {boolean} [right=true] - If true will create the right bounds wall.
+    * @param {boolean} [top=true] - If true will create the top bounds wall.
+    * @param {boolean} [bottom=true] - If true will create the bottom bounds wall.
+    * @param {boolean} [setCollisionGroup=true] - If true the Bounds will be set to use its own Collision Group.
     */
-    setBoundsToWorld: function (left, right, top, bottom, setCollisionGroup) ***REMOVED***
+    setBoundsToWorld: function (left, right, top, bottom, setCollisionGroup) {
 
         this.setBounds(this.game.world.bounds.x, this.game.world.bounds.y, this.game.world.bounds.width, this.game.world.bounds.height, left, right, top, bottom, setCollisionGroup);
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the given material against the 4 bounds of this World.
     *
     * @method Phaser.Physics#setWorldMaterial
-    * @param ***REMOVED***Phaser.Physics.P2.Material***REMOVED*** material - The material to set.
-    * @param ***REMOVED***boolean***REMOVED*** [left=true] - If true will set the material on the left bounds wall.
-    * @param ***REMOVED***boolean***REMOVED*** [right=true] - If true will set the material on the right bounds wall.
-    * @param ***REMOVED***boolean***REMOVED*** [top=true] - If true will set the material on the top bounds wall.
-    * @param ***REMOVED***boolean***REMOVED*** [bottom=true] - If true will set the material on the bottom bounds wall.
+    * @param {Phaser.Physics.P2.Material} material - The material to set.
+    * @param {boolean} [left=true] - If true will set the material on the left bounds wall.
+    * @param {boolean} [right=true] - If true will set the material on the right bounds wall.
+    * @param {boolean} [top=true] - If true will set the material on the top bounds wall.
+    * @param {boolean} [bottom=true] - If true will set the material on the bottom bounds wall.
     */
-    setWorldMaterial: function (material, left, right, top, bottom) ***REMOVED***
+    setWorldMaterial: function (material, left, right, top, bottom) {
 
-        if (left === undefined) ***REMOVED*** left = true; ***REMOVED***
-        if (right === undefined) ***REMOVED*** right = true; ***REMOVED***
-        if (top === undefined) ***REMOVED*** top = true; ***REMOVED***
-        if (bottom === undefined) ***REMOVED*** bottom = true; ***REMOVED***
+        if (left === undefined) { left = true; }
+        if (right === undefined) { right = true; }
+        if (top === undefined) { top = true; }
+        if (bottom === undefined) { bottom = true; }
 
         if (left && this.walls.left)
-        ***REMOVED***
+        {
             this.walls.left.shapes[0].material = material;
-        ***REMOVED***
+        }
 
         if (right && this.walls.right)
-        ***REMOVED***
+        {
             this.walls.right.shapes[0].material = material;
-        ***REMOVED***
+        }
 
         if (top && this.walls.top)
-        ***REMOVED***
+        {
             this.walls.top.shapes[0].material = material;
-        ***REMOVED***
+        }
 
         if (bottom && this.walls.bottom)
-        ***REMOVED***
+        {
             this.walls.bottom.shapes[0].material = material;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * By default the World will be set to collide everything with everything. The bounds of the world is a Body with 4 shapes, one for each face.
@@ -611,37 +611,37 @@ Phaser.Physics.P2.prototype = ***REMOVED***
     * To fix this you need to adjust the bounds to use its own collision group first BEFORE changing your Sprites collision group.
     *
     * @method Phaser.Physics.P2#updateBoundsCollisionGroup
-    * @param ***REMOVED***boolean***REMOVED*** [setCollisionGroup=true] - If true the Bounds will be set to use its own Collision Group.
+    * @param {boolean} [setCollisionGroup=true] - If true the Bounds will be set to use its own Collision Group.
     */
-    updateBoundsCollisionGroup: function (setCollisionGroup) ***REMOVED***
+    updateBoundsCollisionGroup: function (setCollisionGroup) {
 
-        if (setCollisionGroup === undefined) ***REMOVED*** setCollisionGroup = true; ***REMOVED***
+        if (setCollisionGroup === undefined) { setCollisionGroup = true; }
 
         var mask = (setCollisionGroup) ? this.boundsCollisionGroup.mask : this.everythingCollisionGroup.mask;
 
         if (this.walls.left)
-        ***REMOVED***
+        {
             this.walls.left.shapes[0].collisionGroup = mask;
-        ***REMOVED***
+        }
 
         if (this.walls.right)
-        ***REMOVED***
+        {
             this.walls.right.shapes[0].collisionGroup = mask;
-        ***REMOVED***
+        }
 
         if (this.walls.top)
-        ***REMOVED***
+        {
             this.walls.top.shapes[0].collisionGroup = mask;
-        ***REMOVED***
+        }
 
         if (this.walls.bottom)
-        ***REMOVED***
+        {
             this.walls.bottom.shapes[0].collisionGroup = mask;
-        ***REMOVED***
+        }
 
         this._boundsOwnGroup = setCollisionGroup;
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the bounds of the Physics world to match the given world pixel dimensions.
@@ -652,23 +652,23 @@ Phaser.Physics.P2.prototype = ***REMOVED***
     * Explicitly state them in the parameters to override this.
     *
     * @method Phaser.Physics.P2#setBounds
-    * @param ***REMOVED***number***REMOVED*** x - The x coordinate of the top-left corner of the bounds.
-    * @param ***REMOVED***number***REMOVED*** y - The y coordinate of the top-left corner of the bounds.
-    * @param ***REMOVED***number***REMOVED*** width - The width of the bounds.
-    * @param ***REMOVED***number***REMOVED*** height - The height of the bounds.
-    * @param ***REMOVED***boolean***REMOVED*** [left=true] - If true will create the left bounds wall.
-    * @param ***REMOVED***boolean***REMOVED*** [right=true] - If true will create the right bounds wall.
-    * @param ***REMOVED***boolean***REMOVED*** [top=true] - If true will create the top bounds wall.
-    * @param ***REMOVED***boolean***REMOVED*** [bottom=true] - If true will create the bottom bounds wall.
-    * @param ***REMOVED***boolean***REMOVED*** [setCollisionGroup=true] - If true the Bounds will be set to use its own Collision Group.
+    * @param {number} x - The x coordinate of the top-left corner of the bounds.
+    * @param {number} y - The y coordinate of the top-left corner of the bounds.
+    * @param {number} width - The width of the bounds.
+    * @param {number} height - The height of the bounds.
+    * @param {boolean} [left=true] - If true will create the left bounds wall.
+    * @param {boolean} [right=true] - If true will create the right bounds wall.
+    * @param {boolean} [top=true] - If true will create the top bounds wall.
+    * @param {boolean} [bottom=true] - If true will create the bottom bounds wall.
+    * @param {boolean} [setCollisionGroup=true] - If true the Bounds will be set to use its own Collision Group.
     */
-    setBounds: function (x, y, width, height, left, right, top, bottom, setCollisionGroup) ***REMOVED***
+    setBounds: function (x, y, width, height, left, right, top, bottom, setCollisionGroup) {
 
-        if (left === undefined) ***REMOVED*** left = this._boundsLeft; ***REMOVED***
-        if (right === undefined) ***REMOVED*** right = this._boundsRight; ***REMOVED***
-        if (top === undefined) ***REMOVED*** top = this._boundsTop; ***REMOVED***
-        if (bottom === undefined) ***REMOVED*** bottom = this._boundsBottom; ***REMOVED***
-        if (setCollisionGroup === undefined) ***REMOVED*** setCollisionGroup = this._boundsOwnGroup; ***REMOVED***
+        if (left === undefined) { left = this._boundsLeft; }
+        if (right === undefined) { right = this._boundsRight; }
+        if (top === undefined) { top = this._boundsTop; }
+        if (bottom === undefined) { bottom = this._boundsBottom; }
+        if (setCollisionGroup === undefined) { setCollisionGroup = this._boundsOwnGroup; }
 
         this.setupWall(left, 'left', x, y, 1.5707963267948966, setCollisionGroup);
         this.setupWall(right, 'right', x + width, y, -1.5707963267948966, setCollisionGroup);
@@ -682,7 +682,7 @@ Phaser.Physics.P2.prototype = ***REMOVED***
         this._boundsBottom = bottom;
         this._boundsOwnGroup = setCollisionGroup;
 
-    ***REMOVED***,
+    },
 
     /**
     * Internal method called by setBounds. Responsible for creating, updating or 
@@ -690,91 +690,91 @@ Phaser.Physics.P2.prototype = ***REMOVED***
     *
     * @method Phaser.Physics.P2#setupWall
     * @private
-    * @param ***REMOVED***boolean***REMOVED*** create - True to create the wall shape, false to remove it.
-    * @param ***REMOVED***string***REMOVED*** wall - The wall segment to update.
-    * @param ***REMOVED***number***REMOVED*** x - The x coordinate of the wall.
-    * @param ***REMOVED***number***REMOVED*** y - The y coordinate of the wall.
-    * @param ***REMOVED***float***REMOVED*** angle - The angle of the wall.
-    * @param ***REMOVED***boolean***REMOVED*** [setCollisionGroup=true] - If true the Bounds will be set to use its own Collision Group.
+    * @param {boolean} create - True to create the wall shape, false to remove it.
+    * @param {string} wall - The wall segment to update.
+    * @param {number} x - The x coordinate of the wall.
+    * @param {number} y - The y coordinate of the wall.
+    * @param {float} angle - The angle of the wall.
+    * @param {boolean} [setCollisionGroup=true] - If true the Bounds will be set to use its own Collision Group.
     */
-    setupWall: function (create, wall, x, y, angle, setCollisionGroup) ***REMOVED***
+    setupWall: function (create, wall, x, y, angle, setCollisionGroup) {
 
         if (create)
-        ***REMOVED***
+        {
             //  We need a left wall. Do we have one already?
             if (this.walls[wall])
-            ***REMOVED***
+            {
                 this.walls[wall].position = [ this.pxmi(x), this.pxmi(y) ];
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
-                this.walls[wall] = new p2.Body(***REMOVED*** mass: 0, position: [ this.pxmi(x), this.pxmi(y) ], angle: angle ***REMOVED***);
+            {
+                this.walls[wall] = new p2.Body({ mass: 0, position: [ this.pxmi(x), this.pxmi(y) ], angle: angle });
                 this.walls[wall].addShape(new p2.Plane());
 
                 this.world.addBody(this.walls[wall]);
-            ***REMOVED***
+            }
 
             if (setCollisionGroup)
-            ***REMOVED***
+            {
                 this.walls[wall].shapes[0].collisionGroup = this.boundsCollisionGroup.mask;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             if (this.walls[wall])
-            ***REMOVED***
+            {
                 this.world.removeBody(this.walls[wall]);
                 this.walls[wall] = null;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Pauses the P2 World independent of the game pause state.
     *
     * @method Phaser.Physics.P2#pause
     */
-    pause: function() ***REMOVED***
+    pause: function() {
 
         this.paused = true;
 
-    ***REMOVED***,
+    },
     
     /**
     * Resumes a paused P2 World.
     *
     * @method Phaser.Physics.P2#resume
     */
-    resume: function() ***REMOVED***
+    resume: function() {
 
         this.paused = false;
 
-    ***REMOVED***,
+    },
 
     /**
     * Internal P2 update loop.
     *
     * @method Phaser.Physics.P2#update
     */
-    update: function () ***REMOVED***
+    update: function () {
 
         // Do nothing if the physics engine was paused before
         if (this.paused)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         if (this.useElapsedTime)
-        ***REMOVED***
+        {
             this.world.step(this.game.time.physicsElapsed);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this.world.step(this.frameRate);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Called by Phaser.Physics when a State swap occurs.
@@ -782,7 +782,7 @@ Phaser.Physics.P2.prototype = ***REMOVED***
     *
     * @method Phaser.Physics.P2#reset
     */
-    reset: function () ***REMOVED***
+    reset: function () {
 
         this.world.on("beginContact", this.beginContactHandler, this);
         this.world.on("endContact", this.endContactHandler, this);
@@ -795,7 +795,7 @@ Phaser.Physics.P2.prototype = ***REMOVED***
 
         this.setBoundsToWorld(true, true, true, true, false);
 
-    ***REMOVED***,
+    },
 
     /**
     * Clears all bodies from the simulation, resets callbacks and resets the collision bitmask.
@@ -812,48 +812,48 @@ Phaser.Physics.P2.prototype = ***REMOVED***
     *
     * @method Phaser.Physics.P2#clear
     */
-    clear: function () ***REMOVED***
+    clear: function () {
 
         this.world.time = 0;
         this.world.fixedStepTime = 0;
 
         // Remove all solver equations
         if (this.world.solver && this.world.solver.equations.length)
-        ***REMOVED***
+        {
             this.world.solver.removeAllEquations();
-        ***REMOVED***
+        }
 
         // Remove all constraints
         var cs = this.world.constraints;
 
         for (var i = cs.length - 1; i >= 0; i--)
-        ***REMOVED***
+        {
             this.world.removeConstraint(cs[i]);
-        ***REMOVED***
+        }
 
         // Remove all bodies
         var bodies = this.world.bodies;
 
         for (var i = bodies.length - 1; i >= 0; i--)
-        ***REMOVED***
+        {
             this.world.removeBody(bodies[i]);
-        ***REMOVED***
+        }
 
         // Remove all springs
         var springs = this.world.springs;
 
         for (var i = springs.length - 1; i >= 0; i--)
-        ***REMOVED***
+        {
             this.world.removeSpring(springs[i]);
-        ***REMOVED***
+        }
 
         // Remove all contact materials
         var cms = this.world.contactMaterials;
 
         for (var i = cms.length - 1; i >= 0; i--)
-        ***REMOVED***
+        {
             this.world.removeContactMaterial(cms[i]);
-        ***REMOVED***
+        }
 
         this.world.off("beginContact", this.beginContactHandler, this);
         this.world.off("endContact", this.endContactHandler, this);
@@ -867,263 +867,263 @@ Phaser.Physics.P2.prototype = ***REMOVED***
         this.boundsCollidesWith = [];
 
         //  Remove the world bounds
-        this.walls = ***REMOVED*** left: null, right: null, top: null, bottom: null ***REMOVED***;
+        this.walls = { left: null, right: null, top: null, bottom: null };
 
-    ***REMOVED***,
+    },
 
     /**
     * Clears all bodies from the simulation and unlinks World from Game. Should only be called on game shutdown. Call `clear` on a State change.
     *
     * @method Phaser.Physics.P2#destroy
     */
-    destroy: function () ***REMOVED***
+    destroy: function () {
 
         this.clear();
 
         this.game = null;
 
-    ***REMOVED***,
+    },
 
     /**
     * Add a body to the world.
     *
     * @method Phaser.Physics.P2#addBody
-    * @param ***REMOVED***Phaser.Physics.P2.Body***REMOVED*** body - The Body to add to the World.
-    * @return ***REMOVED***boolean***REMOVED*** True if the Body was added successfully, otherwise false.
+    * @param {Phaser.Physics.P2.Body} body - The Body to add to the World.
+    * @return {boolean} True if the Body was added successfully, otherwise false.
     */
-    addBody: function (body) ***REMOVED***
+    addBody: function (body) {
 
         if (body.data.world)
-        ***REMOVED***
+        {
             return false;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this.world.addBody(body.data);
 
             this.onBodyAdded.dispatch(body);
 
             return true;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Removes a body from the world. This will silently fail if the body wasn't part of the world to begin with.
     *
     * @method Phaser.Physics.P2#removeBody
-    * @param ***REMOVED***Phaser.Physics.P2.Body***REMOVED*** body - The Body to remove from the World.
-    * @return ***REMOVED***Phaser.Physics.P2.Body***REMOVED*** The Body that was removed.
+    * @param {Phaser.Physics.P2.Body} body - The Body to remove from the World.
+    * @return {Phaser.Physics.P2.Body} The Body that was removed.
     */
-    removeBody: function (body) ***REMOVED***
+    removeBody: function (body) {
 
         if (body.data.world === this.world)
-        ***REMOVED***
+        {
             this.world.removeBody(body.data);
 
             this.onBodyRemoved.dispatch(body);
-        ***REMOVED***
+        }
 
         return body;
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a Spring to the world.
     *
     * @method Phaser.Physics.P2#addSpring
-    * @param ***REMOVED***Phaser.Physics.P2.Spring|p2.LinearSpring|p2.RotationalSpring***REMOVED*** spring - The Spring to add to the World.
-    * @return ***REMOVED***Phaser.Physics.P2.Spring***REMOVED*** The Spring that was added.
+    * @param {Phaser.Physics.P2.Spring|p2.LinearSpring|p2.RotationalSpring} spring - The Spring to add to the World.
+    * @return {Phaser.Physics.P2.Spring} The Spring that was added.
     */
-    addSpring: function (spring) ***REMOVED***
+    addSpring: function (spring) {
 
         if (spring instanceof Phaser.Physics.P2.Spring || spring instanceof Phaser.Physics.P2.RotationalSpring)
-        ***REMOVED***
+        {
             this.world.addSpring(spring.data);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this.world.addSpring(spring);
-        ***REMOVED***
+        }
 
         this.onSpringAdded.dispatch(spring);
 
         return spring;
 
-    ***REMOVED***,
+    },
 
     /**
     * Removes a Spring from the world.
     *
     * @method Phaser.Physics.P2#removeSpring
-    * @param ***REMOVED***Phaser.Physics.P2.Spring***REMOVED*** spring - The Spring to remove from the World.
-    * @return ***REMOVED***Phaser.Physics.P2.Spring***REMOVED*** The Spring that was removed.
+    * @param {Phaser.Physics.P2.Spring} spring - The Spring to remove from the World.
+    * @return {Phaser.Physics.P2.Spring} The Spring that was removed.
     */
-    removeSpring: function (spring) ***REMOVED***
+    removeSpring: function (spring) {
 
         if (spring instanceof Phaser.Physics.P2.Spring || spring instanceof Phaser.Physics.P2.RotationalSpring)
-        ***REMOVED***
+        {
             this.world.removeSpring(spring.data);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this.world.removeSpring(spring);
-        ***REMOVED***
+        }
 
         this.onSpringRemoved.dispatch(spring);
 
         return spring;
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a constraint that tries to keep the distance between two bodies constant.
     *
     * @method Phaser.Physics.P2#createDistanceConstraint
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body***REMOVED*** bodyA - First connected body.
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body***REMOVED*** bodyB - Second connected body.
-    * @param ***REMOVED***number***REMOVED*** distance - The distance to keep between the bodies.
-    * @param ***REMOVED***Array***REMOVED*** [localAnchorA] - The anchor point for bodyA, defined locally in bodyA frame. Defaults to [0,0].
-    * @param ***REMOVED***Array***REMOVED*** [localAnchorB] - The anchor point for bodyB, defined locally in bodyB frame. Defaults to [0,0].
-    * @param ***REMOVED***number***REMOVED*** [maxForce] - The maximum force that should be applied to constrain the bodies.
-    * @return ***REMOVED***Phaser.Physics.P2.DistanceConstraint***REMOVED*** The constraint
+    * @param {Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body} bodyA - First connected body.
+    * @param {Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body} bodyB - Second connected body.
+    * @param {number} distance - The distance to keep between the bodies.
+    * @param {Array} [localAnchorA] - The anchor point for bodyA, defined locally in bodyA frame. Defaults to [0,0].
+    * @param {Array} [localAnchorB] - The anchor point for bodyB, defined locally in bodyB frame. Defaults to [0,0].
+    * @param {number} [maxForce] - The maximum force that should be applied to constrain the bodies.
+    * @return {Phaser.Physics.P2.DistanceConstraint} The constraint
     */
-    createDistanceConstraint: function (bodyA, bodyB, distance, localAnchorA, localAnchorB, maxForce) ***REMOVED***
+    createDistanceConstraint: function (bodyA, bodyB, distance, localAnchorA, localAnchorB, maxForce) {
 
         bodyA = this.getBody(bodyA);
         bodyB = this.getBody(bodyB);
 
         if (!bodyA || !bodyB)
-        ***REMOVED***
+        {
             console.warn('Cannot create Constraint, invalid body objects given');
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return this.addConstraint(new Phaser.Physics.P2.DistanceConstraint(this, bodyA, bodyB, distance, localAnchorA, localAnchorB, maxForce));
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a constraint that tries to keep the distance between two bodies constant.
     *
     * @method Phaser.Physics.P2#createGearConstraint
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body***REMOVED*** bodyA - First connected body.
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body***REMOVED*** bodyB - Second connected body.
-    * @param ***REMOVED***number***REMOVED*** [angle=0] - The relative angle
-    * @param ***REMOVED***number***REMOVED*** [ratio=1] - The gear ratio.
-    * @return ***REMOVED***Phaser.Physics.P2.GearConstraint***REMOVED*** The constraint
+    * @param {Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body} bodyA - First connected body.
+    * @param {Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body} bodyB - Second connected body.
+    * @param {number} [angle=0] - The relative angle
+    * @param {number} [ratio=1] - The gear ratio.
+    * @return {Phaser.Physics.P2.GearConstraint} The constraint
     */
-    createGearConstraint: function (bodyA, bodyB, angle, ratio) ***REMOVED***
+    createGearConstraint: function (bodyA, bodyB, angle, ratio) {
 
         bodyA = this.getBody(bodyA);
         bodyB = this.getBody(bodyB);
 
         if (!bodyA || !bodyB)
-        ***REMOVED***
+        {
             console.warn('Cannot create Constraint, invalid body objects given');
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return this.addConstraint(new Phaser.Physics.P2.GearConstraint(this, bodyA, bodyB, angle, ratio));
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Connects two bodies at given offset points, letting them rotate relative to each other around this point.
     * The pivot points are given in world (pixel) coordinates.
     *
     * @method Phaser.Physics.P2#createRevoluteConstraint
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body***REMOVED*** bodyA - First connected body.
-    * @param ***REMOVED***Array***REMOVED*** pivotA - The point relative to the center of mass of bodyA which bodyA is constrained to. The value is an array with 2 elements matching x and y, i.e: [32, 32].
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body***REMOVED*** bodyB - Second connected body.
-    * @param ***REMOVED***Array***REMOVED*** pivotB - The point relative to the center of mass of bodyB which bodyB is constrained to. The value is an array with 2 elements matching x and y, i.e: [32, 32].
-    * @param ***REMOVED***number***REMOVED*** [maxForce=0] - The maximum force that should be applied to constrain the bodies.
-    * @param ***REMOVED***Float32Array***REMOVED*** [worldPivot=null] - A pivot point given in world coordinates. If specified, localPivotA and localPivotB are automatically computed from this value.
-    * @return ***REMOVED***Phaser.Physics.P2.RevoluteConstraint***REMOVED*** The constraint
+    * @param {Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body} bodyA - First connected body.
+    * @param {Array} pivotA - The point relative to the center of mass of bodyA which bodyA is constrained to. The value is an array with 2 elements matching x and y, i.e: [32, 32].
+    * @param {Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body} bodyB - Second connected body.
+    * @param {Array} pivotB - The point relative to the center of mass of bodyB which bodyB is constrained to. The value is an array with 2 elements matching x and y, i.e: [32, 32].
+    * @param {number} [maxForce=0] - The maximum force that should be applied to constrain the bodies.
+    * @param {Float32Array} [worldPivot=null] - A pivot point given in world coordinates. If specified, localPivotA and localPivotB are automatically computed from this value.
+    * @return {Phaser.Physics.P2.RevoluteConstraint} The constraint
     */
-    createRevoluteConstraint: function (bodyA, pivotA, bodyB, pivotB, maxForce, worldPivot) ***REMOVED***
+    createRevoluteConstraint: function (bodyA, pivotA, bodyB, pivotB, maxForce, worldPivot) {
 
         bodyA = this.getBody(bodyA);
         bodyB = this.getBody(bodyB);
 
         if (!bodyA || !bodyB)
-        ***REMOVED***
+        {
             console.warn('Cannot create Constraint, invalid body objects given');
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return this.addConstraint(new Phaser.Physics.P2.RevoluteConstraint(this, bodyA, pivotA, bodyB, pivotB, maxForce, worldPivot));
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Locks the relative position between two bodies.
     *
     * @method Phaser.Physics.P2#createLockConstraint
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body***REMOVED*** bodyA - First connected body.
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body***REMOVED*** bodyB - Second connected body.
-    * @param ***REMOVED***Array***REMOVED*** [offset] - The offset of bodyB in bodyA's frame. The value is an array with 2 elements matching x and y, i.e: [32, 32].
-    * @param ***REMOVED***number***REMOVED*** [angle=0] - The angle of bodyB in bodyA's frame.
-    * @param ***REMOVED***number***REMOVED*** [maxForce] - The maximum force that should be applied to constrain the bodies.
-    * @return ***REMOVED***Phaser.Physics.P2.LockConstraint***REMOVED*** The constraint
+    * @param {Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body} bodyA - First connected body.
+    * @param {Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body} bodyB - Second connected body.
+    * @param {Array} [offset] - The offset of bodyB in bodyA's frame. The value is an array with 2 elements matching x and y, i.e: [32, 32].
+    * @param {number} [angle=0] - The angle of bodyB in bodyA's frame.
+    * @param {number} [maxForce] - The maximum force that should be applied to constrain the bodies.
+    * @return {Phaser.Physics.P2.LockConstraint} The constraint
     */
-    createLockConstraint: function (bodyA, bodyB, offset, angle, maxForce) ***REMOVED***
+    createLockConstraint: function (bodyA, bodyB, offset, angle, maxForce) {
 
         bodyA = this.getBody(bodyA);
         bodyB = this.getBody(bodyB);
 
         if (!bodyA || !bodyB)
-        ***REMOVED***
+        {
             console.warn('Cannot create Constraint, invalid body objects given');
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return this.addConstraint(new Phaser.Physics.P2.LockConstraint(this, bodyA, bodyB, offset, angle, maxForce));
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Constraint that only allows bodies to move along a line, relative to each other.
     * See http://www.iforce2d.net/b2dtut/joints-prismatic
     *
     * @method Phaser.Physics.P2#createPrismaticConstraint
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body***REMOVED*** bodyA - First connected body.
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body***REMOVED*** bodyB - Second connected body.
-    * @param ***REMOVED***boolean***REMOVED*** [lockRotation=true] - If set to false, bodyB will be free to rotate around its anchor point.
-    * @param ***REMOVED***Array***REMOVED*** [anchorA] - Body A's anchor point, defined in its own local frame. The value is an array with 2 elements matching x and y, i.e: [32, 32].
-    * @param ***REMOVED***Array***REMOVED*** [anchorB] - Body A's anchor point, defined in its own local frame. The value is an array with 2 elements matching x and y, i.e: [32, 32].
-    * @param ***REMOVED***Array***REMOVED*** [axis] - An axis, defined in body A frame, that body B's anchor point may slide along. The value is an array with 2 elements matching x and y, i.e: [32, 32].
-    * @param ***REMOVED***number***REMOVED*** [maxForce] - The maximum force that should be applied to constrain the bodies.
-    * @return ***REMOVED***Phaser.Physics.P2.PrismaticConstraint***REMOVED*** The constraint
+    * @param {Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body} bodyA - First connected body.
+    * @param {Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body} bodyB - Second connected body.
+    * @param {boolean} [lockRotation=true] - If set to false, bodyB will be free to rotate around its anchor point.
+    * @param {Array} [anchorA] - Body A's anchor point, defined in its own local frame. The value is an array with 2 elements matching x and y, i.e: [32, 32].
+    * @param {Array} [anchorB] - Body A's anchor point, defined in its own local frame. The value is an array with 2 elements matching x and y, i.e: [32, 32].
+    * @param {Array} [axis] - An axis, defined in body A frame, that body B's anchor point may slide along. The value is an array with 2 elements matching x and y, i.e: [32, 32].
+    * @param {number} [maxForce] - The maximum force that should be applied to constrain the bodies.
+    * @return {Phaser.Physics.P2.PrismaticConstraint} The constraint
     */
-    createPrismaticConstraint: function (bodyA, bodyB, lockRotation, anchorA, anchorB, axis, maxForce) ***REMOVED***
+    createPrismaticConstraint: function (bodyA, bodyB, lockRotation, anchorA, anchorB, axis, maxForce) {
 
         bodyA = this.getBody(bodyA);
         bodyB = this.getBody(bodyB);
 
         if (!bodyA || !bodyB)
-        ***REMOVED***
+        {
             console.warn('Cannot create Constraint, invalid body objects given');
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return this.addConstraint(new Phaser.Physics.P2.PrismaticConstraint(this, bodyA, bodyB, lockRotation, anchorA, anchorB, axis, maxForce));
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a Constraint to the world.
     *
     * @method Phaser.Physics.P2#addConstraint
-    * @param ***REMOVED***Phaser.Physics.P2.Constraint***REMOVED*** constraint - The Constraint to add to the World.
-    * @return ***REMOVED***Phaser.Physics.P2.Constraint***REMOVED*** The Constraint that was added.
+    * @param {Phaser.Physics.P2.Constraint} constraint - The Constraint to add to the World.
+    * @return {Phaser.Physics.P2.Constraint} The Constraint that was added.
     */
-    addConstraint: function (constraint) ***REMOVED***
+    addConstraint: function (constraint) {
 
         this.world.addConstraint(constraint);
 
@@ -1131,16 +1131,16 @@ Phaser.Physics.P2.prototype = ***REMOVED***
 
         return constraint;
 
-    ***REMOVED***,
+    },
 
     /**
     * Removes a Constraint from the world.
     *
     * @method Phaser.Physics.P2#removeConstraint
-    * @param ***REMOVED***Phaser.Physics.P2.Constraint***REMOVED*** constraint - The Constraint to be removed from the World.
-    * @return ***REMOVED***Phaser.Physics.P2.Constraint***REMOVED*** The Constraint that was removed.
+    * @param {Phaser.Physics.P2.Constraint} constraint - The Constraint to be removed from the World.
+    * @return {Phaser.Physics.P2.Constraint} The Constraint that was removed.
     */
-    removeConstraint: function (constraint) ***REMOVED***
+    removeConstraint: function (constraint) {
 
         this.world.removeConstraint(constraint);
 
@@ -1148,16 +1148,16 @@ Phaser.Physics.P2.prototype = ***REMOVED***
 
         return constraint;
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a Contact Material to the world.
     *
     * @method Phaser.Physics.P2#addContactMaterial
-    * @param ***REMOVED***Phaser.Physics.P2.ContactMaterial***REMOVED*** material - The Contact Material to be added to the World.
-    * @return ***REMOVED***Phaser.Physics.P2.ContactMaterial***REMOVED*** The Contact Material that was added.
+    * @param {Phaser.Physics.P2.ContactMaterial} material - The Contact Material to be added to the World.
+    * @return {Phaser.Physics.P2.ContactMaterial} The Contact Material that was added.
     */
-    addContactMaterial: function (material) ***REMOVED***
+    addContactMaterial: function (material) {
 
         this.world.addContactMaterial(material);
 
@@ -1165,16 +1165,16 @@ Phaser.Physics.P2.prototype = ***REMOVED***
 
         return material;
 
-    ***REMOVED***,
+    },
 
     /**
     * Removes a Contact Material from the world.
     *
     * @method Phaser.Physics.P2#removeContactMaterial
-    * @param ***REMOVED***Phaser.Physics.P2.ContactMaterial***REMOVED*** material - The Contact Material to be removed from the World.
-    * @return ***REMOVED***Phaser.Physics.P2.ContactMaterial***REMOVED*** The Contact Material that was removed.
+    * @param {Phaser.Physics.P2.ContactMaterial} material - The Contact Material to be removed from the World.
+    * @return {Phaser.Physics.P2.ContactMaterial} The Contact Material that was removed.
     */
-    removeContactMaterial: function (material) ***REMOVED***
+    removeContactMaterial: function (material) {
 
         this.world.removeContactMaterial(material);
 
@@ -1182,39 +1182,39 @@ Phaser.Physics.P2.prototype = ***REMOVED***
 
         return material;
 
-    ***REMOVED***,
+    },
 
     /**
     * Gets a Contact Material based on the two given Materials.
     *
     * @method Phaser.Physics.P2#getContactMaterial
-    * @param ***REMOVED***Phaser.Physics.P2.Material***REMOVED*** materialA - The first Material to search for.
-    * @param ***REMOVED***Phaser.Physics.P2.Material***REMOVED*** materialB - The second Material to search for.
-    * @return ***REMOVED***Phaser.Physics.P2.ContactMaterial|boolean***REMOVED*** The Contact Material or false if none was found matching the Materials given.
+    * @param {Phaser.Physics.P2.Material} materialA - The first Material to search for.
+    * @param {Phaser.Physics.P2.Material} materialB - The second Material to search for.
+    * @return {Phaser.Physics.P2.ContactMaterial|boolean} The Contact Material or false if none was found matching the Materials given.
     */
-    getContactMaterial: function (materialA, materialB) ***REMOVED***
+    getContactMaterial: function (materialA, materialB) {
 
         return this.world.getContactMaterial(materialA, materialB);
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the given Material against all Shapes owned by all the Bodies in the given array.
     *
     * @method Phaser.Physics.P2#setMaterial
-    * @param ***REMOVED***Phaser.Physics.P2.Material***REMOVED*** material - The Material to be applied to the given Bodies.
-    * @param ***REMOVED***array<Phaser.Physics.P2.Body>***REMOVED*** bodies - An Array of Body objects that the given Material will be set on.
+    * @param {Phaser.Physics.P2.Material} material - The Material to be applied to the given Bodies.
+    * @param {array<Phaser.Physics.P2.Body>} bodies - An Array of Body objects that the given Material will be set on.
     */
-    setMaterial: function (material, bodies) ***REMOVED***
+    setMaterial: function (material, bodies) {
 
         var i = bodies.length;
 
         while (i--)
-        ***REMOVED***
+        {
             bodies[i].setMaterial(material);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a Material. Materials are applied to Shapes owned by a Body and can be set with Body.setMaterial().
@@ -1222,11 +1222,11 @@ Phaser.Physics.P2.prototype = ***REMOVED***
     * Contact Materials have properties such as friction and restitution that allow for fine-grained collision control between different Materials.
     *
     * @method Phaser.Physics.P2#createMaterial
-    * @param ***REMOVED***string***REMOVED*** [name] - Optional name of the Material. Each Material has a unique ID but string names are handy for debugging.
-    * @param ***REMOVED***Phaser.Physics.P2.Body***REMOVED*** [body] - Optional Body. If given it will assign the newly created Material to the Body shapes.
-    * @return ***REMOVED***Phaser.Physics.P2.Material***REMOVED*** The Material that was created. This is also stored in Phaser.Physics.P2.materials.
+    * @param {string} [name] - Optional name of the Material. Each Material has a unique ID but string names are handy for debugging.
+    * @param {Phaser.Physics.P2.Body} [body] - Optional Body. If given it will assign the newly created Material to the Body shapes.
+    * @return {Phaser.Physics.P2.Material} The Material that was created. This is also stored in Phaser.Physics.P2.materials.
     */
-    createMaterial: function (name, body) ***REMOVED***
+    createMaterial: function (name, body) {
 
         name = name || '';
 
@@ -1235,102 +1235,102 @@ Phaser.Physics.P2.prototype = ***REMOVED***
         this.materials.push(material);
 
         if (typeof body !== 'undefined')
-        ***REMOVED***
+        {
             body.setMaterial(material);
-        ***REMOVED***
+        }
 
         return material;
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a Contact Material from the two given Materials. You can then edit the properties of the Contact Material directly.
     *
     * @method Phaser.Physics.P2#createContactMaterial
-    * @param ***REMOVED***Phaser.Physics.P2.Material***REMOVED*** [materialA] - The first Material to create the ContactMaterial from. If undefined it will create a new Material object first.
-    * @param ***REMOVED***Phaser.Physics.P2.Material***REMOVED*** [materialB] - The second Material to create the ContactMaterial from. If undefined it will create a new Material object first.
-    * @param ***REMOVED***object***REMOVED*** [options] - Material options object.
-    * @return ***REMOVED***Phaser.Physics.P2.ContactMaterial***REMOVED*** The Contact Material that was created.
+    * @param {Phaser.Physics.P2.Material} [materialA] - The first Material to create the ContactMaterial from. If undefined it will create a new Material object first.
+    * @param {Phaser.Physics.P2.Material} [materialB] - The second Material to create the ContactMaterial from. If undefined it will create a new Material object first.
+    * @param {object} [options] - Material options object.
+    * @return {Phaser.Physics.P2.ContactMaterial} The Contact Material that was created.
     */
-    createContactMaterial: function (materialA, materialB, options) ***REMOVED***
+    createContactMaterial: function (materialA, materialB, options) {
 
-        if (materialA === undefined) ***REMOVED*** materialA = this.createMaterial(); ***REMOVED***
-        if (materialB === undefined) ***REMOVED*** materialB = this.createMaterial(); ***REMOVED***
+        if (materialA === undefined) { materialA = this.createMaterial(); }
+        if (materialB === undefined) { materialB = this.createMaterial(); }
 
         var contact = new Phaser.Physics.P2.ContactMaterial(materialA, materialB, options);
 
         return this.addContactMaterial(contact);
 
-    ***REMOVED***,
+    },
 
     /**
     * Populates and returns an array with references to of all current Bodies in the world.
     *
     * @method Phaser.Physics.P2#getBodies
-    * @return ***REMOVED***array<Phaser.Physics.P2.Body>***REMOVED*** An array containing all current Bodies in the world.
+    * @return {array<Phaser.Physics.P2.Body>} An array containing all current Bodies in the world.
     */
-    getBodies: function () ***REMOVED***
+    getBodies: function () {
 
         var output = [];
         var i = this.world.bodies.length;
 
         while (i--)
-        ***REMOVED***
+        {
             output.push(this.world.bodies[i].parent);
-        ***REMOVED***
+        }
 
         return output;
 
-    ***REMOVED***,
+    },
 
     /**
     * Checks the given object to see if it has a p2.Body and if so returns it.
     *
     * @method Phaser.Physics.P2#getBody
-    * @param ***REMOVED***object***REMOVED*** object - The object to check for a p2.Body on.
-    * @return ***REMOVED***p2.Body***REMOVED*** The p2.Body, or null if not found.
+    * @param {object} object - The object to check for a p2.Body on.
+    * @return {p2.Body} The p2.Body, or null if not found.
     */
-    getBody: function (object) ***REMOVED***
+    getBody: function (object) {
 
         if (object instanceof p2.Body)
-        ***REMOVED***
+        {
             //  Native p2 body
             return object;
-        ***REMOVED***
+        }
         else if (object instanceof Phaser.Physics.P2.Body)
-        ***REMOVED***
+        {
             //  Phaser P2 Body
             return object.data;
-        ***REMOVED***
+        }
         else if (object['body'] && object['body'].type === Phaser.Physics.P2JS)
-        ***REMOVED***
+        {
             //  Sprite, TileSprite, etc
             return object.body.data;
-        ***REMOVED***
+        }
 
         return null;
 
-    ***REMOVED***,
+    },
 
     /**
     * Populates and returns an array of all current Springs in the world.
     *
     * @method Phaser.Physics.P2#getSprings
-    * @return ***REMOVED***array<Phaser.Physics.P2.Spring>***REMOVED*** An array containing all current Springs in the world.
+    * @return {array<Phaser.Physics.P2.Spring>} An array containing all current Springs in the world.
     */
-    getSprings: function () ***REMOVED***
+    getSprings: function () {
 
         var output = [];
         var i = this.world.springs.length;
 
         while (i--)
-        ***REMOVED***
+        {
             output.push(this.world.springs[i].parent);
-        ***REMOVED***
+        }
 
         return output;
 
-    ***REMOVED***,
+    },
 
     /**
     * Populates and returns an array of all current Constraints in the world.
@@ -1338,38 +1338,38 @@ Phaser.Physics.P2.prototype = ***REMOVED***
     * PrismaticConstraints, RevoluteConstraints or any other valid p2 constraint type.
     *
     * @method Phaser.Physics.P2#getConstraints
-    * @return ***REMOVED***array<Phaser.Physics.P2.Constraint>***REMOVED*** An array containing all current Constraints in the world.
+    * @return {array<Phaser.Physics.P2.Constraint>} An array containing all current Constraints in the world.
     */
-    getConstraints: function () ***REMOVED***
+    getConstraints: function () {
 
         var output = [];
         var i = this.world.constraints.length;
 
         while (i--)
-        ***REMOVED***
+        {
             output.push(this.world.constraints[i]);
-        ***REMOVED***
+        }
 
         return output;
 
-    ***REMOVED***,
+    },
 
     /**
     * Test if a world point overlaps bodies. You will get an array of actual P2 bodies back. You can find out which Sprite a Body belongs to
     * (if any) by checking the Body.parent.sprite property. Body.parent is a Phaser.Physics.P2.Body property.
     *
     * @method Phaser.Physics.P2#hitTest
-    * @param ***REMOVED***Phaser.Point***REMOVED*** worldPoint - Point to use for intersection tests. The points values must be in world (pixel) coordinates.
-    * @param ***REMOVED***Array<Phaser.Physics.P2.Body|Phaser.Sprite|p2.Body>***REMOVED*** [bodies] - A list of objects to check for intersection. If not given it will check Phaser.Physics.P2.world.bodies (i.e. all world bodies)
-    * @param ***REMOVED***number***REMOVED*** [precision=5] - Used for matching against particles and lines. Adds some margin to these infinitesimal objects.
-    * @param ***REMOVED***boolean***REMOVED*** [filterStatic=false] - If true all Static objects will be removed from the results array.
-    * @return ***REMOVED***Array***REMOVED*** Array of bodies that overlap the point.
+    * @param {Phaser.Point} worldPoint - Point to use for intersection tests. The points values must be in world (pixel) coordinates.
+    * @param {Array<Phaser.Physics.P2.Body|Phaser.Sprite|p2.Body>} [bodies] - A list of objects to check for intersection. If not given it will check Phaser.Physics.P2.world.bodies (i.e. all world bodies)
+    * @param {number} [precision=5] - Used for matching against particles and lines. Adds some margin to these infinitesimal objects.
+    * @param {boolean} [filterStatic=false] - If true all Static objects will be removed from the results array.
+    * @return {Array} Array of bodies that overlap the point.
     */
-    hitTest: function (worldPoint, bodies, precision, filterStatic) ***REMOVED***
+    hitTest: function (worldPoint, bodies, precision, filterStatic) {
 
-        if (bodies === undefined) ***REMOVED*** bodies = this.world.bodies; ***REMOVED***
-        if (precision === undefined) ***REMOVED*** precision = 5; ***REMOVED***
-        if (filterStatic === undefined) ***REMOVED*** filterStatic = false; ***REMOVED***
+        if (bodies === undefined) { bodies = this.world.bodies; }
+        if (precision === undefined) { precision = 5; }
+        if (filterStatic === undefined) { filterStatic = false; }
 
         var physicsPosition = [ this.pxmi(worldPoint.x), this.pxmi(worldPoint.y) ];
 
@@ -1377,67 +1377,67 @@ Phaser.Physics.P2.prototype = ***REMOVED***
         var i = bodies.length;
 
         while (i--)
-        ***REMOVED***
+        {
             if (bodies[i] instanceof Phaser.Physics.P2.Body && !(filterStatic && bodies[i].data.type === p2.Body.STATIC))
-            ***REMOVED***
+            {
                 query.push(bodies[i].data);
-            ***REMOVED***
+            }
             else if (bodies[i] instanceof p2.Body && bodies[i].parent && !(filterStatic && bodies[i].type === p2.Body.STATIC))
-            ***REMOVED***
+            {
                 query.push(bodies[i]);
-            ***REMOVED***
+            }
             else if (bodies[i] instanceof Phaser.Sprite && bodies[i].hasOwnProperty('body') && !(filterStatic && bodies[i].body.data.type === p2.Body.STATIC))
-            ***REMOVED***
+            {
                 query.push(bodies[i].body.data);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return this.world.hitTest(physicsPosition, query, precision);
 
-    ***REMOVED***,
+    },
 
     /**
     * Converts the current world into a JSON object.
     *
     * @method Phaser.Physics.P2#toJSON
-    * @return ***REMOVED***object***REMOVED*** A JSON representation of the world.
+    * @return {object} A JSON representation of the world.
     */
-    toJSON: function () ***REMOVED***
+    toJSON: function () {
 
         return this.world.toJSON();
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a new Collision Group and optionally applies it to the given object.
     * Collision Groups are handled using bitmasks, therefore you have a fixed limit you can create before you need to re-use older groups.
     *
     * @method Phaser.Physics.P2#createCollisionGroup
-    * @param ***REMOVED***Phaser.Group|Phaser.Sprite***REMOVED*** [object] - An optional Sprite or Group to apply the Collision Group to. If a Group is given it will be applied to all top-level children.
+    * @param {Phaser.Group|Phaser.Sprite} [object] - An optional Sprite or Group to apply the Collision Group to. If a Group is given it will be applied to all top-level children.
     */
-    createCollisionGroup: function (object) ***REMOVED***
+    createCollisionGroup: function (object) {
 
         var bitmask = Math.pow(2, this._collisionGroupID);
 
         if (this.walls.left)
-        ***REMOVED***
+        {
             this.walls.left.shapes[0].collisionMask = this.walls.left.shapes[0].collisionMask | bitmask;
-        ***REMOVED***
+        }
 
         if (this.walls.right)
-        ***REMOVED***
+        {
             this.walls.right.shapes[0].collisionMask = this.walls.right.shapes[0].collisionMask | bitmask;
-        ***REMOVED***
+        }
 
         if (this.walls.top)
-        ***REMOVED***
+        {
             this.walls.top.shapes[0].collisionMask = this.walls.top.shapes[0].collisionMask | bitmask;
-        ***REMOVED***
+        }
 
         if (this.walls.bottom)
-        ***REMOVED***
+        {
             this.walls.bottom.shapes[0].collisionMask = this.walls.bottom.shapes[0].collisionMask | bitmask;
-        ***REMOVED***
+        }
 
         this._collisionGroupID++;
 
@@ -1446,200 +1446,200 @@ Phaser.Physics.P2.prototype = ***REMOVED***
         this.collisionGroups.push(group);
 
         if (object)
-        ***REMOVED***
+        {
             this.setCollisionGroup(object, group);
-        ***REMOVED***
+        }
 
         return group;
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the given CollisionGroup to be the collision group for all shapes in this Body, unless a shape is specified.
     * Note that this resets the collisionMask and any previously set groups. See Body.collides() for appending them.
     *
     * @method Phaser.Physics.P2y#setCollisionGroup
-    * @param ***REMOVED***Phaser.Group|Phaser.Sprite***REMOVED*** object - A Sprite or Group to apply the Collision Group to. If a Group is given it will be applied to all top-level children.
-    * @param ***REMOVED***Phaser.Physics.CollisionGroup***REMOVED*** group - The Collision Group that this Bodies shapes will use.
+    * @param {Phaser.Group|Phaser.Sprite} object - A Sprite or Group to apply the Collision Group to. If a Group is given it will be applied to all top-level children.
+    * @param {Phaser.Physics.CollisionGroup} group - The Collision Group that this Bodies shapes will use.
     */
-    setCollisionGroup: function (object, group) ***REMOVED***
+    setCollisionGroup: function (object, group) {
 
         if (object instanceof Phaser.Group)
-        ***REMOVED***
+        {
             for (var i = 0; i < object.total; i++)
-            ***REMOVED***
+            {
                 if (object.children[i]['body'] && object.children[i]['body'].type === Phaser.Physics.P2JS)
-                ***REMOVED***
+                {
                     object.children[i].body.setCollisionGroup(group);
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
         else
-        ***REMOVED***
+        {
             object.body.setCollisionGroup(group);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a linear spring, connecting two bodies. A spring can have a resting length, a stiffness and damping.
     *
     * @method Phaser.Physics.P2#createSpring
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body***REMOVED*** bodyA - First connected body.
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body***REMOVED*** bodyB - Second connected body.
-    * @param ***REMOVED***number***REMOVED*** [restLength=1] - Rest length of the spring. A number > 0.
-    * @param ***REMOVED***number***REMOVED*** [stiffness=100] - Stiffness of the spring. A number >= 0.
-    * @param ***REMOVED***number***REMOVED*** [damping=1] - Damping of the spring. A number >= 0.
-    * @param ***REMOVED***Array***REMOVED*** [worldA] - Where to hook the spring to body A in world coordinates. This value is an array by 2 elements, x and y, i.e: [32, 32].
-    * @param ***REMOVED***Array***REMOVED*** [worldB] - Where to hook the spring to body B in world coordinates. This value is an array by 2 elements, x and y, i.e: [32, 32].
-    * @param ***REMOVED***Array***REMOVED*** [localA] - Where to hook the spring to body A in local body coordinates. This value is an array by 2 elements, x and y, i.e: [32, 32].
-    * @param ***REMOVED***Array***REMOVED*** [localB] - Where to hook the spring to body B in local body coordinates. This value is an array by 2 elements, x and y, i.e: [32, 32].
-    * @return ***REMOVED***Phaser.Physics.P2.Spring***REMOVED*** The spring
+    * @param {Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body} bodyA - First connected body.
+    * @param {Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body} bodyB - Second connected body.
+    * @param {number} [restLength=1] - Rest length of the spring. A number > 0.
+    * @param {number} [stiffness=100] - Stiffness of the spring. A number >= 0.
+    * @param {number} [damping=1] - Damping of the spring. A number >= 0.
+    * @param {Array} [worldA] - Where to hook the spring to body A in world coordinates. This value is an array by 2 elements, x and y, i.e: [32, 32].
+    * @param {Array} [worldB] - Where to hook the spring to body B in world coordinates. This value is an array by 2 elements, x and y, i.e: [32, 32].
+    * @param {Array} [localA] - Where to hook the spring to body A in local body coordinates. This value is an array by 2 elements, x and y, i.e: [32, 32].
+    * @param {Array} [localB] - Where to hook the spring to body B in local body coordinates. This value is an array by 2 elements, x and y, i.e: [32, 32].
+    * @return {Phaser.Physics.P2.Spring} The spring
     */
-    createSpring: function (bodyA, bodyB, restLength, stiffness, damping, worldA, worldB, localA, localB) ***REMOVED***
+    createSpring: function (bodyA, bodyB, restLength, stiffness, damping, worldA, worldB, localA, localB) {
 
         bodyA = this.getBody(bodyA);
         bodyB = this.getBody(bodyB);
 
         if (!bodyA || !bodyB)
-        ***REMOVED***
+        {
             console.warn('Cannot create Spring, invalid body objects given');
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return this.addSpring(new Phaser.Physics.P2.Spring(this, bodyA, bodyB, restLength, stiffness, damping, worldA, worldB, localA, localB));
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a rotational spring, connecting two bodies. A spring can have a resting length, a stiffness and damping.
     *
     * @method Phaser.Physics.P2#createRotationalSpring
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body***REMOVED*** bodyA - First connected body.
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body***REMOVED*** bodyB - Second connected body.
-    * @param ***REMOVED***number***REMOVED*** [restAngle] - The relative angle of bodies at which the spring is at rest. If not given, it's set to the current relative angle between the bodies.
-    * @param ***REMOVED***number***REMOVED*** [stiffness=100] - Stiffness of the spring. A number >= 0.
-    * @param ***REMOVED***number***REMOVED*** [damping=1] - Damping of the spring. A number >= 0.
-    * @return ***REMOVED***Phaser.Physics.P2.RotationalSpring***REMOVED*** The spring
+    * @param {Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body} bodyA - First connected body.
+    * @param {Phaser.Sprite|Phaser.Physics.P2.Body|p2.Body} bodyB - Second connected body.
+    * @param {number} [restAngle] - The relative angle of bodies at which the spring is at rest. If not given, it's set to the current relative angle between the bodies.
+    * @param {number} [stiffness=100] - Stiffness of the spring. A number >= 0.
+    * @param {number} [damping=1] - Damping of the spring. A number >= 0.
+    * @return {Phaser.Physics.P2.RotationalSpring} The spring
     */
-    createRotationalSpring: function (bodyA, bodyB, restAngle, stiffness, damping) ***REMOVED***
+    createRotationalSpring: function (bodyA, bodyB, restAngle, stiffness, damping) {
 
         bodyA = this.getBody(bodyA);
         bodyB = this.getBody(bodyB);
 
         if (!bodyA || !bodyB)
-        ***REMOVED***
+        {
             console.warn('Cannot create Rotational Spring, invalid body objects given');
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return this.addSpring(new Phaser.Physics.P2.RotationalSpring(this, bodyA, bodyB, restAngle, stiffness, damping));
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a new Body and adds it to the World.
     *
     * @method Phaser.Physics.P2#createBody
-    * @param ***REMOVED***number***REMOVED*** x - The x coordinate of Body.
-    * @param ***REMOVED***number***REMOVED*** y - The y coordinate of Body.
-    * @param ***REMOVED***number***REMOVED*** mass - The mass of the Body. A mass of 0 means a 'static' Body is created.
-    * @param ***REMOVED***boolean***REMOVED*** [addToWorld=false] - Automatically add this Body to the world? (usually false as it won't have any shapes on construction).
-    * @param ***REMOVED***object***REMOVED*** options - An object containing the build options:
-    * @param ***REMOVED***boolean***REMOVED*** [options.optimalDecomp=false] - Set to true if you need optimal decomposition. Warning: very slow for polygons with more than 10 vertices.
-    * @param ***REMOVED***boolean***REMOVED*** [options.skipSimpleCheck=false] - Set to true if you already know that the path is not intersecting itself.
-    * @param ***REMOVED***boolean|number***REMOVED*** [options.removeCollinearPoints=false] - Set to a number (angle threshold value) to remove collinear points, or false to keep all points.
-    * @param ***REMOVED***(number[]|...number)***REMOVED*** points - An array of 2d vectors that form the convex or concave polygon.
+    * @param {number} x - The x coordinate of Body.
+    * @param {number} y - The y coordinate of Body.
+    * @param {number} mass - The mass of the Body. A mass of 0 means a 'static' Body is created.
+    * @param {boolean} [addToWorld=false] - Automatically add this Body to the world? (usually false as it won't have any shapes on construction).
+    * @param {object} options - An object containing the build options:
+    * @param {boolean} [options.optimalDecomp=false] - Set to true if you need optimal decomposition. Warning: very slow for polygons with more than 10 vertices.
+    * @param {boolean} [options.skipSimpleCheck=false] - Set to true if you already know that the path is not intersecting itself.
+    * @param {boolean|number} [options.removeCollinearPoints=false] - Set to a number (angle threshold value) to remove collinear points, or false to keep all points.
+    * @param {(number[]|...number)} points - An array of 2d vectors that form the convex or concave polygon.
     *                                       Either [[0,0], [0,1],...] or a flat array of numbers that will be interpreted as [x,y, x,y, ...],
     *                                       or the arguments passed can be flat x,y values e.g. `setPolygon(options, x,y, x,y, x,y, ...)` where `x` and `y` are numbers.
-    * @return ***REMOVED***Phaser.Physics.P2.Body***REMOVED*** The body
+    * @return {Phaser.Physics.P2.Body} The body
     */
-    createBody: function (x, y, mass, addToWorld, options, data) ***REMOVED***
+    createBody: function (x, y, mass, addToWorld, options, data) {
 
-        if (addToWorld === undefined) ***REMOVED*** addToWorld = false; ***REMOVED***
+        if (addToWorld === undefined) { addToWorld = false; }
 
         var body = new Phaser.Physics.P2.Body(this.game, null, x, y, mass);
 
         if (data)
-        ***REMOVED***
+        {
             var result = body.addPolygon(options, data);
 
             if (!result)
-            ***REMOVED***
+            {
                 return false;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         if (addToWorld)
-        ***REMOVED***
+        {
             this.world.addBody(body.data);
-        ***REMOVED***
+        }
 
         return body;
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a new Particle and adds it to the World.
     *
     * @method Phaser.Physics.P2#createParticle
-    * @param ***REMOVED***number***REMOVED*** x - The x coordinate of Body.
-    * @param ***REMOVED***number***REMOVED*** y - The y coordinate of Body.
-    * @param ***REMOVED***number***REMOVED*** mass - The mass of the Body. A mass of 0 means a 'static' Body is created.
-    * @param ***REMOVED***boolean***REMOVED*** [addToWorld=false] - Automatically add this Body to the world? (usually false as it won't have any shapes on construction).
-    * @param ***REMOVED***object***REMOVED*** options - An object containing the build options:
-    * @param ***REMOVED***boolean***REMOVED*** [options.optimalDecomp=false] - Set to true if you need optimal decomposition. Warning: very slow for polygons with more than 10 vertices.
-    * @param ***REMOVED***boolean***REMOVED*** [options.skipSimpleCheck=false] - Set to true if you already know that the path is not intersecting itself.
-    * @param ***REMOVED***boolean|number***REMOVED*** [options.removeCollinearPoints=false] - Set to a number (angle threshold value) to remove collinear points, or false to keep all points.
-    * @param ***REMOVED***(number[]|...number)***REMOVED*** points - An array of 2d vectors that form the convex or concave polygon.
+    * @param {number} x - The x coordinate of Body.
+    * @param {number} y - The y coordinate of Body.
+    * @param {number} mass - The mass of the Body. A mass of 0 means a 'static' Body is created.
+    * @param {boolean} [addToWorld=false] - Automatically add this Body to the world? (usually false as it won't have any shapes on construction).
+    * @param {object} options - An object containing the build options:
+    * @param {boolean} [options.optimalDecomp=false] - Set to true if you need optimal decomposition. Warning: very slow for polygons with more than 10 vertices.
+    * @param {boolean} [options.skipSimpleCheck=false] - Set to true if you already know that the path is not intersecting itself.
+    * @param {boolean|number} [options.removeCollinearPoints=false] - Set to a number (angle threshold value) to remove collinear points, or false to keep all points.
+    * @param {(number[]|...number)} points - An array of 2d vectors that form the convex or concave polygon.
     *                                       Either [[0,0], [0,1],...] or a flat array of numbers that will be interpreted as [x,y, x,y, ...],
     *                                       or the arguments passed can be flat x,y values e.g. `setPolygon(options, x,y, x,y, x,y, ...)` where `x` and `y` are numbers.
     */
-    createParticle: function (x, y, mass, addToWorld, options, data) ***REMOVED***
+    createParticle: function (x, y, mass, addToWorld, options, data) {
 
-        if (addToWorld === undefined) ***REMOVED*** addToWorld = false; ***REMOVED***
+        if (addToWorld === undefined) { addToWorld = false; }
 
         var body = new Phaser.Physics.P2.Body(this.game, null, x, y, mass);
 
         if (data)
-        ***REMOVED***
+        {
             var result = body.addPolygon(options, data);
 
             if (!result)
-            ***REMOVED***
+            {
                 return false;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         if (addToWorld)
-        ***REMOVED***
+        {
             this.world.addBody(body.data);
-        ***REMOVED***
+        }
 
         return body;
 
-    ***REMOVED***,
+    },
 
     /**
     * Converts all of the polylines objects inside a Tiled ObjectGroup into physics bodies that are added to the world.
     * Note that the polylines must be created in such a way that they can withstand polygon decomposition.
     *
     * @method Phaser.Physics.P2#convertCollisionObjects
-    * @param ***REMOVED***Phaser.Tilemap***REMOVED*** map - The Tilemap to get the map data from.
-    * @param ***REMOVED***number|string|Phaser.TilemapLayer***REMOVED*** [layer] - The layer to operate on. If not given will default to map.currentLayer.
-    * @param ***REMOVED***boolean***REMOVED*** [addToWorld=true] - If true it will automatically add each body to the world.
-    * @return ***REMOVED***array***REMOVED*** An array of the Phaser.Physics.Body objects that have been created.
+    * @param {Phaser.Tilemap} map - The Tilemap to get the map data from.
+    * @param {number|string|Phaser.TilemapLayer} [layer] - The layer to operate on. If not given will default to map.currentLayer.
+    * @param {boolean} [addToWorld=true] - If true it will automatically add each body to the world.
+    * @return {array} An array of the Phaser.Physics.Body objects that have been created.
     */
-    convertCollisionObjects: function (map, layer, addToWorld) ***REMOVED***
+    convertCollisionObjects: function (map, layer, addToWorld) {
 
-        if (addToWorld === undefined) ***REMOVED*** addToWorld = true; ***REMOVED***
+        if (addToWorld === undefined) { addToWorld = true; }
 
         var output = [];
 
         for (var i = 0, len = map.collision[layer].length; i < len; i++)
-        ***REMOVED***
+        {
             // name: json.layers[i].objects[v].name,
             // x: json.layers[i].objects[v].x,
             // y: json.layers[i].objects[v].y,
@@ -1651,39 +1651,39 @@ Phaser.Physics.P2.prototype = ***REMOVED***
 
             var object = map.collision[layer][i];
 
-            var body = this.createBody(object.x, object.y, 0, addToWorld, ***REMOVED******REMOVED***, object.polyline);
+            var body = this.createBody(object.x, object.y, 0, addToWorld, {}, object.polyline);
 
             if (body)
-            ***REMOVED***
+            {
                 output.push(body);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return output;
 
-    ***REMOVED***,
+    },
 
     /**
     * Clears all physics bodies from the given TilemapLayer that were created with `World.convertTilemap`.
     *
     * @method Phaser.Physics.P2#clearTilemapLayerBodies
-    * @param ***REMOVED***Phaser.Tilemap***REMOVED*** map - The Tilemap to get the map data from.
-    * @param ***REMOVED***number|string|Phaser.TilemapLayer***REMOVED*** [layer] - The layer to operate on. If not given will default to map.currentLayer.
+    * @param {Phaser.Tilemap} map - The Tilemap to get the map data from.
+    * @param {number|string|Phaser.TilemapLayer} [layer] - The layer to operate on. If not given will default to map.currentLayer.
     */
-    clearTilemapLayerBodies: function (map, layer) ***REMOVED***
+    clearTilemapLayerBodies: function (map, layer) {
 
         layer = map.getLayer(layer);
 
         var i = map.layers[layer].bodies.length;
 
         while (i--)
-        ***REMOVED***
+        {
             map.layers[layer].bodies[i].destroy();
-        ***REMOVED***
+        }
 
         map.layers[layer].bodies.length = 0;
 
-    ***REMOVED***,
+    },
 
     /**
     * Goes through all tiles in the given Tilemap and TilemapLayer and converts those set to collide into physics bodies.
@@ -1692,18 +1692,18 @@ Phaser.Physics.P2.prototype = ***REMOVED***
     * Therefore understand it's a very expensive operation and not to be done in a core game update loop.
     *
     * @method Phaser.Physics.P2#convertTilemap
-    * @param ***REMOVED***Phaser.Tilemap***REMOVED*** map - The Tilemap to get the map data from.
-    * @param ***REMOVED***number|string|Phaser.TilemapLayer***REMOVED*** [layer] - The layer to operate on. If not given will default to map.currentLayer.
-    * @param ***REMOVED***boolean***REMOVED*** [addToWorld=true] - If true it will automatically add each body to the world, otherwise it's up to you to do so.
-    * @param ***REMOVED***boolean***REMOVED*** [optimize=true] - If true adjacent colliding tiles will be combined into a single body to save processing. However it means you cannot perform specific Tile to Body collision responses.
-    * @return ***REMOVED***array***REMOVED*** An array of the Phaser.Physics.P2.Body objects that were created.
+    * @param {Phaser.Tilemap} map - The Tilemap to get the map data from.
+    * @param {number|string|Phaser.TilemapLayer} [layer] - The layer to operate on. If not given will default to map.currentLayer.
+    * @param {boolean} [addToWorld=true] - If true it will automatically add each body to the world, otherwise it's up to you to do so.
+    * @param {boolean} [optimize=true] - If true adjacent colliding tiles will be combined into a single body to save processing. However it means you cannot perform specific Tile to Body collision responses.
+    * @return {array} An array of the Phaser.Physics.P2.Body objects that were created.
     */
-    convertTilemap: function (map, layer, addToWorld, optimize) ***REMOVED***
+    convertTilemap: function (map, layer, addToWorld, optimize) {
 
         layer = map.getLayer(layer);
 
-        if (addToWorld === undefined) ***REMOVED*** addToWorld = true; ***REMOVED***
-        if (optimize === undefined) ***REMOVED*** optimize = true; ***REMOVED***
+        if (addToWorld === undefined) { addToWorld = true; }
+        if (optimize === undefined) { optimize = true; }
 
         //  If the bodies array is already populated we need to nuke it
         this.clearTilemapLayerBodies(map, layer);
@@ -1713,66 +1713,66 @@ Phaser.Physics.P2.prototype = ***REMOVED***
         var sy = 0;
 
         for (var y = 0, h = map.layers[layer].height; y < h; y++)
-        ***REMOVED***
+        {
             width = 0;
 
             for (var x = 0, w = map.layers[layer].width; x < w; x++)
-            ***REMOVED***
+            {
                 var tile = map.layers[layer].data[y][x];
 
                 if (tile && tile.index > -1 && tile.collides)
-                ***REMOVED***
+                {
                     if (optimize)
-                    ***REMOVED***
+                    {
                         var right = map.getTileRight(layer, x, y);
 
                         if (width === 0)
-                        ***REMOVED***
+                        {
                             sx = tile.x * tile.width;
                             sy = tile.y * tile.height;
                             width = tile.width;
-                        ***REMOVED***
+                        }
 
                         if (right && right.collides)
-                        ***REMOVED***
+                        {
                             width += tile.width;
-                        ***REMOVED***
+                        }
                         else
-                        ***REMOVED***
+                        {
                             var body = this.createBody(sx, sy, 0, false);
 
                             body.addRectangle(width, tile.height, width / 2, tile.height / 2, 0);
 
                             if (addToWorld)
-                            ***REMOVED***
+                            {
                                 this.addBody(body);
-                            ***REMOVED***
+                            }
 
                             map.layers[layer].bodies.push(body);
 
                             width = 0;
-                        ***REMOVED***
-                    ***REMOVED***
+                        }
+                    }
                     else
-                    ***REMOVED***
+                    {
                         var body = this.createBody(tile.x * tile.width, tile.y * tile.height, 0, false);
 
                         body.addRectangle(tile.width, tile.height, tile.width / 2, tile.height / 2, 0);
 
                         if (addToWorld)
-                        ***REMOVED***
+                        {
                             this.addBody(body);
-                        ***REMOVED***
+                        }
 
                         map.layers[layer].bodies.push(body);
-                    ***REMOVED***
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                    }
+                }
+            }
+        }
 
         return map.layers[layer].bodies;
 
-    ***REMOVED***,
+    },
 
     /**
     * Convert p2 physics value (meters) to pixel scale.
@@ -1780,14 +1780,14 @@ Phaser.Physics.P2.prototype = ***REMOVED***
     * If you need to modify this you can over-ride these functions via the Physics Configuration object.
     *
     * @method Phaser.Physics.P2#mpx
-    * @param ***REMOVED***number***REMOVED*** v - The value to convert.
-    * @return ***REMOVED***number***REMOVED*** The scaled value.
+    * @param {number} v - The value to convert.
+    * @return {number} The scaled value.
     */
-    mpx: function (v) ***REMOVED***
+    mpx: function (v) {
 
         return v *= 20;
 
-    ***REMOVED***,
+    },
 
     /**
     * Convert pixel value to p2 physics scale (meters).
@@ -1795,14 +1795,14 @@ Phaser.Physics.P2.prototype = ***REMOVED***
     * If you need to modify this you can over-ride these functions via the Physics Configuration object.
     *
     * @method Phaser.Physics.P2#pxm
-    * @param ***REMOVED***number***REMOVED*** v - The value to convert.
-    * @return ***REMOVED***number***REMOVED*** The scaled value.
+    * @param {number} v - The value to convert.
+    * @return {number} The scaled value.
     */
-    pxm: function (v) ***REMOVED***
+    pxm: function (v) {
 
         return v * 0.05;
 
-    ***REMOVED***,
+    },
 
     /**
     * Convert p2 physics value (meters) to pixel scale and inverses it.
@@ -1810,14 +1810,14 @@ Phaser.Physics.P2.prototype = ***REMOVED***
     * If you need to modify this you can over-ride these functions via the Physics Configuration object.
     *
     * @method Phaser.Physics.P2#mpxi
-    * @param ***REMOVED***number***REMOVED*** v - The value to convert.
-    * @return ***REMOVED***number***REMOVED*** The scaled value.
+    * @param {number} v - The value to convert.
+    * @return {number} The scaled value.
     */
-    mpxi: function (v) ***REMOVED***
+    mpxi: function (v) {
 
         return v *= -20;
 
-    ***REMOVED***,
+    },
 
     /**
     * Convert pixel value to p2 physics scale (meters) and inverses it.
@@ -1825,228 +1825,228 @@ Phaser.Physics.P2.prototype = ***REMOVED***
     * If you need to modify this you can over-ride these functions via the Physics Configuration object.
     *
     * @method Phaser.Physics.P2#pxmi
-    * @param ***REMOVED***number***REMOVED*** v - The value to convert.
-    * @return ***REMOVED***number***REMOVED*** The scaled value.
+    * @param {number} v - The value to convert.
+    * @return {number} The scaled value.
     */
-    pxmi: function (v) ***REMOVED***
+    pxmi: function (v) {
 
         return v * -0.05;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * @name Phaser.Physics.P2#friction
-* @property ***REMOVED***number***REMOVED*** friction - Friction between colliding bodies. This value is used if no matching ContactMaterial is found for a Material pair.
+* @property {number} friction - Friction between colliding bodies. This value is used if no matching ContactMaterial is found for a Material pair.
 */
-Object.defineProperty(Phaser.Physics.P2.prototype, "friction", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.prototype, "friction", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.world.defaultContactMaterial.friction;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.world.defaultContactMaterial.friction = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2#restitution
-* @property ***REMOVED***number***REMOVED*** restitution - Default coefficient of restitution between colliding bodies. This value is used if no matching ContactMaterial is found for a Material pair.
+* @property {number} restitution - Default coefficient of restitution between colliding bodies. This value is used if no matching ContactMaterial is found for a Material pair.
 */
-Object.defineProperty(Phaser.Physics.P2.prototype, "restitution", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.prototype, "restitution", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.world.defaultContactMaterial.restitution;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.world.defaultContactMaterial.restitution = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2#contactMaterial
-* @property ***REMOVED***p2.ContactMaterial***REMOVED*** contactMaterial - The default Contact Material being used by the World.
+* @property {p2.ContactMaterial} contactMaterial - The default Contact Material being used by the World.
 */
-Object.defineProperty(Phaser.Physics.P2.prototype, "contactMaterial", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.prototype, "contactMaterial", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.world.defaultContactMaterial;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.world.defaultContactMaterial = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2#applySpringForces
-* @property ***REMOVED***boolean***REMOVED*** applySpringForces - Enable to automatically apply spring forces each step.
+* @property {boolean} applySpringForces - Enable to automatically apply spring forces each step.
 */
-Object.defineProperty(Phaser.Physics.P2.prototype, "applySpringForces", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.prototype, "applySpringForces", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.world.applySpringForces;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.world.applySpringForces = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2#applyDamping
-* @property ***REMOVED***boolean***REMOVED*** applyDamping - Enable to automatically apply body damping each step.
+* @property {boolean} applyDamping - Enable to automatically apply body damping each step.
 */
-Object.defineProperty(Phaser.Physics.P2.prototype, "applyDamping", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.prototype, "applyDamping", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.world.applyDamping;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.world.applyDamping = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2#applyGravity
-* @property ***REMOVED***boolean***REMOVED*** applyGravity - Enable to automatically apply gravity each step.
+* @property {boolean} applyGravity - Enable to automatically apply gravity each step.
 */
-Object.defineProperty(Phaser.Physics.P2.prototype, "applyGravity", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.prototype, "applyGravity", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.world.applyGravity;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.world.applyGravity = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2#solveConstraints
-* @property ***REMOVED***boolean***REMOVED*** solveConstraints - Enable/disable constraint solving in each step.
+* @property {boolean} solveConstraints - Enable/disable constraint solving in each step.
 */
-Object.defineProperty(Phaser.Physics.P2.prototype, "solveConstraints", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.prototype, "solveConstraints", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.world.solveConstraints;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.world.solveConstraints = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2#time
-* @property ***REMOVED***boolean***REMOVED*** time - The World time.
+* @property {boolean} time - The World time.
 * @readonly
 */
-Object.defineProperty(Phaser.Physics.P2.prototype, "time", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.prototype, "time", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.world.time;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2#emitImpactEvent
-* @property ***REMOVED***boolean***REMOVED*** emitImpactEvent - Set to true if you want to the world to emit the "impact" event. Turning this off could improve performance.
+* @property {boolean} emitImpactEvent - Set to true if you want to the world to emit the "impact" event. Turning this off could improve performance.
 */
-Object.defineProperty(Phaser.Physics.P2.prototype, "emitImpactEvent", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.prototype, "emitImpactEvent", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.world.emitImpactEvent;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.world.emitImpactEvent = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * How to deactivate bodies during simulation. Possible modes are: World.NO_SLEEPING, World.BODY_SLEEPING and World.ISLAND_SLEEPING.
 * If sleeping is enabled, you might need to wake up the bodies if they fall asleep when they shouldn't. If you want to enable sleeping in the world, but want to disable it for a particular body, see Body.allowSleep.
 * @name Phaser.Physics.P2#sleepMode
-* @property ***REMOVED***number***REMOVED*** sleepMode
+* @property {number} sleepMode
 */
-Object.defineProperty(Phaser.Physics.P2.prototype, "sleepMode", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.prototype, "sleepMode", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.world.sleepMode;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.world.sleepMode = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2#total
-* @property ***REMOVED***number***REMOVED*** total - The total number of bodies in the world.
+* @property {number} total - The total number of bodies in the world.
 * @readonly
 */
-Object.defineProperty(Phaser.Physics.P2.prototype, "total", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.prototype, "total", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.world.bodies.length;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /* jshint noarg: false */
 
@@ -2054,7 +2054,7 @@ Object.defineProperty(Phaser.Physics.P2.prototype, "total", ***REMOVED***
 * @author       Georgios Kaleadis https://github.com/georgiee
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -2068,222 +2068,222 @@ Object.defineProperty(Phaser.Physics.P2.prototype, "total", ***REMOVED***
 *
 * @class Phaser.Physics.P2.FixtureList
 * @constructor
-* @param ***REMOVED***Array***REMOVED*** list - A list of fixtures (from Phaser.Physics.P2.Body#addPhaserPolygon)
+* @param {Array} list - A list of fixtures (from Phaser.Physics.P2.Body#addPhaserPolygon)
 */
-Phaser.Physics.P2.FixtureList = function (list) ***REMOVED***
+Phaser.Physics.P2.FixtureList = function (list) {
 
     if (!Array.isArray(list))
-    ***REMOVED***
+    {
         list = [list];
-    ***REMOVED***
+    }
 
     this.rawList = list;
     this.init();
     this.parse(this.rawList);
 
-***REMOVED***;
+};
 
-Phaser.Physics.P2.FixtureList.prototype = ***REMOVED***
+Phaser.Physics.P2.FixtureList.prototype = {
   
     /**
     * @method Phaser.Physics.P2.FixtureList#init
     */
-    init: function () ***REMOVED***
+    init: function () {
 
         /**
-        * @property ***REMOVED***object***REMOVED*** namedFixtures - Collect all fixtures with a key
+        * @property {object} namedFixtures - Collect all fixtures with a key
         * @private
         */
-        this.namedFixtures = ***REMOVED******REMOVED***;
+        this.namedFixtures = {};
 
         /**
-        * @property ***REMOVED***Array***REMOVED*** groupedFixtures - Collect all given fixtures per group index. Notice: Every fixture with a key also belongs to a group
+        * @property {Array} groupedFixtures - Collect all given fixtures per group index. Notice: Every fixture with a key also belongs to a group
         * @private
         */
         this.groupedFixtures = [];
 
         /**
-        * @property ***REMOVED***Array***REMOVED*** allFixtures - This is a list of everything in this collection
+        * @property {Array} allFixtures - This is a list of everything in this collection
         * @private
         */
         this.allFixtures = [];
 
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.Physics.P2.FixtureList#setCategory
-    * @param ***REMOVED***number***REMOVED*** bit - The bit to set as the collision group.
-    * @param ***REMOVED***string***REMOVED*** fixtureKey - Only apply to the fixture with the given key.
+    * @param {number} bit - The bit to set as the collision group.
+    * @param {string} fixtureKey - Only apply to the fixture with the given key.
     */
-    setCategory: function (bit, fixtureKey) ***REMOVED***
+    setCategory: function (bit, fixtureKey) {
 
-        var setter = function(fixture) ***REMOVED***
+        var setter = function(fixture) {
             fixture.collisionGroup = bit;
-        ***REMOVED***;
+        };
 
         this.getFixtures(fixtureKey).forEach(setter);
 
-    ***REMOVED***,
+    },
   
     /**
     * @method Phaser.Physics.P2.FixtureList#setMask
-    * @param ***REMOVED***number***REMOVED*** bit - The bit to set as the collision mask
-    * @param ***REMOVED***string***REMOVED*** fixtureKey - Only apply to the fixture with the given key
+    * @param {number} bit - The bit to set as the collision mask
+    * @param {string} fixtureKey - Only apply to the fixture with the given key
     */
-    setMask: function (bit, fixtureKey) ***REMOVED***
+    setMask: function (bit, fixtureKey) {
 
-        var setter = function(fixture) ***REMOVED***
+        var setter = function(fixture) {
             fixture.collisionMask = bit;
-        ***REMOVED***;
+        };
 
         this.getFixtures(fixtureKey).forEach(setter);
 
-    ***REMOVED***,
+    },
   
     /**
     * @method Phaser.Physics.P2.FixtureList#setSensor
-    * @param ***REMOVED***boolean***REMOVED*** value - sensor true or false
-    * @param ***REMOVED***string***REMOVED*** fixtureKey - Only apply to the fixture with the given key
+    * @param {boolean} value - sensor true or false
+    * @param {string} fixtureKey - Only apply to the fixture with the given key
     */
-    setSensor: function (value, fixtureKey) ***REMOVED***
+    setSensor: function (value, fixtureKey) {
 
-        var setter = function(fixture) ***REMOVED***
+        var setter = function(fixture) {
             fixture.sensor = value;
-        ***REMOVED***;
+        };
 
         this.getFixtures(fixtureKey).forEach(setter);
 
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.Physics.P2.FixtureList#setMaterial
-    * @param ***REMOVED***Object***REMOVED*** material - The contact material for a fixture
-    * @param ***REMOVED***string***REMOVED*** fixtureKey - Only apply to the fixture with the given key
+    * @param {Object} material - The contact material for a fixture
+    * @param {string} fixtureKey - Only apply to the fixture with the given key
     */
-    setMaterial: function (material, fixtureKey) ***REMOVED***
+    setMaterial: function (material, fixtureKey) {
 
-        var setter = function(fixture) ***REMOVED***
+        var setter = function(fixture) {
             fixture.material = material;
-        ***REMOVED***;
+        };
 
         this.getFixtures(fixtureKey).forEach(setter);
 
-    ***REMOVED***,
+    },
 
     /**
     * Accessor to get either a list of specified fixtures by key or the whole fixture list
     * 
     * @method Phaser.Physics.P2.FixtureList#getFixtures
-    * @param ***REMOVED***array***REMOVED*** keys - A list of fixture keys
+    * @param {array} keys - A list of fixture keys
     */
-    getFixtures: function (keys) ***REMOVED***
+    getFixtures: function (keys) {
 
         var fixtures = [];
 
         if (keys)
-        ***REMOVED***
+        {
             if (!(keys instanceof Array))
-            ***REMOVED***
+            {
                 keys = [keys];
-            ***REMOVED***
+            }
 
             var self = this;
-            keys.forEach(function(key) ***REMOVED***
+            keys.forEach(function(key) {
                 if (self.namedFixtures[key])
-                ***REMOVED***
+                {
                     fixtures.push(self.namedFixtures[key]);
-                ***REMOVED***
-            ***REMOVED***);
+                }
+            });
 
             return this.flatten(fixtures);
 
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return this.allFixtures;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Accessor to get either a single fixture by its key.
     * 
     * @method Phaser.Physics.P2.FixtureList#getFixtureByKey
-    * @param ***REMOVED***string***REMOVED*** key - The key of the fixture.
+    * @param {string} key - The key of the fixture.
     */
-    getFixtureByKey: function (key) ***REMOVED***
+    getFixtureByKey: function (key) {
 
         return this.namedFixtures[key];
 
-    ***REMOVED***,
+    },
 
     /**
     * Accessor to get a group of fixtures by its group index.
     * 
     * @method Phaser.Physics.P2.FixtureList#getGroup
-    * @param ***REMOVED***number***REMOVED*** groupID - The group index.
+    * @param {number} groupID - The group index.
     */
-    getGroup: function (groupID) ***REMOVED***
+    getGroup: function (groupID) {
 
         return this.groupedFixtures[groupID];
 
-    ***REMOVED***,
+    },
   
     /**
     * Parser for the output of Phaser.Physics.P2.Body#addPhaserPolygon
     * 
     * @method Phaser.Physics.P2.FixtureList#parse
     */
-    parse: function () ***REMOVED***
+    parse: function () {
 
         var key, value, _ref, _results;
         _ref = this.rawList;
         _results = [];
 
         for (key in _ref)
-        ***REMOVED***
+        {
             value = _ref[key];
 
             if (!isNaN(key - 0))
-            ***REMOVED***
+            {
                 this.groupedFixtures[key] = this.groupedFixtures[key] || [];
                 this.groupedFixtures[key] = this.groupedFixtures[key].concat(value);
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this.namedFixtures[key] = this.flatten(value);
-            ***REMOVED***
+            }
 
             _results.push(this.allFixtures = this.flatten(this.groupedFixtures));
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * A helper to flatten arrays. This is very useful as the fixtures are nested from time to time due to the way P2 creates and splits polygons.
     * 
     * @method Phaser.Physics.P2.FixtureList#flatten
-    * @param ***REMOVED***array***REMOVED*** array - The array to flatten. Notice: This will happen recursive not shallow.
+    * @param {array} array - The array to flatten. Notice: This will happen recursive not shallow.
     */
-    flatten: function (array) ***REMOVED***
+    flatten: function (array) {
 
         var result, self;
         result = [];
         self = arguments.callee;
         
-        array.forEach(function(item) ***REMOVED***
+        array.forEach(function(item) {
             return Array.prototype.push.apply(result, (Array.isArray(item) ? self(item) : [item]));
-        ***REMOVED***);
+        });
 
         return result;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -2291,102 +2291,102 @@ Phaser.Physics.P2.FixtureList.prototype = ***REMOVED***
 *
 * @class Phaser.Physics.P2.PointProxy
 * @constructor
-* @param ***REMOVED***Phaser.Physics.P2***REMOVED*** world - A reference to the P2 World.
-* @param ***REMOVED***any***REMOVED*** destination - The object to bind to.
+* @param {Phaser.Physics.P2} world - A reference to the P2 World.
+* @param {any} destination - The object to bind to.
 */
-Phaser.Physics.P2.PointProxy = function (world, destination) ***REMOVED***
+Phaser.Physics.P2.PointProxy = function (world, destination) {
 
     this.world = world;
 	this.destination = destination;
 
-***REMOVED***;
+};
 
 Phaser.Physics.P2.PointProxy.prototype.constructor = Phaser.Physics.P2.PointProxy;
 
 /**
 * @name Phaser.Physics.P2.PointProxy#x
-* @property ***REMOVED***number***REMOVED*** x - The x property of this PointProxy get and set in pixels.
+* @property {number} x - The x property of this PointProxy get and set in pixels.
 */
-Object.defineProperty(Phaser.Physics.P2.PointProxy.prototype, "x", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.PointProxy.prototype, "x", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.world.mpx(this.destination[0]);
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.destination[0] = this.world.pxm(value);
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2.PointProxy#y
-* @property ***REMOVED***number***REMOVED*** y - The y property of this PointProxy get and set in pixels.
+* @property {number} y - The y property of this PointProxy get and set in pixels.
 */
-Object.defineProperty(Phaser.Physics.P2.PointProxy.prototype, "y", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.PointProxy.prototype, "y", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.world.mpx(this.destination[1]);
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.destination[1] = this.world.pxm(value);
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2.PointProxy#mx
-* @property ***REMOVED***number***REMOVED*** mx - The x property of this PointProxy get and set in meters.
+* @property {number} mx - The x property of this PointProxy get and set in meters.
 */
-Object.defineProperty(Phaser.Physics.P2.PointProxy.prototype, "mx", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.PointProxy.prototype, "mx", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.destination[0];
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.destination[0] = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2.PointProxy#my
-* @property ***REMOVED***number***REMOVED*** my - The x property of this PointProxy get and set in meters.
+* @property {number} my - The x property of this PointProxy get and set in meters.
 */
-Object.defineProperty(Phaser.Physics.P2.PointProxy.prototype, "my", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.PointProxy.prototype, "my", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.destination[1];
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.destination[1] = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -2394,102 +2394,102 @@ Object.defineProperty(Phaser.Physics.P2.PointProxy.prototype, "my", ***REMOVED**
 *
 * @class Phaser.Physics.P2.InversePointProxy
 * @constructor
-* @param ***REMOVED***Phaser.Physics.P2***REMOVED*** world - A reference to the P2 World.
-* @param ***REMOVED***any***REMOVED*** destination - The object to bind to.
+* @param {Phaser.Physics.P2} world - A reference to the P2 World.
+* @param {any} destination - The object to bind to.
 */
-Phaser.Physics.P2.InversePointProxy = function (world, destination) ***REMOVED***
+Phaser.Physics.P2.InversePointProxy = function (world, destination) {
 
     this.world = world;
 	this.destination = destination;
 
-***REMOVED***;
+};
 
 Phaser.Physics.P2.InversePointProxy.prototype.constructor = Phaser.Physics.P2.InversePointProxy;
 
 /**
 * @name Phaser.Physics.P2.InversePointProxy#x
-* @property ***REMOVED***number***REMOVED*** x - The x property of this InversePointProxy get and set in pixels.
+* @property {number} x - The x property of this InversePointProxy get and set in pixels.
 */
-Object.defineProperty(Phaser.Physics.P2.InversePointProxy.prototype, "x", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.InversePointProxy.prototype, "x", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.world.mpxi(this.destination[0]);
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.destination[0] = this.world.pxmi(value);
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2.InversePointProxy#y
-* @property ***REMOVED***number***REMOVED*** y - The y property of this InversePointProxy get and set in pixels.
+* @property {number} y - The y property of this InversePointProxy get and set in pixels.
 */
-Object.defineProperty(Phaser.Physics.P2.InversePointProxy.prototype, "y", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.InversePointProxy.prototype, "y", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.world.mpxi(this.destination[1]);
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.destination[1] = this.world.pxmi(value);
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2.InversePointProxy#mx
-* @property ***REMOVED***number***REMOVED*** mx - The x property of this InversePointProxy get and set in meters.
+* @property {number} mx - The x property of this InversePointProxy get and set in meters.
 */
-Object.defineProperty(Phaser.Physics.P2.InversePointProxy.prototype, "mx", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.InversePointProxy.prototype, "mx", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.destination[0];
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.destination[0] = -value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2.InversePointProxy#my
-* @property ***REMOVED***number***REMOVED*** my - The y property of this InversePointProxy get and set in meters.
+* @property {number} my - The y property of this InversePointProxy get and set in meters.
 */
-Object.defineProperty(Phaser.Physics.P2.InversePointProxy.prototype, "my", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.InversePointProxy.prototype, "my", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.destination[1];
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.destination[1] = -value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -2502,64 +2502,64 @@ Object.defineProperty(Phaser.Physics.P2.InversePointProxy.prototype, "my", ***RE
 *
 * @class Phaser.Physics.P2.Body
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - Game reference to the currently running game.
-* @param ***REMOVED***Phaser.Sprite***REMOVED*** [sprite] - The Sprite object this physics body belongs to.
-* @param ***REMOVED***number***REMOVED*** [x=0] - The x coordinate of this Body.
-* @param ***REMOVED***number***REMOVED*** [y=0] - The y coordinate of this Body.
-* @param ***REMOVED***number***REMOVED*** [mass=1] - The default mass of this Body (0 = static).
+* @param {Phaser.Game} game - Game reference to the currently running game.
+* @param {Phaser.Sprite} [sprite] - The Sprite object this physics body belongs to.
+* @param {number} [x=0] - The x coordinate of this Body.
+* @param {number} [y=0] - The y coordinate of this Body.
+* @param {number} [mass=1] - The default mass of this Body (0 = static).
 */
-Phaser.Physics.P2.Body = function (game, sprite, x, y, mass) ***REMOVED***
+Phaser.Physics.P2.Body = function (game, sprite, x, y, mass) {
 
     sprite = sprite || null;
     x = x || 0;
     y = y || 0;
-    if (mass === undefined) ***REMOVED*** mass = 1; ***REMOVED***
+    if (mass === undefined) { mass = 1; }
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - Local reference to game.
+    * @property {Phaser.Game} game - Local reference to game.
     */
     this.game = game;
 
     /**
-    * @property ***REMOVED***Phaser.Physics.P2***REMOVED*** world - Local reference to the P2 World.
+    * @property {Phaser.Physics.P2} world - Local reference to the P2 World.
     */
     this.world = game.physics.p2;
 
     /**
-    * @property ***REMOVED***Phaser.Sprite***REMOVED*** sprite - Reference to the parent Sprite.
+    * @property {Phaser.Sprite} sprite - Reference to the parent Sprite.
     */
     this.sprite = sprite;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** type - The type of physics system this body belongs to.
+    * @property {number} type - The type of physics system this body belongs to.
     */
     this.type = Phaser.Physics.P2JS;
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** offset - The offset of the Physics Body from the Sprite x/y position.
+    * @property {Phaser.Point} offset - The offset of the Physics Body from the Sprite x/y position.
     */
     this.offset = new Phaser.Point();
 
     /**
-    * @property ***REMOVED***p2.Body***REMOVED*** data - The p2 Body data.
+    * @property {p2.Body} data - The p2 Body data.
     * @protected
     */
-    this.data = new p2.Body(***REMOVED*** position: [ this.world.pxmi(x), this.world.pxmi(y) ], mass: mass ***REMOVED***);
+    this.data = new p2.Body({ position: [ this.world.pxmi(x), this.world.pxmi(y) ], mass: mass });
 
     this.data.parent = this;
 
     /**
-    * @property ***REMOVED***Phaser.Physics.P2.InversePointProxy***REMOVED*** velocity - The velocity of the body. Set velocity.x to a negative value to move to the left, position to the right. velocity.y negative values move up, positive move down.
+    * @property {Phaser.Physics.P2.InversePointProxy} velocity - The velocity of the body. Set velocity.x to a negative value to move to the left, position to the right. velocity.y negative values move up, positive move down.
     */
     this.velocity = new Phaser.Physics.P2.InversePointProxy(this.world, this.data.velocity);
 
     /**
-    * @property ***REMOVED***Phaser.Physics.P2.InversePointProxy***REMOVED*** force - The force applied to the body.
+    * @property {Phaser.Physics.P2.InversePointProxy} force - The force applied to the body.
     */
     this.force = new Phaser.Physics.P2.InversePointProxy(this.world, this.data.force);
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** gravity - A locally applied gravity force to the Body. Applied directly before the world step. NOTE: Not currently implemented.
+    * @property {Phaser.Point} gravity - A locally applied gravity force to the Body. Applied directly before the world step. NOTE: Not currently implemented.
     */
     this.gravity = new Phaser.Point();
 
@@ -2575,7 +2575,7 @@ Phaser.Physics.P2.Body = function (game, sprite, x, y, mass) ***REMOVED***
     * The Shape from the contact body.
     * The Contact Equation data array.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onBeginContact
+    * @property {Phaser.Signal} onBeginContact
     */
     this.onBeginContact = new Phaser.Signal();
 
@@ -2590,80 +2590,80 @@ Phaser.Physics.P2.Body = function (game, sprite, x, y, mass) ***REMOVED***
     * The Shape from this body that caused the original contact.
     * The Shape from the contact body.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onEndContact
+    * @property {Phaser.Signal} onEndContact
     */
     this.onEndContact = new Phaser.Signal();
 
     /**
-    * @property ***REMOVED***array***REMOVED*** collidesWith - Array of CollisionGroups that this Bodies shapes collide with.
+    * @property {array} collidesWith - Array of CollisionGroups that this Bodies shapes collide with.
     */
     this.collidesWith = [];
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** removeNextStep - To avoid deleting this body during a physics step, and causing all kinds of problems, set removeNextStep to true to have it removed in the next preUpdate.
+    * @property {boolean} removeNextStep - To avoid deleting this body during a physics step, and causing all kinds of problems, set removeNextStep to true to have it removed in the next preUpdate.
     */
     this.removeNextStep = false;
 
     /**
-    * @property ***REMOVED***Phaser.Physics.P2.BodyDebug***REMOVED*** debugBody - Reference to the debug body.
+    * @property {Phaser.Physics.P2.BodyDebug} debugBody - Reference to the debug body.
     */
     this.debugBody = null;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** dirty - Internally used by Sprite.x/y
+    * @property {boolean} dirty - Internally used by Sprite.x/y
     */
     this.dirty = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _collideWorldBounds - Internal var that determines if this Body collides with the world bounds or not.
+    * @property {boolean} _collideWorldBounds - Internal var that determines if this Body collides with the world bounds or not.
     * @private
     */
     this._collideWorldBounds = true;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** _bodyCallbacks - Array of Body callbacks.
+    * @property {object} _bodyCallbacks - Array of Body callbacks.
     * @private
     */
-    this._bodyCallbacks = ***REMOVED******REMOVED***;
+    this._bodyCallbacks = {};
 
     /**
-    * @property ***REMOVED***object***REMOVED*** _bodyCallbackContext - Array of Body callback contexts.
+    * @property {object} _bodyCallbackContext - Array of Body callback contexts.
     * @private
     */
-    this._bodyCallbackContext = ***REMOVED******REMOVED***;
+    this._bodyCallbackContext = {};
 
     /**
-    * @property ***REMOVED***object***REMOVED*** _groupCallbacks - Array of Group callbacks.
+    * @property {object} _groupCallbacks - Array of Group callbacks.
     * @private
     */
-    this._groupCallbacks = ***REMOVED******REMOVED***;
+    this._groupCallbacks = {};
 
     /**
-    * @property ***REMOVED***object***REMOVED*** _bodyCallbackContext - Array of Grouo callback contexts.
+    * @property {object} _bodyCallbackContext - Array of Grouo callback contexts.
     * @private
     */
-    this._groupCallbackContext = ***REMOVED******REMOVED***;
+    this._groupCallbackContext = {};
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _reset - Internal var.
+    * @property {boolean} _reset - Internal var.
     * @private
     */
     this._reset = false;
 
     //  Set-up the default shape
     if (sprite)
-    ***REMOVED***
+    {
         this.setRectangleFromSprite(sprite);
 
         if (sprite.exists)
-        ***REMOVED***
+        {
             this.game.physics.p2.addBody(this);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
-***REMOVED***;
+};
 
-Phaser.Physics.P2.Body.prototype = ***REMOVED***
+Phaser.Physics.P2.Body.prototype = {
 
     /**
     * Sets a callback to be fired any time a shape in this Body impacts with a shape in the given Body. The impact test is performed against body.id values.
@@ -2672,38 +2672,38 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
     * It also happens mid-step. So do not destroy a Body during this callback, instead set safeDestroy to true so it will be killed on the next preUpdate.
     *
     * @method Phaser.Physics.P2.Body#createBodyCallback
-    * @param ***REMOVED***Phaser.Sprite|Phaser.TileSprite|Phaser.Physics.P2.Body|p2.Body***REMOVED*** object - The object to send impact events for.
-    * @param ***REMOVED***function***REMOVED*** callback - The callback to fire on impact. Set to null to clear a previously set callback.
-    * @param ***REMOVED***object***REMOVED*** callbackContext - The context under which the callback will fire.
+    * @param {Phaser.Sprite|Phaser.TileSprite|Phaser.Physics.P2.Body|p2.Body} object - The object to send impact events for.
+    * @param {function} callback - The callback to fire on impact. Set to null to clear a previously set callback.
+    * @param {object} callbackContext - The context under which the callback will fire.
     */
-    createBodyCallback: function (object, callback, callbackContext) ***REMOVED***
+    createBodyCallback: function (object, callback, callbackContext) {
 
         var id = -1;
 
         if (object['id'])
-        ***REMOVED***
+        {
             id = object.id;
-        ***REMOVED***
+        }
         else if (object['body'])
-        ***REMOVED***
+        {
             id = object.body.id;
-        ***REMOVED***
+        }
 
         if (id > -1)
-        ***REMOVED***
+        {
             if (callback === null)
-            ***REMOVED***
+            {
                 delete (this._bodyCallbacks[id]);
                 delete (this._bodyCallbackContext[id]);
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this._bodyCallbacks[id] = callback;
                 this._bodyCallbackContext[id] = callbackContext;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets a callback to be fired any time this Body impacts with the given Group. The impact test is performed against shape.collisionGroup values.
@@ -2713,305 +2713,305 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
     * It also happens mid-step. So do not destroy a Body during this callback, instead set safeDestroy to true so it will be killed on the next preUpdate.
     *
     * @method Phaser.Physics.P2.Body#createGroupCallback
-    * @param ***REMOVED***Phaser.Physics.CollisionGroup***REMOVED*** group - The Group to send impact events for.
-    * @param ***REMOVED***function***REMOVED*** callback - The callback to fire on impact. Set to null to clear a previously set callback.
-    * @param ***REMOVED***object***REMOVED*** callbackContext - The context under which the callback will fire.
+    * @param {Phaser.Physics.CollisionGroup} group - The Group to send impact events for.
+    * @param {function} callback - The callback to fire on impact. Set to null to clear a previously set callback.
+    * @param {object} callbackContext - The context under which the callback will fire.
     */
-    createGroupCallback: function (group, callback, callbackContext) ***REMOVED***
+    createGroupCallback: function (group, callback, callbackContext) {
 
         if (callback === null)
-        ***REMOVED***
+        {
             delete (this._groupCallbacks[group.mask]);
             delete (this._groupCallbackContext[group.mask]);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this._groupCallbacks[group.mask] = callback;
             this._groupCallbackContext[group.mask] = callbackContext;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Gets the collision bitmask from the groups this body collides with.
     *
     * @method Phaser.Physics.P2.Body#getCollisionMask
-    * @return ***REMOVED***number***REMOVED*** The bitmask.
+    * @return {number} The bitmask.
     */
-    getCollisionMask: function () ***REMOVED***
+    getCollisionMask: function () {
 
         var mask = 0;
 
         if (this._collideWorldBounds)
-        ***REMOVED***
+        {
             mask = this.game.physics.p2.boundsCollisionGroup.mask;
-        ***REMOVED***
+        }
 
         for (var i = 0; i < this.collidesWith.length; i++)
-        ***REMOVED***
+        {
             mask = mask | this.collidesWith[i].mask;
-        ***REMOVED***
+        }
 
         return mask;
 
-    ***REMOVED***,
+    },
 
     /**
     * Updates the collisionMask.
     *
     * @method Phaser.Physics.P2.Body#updateCollisionMask
-    * @param ***REMOVED***p2.Shape***REMOVED*** [shape] - An optional Shape. If not provided the collision group will be added to all Shapes in this Body.
+    * @param {p2.Shape} [shape] - An optional Shape. If not provided the collision group will be added to all Shapes in this Body.
     */
-    updateCollisionMask: function (shape) ***REMOVED***
+    updateCollisionMask: function (shape) {
 
         var mask = this.getCollisionMask();
 
         if (shape === undefined)
-        ***REMOVED***
+        {
             for (var i = this.data.shapes.length - 1; i >= 0; i--)
-            ***REMOVED***
+            {
                 this.data.shapes[i].collisionMask = mask;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             shape.collisionMask = mask;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the given CollisionGroup to be the collision group for all shapes in this Body, unless a shape is specified.
     * This also resets the collisionMask.
     *
     * @method Phaser.Physics.P2.Body#setCollisionGroup
-    * @param ***REMOVED***Phaser.Physics.CollisionGroup***REMOVED*** group - The Collision Group that this Bodies shapes will use.
-    * @param ***REMOVED***p2.Shape***REMOVED*** [shape] - An optional Shape. If not provided the collision group will be added to all Shapes in this Body.
+    * @param {Phaser.Physics.CollisionGroup} group - The Collision Group that this Bodies shapes will use.
+    * @param {p2.Shape} [shape] - An optional Shape. If not provided the collision group will be added to all Shapes in this Body.
     */
-    setCollisionGroup: function (group, shape) ***REMOVED***
+    setCollisionGroup: function (group, shape) {
 
         var mask = this.getCollisionMask();
 
         if (shape === undefined)
-        ***REMOVED***
+        {
             for (var i = this.data.shapes.length - 1; i >= 0; i--)
-            ***REMOVED***
+            {
                 this.data.shapes[i].collisionGroup = group.mask;
                 this.data.shapes[i].collisionMask = mask;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             shape.collisionGroup = group.mask;
             shape.collisionMask = mask;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Clears the collision data from the shapes in this Body. Optionally clears Group and/or Mask.
     *
     * @method Phaser.Physics.P2.Body#clearCollision
-    * @param ***REMOVED***boolean***REMOVED*** [clearGroup=true] - Clear the collisionGroup value from the shape/s?
-    * @param ***REMOVED***boolean***REMOVED*** [clearMask=true] - Clear the collisionMask value from the shape/s?
-    * @param ***REMOVED***p2.Shape***REMOVED*** [shape] - An optional Shape. If not provided the collision data will be cleared from all Shapes in this Body.
+    * @param {boolean} [clearGroup=true] - Clear the collisionGroup value from the shape/s?
+    * @param {boolean} [clearMask=true] - Clear the collisionMask value from the shape/s?
+    * @param {p2.Shape} [shape] - An optional Shape. If not provided the collision data will be cleared from all Shapes in this Body.
     */
-    clearCollision: function (clearGroup, clearMask, shape) ***REMOVED***
+    clearCollision: function (clearGroup, clearMask, shape) {
 
-        if (clearGroup === undefined) ***REMOVED*** clearGroup = true; ***REMOVED***
-        if (clearMask === undefined) ***REMOVED*** clearMask = true; ***REMOVED***
+        if (clearGroup === undefined) { clearGroup = true; }
+        if (clearMask === undefined) { clearMask = true; }
 
         if (shape === undefined)
-        ***REMOVED***
+        {
             for (var i = this.data.shapes.length - 1; i >= 0; i--)
-            ***REMOVED***
+            {
                 if (clearGroup)
-                ***REMOVED***
+                {
                     this.data.shapes[i].collisionGroup = null;
-                ***REMOVED***
+                }
 
                 if (clearMask)
-                ***REMOVED***
+                {
                     this.data.shapes[i].collisionMask = null;
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
         else
-        ***REMOVED***
+        {
             if (clearGroup)
-            ***REMOVED***
+            {
                 shape.collisionGroup = null;
-            ***REMOVED***
+            }
 
             if (clearMask)
-            ***REMOVED***
+            {
                 shape.collisionMask = null;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         if (clearGroup)
-        ***REMOVED***
+        {
             this.collidesWith.length = 0;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Removes the given CollisionGroup, or array of CollisionGroups, from the list of groups that this body will collide with and updates the collision masks.
     *
     * @method Phaser.Physics.P2.Body#removeCollisionGroup
-    * @param ***REMOVED***Phaser.Physics.CollisionGroup|array***REMOVED*** group - The Collision Group or Array of Collision Groups that this Bodies shapes should not collide with anymore.
-    * @param ***REMOVED***boolean***REMOVED*** [clearCallback=true] - Clear the callback that will be triggered when this Body impacts with the given Group?
-    * @param ***REMOVED***p2.Shape***REMOVED*** [shape] - An optional Shape. If not provided the updated collision mask will be added to all Shapes in this Body.
+    * @param {Phaser.Physics.CollisionGroup|array} group - The Collision Group or Array of Collision Groups that this Bodies shapes should not collide with anymore.
+    * @param {boolean} [clearCallback=true] - Clear the callback that will be triggered when this Body impacts with the given Group?
+    * @param {p2.Shape} [shape] - An optional Shape. If not provided the updated collision mask will be added to all Shapes in this Body.
     */
-    removeCollisionGroup: function (group, clearCallback, shape) ***REMOVED***
+    removeCollisionGroup: function (group, clearCallback, shape) {
 
-        if (clearCallback === undefined) ***REMOVED*** clearCallback = true; ***REMOVED***
+        if (clearCallback === undefined) { clearCallback = true; }
 
         var index;
 
         if (Array.isArray(group))
-        ***REMOVED***
+        {
             for (var i = 0; i < group.length; i++)
-            ***REMOVED***
+            {
                 index = this.collidesWith.indexOf(group[i]);
 
                 if (index > -1)
-                ***REMOVED***
+                {
                     this.collidesWith.splice(index, 1);
 
                     if (clearCallback)
-                    ***REMOVED***
+                    {
                         delete (this._groupCallbacks[group.mask]);
                         delete (this._groupCallbackContext[group.mask]);
-                    ***REMOVED***
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                    }
+                }
+            }
+        }
         else
-        ***REMOVED***
+        {
             index = this.collidesWith.indexOf(group);
 
             if (index > -1)
-            ***REMOVED***
+            {
                 this.collidesWith.splice(index, 1);
 
                 if (clearCallback)
-                ***REMOVED***
+                {
                     delete (this._groupCallbacks[group.mask]);
                     delete (this._groupCallbackContext[group.mask]);
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
 
         var mask = this.getCollisionMask();
 
         if (shape === undefined)
-        ***REMOVED***
+        {
             for (var i = this.data.shapes.length - 1; i >= 0; i--)
-            ***REMOVED***
+            {
                 this.data.shapes[i].collisionMask = mask;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             shape.collisionMask = mask;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds the given CollisionGroup, or array of CollisionGroups, to the list of groups that this body will collide with and updates the collision masks.
     *
     * @method Phaser.Physics.P2.Body#collides
-    * @param ***REMOVED***Phaser.Physics.CollisionGroup|array***REMOVED*** group - The Collision Group or Array of Collision Groups that this Bodies shapes will collide with.
-    * @param ***REMOVED***function***REMOVED*** [callback] - Optional callback that will be triggered when this Body impacts with the given Group.
-    * @param ***REMOVED***object***REMOVED*** [callbackContext] - The context under which the callback will be called.
-    * @param ***REMOVED***p2.Shape***REMOVED*** [shape] - An optional Shape. If not provided the collision mask will be added to all Shapes in this Body.
+    * @param {Phaser.Physics.CollisionGroup|array} group - The Collision Group or Array of Collision Groups that this Bodies shapes will collide with.
+    * @param {function} [callback] - Optional callback that will be triggered when this Body impacts with the given Group.
+    * @param {object} [callbackContext] - The context under which the callback will be called.
+    * @param {p2.Shape} [shape] - An optional Shape. If not provided the collision mask will be added to all Shapes in this Body.
     */
-    collides: function (group, callback, callbackContext, shape) ***REMOVED***
+    collides: function (group, callback, callbackContext, shape) {
 
         if (Array.isArray(group))
-        ***REMOVED***
+        {
             for (var i = 0; i < group.length; i++)
-            ***REMOVED***
+            {
                 if (this.collidesWith.indexOf(group[i]) === -1)
-                ***REMOVED***
+                {
                     this.collidesWith.push(group[i]);
 
                     if (callback)
-                    ***REMOVED***
+                    {
                         this.createGroupCallback(group[i], callback, callbackContext);
-                    ***REMOVED***
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                    }
+                }
+            }
+        }
         else
-        ***REMOVED***
+        {
             if (this.collidesWith.indexOf(group) === -1)
-            ***REMOVED***
+            {
                 this.collidesWith.push(group);
 
                 if (callback)
-                ***REMOVED***
+                {
                     this.createGroupCallback(group, callback, callbackContext);
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
 
         var mask = this.getCollisionMask();
 
         if (shape === undefined)
-        ***REMOVED***
+        {
             for (var i = this.data.shapes.length - 1; i >= 0; i--)
-            ***REMOVED***
+            {
                 this.data.shapes[i].collisionMask = mask;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             shape.collisionMask = mask;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Moves the shape offsets so their center of mass becomes the body center of mass.
     *
     * @method Phaser.Physics.P2.Body#adjustCenterOfMass
     */
-    adjustCenterOfMass: function () ***REMOVED***
+    adjustCenterOfMass: function () {
 
         this.data.adjustCenterOfMass();
         this.shapeChanged();
 
-    ***REMOVED***,
+    },
 
     /**
     * Gets the velocity of a point in the body.
     *
     * @method Phaser.Physics.P2.Body#getVelocityAtPoint
-    * @param ***REMOVED***Array***REMOVED*** result - A vector to store the result in.
-    * @param ***REMOVED***Array***REMOVED*** relativePoint - A world oriented vector, indicating the position of the point to get the velocity from.
-    * @return ***REMOVED***Array***REMOVED*** The result vector.
+    * @param {Array} result - A vector to store the result in.
+    * @param {Array} relativePoint - A world oriented vector, indicating the position of the point to get the velocity from.
+    * @return {Array} The result vector.
     */
-    getVelocityAtPoint: function (result, relativePoint) ***REMOVED***
+    getVelocityAtPoint: function (result, relativePoint) {
 
         return this.data.getVelocityAtPoint(result, relativePoint);
 
-    ***REMOVED***,
+    },
 
     /**
     * Apply damping, see http://code.google.com/p/bullet/issues/detail?id=74 for details.
     *
     * @method Phaser.Physics.P2.Body#applyDamping
-    * @param ***REMOVED***number***REMOVED*** dt - Current time step.
+    * @param {number} dt - Current time step.
     */
-    applyDamping: function (dt) ***REMOVED***
+    applyDamping: function (dt) {
 
         this.data.applyDamping(dt);
 
-    ***REMOVED***,
+    },
 
     /**
     * Apply impulse to a point relative to the body.
@@ -3019,15 +3019,15 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
     * period of time (impulse = force * time). Impulses will be added to Body.velocity and Body.angularVelocity.
     *
     * @method Phaser.Physics.P2.Body#applyImpulse
-    * @param ***REMOVED***Float32Array|Array***REMOVED*** impulse - The impulse vector to add, oriented in world space.
-    * @param ***REMOVED***number***REMOVED*** worldX - A point relative to the body in world space. If not given, it is set to zero and all of the impulse will be exerted on the center of mass.
-    * @param ***REMOVED***number***REMOVED*** worldY - A point relative to the body in world space. If not given, it is set to zero and all of the impulse will be exerted on the center of mass.
+    * @param {Float32Array|Array} impulse - The impulse vector to add, oriented in world space.
+    * @param {number} worldX - A point relative to the body in world space. If not given, it is set to zero and all of the impulse will be exerted on the center of mass.
+    * @param {number} worldY - A point relative to the body in world space. If not given, it is set to zero and all of the impulse will be exerted on the center of mass.
     */
-    applyImpulse: function (impulse, worldX, worldY) ***REMOVED***
+    applyImpulse: function (impulse, worldX, worldY) {
 
         this.data.applyImpulse(impulse, [this.world.pxmi(worldX), this.world.pxmi(worldY)]);
 
-    ***REMOVED***,
+    },
 
     /**
     * Apply impulse to a point local to the body.
@@ -3036,15 +3036,15 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
     * period of time (impulse = force * time). Impulses will be added to Body.velocity and Body.angularVelocity.
     *
     * @method Phaser.Physics.P2.Body#applyImpulseLocal
-    * @param ***REMOVED***Float32Array|Array***REMOVED*** impulse - The impulse vector to add, oriented in local space.
-    * @param ***REMOVED***number***REMOVED*** localX - A local point on the body.
-    * @param ***REMOVED***number***REMOVED*** localY - A local point on the body.
+    * @param {Float32Array|Array} impulse - The impulse vector to add, oriented in local space.
+    * @param {number} localX - A local point on the body.
+    * @param {number} localY - A local point on the body.
     */
-    applyImpulseLocal: function (impulse, localX, localY) ***REMOVED***
+    applyImpulseLocal: function (impulse, localX, localY) {
 
         this.data.applyImpulseLocal(impulse, [this.world.pxmi(localX), this.world.pxmi(localY)]);
 
-    ***REMOVED***,
+    },
 
     /**
     * Apply force to a world point.
@@ -3053,120 +3053,120 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
     * this way will add to Body.force and Body.angularForce.
     *
     * @method Phaser.Physics.P2.Body#applyForce
-    * @param ***REMOVED***Float32Array|Array***REMOVED*** force - The force vector to add.
-    * @param ***REMOVED***number***REMOVED*** worldX - The world x point to apply the force on.
-    * @param ***REMOVED***number***REMOVED*** worldY - The world y point to apply the force on.
+    * @param {Float32Array|Array} force - The force vector to add.
+    * @param {number} worldX - The world x point to apply the force on.
+    * @param {number} worldY - The world y point to apply the force on.
     */
-    applyForce: function (force, worldX, worldY) ***REMOVED***
+    applyForce: function (force, worldX, worldY) {
 
         this.data.applyForce(force, [this.world.pxmi(worldX), this.world.pxmi(worldY)]);
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the force on the body to zero.
     *
     * @method Phaser.Physics.P2.Body#setZeroForce
     */
-    setZeroForce: function () ***REMOVED***
+    setZeroForce: function () {
 
         this.data.setZeroForce();
 
-    ***REMOVED***,
+    },
 
     /**
     * If this Body is dynamic then this will zero its angular velocity.
     *
     * @method Phaser.Physics.P2.Body#setZeroRotation
     */
-    setZeroRotation: function () ***REMOVED***
+    setZeroRotation: function () {
 
         this.data.angularVelocity = 0;
 
-    ***REMOVED***,
+    },
 
     /**
     * If this Body is dynamic then this will zero its velocity on both axis.
     *
     * @method Phaser.Physics.P2.Body#setZeroVelocity
     */
-    setZeroVelocity: function () ***REMOVED***
+    setZeroVelocity: function () {
 
         this.data.velocity[0] = 0;
         this.data.velocity[1] = 0;
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the Body damping and angularDamping to zero.
     *
     * @method Phaser.Physics.P2.Body#setZeroDamping
     */
-    setZeroDamping: function () ***REMOVED***
+    setZeroDamping: function () {
 
         this.data.damping = 0;
         this.data.angularDamping = 0;
 
-    ***REMOVED***,
+    },
 
     /**
     * Transform a world point to local body frame.
     *
     * @method Phaser.Physics.P2.Body#toLocalFrame
-    * @param ***REMOVED***Float32Array|Array***REMOVED*** out - The vector to store the result in.
-    * @param ***REMOVED***Float32Array|Array***REMOVED*** worldPoint - The input world vector.
+    * @param {Float32Array|Array} out - The vector to store the result in.
+    * @param {Float32Array|Array} worldPoint - The input world vector.
     */
-    toLocalFrame: function (out, worldPoint) ***REMOVED***
+    toLocalFrame: function (out, worldPoint) {
 
         return this.data.toLocalFrame(out, worldPoint);
 
-    ***REMOVED***,
+    },
 
     /**
     * Transform a local point to world frame.
     *
     * @method Phaser.Physics.P2.Body#toWorldFrame
-    * @param ***REMOVED***Array***REMOVED*** out - The vector to store the result in.
-    * @param ***REMOVED***Array***REMOVED*** localPoint - The input local vector.
+    * @param {Array} out - The vector to store the result in.
+    * @param {Array} localPoint - The input local vector.
     */
-    toWorldFrame: function (out, localPoint) ***REMOVED***
+    toWorldFrame: function (out, localPoint) {
 
         return this.data.toWorldFrame(out, localPoint);
 
-    ***REMOVED***,
+    },
 
     /**
     * This will rotate the Body by the given speed to the left (counter-clockwise).
     *
     * @method Phaser.Physics.P2.Body#rotateLeft
-    * @param ***REMOVED***number***REMOVED*** speed - The speed at which it should rotate.
+    * @param {number} speed - The speed at which it should rotate.
     */
-    rotateLeft: function (speed) ***REMOVED***
+    rotateLeft: function (speed) {
 
         this.data.angularVelocity = this.world.pxm(-speed);
 
-    ***REMOVED***,
+    },
 
     /**
     * This will rotate the Body by the given speed to the left (clockwise).
     *
     * @method Phaser.Physics.P2.Body#rotateRight
-    * @param ***REMOVED***number***REMOVED*** speed - The speed at which it should rotate.
+    * @param {number} speed - The speed at which it should rotate.
     */
-    rotateRight: function (speed) ***REMOVED***
+    rotateRight: function (speed) {
 
         this.data.angularVelocity = this.world.pxm(speed);
 
-    ***REMOVED***,
+    },
 
     /**
     * Moves the Body forwards based on its current angle and the given speed.
     * The speed is represented in pixels per second. So a value of 100 would move 100 pixels in 1 second (1000ms).
     *
     * @method Phaser.Physics.P2.Body#moveForward
-    * @param ***REMOVED***number***REMOVED*** speed - The speed at which it should move forwards.
+    * @param {number} speed - The speed at which it should move forwards.
     */
-    moveForward: function (speed) ***REMOVED***
+    moveForward: function (speed) {
 
         var magnitude = this.world.pxmi(-speed);
         var angle = this.data.angle + Math.PI / 2;
@@ -3174,16 +3174,16 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
         this.data.velocity[0] = magnitude * Math.cos(angle);
         this.data.velocity[1] = magnitude * Math.sin(angle);
 
-    ***REMOVED***,
+    },
 
     /**
     * Moves the Body backwards based on its current angle and the given speed.
     * The speed is represented in pixels per second. So a value of 100 would move 100 pixels in 1 second (1000ms).
     *
     * @method Phaser.Physics.P2.Body#moveBackward
-    * @param ***REMOVED***number***REMOVED*** speed - The speed at which it should move backwards.
+    * @param {number} speed - The speed at which it should move backwards.
     */
-    moveBackward: function (speed) ***REMOVED***
+    moveBackward: function (speed) {
 
         var magnitude = this.world.pxmi(-speed);
         var angle = this.data.angle + Math.PI / 2;
@@ -3191,16 +3191,16 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
         this.data.velocity[0] = -(magnitude * Math.cos(angle));
         this.data.velocity[1] = -(magnitude * Math.sin(angle));
 
-    ***REMOVED***,
+    },
 
     /**
     * Applies a force to the Body that causes it to 'thrust' forwards, based on its current angle and the given speed.
     * The speed is represented in pixels per second. So a value of 100 would move 100 pixels in 1 second (1000ms).
     *
     * @method Phaser.Physics.P2.Body#thrust
-    * @param ***REMOVED***number***REMOVED*** speed - The speed at which it should thrust.
+    * @param {number} speed - The speed at which it should thrust.
     */
-    thrust: function (speed) ***REMOVED***
+    thrust: function (speed) {
 
         var magnitude = this.world.pxmi(-speed);
         var angle = this.data.angle + Math.PI / 2;
@@ -3208,16 +3208,16 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
         this.data.force[0] += magnitude * Math.cos(angle);
         this.data.force[1] += magnitude * Math.sin(angle);
 
-    ***REMOVED***,
+    },
 
     /**
     * Applies a force to the Body that causes it to 'thrust' to the left, based on its current angle and the given speed.
     * The speed is represented in pixels per second. So a value of 100 would move 100 pixels in 1 second (1000ms).
     *
     * @method Phaser.Physics.P2.Body#thrustLeft
-    * @param ***REMOVED***number***REMOVED*** speed - The speed at which it should move to the left.
+    * @param {number} speed - The speed at which it should move to the left.
     */
-    thrustLeft: function (speed) ***REMOVED***
+    thrustLeft: function (speed) {
 
         var magnitude = this.world.pxmi(-speed);
         var angle = this.data.angle;
@@ -3225,16 +3225,16 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
         this.data.force[0] += magnitude * Math.cos(angle);
         this.data.force[1] += magnitude * Math.sin(angle);
 
-    ***REMOVED***,
+    },
 
     /**
     * Applies a force to the Body that causes it to 'thrust' to the right, based on its current angle and the given speed.
     * The speed is represented in pixels per second. So a value of 100 would move 100 pixels in 1 second (1000ms).
     *
     * @method Phaser.Physics.P2.Body#thrustRight
-    * @param ***REMOVED***number***REMOVED*** speed - The speed at which it should move to the right.
+    * @param {number} speed - The speed at which it should move to the right.
     */
-    thrustRight: function (speed) ***REMOVED***
+    thrustRight: function (speed) {
 
         var magnitude = this.world.pxmi(-speed);
         var angle = this.data.angle;
@@ -3242,16 +3242,16 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
         this.data.force[0] -= magnitude * Math.cos(angle);
         this.data.force[1] -= magnitude * Math.sin(angle);
 
-    ***REMOVED***,
+    },
 
     /**
     * Applies a force to the Body that causes it to 'thrust' backwards (in reverse), based on its current angle and the given speed.
     * The speed is represented in pixels per second. So a value of 100 would move 100 pixels in 1 second (1000ms).
     *
     * @method Phaser.Physics.P2.Body#reverse
-    * @param ***REMOVED***number***REMOVED*** speed - The speed at which it should reverse.
+    * @param {number} speed - The speed at which it should reverse.
     */
-    reverse: function (speed) ***REMOVED***
+    reverse: function (speed) {
 
         var magnitude = this.world.pxmi(-speed);
         var angle = this.data.angle + Math.PI / 2;
@@ -3259,59 +3259,59 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
         this.data.force[0] -= magnitude * Math.cos(angle);
         this.data.force[1] -= magnitude * Math.sin(angle);
 
-    ***REMOVED***,
+    },
 
     /**
     * If this Body is dynamic then this will move it to the left by setting its x velocity to the given speed.
     * The speed is represented in pixels per second. So a value of 100 would move 100 pixels in 1 second (1000ms).
     *
     * @method Phaser.Physics.P2.Body#moveLeft
-    * @param ***REMOVED***number***REMOVED*** speed - The speed at which it should move to the left, in pixels per second.
+    * @param {number} speed - The speed at which it should move to the left, in pixels per second.
     */
-    moveLeft: function (speed) ***REMOVED***
+    moveLeft: function (speed) {
 
         this.data.velocity[0] = this.world.pxmi(-speed);
 
-    ***REMOVED***,
+    },
 
     /**
     * If this Body is dynamic then this will move it to the right by setting its x velocity to the given speed.
     * The speed is represented in pixels per second. So a value of 100 would move 100 pixels in 1 second (1000ms).
     *
     * @method Phaser.Physics.P2.Body#moveRight
-    * @param ***REMOVED***number***REMOVED*** speed - The speed at which it should move to the right, in pixels per second.
+    * @param {number} speed - The speed at which it should move to the right, in pixels per second.
     */
-    moveRight: function (speed) ***REMOVED***
+    moveRight: function (speed) {
 
         this.data.velocity[0] = this.world.pxmi(speed);
 
-    ***REMOVED***,
+    },
 
     /**
     * If this Body is dynamic then this will move it up by setting its y velocity to the given speed.
     * The speed is represented in pixels per second. So a value of 100 would move 100 pixels in 1 second (1000ms).
     *
     * @method Phaser.Physics.P2.Body#moveUp
-    * @param ***REMOVED***number***REMOVED*** speed - The speed at which it should move up, in pixels per second.
+    * @param {number} speed - The speed at which it should move up, in pixels per second.
     */
-    moveUp: function (speed) ***REMOVED***
+    moveUp: function (speed) {
 
         this.data.velocity[1] = this.world.pxmi(-speed);
 
-    ***REMOVED***,
+    },
 
     /**
     * If this Body is dynamic then this will move it down by setting its y velocity to the given speed.
     * The speed is represented in pixels per second. So a value of 100 would move 100 pixels in 1 second (1000ms).
     *
     * @method Phaser.Physics.P2.Body#moveDown
-    * @param ***REMOVED***number***REMOVED*** speed - The speed at which it should move down, in pixels per second.
+    * @param {number} speed - The speed at which it should move down, in pixels per second.
     */
-    moveDown: function (speed) ***REMOVED***
+    moveDown: function (speed) {
 
         this.data.velocity[1] = this.world.pxmi(speed);
 
-    ***REMOVED***,
+    },
 
     /**
     * Internal method. This is called directly before the sprites are sent to the renderer and after the update function has finished.
@@ -3319,17 +3319,17 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
     * @method Phaser.Physics.P2.Body#preUpdate
     * @protected
     */
-    preUpdate: function () ***REMOVED***
+    preUpdate: function () {
 
         this.dirty = true;
 
         if (this.removeNextStep)
-        ***REMOVED***
+        {
             this.removeFromWorld();
             this.removeNextStep = false;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Internal method. This is called directly before the sprites are sent to the renderer and after the update function has finished.
@@ -3337,145 +3337,145 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
     * @method Phaser.Physics.P2.Body#postUpdate
     * @protected
     */
-    postUpdate: function () ***REMOVED***
+    postUpdate: function () {
 
         this.sprite.x = this.world.mpxi(this.data.position[0]) + this.offset.x;
         this.sprite.y = this.world.mpxi(this.data.position[1]) + this.offset.y;
 
         if (!this.fixedRotation)
-        ***REMOVED***
+        {
             this.sprite.rotation = this.data.angle;
-        ***REMOVED***
+        }
 
         if (this.debugBody)
-        ***REMOVED***
+        {
             this.debugBody.updateSpriteTransform();
-        ***REMOVED***
+        }
 
         this.dirty = false;
 
-    ***REMOVED***,
+    },
 
     /**
     * Resets the Body force, velocity (linear and angular) and rotation. Optionally resets damping and mass.
     *
     * @method Phaser.Physics.P2.Body#reset
-    * @param ***REMOVED***number***REMOVED*** x - The new x position of the Body.
-    * @param ***REMOVED***number***REMOVED*** y - The new x position of the Body.
-    * @param ***REMOVED***boolean***REMOVED*** [resetDamping=false] - Resets the linear and angular damping.
-    * @param ***REMOVED***boolean***REMOVED*** [resetMass=false] - Sets the Body mass back to 1.
+    * @param {number} x - The new x position of the Body.
+    * @param {number} y - The new x position of the Body.
+    * @param {boolean} [resetDamping=false] - Resets the linear and angular damping.
+    * @param {boolean} [resetMass=false] - Sets the Body mass back to 1.
     */
-    reset: function (x, y, resetDamping, resetMass) ***REMOVED***
+    reset: function (x, y, resetDamping, resetMass) {
 
-        if (resetDamping === undefined) ***REMOVED*** resetDamping = false; ***REMOVED***
-        if (resetMass === undefined) ***REMOVED*** resetMass = false; ***REMOVED***
+        if (resetDamping === undefined) { resetDamping = false; }
+        if (resetMass === undefined) { resetMass = false; }
 
         this.setZeroForce();
         this.setZeroVelocity();
         this.setZeroRotation();
 
         if (resetDamping)
-        ***REMOVED***
+        {
             this.setZeroDamping();
-        ***REMOVED***
+        }
 
         if (resetMass)
-        ***REMOVED***
+        {
             this.mass = 1;
-        ***REMOVED***
+        }
 
         this.x = x;
         this.y = y;
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds this physics body to the world.
     *
     * @method Phaser.Physics.P2.Body#addToWorld
     */
-    addToWorld: function () ***REMOVED***
+    addToWorld: function () {
 
         if (this.game.physics.p2._toRemove)
-        ***REMOVED***
+        {
             for (var i = 0; i < this.game.physics.p2._toRemove.length; i++)
-            ***REMOVED***
+            {
                 if (this.game.physics.p2._toRemove[i] === this)
-                ***REMOVED***
+                {
                     this.game.physics.p2._toRemove.splice(i, 1);
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
 
         if (this.data.world !== this.game.physics.p2.world)
-        ***REMOVED***
+        {
             this.game.physics.p2.addBody(this);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Removes this physics body from the world.
     *
     * @method Phaser.Physics.P2.Body#removeFromWorld
     */
-    removeFromWorld: function () ***REMOVED***
+    removeFromWorld: function () {
 
         if (this.data.world === this.game.physics.p2.world)
-        ***REMOVED***
+        {
             this.game.physics.p2.removeBodyNextStep(this);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Destroys this Body and all references it holds to other objects.
     *
     * @method Phaser.Physics.P2.Body#destroy
     */
-    destroy: function () ***REMOVED***
+    destroy: function () {
 
         this.removeFromWorld();
 
         this.clearShapes();
 
-        this._bodyCallbacks = ***REMOVED******REMOVED***;
-        this._bodyCallbackContext = ***REMOVED******REMOVED***;
-        this._groupCallbacks = ***REMOVED******REMOVED***;
-        this._groupCallbackContext = ***REMOVED******REMOVED***;
+        this._bodyCallbacks = {};
+        this._bodyCallbackContext = {};
+        this._groupCallbacks = {};
+        this._groupCallbackContext = {};
 
         if (this.debugBody)
-        ***REMOVED***
+        {
             this.debugBody.destroy(true, true);
-        ***REMOVED***
+        }
 
         this.debugBody = null;
 
         if (this.sprite)
-        ***REMOVED***
+        {
             this.sprite.body = null;
             this.sprite = null;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Removes all Shapes from this Body.
     *
     * @method Phaser.Physics.P2.Body#clearShapes
     */
-    clearShapes: function () ***REMOVED***
+    clearShapes: function () {
 
         var i = this.data.shapes.length;
 
         while (i--)
-        ***REMOVED***
+        {
             this.data.removeShape(this.data.shapes[i]);
-        ***REMOVED***
+        }
 
         this.shapeChanged();
 
-    ***REMOVED***,
+    },
 
     /**
     * Add a shape to the body. You can pass a local transform when adding a shape, so that the shape gets an offset and an angle relative to the body center of mass.
@@ -3483,95 +3483,95 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
     * If this Body had a previously set Collision Group you will need to re-apply it to the new Shape this creates.
     *
     * @method Phaser.Physics.P2.Body#addShape
-    * @param ***REMOVED***p2.Shape***REMOVED*** shape - The shape to add to the body.
-    * @param ***REMOVED***number***REMOVED*** [offsetX=0] - Local horizontal offset of the shape relative to the body center of mass.
-    * @param ***REMOVED***number***REMOVED*** [offsetY=0] - Local vertical offset of the shape relative to the body center of mass.
-    * @param ***REMOVED***number***REMOVED*** [rotation=0] - Local rotation of the shape relative to the body center of mass, specified in radians.
-    * @return ***REMOVED***p2.Shape***REMOVED*** The shape that was added to the body.
+    * @param {p2.Shape} shape - The shape to add to the body.
+    * @param {number} [offsetX=0] - Local horizontal offset of the shape relative to the body center of mass.
+    * @param {number} [offsetY=0] - Local vertical offset of the shape relative to the body center of mass.
+    * @param {number} [rotation=0] - Local rotation of the shape relative to the body center of mass, specified in radians.
+    * @return {p2.Shape} The shape that was added to the body.
     */
-    addShape: function (shape, offsetX, offsetY, rotation) ***REMOVED***
+    addShape: function (shape, offsetX, offsetY, rotation) {
 
-        if (offsetX === undefined) ***REMOVED*** offsetX = 0; ***REMOVED***
-        if (offsetY === undefined) ***REMOVED*** offsetY = 0; ***REMOVED***
-        if (rotation === undefined) ***REMOVED*** rotation = 0; ***REMOVED***
+        if (offsetX === undefined) { offsetX = 0; }
+        if (offsetY === undefined) { offsetY = 0; }
+        if (rotation === undefined) { rotation = 0; }
 
         this.data.addShape(shape, [this.world.pxmi(offsetX), this.world.pxmi(offsetY)], rotation);
         this.shapeChanged();
 
         return shape;
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a Circle shape to this Body. You can control the offset from the center of the body and the rotation.
     *
     * @method Phaser.Physics.P2.Body#addCircle
-    * @param ***REMOVED***number***REMOVED*** radius - The radius of this circle (in pixels)
-    * @param ***REMOVED***number***REMOVED*** [offsetX=0] - Local horizontal offset of the shape relative to the body center of mass.
-    * @param ***REMOVED***number***REMOVED*** [offsetY=0] - Local vertical offset of the shape relative to the body center of mass.
-    * @param ***REMOVED***number***REMOVED*** [rotation=0] - Local rotation of the shape relative to the body center of mass, specified in radians.
-    * @return ***REMOVED***p2.Circle***REMOVED*** The Circle shape that was added to the Body.
+    * @param {number} radius - The radius of this circle (in pixels)
+    * @param {number} [offsetX=0] - Local horizontal offset of the shape relative to the body center of mass.
+    * @param {number} [offsetY=0] - Local vertical offset of the shape relative to the body center of mass.
+    * @param {number} [rotation=0] - Local rotation of the shape relative to the body center of mass, specified in radians.
+    * @return {p2.Circle} The Circle shape that was added to the Body.
     */
-    addCircle: function (radius, offsetX, offsetY, rotation) ***REMOVED***
+    addCircle: function (radius, offsetX, offsetY, rotation) {
 
-        var shape = new p2.Circle(***REMOVED*** radius: this.world.pxm(radius) ***REMOVED***);
+        var shape = new p2.Circle({ radius: this.world.pxm(radius) });
 
         return this.addShape(shape, offsetX, offsetY, rotation);
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a Rectangle shape to this Body. You can control the offset from the center of the body and the rotation.
     *
     * @method Phaser.Physics.P2.Body#addRectangle
-    * @param ***REMOVED***number***REMOVED*** width - The width of the rectangle in pixels.
-    * @param ***REMOVED***number***REMOVED*** height - The height of the rectangle in pixels.
-    * @param ***REMOVED***number***REMOVED*** [offsetX=0] - Local horizontal offset of the shape relative to the body center of mass.
-    * @param ***REMOVED***number***REMOVED*** [offsetY=0] - Local vertical offset of the shape relative to the body center of mass.
-    * @param ***REMOVED***number***REMOVED*** [rotation=0] - Local rotation of the shape relative to the body center of mass, specified in radians.
-    * @return ***REMOVED***p2.Box***REMOVED*** The shape that was added to the Body.
+    * @param {number} width - The width of the rectangle in pixels.
+    * @param {number} height - The height of the rectangle in pixels.
+    * @param {number} [offsetX=0] - Local horizontal offset of the shape relative to the body center of mass.
+    * @param {number} [offsetY=0] - Local vertical offset of the shape relative to the body center of mass.
+    * @param {number} [rotation=0] - Local rotation of the shape relative to the body center of mass, specified in radians.
+    * @return {p2.Box} The shape that was added to the Body.
     */
-    addRectangle: function (width, height, offsetX, offsetY, rotation) ***REMOVED***
+    addRectangle: function (width, height, offsetX, offsetY, rotation) {
 
-        var shape = new p2.Box(***REMOVED*** width: this.world.pxm(width), height: this.world.pxm(height)***REMOVED***);
+        var shape = new p2.Box({ width: this.world.pxm(width), height: this.world.pxm(height)});
 
         return this.addShape(shape, offsetX, offsetY, rotation);
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a Plane shape to this Body. The plane is facing in the Y direction. You can control the offset from the center of the body and the rotation.
     *
     * @method Phaser.Physics.P2.Body#addPlane
-    * @param ***REMOVED***number***REMOVED*** [offsetX=0] - Local horizontal offset of the shape relative to the body center of mass.
-    * @param ***REMOVED***number***REMOVED*** [offsetY=0] - Local vertical offset of the shape relative to the body center of mass.
-    * @param ***REMOVED***number***REMOVED*** [rotation=0] - Local rotation of the shape relative to the body center of mass, specified in radians.
-    * @return ***REMOVED***p2.Plane***REMOVED*** The Plane shape that was added to the Body.
+    * @param {number} [offsetX=0] - Local horizontal offset of the shape relative to the body center of mass.
+    * @param {number} [offsetY=0] - Local vertical offset of the shape relative to the body center of mass.
+    * @param {number} [rotation=0] - Local rotation of the shape relative to the body center of mass, specified in radians.
+    * @return {p2.Plane} The Plane shape that was added to the Body.
     */
-    addPlane: function (offsetX, offsetY, rotation) ***REMOVED***
+    addPlane: function (offsetX, offsetY, rotation) {
 
         var shape = new p2.Plane();
 
         return this.addShape(shape, offsetX, offsetY, rotation);
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a Particle shape to this Body. You can control the offset from the center of the body and the rotation.
     *
     * @method Phaser.Physics.P2.Body#addParticle
-    * @param ***REMOVED***number***REMOVED*** [offsetX=0] - Local horizontal offset of the shape relative to the body center of mass.
-    * @param ***REMOVED***number***REMOVED*** [offsetY=0] - Local vertical offset of the shape relative to the body center of mass.
-    * @param ***REMOVED***number***REMOVED*** [rotation=0] - Local rotation of the shape relative to the body center of mass, specified in radians.
-    * @return ***REMOVED***p2.Particle***REMOVED*** The Particle shape that was added to the Body.
+    * @param {number} [offsetX=0] - Local horizontal offset of the shape relative to the body center of mass.
+    * @param {number} [offsetY=0] - Local vertical offset of the shape relative to the body center of mass.
+    * @param {number} [rotation=0] - Local rotation of the shape relative to the body center of mass, specified in radians.
+    * @return {p2.Particle} The Particle shape that was added to the Body.
     */
-    addParticle: function (offsetX, offsetY, rotation) ***REMOVED***
+    addParticle: function (offsetX, offsetY, rotation) {
 
         var shape = new p2.Particle();
 
         return this.addShape(shape, offsetX, offsetY, rotation);
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a Line shape to this Body.
@@ -3579,97 +3579,97 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
     * You can control the offset from the center of the body and the rotation.
     *
     * @method Phaser.Physics.P2.Body#addLine
-    * @param ***REMOVED***number***REMOVED*** length - The length of this line (in pixels)
-    * @param ***REMOVED***number***REMOVED*** [offsetX=0] - Local horizontal offset of the shape relative to the body center of mass.
-    * @param ***REMOVED***number***REMOVED*** [offsetY=0] - Local vertical offset of the shape relative to the body center of mass.
-    * @param ***REMOVED***number***REMOVED*** [rotation=0] - Local rotation of the shape relative to the body center of mass, specified in radians.
-    * @return ***REMOVED***p2.Line***REMOVED*** The Line shape that was added to the Body.
+    * @param {number} length - The length of this line (in pixels)
+    * @param {number} [offsetX=0] - Local horizontal offset of the shape relative to the body center of mass.
+    * @param {number} [offsetY=0] - Local vertical offset of the shape relative to the body center of mass.
+    * @param {number} [rotation=0] - Local rotation of the shape relative to the body center of mass, specified in radians.
+    * @return {p2.Line} The Line shape that was added to the Body.
     */
-    addLine: function (length, offsetX, offsetY, rotation) ***REMOVED***
+    addLine: function (length, offsetX, offsetY, rotation) {
 
-        var shape = new p2.Line(***REMOVED*** length: this.world.pxm(length)***REMOVED***);
+        var shape = new p2.Line({ length: this.world.pxm(length)});
 
         return this.addShape(shape, offsetX, offsetY, rotation);
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a Capsule shape to this Body.
     * You can control the offset from the center of the body and the rotation.
     *
     * @method Phaser.Physics.P2.Body#addCapsule
-    * @param ***REMOVED***number***REMOVED*** length - The distance between the end points in pixels.
-    * @param ***REMOVED***number***REMOVED*** radius - Radius of the capsule in pixels.
-    * @param ***REMOVED***number***REMOVED*** [offsetX=0] - Local horizontal offset of the shape relative to the body center of mass.
-    * @param ***REMOVED***number***REMOVED*** [offsetY=0] - Local vertical offset of the shape relative to the body center of mass.
-    * @param ***REMOVED***number***REMOVED*** [rotation=0] - Local rotation of the shape relative to the body center of mass, specified in radians.
-    * @return ***REMOVED***p2.Capsule***REMOVED*** The Capsule shape that was added to the Body.
+    * @param {number} length - The distance between the end points in pixels.
+    * @param {number} radius - Radius of the capsule in pixels.
+    * @param {number} [offsetX=0] - Local horizontal offset of the shape relative to the body center of mass.
+    * @param {number} [offsetY=0] - Local vertical offset of the shape relative to the body center of mass.
+    * @param {number} [rotation=0] - Local rotation of the shape relative to the body center of mass, specified in radians.
+    * @return {p2.Capsule} The Capsule shape that was added to the Body.
     */
-    addCapsule: function (length, radius, offsetX, offsetY, rotation) ***REMOVED***
+    addCapsule: function (length, radius, offsetX, offsetY, rotation) {
 
-        var shape = new p2.Capsule(***REMOVED*** length: this.world.pxm(length), radius: this.world.pxm(radius) ***REMOVED***);
+        var shape = new p2.Capsule({ length: this.world.pxm(length), radius: this.world.pxm(radius) });
 
         return this.addShape(shape, offsetX, offsetY, rotation);
 
-    ***REMOVED***,
+    },
 
     /**
     * Reads a polygon shape path, and assembles convex shapes from that and puts them at proper offset points. The shape must be simple and without holes.
     * This function expects the x.y values to be given in pixels. If you want to provide them at p2 world scales then call Body.data.fromPolygon directly.
     *
     * @method Phaser.Physics.P2.Body#addPolygon
-    * @param ***REMOVED***object***REMOVED*** options - An object containing the build options:
-    * @param ***REMOVED***boolean***REMOVED*** [options.optimalDecomp=false] - Set to true if you need optimal decomposition. Warning: very slow for polygons with more than 10 vertices.
-    * @param ***REMOVED***boolean***REMOVED*** [options.skipSimpleCheck=false] - Set to true if you already know that the path is not intersecting itself.
-    * @param ***REMOVED***boolean|number***REMOVED*** [options.removeCollinearPoints=false] - Set to a number (angle threshold value) to remove collinear points, or false to keep all points.
-    * @param ***REMOVED***(number[]|...number)***REMOVED*** points - An array of 2d vectors that form the convex or concave polygon.
+    * @param {object} options - An object containing the build options:
+    * @param {boolean} [options.optimalDecomp=false] - Set to true if you need optimal decomposition. Warning: very slow for polygons with more than 10 vertices.
+    * @param {boolean} [options.skipSimpleCheck=false] - Set to true if you already know that the path is not intersecting itself.
+    * @param {boolean|number} [options.removeCollinearPoints=false] - Set to a number (angle threshold value) to remove collinear points, or false to keep all points.
+    * @param {(number[]|...number)} points - An array of 2d vectors that form the convex or concave polygon.
     *                                       Either [[0,0], [0,1],...] or a flat array of numbers that will be interpreted as [x,y, x,y, ...],
     *                                       or the arguments passed can be flat x,y values e.g. `setPolygon(options, x,y, x,y, x,y, ...)` where `x` and `y` are numbers.
-    * @return ***REMOVED***boolean***REMOVED*** True on success, else false.
+    * @return {boolean} True on success, else false.
     */
-    addPolygon: function (options, points) ***REMOVED***
+    addPolygon: function (options, points) {
 
-        options = options || ***REMOVED******REMOVED***;
+        options = options || {};
 
         if (!Array.isArray(points))
-        ***REMOVED***
+        {
             points = Array.prototype.slice.call(arguments, 1);
-        ***REMOVED***
+        }
 
         var path = [];
 
         //  Did they pass in a single array of points?
         if (points.length === 1 && Array.isArray(points[0]))
-        ***REMOVED***
+        {
             path = points[0].slice(0);
-        ***REMOVED***
+        }
         else if (Array.isArray(points[0]))
-        ***REMOVED***
+        {
             path = points.slice();
-        ***REMOVED***
+        }
         else if (typeof points[0] === 'number')
-        ***REMOVED***
+        {
             //  We've a list of numbers
             for (var i = 0, len = points.length; i < len; i += 2)
-            ***REMOVED***
+            {
                 path.push([points[i], points[i + 1]]);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         //  top and tail
         var idx = path.length - 1;
 
         if (path[idx][0] === path[0][0] && path[idx][1] === path[0][1])
-        ***REMOVED***
+        {
             path.pop();
-        ***REMOVED***
+        }
 
         //  Now process them into p2 values
         for (var p = 0; p < path.length; p++)
-        ***REMOVED***
+        {
             path[p][0] = this.world.pxmi(path[p][0]);
             path[p][1] = this.world.pxmi(path[p][1]);
-        ***REMOVED***
+        }
 
         var result = this.data.fromPolygon(path, options);
 
@@ -3677,41 +3677,41 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
 
         return result;
 
-    ***REMOVED***,
+    },
 
     /**
     * Remove a shape from the body. Will automatically update the mass properties and bounding radius.
     *
     * @method Phaser.Physics.P2.Body#removeShape
-    * @param ***REMOVED***p2.Circle|p2.Rectangle|p2.Plane|p2.Line|p2.Particle***REMOVED*** shape - The shape to remove from the body.
-    * @return ***REMOVED***boolean***REMOVED*** True if the shape was found and removed, else false.
+    * @param {p2.Circle|p2.Rectangle|p2.Plane|p2.Line|p2.Particle} shape - The shape to remove from the body.
+    * @return {boolean} True if the shape was found and removed, else false.
     */
-    removeShape: function (shape) ***REMOVED***
+    removeShape: function (shape) {
 
 		var result = this.data.removeShape(shape);
 
 		this.shapeChanged();
 
         return result;
-    ***REMOVED***,
+    },
 
     /**
     * Clears any previously set shapes. Then creates a new Circle shape and adds it to this Body.
     * If this Body had a previously set Collision Group you will need to re-apply it to the new Shape this creates.
     *
     * @method Phaser.Physics.P2.Body#setCircle
-    * @param ***REMOVED***number***REMOVED*** radius - The radius of this circle (in pixels)
-    * @param ***REMOVED***number***REMOVED*** [offsetX=0] - Local horizontal offset of the shape relative to the body center of mass.
-    * @param ***REMOVED***number***REMOVED*** [offsetY=0] - Local vertical offset of the shape relative to the body center of mass.
-    * @param ***REMOVED***number***REMOVED*** [rotation=0] - Local rotation of the shape relative to the body center of mass, specified in radians.
+    * @param {number} radius - The radius of this circle (in pixels)
+    * @param {number} [offsetX=0] - Local horizontal offset of the shape relative to the body center of mass.
+    * @param {number} [offsetY=0] - Local vertical offset of the shape relative to the body center of mass.
+    * @param {number} [rotation=0] - Local rotation of the shape relative to the body center of mass, specified in radians.
     */
-    setCircle: function (radius, offsetX, offsetY, rotation) ***REMOVED***
+    setCircle: function (radius, offsetX, offsetY, rotation) {
 
         this.clearShapes();
 
         return this.addCircle(radius, offsetX, offsetY, rotation);
 
-    ***REMOVED***,
+    },
 
     /**
     * Clears any previously set shapes. The creates a new Rectangle shape at the given size and offset, and adds it to this Body.
@@ -3719,23 +3719,23 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
     * If this Body had a previously set Collision Group you will need to re-apply it to the new Shape this creates.
     *
     * @method Phaser.Physics.P2.Body#setRectangle
-    * @param ***REMOVED***number***REMOVED*** [width=16] - The width of the rectangle in pixels.
-    * @param ***REMOVED***number***REMOVED*** [height=16] - The height of the rectangle in pixels.
-    * @param ***REMOVED***number***REMOVED*** [offsetX=0] - Local horizontal offset of the shape relative to the body center of mass.
-    * @param ***REMOVED***number***REMOVED*** [offsetY=0] - Local vertical offset of the shape relative to the body center of mass.
-    * @param ***REMOVED***number***REMOVED*** [rotation=0] - Local rotation of the shape relative to the body center of mass, specified in radians.
-    * @return ***REMOVED***p2.Rectangle***REMOVED*** The Rectangle shape that was added to the Body.
+    * @param {number} [width=16] - The width of the rectangle in pixels.
+    * @param {number} [height=16] - The height of the rectangle in pixels.
+    * @param {number} [offsetX=0] - Local horizontal offset of the shape relative to the body center of mass.
+    * @param {number} [offsetY=0] - Local vertical offset of the shape relative to the body center of mass.
+    * @param {number} [rotation=0] - Local rotation of the shape relative to the body center of mass, specified in radians.
+    * @return {p2.Rectangle} The Rectangle shape that was added to the Body.
     */
-    setRectangle: function (width, height, offsetX, offsetY, rotation) ***REMOVED***
+    setRectangle: function (width, height, offsetX, offsetY, rotation) {
 
-        if (width === undefined) ***REMOVED*** width = 16; ***REMOVED***
-        if (height === undefined) ***REMOVED*** height = 16; ***REMOVED***
+        if (width === undefined) { width = 16; }
+        if (height === undefined) { height = 16; }
 
         this.clearShapes();
 
         return this.addRectangle(width, height, offsetX, offsetY, rotation);
 
-    ***REMOVED***,
+    },
 
     /**
     * Clears any previously set shapes.
@@ -3744,76 +3744,76 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
     * If this Body had a previously set Collision Group you will need to re-apply it to the new Shape this creates.
     *
     * @method Phaser.Physics.P2.Body#setRectangleFromSprite
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Image***REMOVED*** [sprite] - The Sprite on which the Rectangle will get its dimensions.
-    * @return ***REMOVED***p2.Rectangle***REMOVED*** The Rectangle shape that was added to the Body.
+    * @param {Phaser.Sprite|Phaser.Image} [sprite] - The Sprite on which the Rectangle will get its dimensions.
+    * @return {p2.Rectangle} The Rectangle shape that was added to the Body.
     */
-    setRectangleFromSprite: function (sprite) ***REMOVED***
+    setRectangleFromSprite: function (sprite) {
 
-        if (sprite === undefined) ***REMOVED*** sprite = this.sprite; ***REMOVED***
+        if (sprite === undefined) { sprite = this.sprite; }
 
         this.clearShapes();
 
         return this.addRectangle(sprite.width, sprite.height, 0, 0, sprite.rotation);
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds the given Material to all Shapes that belong to this Body.
     * If you only wish to apply it to a specific Shape in this Body then provide that as the 2nd parameter.
     *
     * @method Phaser.Physics.P2.Body#setMaterial
-    * @param ***REMOVED***Phaser.Physics.P2.Material***REMOVED*** material - The Material that will be applied.
-    * @param ***REMOVED***p2.Shape***REMOVED*** [shape] - An optional Shape. If not provided the Material will be added to all Shapes in this Body.
+    * @param {Phaser.Physics.P2.Material} material - The Material that will be applied.
+    * @param {p2.Shape} [shape] - An optional Shape. If not provided the Material will be added to all Shapes in this Body.
     */
-    setMaterial: function (material, shape) ***REMOVED***
+    setMaterial: function (material, shape) {
 
         if (shape === undefined)
-        ***REMOVED***
+        {
             for (var i = this.data.shapes.length - 1; i >= 0; i--)
-            ***REMOVED***
+            {
                 this.data.shapes[i].material = material;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             shape.material = material;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Updates the debug draw if any body shapes change.
     *
     * @method Phaser.Physics.P2.Body#shapeChanged
     */
-    shapeChanged: function() ***REMOVED***
+    shapeChanged: function() {
 
         if (this.debugBody)
-        ***REMOVED***
+        {
             this.debugBody.draw();
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Reads the shape data from a physics data file stored in the Game.Cache and adds it as a polygon to this Body.
     * The shape data format is based on the output of the
-    * ***REMOVED***@link https://github.com/photonstorm/phaser/tree/master/resources/PhysicsEditor%20Exporter|custom phaser exporter***REMOVED*** for
-    * ***REMOVED***@link https://www.codeandweb.com/physicseditor|PhysicsEditor***REMOVED***
+    * {@link https://github.com/photonstorm/phaser/tree/master/resources/PhysicsEditor%20Exporter|custom phaser exporter} for
+    * {@link https://www.codeandweb.com/physicseditor|PhysicsEditor}
     *
     * @method Phaser.Physics.P2.Body#addPhaserPolygon
-    * @param ***REMOVED***string***REMOVED*** key - The key of the Physics Data file as stored in Game.Cache.
-    * @param ***REMOVED***string***REMOVED*** object - The key of the object within the Physics data file that you wish to load the shape data from.
-    * @returns ***REMOVED***Array***REMOVED*** A list of created fixtures to be used with Phaser.Physics.P2.FixtureList
+    * @param {string} key - The key of the Physics Data file as stored in Game.Cache.
+    * @param {string} object - The key of the object within the Physics data file that you wish to load the shape data from.
+    * @returns {Array} A list of created fixtures to be used with Phaser.Physics.P2.FixtureList
     */
-    addPhaserPolygon: function (key, object) ***REMOVED***
+    addPhaserPolygon: function (key, object) {
 
         var data = this.game.cache.getPhysicsData(key, object);
         var createdFixtures = [];
 
         //  Cycle through the fixtures
         for (var i = 0; i < data.length; i++)
-        ***REMOVED***
+        {
             var fixtureData = data[i];
             var shapesOfFixture = this.addFixture(fixtureData);
 
@@ -3823,32 +3823,32 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
 
             //  if (unique) fixture key is provided
             if (fixtureData.fixtureKey)
-            ***REMOVED***
+            {
                 createdFixtures[fixtureData.fixtureKey] = shapesOfFixture;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         this.data.aabbNeedsUpdate = true;
         this.shapeChanged();
 
         return createdFixtures;
 
-    ***REMOVED***,
+    },
 
     /**
     * Add a polygon fixture. This is used during #loadPolygon.
     *
     * @method Phaser.Physics.P2.Body#addFixture
-    * @param ***REMOVED***string***REMOVED*** fixtureData - The data for the fixture. It contains: isSensor, filter (collision) and the actual polygon shapes.
-    * @return ***REMOVED***array***REMOVED*** An array containing the generated shapes for the given polygon.
+    * @param {string} fixtureData - The data for the fixture. It contains: isSensor, filter (collision) and the actual polygon shapes.
+    * @return {array} An array containing the generated shapes for the given polygon.
     */
-    addFixture: function (fixtureData) ***REMOVED***
+    addFixture: function (fixtureData) {
 
         var generatedShapes = [];
 
         if (fixtureData.circle)
-        ***REMOVED***
-            var shape = new p2.Circle(***REMOVED*** radius: this.world.pxm(fixtureData.circle.radius) ***REMOVED***);
+        {
+            var shape = new p2.Circle({ radius: this.world.pxm(fixtureData.circle.radius) });
             shape.collisionGroup = fixtureData.filter.categoryBits;
             shape.collisionMask = fixtureData.filter.maskBits;
             shape.sensor = fixtureData.isSensor;
@@ -3859,30 +3859,30 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
 
             this.data.addShape(shape, offset);
             generatedShapes.push(shape);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             var polygons = fixtureData.polygons;
             var cm = p2.vec2.create();
 
             for (var i = 0; i < polygons.length; i++)
-            ***REMOVED***
+            {
                 var shapes = polygons[i];
                 var vertices = [];
 
                 for (var s = 0; s < shapes.length; s += 2)
-                ***REMOVED***
+                {
                     vertices.push([ this.world.pxmi(shapes[s]), this.world.pxmi(shapes[s + 1]) ]);
-                ***REMOVED***
+                }
 
-                var shape = new p2.Convex(***REMOVED*** vertices: vertices ***REMOVED***);
+                var shape = new p2.Convex({ vertices: vertices });
 
                 //  Move all vertices so its center of mass is in the local center of the convex
                 for (var j = 0; j !== shape.vertices.length; j++)
-                ***REMOVED***
+                {
                     var v = shape.vertices[j];
                     p2.vec2.sub(v, v, shape.centerOfMass);
-                ***REMOVED***
+                }
 
                 p2.vec2.scale(cm, shape.centerOfMass, 1);
 
@@ -3900,12 +3900,12 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
                 this.data.addShape(shape, cm);
 
                 generatedShapes.push(shape);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return generatedShapes;
 
-    ***REMOVED***,
+    },
 
     /**
     * Reads the shape data from a physics data file stored in the Game.Cache and adds it as a polygon to this Body.
@@ -3916,43 +3916,43 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
     * For more details see the format of the Lime / Corona Physics Editor export.
     *
     * @method Phaser.Physics.P2.Body#loadPolygon
-    * @param ***REMOVED***string***REMOVED*** key - The key of the Physics Data file as stored in Game.Cache. Alternatively set to `null` and pass the 
+    * @param {string} key - The key of the Physics Data file as stored in Game.Cache. Alternatively set to `null` and pass the 
     *     data as the 2nd argument.
-    * @param ***REMOVED***string|object***REMOVED*** object - The key of the object within the Physics data file that you wish to load the shape data from, 
+    * @param {string|object} object - The key of the object within the Physics data file that you wish to load the shape data from, 
     *     or if key is null pass the actual physics data object itself as this parameter.
-    * @return ***REMOVED***boolean***REMOVED*** True on success, else false.
+    * @return {boolean} True on success, else false.
     */
-    loadPolygon: function (key, object) ***REMOVED***
+    loadPolygon: function (key, object) {
 
         if (key === null)
-        ***REMOVED***
+        {
             var data = object;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             var data = this.game.cache.getPhysicsData(key, object);
-        ***REMOVED***
+        }
 
         //  We've multiple Convex shapes, they should be CCW automatically
         var cm = p2.vec2.create();
 
         for (var i = 0; i < data.length; i++)
-        ***REMOVED***
+        {
             var vertices = [];
 
             for (var s = 0; s < data[i].shape.length; s += 2)
-            ***REMOVED***
+            {
                 vertices.push([ this.world.pxmi(data[i].shape[s]), this.world.pxmi(data[i].shape[s + 1]) ]);
-            ***REMOVED***
+            }
 
-            var c = new p2.Convex(***REMOVED*** vertices: vertices ***REMOVED***);
+            var c = new p2.Convex({ vertices: vertices });
 
             // Move all vertices so its center of mass is in the local center of the convex
             for (var j = 0; j !== c.vertices.length; j++)
-            ***REMOVED***
+            {
                 var v = c.vertices[j];
                 p2.vec2.sub(v, v, c.centerOfMass);
-            ***REMOVED***
+            }
 
             p2.vec2.scale(cm, c.centerOfMass, 1);
 
@@ -3964,23 +3964,23 @@ Phaser.Physics.P2.Body.prototype = ***REMOVED***
             c.updateBoundingRadius();
 
             this.data.addShape(c, cm);
-        ***REMOVED***
+        }
 
         this.data.aabbNeedsUpdate = true;
         this.shapeChanged();
 
         return true;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.Physics.P2.Body.prototype.constructor = Phaser.Physics.P2.Body;
 
 /**
  * Dynamic body. Dynamic bodies body can move and respond to collisions and forces.
  * @property DYNAMIC
- * @type ***REMOVED***Number***REMOVED***
+ * @type {Number}
  * @static
  */
 Phaser.Physics.P2.Body.DYNAMIC = 1;
@@ -3988,7 +3988,7 @@ Phaser.Physics.P2.Body.DYNAMIC = 1;
 /**
  * Static body. Static bodies do not move, and they do not respond to forces or collision.
  * @property STATIC
- * @type ***REMOVED***Number***REMOVED***
+ * @type {Number}
  * @static
  */
 Phaser.Physics.P2.Body.STATIC = 2;
@@ -3996,120 +3996,120 @@ Phaser.Physics.P2.Body.STATIC = 2;
 /**
  * Kinematic body. Kinematic bodies only moves according to its .velocity, and does not respond to collisions or force.
  * @property KINEMATIC
- * @type ***REMOVED***Number***REMOVED***
+ * @type {Number}
  * @static
  */
 Phaser.Physics.P2.Body.KINEMATIC = 4;
 
 /**
 * @name Phaser.Physics.P2.Body#static
-* @property ***REMOVED***boolean***REMOVED*** static - Returns true if the Body is static. Setting Body.static to 'false' will make it dynamic.
+* @property {boolean} static - Returns true if the Body is static. Setting Body.static to 'false' will make it dynamic.
 */
-Object.defineProperty(Phaser.Physics.P2.Body.prototype, "static", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.Body.prototype, "static", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return (this.data.type === Phaser.Physics.P2.Body.STATIC);
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         if (value && this.data.type !== Phaser.Physics.P2.Body.STATIC)
-        ***REMOVED***
+        {
             this.data.type = Phaser.Physics.P2.Body.STATIC;
             this.mass = 0;
-        ***REMOVED***
+        }
         else if (!value && this.data.type === Phaser.Physics.P2.Body.STATIC)
-        ***REMOVED***
+        {
             this.data.type = Phaser.Physics.P2.Body.DYNAMIC;
             this.mass = 1;
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2.Body#dynamic
-* @property ***REMOVED***boolean***REMOVED*** dynamic - Returns true if the Body is dynamic. Setting Body.dynamic to 'false' will make it static.
+* @property {boolean} dynamic - Returns true if the Body is dynamic. Setting Body.dynamic to 'false' will make it static.
 */
-Object.defineProperty(Phaser.Physics.P2.Body.prototype, "dynamic", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.Body.prototype, "dynamic", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return (this.data.type === Phaser.Physics.P2.Body.DYNAMIC);
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         if (value && this.data.type !== Phaser.Physics.P2.Body.DYNAMIC)
-        ***REMOVED***
+        {
             this.data.type = Phaser.Physics.P2.Body.DYNAMIC;
             this.mass = 1;
-        ***REMOVED***
+        }
         else if (!value && this.data.type === Phaser.Physics.P2.Body.DYNAMIC)
-        ***REMOVED***
+        {
             this.data.type = Phaser.Physics.P2.Body.STATIC;
             this.mass = 0;
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2.Body#kinematic
-* @property ***REMOVED***boolean***REMOVED*** kinematic - Returns true if the Body is kinematic. Setting Body.kinematic to 'false' will make it static.
+* @property {boolean} kinematic - Returns true if the Body is kinematic. Setting Body.kinematic to 'false' will make it static.
 */
-Object.defineProperty(Phaser.Physics.P2.Body.prototype, "kinematic", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.Body.prototype, "kinematic", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return (this.data.type === Phaser.Physics.P2.Body.KINEMATIC);
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         if (value && this.data.type !== Phaser.Physics.P2.Body.KINEMATIC)
-        ***REMOVED***
+        {
             this.data.type = Phaser.Physics.P2.Body.KINEMATIC;
             this.mass = 4;
-        ***REMOVED***
+        }
         else if (!value && this.data.type === Phaser.Physics.P2.Body.KINEMATIC)
-        ***REMOVED***
+        {
             this.data.type = Phaser.Physics.P2.Body.STATIC;
             this.mass = 0;
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2.Body#allowSleep
-* @property ***REMOVED***boolean***REMOVED*** allowSleep -
+* @property {boolean} allowSleep -
 */
-Object.defineProperty(Phaser.Physics.P2.Body.prototype, "allowSleep", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.Body.prototype, "allowSleep", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.data.allowSleep;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         if (value !== this.data.allowSleep)
-        ***REMOVED***
+        {
             this.data.allowSleep = value;
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * The angle of the Body in degrees from its original orientation. Values from 0 to 180 represent clockwise rotation; values from 0 to -180 represent counterclockwise rotation.
@@ -4117,322 +4117,322 @@ Object.defineProperty(Phaser.Physics.P2.Body.prototype, "allowSleep", ***REMOVED
 * If you wish to work in radians instead of degrees use the property Body.rotation instead. Working in radians is faster as it doesn't have to convert values.
 *
 * @name Phaser.Physics.P2.Body#angle
-* @property ***REMOVED***number***REMOVED*** angle - The angle of this Body in degrees.
+* @property {number} angle - The angle of this Body in degrees.
 */
-Object.defineProperty(Phaser.Physics.P2.Body.prototype, "angle", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.Body.prototype, "angle", {
 
-    get: function() ***REMOVED***
+    get: function() {
 
         return Phaser.Math.wrapAngle(Phaser.Math.radToDeg(this.data.angle));
 
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
 
         this.data.angle = Phaser.Math.degToRad(Phaser.Math.wrapAngle(value));
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * Damping is specified as a value between 0 and 1, which is the proportion of velocity lost per second.
 * @name Phaser.Physics.P2.Body#angularDamping
-* @property ***REMOVED***number***REMOVED*** angularDamping - The angular damping acting acting on the body.
+* @property {number} angularDamping - The angular damping acting acting on the body.
 */
-Object.defineProperty(Phaser.Physics.P2.Body.prototype, "angularDamping", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.Body.prototype, "angularDamping", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.data.angularDamping;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.data.angularDamping = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2.Body#angularForce
-* @property ***REMOVED***number***REMOVED*** angularForce - The angular force acting on the body.
+* @property {number} angularForce - The angular force acting on the body.
 */
-Object.defineProperty(Phaser.Physics.P2.Body.prototype, "angularForce", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.Body.prototype, "angularForce", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.data.angularForce;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.data.angularForce = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2.Body#angularVelocity
-* @property ***REMOVED***number***REMOVED*** angularVelocity - The angular velocity of the body.
+* @property {number} angularVelocity - The angular velocity of the body.
 */
-Object.defineProperty(Phaser.Physics.P2.Body.prototype, "angularVelocity", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.Body.prototype, "angularVelocity", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.data.angularVelocity;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.data.angularVelocity = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * Damping is specified as a value between 0 and 1, which is the proportion of velocity lost per second.
 * @name Phaser.Physics.P2.Body#damping
-* @property ***REMOVED***number***REMOVED*** damping - The linear damping acting on the body in the velocity direction.
+* @property {number} damping - The linear damping acting on the body in the velocity direction.
 */
-Object.defineProperty(Phaser.Physics.P2.Body.prototype, "damping", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.Body.prototype, "damping", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.data.damping;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.data.damping = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2.Body#fixedRotation
-* @property ***REMOVED***boolean***REMOVED*** fixedRotation -
+* @property {boolean} fixedRotation -
 */
-Object.defineProperty(Phaser.Physics.P2.Body.prototype, "fixedRotation", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.Body.prototype, "fixedRotation", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.data.fixedRotation;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         if (value !== this.data.fixedRotation)
-        ***REMOVED***
+        {
             this.data.fixedRotation = value;
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2.Body#inertia
-* @property ***REMOVED***number***REMOVED*** inertia - The inertia of the body around the Z axis..
+* @property {number} inertia - The inertia of the body around the Z axis..
 */
-Object.defineProperty(Phaser.Physics.P2.Body.prototype, "inertia", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.Body.prototype, "inertia", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.data.inertia;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.data.inertia = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2.Body#mass
-* @property ***REMOVED***number***REMOVED*** mass - The mass of the body.
+* @property {number} mass - The mass of the body.
 */
-Object.defineProperty(Phaser.Physics.P2.Body.prototype, "mass", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.Body.prototype, "mass", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.data.mass;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         if (value !== this.data.mass)
-        ***REMOVED***
+        {
             this.data.mass = value;
             this.data.updateMassProperties();
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2.Body#motionState
-* @property ***REMOVED***number***REMOVED*** motionState - The type of motion this body has. Should be one of: Body.STATIC (the body does not move), Body.DYNAMIC (body can move and respond to collisions) and Body.KINEMATIC (only moves according to its .velocity).
+* @property {number} motionState - The type of motion this body has. Should be one of: Body.STATIC (the body does not move), Body.DYNAMIC (body can move and respond to collisions) and Body.KINEMATIC (only moves according to its .velocity).
 */
-Object.defineProperty(Phaser.Physics.P2.Body.prototype, "motionState", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.Body.prototype, "motionState", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.data.type;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         if (value !== this.data.type)
-        ***REMOVED***
+        {
             this.data.type = value;
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * The angle of the Body in radians.
 * If you wish to work in degrees instead of radians use the Body.angle property instead. Working in radians is faster as it doesn't have to convert values.
 *
 * @name Phaser.Physics.P2.Body#rotation
-* @property ***REMOVED***number***REMOVED*** rotation - The angle of this Body in radians.
+* @property {number} rotation - The angle of this Body in radians.
 */
-Object.defineProperty(Phaser.Physics.P2.Body.prototype, "rotation", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.Body.prototype, "rotation", {
 
-    get: function() ***REMOVED***
+    get: function() {
 
         return this.data.angle;
 
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
 
         this.data.angle = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2.Body#sleepSpeedLimit
-* @property ***REMOVED***number***REMOVED*** sleepSpeedLimit - .
+* @property {number} sleepSpeedLimit - .
 */
-Object.defineProperty(Phaser.Physics.P2.Body.prototype, "sleepSpeedLimit", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.Body.prototype, "sleepSpeedLimit", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.data.sleepSpeedLimit;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.data.sleepSpeedLimit = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2.Body#x
-* @property ***REMOVED***number***REMOVED*** x - The x coordinate of this Body.
+* @property {number} x - The x coordinate of this Body.
 */
-Object.defineProperty(Phaser.Physics.P2.Body.prototype, "x", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.Body.prototype, "x", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.world.mpxi(this.data.position[0]);
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.data.position[0] = this.world.pxmi(value);
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2.Body#y
-* @property ***REMOVED***number***REMOVED*** y - The y coordinate of this Body.
+* @property {number} y - The y coordinate of this Body.
 */
-Object.defineProperty(Phaser.Physics.P2.Body.prototype, "y", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.Body.prototype, "y", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.world.mpxi(this.data.position[1]);
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.data.position[1] = this.world.pxmi(value);
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2.Body#id
-* @property ***REMOVED***number***REMOVED*** id - The Body ID. Each Body that has been added to the World has a unique ID.
+* @property {number} id - The Body ID. Each Body that has been added to the World has a unique ID.
 * @readonly
 */
-Object.defineProperty(Phaser.Physics.P2.Body.prototype, "id", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.Body.prototype, "id", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.data.id;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Physics.P2.Body#debug
-* @property ***REMOVED***boolean***REMOVED*** debug - Enable or disable debug drawing of this body
+* @property {boolean} debug - Enable or disable debug drawing of this body
 */
-Object.defineProperty(Phaser.Physics.P2.Body.prototype, "debug", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.Body.prototype, "debug", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return (this.debugBody !== null);
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         if (value && !this.debugBody)
-        ***REMOVED***
+        {
             //  This will be added to the global space
             this.debugBody = new Phaser.Physics.P2.BodyDebug(this.game, this.data);
-        ***REMOVED***
+        }
         else if (!value && this.debugBody)
-        ***REMOVED***
+        {
             this.debugBody.destroy();
             this.debugBody = null;
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * A Body can be set to collide against the World bounds automatically if this is set to true. Otherwise it will leave the World.
@@ -4441,38 +4441,38 @@ Object.defineProperty(Phaser.Physics.P2.Body.prototype, "debug", ***REMOVED***
 * after setting this it will *not* proactively set them to collide with the bounds.
 *
 * @name Phaser.Physics.P2.Body#collideWorldBounds
-* @property ***REMOVED***boolean***REMOVED*** collideWorldBounds - Should the Body collide with the World bounds?
+* @property {boolean} collideWorldBounds - Should the Body collide with the World bounds?
 */
-Object.defineProperty(Phaser.Physics.P2.Body.prototype, "collideWorldBounds", ***REMOVED***
+Object.defineProperty(Phaser.Physics.P2.Body.prototype, "collideWorldBounds", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this._collideWorldBounds;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         if (value && !this._collideWorldBounds)
-        ***REMOVED***
+        {
             this._collideWorldBounds = true;
             this.updateCollisionMask();
-        ***REMOVED***
+        }
         else if (!value && this._collideWorldBounds)
-        ***REMOVED***
+        {
             this._collideWorldBounds = false;
             this.updateCollisionMask();
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @author       George https://github.com/georgiee
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -4487,40 +4487,40 @@ Object.defineProperty(Phaser.Physics.P2.Body.prototype, "collideWorldBounds", **
 * @class Phaser.Physics.P2.BodyDebug
 * @constructor
 * @extends Phaser.Group
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - Game reference to the currently running game.
-* @param ***REMOVED***Phaser.Physics.P2.Body***REMOVED*** body - The P2 Body to display debug data for.
-* @param ***REMOVED***object***REMOVED*** settings - Settings object.
+* @param {Phaser.Game} game - Game reference to the currently running game.
+* @param {Phaser.Physics.P2.Body} body - The P2 Body to display debug data for.
+* @param {object} settings - Settings object.
 */
-Phaser.Physics.P2.BodyDebug = function(game, body, settings) ***REMOVED***
+Phaser.Physics.P2.BodyDebug = function(game, body, settings) {
 
     Phaser.Group.call(this, game);
 
     /**
-    * @property ***REMOVED***object***REMOVED*** defaultSettings - Default debug settings.
+    * @property {object} defaultSettings - Default debug settings.
     * @private
     */
-    var defaultSettings = ***REMOVED***
+    var defaultSettings = {
         pixelsPerLengthUnit: game.physics.p2.mpx(1),
         debugPolygons: false,
         lineWidth: 1,
         alpha: 0.5
-    ***REMOVED***;
+    };
 
     this.settings = Phaser.Utils.extend(defaultSettings, settings);
 
     /**
-    * @property ***REMOVED***number***REMOVED*** ppu - Pixels per Length Unit.
+    * @property {number} ppu - Pixels per Length Unit.
     */
     this.ppu = this.settings.pixelsPerLengthUnit;
     this.ppu = -1 * this.ppu;
 
     /**
-    * @property ***REMOVED***Phaser.Physics.P2.Body***REMOVED*** body - The P2 Body to display debug data for.
+    * @property {Phaser.Physics.P2.Body} body - The P2 Body to display debug data for.
     */
     this.body = body;
 
     /**
-    * @property ***REMOVED***Phaser.Graphics***REMOVED*** canvas - The canvas to render the debug info to.
+    * @property {Phaser.Graphics} canvas - The canvas to render the debug info to.
     */
     this.canvas = new Phaser.Graphics(game);
 
@@ -4532,32 +4532,32 @@ Phaser.Physics.P2.BodyDebug = function(game, body, settings) ***REMOVED***
 
     this.updateSpriteTransform();
 
-***REMOVED***;
+};
 
 Phaser.Physics.P2.BodyDebug.prototype = Object.create(Phaser.Group.prototype);
 Phaser.Physics.P2.BodyDebug.prototype.constructor = Phaser.Physics.P2.BodyDebug;
 
-Phaser.Utils.extend(Phaser.Physics.P2.BodyDebug.prototype, ***REMOVED***
+Phaser.Utils.extend(Phaser.Physics.P2.BodyDebug.prototype, {
 
     /**
     * Core update.
     *
     * @method Phaser.Physics.P2.BodyDebug#updateSpriteTransform
     */
-    updateSpriteTransform: function() ***REMOVED***
+    updateSpriteTransform: function() {
 
         this.position.x = this.body.position[0] * this.ppu;
         this.position.y = this.body.position[1] * this.ppu;
         this.rotation = this.body.angle;
 
-    ***REMOVED***,
+    },
 
     /**
     * Draws the P2 shapes to the Graphics object.
     *
     * @method Phaser.Physics.P2.BodyDebug#draw
     */
-    draw: function() ***REMOVED***
+    draw: function() {
 
         var angle, child, color, i, j, lineColor, lw, obj, offset, sprite, v, verts, vrot, _j, _ref1;
 
@@ -4569,57 +4569,57 @@ Phaser.Utils.extend(Phaser.Physics.P2.BodyDebug.prototype, ***REMOVED***
         lw = this.lineWidth;
 
         if (obj instanceof p2.Body && obj.shapes.length)
-        ***REMOVED***
+        {
             var l = obj.shapes.length;
 
             i = 0;
 
             while (i !== l)
-            ***REMOVED***
+            {
                 child = obj.shapes[i];
                 offset = child.position || 0;
                 angle = child.angle || 0;
 
                 if (child instanceof p2.Circle)
-                ***REMOVED***
+                {
                     this.drawCircle(sprite, offset[0] * this.ppu, offset[1] * this.ppu, angle, child.radius * this.ppu, color, lw);
-                ***REMOVED***
+                }
                 else if (child instanceof p2.Capsule)
-                ***REMOVED***
+                {
                     this.drawCapsule(sprite, offset[0] * this.ppu, offset[1] * this.ppu, angle, child.length * this.ppu, child.radius * this.ppu, lineColor, color, lw);
-                ***REMOVED***
+                }
                 else if (child instanceof p2.Plane)
-                ***REMOVED***
+                {
                     this.drawPlane(sprite, offset[0] * this.ppu, -offset[1] * this.ppu, color, lineColor, lw * 5, lw * 10, lw * 10, this.ppu * 100, angle);
-                ***REMOVED***
+                }
                 else if (child instanceof p2.Line)
-                ***REMOVED***
+                {
                     this.drawLine(sprite, child.length * this.ppu, lineColor, lw);
-                ***REMOVED***
+                }
                 else if (child instanceof p2.Box)
-                ***REMOVED***
+                {
                     this.drawRectangle(sprite, offset[0] * this.ppu, offset[1] * this.ppu, angle, child.width * this.ppu, child.height * this.ppu, lineColor, color, lw);
-                ***REMOVED***
+                }
                 else if (child instanceof p2.Convex)
-                ***REMOVED***
+                {
                     verts = [];
                     vrot = p2.vec2.create();
 
                     for (j = _j = 0, _ref1 = child.vertices.length; 0 <= _ref1 ? _j < _ref1 : _j > _ref1; j = 0 <= _ref1 ? ++_j : --_j)
-                    ***REMOVED***
+                    {
                         v = child.vertices[j];
                         p2.vec2.rotate(vrot, v, angle);
                         verts.push([(vrot[0] + offset[0]) * this.ppu, -(vrot[1] + offset[1]) * this.ppu]);
-                    ***REMOVED***
+                    }
 
                     this.drawConvex(sprite, verts, child.triangles, lineColor, color, lw, this.settings.debugPolygons, [offset[0] * this.ppu, -offset[1] * this.ppu]);
-                ***REMOVED***
+                }
 
                 i++;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Draws a p2.Box to the Graphics object.
@@ -4627,16 +4627,16 @@ Phaser.Utils.extend(Phaser.Physics.P2.BodyDebug.prototype, ***REMOVED***
     * @method Phaser.Physics.P2.BodyDebug#drawRectangle
     * @private
     */
-    drawRectangle: function(g, x, y, angle, w, h, color, fillColor, lineWidth) ***REMOVED***
+    drawRectangle: function(g, x, y, angle, w, h, color, fillColor, lineWidth) {
 
-        if (lineWidth === undefined) ***REMOVED*** lineWidth = 1; ***REMOVED***
-        if (color === undefined) ***REMOVED*** color = 0x000000; ***REMOVED***
+        if (lineWidth === undefined) { lineWidth = 1; }
+        if (color === undefined) { color = 0x000000; }
 
         g.lineStyle(lineWidth, color, 1);
         g.beginFill(fillColor);
         g.drawRect(x - w / 2, y - h / 2, w, h);
 
-    ***REMOVED***,
+    },
 
     /**
     * Draws a p2.Circle to the Graphics object.
@@ -4644,10 +4644,10 @@ Phaser.Utils.extend(Phaser.Physics.P2.BodyDebug.prototype, ***REMOVED***
     * @method Phaser.Physics.P2.BodyDebug#drawCircle
     * @private
     */
-    drawCircle: function(g, x, y, angle, radius, color, lineWidth) ***REMOVED***
+    drawCircle: function(g, x, y, angle, radius, color, lineWidth) {
 
-        if (lineWidth === undefined) ***REMOVED*** lineWidth = 1; ***REMOVED***
-        if (color === undefined) ***REMOVED*** color = 0xffffff; ***REMOVED***
+        if (lineWidth === undefined) { lineWidth = 1; }
+        if (color === undefined) { color = 0xffffff; }
         g.lineStyle(lineWidth, 0x000000, 1);
         g.beginFill(color, 1.0);
         g.drawCircle(x, y, -radius*2);
@@ -4655,7 +4655,7 @@ Phaser.Utils.extend(Phaser.Physics.P2.BodyDebug.prototype, ***REMOVED***
         g.moveTo(x, y);
         g.lineTo(x + radius * Math.cos(-angle), y + radius * Math.sin(-angle));
 
-    ***REMOVED***,
+    },
 
     /**
     * Draws a p2.Line to the Graphics object.
@@ -4663,16 +4663,16 @@ Phaser.Utils.extend(Phaser.Physics.P2.BodyDebug.prototype, ***REMOVED***
     * @method Phaser.Physics.P2.BodyDebug#drawLine
     * @private
     */
-    drawLine: function(g, len, color, lineWidth) ***REMOVED***
+    drawLine: function(g, len, color, lineWidth) {
 
-        if (lineWidth === undefined) ***REMOVED*** lineWidth = 1; ***REMOVED***
-        if (color === undefined) ***REMOVED*** color = 0x000000; ***REMOVED***
+        if (lineWidth === undefined) { lineWidth = 1; }
+        if (color === undefined) { color = 0x000000; }
 
         g.lineStyle(lineWidth * 5, color, 1);
         g.moveTo(-len / 2, 0);
         g.lineTo(len / 2, 0);
 
-    ***REMOVED***,
+    },
 
     /**
     * Draws a p2.Convex to the Graphics object.
@@ -4680,52 +4680,52 @@ Phaser.Utils.extend(Phaser.Physics.P2.BodyDebug.prototype, ***REMOVED***
     * @method Phaser.Physics.P2.BodyDebug#drawConvex
     * @private
     */
-    drawConvex: function(g, verts, triangles, color, fillColor, lineWidth, debug, offset) ***REMOVED***
+    drawConvex: function(g, verts, triangles, color, fillColor, lineWidth, debug, offset) {
 
         var colors, i, v, v0, v1, x, x0, x1, y, y0, y1;
 
-        if (lineWidth === undefined) ***REMOVED*** lineWidth = 1; ***REMOVED***
-        if (color === undefined) ***REMOVED*** color = 0x000000; ***REMOVED***
+        if (lineWidth === undefined) { lineWidth = 1; }
+        if (color === undefined) { color = 0x000000; }
 
         if (!debug)
-        ***REMOVED***
+        {
             g.lineStyle(lineWidth, color, 1);
             g.beginFill(fillColor);
             i = 0;
 
             while (i !== verts.length)
-            ***REMOVED***
+            {
                 v = verts[i];
                 x = v[0];
                 y = v[1];
 
                 if (i === 0)
-                ***REMOVED***
+                {
                     g.moveTo(x, -y);
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     g.lineTo(x, -y);
-                ***REMOVED***
+                }
 
                 i++;
-            ***REMOVED***
+            }
 
             g.endFill();
 
             if (verts.length > 2)
-            ***REMOVED***
+            {
                 g.moveTo(verts[verts.length - 1][0], -verts[verts.length - 1][1]);
                 return g.lineTo(verts[0][0], -verts[0][1]);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             colors = [0xff0000, 0x00ff00, 0x0000ff];
             i = 0;
 
             while (i !== verts.length + 1)
-            ***REMOVED***
+            {
                 v0 = verts[i % verts.length];
                 v1 = verts[(i + 1) % verts.length];
                 x0 = v0[0];
@@ -4737,13 +4737,13 @@ Phaser.Utils.extend(Phaser.Physics.P2.BodyDebug.prototype, ***REMOVED***
                 g.lineTo(x1, -y1);
                 g.drawCircle(x0, -y0, lineWidth * 2);
                 i++;
-            ***REMOVED***
+            }
 
             g.lineStyle(lineWidth, 0x000000, 1);
             return g.drawCircle(offset[0], offset[1], lineWidth * 2);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Draws a p2.Path to the Graphics object.
@@ -4751,37 +4751,37 @@ Phaser.Utils.extend(Phaser.Physics.P2.BodyDebug.prototype, ***REMOVED***
     * @method Phaser.Physics.P2.BodyDebug#drawPath
     * @private
     */
-    drawPath: function(g, path, color, fillColor, lineWidth) ***REMOVED***
+    drawPath: function(g, path, color, fillColor, lineWidth) {
 
         var area, i, lastx, lasty, p1x, p1y, p2x, p2y, p3x, p3y, v, x, y;
-        if (lineWidth === undefined) ***REMOVED*** lineWidth = 1; ***REMOVED***
-        if (color === undefined) ***REMOVED*** color = 0x000000; ***REMOVED***
+        if (lineWidth === undefined) { lineWidth = 1; }
+        if (color === undefined) { color = 0x000000; }
 
         g.lineStyle(lineWidth, color, 1);
 
         if (typeof fillColor === "number")
-        ***REMOVED***
+        {
             g.beginFill(fillColor);
-        ***REMOVED***
+        }
 
         lastx = null;
         lasty = null;
         i = 0;
 
         while (i < path.length)
-        ***REMOVED***
+        {
             v = path[i];
             x = v[0];
             y = v[1];
 
             if (x !== lastx || y !== lasty)
-            ***REMOVED***
+            {
                 if (i === 0)
-                ***REMOVED***
+                {
                     g.moveTo(x, y);
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     p1x = lastx;
                     p1y = lasty;
                     p2x = x;
@@ -4791,30 +4791,30 @@ Phaser.Utils.extend(Phaser.Physics.P2.BodyDebug.prototype, ***REMOVED***
                     area = ((p2x - p1x) * (p3y - p1y)) - ((p3x - p1x) * (p2y - p1y));
 
                     if (area !== 0)
-                    ***REMOVED***
+                    {
                         g.lineTo(x, y);
-                    ***REMOVED***
-                ***REMOVED***
+                    }
+                }
                 lastx = x;
                 lasty = y;
-            ***REMOVED***
+            }
 
             i++;
 
-        ***REMOVED***
+        }
 
         if (typeof fillColor === "number")
-        ***REMOVED***
+        {
             g.endFill();
-        ***REMOVED***
+        }
 
         if (path.length > 2 && typeof fillColor === "number")
-        ***REMOVED***
+        {
             g.moveTo(path[path.length - 1][0], path[path.length - 1][1]);
             g.lineTo(path[0][0], path[0][1]);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Draws a p2.Plane to the Graphics object.
@@ -4822,11 +4822,11 @@ Phaser.Utils.extend(Phaser.Physics.P2.BodyDebug.prototype, ***REMOVED***
     * @method Phaser.Physics.P2.BodyDebug#drawPlane
     * @private
     */
-    drawPlane: function(g, x0, x1, color, lineColor, lineWidth, diagMargin, diagSize, maxLength, angle) ***REMOVED***
+    drawPlane: function(g, x0, x1, color, lineColor, lineWidth, diagMargin, diagSize, maxLength, angle) {
 
         var max, xd, yd;
-        if (lineWidth === undefined) ***REMOVED*** lineWidth = 1; ***REMOVED***
-        if (color === undefined) ***REMOVED*** color = 0xffffff; ***REMOVED***
+        if (lineWidth === undefined) { lineWidth = 1; }
+        if (color === undefined) { color = 0xffffff; }
 
         g.lineStyle(lineWidth, lineColor, 11);
         g.beginFill(color);
@@ -4842,7 +4842,7 @@ Phaser.Utils.extend(Phaser.Physics.P2.BodyDebug.prototype, ***REMOVED***
         yd = x1 + Math.sin(angle) * -this.game.height;
         g.lineTo(xd, -yd);
 
-    ***REMOVED***,
+    },
 
     /**
     * Draws a p2.Capsule to the Graphics object.
@@ -4850,10 +4850,10 @@ Phaser.Utils.extend(Phaser.Physics.P2.BodyDebug.prototype, ***REMOVED***
     * @method Phaser.Physics.P2.BodyDebug#drawCapsule
     * @private
     */
-    drawCapsule: function(g, x, y, angle, len, radius, color, fillColor, lineWidth) ***REMOVED***
+    drawCapsule: function(g, x, y, angle, len, radius, color, fillColor, lineWidth) {
 
-        if (lineWidth === undefined) ***REMOVED*** lineWidth = 1; ***REMOVED***
-        if (color === undefined) ***REMOVED*** color =  0x000000; ***REMOVED***
+        if (lineWidth === undefined) { lineWidth = 1; }
+        if (color === undefined) { color =  0x000000; }
 
         g.lineStyle(lineWidth, color, 1);
 
@@ -4882,7 +4882,7 @@ Phaser.Utils.extend(Phaser.Physics.P2.BodyDebug.prototype, ***REMOVED***
         g.moveTo(-len/2*c - radius*s + x, -len/2*s - radius*c + y);
         g.lineTo( len/2*c - radius*s + x,  len/2*s - radius*c + y);
 
-    ***REMOVED***,
+    },
 
     /**
     * Picks a random pastel color.
@@ -4890,7 +4890,7 @@ Phaser.Utils.extend(Phaser.Physics.P2.BodyDebug.prototype, ***REMOVED***
     * @method Phaser.Physics.P2.BodyDebug#randomPastelHex
     * @private
     */
-    randomPastelHex: function() ***REMOVED***
+    randomPastelHex: function() {
 
         var blue, green, mix, red;
         mix = [255, 255, 255];
@@ -4905,7 +4905,7 @@ Phaser.Utils.extend(Phaser.Physics.P2.BodyDebug.prototype, ***REMOVED***
 
         return this.rgbToHex(red, green, blue);
 
-    ***REMOVED***,
+    },
 
     /**
     * Converts from RGB to Hex.
@@ -4913,9 +4913,9 @@ Phaser.Utils.extend(Phaser.Physics.P2.BodyDebug.prototype, ***REMOVED***
     * @method Phaser.Physics.P2.BodyDebug#rgbToHex
     * @private
     */
-    rgbToHex: function(r, g, b) ***REMOVED***
+    rgbToHex: function(r, g, b) {
         return this.componentToHex(r) + this.componentToHex(g) + this.componentToHex(b);
-    ***REMOVED***,
+    },
 
     /**
     * Component to hex conversion.
@@ -4923,28 +4923,28 @@ Phaser.Utils.extend(Phaser.Physics.P2.BodyDebug.prototype, ***REMOVED***
     * @method Phaser.Physics.P2.BodyDebug#componentToHex
     * @private
     */
-    componentToHex: function(c) ***REMOVED***
+    componentToHex: function(c) {
 
         var hex;
         hex = c.toString(16);
 
         if (hex.length === 2)
-        ***REMOVED***
+        {
             return hex;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return hex + '0';
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -4952,76 +4952,76 @@ Phaser.Utils.extend(Phaser.Physics.P2.BodyDebug.prototype, ***REMOVED***
 *
 * @class Phaser.Physics.P2.Spring
 * @constructor
-* @param ***REMOVED***Phaser.Physics.P2***REMOVED*** world - A reference to the P2 World.
-* @param ***REMOVED***p2.Body***REMOVED*** bodyA - First connected body.
-* @param ***REMOVED***p2.Body***REMOVED*** bodyB - Second connected body.
-* @param ***REMOVED***number***REMOVED*** [restLength=1] - Rest length of the spring. A number > 0.
-* @param ***REMOVED***number***REMOVED*** [stiffness=100] - Stiffness of the spring. A number >= 0.
-* @param ***REMOVED***number***REMOVED*** [damping=1] - Damping of the spring. A number >= 0.
-* @param ***REMOVED***Array***REMOVED*** [worldA] - Where to hook the spring to body A in world coordinates. This value is an array with 2 elements matching x and y, i.e: [32, 32].
-* @param ***REMOVED***Array***REMOVED*** [worldB] - Where to hook the spring to body B in world coordinates. This value is an array with 2 elements matching x and y, i.e: [32, 32].
-* @param ***REMOVED***Array***REMOVED*** [localA] - Where to hook the spring to body A in local body coordinates. This value is an array with 2 elements matching x and y, i.e: [32, 32].
-* @param ***REMOVED***Array***REMOVED*** [localB] - Where to hook the spring to body B in local body coordinates. This value is an array with 2 elements matching x and y, i.e: [32, 32].
+* @param {Phaser.Physics.P2} world - A reference to the P2 World.
+* @param {p2.Body} bodyA - First connected body.
+* @param {p2.Body} bodyB - Second connected body.
+* @param {number} [restLength=1] - Rest length of the spring. A number > 0.
+* @param {number} [stiffness=100] - Stiffness of the spring. A number >= 0.
+* @param {number} [damping=1] - Damping of the spring. A number >= 0.
+* @param {Array} [worldA] - Where to hook the spring to body A in world coordinates. This value is an array with 2 elements matching x and y, i.e: [32, 32].
+* @param {Array} [worldB] - Where to hook the spring to body B in world coordinates. This value is an array with 2 elements matching x and y, i.e: [32, 32].
+* @param {Array} [localA] - Where to hook the spring to body A in local body coordinates. This value is an array with 2 elements matching x and y, i.e: [32, 32].
+* @param {Array} [localB] - Where to hook the spring to body B in local body coordinates. This value is an array with 2 elements matching x and y, i.e: [32, 32].
 */
-Phaser.Physics.P2.Spring = function (world, bodyA, bodyB, restLength, stiffness, damping, worldA, worldB, localA, localB) ***REMOVED***
+Phaser.Physics.P2.Spring = function (world, bodyA, bodyB, restLength, stiffness, damping, worldA, worldB, localA, localB) {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - Local reference to game.
+    * @property {Phaser.Game} game - Local reference to game.
     */
     this.game = world.game;
 
     /**
-    * @property ***REMOVED***Phaser.Physics.P2***REMOVED*** world - Local reference to P2 World.
+    * @property {Phaser.Physics.P2} world - Local reference to P2 World.
     */
     this.world = world;
 
-    if (restLength === undefined) ***REMOVED*** restLength = 1; ***REMOVED***
-    if (stiffness === undefined) ***REMOVED*** stiffness = 100; ***REMOVED***
-    if (damping === undefined) ***REMOVED*** damping = 1; ***REMOVED***
+    if (restLength === undefined) { restLength = 1; }
+    if (stiffness === undefined) { stiffness = 100; }
+    if (damping === undefined) { damping = 1; }
 
     restLength = world.pxm(restLength);
 
-    var options = ***REMOVED***
+    var options = {
         restLength: restLength,
         stiffness: stiffness,
         damping: damping
-    ***REMOVED***;
+    };
 
     if (typeof worldA !== 'undefined' && worldA !== null)
-    ***REMOVED***
+    {
         options.worldAnchorA = [ world.pxm(worldA[0]), world.pxm(worldA[1]) ];
-    ***REMOVED***
+    }
 
     if (typeof worldB !== 'undefined' && worldB !== null)
-    ***REMOVED***
+    {
         options.worldAnchorB = [ world.pxm(worldB[0]), world.pxm(worldB[1]) ];
-    ***REMOVED***
+    }
 
     if (typeof localA !== 'undefined' && localA !== null)
-    ***REMOVED***
+    {
         options.localAnchorA = [ world.pxm(localA[0]), world.pxm(localA[1]) ];
-    ***REMOVED***
+    }
 
     if (typeof localB !== 'undefined' && localB !== null)
-    ***REMOVED***
+    {
         options.localAnchorB = [ world.pxm(localB[0]), world.pxm(localB[1]) ];
-    ***REMOVED***
+    }
 
     /**
-    * @property ***REMOVED***p2.LinearSpring***REMOVED*** data - The actual p2 spring object.
+    * @property {p2.LinearSpring} data - The actual p2 spring object.
     */
     this.data = new p2.LinearSpring(bodyA, bodyB, options);
 
     this.data.parent = this;
 
-***REMOVED***;
+};
 
 Phaser.Physics.P2.Spring.prototype.constructor = Phaser.Physics.P2.Spring;
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -5029,55 +5029,55 @@ Phaser.Physics.P2.Spring.prototype.constructor = Phaser.Physics.P2.Spring;
 *
 * @class Phaser.Physics.P2.RotationalSpring
 * @constructor
-* @param ***REMOVED***Phaser.Physics.P2***REMOVED*** world - A reference to the P2 World.
-* @param ***REMOVED***p2.Body***REMOVED*** bodyA - First connected body.
-* @param ***REMOVED***p2.Body***REMOVED*** bodyB - Second connected body.
-* @param ***REMOVED***number***REMOVED*** [restAngle] - The relative angle of bodies at which the spring is at rest. If not given, it's set to the current relative angle between the bodies.
-* @param ***REMOVED***number***REMOVED*** [stiffness=100] - Stiffness of the spring. A number >= 0.
-* @param ***REMOVED***number***REMOVED*** [damping=1] - Damping of the spring. A number >= 0.
+* @param {Phaser.Physics.P2} world - A reference to the P2 World.
+* @param {p2.Body} bodyA - First connected body.
+* @param {p2.Body} bodyB - Second connected body.
+* @param {number} [restAngle] - The relative angle of bodies at which the spring is at rest. If not given, it's set to the current relative angle between the bodies.
+* @param {number} [stiffness=100] - Stiffness of the spring. A number >= 0.
+* @param {number} [damping=1] - Damping of the spring. A number >= 0.
 */
-Phaser.Physics.P2.RotationalSpring = function (world, bodyA, bodyB, restAngle, stiffness, damping) ***REMOVED***
+Phaser.Physics.P2.RotationalSpring = function (world, bodyA, bodyB, restAngle, stiffness, damping) {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - Local reference to game.
+    * @property {Phaser.Game} game - Local reference to game.
     */
     this.game = world.game;
 
     /**
-    * @property ***REMOVED***Phaser.Physics.P2***REMOVED*** world - Local reference to P2 World.
+    * @property {Phaser.Physics.P2} world - Local reference to P2 World.
     */
     this.world = world;
 
-    if (restAngle === undefined) ***REMOVED*** restAngle = null; ***REMOVED***
-    if (stiffness === undefined) ***REMOVED*** stiffness = 100; ***REMOVED***
-    if (damping === undefined) ***REMOVED*** damping = 1; ***REMOVED***
+    if (restAngle === undefined) { restAngle = null; }
+    if (stiffness === undefined) { stiffness = 100; }
+    if (damping === undefined) { damping = 1; }
 
     if (restAngle)
-    ***REMOVED***
+    {
         restAngle = world.pxm(restAngle);
-    ***REMOVED***
+    }
 
-    var options = ***REMOVED***
+    var options = {
         restAngle: restAngle,
         stiffness: stiffness,
         damping: damping
-    ***REMOVED***;
+    };
 
     /**
-    * @property ***REMOVED***p2.RotationalSpring***REMOVED*** data - The actual p2 spring object.
+    * @property {p2.RotationalSpring} data - The actual p2 spring object.
     */
     this.data = new p2.RotationalSpring(bodyA, bodyB, options);
 
     this.data.parent = this;
 
-***REMOVED***;
+};
 
 Phaser.Physics.P2.Spring.prototype.constructor = Phaser.Physics.P2.Spring;
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -5087,19 +5087,19 @@ Phaser.Physics.P2.Spring.prototype.constructor = Phaser.Physics.P2.Spring;
 *
 * @class Phaser.Physics.P2.Material
 * @constructor
-* @param ***REMOVED***string***REMOVED*** name - The user defined name given to this Material.
+* @param {string} name - The user defined name given to this Material.
 */
-Phaser.Physics.P2.Material = function (name) ***REMOVED***
+Phaser.Physics.P2.Material = function (name) {
 
     /**
-    * @property ***REMOVED***string***REMOVED*** name - The user defined name given to this Material.
+    * @property {string} name - The user defined name given to this Material.
     * @default
     */
     this.name = name;
 
     p2.Material.call(this);
 
-***REMOVED***;
+};
 
 Phaser.Physics.P2.Material.prototype = Object.create(p2.Material.prototype);
 Phaser.Physics.P2.Material.prototype.constructor = Phaser.Physics.P2.Material;
@@ -5107,7 +5107,7 @@ Phaser.Physics.P2.Material.prototype.constructor = Phaser.Physics.P2.Material;
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -5115,55 +5115,55 @@ Phaser.Physics.P2.Material.prototype.constructor = Phaser.Physics.P2.Material;
 *
 * @class Phaser.Physics.P2.ContactMaterial
 * @constructor
-* @param ***REMOVED***Phaser.Physics.P2.Material***REMOVED*** materialA - First material participating in the contact material.
-* @param ***REMOVED***Phaser.Physics.P2.Material***REMOVED*** materialB - Second material participating in the contact material.
-* @param ***REMOVED***object***REMOVED*** [options] - Additional configuration options.
+* @param {Phaser.Physics.P2.Material} materialA - First material participating in the contact material.
+* @param {Phaser.Physics.P2.Material} materialB - Second material participating in the contact material.
+* @param {object} [options] - Additional configuration options.
 */
-Phaser.Physics.P2.ContactMaterial = function (materialA, materialB, options) ***REMOVED***
+Phaser.Physics.P2.ContactMaterial = function (materialA, materialB, options) {
 
 	/**
-	* @property ***REMOVED***number***REMOVED*** id - The contact material identifier.
+	* @property {number} id - The contact material identifier.
 	*/
 
 	/**
-	* @property ***REMOVED***Phaser.Physics.P2.Material***REMOVED*** materialA - First material participating in the contact material.
+	* @property {Phaser.Physics.P2.Material} materialA - First material participating in the contact material.
 	*/
 
 	/**
-	* @property ***REMOVED***Phaser.Physics.P2.Material***REMOVED*** materialB - Second material participating in the contact material.
+	* @property {Phaser.Physics.P2.Material} materialB - Second material participating in the contact material.
 	*/
 
 	/**
-	* @property ***REMOVED***number***REMOVED*** [friction=0.3] - Friction to use in the contact of these two materials.
+	* @property {number} [friction=0.3] - Friction to use in the contact of these two materials.
 	*/
 
 	/**
-	* @property ***REMOVED***number***REMOVED*** [restitution=0.0] - Restitution to use in the contact of these two materials.
+	* @property {number} [restitution=0.0] - Restitution to use in the contact of these two materials.
 	*/
 
 	/**
-	* @property ***REMOVED***number***REMOVED*** [stiffness=1e7] - Stiffness of the resulting ContactEquation that this ContactMaterial generates.
+	* @property {number} [stiffness=1e7] - Stiffness of the resulting ContactEquation that this ContactMaterial generates.
 	*/
 
 	/**
-	* @property ***REMOVED***number***REMOVED*** [relaxation=3] - Relaxation of the resulting ContactEquation that this ContactMaterial generates.
+	* @property {number} [relaxation=3] - Relaxation of the resulting ContactEquation that this ContactMaterial generates.
 	*/
 
 	/**
-	* @property ***REMOVED***number***REMOVED*** [frictionStiffness=1e7] - Stiffness of the resulting FrictionEquation that this ContactMaterial generates.
+	* @property {number} [frictionStiffness=1e7] - Stiffness of the resulting FrictionEquation that this ContactMaterial generates.
 	*/
 
 	/**
-	* @property ***REMOVED***number***REMOVED*** [frictionRelaxation=3] - Relaxation of the resulting FrictionEquation that this ContactMaterial generates.
+	* @property {number} [frictionRelaxation=3] - Relaxation of the resulting FrictionEquation that this ContactMaterial generates.
 	*/
 
 	/**
-	* @property ***REMOVED***number***REMOVED*** [surfaceVelocity=0] - Will add surface velocity to this material. If bodyA rests on top if bodyB, and the surface velocity is positive, bodyA will slide to the right.
+	* @property {number} [surfaceVelocity=0] - Will add surface velocity to this material. If bodyA rests on top if bodyB, and the surface velocity is positive, bodyA will slide to the right.
 	*/
 
     p2.ContactMaterial.call(this, materialA, materialB, options);
 
-***REMOVED***;
+};
 
 Phaser.Physics.P2.ContactMaterial.prototype = Object.create(p2.ContactMaterial.prototype);
 Phaser.Physics.P2.ContactMaterial.prototype.constructor = Phaser.Physics.P2.ContactMaterial;
@@ -5171,7 +5171,7 @@ Phaser.Physics.P2.ContactMaterial.prototype.constructor = Phaser.Physics.P2.Cont
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -5179,21 +5179,21 @@ Phaser.Physics.P2.ContactMaterial.prototype.constructor = Phaser.Physics.P2.Cont
 *
 * @class Phaser.Physics.P2.CollisionGroup
 * @constructor
-* @param ***REMOVED***number***REMOVED*** bitmask - The CollisionGroup bitmask.
+* @param {number} bitmask - The CollisionGroup bitmask.
 */
-Phaser.Physics.P2.CollisionGroup = function (bitmask) ***REMOVED***
+Phaser.Physics.P2.CollisionGroup = function (bitmask) {
 
     /**
-    * @property ***REMOVED***number***REMOVED*** mask - The CollisionGroup bitmask.
+    * @property {number} mask - The CollisionGroup bitmask.
     */
     this.mask = bitmask;
 
-***REMOVED***;
+};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -5201,28 +5201,28 @@ Phaser.Physics.P2.CollisionGroup = function (bitmask) ***REMOVED***
 *
 * @class Phaser.Physics.P2.DistanceConstraint
 * @constructor
-* @param ***REMOVED***Phaser.Physics.P2***REMOVED*** world - A reference to the P2 World.
-* @param ***REMOVED***p2.Body***REMOVED*** bodyA - First connected body.
-* @param ***REMOVED***p2.Body***REMOVED*** bodyB - Second connected body.
-* @param ***REMOVED***number***REMOVED*** distance - The distance to keep between the bodies.
-* @param ***REMOVED***Array***REMOVED*** [localAnchorA] - The anchor point for bodyA, defined locally in bodyA frame. Defaults to [0,0].
-* @param ***REMOVED***Array***REMOVED*** [localAnchorB] - The anchor point for bodyB, defined locally in bodyB frame. Defaults to [0,0].
-* @param ***REMOVED***object***REMOVED*** [maxForce=Number.MAX_VALUE] - Maximum force to apply.
+* @param {Phaser.Physics.P2} world - A reference to the P2 World.
+* @param {p2.Body} bodyA - First connected body.
+* @param {p2.Body} bodyB - Second connected body.
+* @param {number} distance - The distance to keep between the bodies.
+* @param {Array} [localAnchorA] - The anchor point for bodyA, defined locally in bodyA frame. Defaults to [0,0].
+* @param {Array} [localAnchorB] - The anchor point for bodyB, defined locally in bodyB frame. Defaults to [0,0].
+* @param {object} [maxForce=Number.MAX_VALUE] - Maximum force to apply.
 */
-Phaser.Physics.P2.DistanceConstraint = function (world, bodyA, bodyB, distance, localAnchorA, localAnchorB, maxForce) ***REMOVED***
+Phaser.Physics.P2.DistanceConstraint = function (world, bodyA, bodyB, distance, localAnchorA, localAnchorB, maxForce) {
 
-    if (distance === undefined) ***REMOVED*** distance = 100; ***REMOVED***
-    if (localAnchorA === undefined) ***REMOVED*** localAnchorA = [0, 0]; ***REMOVED***
-    if (localAnchorB === undefined) ***REMOVED*** localAnchorB = [0, 0]; ***REMOVED***
-    if (maxForce === undefined) ***REMOVED*** maxForce = Number.MAX_VALUE; ***REMOVED***
+    if (distance === undefined) { distance = 100; }
+    if (localAnchorA === undefined) { localAnchorA = [0, 0]; }
+    if (localAnchorB === undefined) { localAnchorB = [0, 0]; }
+    if (maxForce === undefined) { maxForce = Number.MAX_VALUE; }
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - Local reference to game.
+    * @property {Phaser.Game} game - Local reference to game.
     */
     this.game = world.game;
 
     /**
-    * @property ***REMOVED***Phaser.Physics.P2***REMOVED*** world - Local reference to P2 World.
+    * @property {Phaser.Physics.P2} world - Local reference to P2 World.
     */
     this.world = world;
 
@@ -5231,11 +5231,11 @@ Phaser.Physics.P2.DistanceConstraint = function (world, bodyA, bodyB, distance, 
     localAnchorA = [ world.pxmi(localAnchorA[0]), world.pxmi(localAnchorA[1]) ];
     localAnchorB = [ world.pxmi(localAnchorB[0]), world.pxmi(localAnchorB[1]) ];
 
-    var options = ***REMOVED*** distance: distance, localAnchorA: localAnchorA, localAnchorB: localAnchorB, maxForce: maxForce ***REMOVED***;
+    var options = { distance: distance, localAnchorA: localAnchorA, localAnchorB: localAnchorB, maxForce: maxForce };
 
     p2.DistanceConstraint.call(this, bodyA, bodyB, options);
 
-***REMOVED***;
+};
 
 Phaser.Physics.P2.DistanceConstraint.prototype = Object.create(p2.DistanceConstraint.prototype);
 Phaser.Physics.P2.DistanceConstraint.prototype.constructor = Phaser.Physics.P2.DistanceConstraint;
@@ -5243,7 +5243,7 @@ Phaser.Physics.P2.DistanceConstraint.prototype.constructor = Phaser.Physics.P2.D
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -5251,32 +5251,32 @@ Phaser.Physics.P2.DistanceConstraint.prototype.constructor = Phaser.Physics.P2.D
 *
 * @class Phaser.Physics.P2.GearConstraint
 * @constructor
-* @param ***REMOVED***Phaser.Physics.P2***REMOVED*** world - A reference to the P2 World.
-* @param ***REMOVED***p2.Body***REMOVED*** bodyA - First connected body.
-* @param ***REMOVED***p2.Body***REMOVED*** bodyB - Second connected body.
-* @param ***REMOVED***number***REMOVED*** [angle=0] - The relative angle
-* @param ***REMOVED***number***REMOVED*** [ratio=1] - The gear ratio.
+* @param {Phaser.Physics.P2} world - A reference to the P2 World.
+* @param {p2.Body} bodyA - First connected body.
+* @param {p2.Body} bodyB - Second connected body.
+* @param {number} [angle=0] - The relative angle
+* @param {number} [ratio=1] - The gear ratio.
 */
-Phaser.Physics.P2.GearConstraint = function (world, bodyA, bodyB, angle, ratio) ***REMOVED***
+Phaser.Physics.P2.GearConstraint = function (world, bodyA, bodyB, angle, ratio) {
 
-    if (angle === undefined) ***REMOVED*** angle = 0; ***REMOVED***
-    if (ratio === undefined) ***REMOVED*** ratio = 1; ***REMOVED***
+    if (angle === undefined) { angle = 0; }
+    if (ratio === undefined) { ratio = 1; }
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - Local reference to game.
+    * @property {Phaser.Game} game - Local reference to game.
     */
     this.game = world.game;
 
     /**
-    * @property ***REMOVED***Phaser.Physics.P2***REMOVED*** world - Local reference to P2 World.
+    * @property {Phaser.Physics.P2} world - Local reference to P2 World.
     */
     this.world = world;
 
-    var options = ***REMOVED*** angle: angle, ratio: ratio ***REMOVED***;
+    var options = { angle: angle, ratio: ratio };
 
     p2.GearConstraint.call(this, bodyA, bodyB, options);
 
-***REMOVED***;
+};
 
 Phaser.Physics.P2.GearConstraint.prototype = Object.create(p2.GearConstraint.prototype);
 Phaser.Physics.P2.GearConstraint.prototype.constructor = Phaser.Physics.P2.GearConstraint;
@@ -5284,7 +5284,7 @@ Phaser.Physics.P2.GearConstraint.prototype.constructor = Phaser.Physics.P2.GearC
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -5292,36 +5292,36 @@ Phaser.Physics.P2.GearConstraint.prototype.constructor = Phaser.Physics.P2.GearC
 *
 * @class Phaser.Physics.P2.LockConstraint
 * @constructor
-* @param ***REMOVED***Phaser.Physics.P2***REMOVED*** world - A reference to the P2 World.
-* @param ***REMOVED***p2.Body***REMOVED*** bodyA - First connected body.
-* @param ***REMOVED***p2.Body***REMOVED*** bodyB - Second connected body.
-* @param ***REMOVED***Array***REMOVED*** [offset] - The offset of bodyB in bodyA's frame. The value is an array with 2 elements matching x and y, i.e: [32, 32].
-* @param ***REMOVED***number***REMOVED*** [angle=0] - The angle of bodyB in bodyA's frame.
-* @param ***REMOVED***number***REMOVED*** [maxForce] - The maximum force that should be applied to constrain the bodies.
+* @param {Phaser.Physics.P2} world - A reference to the P2 World.
+* @param {p2.Body} bodyA - First connected body.
+* @param {p2.Body} bodyB - Second connected body.
+* @param {Array} [offset] - The offset of bodyB in bodyA's frame. The value is an array with 2 elements matching x and y, i.e: [32, 32].
+* @param {number} [angle=0] - The angle of bodyB in bodyA's frame.
+* @param {number} [maxForce] - The maximum force that should be applied to constrain the bodies.
 */
-Phaser.Physics.P2.LockConstraint = function (world, bodyA, bodyB, offset, angle, maxForce) ***REMOVED***
+Phaser.Physics.P2.LockConstraint = function (world, bodyA, bodyB, offset, angle, maxForce) {
 
-    if (offset === undefined) ***REMOVED*** offset = [0, 0]; ***REMOVED***
-    if (angle === undefined) ***REMOVED*** angle = 0; ***REMOVED***
-    if (maxForce === undefined) ***REMOVED*** maxForce = Number.MAX_VALUE; ***REMOVED***
+    if (offset === undefined) { offset = [0, 0]; }
+    if (angle === undefined) { angle = 0; }
+    if (maxForce === undefined) { maxForce = Number.MAX_VALUE; }
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - Local reference to game.
+    * @property {Phaser.Game} game - Local reference to game.
     */
     this.game = world.game;
 
     /**
-    * @property ***REMOVED***Phaser.Physics.P2***REMOVED*** world - Local reference to P2 World.
+    * @property {Phaser.Physics.P2} world - Local reference to P2 World.
     */
     this.world = world;
 
     offset = [ world.pxm(offset[0]), world.pxm(offset[1]) ];
 
-    var options = ***REMOVED*** localOffsetB: offset, localAngleB: angle, maxForce: maxForce ***REMOVED***;
+    var options = { localOffsetB: offset, localAngleB: angle, maxForce: maxForce };
 
     p2.LockConstraint.call(this, bodyA, bodyB, options);
 
-***REMOVED***;
+};
 
 Phaser.Physics.P2.LockConstraint.prototype = Object.create(p2.LockConstraint.prototype);
 Phaser.Physics.P2.LockConstraint.prototype.constructor = Phaser.Physics.P2.LockConstraint;
@@ -5329,7 +5329,7 @@ Phaser.Physics.P2.LockConstraint.prototype.constructor = Phaser.Physics.P2.LockC
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -5337,41 +5337,41 @@ Phaser.Physics.P2.LockConstraint.prototype.constructor = Phaser.Physics.P2.LockC
 *
 * @class Phaser.Physics.P2.PrismaticConstraint
 * @constructor
-* @param ***REMOVED***Phaser.Physics.P2***REMOVED*** world - A reference to the P2 World.
-* @param ***REMOVED***p2.Body***REMOVED*** bodyA - First connected body.
-* @param ***REMOVED***p2.Body***REMOVED*** bodyB - Second connected body.
-* @param ***REMOVED***boolean***REMOVED*** [lockRotation=true] - If set to false, bodyB will be free to rotate around its anchor point.
-* @param ***REMOVED***Array***REMOVED*** [anchorA] - Body A's anchor point, defined in its own local frame. The value is an array with 2 elements matching x and y, i.e: [32, 32].
-* @param ***REMOVED***Array***REMOVED*** [anchorB] - Body A's anchor point, defined in its own local frame. The value is an array with 2 elements matching x and y, i.e: [32, 32].
-* @param ***REMOVED***Array***REMOVED*** [axis] - An axis, defined in body A frame, that body B's anchor point may slide along. The value is an array with 2 elements matching x and y, i.e: [32, 32].
-* @param ***REMOVED***number***REMOVED*** [maxForce] - The maximum force that should be applied to constrain the bodies.
+* @param {Phaser.Physics.P2} world - A reference to the P2 World.
+* @param {p2.Body} bodyA - First connected body.
+* @param {p2.Body} bodyB - Second connected body.
+* @param {boolean} [lockRotation=true] - If set to false, bodyB will be free to rotate around its anchor point.
+* @param {Array} [anchorA] - Body A's anchor point, defined in its own local frame. The value is an array with 2 elements matching x and y, i.e: [32, 32].
+* @param {Array} [anchorB] - Body A's anchor point, defined in its own local frame. The value is an array with 2 elements matching x and y, i.e: [32, 32].
+* @param {Array} [axis] - An axis, defined in body A frame, that body B's anchor point may slide along. The value is an array with 2 elements matching x and y, i.e: [32, 32].
+* @param {number} [maxForce] - The maximum force that should be applied to constrain the bodies.
 */
-Phaser.Physics.P2.PrismaticConstraint = function (world, bodyA, bodyB, lockRotation, anchorA, anchorB, axis, maxForce) ***REMOVED***
+Phaser.Physics.P2.PrismaticConstraint = function (world, bodyA, bodyB, lockRotation, anchorA, anchorB, axis, maxForce) {
 
-    if (lockRotation === undefined) ***REMOVED*** lockRotation = true; ***REMOVED***
-    if (anchorA === undefined) ***REMOVED*** anchorA = [0, 0]; ***REMOVED***
-    if (anchorB === undefined) ***REMOVED*** anchorB = [0, 0]; ***REMOVED***
-    if (axis === undefined) ***REMOVED*** axis = [0, 0]; ***REMOVED***
-    if (maxForce === undefined) ***REMOVED*** maxForce = Number.MAX_VALUE; ***REMOVED***
+    if (lockRotation === undefined) { lockRotation = true; }
+    if (anchorA === undefined) { anchorA = [0, 0]; }
+    if (anchorB === undefined) { anchorB = [0, 0]; }
+    if (axis === undefined) { axis = [0, 0]; }
+    if (maxForce === undefined) { maxForce = Number.MAX_VALUE; }
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - Local reference to game.
+    * @property {Phaser.Game} game - Local reference to game.
     */
     this.game = world.game;
 
     /**
-    * @property ***REMOVED***Phaser.Physics.P2***REMOVED*** world - Local reference to P2 World.
+    * @property {Phaser.Physics.P2} world - Local reference to P2 World.
     */
     this.world = world;
 
     anchorA = [ world.pxmi(anchorA[0]), world.pxmi(anchorA[1]) ];
     anchorB = [ world.pxmi(anchorB[0]), world.pxmi(anchorB[1]) ];
 
-    var options = ***REMOVED*** localAnchorA: anchorA, localAnchorB: anchorB, localAxisA: axis, maxForce: maxForce, disableRotationalLock: !lockRotation ***REMOVED***;
+    var options = { localAnchorA: anchorA, localAnchorB: anchorB, localAxisA: axis, maxForce: maxForce, disableRotationalLock: !lockRotation };
 
     p2.PrismaticConstraint.call(this, bodyA, bodyB, options);
 
-***REMOVED***;
+};
 
 Phaser.Physics.P2.PrismaticConstraint.prototype = Object.create(p2.PrismaticConstraint.prototype);
 Phaser.Physics.P2.PrismaticConstraint.prototype.constructor = Phaser.Physics.P2.PrismaticConstraint;
@@ -5379,7 +5379,7 @@ Phaser.Physics.P2.PrismaticConstraint.prototype.constructor = Phaser.Physics.P2.
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -5388,26 +5388,26 @@ Phaser.Physics.P2.PrismaticConstraint.prototype.constructor = Phaser.Physics.P2.
 *
 * @class Phaser.Physics.P2.RevoluteConstraint
 * @constructor
-* @param ***REMOVED***Phaser.Physics.P2***REMOVED*** world - A reference to the P2 World.
-* @param ***REMOVED***p2.Body***REMOVED*** bodyA - First connected body.
-* @param ***REMOVED***Float32Array***REMOVED*** pivotA - The point relative to the center of mass of bodyA which bodyA is constrained to. The value is an array with 2 elements matching x and y, i.e: [32, 32].
-* @param ***REMOVED***p2.Body***REMOVED*** bodyB - Second connected body.
-* @param ***REMOVED***Float32Array***REMOVED*** pivotB - The point relative to the center of mass of bodyB which bodyB is constrained to. The value is an array with 2 elements matching x and y, i.e: [32, 32].
-* @param ***REMOVED***number***REMOVED*** [maxForce=0] - The maximum force that should be applied to constrain the bodies.
-* @param ***REMOVED***Float32Array***REMOVED*** [worldPivot=null] - A pivot point given in world coordinates. If specified, localPivotA and localPivotB are automatically computed from this value.
+* @param {Phaser.Physics.P2} world - A reference to the P2 World.
+* @param {p2.Body} bodyA - First connected body.
+* @param {Float32Array} pivotA - The point relative to the center of mass of bodyA which bodyA is constrained to. The value is an array with 2 elements matching x and y, i.e: [32, 32].
+* @param {p2.Body} bodyB - Second connected body.
+* @param {Float32Array} pivotB - The point relative to the center of mass of bodyB which bodyB is constrained to. The value is an array with 2 elements matching x and y, i.e: [32, 32].
+* @param {number} [maxForce=0] - The maximum force that should be applied to constrain the bodies.
+* @param {Float32Array} [worldPivot=null] - A pivot point given in world coordinates. If specified, localPivotA and localPivotB are automatically computed from this value.
 */
-Phaser.Physics.P2.RevoluteConstraint = function (world, bodyA, pivotA, bodyB, pivotB, maxForce, worldPivot) ***REMOVED***
+Phaser.Physics.P2.RevoluteConstraint = function (world, bodyA, pivotA, bodyB, pivotB, maxForce, worldPivot) {
 
-    if (maxForce === undefined) ***REMOVED*** maxForce = Number.MAX_VALUE; ***REMOVED***
-    if (worldPivot === undefined) ***REMOVED*** worldPivot = null; ***REMOVED***
+    if (maxForce === undefined) { maxForce = Number.MAX_VALUE; }
+    if (worldPivot === undefined) { worldPivot = null; }
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - Local reference to game.
+    * @property {Phaser.Game} game - Local reference to game.
     */
     this.game = world.game;
 
     /**
-    * @property ***REMOVED***Phaser.Physics.P2***REMOVED*** world - Local reference to P2 World.
+    * @property {Phaser.Physics.P2} world - Local reference to P2 World.
     */
     this.world = world;
 
@@ -5415,15 +5415,15 @@ Phaser.Physics.P2.RevoluteConstraint = function (world, bodyA, pivotA, bodyB, pi
     pivotB = [ world.pxmi(pivotB[0]), world.pxmi(pivotB[1]) ];
 
     if (worldPivot)
-    ***REMOVED***
+    {
         worldPivot = [ world.pxmi(worldPivot[0]), world.pxmi(worldPivot[1]) ];
-    ***REMOVED***
+    }
 
-    var options = ***REMOVED*** worldPivot: worldPivot, localPivotA: pivotA, localPivotB: pivotB, maxForce: maxForce ***REMOVED***;
+    var options = { worldPivot: worldPivot, localPivotA: pivotA, localPivotB: pivotB, maxForce: maxForce };
 
     p2.RevoluteConstraint.call(this, bodyA, bodyB, options);
 
-***REMOVED***;
+};
 
 Phaser.Physics.P2.RevoluteConstraint.prototype = Object.create(p2.RevoluteConstraint.prototype);
 Phaser.Physics.P2.RevoluteConstraint.prototype.constructor = Phaser.Physics.P2.RevoluteConstraint;

@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1294,30 +1294,30 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
  * Converts a hex color number to an [R, G, B] array
  *
  * @method hex2rgb
- * @param hex ***REMOVED***Number***REMOVED***
+ * @param hex {Number}
  */
-PIXI.hex2rgb = function(hex) ***REMOVED***
+PIXI.hex2rgb = function(hex) {
     return [(hex >> 16 &amp; 0xFF) / 255, ( hex >> 8 &amp; 0xFF) / 255, (hex &amp; 0xFF)/ 255];
-***REMOVED***;
+};
 
 /**
  * Converts a color as an [R, G, B] array to a hex number
  *
  * @method rgb2hex
- * @param rgb ***REMOVED***Array***REMOVED***
+ * @param rgb {Array}
  */
-PIXI.rgb2hex = function(rgb) ***REMOVED***
+PIXI.rgb2hex = function(rgb) {
     return ((rgb[0]*255 &lt;&lt; 16) + (rgb[1]*255 &lt;&lt; 8) + rgb[2]*255);
-***REMOVED***;
+};
 
 /**
  * Checks whether the Canvas BlendModes are supported by the current browser for drawImage
  *
  * @method canUseNewCanvasBlendModes
- * @return ***REMOVED***Boolean***REMOVED*** whether they are supported
+ * @return {Boolean} whether they are supported
  */
 PIXI.canUseNewCanvasBlendModes = function()
-***REMOVED***
+{
     if (document === undefined) return false;
 
     var pngHead = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABAQMAAADD8p2OAAAAA1BMVEX/';
@@ -1336,9 +1336,9 @@ PIXI.canUseNewCanvasBlendModes = function()
     context.drawImage(yellow, 2, 0);
 
     if (!context.getImageData(2,0,1,1))
-    ***REMOVED***
+    {
         return false;
-    ***REMOVED***
+    }
 
     var data = context.getImageData(2,0,1,1).data;
 
@@ -1346,40 +1346,40 @@ PIXI.canUseNewCanvasBlendModes = function()
 
     return (data[0] === 255 &amp;&amp; data[1] === 0 &amp;&amp; data[2] === 0);
 
-***REMOVED***;
+};
 
 /**
  * Given a number, this function returns the closest number that is a power of two
  * this function is taken from Starling Framework as its pretty neat ;)
  *
  * @method getNextPowerOfTwo
- * @param number ***REMOVED***Number***REMOVED***
- * @return ***REMOVED***Number***REMOVED*** the closest number that is a power of two
+ * @param number {Number}
+ * @return {Number} the closest number that is a power of two
  */
 PIXI.getNextPowerOfTwo = function(number)
-***REMOVED***
+{
     if (number > 0 &amp;&amp; (number &amp; (number - 1)) === 0) // see: http://goo.gl/D9kPj
         return number;
     else
-    ***REMOVED***
+    {
         var result = 1;
         while (result &lt; number) result &lt;&lt;= 1;
         return result;
-    ***REMOVED***
-***REMOVED***;
+    }
+};
 
 /**
  * checks if the given width and height make a power of two texture
  * @method isPowerOfTwo
- * @param width ***REMOVED***Number***REMOVED***
- * @param height ***REMOVED***Number***REMOVED***
- * @return ***REMOVED***Boolean***REMOVED*** 
+ * @param width {Number}
+ * @param height {Number}
+ * @return {Boolean} 
  */
 PIXI.isPowerOfTwo = function(width, height)
-***REMOVED***
+{
     return (width > 0 &amp;&amp; (width &amp; (width - 1)) === 0 &amp;&amp; height > 0 &amp;&amp; (height &amp; (height - 1)) === 0);
 
-***REMOVED***;
+};
 </pre>
         </article>
     </section>
@@ -1422,22 +1422,22 @@ PIXI.isPowerOfTwo = function(width, height)
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

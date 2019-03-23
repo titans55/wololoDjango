@@ -5,10 +5,10 @@
 /**
 * @class PrimitiveShader
 * @constructor
-* @param gl ***REMOVED***WebGLContext***REMOVED*** the current WebGL drawing context
+* @param gl {WebGLContext} the current WebGL drawing context
 */
 PIXI.PrimitiveShader = function(gl)
-***REMOVED***
+{
     /**
      * @property _UID
      * @type Number
@@ -38,9 +38,9 @@ PIXI.PrimitiveShader = function(gl)
         'precision mediump float;',
         'varying vec4 vColor;',
 
-        'void main(void) ***REMOVED***',
+        'void main(void) {',
         '   gl_FragColor = vColor;',
-        '***REMOVED***'
+        '}'
     ];
 
     /**
@@ -59,16 +59,16 @@ PIXI.PrimitiveShader = function(gl)
         'uniform vec3 tint;',
         'varying vec4 vColor;',
 
-        'void main(void) ***REMOVED***',
+        'void main(void) {',
         '   vec3 v = translationMatrix * vec3(aVertexPosition , 1.0);',
         '   v -= offsetVector.xyx;',
         '   gl_Position = vec4( v.x / projectionVector.x -1.0, (v.y / projectionVector.y * -flipY) + flipY , 0.0, 1.0);',
         '   vColor = aColor * vec4(tint * alpha, alpha);',
-        '***REMOVED***'
+        '}'
     ];
 
     this.init();
-***REMOVED***;
+};
 
 PIXI.PrimitiveShader.prototype.constructor = PIXI.PrimitiveShader;
 
@@ -78,7 +78,7 @@ PIXI.PrimitiveShader.prototype.constructor = PIXI.PrimitiveShader;
 * @method init
 */
 PIXI.PrimitiveShader.prototype.init = function()
-***REMOVED***
+{
     var gl = this.gl;
 
     var program = PIXI.compileProgram(gl, this.vertexSrc, this.fragmentSrc);
@@ -100,7 +100,7 @@ PIXI.PrimitiveShader.prototype.init = function()
     this.alpha = gl.getUniformLocation(program, 'alpha');
 
     this.program = program;
-***REMOVED***;
+};
 
 /**
 * Destroys the shader.
@@ -108,10 +108,10 @@ PIXI.PrimitiveShader.prototype.init = function()
 * @method destroy
 */
 PIXI.PrimitiveShader.prototype.destroy = function()
-***REMOVED***
+{
     this.gl.deleteProgram( this.program );
     this.uniforms = null;
     this.gl = null;
 
     this.attributes = null;
-***REMOVED***;
+};

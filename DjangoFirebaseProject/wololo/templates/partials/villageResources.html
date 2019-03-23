@@ -8,30 +8,30 @@
         <div class="col">
             <div class="btn-group">
                 <button id="switchVillage" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    ***REMOVED******REMOVED***data.selectedVillage.villageName***REMOVED******REMOVED***
+                    {{data.selectedVillage.villageName}}
                 </button>
                 <div class="dropdown-menu">
-                    ***REMOVED***% for village in myVillages %***REMOVED***
-                        ***REMOVED***% if data.page == 'myVillages' %***REMOVED***
-                            <a class="dropdown-item" href="/game/***REMOVED******REMOVED***village.index***REMOVED******REMOVED***">***REMOVED******REMOVED***village.villageName***REMOVED******REMOVED***</a>
-                        ***REMOVED***% endif %***REMOVED***
-                        ***REMOVED***% if data.page == 'map' %***REMOVED***
-                        <a class="dropdown-item" href="/game/***REMOVED******REMOVED***village.index***REMOVED******REMOVED***/map">***REMOVED******REMOVED***village.villageName***REMOVED******REMOVED***</a>
-                        ***REMOVED***% endif %***REMOVED***
-                        ***REMOVED***% if data.page == 'barracks' %***REMOVED***
-                        <a class="dropdown-item" href="/game/***REMOVED******REMOVED***village.index***REMOVED******REMOVED***/barracks">***REMOVED******REMOVED***village.villageName***REMOVED******REMOVED***</a>
-                        ***REMOVED***% endif %***REMOVED***
-                    ***REMOVED***%endfor%***REMOVED***
+                    {% for village in myVillages %}
+                        {% if data.page == 'myVillages' %}
+                            <a class="dropdown-item" href="/game/{{village.index}}">{{village.villageName}}</a>
+                        {% endif %}
+                        {% if data.page == 'map' %}
+                        <a class="dropdown-item" href="/game/{{village.index}}/map">{{village.villageName}}</a>
+                        {% endif %}
+                        {% if data.page == 'barracks' %}
+                        <a class="dropdown-item" href="/game/{{village.index}}/barracks">{{village.villageName}}</a>
+                        {% endif %}
+                    {%endfor%}
                 </div>
             </div>
         </div>
         <div class="col">
-            ***REMOVED***% if data.page == 'myVillages' %***REMOVED***
+            {% if data.page == 'myVillages' %}
             <div class="toggleVisualVillage custom-control custom-switch">
                 <input type="checkbox" class="custom-control-input" id="toggleVisualVillage">
                 <label class="custom-control-label" for="toggleVisualVillage">Toggle Visual Village</label>
               </div>
-            ***REMOVED***% endif %***REMOVED***
+            {% endif %}
         </div>
         <div class="col">
             <span class="badge badge-warning">Wood <div id="wood">X</div></span>

@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1296,8 +1296,8 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 * @private
 */
 PIXI.WebGLMaskManager = function()
-***REMOVED***
-***REMOVED***;
+{
+};
 
 PIXI.WebGLMaskManager.prototype.constructor = PIXI.WebGLMaskManager;
 
@@ -1305,56 +1305,56 @@ PIXI.WebGLMaskManager.prototype.constructor = PIXI.WebGLMaskManager;
 * Sets the drawing context to the one given in parameter.
 * 
 * @method setContext 
-* @param gl ***REMOVED***WebGLContext***REMOVED*** the current WebGL drawing context
+* @param gl {WebGLContext} the current WebGL drawing context
 */
 PIXI.WebGLMaskManager.prototype.setContext = function(gl)
-***REMOVED***
+{
     this.gl = gl;
-***REMOVED***;
+};
 
 /**
 * Applies the Mask and adds it to the current filter stack.
 * 
 * @method pushMask
-* @param maskData ***REMOVED***Array***REMOVED***
-* @param renderSession ***REMOVED***Object***REMOVED***
+* @param maskData {Array}
+* @param renderSession {Object}
 */
 PIXI.WebGLMaskManager.prototype.pushMask = function(maskData, renderSession)
-***REMOVED***
+{
     var gl = renderSession.gl;
 
     if (maskData.dirty)
-    ***REMOVED***
+    {
         PIXI.WebGLGraphics.updateGraphics(maskData, gl);
-    ***REMOVED***
+    }
 
     if (maskData._webGL[gl.id] === undefined || maskData._webGL[gl.id].data === undefined || maskData._webGL[gl.id].data.length === 0)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     renderSession.stencilManager.pushStencil(maskData, maskData._webGL[gl.id].data[0], renderSession);
-***REMOVED***;
+};
 
 /**
 * Removes the last filter from the filter stack and doesn't return it.
 * 
 * @method popMask
-* @param maskData ***REMOVED***Array***REMOVED***
-* @param renderSession ***REMOVED***Object***REMOVED*** an object containing all the useful parameters
+* @param maskData {Array}
+* @param renderSession {Object} an object containing all the useful parameters
 */
 PIXI.WebGLMaskManager.prototype.popMask = function(maskData, renderSession)
-***REMOVED***
+{
     var gl = this.gl;
 
     if (maskData._webGL[gl.id] === undefined || maskData._webGL[gl.id].data === undefined || maskData._webGL[gl.id].data.length === 0)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     renderSession.stencilManager.popStencil(maskData, maskData._webGL[gl.id].data[0], renderSession);
 
-***REMOVED***;
+};
 
 /**
 * Destroys the mask stack.
@@ -1362,9 +1362,9 @@ PIXI.WebGLMaskManager.prototype.popMask = function(maskData, renderSession)
 * @method destroy
 */
 PIXI.WebGLMaskManager.prototype.destroy = function()
-***REMOVED***
+{
     this.gl = null;
-***REMOVED***;
+};
 </pre>
         </article>
     </section>
@@ -1407,22 +1407,22 @@ PIXI.WebGLMaskManager.prototype.destroy = function()
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

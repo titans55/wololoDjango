@@ -7,29 +7,29 @@
 
 var path = require('path');
 
-exports.defineTags = function(dictionary) ***REMOVED***
+exports.defineTags = function(dictionary) {
 
-    dictionary.defineTag('nosource', ***REMOVED***
-        onTagged: function (doclet, tag) ***REMOVED***
+    dictionary.defineTag('nosource', {
+        onTagged: function (doclet, tag) {
             doclet.meta.nosource = true;
             //doclet.meta.path = '';
             //doclet.meta.filename = '';
-        ***REMOVED***
-    ***REMOVED***);
+        }
+    });
 
-    dictionary.defineTag('sourcefile', ***REMOVED***
-        onTagged: function (doclet, tag) ***REMOVED***
+    dictionary.defineTag('sourcefile', {
+        onTagged: function (doclet, tag) {
             var filename = tag.value;
             doclet.meta.path = path.dirname(filename);
             doclet.meta.filename = path.basename(filename);
-        ***REMOVED***
-    ***REMOVED***);
+        }
+    });
 
-    dictionary.defineTag('sourceline', ***REMOVED***
-       onTagged: function (doclet, tag) ***REMOVED***
+    dictionary.defineTag('sourceline', {
+       onTagged: function (doclet, tag) {
            var lineno = tag.value;
            doclet.meta.lineno = lineno;
-       ***REMOVED***
-    ***REMOVED***);
+       }
+    });
 
-***REMOVED***;
+};

@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1289,7 +1289,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
             <pre class="sunlight-highlight-javascript linenums">/**
 * @author       Richard Davey &lt;rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1297,9 +1297,9 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 *
 * @class
 */
-Phaser.Component.Smoothed = function () ***REMOVED******REMOVED***;
+Phaser.Component.Smoothed = function () {};
 
-Phaser.Component.Smoothed.prototype = ***REMOVED***
+Phaser.Component.Smoothed.prototype = {
 
     /**
     * Enable or disable texture smoothing for this Game Object.
@@ -1308,37 +1308,37 @@ Phaser.Component.Smoothed.prototype = ***REMOVED***
     * 
     * Smoothing is enabled by default.
     *
-    * @property ***REMOVED***boolean***REMOVED*** smoothed
+    * @property {boolean} smoothed
     */
-    smoothed: ***REMOVED***
+    smoothed: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return !this.texture.baseTexture.scaleMode;
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             if (value)
-            ***REMOVED***
+            {
                 if (this.texture)
-                ***REMOVED***
+                {
                     this.texture.baseTexture.scaleMode = 0;
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
             else
-            ***REMOVED***
+            {
                 if (this.texture)
-                ***REMOVED***
+                {
                     this.texture.baseTexture.scaleMode = 1;
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 </pre>
         </article>
     </section>
@@ -1381,22 +1381,22 @@ Phaser.Component.Smoothed.prototype = ***REMOVED***
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

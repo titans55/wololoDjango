@@ -1,338 +1,338 @@
-module.exports = ***REMOVED***
+module.exports = {
 
-    creatureGlobal: ***REMOVED***
+    creatureGlobal: {
         src: require('../manifests/creature-global'),
         dest: '<%= modules_dir %>/creature-global.js'
-    ***REMOVED***,
+    },
 
-    creatureGlobalSplit: ***REMOVED***
+    creatureGlobalSplit: {
         src: require('../manifests/creature-global'),
         dest: '<%= compile_dir %>/creature.js'
-    ***REMOVED***,
+    },
 
-    creature: ***REMOVED***
+    creature: {
         src: require('../manifests/creature'),
         dest: '<%= modules_dir %>/creature.js'
-    ***REMOVED***,
+    },
 
-    p2Global: ***REMOVED***
+    p2Global: {
         src: require('../manifests/p2'),
         dest: '<%= modules_dir %>/p2-global.js'
-    ***REMOVED***,
+    },
 
-    p2GlobalSplit: ***REMOVED***
+    p2GlobalSplit: {
         src: require('../manifests/p2'),
         dest: '<%= compile_dir %>/p2.js'
-    ***REMOVED***,
+    },
 
-    pixiIntro: ***REMOVED***
+    pixiIntro: {
         src: require('../manifests/pixi-intro'),
         dest: '<%= modules_dir %>/pixi-intro.js'
-    ***REMOVED***,
+    },
 
-    pixiMain: ***REMOVED***
+    pixiMain: {
         src: require('../manifests/pixi-main'),
         dest: '<%= modules_dir %>/pixi-main.js'
-    ***REMOVED***,
+    },
     
-    pixiRope: ***REMOVED***
+    pixiRope: {
         src: require('../manifests/pixi-rope'),
         dest: '<%= modules_dir %>/pixi-rope.js'
-    ***REMOVED***,
+    },
 
-    pixiTileSprite: ***REMOVED***
+    pixiTileSprite: {
         src: require('../manifests/pixi-tilesprite'),
         dest: '<%= modules_dir %>/pixi-tilesprite.js'
-    ***REMOVED***,
+    },
 
-    pixiOutro: ***REMOVED***
+    pixiOutro: {
         src: require('../manifests/pixi-outro'),
         dest: '<%= modules_dir %>/pixi-outro.js'
-    ***REMOVED***,
+    },
 
-    intro: ***REMOVED***
+    intro: {
         src: require('../manifests/intro'),
         dest: '<%= modules_dir %>/intro.js'
-    ***REMOVED***,
+    },
 
-    phaser: ***REMOVED***
+    phaser: {
         src: require('../manifests/phaser'),
         dest: '<%= modules_dir %>/phaser.js'
-    ***REMOVED***,
+    },
 
-    geom: ***REMOVED***
+    geom: {
         src: require('../manifests/geom'),
         dest: '<%= modules_dir %>/geom.js'
-    ***REMOVED***,
+    },
 
-    core: ***REMOVED***
+    core: {
         src: require('../manifests/core'),
         dest: '<%= modules_dir %>/core.js'
-    ***REMOVED***,
+    },
 
-    input: ***REMOVED***
+    input: {
         src: require('../manifests/input'),
         dest: '<%= modules_dir %>/input.js'
-    ***REMOVED***,
+    },
 
-    gamepad: ***REMOVED***
+    gamepad: {
         src: require('../manifests/gamepad'),
         dest: '<%= modules_dir %>/gamepad.js'
-    ***REMOVED***,
+    },
 
-    keyboard: ***REMOVED***
+    keyboard: {
         src: require('../manifests/keyboard'),
         dest: '<%= modules_dir %>/keyboard.js'
-    ***REMOVED***,
+    },
 
-    components: ***REMOVED***
+    components: {
         src: require('../manifests/components'),
         dest: '<%= modules_dir %>/components.js'
-    ***REMOVED***,
+    },
 
-    gameobjects: ***REMOVED***
+    gameobjects: {
         src: require('../manifests/gameobjects'),
         dest: '<%= modules_dir %>/gameobjects.js'
-    ***REMOVED***,
+    },
 
-    bitmapdata: ***REMOVED***
+    bitmapdata: {
         src: require('../manifests/bitmapdata'),
         dest: '<%= modules_dir %>/bitmapdata.js'
-    ***REMOVED***,
+    },
 
-    graphics: ***REMOVED***
+    graphics: {
         src: require('../manifests/graphics'),
         dest: '<%= modules_dir %>/graphics.js'
-    ***REMOVED***,
+    },
 
-    rendertexture: ***REMOVED***
+    rendertexture: {
         src: require('../manifests/rendertexture'),
         dest: '<%= modules_dir %>/rendertexture.js'
-    ***REMOVED***,
+    },
 
-    text: ***REMOVED***
+    text: {
         src: require('../manifests/text'),
         dest: '<%= modules_dir %>/text.js'
-    ***REMOVED***,
+    },
 
-    bitmaptext: ***REMOVED***
+    bitmaptext: {
         src: require('../manifests/bitmaptext'),
         dest: '<%= modules_dir %>/bitmaptext.js'
-    ***REMOVED***,
+    },
 
-    retrofont: ***REMOVED***
+    retrofont: {
         src: require('../manifests/retrofont'),
         dest: '<%= modules_dir %>/retrofont.js'
-    ***REMOVED***,
+    },
 
-    system: ***REMOVED***
+    system: {
         src: require('../manifests/system'),
         dest: '<%= modules_dir %>/system.js'
-    ***REMOVED***,
+    },
 
-    math: ***REMOVED***
+    math: {
         src: require('../manifests/math'),
         dest: '<%= modules_dir %>/math.js'
-    ***REMOVED***,
+    },
 
-    net: ***REMOVED***
+    net: {
         src: require('../manifests/net'),
         dest: '<%= modules_dir %>/net.js'
-    ***REMOVED***,
+    },
 
-    netStub: ***REMOVED***
+    netStub: {
         src: require('../manifests/net.stub'),
         dest: '<%= modules_dir %>/net.js'
-    ***REMOVED***,
+    },
 
-    tweens: ***REMOVED***
+    tweens: {
         src: require('../manifests/tweens'),
         dest: '<%= modules_dir %>/tweens.js'
-    ***REMOVED***,
+    },
 
-    tweensStub: ***REMOVED***
+    tweensStub: {
         src: require('../manifests/tweens.stub'),
         dest: '<%= modules_dir %>/tweens.js'
-    ***REMOVED***,
+    },
 
-    time: ***REMOVED***
+    time: {
         src: require('../manifests/time'),
         dest: '<%= modules_dir %>/time.js'
-    ***REMOVED***,
+    },
 
-    animation: ***REMOVED***
+    animation: {
         src: require('../manifests/animation'),
         dest: '<%= modules_dir %>/animation.js'
-    ***REMOVED***,
+    },
 
-    loader: ***REMOVED***
+    loader: {
         src: require('../manifests/loader'),
         dest: '<%= modules_dir %>/loader.js'
-    ***REMOVED***,
+    },
 
-    sound: ***REMOVED***
+    sound: {
         src: require('../manifests/sound'),
         dest: '<%= modules_dir %>/sound.js'
-    ***REMOVED***,
+    },
 
-    soundStub: ***REMOVED***
+    soundStub: {
         src: require('../manifests/sound.stub'),
         dest: '<%= modules_dir %>/sound.js'
-    ***REMOVED***,
+    },
 
-    debug: ***REMOVED***
+    debug: {
         src: require('../manifests/debug'),
         dest: '<%= modules_dir %>/debug.js'
-    ***REMOVED***,
+    },
 
-    debugStub: ***REMOVED***
+    debugStub: {
         src: require('../manifests/debug.stub'),
         dest: '<%= modules_dir %>/debug.js'
-    ***REMOVED***,
+    },
 
-    utils: ***REMOVED***
+    utils: {
         src: require('../manifests/utils'),
         dest: '<%= modules_dir %>/utils.js'
-    ***REMOVED***,
+    },
 
-    physics: ***REMOVED***
+    physics: {
         src: require('../manifests/physics'),
         dest: '<%= modules_dir %>/physics.js'
-    ***REMOVED***,
+    },
 
-    arcade: ***REMOVED***
+    arcade: {
         src: require('../manifests/physics.arcade'),
         dest: '<%= modules_dir %>/arcade.js'
-    ***REMOVED***,
+    },
 
-    weapon: ***REMOVED***
+    weapon: {
         src: require('../manifests/physics.arcade.weapon'),
         dest: '<%= modules_dir %>/weapon.js'
-    ***REMOVED***,
+    },
 
-    arcadeTilemaps: ***REMOVED***
+    arcadeTilemaps: {
         src: require('../manifests/physics.arcade.tilemaps'),
         dest: '<%= modules_dir %>/arcadeTilemaps.js'
-    ***REMOVED***,
+    },
 
-    ninja: ***REMOVED***
+    ninja: {
         src: require('../manifests/physics.ninja'),
         dest: '<%= modules_dir %>/ninja.js'
-    ***REMOVED***,
+    },
 
-    p2: ***REMOVED***
+    p2: {
         src: require('../manifests/physics.p2'),
         dest: '<%= modules_dir %>/p2.js'
-    ***REMOVED***,
+    },
 
-    tilemaps: ***REMOVED***
+    tilemaps: {
         src: require('../manifests/tilemaps'),
         dest: '<%= modules_dir %>/tilemaps.js'
-    ***REMOVED***,
+    },
 
-    particles: ***REMOVED***
+    particles: {
         src: require('../manifests/particles'),
         dest: '<%= modules_dir %>/particles.js'
-    ***REMOVED***,
+    },
 
-    particlesStub: ***REMOVED***
+    particlesStub: {
         src: require('../manifests/particles.stub'),
         dest: '<%= modules_dir %>/particles.js'
-    ***REMOVED***,
+    },
 
-    scale: ***REMOVED***
+    scale: {
         src: require('../manifests/scale'),
         dest: '<%= modules_dir %>/scale.js'
-    ***REMOVED***,
+    },
 
-    scaleStub: ***REMOVED***
+    scaleStub: {
         src: require('../manifests/scale.stub'),
         dest: '<%= modules_dir %>/scale.js'
-    ***REMOVED***,
+    },
 
-    dom: ***REMOVED***
+    dom: {
         src: require('../manifests/dom'),
         dest: '<%= modules_dir %>/dom.js'
-    ***REMOVED***,
+    },
 
-    domStub: ***REMOVED***
+    domStub: {
         src: require('../manifests/dom.stub'),
         dest: '<%= modules_dir %>/dom.js'
-    ***REMOVED***,
+    },
 
-    color: ***REMOVED***
+    color: {
         src: require('../manifests/color'),
         dest: '<%= modules_dir %>/color.js'
-    ***REMOVED***,
+    },
 
-    colorStub: ***REMOVED***
+    colorStub: {
         src: require('../manifests/color.stub'),
         dest: '<%= modules_dir %>/color.js'
-    ***REMOVED***,
+    },
 
-    video: ***REMOVED***
+    video: {
         src: require('../manifests/video'),
         dest: '<%= modules_dir %>/video.js'
-    ***REMOVED***,
+    },
 
-    rope: ***REMOVED***
+    rope: {
         src: require('../manifests/rope'),
         dest: '<%= modules_dir %>/rope.js'
-    ***REMOVED***,
+    },
 
-    tilesprite: ***REMOVED***
+    tilesprite: {
         src: require('../manifests/tilesprite'),
         dest: '<%= modules_dir %>/tilesprite.js'
-    ***REMOVED***,
+    },
 
-    tilespriteStub: ***REMOVED***
+    tilespriteStub: {
         src: require('../manifests/tilesprite.stub'),
         dest: '<%= modules_dir %>/tilesprite.js'
-    ***REMOVED***,
+    },
 
-    create: ***REMOVED***
+    create: {
         src: require('../manifests/create'),
         dest: '<%= modules_dir %>/create.js'
-    ***REMOVED***,
+    },
 
-    createStub: ***REMOVED***
+    createStub: {
         src: require('../manifests/create.stub'),
         dest: '<%= modules_dir %>/create.js'
-    ***REMOVED***,
+    },
 
-    flexgrid: ***REMOVED***
+    flexgrid: {
         src: require('../manifests/flexgrid'),
         dest: '<%= modules_dir %>/flexgrid.js'
-    ***REMOVED***,
+    },
 
-    pixidefs: ***REMOVED***
+    pixidefs: {
         src: require('../manifests/pixidefs'),
         dest: '<%= modules_dir %>/pixidefs.js'
-    ***REMOVED***,
+    },
     
-    outro: ***REMOVED***
+    outro: {
         src: require('../manifests/outro'),
         dest: '<%= modules_dir %>/outro.js'
-    ***REMOVED***,
+    },
 
     ////////////////////
     //  Custom Builds //
     ////////////////////
 
-    custom: ***REMOVED***
-        options: ***REMOVED***
+    custom: {
+        options: {
             banner: '<%= banner %>',
-        ***REMOVED***,
+        },
         src: ['<%= filelist %>'],
         dest: '<%= compile_dir %>/<%= filename %>.js'
-    ***REMOVED***,
+    },
 
-    pixi: ***REMOVED***
-        options: ***REMOVED***
+    pixi: {
+        options: {
             banner: '<%= banner %>',
-        ***REMOVED***,
+        },
         src: ['<%= pixiFilelist %>'],
         dest: '<%= compile_dir %>/pixi.js'
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};

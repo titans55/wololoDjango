@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1304,7 +1304,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
  * @constructor
  */
 PIXI.WebGLSpriteBatch = function()
-***REMOVED***
+{
     /**
      * @property vertSize
      * @type Number
@@ -1362,14 +1362,14 @@ PIXI.WebGLSpriteBatch = function()
     this.lastIndexCount = 0;
 
     for (var i=0, j=0; i &lt; numIndices; i += 6, j += 4)
-    ***REMOVED***
+    {
         this.indices[i + 0] = j + 0;
         this.indices[i + 1] = j + 1;
         this.indices[i + 2] = j + 2;
         this.indices[i + 3] = j + 0;
         this.indices[i + 4] = j + 2;
         this.indices[i + 5] = j + 3;
-    ***REMOVED***
+    }
 
     /**
      * @property drawing
@@ -1428,18 +1428,18 @@ PIXI.WebGLSpriteBatch = function()
         'varying vec2 vTextureCoord;',
         'varying vec4 vColor;',
         'uniform sampler2D uSampler;',
-        'void main(void) ***REMOVED***',
+        'void main(void) {',
         '   gl_FragColor = texture2D(uSampler, vTextureCoord) * vColor ;',
-        '***REMOVED***'
+        '}'
     ]);
-***REMOVED***;
+};
 
 /**
 * @method setContext
-* @param gl ***REMOVED***WebGLContext***REMOVED*** the current WebGL drawing context
+* @param gl {WebGLContext} the current WebGL drawing context
 */
 PIXI.WebGLSpriteBatch.prototype.setContext = function(gl)
-***REMOVED***
+{
     this.gl = gl;
 
     // create a couple of buffers
@@ -1460,64 +1460,64 @@ PIXI.WebGLSpriteBatch.prototype.setContext = function(gl)
     var shader = new PIXI.PixiShader(gl);
 
     shader.fragmentSrc = this.defaultShader.fragmentSrc;
-    shader.uniforms = ***REMOVED******REMOVED***;
+    shader.uniforms = {};
     shader.init();
 
     this.defaultShader.shaders[gl.id] = shader;
-***REMOVED***;
+};
 
 /**
 * @method begin
-* @param renderSession ***REMOVED***Object***REMOVED*** The RenderSession object
+* @param renderSession {Object} The RenderSession object
 */
 PIXI.WebGLSpriteBatch.prototype.begin = function(renderSession)
-***REMOVED***
+{
     this.renderSession = renderSession;
     this.shader = this.renderSession.shaderManager.defaultShader;
 
     this.start();
-***REMOVED***;
+};
 
 /**
 * @method end
 */
 PIXI.WebGLSpriteBatch.prototype.end = function()
-***REMOVED***
+{
     this.flush();
-***REMOVED***;
+};
 
 /**
 * @method render
-* @param sprite ***REMOVED***Sprite***REMOVED*** the sprite to render when using this spritebatch
-* @param ***REMOVED***Matrix***REMOVED*** [matrix] - Optional matrix. If provided the Display Object will be rendered using this matrix, otherwise it will use its worldTransform.
+* @param sprite {Sprite} the sprite to render when using this spritebatch
+* @param {Matrix} [matrix] - Optional matrix. If provided the Display Object will be rendered using this matrix, otherwise it will use its worldTransform.
 */
 PIXI.WebGLSpriteBatch.prototype.render = function(sprite, matrix)
-***REMOVED***
+{
     var texture = sprite.texture;
 
     //  They provided an alternative rendering matrix, so use it
     var wt = sprite.worldTransform;
 
     if (matrix)
-    ***REMOVED***
+    {
         wt = matrix;
-    ***REMOVED***
+    }
 
     // check texture..
     if (this.currentBatchSize >= this.size)
-    ***REMOVED***
+    {
         this.flush();
         this.currentBaseTexture = texture.baseTexture;
-    ***REMOVED***
+    }
 
     // get the uvs for the texture
     var uvs = texture._uvs;
 
     // if the uvs have not updated then no point rendering just yet!
     if (!uvs)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     var aX = sprite.anchor.x;
     var aY = sprite.anchor.y;
@@ -1525,7 +1525,7 @@ PIXI.WebGLSpriteBatch.prototype.render = function(sprite, matrix)
     var w0, w1, h0, h1;
         
     if (texture.trim)
-    ***REMOVED***
+    {
         // if the sprite is trimmed then we need to add the extra space before transforming the sprite coords.
         var trim = texture.trim;
 
@@ -1534,15 +1534,15 @@ PIXI.WebGLSpriteBatch.prototype.render = function(sprite, matrix)
 
         h1 = trim.y - aY * trim.height;
         h0 = h1 + texture.crop.height;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         w0 = (texture.frame.width) * (1-aX);
         w1 = (texture.frame.width) * -aX;
 
         h0 = texture.frame.height * (1-aY);
         h1 = texture.frame.height * -aY;
-    ***REMOVED***
+    }
 
     var i = this.currentBatchSize * 4 * this.vertSize;
     var resolution = texture.baseTexture.resolution;
@@ -1558,7 +1558,7 @@ PIXI.WebGLSpriteBatch.prototype.render = function(sprite, matrix)
     var positions = this.positions;
 
     if (this.renderSession.roundPixels)
-    ***REMOVED***
+    {
         // xy
         positions[i] = a * w1 + c * h1 + tx | 0;
         positions[i+1] = d * h1 + b * w1 + ty | 0;
@@ -1574,9 +1574,9 @@ PIXI.WebGLSpriteBatch.prototype.render = function(sprite, matrix)
         // xy
         positions[i+15] = a * w1 + c * h0 + tx | 0;
         positions[i+16] = d * h0 + b * w1 + ty | 0;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         // xy
         positions[i] = a * w1 + c * h1 + tx;
         positions[i+1] = d * h1 + b * w1 + ty;
@@ -1592,7 +1592,7 @@ PIXI.WebGLSpriteBatch.prototype.render = function(sprite, matrix)
         // xy
         positions[i+15] = a * w1 + c * h0 + tx;
         positions[i+16] = d * h0 + b * w1 + ty;
-    ***REMOVED***
+    }
     
     // uv
     positions[i+2] = uvs.x0;
@@ -1618,30 +1618,30 @@ PIXI.WebGLSpriteBatch.prototype.render = function(sprite, matrix)
     // increment the batchsize
     this.sprites[this.currentBatchSize++] = sprite;
 
-***REMOVED***;
+};
 
 /**
 * Renders a TilingSprite using the spriteBatch.
 * 
 * @method renderTilingSprite
-* @param sprite ***REMOVED***TilingSprite***REMOVED*** the sprite to render
+* @param sprite {TilingSprite} the sprite to render
 */
 PIXI.WebGLSpriteBatch.prototype.renderTilingSprite = function(sprite)
-***REMOVED***
+{
     var texture = sprite.tilingTexture;
 
     // check texture..
     if (this.currentBatchSize >= this.size)
-    ***REMOVED***
+    {
         this.flush();
         this.currentBaseTexture = texture.baseTexture;
-    ***REMOVED***
+    }
 
     // set the textures uvs temporarily
     if (!sprite._uvs)
-    ***REMOVED***
+    {
         sprite._uvs = new PIXI.TextureUvs();
-    ***REMOVED***
+    }
 
     var uvs = sprite._uvs;
 
@@ -1745,7 +1745,7 @@ PIXI.WebGLSpriteBatch.prototype.renderTilingSprite = function(sprite)
 
     // increment the batchsize
     this.sprites[this.currentBatchSize++] = sprite;
-***REMOVED***;
+};
 
 /**
 * Renders the content and empties the current batch.
@@ -1753,18 +1753,18 @@ PIXI.WebGLSpriteBatch.prototype.renderTilingSprite = function(sprite)
 * @method flush
 */
 PIXI.WebGLSpriteBatch.prototype.flush = function()
-***REMOVED***
+{
     // If the batch is length 0 then return as there is nothing to draw
     if (this.currentBatchSize === 0)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     var gl = this.gl;
     var shader;
 
     if (this.dirty)
-    ***REMOVED***
+    {
         this.dirty = false;
 
         // bind the main texture
@@ -1783,18 +1783,18 @@ PIXI.WebGLSpriteBatch.prototype.flush = function()
 
         // color attributes will be interpreted as unsigned bytes and normalized
         gl.vertexAttribPointer(shader.colorAttribute, 4, gl.UNSIGNED_BYTE, true, stride, 4 * 4);
-    ***REMOVED***
+    }
 
     // upload the verts to the buffer  
     if (this.currentBatchSize > (this.size * 0.5))
-    ***REMOVED***
+    {
         gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.vertices);
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         var view = this.positions.subarray(0, this.currentBatchSize * 4 * this.vertSize);
         gl.bufferSubData(gl.ARRAY_BUFFER, 0, view);
-    ***REMOVED***
+    }
 
     var nextTexture, nextBlendMode, nextShader;
     var batchSize = 0;
@@ -1808,18 +1808,18 @@ PIXI.WebGLSpriteBatch.prototype.flush = function()
     var shaderSwap = false;
     var sprite;
 
-    for (var i = 0, j = this.currentBatchSize; i &lt; j; i++) ***REMOVED***
+    for (var i = 0, j = this.currentBatchSize; i &lt; j; i++) {
         
         sprite = this.sprites[i];
 
         if (sprite.tilingTexture)
-        ***REMOVED***
+        {
             nextTexture = sprite.tilingTexture.baseTexture;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             nextTexture = sprite.texture.baseTexture;
-        ***REMOVED***
+        }
 
         nextBlendMode = sprite.blendMode;
         nextShader = sprite.shader || this.defaultShader;
@@ -1830,12 +1830,12 @@ PIXI.WebGLSpriteBatch.prototype.flush = function()
         var skip = nextTexture.skipRender;
 
         if (skip &amp;&amp; sprite.children.length > 0)
-        ***REMOVED***
+        {
             skip = false;
-        ***REMOVED***
+        }
 
         if ((currentBaseTexture !== nextTexture &amp;&amp; !skip) || blendSwap || shaderSwap)
-        ***REMOVED***
+        {
             this.renderBatch(currentBaseTexture, batchSize, start);
 
             start = i;
@@ -1843,19 +1843,19 @@ PIXI.WebGLSpriteBatch.prototype.flush = function()
             currentBaseTexture = nextTexture;
 
             if (blendSwap)
-            ***REMOVED***
+            {
                 currentBlendMode = nextBlendMode;
                 this.renderSession.blendModeManager.setBlendMode(currentBlendMode);
-            ***REMOVED***
+            }
 
             if (shaderSwap)
-            ***REMOVED***
+            {
                 currentShader = nextShader;
                 
                 shader = currentShader.shaders[gl.id];
 
                 if (!shader)
-                ***REMOVED***
+                {
                     shader = new PIXI.PixiShader(gl);
 
                     shader.fragmentSrc = currentShader.fragmentSrc;
@@ -1863,15 +1863,15 @@ PIXI.WebGLSpriteBatch.prototype.flush = function()
                     shader.init();
 
                     currentShader.shaders[gl.id] = shader;
-                ***REMOVED***
+                }
 
                 // set shader function???
                 this.renderSession.shaderManager.setShader(shader);
 
                 if (shader.dirty)
-                ***REMOVED***
+                {
                     shader.syncUniforms();
-                ***REMOVED***
+                }
                 
                 // both these only need to be set if they are changing..
                 // set the projection
@@ -1883,71 +1883,71 @@ PIXI.WebGLSpriteBatch.prototype.flush = function()
                 gl.uniform2f(shader.offsetVector, offsetVector.x, offsetVector.y);
 
                 // set the pointers
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         batchSize++;
-    ***REMOVED***
+    }
 
     this.renderBatch(currentBaseTexture, batchSize, start);
 
     // then reset the batch!
     this.currentBatchSize = 0;
-***REMOVED***;
+};
 
 /**
 * @method renderBatch
-* @param texture ***REMOVED***Texture***REMOVED***
-* @param size ***REMOVED***Number***REMOVED***
-* @param startIndex ***REMOVED***Number***REMOVED***
+* @param texture {Texture}
+* @param size {Number}
+* @param startIndex {Number}
 */
 PIXI.WebGLSpriteBatch.prototype.renderBatch = function(texture, size, startIndex)
-***REMOVED***
+{
     if (size === 0)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     var gl = this.gl;
 
     // check if a texture is dirty..
     if (texture._dirty[gl.id])
-    ***REMOVED***
+    {
         if (!this.renderSession.renderer.updateTexture(texture))
-        ***REMOVED***
+        {
             //  If updateTexture returns false then we cannot render it, so bail out now
             return;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     else
-    ***REMOVED***
+    {
         // bind the current texture
         gl.bindTexture(gl.TEXTURE_2D, texture._glTextures[gl.id]);
-    ***REMOVED***
+    }
 
     // now draw those suckas!
     gl.drawElements(gl.TRIANGLES, size * 6, gl.UNSIGNED_SHORT, startIndex * 6 * 2);
     
     // increment the draw count
     this.renderSession.drawCount++;
-***REMOVED***;
+};
 
 /**
 * @method stop
 */
 PIXI.WebGLSpriteBatch.prototype.stop = function()
-***REMOVED***
+{
     this.flush();
     this.dirty = true;
-***REMOVED***;
+};
 
 /**
 * @method start
 */
 PIXI.WebGLSpriteBatch.prototype.start = function()
-***REMOVED***
+{
     this.dirty = true;
-***REMOVED***;
+};
 
 /**
 * Destroys the SpriteBatch.
@@ -1955,7 +1955,7 @@ PIXI.WebGLSpriteBatch.prototype.start = function()
 * @method destroy
 */
 PIXI.WebGLSpriteBatch.prototype.destroy = function()
-***REMOVED***
+{
     this.vertices = null;
     this.indices = null;
     
@@ -1965,7 +1965,7 @@ PIXI.WebGLSpriteBatch.prototype.destroy = function()
     this.currentBaseTexture = null;
     
     this.gl = null;
-***REMOVED***;</pre>
+};</pre>
         </article>
     </section>
 
@@ -2007,22 +2007,22 @@ PIXI.WebGLSpriteBatch.prototype.destroy = function()
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

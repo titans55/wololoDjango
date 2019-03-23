@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -35,13 +35,13 @@
 * @extends Phaser.Component.Reset
 * @extends Phaser.Component.ScaleMinMax
 * @extends Phaser.Component.Smoothed
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
-* @param ***REMOVED***number***REMOVED*** x - The x coordinate (in world space) to position the Sprite at.
-* @param ***REMOVED***number***REMOVED*** y - The y coordinate (in world space) to position the Sprite at.
-* @param ***REMOVED***string|Phaser.RenderTexture|Phaser.BitmapData|PIXI.Texture***REMOVED*** key - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache entry, or an instance of a RenderTexture or PIXI.Texture.
-* @param ***REMOVED***string|number***REMOVED*** frame - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
+* @param {Phaser.Game} game - A reference to the currently running game.
+* @param {number} x - The x coordinate (in world space) to position the Sprite at.
+* @param {number} y - The y coordinate (in world space) to position the Sprite at.
+* @param {string|Phaser.RenderTexture|Phaser.BitmapData|PIXI.Texture} key - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache entry, or an instance of a RenderTexture or PIXI.Texture.
+* @param {string|number} frame - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
 */
-Phaser.Sprite = function (game, x, y, key, frame) ***REMOVED***
+Phaser.Sprite = function (game, x, y, key, frame) {
 
     x = x || 0;
     y = y || 0;
@@ -49,13 +49,13 @@ Phaser.Sprite = function (game, x, y, key, frame) ***REMOVED***
     frame = frame || null;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** type - The const type of this object.
+    * @property {number} type - The const type of this object.
     * @readonly
     */
     this.type = Phaser.SPRITE;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** physicsType - The const physics body type of this object.
+    * @property {number} physicsType - The const physics body type of this object.
     * @readonly
     */
     this.physicsType = Phaser.SPRITE;
@@ -64,7 +64,7 @@ Phaser.Sprite = function (game, x, y, key, frame) ***REMOVED***
 
     Phaser.Component.Core.init.call(this, game, x, y, key, frame);
 
-***REMOVED***;
+};
 
 Phaser.Sprite.prototype = Object.create(PIXI.Sprite.prototype);
 Phaser.Sprite.prototype.constructor = Phaser.Sprite;
@@ -102,15 +102,15 @@ Phaser.Sprite.prototype.preUpdateCore = Phaser.Component.Core.preUpdate;
 *
 * @method
 * @memberof Phaser.Sprite
-* @return ***REMOVED***boolean***REMOVED*** True if the Sprite was rendered, otherwise false.
+* @return {boolean} True if the Sprite was rendered, otherwise false.
 */
-Phaser.Sprite.prototype.preUpdate = function() ***REMOVED***
+Phaser.Sprite.prototype.preUpdate = function() {
 
     if (!this.preUpdatePhysics() || !this.preUpdateLifeSpan() || !this.preUpdateInWorld())
-    ***REMOVED***
+    {
         return false;
-    ***REMOVED***
+    }
 
     return this.preUpdateCore();
 
-***REMOVED***;
+};

@@ -1,4 +1,4 @@
-***REMOVED***
+{
   "_args": [
     [
       "phaser@2.6.2",
@@ -10,8 +10,8 @@
   "_inBundle": false,
   "_integrity": "sha1-6zkSFyWiFJxJ9GtdFEMYwivAkkk=",
   "_location": "/phaser",
-  "_phantomChildren": ***REMOVED******REMOVED***,
-  "_requested": ***REMOVED***
+  "_phantomChildren": {},
+  "_requested": {
     "type": "version",
     "registry": true,
     "raw": "phaser@2.6.2",
@@ -20,23 +20,23 @@
     "rawSpec": "2.6.2",
     "saveSpec": null,
     "fetchSpec": "2.6.2"
-  ***REMOVED***,
+  },
   "_requiredBy": [
     "/"
   ],
   "_resolved": "http://registry.npmjs.org/phaser/-/phaser-2.6.2.tgz",
   "_spec": "2.6.2",
   "_where": "C:\\Users\\3III's\\Desktop\\django-wololo\\project-wololo-master\\project-wololo-master",
-  "author": ***REMOVED***
+  "author": {
     "name": "Richard Davey",
     "email": "rdavey@gmail.com",
     "url": "http://www.photonstorm.com"
-  ***REMOVED***,
-  "bugs": ***REMOVED***
+  },
+  "bugs": {
     "url": "https://github.com/photonstorm/phaser/issues"
-  ***REMOVED***,
+  },
   "description": "A fast, free and fun HTML5 Game Framework for Desktop and Mobile web browsers.",
-  "devDependencies": ***REMOVED***
+  "devDependencies": {
     "eslint": "^3.3.1",
     "grunt": "^0.4.5",
     "grunt-contrib-clean": "^0.5.0",
@@ -54,7 +54,7 @@
     "load-grunt-config": "~0.7.2",
     "typescript": "1.4.1",
     "yuidocjs": "^0.3.50"
-  ***REMOVED***,
+  },
   "homepage": "http://phaser.io",
   "keywords": [
     "2d",
@@ -74,20 +74,20 @@
   "main": "./build/phaser.js",
   "name": "phaser",
   "release": "Kore Springs",
-  "repository": ***REMOVED***
+  "repository": {
     "type": "git",
     "url": "git+https://photonstorm@github.com/photonstorm/phaser.git"
-  ***REMOVED***,
-  "scripts": ***REMOVED***
+  },
+  "scripts": {
     "test": "NODE_ENV=test grunt jshint"
-  ***REMOVED***,
-  "typescript": ***REMOVED***
+  },
+  "typescript": {
     "definitions": [
       "typescript/p2.d.ts",
       "typescript/phaser.comments.d.ts",
       "typescript/pixi.comments.d.ts"
     ]
-  ***REMOVED***,
+  },
   "typings": "./typescript/typings.json",
   "version": "2.6.2"
-***REMOVED***
+}

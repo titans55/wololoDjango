@@ -1,11 +1,11 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
-* A Group is a container for ***REMOVED***@link DisplayObject display objects***REMOVED*** including ***REMOVED***@link Phaser.Sprite Sprites***REMOVED*** and ***REMOVED***@link Phaser.Image Images***REMOVED***.
+* A Group is a container for {@link DisplayObject display objects} including {@link Phaser.Sprite Sprites} and {@link Phaser.Image Images}.
 *
 * Groups form the logical tree structure of the display/scene graph where local transformations are applied to children.
 * For instance, all children are also moved/rotated/scaled when the group is moved/rotated/scaled.
@@ -16,42 +16,42 @@
 *
 * @class Phaser.Group
 * @extends PIXI.DisplayObjectContainer
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
-* @param ***REMOVED***DisplayObject|null***REMOVED*** [parent=(game world)] - The parent Group (or other ***REMOVED***@link DisplayObject***REMOVED***) that this group will be added to.
-*     If undefined/unspecified the Group will be added to the ***REMOVED***@link Phaser.Game#world Game World***REMOVED***; if null the Group will not be added to any parent.
-* @param ***REMOVED***string***REMOVED*** [name='group'] - A name for this group. Not used internally but useful for debugging.
-* @param ***REMOVED***boolean***REMOVED*** [addToStage=false] - If true this group will be added directly to the Game.Stage instead of Game.World.
-* @param ***REMOVED***boolean***REMOVED*** [enableBody=false] - If true all Sprites created with ***REMOVED***@link #create***REMOVED*** or ***REMOVED***@link #createMulitple***REMOVED*** will have a physics body created on them. Change the body type with ***REMOVED***@link #physicsBodyType***REMOVED***.
-* @param ***REMOVED***integer***REMOVED*** [physicsBodyType=0] - The physics body type to use when physics bodies are automatically added. See ***REMOVED***@link #physicsBodyType***REMOVED*** for values.
+* @param {Phaser.Game} game - A reference to the currently running game.
+* @param {DisplayObject|null} [parent=(game world)] - The parent Group (or other {@link DisplayObject}) that this group will be added to.
+*     If undefined/unspecified the Group will be added to the {@link Phaser.Game#world Game World}; if null the Group will not be added to any parent.
+* @param {string} [name='group'] - A name for this group. Not used internally but useful for debugging.
+* @param {boolean} [addToStage=false] - If true this group will be added directly to the Game.Stage instead of Game.World.
+* @param {boolean} [enableBody=false] - If true all Sprites created with {@link #create} or {@link #createMulitple} will have a physics body created on them. Change the body type with {@link #physicsBodyType}.
+* @param {integer} [physicsBodyType=0] - The physics body type to use when physics bodies are automatically added. See {@link #physicsBodyType} for values.
 */
-Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBodyType) ***REMOVED***
+Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBodyType) {
 
-    if (addToStage === undefined) ***REMOVED*** addToStage = false; ***REMOVED***
-    if (enableBody === undefined) ***REMOVED*** enableBody = false; ***REMOVED***
-    if (physicsBodyType === undefined) ***REMOVED*** physicsBodyType = Phaser.Physics.ARCADE; ***REMOVED***
+    if (addToStage === undefined) { addToStage = false; }
+    if (enableBody === undefined) { enableBody = false; }
+    if (physicsBodyType === undefined) { physicsBodyType = Phaser.Physics.ARCADE; }
 
     /**
     * A reference to the currently running Game.
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game
+    * @property {Phaser.Game} game
     * @protected
     */
     this.game = game;
 
     if (parent === undefined)
-    ***REMOVED***
+    {
         parent = game.world;
-    ***REMOVED***
+    }
 
     /**
     * A name for this group. Not used internally but useful for debugging.
-    * @property ***REMOVED***string***REMOVED*** name
+    * @property {string} name
     */
     this.name = name || 'group';
 
     /**
     * The z-depth value of this object within its parent container/Group - the World is a Group as well.
     * This value must be unique for each child in a Group.
-    * @property ***REMOVED***integer***REMOVED*** z
+    * @property {integer} z
     * @readOnly
     */
     this.z = 0;
@@ -59,49 +59,49 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     PIXI.DisplayObjectContainer.call(this);
 
     if (addToStage)
-    ***REMOVED***
+    {
         this.game.stage.addChild(this);
         this.z = this.game.stage.children.length;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         if (parent)
-        ***REMOVED***
+        {
             parent.addChild(this);
             this.z = parent.children.length;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     /**
     * Internal Phaser Type value.
-    * @property ***REMOVED***integer***REMOVED*** type
+    * @property {integer} type
     * @protected
     */
     this.type = Phaser.GROUP;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** physicsType - The const physics body type of this object.
+    * @property {number} physicsType - The const physics body type of this object.
     * @readonly
     */
     this.physicsType = Phaser.GROUP;
 
     /**
     * The alive property is useful for Groups that are children of other Groups and need to be included/excluded in checks like forEachAlive.
-    * @property ***REMOVED***boolean***REMOVED*** alive
+    * @property {boolean} alive
     * @default
     */
     this.alive = true;
 
     /**
     * If exists is true the group is updated, otherwise it is skipped.
-    * @property ***REMOVED***boolean***REMOVED*** exists
+    * @property {boolean} exists
     * @default
     */
     this.exists = true;
 
     /**
     * A group with `ignoreDestroy` set to `true` ignores all calls to its `destroy` method.
-    * @property ***REMOVED***boolean***REMOVED*** ignoreDestroy
+    * @property {boolean} ignoreDestroy
     * @default
     */
     this.ignoreDestroy = false;
@@ -114,26 +114,26 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     * This is extremely useful if you wish to destroy a Group from within one of its own callbacks
     * or a callback of one of its children.
     *
-    * @property ***REMOVED***boolean***REMOVED*** pendingDestroy
+    * @property {boolean} pendingDestroy
     */
     this.pendingDestroy = false;
 
     /**
-    * The type of objects that will be created when using ***REMOVED***@link #create***REMOVED*** or ***REMOVED***@link #createMultiple***REMOVED***.
+    * The type of objects that will be created when using {@link #create} or {@link #createMultiple}.
     *
     * Any object may be used but it should extend either Sprite or Image and accept the same constructor arguments:
     * when a new object is created it is passed the following parameters to its constructor: `(game, x, y, key, frame)`.
     *
-    * @property ***REMOVED***object***REMOVED*** classType
-    * @default ***REMOVED***@link Phaser.Sprite***REMOVED***
+    * @property {object} classType
+    * @default {@link Phaser.Sprite}
     */
     this.classType = Phaser.Sprite;
 
     /**
     * The current display object that the group cursor is pointing to, if any. (Can be set manually.)
     *
-    * The cursor is a way to iterate through the children in a Group using ***REMOVED***@link #next***REMOVED*** and ***REMOVED***@link #previous***REMOVED***.
-    * @property ***REMOVED***?DisplayObject***REMOVED*** cursor
+    * The cursor is a way to iterate through the children in a Group using {@link #next} and {@link #previous}.
+    * @property {?DisplayObject} cursor
     */
     this.cursor = null;
 
@@ -143,7 +143,7 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     * 
     * If there are children already in the Group at the time you set this property, they are not changed.
     * 
-    * @property ***REMOVED***boolean***REMOVED*** inputEnableChildren
+    * @property {boolean} inputEnableChildren
     * @default
     */
     this.inputEnableChildren = false;
@@ -156,7 +156,7 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     * This Signal is sent 2 arguments: A reference to the Sprite that triggered the signal, and
     * a reference to the Pointer that caused it.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onChildInputDown
+    * @property {Phaser.Signal} onChildInputDown
     */
     this.onChildInputDown = new Phaser.Signal();
 
@@ -169,7 +169,7 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     * a reference to the Pointer that caused it, and a boolean value `isOver` that tells you if the Pointer
     * is still over the Sprite or not.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onChildInputUp
+    * @property {Phaser.Signal} onChildInputUp
     */
     this.onChildInputUp = new Phaser.Signal();
 
@@ -181,7 +181,7 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     * This Signal is sent 2 arguments: A reference to the Sprite that triggered the signal, and
     * a reference to the Pointer that caused it.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onChildInputOver
+    * @property {Phaser.Signal} onChildInputOver
     */
     this.onChildInputOver = new Phaser.Signal();
 
@@ -193,7 +193,7 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     * This Signal is sent 2 arguments: A reference to the Sprite that triggered the signal, and
     * a reference to the Pointer that caused it.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onChildInputOut
+    * @property {Phaser.Signal} onChildInputOut
     */
     this.onChildInputOut = new Phaser.Signal();
 
@@ -202,25 +202,25 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     *
     * If there are children already in the Group at the time you set this property, they are not changed.
     *
-    * The default body type is controlled with ***REMOVED***@link #physicsBodyType***REMOVED***.
-    * @property ***REMOVED***boolean***REMOVED*** enableBody
+    * The default body type is controlled with {@link #physicsBodyType}.
+    * @property {boolean} enableBody
     */
     this.enableBody = enableBody;
 
     /**
-    * If true when a physics body is created (via ***REMOVED***@link #enableBody***REMOVED***) it will create a physics debug object as well.
+    * If true when a physics body is created (via {@link #enableBody}) it will create a physics debug object as well.
     *
     * This only works for P2 bodies.
-    * @property ***REMOVED***boolean***REMOVED*** enableBodyDebug
+    * @property {boolean} enableBodyDebug
     * @default
     */
     this.enableBodyDebug = false;
 
     /**
-    * If ***REMOVED***@link #enableBody***REMOVED*** is true this is the type of physics body that is created on new Sprites.
+    * If {@link #enableBody} is true this is the type of physics body that is created on new Sprites.
     *
-    * The valid values are ***REMOVED***@link Phaser.Physics.ARCADE***REMOVED***, ***REMOVED***@link Phaser.Physics.P2JS***REMOVED***, ***REMOVED***@link Phaser.Physics.NINJA***REMOVED***, etc.
-    * @property ***REMOVED***integer***REMOVED*** physicsBodyType
+    * The valid values are {@link Phaser.Physics.ARCADE}, {@link Phaser.Physics.P2JS}, {@link Phaser.Physics.NINJA}, etc.
+    * @property {integer} physicsBodyType
     */
     this.physicsBodyType = physicsBodyType;
 
@@ -237,19 +237,19 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     *
     * If set to `null` the Group will use whatever Phaser.Physics.Arcade.sortDirection is set to. This is the default behavior.
     * 
-    * @property ***REMOVED***integer***REMOVED*** physicsSortDirection
+    * @property {integer} physicsSortDirection
     * @default
     */
     this.physicsSortDirection = null;
 
     /**
     * This signal is dispatched when the group is destroyed.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onDestroy
+    * @property {Phaser.Signal} onDestroy
     */
     this.onDestroy = new Phaser.Signal();
 
     /**
-    * @property ***REMOVED***integer***REMOVED*** cursorIndex - The current index of the Group cursor. Advance it with Group.next.
+    * @property {integer} cursorIndex - The current index of the Group cursor. Advance it with Group.next.
     * @readOnly
     */
     this.cursorIndex = 0;
@@ -260,14 +260,14 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     * Note that the cameraOffset values are in addition to any parent in the display list.
     * So if this Group was in a Group that has x: 200, then this will be added to the cameraOffset.x
     * 
-    * @property ***REMOVED***boolean***REMOVED*** fixedToCamera
+    * @property {boolean} fixedToCamera
     */
     this.fixedToCamera = false;
 
     /**
-    * If this object is ***REMOVED***@link #fixedToCamera***REMOVED*** then this stores the x/y position offset relative to the top-left of the camera view.
+    * If this object is {@link #fixedToCamera} then this stores the x/y position offset relative to the top-left of the camera view.
     * If the parent of this Group is also `fixedToCamera` then the offset here is in addition to that and should typically be disabled.
-    * @property ***REMOVED***Phaser.Point***REMOVED*** cameraOffset
+    * @property {Phaser.Point} cameraOffset
     */
     this.cameraOffset = new Phaser.Point();
 
@@ -280,61 +280,61 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     * However if you don't use Arcade Physics, or this isn't a physics enabled Group, then you can use the hash to perform your own
     * sorting and filtering of Group children without touching their z-index (and therefore display draw order)
     * 
-    * @property ***REMOVED***array***REMOVED*** hash
+    * @property {array} hash
     */
     this.hash = [];
 
     /**
     * The property on which children are sorted.
-    * @property ***REMOVED***string***REMOVED*** _sortProperty
+    * @property {string} _sortProperty
     * @private
     */
     this._sortProperty = 'z';
 
-***REMOVED***;
+};
 
 Phaser.Group.prototype = Object.create(PIXI.DisplayObjectContainer.prototype);
 Phaser.Group.prototype.constructor = Phaser.Group;
 
 /**
-* A returnType value, as specified in ***REMOVED***@link #iterate***REMOVED*** eg.
+* A returnType value, as specified in {@link #iterate} eg.
 * @constant
-* @type ***REMOVED***integer***REMOVED***
+* @type {integer}
 */
 Phaser.Group.RETURN_NONE = 0;
 
 /**
-* A returnType value, as specified in ***REMOVED***@link #iterate***REMOVED*** eg.
+* A returnType value, as specified in {@link #iterate} eg.
 * @constant
-* @type ***REMOVED***integer***REMOVED***
+* @type {integer}
 */
 Phaser.Group.RETURN_TOTAL = 1;
 
 /**
-* A returnType value, as specified in ***REMOVED***@link #iterate***REMOVED*** eg.
+* A returnType value, as specified in {@link #iterate} eg.
 * @constant
-* @type ***REMOVED***integer***REMOVED***
+* @type {integer}
 */
 Phaser.Group.RETURN_CHILD = 2;
 
 /**
-* A returnType value, as specified in ***REMOVED***@link #iterate***REMOVED*** eg.
+* A returnType value, as specified in {@link #iterate} eg.
 * @constant
-* @type ***REMOVED***integer***REMOVED***
+* @type {integer}
 */
 Phaser.Group.RETURN_ALL = 3;
 
 /**
-* A sort ordering value, as specified in ***REMOVED***@link #sort***REMOVED*** eg.
+* A sort ordering value, as specified in {@link #sort} eg.
 * @constant
-* @type ***REMOVED***integer***REMOVED***
+* @type {integer}
 */
 Phaser.Group.SORT_ASCENDING = -1;
 
 /**
-* A sort ordering value, as specified in ***REMOVED***@link #sort***REMOVED*** eg.
+* A sort ordering value, as specified in {@link #sort} eg.
 * @constant
-* @type ***REMOVED***integer***REMOVED***
+* @type {integer}
 */
 Phaser.Group.SORT_DESCENDING = 1;
 
@@ -352,68 +352,68 @@ Phaser.Group.SORT_DESCENDING = 1;
 *
 * If `Group.inputEnableChildren` is set, then an Input Handler will be created on the object, so long as one does not already exist.
 *
-* Use ***REMOVED***@link #addAt***REMOVED*** to control where a child is added. Use ***REMOVED***@link #create***REMOVED*** to create and add a new child.
+* Use {@link #addAt} to control where a child is added. Use {@link #create} to create and add a new child.
 *
 * @method Phaser.Group#add
-* @param ***REMOVED***DisplayObject***REMOVED*** child - The display object to add as a child.
-* @param ***REMOVED***boolean***REMOVED*** [silent=false] - If true the child will not dispatch the `onAddedToGroup` event.
-* @param ***REMOVED***integer***REMOVED*** [index] - The index within the group to insert the child to. Where 0 is the bottom of the Group.
-* @return ***REMOVED***DisplayObject***REMOVED*** The child that was added to the group.
+* @param {DisplayObject} child - The display object to add as a child.
+* @param {boolean} [silent=false] - If true the child will not dispatch the `onAddedToGroup` event.
+* @param {integer} [index] - The index within the group to insert the child to. Where 0 is the bottom of the Group.
+* @return {DisplayObject} The child that was added to the group.
 */
-Phaser.Group.prototype.add = function (child, silent, index) ***REMOVED***
+Phaser.Group.prototype.add = function (child, silent, index) {
 
-    if (silent === undefined) ***REMOVED*** silent = false; ***REMOVED***
+    if (silent === undefined) { silent = false; }
 
     if (child.parent === this)
-    ***REMOVED***
+    {
         return child;
-    ***REMOVED***
+    }
 
     if (child.body && child.parent && child.parent.hash)
-    ***REMOVED***
+    {
         child.parent.removeFromHash(child);
-    ***REMOVED***
+    }
 
     if (index === undefined)
-    ***REMOVED***
+    {
         child.z = this.children.length;
 
         this.addChild(child);
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         this.addChildAt(child, index);
 
         this.updateZ();
-    ***REMOVED***
+    }
 
     if (this.enableBody && child.hasOwnProperty('body') && child.body === null)
-    ***REMOVED***
+    {
         this.game.physics.enable(child, this.physicsBodyType);
-    ***REMOVED***
+    }
     else if (child.body)
-    ***REMOVED***
+    {
         this.addToHash(child);
-    ***REMOVED***
+    }
 
     if (this.inputEnableChildren && (!child.input || child.inputEnabled))
-    ***REMOVED***
+    {
         child.inputEnabled = true;
-    ***REMOVED***
+    }
 
     if (!silent && child.events)
-    ***REMOVED***
+    {
         child.events.onAddedToGroup$dispatch(child, this);
-    ***REMOVED***
+    }
 
     if (this.cursor === null)
-    ***REMOVED***
+    {
         this.cursor = child;
-    ***REMOVED***
+    }
 
     return child;
 
-***REMOVED***;
+};
 
 /**
 * Adds an existing object to this group.
@@ -425,66 +425,66 @@ Phaser.Group.prototype.add = function (child, silent, index) ***REMOVED***
 * If `Group.inputEnableChildren` is set, then an Input Handler will be created on the object, so long as one does not already exist.
 *
 * @method Phaser.Group#addAt
-* @param ***REMOVED***DisplayObject***REMOVED*** child - The display object to add as a child.
-* @param ***REMOVED***integer***REMOVED*** [index=0] - The index within the group to insert the child to.
-* @param ***REMOVED***boolean***REMOVED*** [silent=false] - If true the child will not dispatch the `onAddedToGroup` event.
-* @return ***REMOVED***DisplayObject***REMOVED*** The child that was added to the group.
+* @param {DisplayObject} child - The display object to add as a child.
+* @param {integer} [index=0] - The index within the group to insert the child to.
+* @param {boolean} [silent=false] - If true the child will not dispatch the `onAddedToGroup` event.
+* @return {DisplayObject} The child that was added to the group.
 */
-Phaser.Group.prototype.addAt = function (child, index, silent) ***REMOVED***
+Phaser.Group.prototype.addAt = function (child, index, silent) {
 
     this.add(child, silent, index);
 
-***REMOVED***;
+};
 
 /**
 * Adds a child of this Group into the hash array.
 * This call will return false if the child is not a child of this Group, or is already in the hash.
 *
 * @method Phaser.Group#addToHash
-* @param ***REMOVED***DisplayObject***REMOVED*** child - The display object to add to this Groups hash. Must be a member of this Group already and not present in the hash.
-* @return ***REMOVED***boolean***REMOVED*** True if the child was successfully added to the hash, otherwise false.
+* @param {DisplayObject} child - The display object to add to this Groups hash. Must be a member of this Group already and not present in the hash.
+* @return {boolean} True if the child was successfully added to the hash, otherwise false.
 */
-Phaser.Group.prototype.addToHash = function (child) ***REMOVED***
+Phaser.Group.prototype.addToHash = function (child) {
 
     if (child.parent === this)
-    ***REMOVED***
+    {
         var index = this.hash.indexOf(child);
 
         if (index === -1)
-        ***REMOVED***
+        {
             this.hash.push(child);
             return true;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return false;
 
-***REMOVED***;
+};
 
 /**
 * Removes a child of this Group from the hash array.
 * This call will return false if the child is not in the hash.
 *
 * @method Phaser.Group#removeFromHash
-* @param ***REMOVED***DisplayObject***REMOVED*** child - The display object to remove from this Groups hash. Must be a member of this Group and in the hash.
-* @return ***REMOVED***boolean***REMOVED*** True if the child was successfully removed from the hash, otherwise false.
+* @param {DisplayObject} child - The display object to remove from this Groups hash. Must be a member of this Group and in the hash.
+* @return {boolean} True if the child was successfully removed from the hash, otherwise false.
 */
-Phaser.Group.prototype.removeFromHash = function (child) ***REMOVED***
+Phaser.Group.prototype.removeFromHash = function (child) {
 
     if (child)
-    ***REMOVED***
+    {
         var index = this.hash.indexOf(child);
 
         if (index !== -1)
-        ***REMOVED***
+        {
             this.hash.splice(index, 1);
             return true;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return false;
 
-***REMOVED***;
+};
 
 /**
 * Adds an array of existing Display Objects to this Group.
@@ -499,52 +499,52 @@ Phaser.Group.prototype.removeFromHash = function (child) ***REMOVED***
 * If `Group.inputEnableChildren` is set, then an Input Handler will be created on the objects, so long as one does not already exist.
 *
 * @method Phaser.Group#addMultiple
-* @param ***REMOVED***DisplayObject[]|Phaser.Group***REMOVED*** children - An array of display objects or a Phaser.Group. If a Group is given then *all* children will be moved from it.
-* @param ***REMOVED***boolean***REMOVED*** [silent=false] - If true the children will not dispatch the `onAddedToGroup` event.
-* @return ***REMOVED***DisplayObject[]|Phaser.Group***REMOVED*** The array of children or Group of children that were added to this Group.
+* @param {DisplayObject[]|Phaser.Group} children - An array of display objects or a Phaser.Group. If a Group is given then *all* children will be moved from it.
+* @param {boolean} [silent=false] - If true the children will not dispatch the `onAddedToGroup` event.
+* @return {DisplayObject[]|Phaser.Group} The array of children or Group of children that were added to this Group.
 */
-Phaser.Group.prototype.addMultiple = function (children, silent) ***REMOVED***
+Phaser.Group.prototype.addMultiple = function (children, silent) {
 
     if (children instanceof Phaser.Group)
-    ***REMOVED***
+    {
         children.moveAll(this, silent);
-    ***REMOVED***
+    }
     else if (Array.isArray(children))
-    ***REMOVED***
+    {
         for (var i = 0; i < children.length; i++)
-        ***REMOVED***
+        {
             this.add(children[i], silent);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return children;
 
-***REMOVED***;
+};
 
 /**
 * Returns the child found at the given index within this group.
 *
 * @method Phaser.Group#getAt
-* @param ***REMOVED***integer***REMOVED*** index - The index to return the child from.
-* @return ***REMOVED***DisplayObject|integer***REMOVED*** The child that was found at the given index, or -1 for an invalid index.
+* @param {integer} index - The index to return the child from.
+* @return {DisplayObject|integer} The child that was found at the given index, or -1 for an invalid index.
 */
-Phaser.Group.prototype.getAt = function (index) ***REMOVED***
+Phaser.Group.prototype.getAt = function (index) {
 
     if (index < 0 || index >= this.children.length)
-    ***REMOVED***
+    {
         return -1;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         return this.getChildAt(index);
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Creates a new Phaser.Sprite object and adds it to the top of this group.
 *
-* Use ***REMOVED***@link #classType***REMOVED*** to change the type of object created.
+* Use {@link #classType} to change the type of object created.
 * 
 * The child is automatically added to the top of the group, and is displayed above every previous child.
 *
@@ -556,17 +556,17 @@ Phaser.Group.prototype.getAt = function (index) ***REMOVED***
 * If `Group.inputEnableChildren` is set, then an Input Handler will be created on the object, so long as one does not already exist.
 *
 * @method Phaser.Group#create
-* @param ***REMOVED***number***REMOVED*** x - The x coordinate to display the newly created Sprite at. The value is in relation to the group.x point.
-* @param ***REMOVED***number***REMOVED*** y - The y coordinate to display the newly created Sprite at. The value is in relation to the group.y point.
-* @param ***REMOVED***string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture***REMOVED*** [key] - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
-* @param ***REMOVED***string|number***REMOVED*** [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
-* @param ***REMOVED***boolean***REMOVED*** [exists=true] - The default exists state of the Sprite.
-* @param ***REMOVED***integer***REMOVED*** [index] - The index within the group to insert the child to. Where 0 is the bottom of the Group.
-* @return ***REMOVED***DisplayObject***REMOVED*** The child that was created: will be a ***REMOVED***@link Phaser.Sprite***REMOVED*** unless ***REMOVED***@link #classType***REMOVED*** has been changed.
+* @param {number} x - The x coordinate to display the newly created Sprite at. The value is in relation to the group.x point.
+* @param {number} y - The y coordinate to display the newly created Sprite at. The value is in relation to the group.y point.
+* @param {string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture} [key] - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
+* @param {string|number} [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
+* @param {boolean} [exists=true] - The default exists state of the Sprite.
+* @param {integer} [index] - The index within the group to insert the child to. Where 0 is the bottom of the Group.
+* @return {DisplayObject} The child that was created: will be a {@link Phaser.Sprite} unless {@link #classType} has been changed.
 */
-Phaser.Group.prototype.create = function (x, y, key, frame, exists, index) ***REMOVED***
+Phaser.Group.prototype.create = function (x, y, key, frame, exists, index) {
 
-    if (exists === undefined) ***REMOVED*** exists = true; ***REMOVED***
+    if (exists === undefined) { exists = true; }
 
     var child = new this.classType(this.game, x, y, key, frame);
 
@@ -576,14 +576,14 @@ Phaser.Group.prototype.create = function (x, y, key, frame, exists, index) ***RE
 
     return this.add(child, false, index);
 
-***REMOVED***;
+};
 
 /**
 * Creates multiple Phaser.Sprite objects and adds them to the top of this Group.
 * 
 * This method is useful if you need to quickly generate a pool of sprites, such as bullets.
 *
-* Use ***REMOVED***@link #classType***REMOVED*** to change the type of object created.
+* Use {@link #classType} to change the type of object created.
 *
 * You can provide an array as the `key` and / or `frame` arguments. When you do this
 * it will create `quantity` Sprites for every key (and frame) in the arrays.
@@ -619,46 +619,46 @@ Phaser.Group.prototype.create = function (x, y, key, frame, exists, index) ***RE
 * If `Group.inputEnableChildren` is set, then an Input Handler will be created on the objects, so long as one does not already exist.
 *
 * @method Phaser.Group#createMultiple
-* @param ***REMOVED***integer***REMOVED*** quantity - The number of Sprites to create.
-* @param ***REMOVED***string|array***REMOVED*** key - The Cache key of the image that the Sprites will use. Or an Array of keys. See the description for details on how the quantity applies when arrays are used.
-* @param ***REMOVED***integer|string|array***REMOVED*** [frame=0] - If the Sprite image contains multiple frames you can specify which one to use here. Or an Array of frames. See the description for details on how the quantity applies when arrays are used.
-* @param ***REMOVED***boolean***REMOVED*** [exists=false] - The default exists state of the Sprite.
-* @return ***REMOVED***array***REMOVED*** An array containing all of the Sprites that were created.
+* @param {integer} quantity - The number of Sprites to create.
+* @param {string|array} key - The Cache key of the image that the Sprites will use. Or an Array of keys. See the description for details on how the quantity applies when arrays are used.
+* @param {integer|string|array} [frame=0] - If the Sprite image contains multiple frames you can specify which one to use here. Or an Array of frames. See the description for details on how the quantity applies when arrays are used.
+* @param {boolean} [exists=false] - The default exists state of the Sprite.
+* @return {array} An array containing all of the Sprites that were created.
 */
-Phaser.Group.prototype.createMultiple = function (quantity, key, frame, exists) ***REMOVED***
+Phaser.Group.prototype.createMultiple = function (quantity, key, frame, exists) {
 
-    if (frame === undefined) ***REMOVED*** frame = 0; ***REMOVED***
-    if (exists === undefined) ***REMOVED*** exists = false; ***REMOVED***
+    if (frame === undefined) { frame = 0; }
+    if (exists === undefined) { exists = false; }
 
     if (!Array.isArray(key))
-    ***REMOVED***
+    {
         key = [ key ];
-    ***REMOVED***
+    }
 
     if (!Array.isArray(frame))
-    ***REMOVED***
+    {
         frame = [ frame ];
-    ***REMOVED***
+    }
 
     var _this = this;
     var children = [];
 
-    key.forEach(function(singleKey) ***REMOVED***
+    key.forEach(function(singleKey) {
 
-        frame.forEach(function(singleFrame) ***REMOVED***
+        frame.forEach(function(singleFrame) {
 
             for (var i = 0; i < quantity; i++)
-            ***REMOVED***
+            {
                 children.push(_this.create(0, 0, singleKey, singleFrame, exists));
-            ***REMOVED***
+            }
 
-        ***REMOVED***);
+        });
 
-    ***REMOVED***);
+    });
 
     return children;
 
-***REMOVED***;
+};
 
 /**
 * Internal method that re-applies all of the children's Z values.
@@ -668,16 +668,16 @@ Phaser.Group.prototype.createMultiple = function (quantity, key, frame, exists) 
 * @method Phaser.Group#updateZ
 * @protected
 */
-Phaser.Group.prototype.updateZ = function () ***REMOVED***
+Phaser.Group.prototype.updateZ = function () {
 
     var i = this.children.length;
 
     while (i--)
-    ***REMOVED***
+    {
         this.children[i].z = i;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * This method iterates through all children in the Group (regardless if they are visible or exist)
@@ -723,85 +723,85 @@ Phaser.Group.prototype.updateZ = function () ***REMOVED***
 * The final argument; `offset` lets you start the alignment from a specific child index.
 *
 * @method Phaser.Group#align
-* @param ***REMOVED***integer***REMOVED*** width - The width of the grid in items (not pixels). Set to -1 for a dynamic width. If -1 then you must set an explicit height value.
-* @param ***REMOVED***integer***REMOVED*** height - The height of the grid in items (not pixels). Set to -1 for a dynamic height. If -1 then you must set an explicit width value.
-* @param ***REMOVED***integer***REMOVED*** cellWidth - The width of each grid cell, in pixels.
-* @param ***REMOVED***integer***REMOVED*** cellHeight - The height of each grid cell, in pixels.
-* @param ***REMOVED***integer***REMOVED*** [position] - The position constant. One of `Phaser.TOP_LEFT` (default), `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_CENTER`, `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-* @param ***REMOVED***integer***REMOVED*** [offset=0] - Optional index to start the alignment from. Defaults to zero, the first child in the Group, but can be set to any valid child index value.
-* @return ***REMOVED***boolean***REMOVED*** True if the Group children were aligned, otherwise false.
+* @param {integer} width - The width of the grid in items (not pixels). Set to -1 for a dynamic width. If -1 then you must set an explicit height value.
+* @param {integer} height - The height of the grid in items (not pixels). Set to -1 for a dynamic height. If -1 then you must set an explicit width value.
+* @param {integer} cellWidth - The width of each grid cell, in pixels.
+* @param {integer} cellHeight - The height of each grid cell, in pixels.
+* @param {integer} [position] - The position constant. One of `Phaser.TOP_LEFT` (default), `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_CENTER`, `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
+* @param {integer} [offset=0] - Optional index to start the alignment from. Defaults to zero, the first child in the Group, but can be set to any valid child index value.
+* @return {boolean} True if the Group children were aligned, otherwise false.
 */
-Phaser.Group.prototype.align = function (width, height, cellWidth, cellHeight, position, offset) ***REMOVED***
+Phaser.Group.prototype.align = function (width, height, cellWidth, cellHeight, position, offset) {
 
-    if (position === undefined) ***REMOVED*** position = Phaser.TOP_LEFT; ***REMOVED***
-    if (offset === undefined) ***REMOVED*** offset = 0; ***REMOVED***
+    if (position === undefined) { position = Phaser.TOP_LEFT; }
+    if (offset === undefined) { offset = 0; }
 
     if (this.children.length === 0 || offset > this.children.length || (width === -1 && height === -1))
-    ***REMOVED***
+    {
         return false;
-    ***REMOVED***
+    }
 
     var r = new Phaser.Rectangle(0, 0, cellWidth, cellHeight);
     var w = (width * cellWidth);
     var h = (height * cellHeight);
 
     for (var i = offset; i < this.children.length; i++)
-    ***REMOVED***
+    {
         var child = this.children[i];
 
         if (child['alignIn'])
-        ***REMOVED***
+        {
             child.alignIn(r, position);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             continue;
-        ***REMOVED***
+        }
 
         if (width === -1)
-        ***REMOVED***
+        {
             //  We keep laying them out horizontally until we've done them all
             r.y += cellHeight;
 
             if (r.y === h)
-            ***REMOVED***
+            {
                 r.x += cellWidth;
                 r.y = 0;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else if (height === -1)
-        ***REMOVED***
+        {
             //  We keep laying them out vertically until we've done them all
             r.x += cellWidth;
 
             if (r.x === w)
-            ***REMOVED***
+            {
                 r.x = 0;
                 r.y += cellHeight;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             //  We keep laying them out until we hit the column limit
             r.x += cellWidth;
 
             if (r.x === w)
-            ***REMOVED***
+            {
                 r.x = 0;
                 r.y += cellHeight;
 
                 if (r.y === h)
-                ***REMOVED***
+                {
                     //  We've hit the column limit, so return, even if there are children left
                     return true;
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+                }
+            }
+        }
+    }
 
     return true;
 
-***REMOVED***;
+};
 
 /**
 * Sets the group cursor to the first child in the group.
@@ -809,26 +809,26 @@ Phaser.Group.prototype.align = function (width, height, cellWidth, cellHeight, p
 * If the optional index parameter is given it sets the cursor to the object at that index instead.
 *
 * @method Phaser.Group#resetCursor
-* @param ***REMOVED***integer***REMOVED*** [index=0] - Set the cursor to point to a specific index.
-* @return ***REMOVED***any***REMOVED*** The child the cursor now points to.
+* @param {integer} [index=0] - Set the cursor to point to a specific index.
+* @return {any} The child the cursor now points to.
 */
-Phaser.Group.prototype.resetCursor = function (index) ***REMOVED***
+Phaser.Group.prototype.resetCursor = function (index) {
 
-    if (index === undefined) ***REMOVED*** index = 0; ***REMOVED***
+    if (index === undefined) { index = 0; }
 
     if (index > this.children.length - 1)
-    ***REMOVED***
+    {
         index = 0;
-    ***REMOVED***
+    }
 
     if (this.cursor)
-    ***REMOVED***
+    {
         this.cursorIndex = index;
         this.cursor = this.children[this.cursorIndex];
         return this.cursor;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Advances the group cursor to the next (higher) object in the group.
@@ -836,28 +836,28 @@ Phaser.Group.prototype.resetCursor = function (index) ***REMOVED***
 * If the cursor is at the end of the group (top child) it is moved the start of the group (bottom child).
 *
 * @method Phaser.Group#next
-* @return ***REMOVED***any***REMOVED*** The child the cursor now points to.
+* @return {any} The child the cursor now points to.
 */
-Phaser.Group.prototype.next = function () ***REMOVED***
+Phaser.Group.prototype.next = function () {
 
     if (this.cursor)
-    ***REMOVED***
+    {
         //  Wrap the cursor?
         if (this.cursorIndex >= this.children.length - 1)
-        ***REMOVED***
+        {
             this.cursorIndex = 0;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this.cursorIndex++;
-        ***REMOVED***
+        }
 
         this.cursor = this.children[this.cursorIndex];
 
         return this.cursor;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Moves the group cursor to the previous (lower) child in the group.
@@ -865,28 +865,28 @@ Phaser.Group.prototype.next = function () ***REMOVED***
 * If the cursor is at the start of the group (bottom child) it is moved to the end (top child).
 *
 * @method Phaser.Group#previous
-* @return ***REMOVED***any***REMOVED*** The child the cursor now points to.
+* @return {any} The child the cursor now points to.
 */
-Phaser.Group.prototype.previous = function () ***REMOVED***
+Phaser.Group.prototype.previous = function () {
 
     if (this.cursor)
-    ***REMOVED***
+    {
         //  Wrap the cursor?
         if (this.cursorIndex === 0)
-        ***REMOVED***
+        {
             this.cursorIndex = this.children.length - 1;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this.cursorIndex--;
-        ***REMOVED***
+        }
 
         this.cursor = this.children[this.cursorIndex];
 
         return this.cursor;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Swaps the position of two children in this group.
@@ -894,123 +894,123 @@ Phaser.Group.prototype.previous = function () ***REMOVED***
 * Both children must be in this group, a child cannot be swapped with itself, and unparented children cannot be swapped.
 *
 * @method Phaser.Group#swap
-* @param ***REMOVED***any***REMOVED*** child1 - The first child to swap.
-* @param ***REMOVED***any***REMOVED*** child2 - The second child to swap.
+* @param {any} child1 - The first child to swap.
+* @param {any} child2 - The second child to swap.
 */
-Phaser.Group.prototype.swap = function (child1, child2) ***REMOVED***
+Phaser.Group.prototype.swap = function (child1, child2) {
 
     this.swapChildren(child1, child2);
     this.updateZ();
 
-***REMOVED***;
+};
 
 /**
 * Brings the given child to the top of this group so it renders above all other children.
 *
 * @method Phaser.Group#bringToTop
-* @param ***REMOVED***any***REMOVED*** child - The child to bring to the top of this group.
-* @return ***REMOVED***any***REMOVED*** The child that was moved.
+* @param {any} child - The child to bring to the top of this group.
+* @return {any} The child that was moved.
 */
-Phaser.Group.prototype.bringToTop = function (child) ***REMOVED***
+Phaser.Group.prototype.bringToTop = function (child) {
 
     if (child.parent === this && this.getIndex(child) < this.children.length)
-    ***REMOVED***
+    {
         this.remove(child, false, true);
         this.add(child, true);
-    ***REMOVED***
+    }
 
     return child;
 
-***REMOVED***;
+};
 
 /**
 * Sends the given child to the bottom of this group so it renders below all other children.
 *
 * @method Phaser.Group#sendToBack
-* @param ***REMOVED***any***REMOVED*** child - The child to send to the bottom of this group.
-* @return ***REMOVED***any***REMOVED*** The child that was moved.
+* @param {any} child - The child to send to the bottom of this group.
+* @return {any} The child that was moved.
 */
-Phaser.Group.prototype.sendToBack = function (child) ***REMOVED***
+Phaser.Group.prototype.sendToBack = function (child) {
 
     if (child.parent === this && this.getIndex(child) > 0)
-    ***REMOVED***
+    {
         this.remove(child, false, true);
         this.addAt(child, 0, true);
-    ***REMOVED***
+    }
 
     return child;
 
-***REMOVED***;
+};
 
 /**
 * Moves the given child up one place in this group unless it's already at the top.
 *
 * @method Phaser.Group#moveUp
-* @param ***REMOVED***any***REMOVED*** child - The child to move up in the group.
-* @return ***REMOVED***any***REMOVED*** The child that was moved.
+* @param {any} child - The child to move up in the group.
+* @return {any} The child that was moved.
 */
-Phaser.Group.prototype.moveUp = function (child) ***REMOVED***
+Phaser.Group.prototype.moveUp = function (child) {
 
     if (child.parent === this && this.getIndex(child) < this.children.length - 1)
-    ***REMOVED***
+    {
         var a = this.getIndex(child);
         var b = this.getAt(a + 1);
 
         if (b)
-        ***REMOVED***
+        {
             this.swap(child, b);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return child;
 
-***REMOVED***;
+};
 
 /**
 * Moves the given child down one place in this group unless it's already at the bottom.
 *
 * @method Phaser.Group#moveDown
-* @param ***REMOVED***any***REMOVED*** child - The child to move down in the group.
-* @return ***REMOVED***any***REMOVED*** The child that was moved.
+* @param {any} child - The child to move down in the group.
+* @return {any} The child that was moved.
 */
-Phaser.Group.prototype.moveDown = function (child) ***REMOVED***
+Phaser.Group.prototype.moveDown = function (child) {
 
     if (child.parent === this && this.getIndex(child) > 0)
-    ***REMOVED***
+    {
         var a = this.getIndex(child);
         var b = this.getAt(a - 1);
 
         if (b)
-        ***REMOVED***
+        {
             this.swap(child, b);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return child;
 
-***REMOVED***;
+};
 
 /**
 * Positions the child found at the given index within this group to the given x and y coordinates.
 *
 * @method Phaser.Group#xy
-* @param ***REMOVED***integer***REMOVED*** index - The index of the child in the group to set the position of.
-* @param ***REMOVED***number***REMOVED*** x - The new x position of the child.
-* @param ***REMOVED***number***REMOVED*** y - The new y position of the child.
+* @param {integer} index - The index of the child in the group to set the position of.
+* @param {number} x - The new x position of the child.
+* @param {number} y - The new y position of the child.
 */
-Phaser.Group.prototype.xy = function (index, x, y) ***REMOVED***
+Phaser.Group.prototype.xy = function (index, x, y) {
 
     if (index < 0 || index > this.children.length)
-    ***REMOVED***
+    {
         return -1;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         this.getChildAt(index).x = x;
         this.getChildAt(index).y = y;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Reverses all children in this group.
@@ -1019,25 +1019,25 @@ Phaser.Group.prototype.xy = function (index, x, y) ***REMOVED***
 *
 * @method Phaser.Group#reverse
 */
-Phaser.Group.prototype.reverse = function () ***REMOVED***
+Phaser.Group.prototype.reverse = function () {
 
     this.children.reverse();
     this.updateZ();
 
-***REMOVED***;
+};
 
 /**
 * Get the index position of the given child in this group, which should match the child's `z` property.
 *
 * @method Phaser.Group#getIndex
-* @param ***REMOVED***any***REMOVED*** child - The child to get the index for.
-* @return ***REMOVED***integer***REMOVED*** The index of the child or -1 if it's not a member of this group.
+* @param {any} child - The child to get the index for.
+* @return {integer} The index of the child or -1 if it's not a member of this group.
 */
-Phaser.Group.prototype.getIndex = function (child) ***REMOVED***
+Phaser.Group.prototype.getIndex = function (child) {
 
     return this.children.indexOf(child);
 
-***REMOVED***;
+};
 
 /**
 * Searches the Group for the first instance of a child with the `name`
@@ -1045,22 +1045,22 @@ Phaser.Group.prototype.getIndex = function (child) ***REMOVED***
 * the same name only the first instance is returned.
 *
 * @method Phaser.Group#getByName
-* @param ***REMOVED***string***REMOVED*** name - The name to search for.
-* @return ***REMOVED***any***REMOVED*** The first child with a matching name, or null if none were found.
+* @param {string} name - The name to search for.
+* @return {any} The first child with a matching name, or null if none were found.
 */
-Phaser.Group.prototype.getByName = function (name) ***REMOVED***
+Phaser.Group.prototype.getByName = function (name) {
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         if (this.children[i].name === name)
-        ***REMOVED***
+        {
             return this.children[i];
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return null;
 
-***REMOVED***;
+};
 
 /**
 * Replaces a child of this Group with the given newChild. The newChild cannot be a member of this Group.
@@ -1070,36 +1070,36 @@ Phaser.Group.prototype.getByName = function (name) ***REMOVED***
 * If `Group.inputEnableChildren` is set, then an Input Handler will be created on the object, so long as one does not already exist.
 *
 * @method Phaser.Group#replace
-* @param ***REMOVED***any***REMOVED*** oldChild - The child in this group that will be replaced.
-* @param ***REMOVED***any***REMOVED*** newChild - The child to be inserted into this group.
-* @return ***REMOVED***any***REMOVED*** Returns the oldChild that was replaced within this group.
+* @param {any} oldChild - The child in this group that will be replaced.
+* @param {any} newChild - The child to be inserted into this group.
+* @return {any} Returns the oldChild that was replaced within this group.
 */
-Phaser.Group.prototype.replace = function (oldChild, newChild) ***REMOVED***
+Phaser.Group.prototype.replace = function (oldChild, newChild) {
 
     var index = this.getIndex(oldChild);
 
     if (index !== -1)
-    ***REMOVED***
+    {
         if (newChild.parent)
-        ***REMOVED***
+        {
             if (newChild.parent instanceof Phaser.Group)
-            ***REMOVED***
+            {
                 newChild.parent.remove(newChild);
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 newChild.parent.removeChild(newChild);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         this.remove(oldChild);
 
         this.addAt(newChild, index);
 
         return oldChild;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Checks if the child has the given property.
@@ -1107,34 +1107,34 @@ Phaser.Group.prototype.replace = function (oldChild, newChild) ***REMOVED***
 * Will scan up to 4 levels deep only.
 *
 * @method Phaser.Group#hasProperty
-* @param ***REMOVED***any***REMOVED*** child - The child to check for the existence of the property on.
-* @param ***REMOVED***string[]***REMOVED*** key - An array of strings that make up the property.
-* @return ***REMOVED***boolean***REMOVED*** True if the child has the property, otherwise false.
+* @param {any} child - The child to check for the existence of the property on.
+* @param {string[]} key - An array of strings that make up the property.
+* @return {boolean} True if the child has the property, otherwise false.
 */
-Phaser.Group.prototype.hasProperty = function (child, key) ***REMOVED***
+Phaser.Group.prototype.hasProperty = function (child, key) {
 
     var len = key.length;
 
     if (len === 1 && key[0] in child)
-    ***REMOVED***
+    {
         return true;
-    ***REMOVED***
+    }
     else if (len === 2 && key[0] in child && key[1] in child[key[0]])
-    ***REMOVED***
+    {
         return true;
-    ***REMOVED***
+    }
     else if (len === 3 && key[0] in child && key[1] in child[key[0]] && key[2] in child[key[0]][key[1]])
-    ***REMOVED***
+    {
         return true;
-    ***REMOVED***
+    }
     else if (len === 4 && key[0] in child && key[1] in child[key[0]] && key[2] in child[key[0]][key[1]] && key[3] in child[key[0]][key[1]][key[2]])
-    ***REMOVED***
+    {
         return true;
-    ***REMOVED***
+    }
 
     return false;
 
-***REMOVED***;
+};
 
 /**
 * Sets a property to the given value on the child. The operation parameter controls how the value is set.
@@ -1147,16 +1147,16 @@ Phaser.Group.prototype.hasProperty = function (child, key) ***REMOVED***
 * - 4: will divide the value already present by the given value.
 *
 * @method Phaser.Group#setProperty
-* @param ***REMOVED***any***REMOVED*** child - The child to set the property value on.
-* @param ***REMOVED***array***REMOVED*** key - An array of strings that make up the property that will be set.
-* @param ***REMOVED***any***REMOVED*** value - The value that will be set.
-* @param ***REMOVED***integer***REMOVED*** [operation=0] - Controls how the value is assigned. A value of 0 replaces the value with the new one. A value of 1 adds it, 2 subtracts it, 3 multiplies it and 4 divides it.
-* @param ***REMOVED***boolean***REMOVED*** [force=false] - If `force` is true then the property will be set on the child regardless if it already exists or not. If false and the property doesn't exist, nothing will be set.
-* @return ***REMOVED***boolean***REMOVED*** True if the property was set, false if not.
+* @param {any} child - The child to set the property value on.
+* @param {array} key - An array of strings that make up the property that will be set.
+* @param {any} value - The value that will be set.
+* @param {integer} [operation=0] - Controls how the value is assigned. A value of 0 replaces the value with the new one. A value of 1 adds it, 2 subtracts it, 3 multiplies it and 4 divides it.
+* @param {boolean} [force=false] - If `force` is true then the property will be set on the child regardless if it already exists or not. If false and the property doesn't exist, nothing will be set.
+* @return {boolean} True if the property was set, false if not.
 */
-Phaser.Group.prototype.setProperty = function (child, key, value, operation, force) ***REMOVED***
+Phaser.Group.prototype.setProperty = function (child, key, value, operation, force) {
 
-    if (force === undefined) ***REMOVED*** force = false; ***REMOVED***
+    if (force === undefined) { force = false; }
 
     operation = operation || 0;
 
@@ -1171,77 +1171,77 @@ Phaser.Group.prototype.setProperty = function (child, key, value, operation, for
     //  We can't force a property in and the child doesn't have it, so abort.
     //  Equally we can't add, subtract, multiply or divide a property value if it doesn't exist, so abort in those cases too.
     if (!this.hasProperty(child, key) && (!force || operation > 0))
-    ***REMOVED***
+    {
         return false;
-    ***REMOVED***
+    }
 
     var len = key.length;
 
     if (len === 1)
-    ***REMOVED***
-        if (operation === 0) ***REMOVED*** child[key[0]] = value; ***REMOVED***
-        else if (operation === 1) ***REMOVED*** child[key[0]] += value; ***REMOVED***
-        else if (operation === 2) ***REMOVED*** child[key[0]] -= value; ***REMOVED***
-        else if (operation === 3) ***REMOVED*** child[key[0]] *= value; ***REMOVED***
-        else if (operation === 4) ***REMOVED*** child[key[0]] /= value; ***REMOVED***
-    ***REMOVED***
+    {
+        if (operation === 0) { child[key[0]] = value; }
+        else if (operation === 1) { child[key[0]] += value; }
+        else if (operation === 2) { child[key[0]] -= value; }
+        else if (operation === 3) { child[key[0]] *= value; }
+        else if (operation === 4) { child[key[0]] /= value; }
+    }
     else if (len === 2)
-    ***REMOVED***
-        if (operation === 0) ***REMOVED*** child[key[0]][key[1]] = value; ***REMOVED***
-        else if (operation === 1) ***REMOVED*** child[key[0]][key[1]] += value; ***REMOVED***
-        else if (operation === 2) ***REMOVED*** child[key[0]][key[1]] -= value; ***REMOVED***
-        else if (operation === 3) ***REMOVED*** child[key[0]][key[1]] *= value; ***REMOVED***
-        else if (operation === 4) ***REMOVED*** child[key[0]][key[1]] /= value; ***REMOVED***
-    ***REMOVED***
+    {
+        if (operation === 0) { child[key[0]][key[1]] = value; }
+        else if (operation === 1) { child[key[0]][key[1]] += value; }
+        else if (operation === 2) { child[key[0]][key[1]] -= value; }
+        else if (operation === 3) { child[key[0]][key[1]] *= value; }
+        else if (operation === 4) { child[key[0]][key[1]] /= value; }
+    }
     else if (len === 3)
-    ***REMOVED***
-        if (operation === 0) ***REMOVED*** child[key[0]][key[1]][key[2]] = value; ***REMOVED***
-        else if (operation === 1) ***REMOVED*** child[key[0]][key[1]][key[2]] += value; ***REMOVED***
-        else if (operation === 2) ***REMOVED*** child[key[0]][key[1]][key[2]] -= value; ***REMOVED***
-        else if (operation === 3) ***REMOVED*** child[key[0]][key[1]][key[2]] *= value; ***REMOVED***
-        else if (operation === 4) ***REMOVED*** child[key[0]][key[1]][key[2]] /= value; ***REMOVED***
-    ***REMOVED***
+    {
+        if (operation === 0) { child[key[0]][key[1]][key[2]] = value; }
+        else if (operation === 1) { child[key[0]][key[1]][key[2]] += value; }
+        else if (operation === 2) { child[key[0]][key[1]][key[2]] -= value; }
+        else if (operation === 3) { child[key[0]][key[1]][key[2]] *= value; }
+        else if (operation === 4) { child[key[0]][key[1]][key[2]] /= value; }
+    }
     else if (len === 4)
-    ***REMOVED***
-        if (operation === 0) ***REMOVED*** child[key[0]][key[1]][key[2]][key[3]] = value; ***REMOVED***
-        else if (operation === 1) ***REMOVED*** child[key[0]][key[1]][key[2]][key[3]] += value; ***REMOVED***
-        else if (operation === 2) ***REMOVED*** child[key[0]][key[1]][key[2]][key[3]] -= value; ***REMOVED***
-        else if (operation === 3) ***REMOVED*** child[key[0]][key[1]][key[2]][key[3]] *= value; ***REMOVED***
-        else if (operation === 4) ***REMOVED*** child[key[0]][key[1]][key[2]][key[3]] /= value; ***REMOVED***
-    ***REMOVED***
+    {
+        if (operation === 0) { child[key[0]][key[1]][key[2]][key[3]] = value; }
+        else if (operation === 1) { child[key[0]][key[1]][key[2]][key[3]] += value; }
+        else if (operation === 2) { child[key[0]][key[1]][key[2]][key[3]] -= value; }
+        else if (operation === 3) { child[key[0]][key[1]][key[2]][key[3]] *= value; }
+        else if (operation === 4) { child[key[0]][key[1]][key[2]][key[3]] /= value; }
+    }
 
     return true;
 
-***REMOVED***;
+};
 
 /**
 * Checks a property for the given value on the child.
 *
 * @method Phaser.Group#checkProperty
-* @param ***REMOVED***any***REMOVED*** child - The child to check the property value on.
-* @param ***REMOVED***array***REMOVED*** key - An array of strings that make up the property that will be set.
-* @param ***REMOVED***any***REMOVED*** value - The value that will be checked.
-* @param ***REMOVED***boolean***REMOVED*** [force=false] - If `force` is true then the property will be checked on the child regardless if it already exists or not. If true and the property doesn't exist, false will be returned.
-* @return ***REMOVED***boolean***REMOVED*** True if the property was was equal to value, false if not.
+* @param {any} child - The child to check the property value on.
+* @param {array} key - An array of strings that make up the property that will be set.
+* @param {any} value - The value that will be checked.
+* @param {boolean} [force=false] - If `force` is true then the property will be checked on the child regardless if it already exists or not. If true and the property doesn't exist, false will be returned.
+* @return {boolean} True if the property was was equal to value, false if not.
 */
-Phaser.Group.prototype.checkProperty = function (child, key, value, force) ***REMOVED***
+Phaser.Group.prototype.checkProperty = function (child, key, value, force) {
 
-    if (force === undefined) ***REMOVED*** force = false; ***REMOVED***
+    if (force === undefined) { force = false; }
 
     //  We can't force a property in and the child doesn't have it, so abort.
     if (!Phaser.Utils.getProperty(child, key) && force)
-    ***REMOVED***
+    {
         return false;
-    ***REMOVED***
+    }
 
     if (Phaser.Utils.getProperty(child, key) !== value)
-    ***REMOVED***
+    {
         return false;
-    ***REMOVED***
+    }
 
     return true;
 
-***REMOVED***;
+};
 
 /**
 * Quickly set a property on a single child of this group to a new value.
@@ -1249,30 +1249,30 @@ Phaser.Group.prototype.checkProperty = function (child, key, value, force) ***RE
 * The operation parameter controls how the new value is assigned to the property, from simple replacement to addition and multiplication.
 *
 * @method Phaser.Group#set
-* @param ***REMOVED***Phaser.Sprite***REMOVED*** child - The child to set the property on.
-* @param ***REMOVED***string***REMOVED*** key - The property, as a string, to be set. For example: 'body.velocity.x'
-* @param ***REMOVED***any***REMOVED*** value - The value that will be set.
-* @param ***REMOVED***boolean***REMOVED*** [checkAlive=false] - If set then the child will only be updated if alive=true.
-* @param ***REMOVED***boolean***REMOVED*** [checkVisible=false] - If set then the child will only be updated if visible=true.
-* @param ***REMOVED***integer***REMOVED*** [operation=0] - Controls how the value is assigned. A value of 0 replaces the value with the new one. A value of 1 adds it, 2 subtracts it, 3 multiplies it and 4 divides it.
-* @param ***REMOVED***boolean***REMOVED*** [force=false] - If `force` is true then the property will be set on the child regardless if it already exists or not. If false and the property doesn't exist, nothing will be set.
-* @return ***REMOVED***boolean***REMOVED*** True if the property was set, false if not.
+* @param {Phaser.Sprite} child - The child to set the property on.
+* @param {string} key - The property, as a string, to be set. For example: 'body.velocity.x'
+* @param {any} value - The value that will be set.
+* @param {boolean} [checkAlive=false] - If set then the child will only be updated if alive=true.
+* @param {boolean} [checkVisible=false] - If set then the child will only be updated if visible=true.
+* @param {integer} [operation=0] - Controls how the value is assigned. A value of 0 replaces the value with the new one. A value of 1 adds it, 2 subtracts it, 3 multiplies it and 4 divides it.
+* @param {boolean} [force=false] - If `force` is true then the property will be set on the child regardless if it already exists or not. If false and the property doesn't exist, nothing will be set.
+* @return {boolean} True if the property was set, false if not.
 */
-Phaser.Group.prototype.set = function (child, key, value, checkAlive, checkVisible, operation, force) ***REMOVED***
+Phaser.Group.prototype.set = function (child, key, value, checkAlive, checkVisible, operation, force) {
 
-    if (force === undefined) ***REMOVED*** force = false; ***REMOVED***
+    if (force === undefined) { force = false; }
 
     key = key.split('.');
 
-    if (checkAlive === undefined) ***REMOVED*** checkAlive = false; ***REMOVED***
-    if (checkVisible === undefined) ***REMOVED*** checkVisible = false; ***REMOVED***
+    if (checkAlive === undefined) { checkAlive = false; }
+    if (checkVisible === undefined) { checkVisible = false; }
 
     if ((checkAlive === false || (checkAlive && child.alive)) && (checkVisible === false || (checkVisible && child.visible)))
-    ***REMOVED***
+    {
         return this.setProperty(child, key, value, operation, force);
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Quickly set the same property across all children of this group to a new value.
@@ -1283,31 +1283,31 @@ Phaser.Group.prototype.set = function (child, key, value, checkAlive, checkVisib
 * The operation parameter controls how the new value is assigned to the property, from simple replacement to addition and multiplication.
 *
 * @method Phaser.Group#setAll
-* @param ***REMOVED***string***REMOVED*** key - The property, as a string, to be set. For example: 'body.velocity.x'
-* @param ***REMOVED***any***REMOVED*** value - The value that will be set.
-* @param ***REMOVED***boolean***REMOVED*** [checkAlive=false] - If set then only children with alive=true will be updated. This includes any Groups that are children.
-* @param ***REMOVED***boolean***REMOVED*** [checkVisible=false] - If set then only children with visible=true will be updated. This includes any Groups that are children.
-* @param ***REMOVED***integer***REMOVED*** [operation=0] - Controls how the value is assigned. A value of 0 replaces the value with the new one. A value of 1 adds it, 2 subtracts it, 3 multiplies it and 4 divides it.
-* @param ***REMOVED***boolean***REMOVED*** [force=false] - If `force` is true then the property will be set on the child regardless if it already exists or not. If false and the property doesn't exist, nothing will be set.
+* @param {string} key - The property, as a string, to be set. For example: 'body.velocity.x'
+* @param {any} value - The value that will be set.
+* @param {boolean} [checkAlive=false] - If set then only children with alive=true will be updated. This includes any Groups that are children.
+* @param {boolean} [checkVisible=false] - If set then only children with visible=true will be updated. This includes any Groups that are children.
+* @param {integer} [operation=0] - Controls how the value is assigned. A value of 0 replaces the value with the new one. A value of 1 adds it, 2 subtracts it, 3 multiplies it and 4 divides it.
+* @param {boolean} [force=false] - If `force` is true then the property will be set on the child regardless if it already exists or not. If false and the property doesn't exist, nothing will be set.
 */
-Phaser.Group.prototype.setAll = function (key, value, checkAlive, checkVisible, operation, force) ***REMOVED***
+Phaser.Group.prototype.setAll = function (key, value, checkAlive, checkVisible, operation, force) {
 
-    if (checkAlive === undefined) ***REMOVED*** checkAlive = false; ***REMOVED***
-    if (checkVisible === undefined) ***REMOVED*** checkVisible = false; ***REMOVED***
-    if (force === undefined) ***REMOVED*** force = false; ***REMOVED***
+    if (checkAlive === undefined) { checkAlive = false; }
+    if (checkVisible === undefined) { checkVisible = false; }
+    if (force === undefined) { force = false; }
 
     key = key.split('.');
     operation = operation || 0;
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         if ((!checkAlive || (checkAlive && this.children[i].alive)) && (!checkVisible || (checkVisible && this.children[i].visible)))
-        ***REMOVED***
+        {
             this.setProperty(this.children[i], key, value, operation, force);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
-***REMOVED***;
+};
 
 /**
 * Quickly set the same property across all children of this group, and any child Groups, to a new value.
@@ -1318,37 +1318,37 @@ Phaser.Group.prototype.setAll = function (key, value, checkAlive, checkVisible, 
 * The operation parameter controls how the new value is assigned to the property, from simple replacement to addition and multiplication.
 *
 * @method Phaser.Group#setAllChildren
-* @param ***REMOVED***string***REMOVED*** key - The property, as a string, to be set. For example: 'body.velocity.x'
-* @param ***REMOVED***any***REMOVED*** value - The value that will be set.
-* @param ***REMOVED***boolean***REMOVED*** [checkAlive=false] - If set then only children with alive=true will be updated. This includes any Groups that are children.
-* @param ***REMOVED***boolean***REMOVED*** [checkVisible=false] - If set then only children with visible=true will be updated. This includes any Groups that are children.
-* @param ***REMOVED***integer***REMOVED*** [operation=0] - Controls how the value is assigned. A value of 0 replaces the value with the new one. A value of 1 adds it, 2 subtracts it, 3 multiplies it and 4 divides it.
-* @param ***REMOVED***boolean***REMOVED*** [force=false] - If `force` is true then the property will be set on the child regardless if it already exists or not. If false and the property doesn't exist, nothing will be set.
+* @param {string} key - The property, as a string, to be set. For example: 'body.velocity.x'
+* @param {any} value - The value that will be set.
+* @param {boolean} [checkAlive=false] - If set then only children with alive=true will be updated. This includes any Groups that are children.
+* @param {boolean} [checkVisible=false] - If set then only children with visible=true will be updated. This includes any Groups that are children.
+* @param {integer} [operation=0] - Controls how the value is assigned. A value of 0 replaces the value with the new one. A value of 1 adds it, 2 subtracts it, 3 multiplies it and 4 divides it.
+* @param {boolean} [force=false] - If `force` is true then the property will be set on the child regardless if it already exists or not. If false and the property doesn't exist, nothing will be set.
 */
-Phaser.Group.prototype.setAllChildren = function (key, value, checkAlive, checkVisible, operation, force) ***REMOVED***
+Phaser.Group.prototype.setAllChildren = function (key, value, checkAlive, checkVisible, operation, force) {
 
-    if (checkAlive === undefined) ***REMOVED*** checkAlive = false; ***REMOVED***
-    if (checkVisible === undefined) ***REMOVED*** checkVisible = false; ***REMOVED***
-    if (force === undefined) ***REMOVED*** force = false; ***REMOVED***
+    if (checkAlive === undefined) { checkAlive = false; }
+    if (checkVisible === undefined) { checkVisible = false; }
+    if (force === undefined) { force = false; }
 
     operation = operation || 0;
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         if ((!checkAlive || (checkAlive && this.children[i].alive)) && (!checkVisible || (checkVisible && this.children[i].visible)))
-        ***REMOVED***
+        {
             if (this.children[i] instanceof Phaser.Group)
-            ***REMOVED***
+            {
                 this.children[i].setAllChildren(key, value, checkAlive, checkVisible, operation, force);
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this.setProperty(this.children[i], key.split('.'), value, operation, force);
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
-***REMOVED***;
+};
 
 /**
 * Quickly check that the same property across all children of this group is equal to the given value.
@@ -1356,32 +1356,32 @@ Phaser.Group.prototype.setAllChildren = function (key, value, checkAlive, checkV
 * This call doesn't descend down children, so if you have a Group inside of this group, the property will be checked on the group but not its children.
 *
 * @method Phaser.Group#checkAll
-* @param ***REMOVED***string***REMOVED*** key - The property, as a string, to be set. For example: 'body.velocity.x'
-* @param ***REMOVED***any***REMOVED*** value - The value that will be checked.
-* @param ***REMOVED***boolean***REMOVED*** [checkAlive=false] - If set then only children with alive=true will be checked. This includes any Groups that are children.
-* @param ***REMOVED***boolean***REMOVED*** [checkVisible=false] - If set then only children with visible=true will be checked. This includes any Groups that are children.
-* @param ***REMOVED***boolean***REMOVED*** [force=false] - If `force` is true then the property will be checked on the child regardless if it already exists or not. If true and the property doesn't exist, false will be returned.
+* @param {string} key - The property, as a string, to be set. For example: 'body.velocity.x'
+* @param {any} value - The value that will be checked.
+* @param {boolean} [checkAlive=false] - If set then only children with alive=true will be checked. This includes any Groups that are children.
+* @param {boolean} [checkVisible=false] - If set then only children with visible=true will be checked. This includes any Groups that are children.
+* @param {boolean} [force=false] - If `force` is true then the property will be checked on the child regardless if it already exists or not. If true and the property doesn't exist, false will be returned.
 */
-Phaser.Group.prototype.checkAll = function (key, value, checkAlive, checkVisible, force) ***REMOVED***
+Phaser.Group.prototype.checkAll = function (key, value, checkAlive, checkVisible, force) {
 
-    if (checkAlive === undefined) ***REMOVED*** checkAlive = false; ***REMOVED***
-    if (checkVisible === undefined) ***REMOVED*** checkVisible = false; ***REMOVED***
-    if (force === undefined) ***REMOVED*** force = false; ***REMOVED***
+    if (checkAlive === undefined) { checkAlive = false; }
+    if (checkVisible === undefined) { checkVisible = false; }
+    if (force === undefined) { force = false; }
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         if ((!checkAlive || (checkAlive && this.children[i].alive)) && (!checkVisible || (checkVisible && this.children[i].visible)))
-        ***REMOVED***
+        {
             if (!this.checkProperty(this.children[i], key, value, force))
-            ***REMOVED***
+            {
                 return false;
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
     return true;
 
-***REMOVED***;
+};
 
 /**
 * Adds the amount to the given property on all children in this group.
@@ -1389,16 +1389,16 @@ Phaser.Group.prototype.checkAll = function (key, value, checkAlive, checkVisible
 * `Group.addAll('x', 10)` will add 10 to the child.x value for each child.
 *
 * @method Phaser.Group#addAll
-* @param ***REMOVED***string***REMOVED*** property - The property to increment, for example 'body.velocity.x' or 'angle'.
-* @param ***REMOVED***number***REMOVED*** amount - The amount to increment the property by. If child.x = 10 then addAll('x', 40) would make child.x = 50.
-* @param ***REMOVED***boolean***REMOVED*** checkAlive - If true the property will only be changed if the child is alive.
-* @param ***REMOVED***boolean***REMOVED*** checkVisible - If true the property will only be changed if the child is visible.
+* @param {string} property - The property to increment, for example 'body.velocity.x' or 'angle'.
+* @param {number} amount - The amount to increment the property by. If child.x = 10 then addAll('x', 40) would make child.x = 50.
+* @param {boolean} checkAlive - If true the property will only be changed if the child is alive.
+* @param {boolean} checkVisible - If true the property will only be changed if the child is visible.
 */
-Phaser.Group.prototype.addAll = function (property, amount, checkAlive, checkVisible) ***REMOVED***
+Phaser.Group.prototype.addAll = function (property, amount, checkAlive, checkVisible) {
 
     this.setAll(property, amount, checkAlive, checkVisible, 1);
 
-***REMOVED***;
+};
 
 /**
 * Subtracts the amount from the given property on all children in this group.
@@ -1406,16 +1406,16 @@ Phaser.Group.prototype.addAll = function (property, amount, checkAlive, checkVis
 * `Group.subAll('x', 10)` will minus 10 from the child.x value for each child.
 *
 * @method Phaser.Group#subAll
-* @param ***REMOVED***string***REMOVED*** property - The property to decrement, for example 'body.velocity.x' or 'angle'.
-* @param ***REMOVED***number***REMOVED*** amount - The amount to subtract from the property. If child.x = 50 then subAll('x', 40) would make child.x = 10.
-* @param ***REMOVED***boolean***REMOVED*** checkAlive - If true the property will only be changed if the child is alive.
-* @param ***REMOVED***boolean***REMOVED*** checkVisible - If true the property will only be changed if the child is visible.
+* @param {string} property - The property to decrement, for example 'body.velocity.x' or 'angle'.
+* @param {number} amount - The amount to subtract from the property. If child.x = 50 then subAll('x', 40) would make child.x = 10.
+* @param {boolean} checkAlive - If true the property will only be changed if the child is alive.
+* @param {boolean} checkVisible - If true the property will only be changed if the child is visible.
 */
-Phaser.Group.prototype.subAll = function (property, amount, checkAlive, checkVisible) ***REMOVED***
+Phaser.Group.prototype.subAll = function (property, amount, checkAlive, checkVisible) {
 
     this.setAll(property, amount, checkAlive, checkVisible, 2);
 
-***REMOVED***;
+};
 
 /**
 * Multiplies the given property by the amount on all children in this group.
@@ -1423,16 +1423,16 @@ Phaser.Group.prototype.subAll = function (property, amount, checkAlive, checkVis
 * `Group.multiplyAll('x', 2)` will x2 the child.x value for each child.
 *
 * @method Phaser.Group#multiplyAll
-* @param ***REMOVED***string***REMOVED*** property - The property to multiply, for example 'body.velocity.x' or 'angle'.
-* @param ***REMOVED***number***REMOVED*** amount - The amount to multiply the property by. If child.x = 10 then multiplyAll('x', 2) would make child.x = 20.
-* @param ***REMOVED***boolean***REMOVED*** checkAlive - If true the property will only be changed if the child is alive.
-* @param ***REMOVED***boolean***REMOVED*** checkVisible - If true the property will only be changed if the child is visible.
+* @param {string} property - The property to multiply, for example 'body.velocity.x' or 'angle'.
+* @param {number} amount - The amount to multiply the property by. If child.x = 10 then multiplyAll('x', 2) would make child.x = 20.
+* @param {boolean} checkAlive - If true the property will only be changed if the child is alive.
+* @param {boolean} checkVisible - If true the property will only be changed if the child is visible.
 */
-Phaser.Group.prototype.multiplyAll = function (property, amount, checkAlive, checkVisible) ***REMOVED***
+Phaser.Group.prototype.multiplyAll = function (property, amount, checkAlive, checkVisible) {
 
     this.setAll(property, amount, checkAlive, checkVisible, 3);
 
-***REMOVED***;
+};
 
 /**
 * Divides the given property by the amount on all children in this group.
@@ -1440,16 +1440,16 @@ Phaser.Group.prototype.multiplyAll = function (property, amount, checkAlive, che
 * `Group.divideAll('x', 2)` will half the child.x value for each child.
 *
 * @method Phaser.Group#divideAll
-* @param ***REMOVED***string***REMOVED*** property - The property to divide, for example 'body.velocity.x' or 'angle'.
-* @param ***REMOVED***number***REMOVED*** amount - The amount to divide the property by. If child.x = 100 then divideAll('x', 2) would make child.x = 50.
-* @param ***REMOVED***boolean***REMOVED*** checkAlive - If true the property will only be changed if the child is alive.
-* @param ***REMOVED***boolean***REMOVED*** checkVisible - If true the property will only be changed if the child is visible.
+* @param {string} property - The property to divide, for example 'body.velocity.x' or 'angle'.
+* @param {number} amount - The amount to divide the property by. If child.x = 100 then divideAll('x', 2) would make child.x = 50.
+* @param {boolean} checkAlive - If true the property will only be changed if the child is alive.
+* @param {boolean} checkVisible - If true the property will only be changed if the child is visible.
 */
-Phaser.Group.prototype.divideAll = function (property, amount, checkAlive, checkVisible) ***REMOVED***
+Phaser.Group.prototype.divideAll = function (property, amount, checkAlive, checkVisible) {
 
     this.setAll(property, amount, checkAlive, checkVisible, 4);
 
-***REMOVED***;
+};
 
 /**
 * Calls a function, specified by name, on all children in the group who exist (or do not exist).
@@ -1457,83 +1457,83 @@ Phaser.Group.prototype.divideAll = function (property, amount, checkAlive, check
 * After the existsValue parameter you can add as many parameters as you like, which will all be passed to the child callback.
 *
 * @method Phaser.Group#callAllExists
-* @param ***REMOVED***string***REMOVED*** callback - Name of the function on the children to call.
-* @param ***REMOVED***boolean***REMOVED*** existsValue - Only children with exists=existsValue will be called.
-* @param ***REMOVED***...any***REMOVED*** parameter - Additional parameters that will be passed to the callback.
+* @param {string} callback - Name of the function on the children to call.
+* @param {boolean} existsValue - Only children with exists=existsValue will be called.
+* @param {...any} parameter - Additional parameters that will be passed to the callback.
 */
-Phaser.Group.prototype.callAllExists = function (callback, existsValue) ***REMOVED***
+Phaser.Group.prototype.callAllExists = function (callback, existsValue) {
 
     var args;
 
     if (arguments.length > 2)
-    ***REMOVED***
+    {
         args = [];
 
         for (var i = 2; i < arguments.length; i++)
-        ***REMOVED***
+        {
             args.push(arguments[i]);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         if (this.children[i].exists === existsValue && this.children[i][callback])
-        ***REMOVED***
+        {
             this.children[i][callback].apply(this.children[i], args);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
-***REMOVED***;
+};
 
 /**
 * Returns a reference to a function that exists on a child of the group based on the given callback array.
 *
 * @method Phaser.Group#callbackFromArray
-* @param ***REMOVED***object***REMOVED*** child - The object to inspect.
-* @param ***REMOVED***array***REMOVED*** callback - The array of function names.
-* @param ***REMOVED***integer***REMOVED*** length - The size of the array (pre-calculated in callAll).
+* @param {object} child - The object to inspect.
+* @param {array} callback - The array of function names.
+* @param {integer} length - The size of the array (pre-calculated in callAll).
 * @protected
 */
-Phaser.Group.prototype.callbackFromArray = function (child, callback, length) ***REMOVED***
+Phaser.Group.prototype.callbackFromArray = function (child, callback, length) {
 
     //  Kinda looks like a Christmas tree
 
     if (length === 1)
-    ***REMOVED***
+    {
         if (child[callback[0]])
-        ***REMOVED***
+        {
             return child[callback[0]];
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     else if (length === 2)
-    ***REMOVED***
+    {
         if (child[callback[0]][callback[1]])
-        ***REMOVED***
+        {
             return child[callback[0]][callback[1]];
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     else if (length === 3)
-    ***REMOVED***
+    {
         if (child[callback[0]][callback[1]][callback[2]])
-        ***REMOVED***
+        {
             return child[callback[0]][callback[1]][callback[2]];
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     else if (length === 4)
-    ***REMOVED***
+    {
         if (child[callback[0]][callback[1]][callback[2]][callback[3]])
-        ***REMOVED***
+        {
             return child[callback[0]][callback[1]][callback[2]][callback[3]];
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     else if (child[callback])
-    ***REMOVED***
+    {
         return child[callback];
-    ***REMOVED***
+    }
 
     return false;
 
-***REMOVED***;
+};
 
 /**
 * Calls a function, specified by name, on all on children.
@@ -1542,16 +1542,16 @@ Phaser.Group.prototype.callbackFromArray = function (child, callback, length) **
 * After the method parameter and context you can add as many extra parameters as you like, which will all be passed to the child.
 *
 * @method Phaser.Group#callAll
-* @param ***REMOVED***string***REMOVED*** method - Name of the function on the child to call. Deep property lookup is supported.
-* @param ***REMOVED***string***REMOVED*** [context=null] - A string containing the context under which the method will be executed. Set to null to default to the child.
-* @param ***REMOVED***...any***REMOVED*** args - Additional parameters that will be passed to the method.
+* @param {string} method - Name of the function on the child to call. Deep property lookup is supported.
+* @param {string} [context=null] - A string containing the context under which the method will be executed. Set to null to default to the child.
+* @param {...any} args - Additional parameters that will be passed to the method.
 */
-Phaser.Group.prototype.callAll = function (method, context) ***REMOVED***
+Phaser.Group.prototype.callAll = function (method, context) {
 
     if (method === undefined)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     //  Extract the method into an array
     method = method.split('.');
@@ -1559,160 +1559,160 @@ Phaser.Group.prototype.callAll = function (method, context) ***REMOVED***
     var methodLength = method.length;
 
     if (context === undefined || context === null || context === '')
-    ***REMOVED***
+    {
         context = null;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         //  Extract the context into an array
         if (typeof context === 'string')
-        ***REMOVED***
+        {
             context = context.split('.');
             var contextLength = context.length;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     var args;
 
     if (arguments.length > 2)
-    ***REMOVED***
+    {
         args = [];
 
         for (var i = 2; i < arguments.length; i++)
-        ***REMOVED***
+        {
             args.push(arguments[i]);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     var callback = null;
     var callbackContext = null;
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         callback = this.callbackFromArray(this.children[i], method, methodLength);
 
         if (context && callback)
-        ***REMOVED***
+        {
             callbackContext = this.callbackFromArray(this.children[i], context, contextLength);
 
             if (callback)
-            ***REMOVED***
+            {
                 callback.apply(callbackContext, args);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else if (callback)
-        ***REMOVED***
+        {
             callback.apply(this.children[i], args);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
-***REMOVED***;
+};
 
 /**
 * The core preUpdate - as called by World.
 * @method Phaser.Group#preUpdate
 * @protected
 */
-Phaser.Group.prototype.preUpdate = function () ***REMOVED***
+Phaser.Group.prototype.preUpdate = function () {
 
     if (this.pendingDestroy)
-    ***REMOVED***
+    {
         this.destroy();
         return false;
-    ***REMOVED***
+    }
 
     if (!this.exists || !this.parent.exists)
-    ***REMOVED***
+    {
         this.renderOrderID = -1;
         return false;
-    ***REMOVED***
+    }
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         this.children[i].preUpdate();
-    ***REMOVED***
+    }
 
     return true;
 
-***REMOVED***;
+};
 
 /**
 * The core update - as called by World.
 * @method Phaser.Group#update
 * @protected
 */
-Phaser.Group.prototype.update = function () ***REMOVED***
+Phaser.Group.prototype.update = function () {
 
     //  Goes in reverse, because it's highly likely the child will destroy itself in `update`
     var i = this.children.length;
 
     while (i--)
-    ***REMOVED***
+    {
         this.children[i].update();
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * The core postUpdate - as called by World.
 * @method Phaser.Group#postUpdate
 * @protected
 */
-Phaser.Group.prototype.postUpdate = function () ***REMOVED***
+Phaser.Group.prototype.postUpdate = function () {
 
     //  Fixed to Camera?
     if (this.fixedToCamera)
-    ***REMOVED***
+    {
         this.x = this.game.camera.view.x + this.cameraOffset.x;
         this.y = this.game.camera.view.y + this.cameraOffset.y;
-    ***REMOVED***
+    }
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         this.children[i].postUpdate();
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Find children matching a certain predicate.
 *
 * For example:
 *
-*     var healthyList = Group.filter(function(child, index, children) ***REMOVED***
+*     var healthyList = Group.filter(function(child, index, children) {
 *         return child.health > 10 ? true : false;
-*     ***REMOVED***, true);
+*     }, true);
 *     healthyList.callAll('attack');
 *
 * Note: Currently this will skip any children which are Groups themselves.
 *
 * @method Phaser.Group#filter
-* @param ***REMOVED***function***REMOVED*** predicate - The function that each child will be evaluated against. Each child of the group will be passed to it as its first parameter, the index as the second, and the entire child array as the third
-* @param ***REMOVED***boolean***REMOVED*** [checkExists=false] - If true, only existing can be selected; otherwise all children can be selected and will be passed to the predicate.
-* @return ***REMOVED***Phaser.ArraySet***REMOVED*** Returns an array list containing all the children that the predicate returned true for
+* @param {function} predicate - The function that each child will be evaluated against. Each child of the group will be passed to it as its first parameter, the index as the second, and the entire child array as the third
+* @param {boolean} [checkExists=false] - If true, only existing can be selected; otherwise all children can be selected and will be passed to the predicate.
+* @return {Phaser.ArraySet} Returns an array list containing all the children that the predicate returned true for
 */
-Phaser.Group.prototype.filter = function (predicate, checkExists) ***REMOVED***
+Phaser.Group.prototype.filter = function (predicate, checkExists) {
 
     var index = -1;
     var length = this.children.length;
     var results = [];
 
     while (++index < length)
-    ***REMOVED***
+    {
         var child = this.children[index];
 
         if (!checkExists || (checkExists && child.exists))
-        ***REMOVED***
+        {
             if (predicate(child, index, this.children))
-            ***REMOVED***
+            {
                 results.push(child);
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
     return new Phaser.ArraySet(results);
 
-***REMOVED***;
+};
 
 /**
 * Call a function on each child in this group.
@@ -1726,131 +1726,131 @@ Phaser.Group.prototype.filter = function (predicate, checkExists) ***REMOVED***
 * Note: This check will skip any children which are Groups themselves.
 *
 * @method Phaser.Group#forEach
-* @param ***REMOVED***function***REMOVED*** callback - The function that will be called for each applicable child. The child will be passed as the first argument.
-* @param ***REMOVED***object***REMOVED*** callbackContext - The context in which the function should be called (usually 'this').
-* @param ***REMOVED***boolean***REMOVED*** [checkExists=false] - If set only children matching for which `exists` is true will be passed to the callback, otherwise all children will be passed.
-* @param ***REMOVED***...any***REMOVED*** [args=(none)] - Additional arguments to pass to the callback function, after the child item.
+* @param {function} callback - The function that will be called for each applicable child. The child will be passed as the first argument.
+* @param {object} callbackContext - The context in which the function should be called (usually 'this').
+* @param {boolean} [checkExists=false] - If set only children matching for which `exists` is true will be passed to the callback, otherwise all children will be passed.
+* @param {...any} [args=(none)] - Additional arguments to pass to the callback function, after the child item.
 */
-Phaser.Group.prototype.forEach = function (callback, callbackContext, checkExists) ***REMOVED***
+Phaser.Group.prototype.forEach = function (callback, callbackContext, checkExists) {
 
-    if (checkExists === undefined) ***REMOVED*** checkExists = false; ***REMOVED***
+    if (checkExists === undefined) { checkExists = false; }
 
     if (arguments.length <= 3)
-    ***REMOVED***
+    {
         for (var i = 0; i < this.children.length; i++)
-        ***REMOVED***
+        {
             if (!checkExists || (checkExists && this.children[i].exists))
-            ***REMOVED***
+            {
                 callback.call(callbackContext, this.children[i]);
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
     else
-    ***REMOVED***
+    {
         // Assigning to arguments properties causes Extreme Deoptimization in Chrome, FF, and IE.
         // Using an array and pushing each element (not a slice!) is _significantly_ faster.
         var args = [null];
 
         for (var i = 3; i < arguments.length; i++)
-        ***REMOVED***
+        {
             args.push(arguments[i]);
-        ***REMOVED***
+        }
 
         for (var i = 0; i < this.children.length; i++)
-        ***REMOVED***
+        {
             if (!checkExists || (checkExists && this.children[i].exists))
-            ***REMOVED***
+            {
                 args[0] = this.children[i];
                 callback.apply(callbackContext, args);
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
-***REMOVED***;
+};
 
 /**
 * Call a function on each existing child in this group.
 *
-* See ***REMOVED***@link Phaser.Group#forEach forEach***REMOVED*** for details.
+* See {@link Phaser.Group#forEach forEach} for details.
 *
 * @method Phaser.Group#forEachExists
-* @param ***REMOVED***function***REMOVED*** callback - The function that will be called for each applicable child. The child will be passed as the first argument.
-* @param ***REMOVED***object***REMOVED*** callbackContext - The context in which the function should be called (usually 'this').
-* @param ***REMOVED***...any***REMOVED*** [args=(none)] - Additional arguments to pass to the callback function, after the child item.
+* @param {function} callback - The function that will be called for each applicable child. The child will be passed as the first argument.
+* @param {object} callbackContext - The context in which the function should be called (usually 'this').
+* @param {...any} [args=(none)] - Additional arguments to pass to the callback function, after the child item.
 */
-Phaser.Group.prototype.forEachExists = function (callback, callbackContext) ***REMOVED***
+Phaser.Group.prototype.forEachExists = function (callback, callbackContext) {
 
     var args;
 
     if (arguments.length > 2)
-    ***REMOVED***
+    {
         args = [null];
 
         for (var i = 2; i < arguments.length; i++)
-        ***REMOVED***
+        {
             args.push(arguments[i]);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     this.iterate('exists', true, Phaser.Group.RETURN_TOTAL, callback, callbackContext, args);
 
-***REMOVED***;
+};
 
 /**
 * Call a function on each alive child in this group.
 *
-* See ***REMOVED***@link Phaser.Group#forEach forEach***REMOVED*** for details.
+* See {@link Phaser.Group#forEach forEach} for details.
 *
 * @method Phaser.Group#forEachAlive
-* @param ***REMOVED***function***REMOVED*** callback - The function that will be called for each applicable child. The child will be passed as the first argument.
-* @param ***REMOVED***object***REMOVED*** callbackContext - The context in which the function should be called (usually 'this').
-* @param ***REMOVED***...any***REMOVED*** [args=(none)] - Additional arguments to pass to the callback function, after the child item.
+* @param {function} callback - The function that will be called for each applicable child. The child will be passed as the first argument.
+* @param {object} callbackContext - The context in which the function should be called (usually 'this').
+* @param {...any} [args=(none)] - Additional arguments to pass to the callback function, after the child item.
 */
-Phaser.Group.prototype.forEachAlive = function (callback, callbackContext) ***REMOVED***
+Phaser.Group.prototype.forEachAlive = function (callback, callbackContext) {
 
     var args;
 
     if (arguments.length > 2)
-    ***REMOVED***
+    {
         args = [null];
 
         for (var i = 2; i < arguments.length; i++)
-        ***REMOVED***
+        {
             args.push(arguments[i]);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     this.iterate('alive', true, Phaser.Group.RETURN_TOTAL, callback, callbackContext, args);
 
-***REMOVED***;
+};
 
 /**
 * Call a function on each dead child in this group.
 *
-* See ***REMOVED***@link Phaser.Group#forEach forEach***REMOVED*** for details.
+* See {@link Phaser.Group#forEach forEach} for details.
 *
 * @method Phaser.Group#forEachDead
-* @param ***REMOVED***function***REMOVED*** callback - The function that will be called for each applicable child. The child will be passed as the first argument.
-* @param ***REMOVED***object***REMOVED*** callbackContext - The context in which the function should be called (usually 'this').
-* @param ***REMOVED***...any***REMOVED*** [args=(none)] - Additional arguments to pass to the callback function, after the child item.
+* @param {function} callback - The function that will be called for each applicable child. The child will be passed as the first argument.
+* @param {object} callbackContext - The context in which the function should be called (usually 'this').
+* @param {...any} [args=(none)] - Additional arguments to pass to the callback function, after the child item.
 */
-Phaser.Group.prototype.forEachDead = function (callback, callbackContext) ***REMOVED***
+Phaser.Group.prototype.forEachDead = function (callback, callbackContext) {
 
     var args;
 
     if (arguments.length > 2)
-    ***REMOVED***
+    {
         args = [null];
 
         for (var i = 2; i < arguments.length; i++)
-        ***REMOVED***
+        {
             args.push(arguments[i]);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     this.iterate('alive', false, Phaser.Group.RETURN_TOTAL, callback, callbackContext, args);
 
-***REMOVED***;
+};
 
 /**
 * Sort the children in the group according to a particular key and ordering.
@@ -1863,34 +1863,34 @@ Phaser.Group.prototype.forEachDead = function (callback, callbackContext) ***REM
 * alphabetical sorting, mixing strings and numbers, and Unicode sorting. See MDN for more details.
 *
 * @method Phaser.Group#sort
-* @param ***REMOVED***string***REMOVED*** [key='z'] - The name of the property to sort on. Defaults to the objects z-depth value.
-* @param ***REMOVED***integer***REMOVED*** [order=Phaser.Group.SORT_ASCENDING] - Order ascending (***REMOVED***@link Phaser.Group.SORT_ASCENDING SORT_ASCENDING***REMOVED***) or descending (***REMOVED***@link Phaser.Group.SORT_DESCENDING SORT_DESCENDING***REMOVED***).
+* @param {string} [key='z'] - The name of the property to sort on. Defaults to the objects z-depth value.
+* @param {integer} [order=Phaser.Group.SORT_ASCENDING] - Order ascending ({@link Phaser.Group.SORT_ASCENDING SORT_ASCENDING}) or descending ({@link Phaser.Group.SORT_DESCENDING SORT_DESCENDING}).
 */
-Phaser.Group.prototype.sort = function (key, order) ***REMOVED***
+Phaser.Group.prototype.sort = function (key, order) {
 
     if (this.children.length < 2)
-    ***REMOVED***
+    {
         //  Nothing to swap
         return;
-    ***REMOVED***
+    }
 
-    if (key === undefined) ***REMOVED*** key = 'z'; ***REMOVED***
-    if (order === undefined) ***REMOVED*** order = Phaser.Group.SORT_ASCENDING; ***REMOVED***
+    if (key === undefined) { key = 'z'; }
+    if (order === undefined) { order = Phaser.Group.SORT_ASCENDING; }
 
     this._sortProperty = key;
 
     if (order === Phaser.Group.SORT_ASCENDING)
-    ***REMOVED***
+    {
         this.children.sort(this.ascendingSortHandler.bind(this));
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         this.children.sort(this.descendingSortHandler.bind(this));
-    ***REMOVED***
+    }
 
     this.updateZ();
 
-***REMOVED***;
+};
 
 /**
 * Sort the children in the group according to custom sort function.
@@ -1899,79 +1899,79 @@ Phaser.Group.prototype.sort = function (key, order) ***REMOVED***
 * It should return -1 if `a > b`, 1 if `a < b` or 0 if `a === b`.
 *
 * @method Phaser.Group#customSort
-* @param ***REMOVED***function***REMOVED*** sortHandler - The custom sort function.
-* @param ***REMOVED***object***REMOVED*** [context=undefined] - The context in which the sortHandler is called.
+* @param {function} sortHandler - The custom sort function.
+* @param {object} [context=undefined] - The context in which the sortHandler is called.
 */
-Phaser.Group.prototype.customSort = function (sortHandler, context) ***REMOVED***
+Phaser.Group.prototype.customSort = function (sortHandler, context) {
 
     if (this.children.length < 2)
-    ***REMOVED***
+    {
         //  Nothing to swap
         return;
-    ***REMOVED***
+    }
 
     this.children.sort(sortHandler.bind(context));
 
     this.updateZ();
 
-***REMOVED***;
+};
 
 /**
 * An internal helper function for the sort process.
 *
 * @method Phaser.Group#ascendingSortHandler
 * @protected
-* @param ***REMOVED***object***REMOVED*** a - The first object being sorted.
-* @param ***REMOVED***object***REMOVED*** b - The second object being sorted.
+* @param {object} a - The first object being sorted.
+* @param {object} b - The second object being sorted.
 */
-Phaser.Group.prototype.ascendingSortHandler = function (a, b) ***REMOVED***
+Phaser.Group.prototype.ascendingSortHandler = function (a, b) {
 
     if (a[this._sortProperty] < b[this._sortProperty])
-    ***REMOVED***
+    {
         return -1;
-    ***REMOVED***
+    }
     else if (a[this._sortProperty] > b[this._sortProperty])
-    ***REMOVED***
+    {
         return 1;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         if (a.z < b.z)
-        ***REMOVED***
+        {
             return -1;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return 1;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
-***REMOVED***;
+};
 
 /**
 * An internal helper function for the sort process.
 *
 * @method Phaser.Group#descendingSortHandler
 * @protected
-* @param ***REMOVED***object***REMOVED*** a - The first object being sorted.
-* @param ***REMOVED***object***REMOVED*** b - The second object being sorted.
+* @param {object} a - The first object being sorted.
+* @param {object} b - The second object being sorted.
 */
-Phaser.Group.prototype.descendingSortHandler = function (a, b) ***REMOVED***
+Phaser.Group.prototype.descendingSortHandler = function (a, b) {
 
     if (a[this._sortProperty] < b[this._sortProperty])
-    ***REMOVED***
+    {
         return 1;
-    ***REMOVED***
+    }
     else if (a[this._sortProperty] > b[this._sortProperty])
-    ***REMOVED***
+    {
         return -1;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         return 0;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Iterates over the children of the group performing one of several actions for matched children.
@@ -1981,11 +1981,11 @@ Phaser.Group.prototype.descendingSortHandler = function (a, b) ***REMOVED***
 *
 * The result depends on the `returnType`:
 *
-* - ***REMOVED***@link Phaser.Group.RETURN_TOTAL RETURN_TOTAL***REMOVED***:
+* - {@link Phaser.Group.RETURN_TOTAL RETURN_TOTAL}:
 *     The callback, if any, is applied to all matching children. The number of matched children is returned.
-* - ***REMOVED***@link Phaser.Group.RETURN_NONE RETURN_NONE***REMOVED***:
+* - {@link Phaser.Group.RETURN_NONE RETURN_NONE}:
 *     The callback, if any, is applied to all matching children. No value is returned.
-* - ***REMOVED***@link Phaser.Group.RETURN_CHILD RETURN_CHILD***REMOVED***:
+* - {@link Phaser.Group.RETURN_CHILD RETURN_CHILD}:
 *     The callback, if any, is applied to the *first* matching child and the *first* matched child is returned.
 *     If there is no matching child then null is returned.
 *
@@ -1993,80 +1993,80 @@ Phaser.Group.prototype.descendingSortHandler = function (a, b) ***REMOVED***
 * element and the entire array will be applied to the callback function.
 *
 * @method Phaser.Group#iterate
-* @param ***REMOVED***string***REMOVED*** key - The child property to check, i.e. 'exists', 'alive', 'health'
-* @param ***REMOVED***any***REMOVED*** value - A child matches if `child[key] === value` is true.
-* @param ***REMOVED***integer***REMOVED*** returnType - How to iterate the children and what to return.
-* @param ***REMOVED***function***REMOVED*** [callback=null] - Optional function that will be called on each matching child. The matched child is supplied as the first argument.
-* @param ***REMOVED***object***REMOVED*** [callbackContext] - The context in which the function should be called (usually 'this').
-* @param ***REMOVED***any[]***REMOVED*** [args=(none)] - The arguments supplied to to the callback; the first array index (argument) will be replaced with the matched child.
-* @return ***REMOVED***any***REMOVED*** Returns either an integer (for RETURN_TOTAL), the first matched child (for RETURN_CHILD), or null.
+* @param {string} key - The child property to check, i.e. 'exists', 'alive', 'health'
+* @param {any} value - A child matches if `child[key] === value` is true.
+* @param {integer} returnType - How to iterate the children and what to return.
+* @param {function} [callback=null] - Optional function that will be called on each matching child. The matched child is supplied as the first argument.
+* @param {object} [callbackContext] - The context in which the function should be called (usually 'this').
+* @param {any[]} [args=(none)] - The arguments supplied to to the callback; the first array index (argument) will be replaced with the matched child.
+* @return {any} Returns either an integer (for RETURN_TOTAL), the first matched child (for RETURN_CHILD), or null.
 */
-Phaser.Group.prototype.iterate = function (key, value, returnType, callback, callbackContext, args) ***REMOVED***
+Phaser.Group.prototype.iterate = function (key, value, returnType, callback, callbackContext, args) {
 
     if (this.children.length === 0)
-    ***REMOVED***
+    {
         if (returnType === Phaser.Group.RETURN_TOTAL)
-        ***REMOVED***
+        {
             return 0;
-        ***REMOVED***
+        }
         else if (returnType === Phaser.Group.RETURN_ALL)
-        ***REMOVED***
+        {
             return [];
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     var total = 0;
 
     if (returnType === Phaser.Group.RETURN_ALL)
-    ***REMOVED***
+    {
         var output = [];
-    ***REMOVED***
+    }
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         if (this.children[i][key] === value)
-        ***REMOVED***
+        {
             total++;
 
             if (callback)
-            ***REMOVED***
+            {
                 if (args)
-                ***REMOVED***
+                {
                     args[0] = this.children[i];
                     callback.apply(callbackContext, args);
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     callback.call(callbackContext, this.children[i]);
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
 
             if (returnType === Phaser.Group.RETURN_CHILD)
-            ***REMOVED***
+            {
                 return this.children[i];
-            ***REMOVED***
+            }
             else if (returnType === Phaser.Group.RETURN_ALL)
-            ***REMOVED***
+            {
                 output.push(this.children[i]);
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
     if (returnType === Phaser.Group.RETURN_TOTAL)
-    ***REMOVED***
+    {
         return total;
-    ***REMOVED***
+    }
     else if (returnType === Phaser.Group.RETURN_ALL)
-    ***REMOVED***
+    {
         return output;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         //  RETURN_CHILD or RETURN_NONE
         return null;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Get the first display object that exists, or doesn't exist.
@@ -2079,28 +2079,28 @@ Phaser.Group.prototype.iterate = function (key, value, returnType, callback, cal
 * will be reset and/or have a new texture loaded on it. This is handled by `Group.resetChild`.
 *
 * @method Phaser.Group#getFirstExists
-* @param ***REMOVED***boolean***REMOVED*** [exists=true] - If true, find the first existing child; otherwise find the first non-existing child.
-* @param ***REMOVED***boolean***REMOVED*** [createIfNull=false] - If `true` and no alive children are found a new one is created.
-* @param ***REMOVED***number***REMOVED*** [x] - The x coordinate to reset the child to. The value is in relation to the group.x point.
-* @param ***REMOVED***number***REMOVED*** [y] - The y coordinate to reset the child to. The value is in relation to the group.y point.
-* @param ***REMOVED***string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture***REMOVED*** [key] - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
-* @param ***REMOVED***string|number***REMOVED*** [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
-* @return ***REMOVED***DisplayObject***REMOVED*** The first child, or `null` if none found and `createIfNull` was false.
+* @param {boolean} [exists=true] - If true, find the first existing child; otherwise find the first non-existing child.
+* @param {boolean} [createIfNull=false] - If `true` and no alive children are found a new one is created.
+* @param {number} [x] - The x coordinate to reset the child to. The value is in relation to the group.x point.
+* @param {number} [y] - The y coordinate to reset the child to. The value is in relation to the group.y point.
+* @param {string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture} [key] - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
+* @param {string|number} [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
+* @return {DisplayObject} The first child, or `null` if none found and `createIfNull` was false.
 */
-Phaser.Group.prototype.getFirstExists = function (exists, createIfNull, x, y, key, frame) ***REMOVED***
+Phaser.Group.prototype.getFirstExists = function (exists, createIfNull, x, y, key, frame) {
 
-    if (createIfNull === undefined) ***REMOVED*** createIfNull = false; ***REMOVED***
+    if (createIfNull === undefined) { createIfNull = false; }
 
     if (typeof exists !== 'boolean')
-    ***REMOVED***
+    {
         exists = true;
-    ***REMOVED***
+    }
 
     var child = this.iterate('exists', exists, Phaser.Group.RETURN_CHILD);
 
     return (child === null && createIfNull) ? this.create(x, y, key, frame) : this.resetChild(child, x, y, key, frame);
 
-***REMOVED***;
+};
 
 /**
 * Get the first child that is alive (`child.alive === true`).
@@ -2115,22 +2115,22 @@ Phaser.Group.prototype.getFirstExists = function (exists, createIfNull, x, y, ke
 * will be reset and/or have a new texture loaded on it. This is handled by `Group.resetChild`.
 *
 * @method Phaser.Group#getFirstAlive
-* @param ***REMOVED***boolean***REMOVED*** [createIfNull=false] - If `true` and no alive children are found a new one is created.
-* @param ***REMOVED***number***REMOVED*** [x] - The x coordinate to reset the child to. The value is in relation to the group.x point.
-* @param ***REMOVED***number***REMOVED*** [y] - The y coordinate to reset the child to. The value is in relation to the group.y point.
-* @param ***REMOVED***string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture***REMOVED*** [key] - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
-* @param ***REMOVED***string|number***REMOVED*** [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
-* @return ***REMOVED***DisplayObject***REMOVED*** The alive dead child, or `null` if none found and `createIfNull` was false.
+* @param {boolean} [createIfNull=false] - If `true` and no alive children are found a new one is created.
+* @param {number} [x] - The x coordinate to reset the child to. The value is in relation to the group.x point.
+* @param {number} [y] - The y coordinate to reset the child to. The value is in relation to the group.y point.
+* @param {string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture} [key] - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
+* @param {string|number} [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
+* @return {DisplayObject} The alive dead child, or `null` if none found and `createIfNull` was false.
 */
-Phaser.Group.prototype.getFirstAlive = function (createIfNull, x, y, key, frame) ***REMOVED***
+Phaser.Group.prototype.getFirstAlive = function (createIfNull, x, y, key, frame) {
 
-    if (createIfNull === undefined) ***REMOVED*** createIfNull = false; ***REMOVED***
+    if (createIfNull === undefined) { createIfNull = false; }
 
     var child = this.iterate('alive', true, Phaser.Group.RETURN_CHILD);
 
     return (child === null && createIfNull) ? this.create(x, y, key, frame) : this.resetChild(child, x, y, key, frame);
 
-***REMOVED***;
+};
 
 /**
 * Get the first child that is dead (`child.alive === false`).
@@ -2145,22 +2145,22 @@ Phaser.Group.prototype.getFirstAlive = function (createIfNull, x, y, key, frame)
 * will be reset and/or have a new texture loaded on it. This is handled by `Group.resetChild`.
 *
 * @method Phaser.Group#getFirstDead
-* @param ***REMOVED***boolean***REMOVED*** [createIfNull=false] - If `true` and no dead children are found a new one is created.
-* @param ***REMOVED***number***REMOVED*** [x] - The x coordinate to reset the child to. The value is in relation to the group.x point.
-* @param ***REMOVED***number***REMOVED*** [y] - The y coordinate to reset the child to. The value is in relation to the group.y point.
-* @param ***REMOVED***string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture***REMOVED*** [key] - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
-* @param ***REMOVED***string|number***REMOVED*** [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
-* @return ***REMOVED***DisplayObject***REMOVED*** The first dead child, or `null` if none found and `createIfNull` was false.
+* @param {boolean} [createIfNull=false] - If `true` and no dead children are found a new one is created.
+* @param {number} [x] - The x coordinate to reset the child to. The value is in relation to the group.x point.
+* @param {number} [y] - The y coordinate to reset the child to. The value is in relation to the group.y point.
+* @param {string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture} [key] - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
+* @param {string|number} [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
+* @return {DisplayObject} The first dead child, or `null` if none found and `createIfNull` was false.
 */
-Phaser.Group.prototype.getFirstDead = function (createIfNull, x, y, key, frame) ***REMOVED***
+Phaser.Group.prototype.getFirstDead = function (createIfNull, x, y, key, frame) {
 
-    if (createIfNull === undefined) ***REMOVED*** createIfNull = false; ***REMOVED***
+    if (createIfNull === undefined) { createIfNull = false; }
 
     var child = this.iterate('alive', false, Phaser.Group.RETURN_CHILD);
 
     return (child === null && createIfNull) ? this.create(x, y, key, frame) : this.resetChild(child, x, y, key, frame);
 
-***REMOVED***;
+};
 
 /**
 * Takes a child and if the `x` and `y` arguments are given it calls `child.reset(x, y)` on it.
@@ -2170,36 +2170,36 @@ Phaser.Group.prototype.getFirstDead = function (createIfNull, x, y, key, frame) 
 * The two operations are separate. For example if you just wish to load a new texture then pass `null` as the x and y values.
 *
 * @method Phaser.Group#resetChild
-* @param ***REMOVED***DisplayObject***REMOVED*** child - The child to reset and/or load the texture on.
-* @param ***REMOVED***number***REMOVED*** [x] - The x coordinate to reset the child to. The value is in relation to the group.x point.
-* @param ***REMOVED***number***REMOVED*** [y] - The y coordinate to reset the child to. The value is in relation to the group.y point.
-* @param ***REMOVED***string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture***REMOVED*** [key] - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
-* @param ***REMOVED***string|number***REMOVED*** [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
-* @return ***REMOVED***DisplayObject***REMOVED*** The child that was reset: usually a ***REMOVED***@link Phaser.Sprite***REMOVED***.
+* @param {DisplayObject} child - The child to reset and/or load the texture on.
+* @param {number} [x] - The x coordinate to reset the child to. The value is in relation to the group.x point.
+* @param {number} [y] - The y coordinate to reset the child to. The value is in relation to the group.y point.
+* @param {string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture} [key] - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
+* @param {string|number} [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
+* @return {DisplayObject} The child that was reset: usually a {@link Phaser.Sprite}.
 */
-Phaser.Group.prototype.resetChild = function (child, x, y, key, frame) ***REMOVED***
+Phaser.Group.prototype.resetChild = function (child, x, y, key, frame) {
 
     if (child === null)
-    ***REMOVED***
+    {
         return null;
-    ***REMOVED***
+    }
 
-    if (x === undefined) ***REMOVED*** x = null; ***REMOVED***
-    if (y === undefined) ***REMOVED*** y = null; ***REMOVED***
+    if (x === undefined) { x = null; }
+    if (y === undefined) { y = null; }
 
     if (x !== null && y !== null)
-    ***REMOVED***
+    {
         child.reset(x, y);
-    ***REMOVED***
+    }
 
     if (key !== undefined)
-    ***REMOVED***
+    {
         child.loadTexture(key, frame);
-    ***REMOVED***
+    }
 
     return child;
 
-***REMOVED***;
+};
 
 /**
 * Return the child at the top of this group.
@@ -2207,16 +2207,16 @@ Phaser.Group.prototype.resetChild = function (child, x, y, key, frame) ***REMOVE
 * The top child is the child displayed (rendered) above every other child.
 *
 * @method Phaser.Group#getTop
-* @return ***REMOVED***any***REMOVED*** The child at the top of the Group.
+* @return {any} The child at the top of the Group.
 */
-Phaser.Group.prototype.getTop = function () ***REMOVED***
+Phaser.Group.prototype.getTop = function () {
 
     if (this.children.length > 0)
-    ***REMOVED***
+    {
         return this.children[this.children.length - 1];
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Returns the child at the bottom of this group.
@@ -2224,16 +2224,16 @@ Phaser.Group.prototype.getTop = function () ***REMOVED***
 * The bottom child the child being displayed (rendered) below every other child.
 *
 * @method Phaser.Group#getBottom
-* @return ***REMOVED***any***REMOVED*** The child at the bottom of the Group.
+* @return {any} The child at the bottom of the Group.
 */
-Phaser.Group.prototype.getBottom = function () ***REMOVED***
+Phaser.Group.prototype.getBottom = function () {
 
     if (this.children.length > 0)
-    ***REMOVED***
+    {
         return this.children[0];
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Get the closest child to given Object, with optional callback to filter children.
@@ -2248,36 +2248,36 @@ Phaser.Group.prototype.getBottom = function () ***REMOVED***
 * filtering criteria, otherwise it should return `false`.
 *
 * @method Phaser.Group#getClosestTo
-* @param ***REMOVED***any***REMOVED*** object - The object used to determine the distance. This can be a Sprite, Group, Image or any object with public x and y properties.
-* @param ***REMOVED***function***REMOVED*** [callback] - The function that each child will be evaluated against. Each child of the group will be passed to it as its first parameter, with the distance as the second. It should return `true` if the child passes the matching criteria.
-* @param ***REMOVED***object***REMOVED*** [callbackContext] - The context in which the function should be called (usually 'this').
-* @return ***REMOVED***any***REMOVED*** The child closest to given object, or `null` if no child was found.
+* @param {any} object - The object used to determine the distance. This can be a Sprite, Group, Image or any object with public x and y properties.
+* @param {function} [callback] - The function that each child will be evaluated against. Each child of the group will be passed to it as its first parameter, with the distance as the second. It should return `true` if the child passes the matching criteria.
+* @param {object} [callbackContext] - The context in which the function should be called (usually 'this').
+* @return {any} The child closest to given object, or `null` if no child was found.
 */
-Phaser.Group.prototype.getClosestTo = function (object, callback, callbackContext) ***REMOVED***
+Phaser.Group.prototype.getClosestTo = function (object, callback, callbackContext) {
 
     var distance = Number.MAX_VALUE;
     var tempDistance = 0;
     var result = null;
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         var child = this.children[i];
 
         if (child.exists)
-        ***REMOVED***
+        {
             tempDistance = Math.abs(Phaser.Point.distance(object, child));
 
             if (tempDistance < distance && (!callback || callback.call(callbackContext, child, tempDistance)))
-            ***REMOVED***
+            {
                 distance = tempDistance;
                 result = child;
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
     return result;
 
-***REMOVED***;
+};
 
 /**
 * Get the child furthest away from the given Object, with optional callback to filter children.
@@ -2292,82 +2292,82 @@ Phaser.Group.prototype.getClosestTo = function (object, callback, callbackContex
 * filtering criteria, otherwise it should return `false`.
 *
 * @method Phaser.Group#getFurthestFrom
-* @param ***REMOVED***any***REMOVED*** object - The object used to determine the distance. This can be a Sprite, Group, Image or any object with public x and y properties.
-* @param ***REMOVED***function***REMOVED*** [callback] - The function that each child will be evaluated against. Each child of the group will be passed to it as its first parameter, with the distance as the second. It should return `true` if the child passes the matching criteria.
-* @param ***REMOVED***object***REMOVED*** [callbackContext] - The context in which the function should be called (usually 'this').
-* @return ***REMOVED***any***REMOVED*** The child furthest from the given object, or `null` if no child was found.
+* @param {any} object - The object used to determine the distance. This can be a Sprite, Group, Image or any object with public x and y properties.
+* @param {function} [callback] - The function that each child will be evaluated against. Each child of the group will be passed to it as its first parameter, with the distance as the second. It should return `true` if the child passes the matching criteria.
+* @param {object} [callbackContext] - The context in which the function should be called (usually 'this').
+* @return {any} The child furthest from the given object, or `null` if no child was found.
 */
-Phaser.Group.prototype.getFurthestFrom = function (object, callback, callbackContext) ***REMOVED***
+Phaser.Group.prototype.getFurthestFrom = function (object, callback, callbackContext) {
 
     var distance = 0;
     var tempDistance = 0;
     var result = null;
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         var child = this.children[i];
 
         if (child.exists)
-        ***REMOVED***
+        {
             tempDistance = Math.abs(Phaser.Point.distance(object, child));
 
             if (tempDistance > distance && (!callback || callback.call(callbackContext, child, tempDistance)))
-            ***REMOVED***
+            {
                 distance = tempDistance;
                 result = child;
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
     return result;
 
-***REMOVED***;
+};
 
 /**
 * Get the number of living children in this group.
 *
 * @method Phaser.Group#countLiving
-* @return ***REMOVED***integer***REMOVED*** The number of children flagged as alive.
+* @return {integer} The number of children flagged as alive.
 */
-Phaser.Group.prototype.countLiving = function () ***REMOVED***
+Phaser.Group.prototype.countLiving = function () {
 
     return this.iterate('alive', true, Phaser.Group.RETURN_TOTAL);
 
-***REMOVED***;
+};
 
 /**
 * Get the number of dead children in this group.
 *
 * @method Phaser.Group#countDead
-* @return ***REMOVED***integer***REMOVED*** The number of children flagged as dead.
+* @return {integer} The number of children flagged as dead.
 */
-Phaser.Group.prototype.countDead = function () ***REMOVED***
+Phaser.Group.prototype.countDead = function () {
 
     return this.iterate('alive', false, Phaser.Group.RETURN_TOTAL);
 
-***REMOVED***;
+};
 
 /**
 * Returns a random child from the group.
 *
 * @method Phaser.Group#getRandom
-* @param ***REMOVED***integer***REMOVED*** [startIndex=0] - Offset from the front of the group (lowest child).
-* @param ***REMOVED***integer***REMOVED*** [length=(to top)] - Restriction on the number of values you want to randomly select from.
-* @return ***REMOVED***any***REMOVED*** A random child of this Group.
+* @param {integer} [startIndex=0] - Offset from the front of the group (lowest child).
+* @param {integer} [length=(to top)] - Restriction on the number of values you want to randomly select from.
+* @return {any} A random child of this Group.
 */
-Phaser.Group.prototype.getRandom = function (startIndex, length) ***REMOVED***
+Phaser.Group.prototype.getRandom = function (startIndex, length) {
 
-    if (startIndex === undefined) ***REMOVED*** startIndex = 0; ***REMOVED***
-    if (length === undefined) ***REMOVED*** length = this.children.length; ***REMOVED***
+    if (startIndex === undefined) { startIndex = 0; }
+    if (length === undefined) { length = this.children.length; }
 
     if (length === 0)
-    ***REMOVED***
+    {
         return null;
-    ***REMOVED***
+    }
 
     return Phaser.ArrayUtils.getRandomItem(this.children, startIndex, length);
 
-***REMOVED***;
+};
 
 /**
 * Returns a random child from the Group that has `exists` set to `true`.
@@ -2377,17 +2377,17 @@ Phaser.Group.prototype.getRandom = function (startIndex, length) ***REMOVED***
 * the first 50 children in the Group.
 *
 * @method Phaser.Group#getRandomExists
-* @param ***REMOVED***integer***REMOVED*** [startIndex=0] - The first child index to start the search from.
-* @param ***REMOVED***integer***REMOVED*** [endIndex] - The last child index to search up to.
-* @return ***REMOVED***any***REMOVED*** A random child of this Group that exists.
+* @param {integer} [startIndex=0] - The first child index to start the search from.
+* @param {integer} [endIndex] - The last child index to search up to.
+* @return {any} A random child of this Group that exists.
 */
-Phaser.Group.prototype.getRandomExists = function (startIndex, endIndex) ***REMOVED***
+Phaser.Group.prototype.getRandomExists = function (startIndex, endIndex) {
 
     var list = this.getAll('exists', true, startIndex, endIndex);
 
     return this.game.rnd.pick(list);
 
-***REMOVED***;
+};
 
 /**
 * Returns all children in this Group.
@@ -2401,32 +2401,32 @@ Phaser.Group.prototype.getRandomExists = function (startIndex, endIndex) ***REMO
 * the first 50 children in the Group.
 *
 * @method Phaser.Group#getAll
-* @param ***REMOVED***string***REMOVED*** [property] - An optional property to test against the value argument.
-* @param ***REMOVED***any***REMOVED*** [value] - If property is set then Child.property must strictly equal this value to be included in the results.
-* @param ***REMOVED***integer***REMOVED*** [startIndex=0] - The first child index to start the search from.
-* @param ***REMOVED***integer***REMOVED*** [endIndex] - The last child index to search up until.
-* @return ***REMOVED***any***REMOVED*** A random existing child of this Group.
+* @param {string} [property] - An optional property to test against the value argument.
+* @param {any} [value] - If property is set then Child.property must strictly equal this value to be included in the results.
+* @param {integer} [startIndex=0] - The first child index to start the search from.
+* @param {integer} [endIndex] - The last child index to search up until.
+* @return {any} A random existing child of this Group.
 */
-Phaser.Group.prototype.getAll = function (property, value, startIndex, endIndex) ***REMOVED***
+Phaser.Group.prototype.getAll = function (property, value, startIndex, endIndex) {
 
-    if (startIndex === undefined) ***REMOVED*** startIndex = 0; ***REMOVED***
-    if (endIndex === undefined) ***REMOVED*** endIndex = this.children.length; ***REMOVED***
+    if (startIndex === undefined) { startIndex = 0; }
+    if (endIndex === undefined) { endIndex = this.children.length; }
 
     var output = [];
 
     for (var i = startIndex; i < endIndex; i++)
-    ***REMOVED***
+    {
         var child = this.children[i];
 
         if (property && child[property] === value)
-        ***REMOVED***
+        {
             output.push(child);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return output;
 
-***REMOVED***;
+};
 
 /**
 * Removes the given child from this group.
@@ -2436,25 +2436,25 @@ Phaser.Group.prototype.getAll = function (property, value, startIndex, endIndex)
 * If the group cursor was referring to the removed child it is updated to refer to the next child.
 *
 * @method Phaser.Group#remove
-* @param ***REMOVED***any***REMOVED*** child - The child to remove.
-* @param ***REMOVED***boolean***REMOVED*** [destroy=false] - If true `destroy` will be invoked on the removed child.
-* @param ***REMOVED***boolean***REMOVED*** [silent=false] - If true the the child will not dispatch the `onRemovedFromGroup` event.
-* @return ***REMOVED***boolean***REMOVED*** true if the child was removed from this group, otherwise false.
+* @param {any} child - The child to remove.
+* @param {boolean} [destroy=false] - If true `destroy` will be invoked on the removed child.
+* @param {boolean} [silent=false] - If true the the child will not dispatch the `onRemovedFromGroup` event.
+* @return {boolean} true if the child was removed from this group, otherwise false.
 */
-Phaser.Group.prototype.remove = function (child, destroy, silent) ***REMOVED***
+Phaser.Group.prototype.remove = function (child, destroy, silent) {
 
-    if (destroy === undefined) ***REMOVED*** destroy = false; ***REMOVED***
-    if (silent === undefined) ***REMOVED*** silent = false; ***REMOVED***
+    if (destroy === undefined) { destroy = false; }
+    if (silent === undefined) { silent = false; }
 
     if (this.children.length === 0 || this.children.indexOf(child) === -1)
-    ***REMOVED***
+    {
         return false;
-    ***REMOVED***
+    }
 
     if (!silent && child.events && !child.destroyPhase)
-    ***REMOVED***
+    {
         child.events.onRemovedFromGroup$dispatch(child, this);
-    ***REMOVED***
+    }
 
     var removed = this.removeChild(child);
 
@@ -2463,47 +2463,47 @@ Phaser.Group.prototype.remove = function (child, destroy, silent) ***REMOVED***
     this.updateZ();
 
     if (this.cursor === child)
-    ***REMOVED***
+    {
         this.next();
-    ***REMOVED***
+    }
 
     if (destroy && removed)
-    ***REMOVED***
+    {
         removed.destroy(true);
-    ***REMOVED***
+    }
 
     return true;
 
-***REMOVED***;
+};
 
 /**
 * Moves all children from this Group to the Group given.
 *
 * @method Phaser.Group#moveAll
-* @param ***REMOVED***Phaser.Group***REMOVED*** group - The new Group to which the children will be moved to.
-* @param ***REMOVED***boolean***REMOVED*** [silent=false] - If true the children will not dispatch the `onAddedToGroup` event for the new Group.
-* @return ***REMOVED***Phaser.Group***REMOVED*** The Group to which all the children were moved.
+* @param {Phaser.Group} group - The new Group to which the children will be moved to.
+* @param {boolean} [silent=false] - If true the children will not dispatch the `onAddedToGroup` event for the new Group.
+* @return {Phaser.Group} The Group to which all the children were moved.
 */
-Phaser.Group.prototype.moveAll = function (group, silent) ***REMOVED***
+Phaser.Group.prototype.moveAll = function (group, silent) {
 
-    if (silent === undefined) ***REMOVED*** silent = false; ***REMOVED***
+    if (silent === undefined) { silent = false; }
 
     if (this.children.length > 0 && group instanceof Phaser.Group)
-    ***REMOVED***
+    {
         do
-        ***REMOVED***
+        {
             group.add(this.children[0], silent);
-        ***REMOVED***
+        }
         while (this.children.length > 0);
 
         this.hash = [];
 
         this.cursor = null;
-    ***REMOVED***
+    }
 
     return group;
 
-***REMOVED***;
+};
 
 /**
 * Removes all children from this Group, but does not remove the group from its parent.
@@ -2514,99 +2514,99 @@ Phaser.Group.prototype.moveAll = function (group, silent) ***REMOVED***
 * more than one Game Object sharing the same BaseTexture.
 *
 * @method Phaser.Group#removeAll
-* @param ***REMOVED***boolean***REMOVED*** [destroy=false] - If true `destroy` will be invoked on each removed child.
-* @param ***REMOVED***boolean***REMOVED*** [silent=false] - If true the children will not dispatch their `onRemovedFromGroup` events.
-* @param ***REMOVED***boolean***REMOVED*** [destroyTexture=false] - If true, and if the `destroy` argument is also true, the BaseTexture belonging to the Child is also destroyed. Note that if another Game Object is sharing the same BaseTexture it will invalidate it.
+* @param {boolean} [destroy=false] - If true `destroy` will be invoked on each removed child.
+* @param {boolean} [silent=false] - If true the children will not dispatch their `onRemovedFromGroup` events.
+* @param {boolean} [destroyTexture=false] - If true, and if the `destroy` argument is also true, the BaseTexture belonging to the Child is also destroyed. Note that if another Game Object is sharing the same BaseTexture it will invalidate it.
 */
-Phaser.Group.prototype.removeAll = function (destroy, silent, destroyTexture) ***REMOVED***
+Phaser.Group.prototype.removeAll = function (destroy, silent, destroyTexture) {
 
-    if (destroy === undefined) ***REMOVED*** destroy = false; ***REMOVED***
-    if (silent === undefined) ***REMOVED*** silent = false; ***REMOVED***
-    if (destroyTexture === undefined) ***REMOVED*** destroyTexture = false; ***REMOVED***
+    if (destroy === undefined) { destroy = false; }
+    if (silent === undefined) { silent = false; }
+    if (destroyTexture === undefined) { destroyTexture = false; }
 
     if (this.children.length === 0)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     do
-    ***REMOVED***
+    {
         if (!silent && this.children[0].events)
-        ***REMOVED***
+        {
             this.children[0].events.onRemovedFromGroup$dispatch(this.children[0], this);
-        ***REMOVED***
+        }
 
         var removed = this.removeChild(this.children[0]);
 
         this.removeFromHash(removed);
 
         if (destroy && removed)
-        ***REMOVED***
+        {
             removed.destroy(true, destroyTexture);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     while (this.children.length > 0);
 
     this.hash = [];
 
     this.cursor = null;
 
-***REMOVED***;
+};
 
 /**
 * Removes all children from this group whose index falls beteen the given startIndex and endIndex values.
 *
 * @method Phaser.Group#removeBetween
-* @param ***REMOVED***integer***REMOVED*** startIndex - The index to start removing children from.
-* @param ***REMOVED***integer***REMOVED*** [endIndex] - The index to stop removing children at. Must be higher than startIndex. If undefined this method will remove all children between startIndex and the end of the group.
-* @param ***REMOVED***boolean***REMOVED*** [destroy=false] - If true `destroy` will be invoked on each removed child.
-* @param ***REMOVED***boolean***REMOVED*** [silent=false] - If true the children will not dispatch their `onRemovedFromGroup` events.
+* @param {integer} startIndex - The index to start removing children from.
+* @param {integer} [endIndex] - The index to stop removing children at. Must be higher than startIndex. If undefined this method will remove all children between startIndex and the end of the group.
+* @param {boolean} [destroy=false] - If true `destroy` will be invoked on each removed child.
+* @param {boolean} [silent=false] - If true the children will not dispatch their `onRemovedFromGroup` events.
 */
-Phaser.Group.prototype.removeBetween = function (startIndex, endIndex, destroy, silent) ***REMOVED***
+Phaser.Group.prototype.removeBetween = function (startIndex, endIndex, destroy, silent) {
 
-    if (endIndex === undefined) ***REMOVED*** endIndex = this.children.length - 1; ***REMOVED***
-    if (destroy === undefined) ***REMOVED*** destroy = false; ***REMOVED***
-    if (silent === undefined) ***REMOVED*** silent = false; ***REMOVED***
+    if (endIndex === undefined) { endIndex = this.children.length - 1; }
+    if (destroy === undefined) { destroy = false; }
+    if (silent === undefined) { silent = false; }
 
     if (this.children.length === 0)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     if (startIndex > endIndex || startIndex < 0 || endIndex > this.children.length)
-    ***REMOVED***
+    {
         return false;
-    ***REMOVED***
+    }
 
     var i = endIndex;
 
     while (i >= startIndex)
-    ***REMOVED***
+    {
         if (!silent && this.children[i].events)
-        ***REMOVED***
+        {
             this.children[i].events.onRemovedFromGroup$dispatch(this.children[i], this);
-        ***REMOVED***
+        }
 
         var removed = this.removeChild(this.children[i]);
 
         this.removeFromHash(removed);
 
         if (destroy && removed)
-        ***REMOVED***
+        {
             removed.destroy(true);
-        ***REMOVED***
+        }
 
         if (this.cursor === this.children[i])
-        ***REMOVED***
+        {
             this.cursor = null;
-        ***REMOVED***
+        }
 
         i--;
-    ***REMOVED***
+    }
 
     this.updateZ();
 
-***REMOVED***;
+};
 
 /**
 * Destroys this group.
@@ -2614,15 +2614,15 @@ Phaser.Group.prototype.removeBetween = function (startIndex, endIndex, destroy, 
 * Removes all children, then removes this group from its parent and nulls references.
 *
 * @method Phaser.Group#destroy
-* @param ***REMOVED***boolean***REMOVED*** [destroyChildren=true] - If true `destroy` will be invoked on each removed child.
-* @param ***REMOVED***boolean***REMOVED*** [soft=false] - A 'soft destroy' (set to true) doesn't remove this group from its parent or null the game reference. Set to false and it does.
+* @param {boolean} [destroyChildren=true] - If true `destroy` will be invoked on each removed child.
+* @param {boolean} [soft=false] - A 'soft destroy' (set to true) doesn't remove this group from its parent or null the game reference. Set to false and it does.
 */
-Phaser.Group.prototype.destroy = function (destroyChildren, soft) ***REMOVED***
+Phaser.Group.prototype.destroy = function (destroyChildren, soft) {
 
-    if (this.game === null || this.ignoreDestroy) ***REMOVED*** return; ***REMOVED***
+    if (this.game === null || this.ignoreDestroy) { return; }
 
-    if (destroyChildren === undefined) ***REMOVED*** destroyChildren = true; ***REMOVED***
-    if (soft === undefined) ***REMOVED*** soft = false; ***REMOVED***
+    if (destroyChildren === undefined) { destroyChildren = true; }
+    if (soft === undefined) { soft = false; }
 
     this.onDestroy.dispatch(this, destroyChildren, soft);
 
@@ -2633,51 +2633,51 @@ Phaser.Group.prototype.destroy = function (destroyChildren, soft) ***REMOVED***
     this.pendingDestroy = false;
 
     if (!soft)
-    ***REMOVED***
+    {
         if (this.parent)
-        ***REMOVED***
+        {
             this.parent.removeChild(this);
-        ***REMOVED***
+        }
 
         this.game = null;
         this.exists = false;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Total number of existing children in the group.
 *
 * @name Phaser.Group#total
-* @property ***REMOVED***integer***REMOVED*** total
+* @property {integer} total
 * @readonly
 */
-Object.defineProperty(Phaser.Group.prototype, "total", ***REMOVED***
+Object.defineProperty(Phaser.Group.prototype, "total", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.iterate('exists', true, Phaser.Group.RETURN_TOTAL);
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * Total number of children in this group, regardless of exists/alive status.
 *
 * @name Phaser.Group#length
-* @property ***REMOVED***integer***REMOVED*** length 
+* @property {integer} length 
 * @readonly
 */
-Object.defineProperty(Phaser.Group.prototype, "length", ***REMOVED***
+Object.defineProperty(Phaser.Group.prototype, "length", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.children.length;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * The angle of rotation of the group container, in degrees.
@@ -2688,19 +2688,19 @@ Object.defineProperty(Phaser.Group.prototype, "length", ***REMOVED***
 * and on-screen orientation and position.
 *
 * @name Phaser.Group#angle
-* @property ***REMOVED***number***REMOVED*** angle
+* @property {number} angle
 */
-Object.defineProperty(Phaser.Group.prototype, "angle", ***REMOVED***
+Object.defineProperty(Phaser.Group.prototype, "angle", {
 
-    get: function() ***REMOVED***
+    get: function() {
         return Phaser.Math.radToDeg(this.rotation);
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.rotation = Phaser.Math.degToRad(value);
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * The center x coordinate of this Group.
@@ -2709,26 +2709,26 @@ Object.defineProperty(Phaser.Group.prototype, "angle", ***REMOVED***
 * visible children.
 * 
 * @name Phaser.Group#centerX
-* @property ***REMOVED***number***REMOVED*** centerX
+* @property {number} centerX
 */
-Object.defineProperty(Phaser.Group.prototype, "centerX", ***REMOVED***
+Object.defineProperty(Phaser.Group.prototype, "centerX", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.getBounds(this.parent).centerX;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         var r = this.getBounds(this.parent);
         var offset = this.x - r.x;
 
         this.x = (value + offset) - r.halfWidth;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * The center y coordinate of this Group.
@@ -2737,26 +2737,26 @@ Object.defineProperty(Phaser.Group.prototype, "centerX", ***REMOVED***
 * visible children.
 * 
 * @name Phaser.Group#centerY
-* @property ***REMOVED***number***REMOVED*** centerY
+* @property {number} centerY
 */
-Object.defineProperty(Phaser.Group.prototype, "centerY", ***REMOVED***
+Object.defineProperty(Phaser.Group.prototype, "centerY", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.getBounds(this.parent).centerY;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         var r = this.getBounds(this.parent);
         var offset = this.y - r.y;
 
         this.y = (value + offset) - r.halfHeight;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * The left coordinate of this Group.
@@ -2765,26 +2765,26 @@ Object.defineProperty(Phaser.Group.prototype, "centerY", ***REMOVED***
 * visible children.
 * 
 * @name Phaser.Group#left
-* @property ***REMOVED***number***REMOVED*** left
+* @property {number} left
 */
-Object.defineProperty(Phaser.Group.prototype, "left", ***REMOVED***
+Object.defineProperty(Phaser.Group.prototype, "left", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.getBounds(this.parent).left;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         var r = this.getBounds(this.parent);
         var offset = this.x - r.x;
 
         this.x = value + offset;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * The right coordinate of this Group.
@@ -2793,26 +2793,26 @@ Object.defineProperty(Phaser.Group.prototype, "left", ***REMOVED***
 * visible children.
 *
 * @name Phaser.Group#right
-* @property ***REMOVED***number***REMOVED*** right
+* @property {number} right
 */
-Object.defineProperty(Phaser.Group.prototype, "right", ***REMOVED***
+Object.defineProperty(Phaser.Group.prototype, "right", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.getBounds(this.parent).right;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         var r = this.getBounds(this.parent);
         var offset = this.x - r.x;
 
         this.x = (value + offset) - r.width;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * The top coordinate of this Group.
@@ -2821,26 +2821,26 @@ Object.defineProperty(Phaser.Group.prototype, "right", ***REMOVED***
 * visible children.
 *
 * @name Phaser.Group#top
-* @property ***REMOVED***number***REMOVED*** top
+* @property {number} top
 */
-Object.defineProperty(Phaser.Group.prototype, "top", ***REMOVED***
+Object.defineProperty(Phaser.Group.prototype, "top", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.getBounds(this.parent).top;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         var r = this.getBounds(this.parent);
         var offset = this.y - r.y;
 
         this.y = (value + offset);
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * The bottom coordinate of this Group.
@@ -2849,26 +2849,26 @@ Object.defineProperty(Phaser.Group.prototype, "top", ***REMOVED***
 * visible children.
 * 
 * @name Phaser.Group#bottom
-* @property ***REMOVED***number***REMOVED*** bottom
+* @property {number} bottom
 */
-Object.defineProperty(Phaser.Group.prototype, "bottom", ***REMOVED***
+Object.defineProperty(Phaser.Group.prototype, "bottom", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.getBounds(this.parent).bottom;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         var r = this.getBounds(this.parent);
         var offset = this.y - r.y;
 
         this.y = (value + offset) - r.height;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * Aligns this Group within another Game Object, or Rectangle, known as the
@@ -2903,11 +2903,11 @@ Object.defineProperty(Phaser.Group.prototype, "bottom", ***REMOVED***
 * one expands it.
 *
 * @method Phaser.Group#alignIn
-* @param ***REMOVED***Phaser.Rectangle|Phaser.Sprite|Phaser.Image|Phaser.Text|Phaser.BitmapText|Phaser.Button|Phaser.Graphics|Phaser.TileSprite***REMOVED*** container - The Game Object or Rectangle with which to align this Group to. Can also include properties such as `World.bounds` or `Camera.view`.
-* @param ***REMOVED***integer***REMOVED*** [position] - The position constant. One of `Phaser.TOP_LEFT` (default), `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_CENTER`, `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-* @param ***REMOVED***integer***REMOVED*** [offsetX=0] - A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-* @param ***REMOVED***integer***REMOVED*** [offsetY=0] - A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-* @return ***REMOVED***Phaser.Group***REMOVED*** This Group.
+* @param {Phaser.Rectangle|Phaser.Sprite|Phaser.Image|Phaser.Text|Phaser.BitmapText|Phaser.Button|Phaser.Graphics|Phaser.TileSprite} container - The Game Object or Rectangle with which to align this Group to. Can also include properties such as `World.bounds` or `Camera.view`.
+* @param {integer} [position] - The position constant. One of `Phaser.TOP_LEFT` (default), `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_CENTER`, `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
+* @param {integer} [offsetX=0] - A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
+* @param {integer} [offsetY=0] - A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
+* @return {Phaser.Group} This Group.
 */
 
 //  This function is set at the bottom of src/gameobjects/components/Bounds.js
@@ -2946,11 +2946,11 @@ Object.defineProperty(Phaser.Group.prototype, "bottom", ***REMOVED***
 * one expands it.
 *
 * @method Phaser.Group#alignTo
-* @param ***REMOVED***Phaser.Rectangle|Phaser.Sprite|Phaser.Image|Phaser.Text|Phaser.BitmapText|Phaser.Button|Phaser.Graphics|Phaser.TileSprite***REMOVED*** parent - The Game Object or Rectangle with which to align this Group to. Can also include properties such as `World.bounds` or `Camera.view`.
-* @param ***REMOVED***integer***REMOVED*** [position] - The position constant. One of `Phaser.TOP_LEFT`, `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_TOP`, `Phaser.LEFT_CENTER`, `Phaser.LEFT_BOTTOM`, `Phaser.RIGHT_TOP`, `Phaser.RIGHT_CENTER`, `Phaser.RIGHT_BOTTOM`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-* @param ***REMOVED***integer***REMOVED*** [offsetX=0] - A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-* @param ***REMOVED***integer***REMOVED*** [offsetY=0] - A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-* @return ***REMOVED***Phaser.Group***REMOVED*** This Group.
+* @param {Phaser.Rectangle|Phaser.Sprite|Phaser.Image|Phaser.Text|Phaser.BitmapText|Phaser.Button|Phaser.Graphics|Phaser.TileSprite} parent - The Game Object or Rectangle with which to align this Group to. Can also include properties such as `World.bounds` or `Camera.view`.
+* @param {integer} [position] - The position constant. One of `Phaser.TOP_LEFT`, `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_TOP`, `Phaser.LEFT_CENTER`, `Phaser.LEFT_BOTTOM`, `Phaser.RIGHT_TOP`, `Phaser.RIGHT_CENTER`, `Phaser.RIGHT_BOTTOM`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
+* @param {integer} [offsetX=0] - A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
+* @param {integer} [offsetY=0] - A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
+* @return {Phaser.Group} This Group.
 */
 
 //  This function is set at the bottom of src/gameobjects/components/Bounds.js
@@ -2958,11 +2958,11 @@ Object.defineProperty(Phaser.Group.prototype, "bottom", ***REMOVED***
 /**
 * A display object is any object that can be rendered in the Phaser/pixi.js scene graph.
 *
-* This includes ***REMOVED***@link Phaser.Group***REMOVED*** (groups are display objects!),
-* ***REMOVED***@link Phaser.Sprite***REMOVED***, ***REMOVED***@link Phaser.Button***REMOVED***, ***REMOVED***@link Phaser.Text***REMOVED***
-* as well as ***REMOVED***@link PIXI.DisplayObject***REMOVED*** and all derived types.
+* This includes {@link Phaser.Group} (groups are display objects!),
+* {@link Phaser.Sprite}, {@link Phaser.Button}, {@link Phaser.Text}
+* as well as {@link PIXI.DisplayObject} and all derived types.
 *
-* @typedef ***REMOVED***object***REMOVED*** DisplayObject
+* @typedef {object} DisplayObject
 */
 // Documentation stub for linking.
 
@@ -2972,7 +2972,7 @@ Object.defineProperty(Phaser.Group.prototype, "bottom", ***REMOVED***
 * You can adjust the group container itself by modifying its coordinates.
 * This will have no impact on the x/y coordinates of its children, but it will update their worldTransform and on-screen position.
 * @name Phaser.Group#x
-* @property ***REMOVED***number***REMOVED*** x
+* @property {number} x
 */
 
 /**
@@ -2981,7 +2981,7 @@ Object.defineProperty(Phaser.Group.prototype, "bottom", ***REMOVED***
 * You can adjust the group container itself by modifying its coordinates.
 * This will have no impact on the x/y coordinates of its children, but it will update their worldTransform and on-screen position.
 * @name Phaser.Group#y
-* @property ***REMOVED***number***REMOVED*** y
+* @property {number} y
 */
 
 /**
@@ -2990,19 +2990,19 @@ Object.defineProperty(Phaser.Group.prototype, "bottom", ***REMOVED***
 * This will adjust the group container itself by modifying its rotation.
 * This will have no impact on the rotation value of its children, but it will update their worldTransform and on-screen position.
 * @name Phaser.Group#rotation
-* @property ***REMOVED***number***REMOVED*** rotation
+* @property {number} rotation
 */
 
 /**
 * The visible state of the group. Non-visible Groups and all of their children are not rendered.
 *
 * @name Phaser.Group#visible
-* @property ***REMOVED***boolean***REMOVED*** visible
+* @property {boolean} visible
 */
 
 /**
 * The alpha value of the group container.
 *
 * @name Phaser.Group#alpha
-* @property ***REMOVED***number***REMOVED*** alpha
+* @property {number} alpha
 */

@@ -2,16 +2,16 @@
 * Original shader from http://glsl.heroku.com/e#4122.10
 * Tweaked, uniforms added and converted to Phaser/PIXI by Richard Davey
 */
-Phaser.Filter.LightBeam = function (game) ***REMOVED***
+Phaser.Filter.LightBeam = function (game) {
 
     Phaser.Filter.call(this, game);
 
-    this.uniforms.alpha = ***REMOVED*** type: '1f', value: 1 ***REMOVED***;
-    this.uniforms.thickness = ***REMOVED*** type: '1f', value: 70.0 ***REMOVED***;
-    this.uniforms.speed = ***REMOVED*** type: '1f', value: 1.0 ***REMOVED***;
-    this.uniforms.red = ***REMOVED*** type: '1f', value: 2.0 ***REMOVED***;
-    this.uniforms.green = ***REMOVED*** type: '1f', value: 1.0 ***REMOVED***;
-    this.uniforms.blue = ***REMOVED*** type: '1f', value: 1.0 ***REMOVED***;
+    this.uniforms.alpha = { type: '1f', value: 1 };
+    this.uniforms.thickness = { type: '1f', value: 70.0 };
+    this.uniforms.speed = { type: '1f', value: 1.0 };
+    this.uniforms.red = { type: '1f', value: 2.0 };
+    this.uniforms.green = { type: '1f', value: 1.0 };
+    this.uniforms.blue = { type: '1f', value: 1.0 };
 
     this.fragmentSrc = [
 
@@ -25,7 +25,7 @@ Phaser.Filter.LightBeam = function (game) ***REMOVED***
         "uniform float     green;",
         "uniform float     blue;",
 
-        "void main(void) ***REMOVED***",
+        "void main(void) {",
 
             "vec2 uPos = (gl_FragCoord.xy / resolution.xy);",
 
@@ -34,97 +34,97 @@ Phaser.Filter.LightBeam = function (game) ***REMOVED***
             "float vertColor = 0.0;",
 
             "for (float i = 0.0; i < 1.0; i++)",
-            "***REMOVED***",
+            "{",
                 "float t = time * (i + speed);",
                 "uPos.y += sin(uPos.x + t) * 0.2;",
                 "float fTemp = abs(1.0 / uPos.y / thickness);",
                 "vertColor += fTemp;",
-            "***REMOVED***",
+            "}",
 
             "vec4 color = vec4(vertColor * red, vertColor * green, vertColor * blue, alpha);",
             "gl_FragColor = color;",
-        "***REMOVED***"
+        "}"
     ];
 
-***REMOVED***;
+};
 
 Phaser.Filter.LightBeam.prototype = Object.create(Phaser.Filter.prototype);
 Phaser.Filter.LightBeam.prototype.constructor = Phaser.Filter.LightBeam;
 
-Phaser.Filter.LightBeam.prototype.init = function (width, height) ***REMOVED***
+Phaser.Filter.LightBeam.prototype.init = function (width, height) {
 
     this.setResolution(width, height);
 
-***REMOVED***;
+};
 
-Object.defineProperty(Phaser.Filter.LightBeam.prototype, 'alpha', ***REMOVED***
+Object.defineProperty(Phaser.Filter.LightBeam.prototype, 'alpha', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.alpha.value;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.alpha.value = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
-Object.defineProperty(Phaser.Filter.LightBeam.prototype, 'red', ***REMOVED***
+Object.defineProperty(Phaser.Filter.LightBeam.prototype, 'red', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.red.value;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.red.value = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
-Object.defineProperty(Phaser.Filter.LightBeam.prototype, 'green', ***REMOVED***
+Object.defineProperty(Phaser.Filter.LightBeam.prototype, 'green', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.green.value;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.green.value = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
-Object.defineProperty(Phaser.Filter.LightBeam.prototype, 'blue', ***REMOVED***
+Object.defineProperty(Phaser.Filter.LightBeam.prototype, 'blue', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.blue.value;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.blue.value = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
-Object.defineProperty(Phaser.Filter.LightBeam.prototype, 'thickness', ***REMOVED***
+Object.defineProperty(Phaser.Filter.LightBeam.prototype, 'thickness', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.thickness.value;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.thickness.value = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
-Object.defineProperty(Phaser.Filter.LightBeam.prototype, 'speed', ***REMOVED***
+Object.defineProperty(Phaser.Filter.LightBeam.prototype, 'speed', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.speed.value;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.speed.value = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});

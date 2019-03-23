@@ -25,15 +25,15 @@ app = Celery('tasks', broker='pyamqp://guest@localhost//',backend='amqp://guest@
 
 @app.task(name='wololo.tasks.add_village')
 def add_village(user_id, user_name, village_name):
-    village = ***REMOVED***
-        "coords":***REMOVED***
+    village = {
+        "coords":{
             "x": 123,
             "y": 200
-        ***REMOVED***,
+        },
         "playerName": user_name,
         "user_id": user_id,
         "villageName": village_name
-    ***REMOVED***
+    }
     db.collection("villages").add(village)
     return True
 
@@ -53,7 +53,7 @@ def upgrade_building(user_id, village_id, building_path, upgrade_level):
     print(channel_layer, "wololo")
    
     async_to_sync ( channel_layer. group_send ) (
-        user_id , ***REMOVED*** "type" : "notify.user" , "text" : 'selamalaeyys' ***REMOVED***
+        user_id , { "type" : "notify.user" , "text" : 'selamalaeyys' }
     )
     
     # if '.' in villageDict :
@@ -61,19 +61,19 @@ def upgrade_building(user_id, village_id, building_path, upgrade_level):
     #     newSum = getCurrentResource(villageDict, building_path.split('.')[1], now)
     #     print("readyyty")
 
-    #     village.update(***REMOVED***
+    #     village.update({
     #         building_path+'.sum' : newSum,
     #         building_path+'.lastInteractionDate' : now,
     #         building_path+'.level' : upgrade_level
-    #     ***REMOVED***)
+    #     })
     #     print("sueccesfullll")
         
         
 
     # else:
-    #     village.update(***REMOVED***
+    #     village.update({
     #         building_path+'.level' : upgrade_level
-    #     ***REMOVED***)
+    #     })
 
         
     

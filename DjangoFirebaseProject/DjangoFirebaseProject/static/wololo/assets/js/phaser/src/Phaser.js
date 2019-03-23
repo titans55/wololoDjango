@@ -1,473 +1,473 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
 * @namespace Phaser
 */
-var Phaser = Phaser || ***REMOVED***    // jshint ignore:line
+var Phaser = Phaser || {    // jshint ignore:line
 
     /**
     * The Phaser version number.
     * @constant
-    * @type ***REMOVED***string***REMOVED***
+    * @type {string}
     */
     VERSION: '2.6.2',
 
     /**
     * An array of Phaser game instances.
     * @constant
-    * @type ***REMOVED***array***REMOVED***
+    * @type {array}
     */
     GAMES: [],
 
     /**
     * AUTO renderer - picks between WebGL or Canvas based on device.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     AUTO: 0,
 
     /**
     * Canvas Renderer.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     CANVAS: 1,
 
     /**
     * WebGL Renderer.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     WEBGL: 2,
 
     /**
     * Headless renderer (not visual output)
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     HEADLESS: 3,
 
     /**
     * Direction constant.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     NONE: 0,
 
     /**
     * Direction constant.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     LEFT: 1,
 
     /**
     * Direction constant.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     RIGHT: 2,
 
     /**
     * Direction constant.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     UP: 3,
 
     /**
     * Direction constant.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     DOWN: 4,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     SPRITE: 0,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     BUTTON: 1,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     IMAGE: 2,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     GRAPHICS: 3,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     TEXT: 4,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     TILESPRITE: 5,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     BITMAPTEXT: 6,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     GROUP: 7,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     RENDERTEXTURE: 8,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     TILEMAP: 9,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     TILEMAPLAYER: 10,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     EMITTER: 11,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     POLYGON: 12,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     BITMAPDATA: 13,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     CANVAS_FILTER: 14,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     WEBGL_FILTER: 15,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ELLIPSE: 16,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     SPRITEBATCH: 17,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     RETROFONT: 18,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     POINTER: 19,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ROPE: 20,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     CIRCLE: 21,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     RECTANGLE: 22,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     LINE: 23,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     MATRIX: 24,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     POINT: 25,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ROUNDEDRECTANGLE: 26,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     CREATURE: 27,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     VIDEO: 28,
 
     /**
     * Game Object type.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     PENDING_ATLAS: -1,
 
     /**
     * A horizontal orientation
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     HORIZONTAL: 0,
 
     /**
     * A vertical orientation
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     VERTICAL: 1,
 
     /**
     * A landscape orientation
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     LANDSCAPE: 0,
 
     /**
     * A portrait orientation
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     PORTRAIT: 1,
 
     /**
     * The Angle (in degrees) a Game Object needs to be set to in order to face up.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ANGLE_UP: 270,
 
     /**
     * The Angle (in degrees) a Game Object needs to be set to in order to face down.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ANGLE_DOWN: 90,
 
     /**
     * The Angle (in degrees) a Game Object needs to be set to in order to face left.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ANGLE_LEFT: 180,
 
     /**
     * The Angle (in degrees) a Game Object needs to be set to in order to face right.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ANGLE_RIGHT: 0,
 
     /**
     * The Angle (in degrees) a Game Object needs to be set to in order to face north east.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ANGLE_NORTH_EAST: 315,
 
     /**
     * The Angle (in degrees) a Game Object needs to be set to in order to face north west.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ANGLE_NORTH_WEST: 225,
 
     /**
     * The Angle (in degrees) a Game Object needs to be set to in order to face south east.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ANGLE_SOUTH_EAST: 45,
 
     /**
     * The Angle (in degrees) a Game Object needs to be set to in order to face south west.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     ANGLE_SOUTH_WEST: 135,
 
     /**
     * A constant representing a top-left alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     TOP_LEFT: 0,
 
     /**
     * A constant representing a top-center alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     TOP_CENTER: 1,
 
     /**
     * A constant representing a top-right alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     TOP_RIGHT: 2,
 
     /**
     * A constant representing a left-top alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     LEFT_TOP: 3,
 
     /**
     * A constant representing a left-center alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     LEFT_CENTER: 4,
 
     /**
     * A constant representing a left-bottom alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     LEFT_BOTTOM: 5,
 
     /**
     * A constant representing a center alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     CENTER: 6,
 
     /**
     * A constant representing a right-top alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     RIGHT_TOP: 7,
 
     /**
     * A constant representing a right-center alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     RIGHT_CENTER: 8,
 
     /**
     * A constant representing a right-bottom alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     RIGHT_BOTTOM: 9,
 
     /**
     * A constant representing a bottom-left alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     BOTTOM_LEFT: 10,
 
     /**
     * A constant representing a bottom-center alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     BOTTOM_CENTER: 11,
 
     /**
     * A constant representing a bottom-right alignment or position.
     * @constant
-    * @type ***REMOVED***integer***REMOVED***
+    * @type {integer}
     */
     BOTTOM_RIGHT: 12,
 
@@ -477,26 +477,26 @@ var Phaser = Phaser || ***REMOVED***    // jshint ignore:line
      * IMPORTANT: The WebGL renderer only supports the NORMAL, ADD, MULTIPLY and SCREEN blend modes.
      * 
      * @constant
-     * @property ***REMOVED***Number***REMOVED*** blendModes.NORMAL
-     * @property ***REMOVED***Number***REMOVED*** blendModes.ADD
-     * @property ***REMOVED***Number***REMOVED*** blendModes.MULTIPLY
-     * @property ***REMOVED***Number***REMOVED*** blendModes.SCREEN
-     * @property ***REMOVED***Number***REMOVED*** blendModes.OVERLAY
-     * @property ***REMOVED***Number***REMOVED*** blendModes.DARKEN
-     * @property ***REMOVED***Number***REMOVED*** blendModes.LIGHTEN
-     * @property ***REMOVED***Number***REMOVED*** blendModes.COLOR_DODGE
-     * @property ***REMOVED***Number***REMOVED*** blendModes.COLOR_BURN
-     * @property ***REMOVED***Number***REMOVED*** blendModes.HARD_LIGHT
-     * @property ***REMOVED***Number***REMOVED*** blendModes.SOFT_LIGHT
-     * @property ***REMOVED***Number***REMOVED*** blendModes.DIFFERENCE
-     * @property ***REMOVED***Number***REMOVED*** blendModes.EXCLUSION
-     * @property ***REMOVED***Number***REMOVED*** blendModes.HUE
-     * @property ***REMOVED***Number***REMOVED*** blendModes.SATURATION
-     * @property ***REMOVED***Number***REMOVED*** blendModes.COLOR
-     * @property ***REMOVED***Number***REMOVED*** blendModes.LUMINOSITY
+     * @property {Number} blendModes.NORMAL
+     * @property {Number} blendModes.ADD
+     * @property {Number} blendModes.MULTIPLY
+     * @property {Number} blendModes.SCREEN
+     * @property {Number} blendModes.OVERLAY
+     * @property {Number} blendModes.DARKEN
+     * @property {Number} blendModes.LIGHTEN
+     * @property {Number} blendModes.COLOR_DODGE
+     * @property {Number} blendModes.COLOR_BURN
+     * @property {Number} blendModes.HARD_LIGHT
+     * @property {Number} blendModes.SOFT_LIGHT
+     * @property {Number} blendModes.DIFFERENCE
+     * @property {Number} blendModes.EXCLUSION
+     * @property {Number} blendModes.HUE
+     * @property {Number} blendModes.SATURATION
+     * @property {Number} blendModes.COLOR
+     * @property {Number} blendModes.LUMINOSITY
      * @static
      */
-    blendModes: ***REMOVED***
+    blendModes: {
         NORMAL:0,
         ADD:1,
         MULTIPLY:2,
@@ -514,7 +514,7 @@ var Phaser = Phaser || ***REMOVED***    // jshint ignore:line
         SATURATION:14,
         COLOR:15,
         LUMINOSITY:16
-    ***REMOVED***,
+    },
 
     /**
      * The scale modes that are supported by Pixi.
@@ -523,18 +523,18 @@ var Phaser = Phaser || ***REMOVED***    // jshint ignore:line
      * It can be re-assigned to either LINEAR or NEAREST, depending upon suitability.
      *
      * @constant
-     * @property ***REMOVED***Object***REMOVED*** Phaser.scaleModes
-     * @property ***REMOVED***Number***REMOVED*** scaleModes.DEFAULT=LINEAR
-     * @property ***REMOVED***Number***REMOVED*** scaleModes.LINEAR Smooth scaling
-     * @property ***REMOVED***Number***REMOVED*** scaleModes.NEAREST Pixelating scaling
+     * @property {Object} Phaser.scaleModes
+     * @property {Number} scaleModes.DEFAULT=LINEAR
+     * @property {Number} scaleModes.LINEAR Smooth scaling
+     * @property {Number} scaleModes.NEAREST Pixelating scaling
      * @static
      */
-    scaleModes: ***REMOVED***
+    scaleModes: {
         DEFAULT:0,
         LINEAR:0,
         NEAREST:1
-    ***REMOVED***,
+    },
 
-    PIXI: PIXI || ***REMOVED******REMOVED***
+    PIXI: PIXI || {}
 
-***REMOVED***;
+};

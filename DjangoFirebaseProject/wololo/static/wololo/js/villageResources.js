@@ -3,14 +3,14 @@ var village_id
 var gameConfigs = JSON.parse(($("#gameConfigData").attr("data")).replace(/'/g, '"'))
 var villageData = JSON.parse(($("#villageDataJSON").attr("data")).replace(/'/g, '"'))
 
-$(function()***REMOVED***
+$(function(){
     // data = JSON.parse(data.replace(/'/g, '"'))
     village_id = villageData.id
     incrementOfResorcesByTime()
     calculatePopulationAndWrite()
-***REMOVED***)
+})
 
-function incrementOfResorcesByTime()***REMOVED***
+function incrementOfResorcesByTime(){
     //console.log(gameConfigs.buildings.resources, villageData.resources)
 
     let woodDate = moment(villageData.resources.woodCamp.lastInteractionDate).format()
@@ -20,11 +20,11 @@ function incrementOfResorcesByTime()***REMOVED***
     let storageCapacity = gameConfigs.buildings.storage.capacity[villageData.storage.level]
     // console.log(woodDate)
     tick()
-    setInterval(() => ***REMOVED***
+    setInterval(() => {
         tick()
-    ***REMOVED***,1000)
+    },1000)
 
-    function tick()***REMOVED***
+    function tick(){
         let now = moment(new Date())
         let woodHours = (now.diff(woodDate) / (1000 * 60 * 60))
         let ironHours = (now.diff(ironDate) / (1000 * 60 * 60))
@@ -40,48 +40,48 @@ function incrementOfResorcesByTime()***REMOVED***
         let currentClay =( gameConfigs.buildings.resources.clayPit.hourlyProductionByLevel[villageData.resources.clayPit.level]*clayHours).toFixed()
         currentClay = parseInt(currentClay) + parseInt(villageData.resources.clayPit.sum)
         checkCapacityAndWrite('#clay', currentClay, storageCapacity)
-    ***REMOVED***
+    }
 
     $("#storage").html(gameConfigs.buildings.storage.capacity[villageData.storage.level])
-***REMOVED***
+}
 
-function checkCapacityAndWrite(resourceHtmlID, currentAmount, storageLimit)***REMOVED***
+function checkCapacityAndWrite(resourceHtmlID, currentAmount, storageLimit){
 
-    if(currentAmount > storageLimit)***REMOVED***
+    if(currentAmount > storageLimit){
         $(resourceHtmlID).html(storageLimit)
-        if (!$(resourceHtmlID).hasClass("text-danger")) ***REMOVED***
+        if (!$(resourceHtmlID).hasClass("text-danger")) {
             $(resourceHtmlID).addClass("text-danger");
-        ***REMOVED***
-    ***REMOVED***else***REMOVED***
+        }
+    }else{
         $(resourceHtmlID).html(currentAmount)
-        if($(resourceHtmlID).hasClass("text-danger"))***REMOVED***
+        if($(resourceHtmlID).hasClass("text-danger")){
             $(resourceHtmlID).removeClass("text-danger")
-        ***REMOVED***
-    ***REMOVED***
-***REMOVED***
-function calculatePopulationAndWrite()***REMOVED***
+        }
+    }
+}
+function calculatePopulationAndWrite(){
     let farmLimit = gameConfigs.buildings.farm.populationLimit[villageData.farm.level]
     let usedPopulation = 0
-    $(".building").each(function()***REMOVED***
+    $(".building").each(function(){
         let buildingName = $(this).attr("buildingName")
-        if(buildingName!='farm')***REMOVED***
+        if(buildingName!='farm'){
             let neededPopForEachBuilding = gameConfigs.buildings[buildingName].neededPopulation[villageData[buildingName].level]
             usedPopulation += neededPopForEachBuilding
-        ***REMOVED***
-    ***REMOVED***)
-    $(".resources").each(function()***REMOVED***
+        }
+    })
+    $(".resources").each(function(){
         let resourceBuildingName = $(this).attr("resourceBuildingName")
         // let reseourceType = $(this).attr("reseourceType")
         let neededPopForEachBuilding = gameConfigs.buildings.resources[resourceBuildingName].neededPopulation[villageData.resources[resourceBuildingName].level]
         usedPopulation += neededPopForEachBuilding
-    ***REMOVED***)
+    })
    
-    for(let [unitType, units] of Object.entries(villageData.troops.total))***REMOVED***
-        for(let [unit, unitSize] of Object.entries(units))***REMOVED***
+    for(let [unitType, units] of Object.entries(villageData.troops.total)){
+        for(let [unit, unitSize] of Object.entries(units)){
             usedPopulation += unitSize*gameConfigs.units[unitType][unit].neededPopulation
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     
     console.log(usedPopulation,"wololo")
     $("#population").html(usedPopulation + " / " + farmLimit)
-***REMOVED***
+}

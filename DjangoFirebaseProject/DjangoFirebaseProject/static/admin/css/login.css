@@ -1,27 +1,27 @@
 /* LOGIN FORM */
 
-body.login ***REMOVED***
+body.login {
     background: #f8f8f8;
-***REMOVED***
+}
 
-.login #header ***REMOVED***
+.login #header {
     height: auto;
     padding: 5px 16px;
-***REMOVED***
+}
 
-.login #header h1 ***REMOVED***
+.login #header h1 {
     font-size: 18px;
-***REMOVED***
+}
 
-.login #header h1 a ***REMOVED***
+.login #header h1 a {
     color: #fff;
-***REMOVED***
+}
 
-.login #content ***REMOVED***
+.login #content {
     padding: 20px 20px 0;
-***REMOVED***
+}
 
-.login #container ***REMOVED***
+.login #container {
     background: #fff;
     border: 1px solid #eaeaea;
     border-radius: 4px;
@@ -29,50 +29,50 @@ body.login ***REMOVED***
     width: 28em;
     min-width: 300px;
     margin: 100px auto;
-***REMOVED***
+}
 
-.login #content-main ***REMOVED***
+.login #content-main {
     width: 100%;
-***REMOVED***
+}
 
-.login .form-row ***REMOVED***
+.login .form-row {
     padding: 4px 0;
     float: left;
     width: 100%;
     border-bottom: none;
-***REMOVED***
+}
 
-.login .form-row label ***REMOVED***
+.login .form-row label {
     padding-right: 0.5em;
     line-height: 2em;
     font-size: 1em;
     clear: both;
     color: #333;
-***REMOVED***
+}
 
-.login .form-row #id_username, .login .form-row #id_password ***REMOVED***
+.login .form-row #id_username, .login .form-row #id_password {
     clear: both;
     padding: 8px;
     width: 100%;
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
             box-sizing: border-box;
-***REMOVED***
+}
 
-.login span.help ***REMOVED***
+.login span.help {
     font-size: 10px;
     display: block;
-***REMOVED***
+}
 
-.login .submit-row ***REMOVED***
+.login .submit-row {
     clear: both;
     padding: 1em 0 0 9.4em;
     margin: 0;
     border: none;
     background: none;
     text-align: left;
-***REMOVED***
+}
 
-.login .password-reset-link ***REMOVED***
+.login .password-reset-link {
     text-align: center;
-***REMOVED***
+}

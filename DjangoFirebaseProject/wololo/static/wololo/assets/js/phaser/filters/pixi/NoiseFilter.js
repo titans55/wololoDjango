@@ -11,15 +11,15 @@
  * @constructor
  */
 PIXI.NoiseFilter = function()
-***REMOVED***
+{
     PIXI.AbstractFilter.call( this );
 
     this.passes = [this];
 
     // set the uniforms
-    this.uniforms = ***REMOVED***
-        noise: ***REMOVED***type: '1f', value: 0.5***REMOVED***
-    ***REMOVED***;
+    this.uniforms = {
+        noise: {type: '1f', value: 0.5}
+    };
 
     this.fragmentSrc = [
         'precision mediump float;',
@@ -27,10 +27,10 @@ PIXI.NoiseFilter = function()
         'uniform float noise;',
         'varying vec2 vTextureCoord;',
 
-        'float rand(vec2 co) ***REMOVED***',
+        'float rand(vec2 co) {',
         '    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);',
-        '***REMOVED***',
-        'void main() ***REMOVED***',
+        '}',
+        'void main() {',
         '    vec4 color = texture2D(uSampler, vTextureCoord);',
             
         '    float diff = (rand(vTextureCoord) - 0.5) * noise;',
@@ -39,9 +39,9 @@ PIXI.NoiseFilter = function()
         '    color.b += diff;',
             
         '    gl_FragColor = color;',
-        '***REMOVED***'
+        '}'
     ];
-***REMOVED***;
+};
 
 PIXI.NoiseFilter.prototype = Object.create( PIXI.AbstractFilter.prototype );
 PIXI.NoiseFilter.prototype.constructor = PIXI.NoiseFilter;
@@ -51,12 +51,12 @@ PIXI.NoiseFilter.prototype.constructor = PIXI.NoiseFilter;
  * @property noise
  * @type Number
 */
-Object.defineProperty(PIXI.NoiseFilter.prototype, 'noise', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.NoiseFilter.prototype, 'noise', {
+    get: function() {
         return this.uniforms.noise.value;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.dirty = true;
         this.uniforms.noise.value = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});

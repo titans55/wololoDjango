@@ -8,19 +8,19 @@
  *
  * @class CanvasRenderer
  * @constructor
- * @param game ***REMOVED***Phaser.Game***REMOVED*** A reference to the Phaser Game instance
+ * @param game {Phaser.Game} A reference to the Phaser Game instance
  */
-PIXI.CanvasRenderer = function (game) ***REMOVED***
+PIXI.CanvasRenderer = function (game) {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the Phaser Game instance.
+    * @property {Phaser.Game} game - A reference to the Phaser Game instance.
     */
     this.game = game;
 
     if (!PIXI.defaultRenderer)
-    ***REMOVED***
+    {
         PIXI.defaultRenderer = this;
-    ***REMOVED***
+    }
 
     /**
      * The renderer type.
@@ -97,7 +97,7 @@ PIXI.CanvasRenderer = function (game) ***REMOVED***
      * @property context
      * @type CanvasRenderingContext2D
      */
-    this.context = this.view.getContext("2d", ***REMOVED*** alpha: this.transparent ***REMOVED*** );
+    this.context = this.view.getContext("2d", { alpha: this.transparent } );
 
     /**
      * Boolean flag controlling canvas refresh.
@@ -127,7 +127,7 @@ PIXI.CanvasRenderer = function (game) ***REMOVED***
      * @property renderSession
      * @type Object
      */
-    this.renderSession = ***REMOVED***
+    this.renderSession = {
         context: this.context,
         maskManager: this.maskManager,
         scaleMode: null,
@@ -138,13 +138,13 @@ PIXI.CanvasRenderer = function (game) ***REMOVED***
          * Handy for crisp pixel art and speed on legacy devices.
          */
         roundPixels: false
-    ***REMOVED***;
+    };
 
     this.mapBlendModes();
     
     this.resize(this.width, this.height);
 
-***REMOVED***;
+};
 
 // constructor
 PIXI.CanvasRenderer.prototype.constructor = PIXI.CanvasRenderer;
@@ -153,9 +153,9 @@ PIXI.CanvasRenderer.prototype.constructor = PIXI.CanvasRenderer;
  * Renders the DisplayObjectContainer, usually the Phaser.Stage, to this canvas view.
  *
  * @method render
- * @param root ***REMOVED***Phaser.Stage|PIXI.DisplayObjectContainer***REMOVED*** The root element to be rendered.
+ * @param root {Phaser.Stage|PIXI.DisplayObjectContainer} The root element to be rendered.
  */
-PIXI.CanvasRenderer.prototype.render = function (root) ***REMOVED***
+PIXI.CanvasRenderer.prototype.render = function (root) {
 
     this.context.setTransform(1, 0, 0, 1, 0, 0);
 
@@ -168,59 +168,59 @@ PIXI.CanvasRenderer.prototype.render = function (root) ***REMOVED***
     this.context.globalCompositeOperation = 'source-over';
 
     if (navigator.isCocoonJS && this.view.screencanvas)
-    ***REMOVED***
+    {
         this.context.fillStyle = "black";
         this.context.clear();
-    ***REMOVED***
+    }
     
     if (this.clearBeforeRender)
-    ***REMOVED***
+    {
         if (this.transparent)
-        ***REMOVED***
+        {
             this.context.clearRect(0, 0, this.width, this.height);
-        ***REMOVED***
+        }
         else if (root._bgColor)
-        ***REMOVED***
+        {
             this.context.fillStyle = root._bgColor.rgba;
             this.context.fillRect(0, 0, this.width , this.height);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     
     this.renderDisplayObject(root);
 
-***REMOVED***;
+};
 
 
 /**
  * Removes everything from the renderer and optionally removes the Canvas DOM element.
  *
  * @method destroy
- * @param [removeView=true] ***REMOVED***boolean***REMOVED*** Removes the Canvas element from the DOM.
+ * @param [removeView=true] {boolean} Removes the Canvas element from the DOM.
  */
-PIXI.CanvasRenderer.prototype.destroy = function (removeView) ***REMOVED***
+PIXI.CanvasRenderer.prototype.destroy = function (removeView) {
 
-    if (removeView === undefined) ***REMOVED*** removeView = true; ***REMOVED***
+    if (removeView === undefined) { removeView = true; }
 
     if (removeView && this.view.parent)
-    ***REMOVED***
+    {
         this.view.parent.removeChild(this.view);
-    ***REMOVED***
+    }
 
     this.view = null;
     this.context = null;
     this.maskManager = null;
     this.renderSession = null;
 
-***REMOVED***;
+};
 
 /**
  * Resizes the canvas view to the specified width and height
  *
  * @method resize
- * @param width ***REMOVED***Number***REMOVED*** the new width of the canvas view
- * @param height ***REMOVED***Number***REMOVED*** the new height of the canvas view
+ * @param width {Number} the new width of the canvas view
+ * @param height {Number} the new height of the canvas view
  */
-PIXI.CanvasRenderer.prototype.resize = function (width, height) ***REMOVED***
+PIXI.CanvasRenderer.prototype.resize = function (width, height) {
 
     this.width = width * this.resolution;
     this.height = height * this.resolution;
@@ -229,34 +229,34 @@ PIXI.CanvasRenderer.prototype.resize = function (width, height) ***REMOVED***
     this.view.height = this.height;
 
     if (this.autoResize)
-    ***REMOVED***
+    {
         this.view.style.width = this.width / this.resolution + "px";
         this.view.style.height = this.height / this.resolution + "px";
-    ***REMOVED***
+    }
 
     if (this.renderSession.smoothProperty)
-    ***REMOVED***
+    {
         this.context[this.renderSession.smoothProperty] = (this.renderSession.scaleMode === PIXI.scaleModes.LINEAR);
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
  * Renders a display object
  *
  * @method renderDisplayObject
- * @param displayObject ***REMOVED***DisplayObject***REMOVED*** The displayObject to render
- * @param context ***REMOVED***CanvasRenderingContext2D***REMOVED*** the context 2d method of the canvas
- * @param [matrix] ***REMOVED***Matrix***REMOVED*** Optional matrix to apply to the display object before rendering.
+ * @param displayObject {DisplayObject} The displayObject to render
+ * @param context {CanvasRenderingContext2D} the context 2d method of the canvas
+ * @param [matrix] {Matrix} Optional matrix to apply to the display object before rendering.
  * @private
  */
-PIXI.CanvasRenderer.prototype.renderDisplayObject = function (displayObject, context, matrix) ***REMOVED***
+PIXI.CanvasRenderer.prototype.renderDisplayObject = function (displayObject, context, matrix) {
 
     this.renderSession.context = context || this.context;
     this.renderSession.resolution = this.resolution;
     displayObject._renderCanvas(this.renderSession, matrix);
 
-***REMOVED***;
+};
 
 /**
  * Maps Pixi blend modes to canvas blend modes.
@@ -264,10 +264,10 @@ PIXI.CanvasRenderer.prototype.renderDisplayObject = function (displayObject, con
  * @method mapBlendModes
  * @private
  */
-PIXI.CanvasRenderer.prototype.mapBlendModes = function () ***REMOVED***
+PIXI.CanvasRenderer.prototype.mapBlendModes = function () {
 
     if (!PIXI.blendModesCanvas)
-    ***REMOVED***
+    {
         var b = [];
         var modes = PIXI.blendModes;
         var useNew = PIXI.canUseNewCanvasBlendModes();
@@ -291,6 +291,6 @@ PIXI.CanvasRenderer.prototype.mapBlendModes = function () ***REMOVED***
         b[modes.LUMINOSITY] = (useNew) ? 'luminosity' : 'source-over';
 
         PIXI.blendModesCanvas = b;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};

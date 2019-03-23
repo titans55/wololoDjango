@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1289,7 +1289,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
             <pre class="sunlight-highlight-javascript linenums">/**
 * @author       Richard Davey &lt;rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1297,9 +1297,9 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 *
 * @class
 */
-Phaser.Component.Overlap = function () ***REMOVED******REMOVED***;
+Phaser.Component.Overlap = function () {};
 
-Phaser.Component.Overlap.prototype = ***REMOVED***
+Phaser.Component.Overlap.prototype = {
 
     /**
     * Checks to see if the bounds of this Game Object overlaps with the bounds of the given Display Object, 
@@ -1311,16 +1311,16 @@ Phaser.Component.Overlap.prototype = ***REMOVED***
     * It should be fine for low-volume testing where physics isn't required.
     *
     * @method
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Image|Phaser.TileSprite|Phaser.Button|PIXI.DisplayObject***REMOVED*** displayObject - The display object to check against.
-    * @return ***REMOVED***boolean***REMOVED*** True if the bounds of this Game Object intersects at any point with the bounds of the given display object.
+    * @param {Phaser.Sprite|Phaser.Image|Phaser.TileSprite|Phaser.Button|PIXI.DisplayObject} displayObject - The display object to check against.
+    * @return {boolean} True if the bounds of this Game Object intersects at any point with the bounds of the given display object.
     */
-    overlap: function (displayObject) ***REMOVED***
+    overlap: function (displayObject) {
 
         return Phaser.Rectangle.intersects(this.getBounds(), displayObject.getBounds());
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 </pre>
         </article>
     </section>
@@ -1363,22 +1363,22 @@ Phaser.Component.Overlap.prototype = ***REMOVED***
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

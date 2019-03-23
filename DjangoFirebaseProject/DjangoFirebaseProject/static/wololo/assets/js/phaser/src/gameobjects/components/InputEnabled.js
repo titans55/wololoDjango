@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -9,9 +9,9 @@
 *
 * @class
 */
-Phaser.Component.InputEnabled = function () ***REMOVED******REMOVED***;
+Phaser.Component.InputEnabled = function () {};
 
-Phaser.Component.InputEnabled.prototype = ***REMOVED***
+Phaser.Component.InputEnabled.prototype = {
 
     /**
     * The Input Handler for this Game Object.
@@ -19,7 +19,7 @@ Phaser.Component.InputEnabled.prototype = ***REMOVED***
     * By default it is disabled. If you wish this Game Object to process input events you should enable it with: `inputEnabled = true`.
     * 
     * After you have done this, this property will be a reference to the Phaser InputHandler.
-    * @property ***REMOVED***Phaser.InputHandler|null***REMOVED*** input 
+    * @property {Phaser.InputHandler|null} input 
     */
     input: null,
 
@@ -37,40 +37,40 @@ Phaser.Component.InputEnabled.prototype = ***REMOVED***
     * `input.enabled = false`, as it won't reset any of the Input Handlers internal properties.
     * You can then toggle this back on as needed.
     *
-    * @property ***REMOVED***boolean***REMOVED*** inputEnabled
+    * @property {boolean} inputEnabled
     */
-    inputEnabled: ***REMOVED***
+    inputEnabled: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return (this.input && this.input.enabled);
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             if (value)
-            ***REMOVED***
+            {
                 if (this.input === null)
-                ***REMOVED***
+                {
                     this.input = new Phaser.InputHandler(this);
                     this.input.start();
-                ***REMOVED***
+                }
                 else if (this.input && !this.input.enabled)
-                ***REMOVED***
+                {
                     this.input.start();
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
             else
-            ***REMOVED***
+            {
                 if (this.input && this.input.enabled)
-                ***REMOVED***
+                {
                     this.input.stop();
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};

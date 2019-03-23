@@ -10,18 +10,18 @@
  * @constructor
  */
 PIXI.RGBSplitFilter = function()
-***REMOVED***
+{
     PIXI.AbstractFilter.call( this );
 
     this.passes = [this];
 
     // set the uniforms
-    this.uniforms = ***REMOVED***
-        red: ***REMOVED***type: '2f', value: ***REMOVED***x:20, y:20***REMOVED******REMOVED***,
-        green: ***REMOVED***type: '2f', value: ***REMOVED***x:-20, y:20***REMOVED******REMOVED***,
-        blue: ***REMOVED***type: '2f', value: ***REMOVED***x:20, y:-20***REMOVED******REMOVED***,
-        dimensions:   ***REMOVED***type: '4fv', value:[0,0,0,0]***REMOVED***
-    ***REMOVED***;
+    this.uniforms = {
+        red: {type: '2f', value: {x:20, y:20}},
+        green: {type: '2f', value: {x:-20, y:20}},
+        blue: {type: '2f', value: {x:20, y:-20}},
+        dimensions:   {type: '4fv', value:[0,0,0,0]}
+    };
 
     this.fragmentSrc = [
         'precision mediump float;',
@@ -33,14 +33,14 @@ PIXI.RGBSplitFilter = function()
         'uniform vec4 dimensions;',
         'uniform sampler2D uSampler;',
 
-        'void main(void) ***REMOVED***',
+        'void main(void) {',
         '   gl_FragColor.r = texture2D(uSampler, vTextureCoord + red/dimensions.xy).r;',
         '   gl_FragColor.g = texture2D(uSampler, vTextureCoord + green/dimensions.xy).g;',
         '   gl_FragColor.b = texture2D(uSampler, vTextureCoord + blue/dimensions.xy).b;',
         '   gl_FragColor.a = texture2D(uSampler, vTextureCoord).a;',
-        '***REMOVED***'
+        '}'
     ];
-***REMOVED***;
+};
 
 PIXI.RGBSplitFilter.prototype = Object.create( PIXI.AbstractFilter.prototype );
 PIXI.RGBSplitFilter.prototype.constructor = PIXI.RGBSplitFilter;
@@ -51,14 +51,14 @@ PIXI.RGBSplitFilter.prototype.constructor = PIXI.RGBSplitFilter;
  * @property red
  * @type Point
  */
-Object.defineProperty(PIXI.RGBSplitFilter.prototype, 'red', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.RGBSplitFilter.prototype, 'red', {
+    get: function() {
         return this.uniforms.red.value;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.uniforms.red.value = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});
 
 /**
  * Green channel offset.
@@ -66,14 +66,14 @@ Object.defineProperty(PIXI.RGBSplitFilter.prototype, 'red', ***REMOVED***
  * @property green
  * @type Point
  */
-Object.defineProperty(PIXI.RGBSplitFilter.prototype, 'green', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.RGBSplitFilter.prototype, 'green', {
+    get: function() {
         return this.uniforms.green.value;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.uniforms.green.value = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});
 
 /**
  * Blue offset.
@@ -81,11 +81,11 @@ Object.defineProperty(PIXI.RGBSplitFilter.prototype, 'green', ***REMOVED***
  * @property blue
  * @type Point
  */
-Object.defineProperty(PIXI.RGBSplitFilter.prototype, 'blue', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.RGBSplitFilter.prototype, 'blue', {
+    get: function() {
         return this.uniforms.blue.value;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.uniforms.blue.value = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});

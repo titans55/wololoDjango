@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -9,72 +9,72 @@
 *
 * @class Phaser.Particles
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
+* @param {Phaser.Game} game - A reference to the currently running game.
 */
-Phaser.Particles = function (game) ***REMOVED***
+Phaser.Particles = function (game) {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running Game.
+    * @property {Phaser.Game} game - A reference to the currently running Game.
     */
     this.game = game;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** emitters - Internal emitters store.
+    * @property {object} emitters - Internal emitters store.
     */
-    this.emitters = ***REMOVED******REMOVED***;
+    this.emitters = {};
 
     /**
-    * @property ***REMOVED***number***REMOVED*** ID -
+    * @property {number} ID -
     * @default
     */
     this.ID = 0;
 
-***REMOVED***;
+};
 
-Phaser.Particles.prototype = ***REMOVED***
+Phaser.Particles.prototype = {
 
     /**
     * Adds a new Particle Emitter to the Particle Manager.
     * @method Phaser.Particles#add
-    * @param ***REMOVED***Phaser.Emitter***REMOVED*** emitter - The emitter to be added to the particle manager.
-    * @return ***REMOVED***Phaser.Emitter***REMOVED*** The emitter that was added.
+    * @param {Phaser.Emitter} emitter - The emitter to be added to the particle manager.
+    * @return {Phaser.Emitter} The emitter that was added.
     */
-    add: function (emitter) ***REMOVED***
+    add: function (emitter) {
 
         this.emitters[emitter.name] = emitter;
 
         return emitter;
 
-    ***REMOVED***,
+    },
 
     /**
     * Removes an existing Particle Emitter from the Particle Manager.
     * @method Phaser.Particles#remove
-    * @param ***REMOVED***Phaser.Emitter***REMOVED*** emitter - The emitter to remove.
+    * @param {Phaser.Emitter} emitter - The emitter to remove.
     */
-    remove: function (emitter) ***REMOVED***
+    remove: function (emitter) {
 
         delete this.emitters[emitter.name];
 
-    ***REMOVED***,
+    },
 
     /**
     * Called by the core game loop. Updates all Emitters who have their exists value set to true.
     * @method Phaser.Particles#update
     * @protected
     */
-    update: function () ***REMOVED***
+    update: function () {
 
         for (var key in this.emitters)
-        ***REMOVED***
+        {
             if (this.emitters[key].exists)
-            ***REMOVED***
+            {
                 this.emitters[key].update();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.Particles.prototype.constructor = Phaser.Particles;

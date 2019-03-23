@@ -213,22 +213,22 @@ var phaser = path.join(phaserModule, 'build/custom/phaser-split.js'),
   pixi = path.join(phaserModule, 'build/custom/pixi.js'),
   p2 = path.join(phaserModule, 'build/custom/p2.js');
 
-module.exports = ***REMOVED***
+module.exports = {
     ...
-    module: ***REMOVED***
+    module: {
         loaders: [
-            ***REMOVED*** test: /pixi.js/, loader: "script" ***REMOVED***,
+            { test: /pixi.js/, loader: "script" },
         ]
-    ***REMOVED***,
-    resolve: ***REMOVED***
-        alias: ***REMOVED***
+    },
+    resolve: {
+        alias: {
             'phaser': phaser,
             'pixi.js': pixi,
             'p2': p2,
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     ...
-***REMOVED***
+}
 ```
 
 ##### Main js file

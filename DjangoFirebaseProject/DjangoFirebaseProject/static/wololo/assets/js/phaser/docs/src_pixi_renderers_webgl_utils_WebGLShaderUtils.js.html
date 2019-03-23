@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1296,74 +1296,74 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 * @private
 */
 PIXI.initDefaultShaders = function()
-***REMOVED***
-***REMOVED***;
+{
+};
 
 /**
 * @method CompileVertexShader
 * @static
-* @param gl ***REMOVED***WebGLContext***REMOVED*** the current WebGL drawing context
-* @param shaderSrc ***REMOVED***Array***REMOVED***
-* @return ***REMOVED***Any***REMOVED***
+* @param gl {WebGLContext} the current WebGL drawing context
+* @param shaderSrc {Array}
+* @return {Any}
 */
 PIXI.CompileVertexShader = function(gl, shaderSrc)
-***REMOVED***
+{
     return PIXI._CompileShader(gl, shaderSrc, gl.VERTEX_SHADER);
-***REMOVED***;
+};
 
 /**
 * @method CompileFragmentShader
 * @static
-* @param gl ***REMOVED***WebGLContext***REMOVED*** the current WebGL drawing context
-* @param shaderSrc ***REMOVED***Array***REMOVED***
-* @return ***REMOVED***Any***REMOVED***
+* @param gl {WebGLContext} the current WebGL drawing context
+* @param shaderSrc {Array}
+* @return {Any}
 */
 PIXI.CompileFragmentShader = function(gl, shaderSrc)
-***REMOVED***
+{
     return PIXI._CompileShader(gl, shaderSrc, gl.FRAGMENT_SHADER);
-***REMOVED***;
+};
 
 /**
 * @method _CompileShader
 * @static
 * @private
-* @param gl ***REMOVED***WebGLContext***REMOVED*** the current WebGL drawing context
-* @param shaderSrc ***REMOVED***Array***REMOVED***
-* @param shaderType ***REMOVED***Number***REMOVED***
-* @return ***REMOVED***Any***REMOVED***
+* @param gl {WebGLContext} the current WebGL drawing context
+* @param shaderSrc {Array}
+* @param shaderType {Number}
+* @return {Any}
 */
 PIXI._CompileShader = function(gl, shaderSrc, shaderType)
-***REMOVED***
+{
     var src = shaderSrc;
 
     if (Array.isArray(shaderSrc))
-    ***REMOVED***
+    {
         src = shaderSrc.join("\n");
-    ***REMOVED***
+    }
 
     var shader = gl.createShader(shaderType);
     gl.shaderSource(shader, src);
     gl.compileShader(shader);
 
     if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS))
-    ***REMOVED***
+    {
         window.console.log(gl.getShaderInfoLog(shader));
         return null;
-    ***REMOVED***
+    }
 
     return shader;
-***REMOVED***;
+};
 
 /**
 * @method compileProgram
 * @static
-* @param gl ***REMOVED***WebGLContext***REMOVED*** the current WebGL drawing context
-* @param vertexSrc ***REMOVED***Array***REMOVED***
-* @param fragmentSrc ***REMOVED***Array***REMOVED***
-* @return ***REMOVED***Any***REMOVED***
+* @param gl {WebGLContext} the current WebGL drawing context
+* @param vertexSrc {Array}
+* @param fragmentSrc {Array}
+* @return {Any}
 */
 PIXI.compileProgram = function(gl, vertexSrc, fragmentSrc)
-***REMOVED***
+{
     var fragmentShader = PIXI.CompileFragmentShader(gl, fragmentSrc);
     var vertexShader = PIXI.CompileVertexShader(gl, vertexSrc);
 
@@ -1374,13 +1374,13 @@ PIXI.compileProgram = function(gl, vertexSrc, fragmentSrc)
     gl.linkProgram(shaderProgram);
 
     if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS))
-    ***REMOVED***
+    {
         window.console.log(gl.getProgramInfoLog(shaderProgram));
         window.console.log("Could not initialise shaders");
-    ***REMOVED***
+    }
 
     return shaderProgram;
-***REMOVED***;
+};
 </pre>
         </article>
     </section>
@@ -1423,22 +1423,22 @@ PIXI.compileProgram = function(gl, vertexSrc, fragmentSrc)
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

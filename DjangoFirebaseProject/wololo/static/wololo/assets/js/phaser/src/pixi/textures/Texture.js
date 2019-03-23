@@ -7,7 +7,7 @@
  * If `true` then `PIXI.Texture.setFrame` will no longer throw an error if the texture dimensions are incorrect. 
  * Instead `Texture.valid` will be set to `false` (#1556)
  *
- * @type ***REMOVED***boolean***REMOVED***
+ * @type {boolean}
  */
 PIXI.TextureSilentFail = false;
 
@@ -18,13 +18,13 @@ PIXI.TextureSilentFail = false;
  * @class Texture
  * @uses EventTarget
  * @constructor
- * @param baseTexture ***REMOVED***BaseTexture***REMOVED*** The base texture source to create the texture from
- * @param frame ***REMOVED***Rectangle***REMOVED*** The rectangle frame of the texture to show
- * @param [crop] ***REMOVED***Rectangle***REMOVED*** The area of original texture 
- * @param [trim] ***REMOVED***Rectangle***REMOVED*** Trimmed texture rectangle
+ * @param baseTexture {BaseTexture} The base texture source to create the texture from
+ * @param frame {Rectangle} The rectangle frame of the texture to show
+ * @param [crop] {Rectangle} The area of original texture 
+ * @param [trim] {Rectangle} Trimmed texture rectangle
  */
 PIXI.Texture = function(baseTexture, frame, crop, trim)
-***REMOVED***
+{
     /**
      * Does this Texture have any frame data assigned to it?
      *
@@ -34,15 +34,15 @@ PIXI.Texture = function(baseTexture, frame, crop, trim)
     this.noFrame = false;
 
     if (!frame)
-    ***REMOVED***
+    {
         this.noFrame = true;
         frame = new PIXI.Rectangle(0,0,1,1);
-    ***REMOVED***
+    }
 
     if (baseTexture instanceof PIXI.Texture)
-    ***REMOVED***
+    {
         baseTexture = baseTexture.baseTexture;
-    ***REMOVED***
+    }
 
     /**
      * The base texture that this texture uses.
@@ -135,12 +135,12 @@ PIXI.Texture = function(baseTexture, frame, crop, trim)
     this.crop = crop || new PIXI.Rectangle(0, 0, 1, 1);
 
     if (baseTexture.hasLoaded)
-    ***REMOVED***
+    {
         if (this.noFrame) frame = new PIXI.Rectangle(0, 0, baseTexture.width, baseTexture.height);
         this.setFrame(frame);
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 PIXI.Texture.prototype.constructor = PIXI.Texture;
 
@@ -151,38 +151,38 @@ PIXI.Texture.prototype.constructor = PIXI.Texture;
  * @private
  */
 PIXI.Texture.prototype.onBaseTextureLoaded = function()
-***REMOVED***
+{
     var baseTexture = this.baseTexture;
 
     if (this.noFrame)
-    ***REMOVED***
+    {
         this.frame = new PIXI.Rectangle(0, 0, baseTexture.width, baseTexture.height);
-    ***REMOVED***
+    }
 
     this.setFrame(this.frame);
-***REMOVED***;
+};
 
 /**
  * Destroys this texture
  *
  * @method destroy
- * @param destroyBase ***REMOVED***Boolean***REMOVED*** Whether to destroy the base texture as well
+ * @param destroyBase {Boolean} Whether to destroy the base texture as well
  */
 PIXI.Texture.prototype.destroy = function(destroyBase)
-***REMOVED***
+{
     if (destroyBase) this.baseTexture.destroy();
 
     this.valid = false;
-***REMOVED***;
+};
 
 /**
  * Specifies the region of the baseTexture that this texture will use.
  *
  * @method setFrame
- * @param frame ***REMOVED***Rectangle***REMOVED*** The frame of the texture to set it to
+ * @param frame {Rectangle} The frame of the texture to set it to
  */
 PIXI.Texture.prototype.setFrame = function(frame)
-***REMOVED***
+{
     this.noFrame = false;
 
     this.frame = frame;
@@ -195,29 +195,29 @@ PIXI.Texture.prototype.setFrame = function(frame)
     this.crop.height = frame.height;
 
     if (!this.trim && (frame.x + frame.width > this.baseTexture.width || frame.y + frame.height > this.baseTexture.height))
-    ***REMOVED***
+    {
         if (!PIXI.TextureSilentFail)
-        ***REMOVED***
+        {
             throw new Error('Texture Error: frame does not fit inside the base Texture dimensions ' + this);
-        ***REMOVED***
+        }
 
         this.valid = false;
         return;
-    ***REMOVED***
+    }
 
     this.valid = frame && frame.width && frame.height && this.baseTexture.source && this.baseTexture.hasLoaded;
 
     if (this.trim)
-    ***REMOVED***
+    {
         this.width = this.trim.width;
         this.height = this.trim.height;
         this.frame.width = this.trim.width;
         this.frame.height = this.trim.height;
-    ***REMOVED***
+    }
     
     if (this.valid) this._updateUvs();
 
-***REMOVED***;
+};
 
 /**
  * Updates the internal WebGL UV cache.
@@ -226,7 +226,7 @@ PIXI.Texture.prototype.setFrame = function(frame)
  * @private
  */
 PIXI.Texture.prototype._updateUvs = function()
-***REMOVED***
+{
     if(!this._uvs)this._uvs = new PIXI.TextureUvs();
 
     var frame = this.crop;
@@ -244,26 +244,26 @@ PIXI.Texture.prototype._updateUvs = function()
 
     this._uvs.x3 = frame.x / tw;
     this._uvs.y3 = (frame.y + frame.height) / th;
-***REMOVED***;
+};
 
 /**
  * Helper function that creates a new a Texture based on the given canvas element.
  *
  * @static
  * @method fromCanvas
- * @param canvas ***REMOVED***Canvas***REMOVED*** The canvas element source of the texture
- * @param scaleMode ***REMOVED***Number***REMOVED*** See ***REMOVED******REMOVED***#crossLink "PIXI/scaleModes:property"***REMOVED******REMOVED***PIXI.scaleModes***REMOVED******REMOVED***/crossLink***REMOVED******REMOVED*** for possible values
- * @return ***REMOVED***Texture***REMOVED***
+ * @param canvas {Canvas} The canvas element source of the texture
+ * @param scaleMode {Number} See {{#crossLink "PIXI/scaleModes:property"}}PIXI.scaleModes{{/crossLink}} for possible values
+ * @return {Texture}
  */
 PIXI.Texture.fromCanvas = function(canvas, scaleMode)
-***REMOVED***
+{
     var baseTexture = PIXI.BaseTexture.fromCanvas(canvas, scaleMode);
 
     return new PIXI.Texture(baseTexture);
-***REMOVED***;
+};
 
 PIXI.TextureUvs = function()
-***REMOVED***
+{
     this.x0 = 0;
     this.y0 = 0;
 
@@ -275,4 +275,4 @@ PIXI.TextureUvs = function()
 
     this.x3 = 0;
     this.y3 = 0;
-***REMOVED***;
+};

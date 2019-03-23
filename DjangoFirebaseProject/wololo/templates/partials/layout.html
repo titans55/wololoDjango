@@ -1,24 +1,24 @@
-***REMOVED***% load static %***REMOVED***
+{% load static %}
 
 <html>
 
 <head>
     <title>Wololo</title>
 
-    <link rel="stylesheet" href="***REMOVED***% static 'wololo/css/index.css' %***REMOVED***" type="text/css">
-    <link rel="stylesheet" href="***REMOVED***% static 'wololo/css/main.css' %***REMOVED***" type="text/css">
-    <link rel="stylesheet" href="***REMOVED***% static 'wololo/css/game.css' %***REMOVED***" type="text/css">
-    <link rel="stylesheet" href="***REMOVED***% static 'wololo/assets/css/animate.css' %***REMOVED***" type="text/css">
+    <link rel="stylesheet" href="{% static 'wololo/css/index.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'wololo/css/main.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'wololo/css/game.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'wololo/assets/css/animate.css' %}" type="text/css">
     <!-- link(rel='shortcut icon', href='/favicon.png') -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 
-    ***REMOVED***% block headcdn %***REMOVED*** ***REMOVED***% endblock %***REMOVED***
+    {% block headcdn %} {% endblock %}
 
 
 </head>
 
 <body>
-    ***REMOVED***% include "partials/navbar.html" %***REMOVED***
+    {% include "partials/navbar.html" %}
 
     <div class="container">
         <div id="loader">
@@ -30,28 +30,28 @@
                 <li></li>
             </ul>
         </div>
-        ***REMOVED***% block content %***REMOVED***
-        ***REMOVED***% endblock %***REMOVED***
+        {% block content %}
+        {% endblock %}
     </div>
 
     <!-- Welcome broooo -->
 
-    ***REMOVED***% include 'partials/footer.html' %***REMOVED***
+    {% include 'partials/footer.html' %}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="***REMOVED***% static 'wololo/assets/js/popper.js/dist/umd/popper.min.js' %***REMOVED***"></script>
+    <script type="text/javascript" src="{% static 'wololo/assets/js/popper.js/dist/umd/popper.min.js' %}"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <script type="text/javascript" src="***REMOVED***% static 'wololo/js/main.js' %***REMOVED***"></script>
+    <script type="text/javascript" src="{% static 'wololo/js/main.js' %}"></script>
 
 
     <script>
-        $(function()***REMOVED***
+        $(function(){
             $("#loader").hide()
-        ***REMOVED***)
+        })
     </script>
-    ***REMOVED***% block footerjs %***REMOVED***
-    ***REMOVED***% endblock %***REMOVED***
+    {% block footerjs %}
+    {% endblock %}
 
 </body>
 

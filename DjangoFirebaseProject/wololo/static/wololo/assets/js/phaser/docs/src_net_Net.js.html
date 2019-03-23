@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1289,7 +1289,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
             <pre class="sunlight-highlight-javascript linenums">/**
 * @author       Richard Davey &lt;rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1297,31 +1297,31 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 *
 * @class Phaser.Net
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
+* @param {Phaser.Game} game - A reference to the currently running game.
 */
-Phaser.Net = function (game) ***REMOVED***
+Phaser.Net = function (game) {
 
     this.game = game;
 
-***REMOVED***;
+};
 
-Phaser.Net.prototype = ***REMOVED***
+Phaser.Net.prototype = {
 
     /**
     * Returns the hostname given by the browser.
     *
     * @method Phaser.Net#getHostName
-    * @return ***REMOVED***string***REMOVED***
+    * @return {string}
     */
-    getHostName: function () ***REMOVED***
+    getHostName: function () {
 
-        if (window.location &amp;&amp; window.location.hostname) ***REMOVED***
+        if (window.location &amp;&amp; window.location.hostname) {
             return window.location.hostname;
-        ***REMOVED***
+        }
 
         return null;
 
-    ***REMOVED***,
+    },
 
     /**
     * Compares the given domain name against the hostname of the browser containing the game.
@@ -1330,12 +1330,12 @@ Phaser.Net.prototype = ***REMOVED***
     * Do not include 'http://' at the start.
     *
     * @method Phaser.Net#checkDomainName
-    * @param ***REMOVED***string***REMOVED*** domain
-    * @return ***REMOVED***boolean***REMOVED*** true if the given domain fragment can be found in the window.location.hostname
+    * @param {string} domain
+    * @return {boolean} true if the given domain fragment can be found in the window.location.hostname
     */
-    checkDomainName: function (domain) ***REMOVED***
+    checkDomainName: function (domain) {
         return window.location.hostname.indexOf(domain) !== -1;
-    ***REMOVED***,
+    },
 
     /**
     * Updates a value on the Query String and returns it in full.
@@ -1344,112 +1344,112 @@ Phaser.Net.prototype = ***REMOVED***
     * Optionally you can redirect to the new url, or just return it as a string.
     *
     * @method Phaser.Net#updateQueryString
-    * @param ***REMOVED***string***REMOVED*** key - The querystring key to update.
-    * @param ***REMOVED***string***REMOVED*** value - The new value to be set. If it already exists it will be replaced.
-    * @param ***REMOVED***boolean***REMOVED*** redirect - If true the browser will issue a redirect to the url with the new querystring.
-    * @param ***REMOVED***string***REMOVED*** url - The URL to modify. If none is given it uses window.location.href.
-    * @return ***REMOVED***string***REMOVED*** If redirect is false then the modified url and query string is returned.
+    * @param {string} key - The querystring key to update.
+    * @param {string} value - The new value to be set. If it already exists it will be replaced.
+    * @param {boolean} redirect - If true the browser will issue a redirect to the url with the new querystring.
+    * @param {string} url - The URL to modify. If none is given it uses window.location.href.
+    * @return {string} If redirect is false then the modified url and query string is returned.
     */
-    updateQueryString: function (key, value, redirect, url) ***REMOVED***
+    updateQueryString: function (key, value, redirect, url) {
 
-        if (redirect === undefined) ***REMOVED*** redirect = false; ***REMOVED***
-        if (url === undefined || url === '') ***REMOVED*** url = window.location.href; ***REMOVED***
+        if (redirect === undefined) { redirect = false; }
+        if (url === undefined || url === '') { url = window.location.href; }
 
         var output = '';
         var re = new RegExp("([?|&amp;])" + key + "=.*?(&amp;|#|$)(.*)", "gi");
 
         if (re.test(url))
-        ***REMOVED***
+        {
             if (typeof value !== 'undefined' &amp;&amp; value !== null)
-            ***REMOVED***
+            {
                 output = url.replace(re, '$1' + key + "=" + value + '$2$3');
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 output = url.replace(re, '$1$3').replace(/(&amp;|\?)$/, '');
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             if (typeof value !== 'undefined' &amp;&amp; value !== null)
-            ***REMOVED***
+            {
                 var separator = url.indexOf('?') !== -1 ? '&amp;' : '?';
                 var hash = url.split('#');
                 url = hash[0] + separator + key + '=' + value;
 
-                if (hash[1]) ***REMOVED***
+                if (hash[1]) {
                     url += '#' + hash[1];
-                ***REMOVED***
+                }
 
                 output = url;
 
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 output = url;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         if (redirect)
-        ***REMOVED***
+        {
             window.location.href = output;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return output;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns the Query String as an object.
     * If you specify a parameter it will return just the value of that parameter, should it exist.
     *
     * @method Phaser.Net#getQueryString
-    * @param ***REMOVED***string***REMOVED*** [parameter=''] - If specified this will return just the value for that key.
-    * @return ***REMOVED***string|object***REMOVED*** An object containing the key value pairs found in the query string or just the value if a parameter was given.
+    * @param {string} [parameter=''] - If specified this will return just the value for that key.
+    * @return {string|object} An object containing the key value pairs found in the query string or just the value if a parameter was given.
     */
-    getQueryString: function (parameter) ***REMOVED***
+    getQueryString: function (parameter) {
 
-        if (parameter === undefined) ***REMOVED*** parameter = ''; ***REMOVED***
+        if (parameter === undefined) { parameter = ''; }
 
-        var output = ***REMOVED******REMOVED***;
+        var output = {};
         var keyValues = location.search.substring(1).split('&amp;');
 
         for (var i in keyValues)
-        ***REMOVED***
+        {
             var key = keyValues[i].split('=');
 
             if (key.length > 1)
-            ***REMOVED***
+            {
                 if (parameter &amp;&amp; parameter === this.decodeURI(key[0]))
-                ***REMOVED***
+                {
                     return this.decodeURI(key[1]);
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     output[this.decodeURI(key[0])] = this.decodeURI(key[1]);
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
 
         return output;
 
-    ***REMOVED***,
+    },
 
     /**
     * Takes a Uniform Resource Identifier (URI) component (previously created by encodeURIComponent or by a similar routine) and
     * decodes it, replacing \ with spaces in the return. Used internally by the Net classes.
     *
     * @method Phaser.Net#decodeURI
-    * @param ***REMOVED***string***REMOVED*** value - The URI component to be decoded.
-    * @return ***REMOVED***string***REMOVED*** The decoded value.
+    * @param {string} value - The URI component to be decoded.
+    * @return {string} The decoded value.
     */
-    decodeURI: function (value) ***REMOVED***
+    decodeURI: function (value) {
         return decodeURIComponent(value.replace(/\+/g, " "));
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.Net.prototype.constructor = Phaser.Net;
 </pre>
@@ -1494,22 +1494,22 @@ Phaser.Net.prototype.constructor = Phaser.Net;
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

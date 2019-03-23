@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -10,7 +10,7 @@
 *
 * @class
 */
-Phaser.Component.PhysicsBody = function () ***REMOVED******REMOVED***;
+Phaser.Component.PhysicsBody = function () {};
 
 /**
  * The PhysicsBody component preUpdate handler.
@@ -18,10 +18,10 @@ Phaser.Component.PhysicsBody = function () ***REMOVED******REMOVED***;
  *
  * @method
  */
-Phaser.Component.PhysicsBody.preUpdate = function () ***REMOVED***
+Phaser.Component.PhysicsBody.preUpdate = function () {
 
     if (this.fresh && this.exists)
-    ***REMOVED***
+    {
         this.world.setTo(this.parent.position.x + this.position.x, this.parent.position.y + this.position.y);
         this.worldTransform.tx = this.world.x;
         this.worldTransform.ty = this.world.y;
@@ -30,27 +30,27 @@ Phaser.Component.PhysicsBody.preUpdate = function () ***REMOVED***
         this.previousRotation = this.rotation;
 
         if (this.body)
-        ***REMOVED***
+        {
             this.body.preUpdate();
-        ***REMOVED***
+        }
 
         this.fresh = false;
 
         return false;
-    ***REMOVED***
+    }
 
     this.previousPosition.set(this.world.x, this.world.y);
     this.previousRotation = this.rotation;
 
     if (!this._exists || !this.parent.exists)
-    ***REMOVED***
+    {
         this.renderOrderID = -1;
         return false;
-    ***REMOVED***
+    }
 
     return true;
 
-***REMOVED***;
+};
 
 /**
  * The PhysicsBody component postUpdate handler.
@@ -58,16 +58,16 @@ Phaser.Component.PhysicsBody.preUpdate = function () ***REMOVED***
  *
  * @method
  */
-Phaser.Component.PhysicsBody.postUpdate = function () ***REMOVED***
+Phaser.Component.PhysicsBody.postUpdate = function () {
 
     if (this.exists && this.body)
-    ***REMOVED***
+    {
         this.body.postUpdate();
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
-Phaser.Component.PhysicsBody.prototype = ***REMOVED***
+Phaser.Component.PhysicsBody.prototype = {
 
     /**
     * `body` is the Game Objects physics body. Once a Game Object is enabled for physics you access all associated 
@@ -85,7 +85,7 @@ Phaser.Component.PhysicsBody.prototype = ***REMOVED***
     * 
     * If you need a different result then adjust or re-create the Body shape offsets manually or reset the anchor after enabling physics.
     *
-    * @property ***REMOVED***Phaser.Physics.Arcade.Body|Phaser.Physics.P2.Body|Phaser.Physics.Ninja.Body|null***REMOVED*** body
+    * @property {Phaser.Physics.Arcade.Body|Phaser.Physics.P2.Body|Phaser.Physics.Ninja.Body|null} body
     * @default
     */
     body: null,
@@ -93,53 +93,53 @@ Phaser.Component.PhysicsBody.prototype = ***REMOVED***
     /**
     * The position of the Game Object on the x axis relative to the local coordinates of the parent.
     *
-    * @property ***REMOVED***number***REMOVED*** x
+    * @property {number} x
     */
-    x: ***REMOVED***
+    x: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return this.position.x;
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             this.position.x = value;
 
             if (this.body && !this.body.dirty)
-            ***REMOVED***
+            {
                 this.body._reset = true;
-            ***REMOVED***
+            }
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The position of the Game Object on the y axis relative to the local coordinates of the parent.
     *
-    * @property ***REMOVED***number***REMOVED*** y
+    * @property {number} y
     */
-    y: ***REMOVED***
+    y: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return this.position.y;
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             this.position.y = value;
 
             if (this.body && !this.body.dirty)
-            ***REMOVED***
+            {
                 this.body._reset = true;
-            ***REMOVED***
+            }
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};

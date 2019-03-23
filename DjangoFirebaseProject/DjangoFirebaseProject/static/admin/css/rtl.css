@@ -1,264 +1,264 @@
-body ***REMOVED***
+body {
     direction: rtl;
-***REMOVED***
+}
 
 /* LOGIN */
 
-.login .form-row ***REMOVED***
+.login .form-row {
     float: right;
-***REMOVED***
+}
 
-.login .form-row label ***REMOVED***
+.login .form-row label {
     float: right;
     padding-left: 0.5em;
     padding-right: 0;
     text-align: left;
-***REMOVED***
+}
 
-.login .submit-row ***REMOVED***
+.login .submit-row {
     clear: both;
     padding: 1em 9.4em 0 0;
-***REMOVED***
+}
 
 /* GLOBAL */
 
-th ***REMOVED***
+th {
     text-align: right;
-***REMOVED***
+}
 
-.module h2, .module caption ***REMOVED***
+.module h2, .module caption {
     text-align: right;
-***REMOVED***
+}
 
-.module ul, .module ol ***REMOVED***
+.module ul, .module ol {
     margin-left: 0;
     margin-right: 1.5em;
-***REMOVED***
+}
 
-.viewlink, .addlink, .changelink ***REMOVED***
+.viewlink, .addlink, .changelink {
     padding-left: 0;
     padding-right: 16px;
     background-position: 100% 1px;
-***REMOVED***
+}
 
-.deletelink ***REMOVED***
+.deletelink {
     padding-left: 0;
     padding-right: 16px;
     background-position: 100% 1px;
-***REMOVED***
+}
 
-.object-tools ***REMOVED***
+.object-tools {
     float: left;
-***REMOVED***
+}
 
 thead th:first-child,
-tfoot td:first-child ***REMOVED***
+tfoot td:first-child {
     border-left: none;
-***REMOVED***
+}
 
 /* LAYOUT */
 
-#user-tools ***REMOVED***
+#user-tools {
     right: auto;
     left: 0;
     text-align: left;
-***REMOVED***
+}
 
-div.breadcrumbs ***REMOVED***
+div.breadcrumbs {
     text-align: right;
-***REMOVED***
+}
 
-#content-main ***REMOVED***
+#content-main {
     float: right;
-***REMOVED***
+}
 
-#content-related ***REMOVED***
+#content-related {
     float: left;
     margin-left: -300px;
     margin-right: auto;
-***REMOVED***
+}
 
-.colMS ***REMOVED***
+.colMS {
     margin-left: 300px;
     margin-right: 0;
-***REMOVED***
+}
 
 /* SORTABLE TABLES */
 
-table thead th.sorted .sortoptions ***REMOVED***
+table thead th.sorted .sortoptions {
    float: left;
-***REMOVED***
+}
 
-thead th.sorted .text ***REMOVED***
+thead th.sorted .text {
     padding-right: 0;
     padding-left: 42px;
-***REMOVED***
+}
 
 /* dashboard styles */
 
-.dashboard .module table td a ***REMOVED***
+.dashboard .module table td a {
     padding-left: .6em;
     padding-right: 16px;
-***REMOVED***
+}
 
 /* changelists styles */
 
-.change-list .filtered table ***REMOVED***
+.change-list .filtered table {
     border-left: none;
     border-right: 0px none;
-***REMOVED***
+}
 
-#changelist-filter ***REMOVED***
+#changelist-filter {
     right: auto;
     left: 0;
     border-left: none;
     border-right: none;
-***REMOVED***
+}
 
-.change-list .filtered .results, .change-list .filtered .paginator, .filtered #toolbar, .filtered div.xfull ***REMOVED***
+.change-list .filtered .results, .change-list .filtered .paginator, .filtered #toolbar, .filtered div.xfull {
     margin-right: 0;
     margin-left: 280px;
-***REMOVED***
+}
 
-#changelist-filter li.selected ***REMOVED***
+#changelist-filter li.selected {
     border-left: none;
     padding-left: 10px;
     margin-left: 0;
     border-right: 5px solid #eaeaea;
     padding-right: 10px;
     margin-right: -15px;
-***REMOVED***
+}
 
-.filtered .actions ***REMOVED***
+.filtered .actions {
     margin-left: 280px;
     margin-right: 0;
-***REMOVED***
+}
 
-#changelist table tbody td:first-child, #changelist table tbody th:first-child ***REMOVED***
+#changelist table tbody td:first-child, #changelist table tbody th:first-child {
     border-right: none;
     border-left: none;
-***REMOVED***
+}
 
 /* FORMS */
 
-.aligned label ***REMOVED***
+.aligned label {
     padding: 0 0 3px 1em;
     float: right;
-***REMOVED***
+}
 
-.submit-row ***REMOVED***
+.submit-row {
     text-align: left
-***REMOVED***
+}
 
-.submit-row p.deletelink-box ***REMOVED***
+.submit-row p.deletelink-box {
     float: right;
-***REMOVED***
+}
 
-.submit-row input.default ***REMOVED***
+.submit-row input.default {
     margin-left: 0;
-***REMOVED***
+}
 
-.vDateField, .vTimeField ***REMOVED***
+.vDateField, .vTimeField {
     margin-left: 2px;
-***REMOVED***
+}
 
-.aligned .form-row input ***REMOVED***
+.aligned .form-row input {
     margin-left: 5px;
-***REMOVED***
+}
 
-form .aligned p.help, form .aligned div.help ***REMOVED***
+form .aligned p.help, form .aligned div.help {
     clear: right;
-***REMOVED***
+}
 
-form ul.inline li ***REMOVED***
+form ul.inline li {
     float: right;
     padding-right: 0;
     padding-left: 7px;
-***REMOVED***
+}
 
-input[type=submit].default, .submit-row input.default ***REMOVED***
+input[type=submit].default, .submit-row input.default {
     float: left;
-***REMOVED***
+}
 
-fieldset .fieldBox ***REMOVED***
+fieldset .fieldBox {
     float: right;
     margin-left: 20px;
     margin-right: 0;
-***REMOVED***
+}
 
-.errorlist li ***REMOVED***
+.errorlist li {
     background-position: 100% 12px;
     padding: 0;
-***REMOVED***
+}
 
-.errornote ***REMOVED***
+.errornote {
     background-position: 100% 12px;
     padding: 10px 12px;
-***REMOVED***
+}
 
 /* WIDGETS */
 
-.calendarnav-previous ***REMOVED***
+.calendarnav-previous {
     top: 0;
     left: auto;
     right: 10px;
-***REMOVED***
+}
 
-.calendarnav-next ***REMOVED***
+.calendarnav-next {
     top: 0;
     right: auto;
     left: 10px;
-***REMOVED***
+}
 
-.calendar caption, .calendarbox h2 ***REMOVED***
+.calendar caption, .calendarbox h2 {
     text-align: center;
-***REMOVED***
+}
 
-.selector ***REMOVED***
+.selector {
     float: right;
-***REMOVED***
+}
 
-.selector .selector-filter ***REMOVED***
+.selector .selector-filter {
     text-align: right;
-***REMOVED***
+}
 
-.inline-deletelink ***REMOVED***
+.inline-deletelink {
     float: left;
-***REMOVED***
+}
 
-form .form-row p.datetime ***REMOVED***
+form .form-row p.datetime {
     overflow: hidden;
-***REMOVED***
+}
 
-.related-widget-wrapper ***REMOVED***
+.related-widget-wrapper {
     float: right;
-***REMOVED***
+}
 
 /* MISC */
 
-.inline-related h2, .inline-group h2 ***REMOVED***
+.inline-related h2, .inline-group h2 {
     text-align: right
-***REMOVED***
+}
 
-.inline-related h3 span.delete ***REMOVED***
+.inline-related h3 span.delete {
     padding-right: 20px;
     padding-left: inherit;
     left: 10px;
     right: inherit;
     float:left;
-***REMOVED***
+}
 
-.inline-related h3 span.delete label ***REMOVED***
+.inline-related h3 span.delete label {
     margin-left: inherit;
     margin-right: 2px;
-***REMOVED***
+}
 
 /* IE7 specific bug fixes */
 
-div.colM ***REMOVED***
+div.colM {
     position: relative;
-***REMOVED***
+}
 
-.submit-row input ***REMOVED***
+.submit-row input {
     float: left;
-***REMOVED***
+}

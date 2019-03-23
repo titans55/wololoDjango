@@ -5,10 +5,10 @@
 /**
 * @class ComplexPrimitiveShader
 * @constructor
-* @param gl ***REMOVED***WebGLContext***REMOVED*** the current WebGL drawing context
+* @param gl {WebGLContext} the current WebGL drawing context
 */
 PIXI.ComplexPrimitiveShader = function(gl)
-***REMOVED***
+{
     /**
      * @property _UID
      * @type Number
@@ -40,9 +40,9 @@ PIXI.ComplexPrimitiveShader = function(gl)
 
         'varying vec4 vColor;',
 
-        'void main(void) ***REMOVED***',
+        'void main(void) {',
         '   gl_FragColor = vColor;',
-        '***REMOVED***'
+        '}'
     ];
 
     /**
@@ -63,16 +63,16 @@ PIXI.ComplexPrimitiveShader = function(gl)
         'uniform float flipY;',
         'varying vec4 vColor;',
 
-        'void main(void) ***REMOVED***',
+        'void main(void) {',
         '   vec3 v = translationMatrix * vec3(aVertexPosition , 1.0);',
         '   v -= offsetVector.xyx;',
         '   gl_Position = vec4( v.x / projectionVector.x -1.0, (v.y / projectionVector.y * -flipY) + flipY , 0.0, 1.0);',
         '   vColor = vec4(color * alpha * tint, alpha);',//" * vec4(tint * alpha, alpha);',
-        '***REMOVED***'
+        '}'
     ];
 
     this.init();
-***REMOVED***;
+};
 
 PIXI.ComplexPrimitiveShader.prototype.constructor = PIXI.ComplexPrimitiveShader;
 
@@ -82,7 +82,7 @@ PIXI.ComplexPrimitiveShader.prototype.constructor = PIXI.ComplexPrimitiveShader;
 * @method init
 */
 PIXI.ComplexPrimitiveShader.prototype.init = function()
-***REMOVED***
+{
     var gl = this.gl;
 
     var program = PIXI.compileProgram(gl, this.vertexSrc, this.fragmentSrc);
@@ -105,7 +105,7 @@ PIXI.ComplexPrimitiveShader.prototype.init = function()
     this.alpha = gl.getUniformLocation(program, 'alpha');
 
     this.program = program;
-***REMOVED***;
+};
 
 /**
 * Destroys the shader.
@@ -113,10 +113,10 @@ PIXI.ComplexPrimitiveShader.prototype.init = function()
 * @method destroy
 */
 PIXI.ComplexPrimitiveShader.prototype.destroy = function()
-***REMOVED***
+{
     this.gl.deleteProgram( this.program );
     this.uniforms = null;
     this.gl = null;
 
     this.attribute = null;
-***REMOVED***;
+};

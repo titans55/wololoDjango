@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1289,34 +1289,34 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
             <pre class="sunlight-highlight-javascript linenums">/**
 * @author       Richard Davey &lt;rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
 * The GameObjectCreator is a quick way to create common game objects _without_ adding them to the game world.
-* The object creator can be accessed with ***REMOVED***@linkcode Phaser.Game#make `game.make`***REMOVED***.
+* The object creator can be accessed with {@linkcode Phaser.Game#make `game.make`}.
 *
 * @class Phaser.GameObjectCreator
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
+* @param {Phaser.Game} game - A reference to the currently running game.
 */
-Phaser.GameObjectCreator = function (game) ***REMOVED***
+Phaser.GameObjectCreator = function (game) {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running Game.
+    * @property {Phaser.Game} game - A reference to the currently running Game.
     * @protected
     */
     this.game = game;
 
     /**
-    * @property ***REMOVED***Phaser.World***REMOVED*** world - A reference to the game world.
+    * @property {Phaser.World} world - A reference to the game world.
     * @protected
     */
     this.world = this.game.world;
 
-***REMOVED***;
+};
 
-Phaser.GameObjectCreator.prototype = ***REMOVED***
+Phaser.GameObjectCreator.prototype = {
 
     /**
     * Create a new Image object.
@@ -1325,33 +1325,33 @@ Phaser.GameObjectCreator.prototype = ***REMOVED***
     * It can still rotate, scale, crop and receive input events. This makes it perfect for logos, backgrounds, simple buttons and other non-Sprite graphics.
     *
     * @method Phaser.GameObjectCreator#image
-    * @param ***REMOVED***number***REMOVED*** x - X position of the image.
-    * @param ***REMOVED***number***REMOVED*** y - Y position of the image.
-    * @param ***REMOVED***string|Phaser.RenderTexture|PIXI.Texture***REMOVED*** key - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache entry, or an instance of a RenderTexture or PIXI.Texture.
-    * @param ***REMOVED***string|number***REMOVED*** [frame] - If the sprite uses an image from a texture atlas or sprite sheet you can pass the frame here. Either a number for a frame ID or a string for a frame name.
-    * @returns ***REMOVED***Phaser.Image***REMOVED*** the newly created sprite object.
+    * @param {number} x - X position of the image.
+    * @param {number} y - Y position of the image.
+    * @param {string|Phaser.RenderTexture|PIXI.Texture} key - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache entry, or an instance of a RenderTexture or PIXI.Texture.
+    * @param {string|number} [frame] - If the sprite uses an image from a texture atlas or sprite sheet you can pass the frame here. Either a number for a frame ID or a string for a frame name.
+    * @returns {Phaser.Image} the newly created sprite object.
     */
-    image: function (x, y, key, frame) ***REMOVED***
+    image: function (x, y, key, frame) {
 
         return new Phaser.Image(this.game, x, y, key, frame);
 
-    ***REMOVED***,
+    },
 
     /**
     * Create a new Sprite with specific position and sprite sheet key.
     *
     * @method Phaser.GameObjectCreator#sprite
-    * @param ***REMOVED***number***REMOVED*** x - X position of the new sprite.
-    * @param ***REMOVED***number***REMOVED*** y - Y position of the new sprite.
-    * @param ***REMOVED***string|Phaser.RenderTexture|PIXI.Texture***REMOVED*** key - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache entry, or an instance of a RenderTexture or PIXI.Texture.
-    * @param ***REMOVED***string|number***REMOVED*** [frame] - If the sprite uses an image from a texture atlas or sprite sheet you can pass the frame here. Either a number for a frame ID or a string for a frame name.
-    * @returns ***REMOVED***Phaser.Sprite***REMOVED*** the newly created sprite object.
+    * @param {number} x - X position of the new sprite.
+    * @param {number} y - Y position of the new sprite.
+    * @param {string|Phaser.RenderTexture|PIXI.Texture} key - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache entry, or an instance of a RenderTexture or PIXI.Texture.
+    * @param {string|number} [frame] - If the sprite uses an image from a texture atlas or sprite sheet you can pass the frame here. Either a number for a frame ID or a string for a frame name.
+    * @returns {Phaser.Sprite} the newly created sprite object.
     */
-    sprite: function (x, y, key, frame) ***REMOVED***
+    sprite: function (x, y, key, frame) {
 
         return new Phaser.Sprite(this.game, x, y, key, frame);
 
-    ***REMOVED***,
+    },
 
     /**
     * Create a tween object for a specific object.
@@ -1359,181 +1359,181 @@ Phaser.GameObjectCreator.prototype = ***REMOVED***
     * The object can be any JavaScript object or Phaser object such as Sprite.
     *
     * @method Phaser.GameObjectCreator#tween
-    * @param ***REMOVED***object***REMOVED*** obj - Object the tween will be run on.
-    * @return ***REMOVED***Phaser.Tween***REMOVED*** The Tween object.
+    * @param {object} obj - Object the tween will be run on.
+    * @return {Phaser.Tween} The Tween object.
     */
-    tween: function (obj) ***REMOVED***
+    tween: function (obj) {
 
         return new Phaser.Tween(obj, this.game, this.game.tweens);
 
-    ***REMOVED***,
+    },
 
     /**
     * A Group is a container for display objects that allows for fast pooling, recycling and collision checks.
     *
     * @method Phaser.GameObjectCreator#group
-    * @param ***REMOVED***any***REMOVED*** parent - The parent Group or DisplayObjectContainer that will hold this group, if any.
-    * @param ***REMOVED***string***REMOVED*** [name='group'] - A name for this Group. Not used internally but useful for debugging.
-    * @param ***REMOVED***boolean***REMOVED*** [addToStage=false] - If set to true this Group will be added directly to the Game.Stage instead of Game.World.
-    * @param ***REMOVED***boolean***REMOVED*** [enableBody=false] - If true all Sprites created with `Group.create` or `Group.createMulitple` will have a physics body created on them. Change the body type with physicsBodyType.
-    * @param ***REMOVED***number***REMOVED*** [physicsBodyType=0] - If enableBody is true this is the type of physics body that is created on new Sprites. Phaser.Physics.ARCADE, Phaser.Physics.P2, Phaser.Physics.NINJA, etc.
-    * @return ***REMOVED***Phaser.Group***REMOVED*** The newly created Group.
+    * @param {any} parent - The parent Group or DisplayObjectContainer that will hold this group, if any.
+    * @param {string} [name='group'] - A name for this Group. Not used internally but useful for debugging.
+    * @param {boolean} [addToStage=false] - If set to true this Group will be added directly to the Game.Stage instead of Game.World.
+    * @param {boolean} [enableBody=false] - If true all Sprites created with `Group.create` or `Group.createMulitple` will have a physics body created on them. Change the body type with physicsBodyType.
+    * @param {number} [physicsBodyType=0] - If enableBody is true this is the type of physics body that is created on new Sprites. Phaser.Physics.ARCADE, Phaser.Physics.P2, Phaser.Physics.NINJA, etc.
+    * @return {Phaser.Group} The newly created Group.
     */
-    group: function (parent, name, addToStage, enableBody, physicsBodyType) ***REMOVED***
+    group: function (parent, name, addToStage, enableBody, physicsBodyType) {
 
         return new Phaser.Group(this.game, parent, name, addToStage, enableBody, physicsBodyType);
 
-    ***REMOVED***,
+    },
 
     /**
     * Create a new SpriteBatch.
     *
     * @method Phaser.GameObjectCreator#spriteBatch
-    * @param ***REMOVED***any***REMOVED*** parent - The parent Group or DisplayObjectContainer that will hold this group, if any.
-    * @param ***REMOVED***string***REMOVED*** [name='group'] - A name for this Group. Not used internally but useful for debugging.
-    * @param ***REMOVED***boolean***REMOVED*** [addToStage=false] - If set to true this Group will be added directly to the Game.Stage instead of Game.World.
-    * @return ***REMOVED***Phaser.SpriteBatch***REMOVED*** The newly created group.
+    * @param {any} parent - The parent Group or DisplayObjectContainer that will hold this group, if any.
+    * @param {string} [name='group'] - A name for this Group. Not used internally but useful for debugging.
+    * @param {boolean} [addToStage=false] - If set to true this Group will be added directly to the Game.Stage instead of Game.World.
+    * @return {Phaser.SpriteBatch} The newly created group.
     */
-    spriteBatch: function (parent, name, addToStage) ***REMOVED***
+    spriteBatch: function (parent, name, addToStage) {
 
-        if (name === undefined) ***REMOVED*** name = 'group'; ***REMOVED***
-        if (addToStage === undefined) ***REMOVED*** addToStage = false; ***REMOVED***
+        if (name === undefined) { name = 'group'; }
+        if (addToStage === undefined) { addToStage = false; }
 
         return new Phaser.SpriteBatch(this.game, parent, name, addToStage);
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a new Sound object.
     *
     * @method Phaser.GameObjectCreator#audio
-    * @param ***REMOVED***string***REMOVED*** key - The Game.cache key of the sound that this object will use.
-    * @param ***REMOVED***number***REMOVED*** [volume=1] - The volume at which the sound will be played.
-    * @param ***REMOVED***boolean***REMOVED*** [loop=false] - Whether or not the sound will loop.
-    * @param ***REMOVED***boolean***REMOVED*** [connect=true] - Controls if the created Sound object will connect to the master gainNode of the SoundManager when running under WebAudio.
-    * @return ***REMOVED***Phaser.Sound***REMOVED*** The newly created text object.
+    * @param {string} key - The Game.cache key of the sound that this object will use.
+    * @param {number} [volume=1] - The volume at which the sound will be played.
+    * @param {boolean} [loop=false] - Whether or not the sound will loop.
+    * @param {boolean} [connect=true] - Controls if the created Sound object will connect to the master gainNode of the SoundManager when running under WebAudio.
+    * @return {Phaser.Sound} The newly created text object.
     */
-    audio: function (key, volume, loop, connect) ***REMOVED***
+    audio: function (key, volume, loop, connect) {
 
         return this.game.sound.add(key, volume, loop, connect);
 
-    ***REMOVED***,
+    },
 
     /**
      * Creates a new AudioSprite object.
      *
      * @method Phaser.GameObjectCreator#audioSprite
-     * @param ***REMOVED***string***REMOVED*** key - The Game.cache key of the sound that this object will use.
-     * @return ***REMOVED***Phaser.AudioSprite***REMOVED*** The newly created AudioSprite object.
+     * @param {string} key - The Game.cache key of the sound that this object will use.
+     * @return {Phaser.AudioSprite} The newly created AudioSprite object.
      */
-    audioSprite: function (key) ***REMOVED***
+    audioSprite: function (key) {
 
         return this.game.sound.addSprite(key);
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a new Sound object.
     *
     * @method Phaser.GameObjectCreator#sound
-    * @param ***REMOVED***string***REMOVED*** key - The Game.cache key of the sound that this object will use.
-    * @param ***REMOVED***number***REMOVED*** [volume=1] - The volume at which the sound will be played.
-    * @param ***REMOVED***boolean***REMOVED*** [loop=false] - Whether or not the sound will loop.
-    * @param ***REMOVED***boolean***REMOVED*** [connect=true] - Controls if the created Sound object will connect to the master gainNode of the SoundManager when running under WebAudio.
-    * @return ***REMOVED***Phaser.Sound***REMOVED*** The newly created text object.
+    * @param {string} key - The Game.cache key of the sound that this object will use.
+    * @param {number} [volume=1] - The volume at which the sound will be played.
+    * @param {boolean} [loop=false] - Whether or not the sound will loop.
+    * @param {boolean} [connect=true] - Controls if the created Sound object will connect to the master gainNode of the SoundManager when running under WebAudio.
+    * @return {Phaser.Sound} The newly created text object.
     */
-    sound: function (key, volume, loop, connect) ***REMOVED***
+    sound: function (key, volume, loop, connect) {
 
         return this.game.sound.add(key, volume, loop, connect);
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a new TileSprite object.
     *
     * @method Phaser.GameObjectCreator#tileSprite
-    * @param ***REMOVED***number***REMOVED*** x - The x coordinate (in world space) to position the TileSprite at.
-    * @param ***REMOVED***number***REMOVED*** y - The y coordinate (in world space) to position the TileSprite at.
-    * @param ***REMOVED***number***REMOVED*** width - The width of the TileSprite.
-    * @param ***REMOVED***number***REMOVED*** height - The height of the TileSprite.
-    * @param ***REMOVED***string|Phaser.BitmapData|PIXI.Texture***REMOVED*** key - This is the image or texture used by the TileSprite during rendering. It can be a string which is a reference to the Phaser Image Cache entry, or an instance of a PIXI.Texture or BitmapData.
-    * @param ***REMOVED***string|number***REMOVED*** frame - If this TileSprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
-    * @return ***REMOVED***Phaser.TileSprite***REMOVED*** The newly created tileSprite object.
+    * @param {number} x - The x coordinate (in world space) to position the TileSprite at.
+    * @param {number} y - The y coordinate (in world space) to position the TileSprite at.
+    * @param {number} width - The width of the TileSprite.
+    * @param {number} height - The height of the TileSprite.
+    * @param {string|Phaser.BitmapData|PIXI.Texture} key - This is the image or texture used by the TileSprite during rendering. It can be a string which is a reference to the Phaser Image Cache entry, or an instance of a PIXI.Texture or BitmapData.
+    * @param {string|number} frame - If this TileSprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
+    * @return {Phaser.TileSprite} The newly created tileSprite object.
     */
-    tileSprite: function (x, y, width, height, key, frame) ***REMOVED***
+    tileSprite: function (x, y, width, height, key, frame) {
 
         return new Phaser.TileSprite(this.game, x, y, width, height, key, frame);
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a new Rope object.
     *
     * @method Phaser.GameObjectCreator#rope
-    * @param ***REMOVED***number***REMOVED*** x - The x coordinate (in world space) to position the Rope at.
-    * @param ***REMOVED***number***REMOVED*** y - The y coordinate (in world space) to position the Rope at.
-    * @param ***REMOVED***number***REMOVED*** width - The width of the Rope.
-    * @param ***REMOVED***number***REMOVED*** height - The height of the Rope.
-    * @param ***REMOVED***string|Phaser.RenderTexture|Phaser.BitmapData|PIXI.Texture***REMOVED*** key - This is the image or texture used by the TileSprite during rendering. It can be a string which is a reference to the Cache entry, or an instance of a RenderTexture or PIXI.Texture.
-    * @param ***REMOVED***string|number***REMOVED*** frame - If this Rope is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
-    * @return ***REMOVED***Phaser.Rope***REMOVED*** The newly created rope object.
+    * @param {number} x - The x coordinate (in world space) to position the Rope at.
+    * @param {number} y - The y coordinate (in world space) to position the Rope at.
+    * @param {number} width - The width of the Rope.
+    * @param {number} height - The height of the Rope.
+    * @param {string|Phaser.RenderTexture|Phaser.BitmapData|PIXI.Texture} key - This is the image or texture used by the TileSprite during rendering. It can be a string which is a reference to the Cache entry, or an instance of a RenderTexture or PIXI.Texture.
+    * @param {string|number} frame - If this Rope is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
+    * @return {Phaser.Rope} The newly created rope object.
     */
-    rope: function (x, y, key, frame, points) ***REMOVED***
+    rope: function (x, y, key, frame, points) {
 
         return new Phaser.Rope(this.game, x, y, key, frame, points);
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a new Text object.
     *
     * @method Phaser.GameObjectCreator#text
-    * @param ***REMOVED***number***REMOVED*** x - X position of the new text object.
-    * @param ***REMOVED***number***REMOVED*** y - Y position of the new text object.
-    * @param ***REMOVED***string***REMOVED*** text - The actual text that will be written.
-    * @param ***REMOVED***object***REMOVED*** style - The style object containing style attributes like font, font size , etc.
-    * @return ***REMOVED***Phaser.Text***REMOVED*** The newly created text object.
+    * @param {number} x - X position of the new text object.
+    * @param {number} y - Y position of the new text object.
+    * @param {string} text - The actual text that will be written.
+    * @param {object} style - The style object containing style attributes like font, font size , etc.
+    * @return {Phaser.Text} The newly created text object.
     */
-    text: function (x, y, text, style) ***REMOVED***
+    text: function (x, y, text, style) {
 
         return new Phaser.Text(this.game, x, y, text, style);
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a new Button object.
     *
     * @method Phaser.GameObjectCreator#button
-    * @param ***REMOVED***number***REMOVED*** [x] X position of the new button object.
-    * @param ***REMOVED***number***REMOVED*** [y] Y position of the new button object.
-    * @param ***REMOVED***string***REMOVED*** [key] The image key as defined in the Game.Cache to use as the texture for this button.
-    * @param ***REMOVED***function***REMOVED*** [callback] The function to call when this button is pressed
-    * @param ***REMOVED***object***REMOVED*** [callbackContext] The context in which the callback will be called (usually 'this')
-    * @param ***REMOVED***string|number***REMOVED*** [overFrame] This is the frame or frameName that will be set when this button is in an over state. Give either a number to use a frame ID or a string for a frame name.
-    * @param ***REMOVED***string|number***REMOVED*** [outFrame] This is the frame or frameName that will be set when this button is in an out state. Give either a number to use a frame ID or a string for a frame name.
-    * @param ***REMOVED***string|number***REMOVED*** [downFrame] This is the frame or frameName that will be set when this button is in a down state. Give either a number to use a frame ID or a string for a frame name.
-    * @param ***REMOVED***string|number***REMOVED*** [upFrame] This is the frame or frameName that will be set when this button is in an up state. Give either a number to use a frame ID or a string for a frame name.
-    * @return ***REMOVED***Phaser.Button***REMOVED*** The newly created button object.
+    * @param {number} [x] X position of the new button object.
+    * @param {number} [y] Y position of the new button object.
+    * @param {string} [key] The image key as defined in the Game.Cache to use as the texture for this button.
+    * @param {function} [callback] The function to call when this button is pressed
+    * @param {object} [callbackContext] The context in which the callback will be called (usually 'this')
+    * @param {string|number} [overFrame] This is the frame or frameName that will be set when this button is in an over state. Give either a number to use a frame ID or a string for a frame name.
+    * @param {string|number} [outFrame] This is the frame or frameName that will be set when this button is in an out state. Give either a number to use a frame ID or a string for a frame name.
+    * @param {string|number} [downFrame] This is the frame or frameName that will be set when this button is in a down state. Give either a number to use a frame ID or a string for a frame name.
+    * @param {string|number} [upFrame] This is the frame or frameName that will be set when this button is in an up state. Give either a number to use a frame ID or a string for a frame name.
+    * @return {Phaser.Button} The newly created button object.
     */
-    button: function (x, y, key, callback, callbackContext, overFrame, outFrame, downFrame, upFrame) ***REMOVED***
+    button: function (x, y, key, callback, callbackContext, overFrame, outFrame, downFrame, upFrame) {
 
         return new Phaser.Button(this.game, x, y, key, callback, callbackContext, overFrame, outFrame, downFrame, upFrame);
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a new Graphics object.
     *
     * @method Phaser.GameObjectCreator#graphics
-    * @param ***REMOVED***number***REMOVED*** [x=0] - X position of the new graphics object.
-    * @param ***REMOVED***number***REMOVED*** [y=0] - Y position of the new graphics object.
-    * @return ***REMOVED***Phaser.Graphics***REMOVED*** The newly created graphics object.
+    * @param {number} [x=0] - X position of the new graphics object.
+    * @param {number} [y=0] - Y position of the new graphics object.
+    * @return {Phaser.Graphics} The newly created graphics object.
     */
-    graphics: function (x, y) ***REMOVED***
+    graphics: function (x, y) {
 
         return new Phaser.Graphics(this.game, x, y);
 
-    ***REMOVED***,
+    },
 
     /**
     * Creat a new Emitter.
@@ -1543,16 +1543,16 @@ Phaser.GameObjectCreator.prototype = ***REMOVED***
     * at set intervals, and fixes their positions and velocities accorindgly.
     *
     * @method Phaser.GameObjectCreator#emitter
-    * @param ***REMOVED***number***REMOVED*** [x=0] - The x coordinate within the Emitter that the particles are emitted from.
-    * @param ***REMOVED***number***REMOVED*** [y=0] - The y coordinate within the Emitter that the particles are emitted from.
-    * @param ***REMOVED***number***REMOVED*** [maxParticles=50] - The total number of particles in this emitter.
-    * @return ***REMOVED***Phaser.Emitter***REMOVED*** The newly created emitter object.
+    * @param {number} [x=0] - The x coordinate within the Emitter that the particles are emitted from.
+    * @param {number} [y=0] - The y coordinate within the Emitter that the particles are emitted from.
+    * @param {number} [maxParticles=50] - The total number of particles in this emitter.
+    * @return {Phaser.Emitter} The newly created emitter object.
     */
-    emitter: function (x, y, maxParticles) ***REMOVED***
+    emitter: function (x, y, maxParticles) {
 
         return new Phaser.Particles.Arcade.Emitter(this.game, x, y, maxParticles);
 
-    ***REMOVED***,
+    },
 
     /**
     * Create a new RetroFont object.
@@ -1565,22 +1565,22 @@ Phaser.GameObjectCreator.prototype = ***REMOVED***
     * i.e. if you need each Image to have different text in it, then you need to create multiple RetroFont objects.
     *
     * @method Phaser.GameObjectCreator#retroFont
-    * @param ***REMOVED***string***REMOVED*** font - The key of the image in the Game.Cache that the RetroFont will use.
-    * @param ***REMOVED***number***REMOVED*** characterWidth - The width of each character in the font set.
-    * @param ***REMOVED***number***REMOVED*** characterHeight - The height of each character in the font set.
-    * @param ***REMOVED***string***REMOVED*** chars - The characters used in the font set, in display order. You can use the TEXT_SET consts for common font set arrangements.
-    * @param ***REMOVED***number***REMOVED*** charsPerRow - The number of characters per row in the font set.
-    * @param ***REMOVED***number***REMOVED*** [xSpacing=0] - If the characters in the font set have horizontal spacing between them set the required amount here.
-    * @param ***REMOVED***number***REMOVED*** [ySpacing=0] - If the characters in the font set have vertical spacing between them set the required amount here.
-    * @param ***REMOVED***number***REMOVED*** [xOffset=0] - If the font set doesn't start at the top left of the given image, specify the X coordinate offset here.
-    * @param ***REMOVED***number***REMOVED*** [yOffset=0] - If the font set doesn't start at the top left of the given image, specify the Y coordinate offset here.
-    * @return ***REMOVED***Phaser.RetroFont***REMOVED*** The newly created RetroFont texture which can be applied to an Image or Sprite.
+    * @param {string} font - The key of the image in the Game.Cache that the RetroFont will use.
+    * @param {number} characterWidth - The width of each character in the font set.
+    * @param {number} characterHeight - The height of each character in the font set.
+    * @param {string} chars - The characters used in the font set, in display order. You can use the TEXT_SET consts for common font set arrangements.
+    * @param {number} charsPerRow - The number of characters per row in the font set.
+    * @param {number} [xSpacing=0] - If the characters in the font set have horizontal spacing between them set the required amount here.
+    * @param {number} [ySpacing=0] - If the characters in the font set have vertical spacing between them set the required amount here.
+    * @param {number} [xOffset=0] - If the font set doesn't start at the top left of the given image, specify the X coordinate offset here.
+    * @param {number} [yOffset=0] - If the font set doesn't start at the top left of the given image, specify the Y coordinate offset here.
+    * @return {Phaser.RetroFont} The newly created RetroFont texture which can be applied to an Image or Sprite.
     */
-    retroFont: function (font, characterWidth, characterHeight, chars, charsPerRow, xSpacing, ySpacing, xOffset, yOffset) ***REMOVED***
+    retroFont: function (font, characterWidth, characterHeight, chars, charsPerRow, xSpacing, ySpacing, xOffset, yOffset) {
 
         return new Phaser.RetroFont(this.game, font, characterWidth, characterHeight, chars, charsPerRow, xSpacing, ySpacing, xOffset, yOffset);
 
-    ***REMOVED***,
+    },
 
     /**
     * Create a new BitmapText object.
@@ -1602,19 +1602,19 @@ Phaser.GameObjectCreator.prototype = ***REMOVED***
     * Littera (Web-based, free): http://kvazars.com/littera/
     *
     * @method Phaser.GameObjectCreator#bitmapText
-    * @param ***REMOVED***number***REMOVED*** x - X coordinate to display the BitmapText object at.
-    * @param ***REMOVED***number***REMOVED*** y - Y coordinate to display the BitmapText object at.
-    * @param ***REMOVED***string***REMOVED*** font - The key of the BitmapText as stored in Phaser.Cache.
-    * @param ***REMOVED***string***REMOVED*** [text=''] - The text that will be rendered. This can also be set later via BitmapText.text.
-    * @param ***REMOVED***number***REMOVED*** [size=32] - The size the font will be rendered at in pixels.
-    * @param ***REMOVED***string***REMOVED*** [align='left'] - The alignment of multi-line text. Has no effect if there is only one line of text.
-    * @return ***REMOVED***Phaser.BitmapText***REMOVED*** The newly created bitmapText object.
+    * @param {number} x - X coordinate to display the BitmapText object at.
+    * @param {number} y - Y coordinate to display the BitmapText object at.
+    * @param {string} font - The key of the BitmapText as stored in Phaser.Cache.
+    * @param {string} [text=''] - The text that will be rendered. This can also be set later via BitmapText.text.
+    * @param {number} [size=32] - The size the font will be rendered at in pixels.
+    * @param {string} [align='left'] - The alignment of multi-line text. Has no effect if there is only one line of text.
+    * @return {Phaser.BitmapText} The newly created bitmapText object.
     */
-    bitmapText: function (x, y, font, text, size, align) ***REMOVED***
+    bitmapText: function (x, y, font, text, size, align) {
 
         return new Phaser.BitmapText(this.game, x, y, font, text, size, align);
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a new Phaser.Tilemap object.
@@ -1626,43 +1626,43 @@ Phaser.GameObjectCreator.prototype = ***REMOVED***
     * Note that all Tilemaps use a base tile size to calculate dimensions from, but that a TilemapLayer may have its own unique tile size that overrides it.
     *
     * @method Phaser.GameObjectCreator#tilemap
-    * @param ***REMOVED***string***REMOVED*** [key] - The key of the tilemap data as stored in the Cache. If you're creating a blank map either leave this parameter out or pass `null`.
-    * @param ***REMOVED***number***REMOVED*** [tileWidth=32] - The pixel width of a single map tile. If using CSV data you must specify this. Not required if using Tiled map data.
-    * @param ***REMOVED***number***REMOVED*** [tileHeight=32] - The pixel height of a single map tile. If using CSV data you must specify this. Not required if using Tiled map data.
-    * @param ***REMOVED***number***REMOVED*** [width=10] - The width of the map in tiles. If this map is created from Tiled or CSV data you don't need to specify this.
-    * @param ***REMOVED***number***REMOVED*** [height=10] - The height of the map in tiles. If this map is created from Tiled or CSV data you don't need to specify this.
+    * @param {string} [key] - The key of the tilemap data as stored in the Cache. If you're creating a blank map either leave this parameter out or pass `null`.
+    * @param {number} [tileWidth=32] - The pixel width of a single map tile. If using CSV data you must specify this. Not required if using Tiled map data.
+    * @param {number} [tileHeight=32] - The pixel height of a single map tile. If using CSV data you must specify this. Not required if using Tiled map data.
+    * @param {number} [width=10] - The width of the map in tiles. If this map is created from Tiled or CSV data you don't need to specify this.
+    * @param {number} [height=10] - The height of the map in tiles. If this map is created from Tiled or CSV data you don't need to specify this.
     */
-    tilemap: function (key, tileWidth, tileHeight, width, height) ***REMOVED***
+    tilemap: function (key, tileWidth, tileHeight, width, height) {
 
         return new Phaser.Tilemap(this.game, key, tileWidth, tileHeight, width, height);
 
-    ***REMOVED***,
+    },
 
     /**
     * A dynamic initially blank canvas to which images can be drawn.
     *
     * @method Phaser.GameObjectCreator#renderTexture
-    * @param ***REMOVED***number***REMOVED*** [width=100] - the width of the RenderTexture.
-    * @param ***REMOVED***number***REMOVED*** [height=100] - the height of the RenderTexture.
-    * @param ***REMOVED***string***REMOVED*** [key=''] - Asset key for the RenderTexture when stored in the Cache (see addToCache parameter).
-    * @param ***REMOVED***boolean***REMOVED*** [addToCache=false] - Should this RenderTexture be added to the Game.Cache? If so you can retrieve it with Cache.getTexture(key)
-    * @return ***REMOVED***Phaser.RenderTexture***REMOVED*** The newly created RenderTexture object.
+    * @param {number} [width=100] - the width of the RenderTexture.
+    * @param {number} [height=100] - the height of the RenderTexture.
+    * @param {string} [key=''] - Asset key for the RenderTexture when stored in the Cache (see addToCache parameter).
+    * @param {boolean} [addToCache=false] - Should this RenderTexture be added to the Game.Cache? If so you can retrieve it with Cache.getTexture(key)
+    * @return {Phaser.RenderTexture} The newly created RenderTexture object.
     */
-    renderTexture: function (width, height, key, addToCache) ***REMOVED***
+    renderTexture: function (width, height, key, addToCache) {
 
-        if (key === undefined || key === '') ***REMOVED*** key = this.game.rnd.uuid(); ***REMOVED***
-        if (addToCache === undefined) ***REMOVED*** addToCache = false; ***REMOVED***
+        if (key === undefined || key === '') { key = this.game.rnd.uuid(); }
+        if (addToCache === undefined) { addToCache = false; }
 
         var texture = new Phaser.RenderTexture(this.game, width, height, key);
 
         if (addToCache)
-        ***REMOVED***
+        {
             this.game.cache.addRenderTexture(key, texture);
-        ***REMOVED***
+        }
 
         return texture;
 
-    ***REMOVED***,
+    },
 
     /**
     * Create a BitmpaData object.
@@ -1670,37 +1670,37 @@ Phaser.GameObjectCreator.prototype = ***REMOVED***
     * A BitmapData object can be manipulated and drawn to like a traditional Canvas object and used to texture Sprites.
     *
     * @method Phaser.GameObjectCreator#bitmapData
-    * @param ***REMOVED***number***REMOVED*** [width=256] - The width of the BitmapData in pixels.
-    * @param ***REMOVED***number***REMOVED*** [height=256] - The height of the BitmapData in pixels.
-    * @param ***REMOVED***string***REMOVED*** [key=''] - Asset key for the BitmapData when stored in the Cache (see addToCache parameter).
-    * @param ***REMOVED***boolean***REMOVED*** [addToCache=false] - Should this BitmapData be added to the Game.Cache? If so you can retrieve it with Cache.getBitmapData(key)
-    * @return ***REMOVED***Phaser.BitmapData***REMOVED*** The newly created BitmapData object.
+    * @param {number} [width=256] - The width of the BitmapData in pixels.
+    * @param {number} [height=256] - The height of the BitmapData in pixels.
+    * @param {string} [key=''] - Asset key for the BitmapData when stored in the Cache (see addToCache parameter).
+    * @param {boolean} [addToCache=false] - Should this BitmapData be added to the Game.Cache? If so you can retrieve it with Cache.getBitmapData(key)
+    * @return {Phaser.BitmapData} The newly created BitmapData object.
     */
-    bitmapData: function (width, height, key, addToCache) ***REMOVED***
+    bitmapData: function (width, height, key, addToCache) {
 
-        if (addToCache === undefined) ***REMOVED*** addToCache = false; ***REMOVED***
-        if (key === undefined || key === '') ***REMOVED*** key = this.game.rnd.uuid(); ***REMOVED***
+        if (addToCache === undefined) { addToCache = false; }
+        if (key === undefined || key === '') { key = this.game.rnd.uuid(); }
 
         var texture = new Phaser.BitmapData(this.game, key, width, height);
 
         if (addToCache)
-        ***REMOVED***
+        {
             this.game.cache.addBitmapData(key, texture);
-        ***REMOVED***
+        }
 
         return texture;
 
-    ***REMOVED***,
+    },
 
     /**
     * A WebGL shader/filter that can be applied to Sprites.
     *
     * @method Phaser.GameObjectCreator#filter
-    * @param ***REMOVED***string***REMOVED*** filter - The name of the filter you wish to create, for example HueRotate or SineWave.
-    * @param ***REMOVED***any***REMOVED*** - Whatever parameters are needed to be passed to the filter init function.
-    * @return ***REMOVED***Phaser.Filter***REMOVED*** The newly created Phaser.Filter object.
+    * @param {string} filter - The name of the filter you wish to create, for example HueRotate or SineWave.
+    * @param {any} - Whatever parameters are needed to be passed to the filter init function.
+    * @return {Phaser.Filter} The newly created Phaser.Filter object.
     */
-    filter: function (filter) ***REMOVED***
+    filter: function (filter) {
 
         var args = Array.prototype.slice.call(arguments, 1);
 
@@ -1710,9 +1710,9 @@ Phaser.GameObjectCreator.prototype = ***REMOVED***
 
         return filter;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.GameObjectCreator.prototype.constructor = Phaser.GameObjectCreator;
 </pre>
@@ -1757,22 +1757,22 @@ Phaser.GameObjectCreator.prototype.constructor = Phaser.GameObjectCreator;
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

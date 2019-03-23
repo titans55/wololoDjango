@@ -3,12 +3,12 @@
 */
 var path = require('path');
 
-exports.handlers = ***REMOVED******REMOVED***;
-exports.handlers.newDoclet = function (e) ***REMOVED***
+exports.handlers = {};
+exports.handlers.newDoclet = function (e) {
     var doclet = e.doclet;
 
     if ((doclet.meta.filename === "p2.js") && (doclet.kind === 'class' || doclet.kind === 'interface'))
-    ***REMOVED***
+    {
         doclet.longname = "Phaser.Physics.P2." + doclet.longname;
-    ***REMOVED***
-***REMOVED***;
+    }
+};

@@ -56,29 +56,29 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'DjangoFirebaseProject.urls'
 ASGI_APPLICATION = 'DjangoFirebaseProject.routing.application'
-CHANNEL_LAYERS = ***REMOVED***
-    'default': ***REMOVED***
+CHANNEL_LAYERS = {
+    'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': ***REMOVED***
+        'CONFIG': {
             "hosts": [('localhost', 6379)],
-        ***REMOVED***,
-    ***REMOVED***,
-***REMOVED***
+        },
+    },
+}
 
 TEMPLATES = [
-    ***REMOVED***
+    {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
-        'OPTIONS': ***REMOVED***
+        'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-        ***REMOVED***,
-    ***REMOVED***,
+        },
+    },
 ]
 
 
@@ -89,30 +89,30 @@ WSGI_APPLICATION = 'DjangoFirebaseProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = ***REMOVED***
-    'default': ***REMOVED***
+DATABASES = {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    ***REMOVED***
-***REMOVED***
+    }
+}
 
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    ***REMOVED***
+    {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    ***REMOVED***,
-    ***REMOVED***
+    },
+    {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    ***REMOVED***,
-    ***REMOVED***
+    },
+    {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    ***REMOVED***,
-    ***REMOVED***
+    },
+    {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    ***REMOVED***,
+    },
 ]
 
 

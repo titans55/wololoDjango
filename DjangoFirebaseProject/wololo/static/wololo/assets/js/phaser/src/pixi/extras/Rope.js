@@ -8,12 +8,12 @@
  * @class Rope
  * @constructor
  * @extends Strip
- * @param ***REMOVED***Texture***REMOVED*** texture - The texture to use on the rope.
- * @param ***REMOVED***Array***REMOVED*** points - An array of ***REMOVED***PIXI.Point***REMOVED***.
+ * @param {Texture} texture - The texture to use on the rope.
+ * @param {Array} points - An array of {PIXI.Point}.
  *
  */
 PIXI.Rope = function(texture, points)
-***REMOVED***
+{
     PIXI.Strip.call( this, texture );
     this.points = points;
 
@@ -24,7 +24,7 @@ PIXI.Rope = function(texture, points)
 
 
     this.refresh();
-***REMOVED***;
+};
 
 
 // constructor
@@ -37,7 +37,7 @@ PIXI.Rope.prototype.constructor = PIXI.Rope;
  * @method refresh
  */
 PIXI.Rope.prototype.refresh = function()
-***REMOVED***
+{
     var points = this.points;
     if(points.length < 1) return;
 
@@ -64,28 +64,28 @@ PIXI.Rope.prototype.refresh = function()
         point, index, amount;
 
     for (var i = 1; i < total; i++)
-    ***REMOVED***
+    {
         point = points[i];
         index = i * 4;
         // time to do some smart drawing!
         amount = i / (total-1);
 
         if(i%2)
-        ***REMOVED***
+        {
             uvs[index] = amount;
             uvs[index+1] = 0;
 
             uvs[index+2] = amount;
             uvs[index+3] = 1;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             uvs[index] = amount;
             uvs[index+1] = 0;
 
             uvs[index+2] = amount;
             uvs[index+3] = 1;
-        ***REMOVED***
+        }
 
         index = i * 2;
         colors[index] = 1;
@@ -96,8 +96,8 @@ PIXI.Rope.prototype.refresh = function()
         indices[index + 1] = index + 1;
 
         lastPoint = point;
-    ***REMOVED***
-***REMOVED***;
+    }
+};
 
 /*
  * Updates the object transform for rendering
@@ -106,14 +106,14 @@ PIXI.Rope.prototype.refresh = function()
  * @private
  */
 PIXI.Rope.prototype.updateTransform = function()
-***REMOVED***
+{
 
     var points = this.points;
     if(points.length < 1)return;
 
     var lastPoint = points[0];
     var nextPoint;
-    var perp = ***REMOVED***x:0, y:0***REMOVED***;
+    var perp = {x:0, y:0};
 
     this.count-=0.2;
 
@@ -122,18 +122,18 @@ PIXI.Rope.prototype.updateTransform = function()
         point, index, ratio, perpLength, num;
 
     for (var i = 0; i < total; i++)
-    ***REMOVED***
+    {
         point = points[i];
         index = i * 4;
 
         if(i < points.length-1)
-        ***REMOVED***
+        {
             nextPoint = points[i+1];
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             nextPoint = point;
-        ***REMOVED***
+        }
 
         perp.y = -(nextPoint.x - lastPoint.x);
         perp.x = nextPoint.y - lastPoint.y;
@@ -156,19 +156,19 @@ PIXI.Rope.prototype.updateTransform = function()
         vertices[index+3] = point.y - perp.y;
 
         lastPoint = point;
-    ***REMOVED***
+    }
 
     PIXI.DisplayObjectContainer.prototype.updateTransform.call( this );
-***REMOVED***;
+};
 /*
  * Sets the texture that the Rope will use
  *
  * @method setTexture
- * @param texture ***REMOVED***Texture***REMOVED*** the texture that will be used
+ * @param texture {Texture} the texture that will be used
  */
 PIXI.Rope.prototype.setTexture = function(texture)
-***REMOVED***
+{
     // stop current texture
     this.texture = texture;
     //this.updateFrame = true;
-***REMOVED***;
+};

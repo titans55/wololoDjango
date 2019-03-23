@@ -1,23 +1,23 @@
 // Type definitions for p2.js v0.6.0
 // Project: https://github.com/schteppe/p2.js/
 
-declare module p2 ***REMOVED***
+declare module p2 {
 
-    export class AABB ***REMOVED***
+    export class AABB {
 
-        constructor(options?: ***REMOVED***
+        constructor(options?: {
             upperBound?: number[];
             lowerBound?: number[];
-        ***REMOVED***);
+        });
 
         setFromPoints(points: number[][], position: number[], angle: number, skinSize: number): void;
         copy(aabb: AABB): void;
         extend(aabb: AABB): void;
         overlaps(aabb: AABB): boolean;
 
-    ***REMOVED***
+    }
 
-    export class Broadphase ***REMOVED***
+    export class Broadphase {
 
         static AABB: number;
         static BOUNDING_CIRCLE: number;
@@ -40,18 +40,18 @@ declare module p2 ***REMOVED***
         getCollisionPairs(world: World): Body[];
         boundingVolumeCheck(bodyA: Body, bodyB: Body): boolean;
 
-    ***REMOVED***
+    }
 
-    export class GridBroadphase extends Broadphase ***REMOVED***
+    export class GridBroadphase extends Broadphase {
 
-        constructor(options?: ***REMOVED***
+        constructor(options?: {
             xmin?: number;
             xmax?: number;
             ymin?: number;
             ymax?: number;
             nx?: number;
             ny?: number;
-        ***REMOVED***);
+        });
 
         xmin: number;
         xmax: number;
@@ -62,13 +62,13 @@ declare module p2 ***REMOVED***
         binsizeX: number;
         binsizeY: number;
 
-    ***REMOVED***
+    }
 
-    export class NativeBroadphase extends Broadphase ***REMOVED***
+    export class NativeBroadphase extends Broadphase {
 
-    ***REMOVED***
+    }
 
-    export class Narrowphase ***REMOVED***
+    export class Narrowphase {
 
         contactEquations: ContactEquation[];
         frictionEquations: FrictionEquation[];
@@ -92,16 +92,16 @@ declare module p2 ***REMOVED***
         createContactEquation(bodyA: Body, bodyB: Body, shapeA: Shape, shapeB: Shape): ContactEquation;
         createFrictionFromContact(c: ContactEquation): FrictionEquation;
 
-    ***REMOVED***
+    }
 
-    export class SAPBroadphase extends Broadphase ***REMOVED***
+    export class SAPBroadphase extends Broadphase {
 
         axisList: Body[];
         axisIndex: number;
 
-    ***REMOVED***
+    }
 
-    export class Constraint ***REMOVED***
+    export class Constraint {
 
         static DISTANCE: number;
         static GEAR: number;
@@ -109,10 +109,10 @@ declare module p2 ***REMOVED***
         static PRISMATIC: number;
         static REVOLUTE: number;
 
-        constructor(bodyA: Body, bodyB: Body, type: number, options?: ***REMOVED***
+        constructor(bodyA: Body, bodyB: Body, type: number, options?: {
             collideConnected?: boolean;
             wakeUpBodies?: boolean;
-        ***REMOVED***);
+        });
 
         type: number;
         equeations: Equation[];
@@ -124,18 +124,18 @@ declare module p2 ***REMOVED***
         setStiffness(stiffness: number): void;
         setRelaxation(relaxation: number): void;
 
-    ***REMOVED***
+    }
 
-    export class DistanceConstraint extends Constraint ***REMOVED***
+    export class DistanceConstraint extends Constraint {
 
-        constructor(bodyA: Body, bodyB: Body, type: number, options?: ***REMOVED***
+        constructor(bodyA: Body, bodyB: Body, type: number, options?: {
             collideConnected?: boolean;
             wakeUpBodies?: boolean;
             distance?: number;
             localAnchorA?: number[];
             localAnchorB?: number[];
             maxForce?: number;
-        ***REMOVED***);
+        });
 
         localAnchorA: number[];
         localAnchorB: number[];
@@ -150,17 +150,17 @@ declare module p2 ***REMOVED***
         setMaxForce(f: number): void;
         getMaxForce(): number;
 
-    ***REMOVED***
+    }
 
-    export class GearConstraint extends Constraint ***REMOVED***
+    export class GearConstraint extends Constraint {
 
-        constructor(bodyA: Body, bodyB: Body, type: number, options?: ***REMOVED***
+        constructor(bodyA: Body, bodyB: Body, type: number, options?: {
             collideConnected?: boolean;
             wakeUpBodies?: boolean;
             angle?: number;
             ratio?: number;
             maxTorque?: number;
-        ***REMOVED***);
+        });
 
         ratio: number;
         angle: number;
@@ -168,26 +168,26 @@ declare module p2 ***REMOVED***
         setMaxTorque(torque: number): void;
         getMaxTorque(): number;
 
-    ***REMOVED***
+    }
 
-    export class LockConstraint extends Constraint ***REMOVED***
+    export class LockConstraint extends Constraint {
 
-        constructor(bodyA: Body, bodyB: Body, type: number, options?: ***REMOVED***
+        constructor(bodyA: Body, bodyB: Body, type: number, options?: {
             collideConnected?: boolean;
             wakeUpBodies?: boolean;
             localOffsetB?: number[];
             localAngleB?: number;
             maxForce?: number;
-        ***REMOVED***);
+        });
 
         setMaxForce(force: number): void;
         getMaxForce(): number;
 
-    ***REMOVED***
+    }
 
-    export class PrismaticConstraint extends Constraint ***REMOVED***
+    export class PrismaticConstraint extends Constraint {
 
-        constructor(bodyA: Body, bodyB: Body, type: number, options?: ***REMOVED***
+        constructor(bodyA: Body, bodyB: Body, type: number, options?: {
             collideConnected?: boolean;
             wakeUpBodies?: boolean;
             maxForce?: number;
@@ -197,7 +197,7 @@ declare module p2 ***REMOVED***
             disableRotationalLock?: boolean;
             upperLimit?: number;
             lowerLimit?: number;
-        ***REMOVED***);
+        });
 
         localAnchorA: number[];
         localAnchorB: number[];
@@ -218,18 +218,18 @@ declare module p2 ***REMOVED***
         disableMotor(): void;
         setLimits(lower: number, upper: number): void;
 
-    ***REMOVED***
+    }
 
-    export class RevoluteConstraint extends Constraint ***REMOVED***
+    export class RevoluteConstraint extends Constraint {
 
-        constructor(bodyA: Body, bodyB: Body, type: number, options?: ***REMOVED***
+        constructor(bodyA: Body, bodyB: Body, type: number, options?: {
             collideConnected?: boolean;
             wakeUpBodies?: boolean;
             worldPivot?: number[];
             localPivotA?: number[];
             localPivotB?: number[];
             maxForce?: number;
-        ***REMOVED***);
+        });
 
         pivotA: number[];
         pivotB: number[];
@@ -250,22 +250,22 @@ declare module p2 ***REMOVED***
         setMotorSpeed(speed: number): void;
         getMotorSpeed(): number;
 
-    ***REMOVED***
+    }
 
-    export class AngleLockEquation extends Equation ***REMOVED***
+    export class AngleLockEquation extends Equation {
 
-        constructor(bodyA: Body, bodyB: Body, options?: ***REMOVED***
+        constructor(bodyA: Body, bodyB: Body, options?: {
             angle?: number;
             ratio?: number;
-        ***REMOVED***);
+        });
 
         computeGq(): number;
         setRatio(ratio: number): number;
         setMaxTorque(torque: number): number;
 
-    ***REMOVED***
+    }
 
-    export class ContactEquation extends Equation ***REMOVED***
+    export class ContactEquation extends Equation {
 
         constructor(bodyA: Body, bodyB: Body);
 
@@ -280,9 +280,9 @@ declare module p2 ***REMOVED***
 
         computeB(a: number, b: number, h: number): number;
 
-    ***REMOVED***
+    }
 
-    export class Equation ***REMOVED***
+    export class Equation {
 
         static DEFAULT_STIFFNESS: number;
         static DEFAULT_RELAXATION: number;
@@ -316,9 +316,9 @@ declare module p2 ***REMOVED***
         addToWlambda(deltalambda: number): number;
         computeInvC(eps: number): number;
 
-    ***REMOVED***
+    }
 
-    export class FrictionEquation extends Equation ***REMOVED***
+    export class FrictionEquation extends Equation {
 
         constructor(bodyA: Body, bodyB: Body, slipForce: number);
 
@@ -333,38 +333,38 @@ declare module p2 ***REMOVED***
         getSlipForce(): number;
         computeB(a: number, b: number, h: number): number;
 
-    ***REMOVED***
+    }
 
-    export class RotationalLockEquation extends Equation ***REMOVED***
+    export class RotationalLockEquation extends Equation {
 
-        constructor(bodyA: Body, bodyB: Body, options?: ***REMOVED***
+        constructor(bodyA: Body, bodyB: Body, options?: {
             angle?: number;
-        ***REMOVED***);
+        });
 
         angle: number;
 
         computeGq(): number;
 
-    ***REMOVED***
+    }
 
-    export class RotationalVelocityEquation extends Equation ***REMOVED***
+    export class RotationalVelocityEquation extends Equation {
 
         constructor(bodyA: Body, bodyB: Body);
 
         computeB(a: number, b: number, h: number): number;
 
-    ***REMOVED***
+    }
 
-    export class EventEmitter ***REMOVED***
+    export class EventEmitter {
 
         on(type: string, listener: Function, context: any): EventEmitter;
         has(type: string, listener: Function): boolean;
         off(type: string, listener: Function): EventEmitter;
         emit(event: any): EventEmitter;
 
-    ***REMOVED***
+    }
 
-    export class ContactMaterialOptions ***REMOVED***
+    export class ContactMaterialOptions {
 
         friction: number;
         restitution: number;
@@ -374,9 +374,9 @@ declare module p2 ***REMOVED***
         frictionRelaxation: number;
         surfaceVelocity: number;
 
-    ***REMOVED***
+    }
 
-    export class ContactMaterial ***REMOVED***
+    export class ContactMaterial {
 
         static idCounter: number;
 
@@ -394,9 +394,9 @@ declare module p2 ***REMOVED***
         surfaceVelocity: number;
         contactSkinSize: number;
 
-    ***REMOVED***
+    }
 
-    export class Material ***REMOVED***
+    export class Material {
 
         static idCounter: number;
 
@@ -404,9 +404,9 @@ declare module p2 ***REMOVED***
 
         id: number;
 
-    ***REMOVED***
+    }
 
-    export class vec2 ***REMOVED***
+    export class vec2 {
 
         static crossLength(a: number[], b: number[]): number;
         static crossVZ(out: number[], vec: number[], zcomp: number): number;
@@ -442,9 +442,9 @@ declare module p2 ***REMOVED***
         static dot(a: number[], b: number[]): number;
         static str(a: number[]): string;
 
-    ***REMOVED***
+    }
 
-    export class BodyOptions ***REMOVED***
+    export class BodyOptions {
 
         mass: number;
         position: number[];
@@ -455,21 +455,21 @@ declare module p2 ***REMOVED***
         angularForce: number;
         fixedRotation: number;
 
-    ***REMOVED***
+    }
 
-    export class Body extends EventEmitter ***REMOVED***
+    export class Body extends EventEmitter {
 
-        sleepyEvent: ***REMOVED***
+        sleepyEvent: {
             type: string;
-        ***REMOVED***;
+        };
 
-        sleepEvent: ***REMOVED***
+        sleepEvent: {
             type: string;
-        ***REMOVED***;
+        };
 
-        wakeUpEvent: ***REMOVED***
+        wakeUpEvent: {
             type: string;
-        ***REMOVED***;
+        };
 
         static DYNAMIC: number;
         static STATIC: number;
@@ -529,11 +529,11 @@ declare module p2 ***REMOVED***
         applyForce(force: number[], worldPoint: number[]): void;
         toLocalFrame(out: number[], worldPoint: number[]): void;
         toWorldFrame(out: number[], localPoint: number[]): void;
-        fromPolygon(path: number[][], options?: ***REMOVED***
+        fromPolygon(path: number[][], options?: {
             optimalDecomp?: boolean;
             skipSimpleCheck?: boolean;
             removeCollinearPoints?: any; //boolean | number
-        ***REMOVED***): boolean;
+        }): boolean;
         adjustCenterOfMass(): void;
         setZeroForce(): void;
         resetConstraintVelocity(): void;
@@ -545,11 +545,11 @@ declare module p2 ***REMOVED***
         getAngularVelocityFromPosition(timeStep: number): number;
         overlaps(body: Body): boolean;
 
-    ***REMOVED***
+    }
 
-    export class Spring ***REMOVED***
+    export class Spring {
 
-        constructor(bodyA: Body, bodyB: Body, options?: ***REMOVED***
+        constructor(bodyA: Body, bodyB: Body, options?: {
 
             stiffness?: number;
             damping?: number;
@@ -558,7 +558,7 @@ declare module p2 ***REMOVED***
             worldAnchorA?: number[];
             worldAnchorB?: number[];
 
-        ***REMOVED***);
+        });
 
         stiffness: number;
         damping: number;
@@ -567,9 +567,9 @@ declare module p2 ***REMOVED***
 
         applyForce(): void;
 
-    ***REMOVED***
+    }
 
-    export class LinearSpring extends Spring ***REMOVED***
+    export class LinearSpring extends Spring {
 
         localAnchorA: number[];
         localAnchorB: number[];
@@ -581,38 +581,38 @@ declare module p2 ***REMOVED***
         getWorldAnchorB(result: number[]): number[];
         applyForce(): void;
 
-    ***REMOVED***
+    }
 
-    export class RotationalSpring extends Spring ***REMOVED***
+    export class RotationalSpring extends Spring {
 
-        constructor(bodyA: Body, bodyB: Body, options?: ***REMOVED***
+        constructor(bodyA: Body, bodyB: Body, options?: {
             restAngle?: number;
             stiffness?: number;
             damping?: number;
-        ***REMOVED***);
+        });
 
         restAngle: number;
 
-    ***REMOVED***
+    }
 
-    export class Capsule extends Shape ***REMOVED***
+    export class Capsule extends Shape {
 
         constructor(length?: number, radius?: number);
 
         length: number;
         radius: number;
 
-    ***REMOVED***
+    }
 
-    export class Circle extends Shape ***REMOVED***
+    export class Circle extends Shape {
 
         constructor(radius: number);
 
         radius: number;
 
-    ***REMOVED***
+    }
 
-    export class Convex extends Shape ***REMOVED***
+    export class Convex extends Shape {
 
         static triangleArea(a: number[], b: number[], c: number[]): number;
 
@@ -629,24 +629,24 @@ declare module p2 ***REMOVED***
 
         updateCenterOfMass(): void;
 
-    ***REMOVED***
+    }
 
-    export class Heightfield extends Shape ***REMOVED***
+    export class Heightfield extends Shape {
 
-        constructor(data: number[], options?: ***REMOVED***
+        constructor(data: number[], options?: {
             minValue?: number;
             maxValue?: number;
             elementWidth: number;
-        ***REMOVED***);
+        });
 
         data: number[];
         maxValue: number;
         minValue: number;
         elementWidth: number;
 
-    ***REMOVED***
+    }
 
-    export class Shape ***REMOVED***
+    export class Shape {
 
         static idCounter: number;
         static CIRCLE: number;
@@ -674,25 +674,25 @@ declare module p2 ***REMOVED***
         updateArea(): void;
         computeAABB(out: AABB, position: number[], angle: number): void;
 
-    ***REMOVED***
+    }
 
-    export class Line extends Shape ***REMOVED***
+    export class Line extends Shape {
 
         constructor(length?: number);
 
         length: number;
 
-    ***REMOVED***
+    }
 
-    export class Particle extends Shape ***REMOVED***
+    export class Particle extends Shape {
 
-    ***REMOVED***
+    }
 
-    export class Plane extends Shape ***REMOVED***
+    export class Plane extends Shape {
 
-    ***REMOVED***
+    }
 
-    export class Rectangle extends Shape ***REMOVED***
+    export class Rectangle extends Shape {
 
         static sameDimensions(a: Rectangle, b: Rectangle): boolean;
 
@@ -701,14 +701,14 @@ declare module p2 ***REMOVED***
         width: number;
         height: number;
 
-    ***REMOVED***
+    }
 
-    export class Solver extends EventEmitter ***REMOVED***
+    export class Solver extends EventEmitter {
 
         static GS: number;
         static ISLAND: number;
 
-        constructor(options?: ***REMOVED******REMOVED***, type?: number);
+        constructor(options?: {}, type?: number);
 
         type: number;
         equations: Equation[];
@@ -722,14 +722,14 @@ declare module p2 ***REMOVED***
         removeEquation(eq: Equation): void;
         removeAllEquations(): void;
 
-    ***REMOVED***
+    }
 
-    export class GSSolver extends Solver ***REMOVED***
+    export class GSSolver extends Solver {
 
-        constructor(options?: ***REMOVED***
+        constructor(options?: {
             iterations?: number;
             tolerance?: number;
-        ***REMOVED***);
+        });
 
         iterations: number;
         tolerance: number;
@@ -739,9 +739,9 @@ declare module p2 ***REMOVED***
 
         solve(h: number, world: World): void;
 
-    ***REMOVED***
+    }
 
-    export class OverlapKeeper ***REMOVED***
+    export class OverlapKeeper {
 
         constructor(bodyA: Body, shapeA: Shape, bodyB: Body, shapeB: Shape);
 
@@ -755,9 +755,9 @@ declare module p2 ***REMOVED***
         bodiesAreOverlapping(bodyA: Body, bodyB: Body): boolean;
         set(bodyA: Body, shapeA: Shape, bodyB: Body, shapeB: Shape): void;
 
-    ***REMOVED***
+    }
 
-    export class TupleDictionary ***REMOVED***
+    export class TupleDictionary {
 
         data: number[];
         keys: number[];
@@ -769,9 +769,9 @@ declare module p2 ***REMOVED***
         reset(): void;
         copy(dict: TupleDictionary): void;
 
-    ***REMOVED***
+    }
 
-    export class Utils ***REMOVED***
+    export class Utils {
 
         static appendArray<T>(a: Array<T>, b: Array<T>): Array<T>;
         static chanceRoll(chance: number): boolean;
@@ -783,9 +783,9 @@ declare module p2 ***REMOVED***
         static shuffle<T>(array: T[]): T[];
         static transposeArray<T>(array: T[]): T[];
 
-    ***REMOVED***
+    }
 
-    export class Island ***REMOVED***
+    export class Island {
 
         equations: Equation[];
         bodies: Body[];
@@ -795,9 +795,9 @@ declare module p2 ***REMOVED***
         wantsToSleep(): boolean;
         sleep(): boolean;
 
-    ***REMOVED***
+    }
 
-    export class IslandManager extends Solver ***REMOVED***
+    export class IslandManager extends Solver {
 
         static getUnvisitedNode(nodes: Node[]): IslandNode; // IslandNode | boolean
 
@@ -809,9 +809,9 @@ declare module p2 ***REMOVED***
         bfs(root: IslandNode, bds: Body[], eqs: Equation[]): void;
         split(world: World): Island[];
 
-    ***REMOVED***
+    }
 
-    export class IslandNode ***REMOVED***
+    export class IslandNode {
 
         constructor(body: Body);
 
@@ -822,62 +822,62 @@ declare module p2 ***REMOVED***
 
         reset(): void;
 
-    ***REMOVED***
+    }
 
-    export class World extends EventEmitter ***REMOVED***
+    export class World extends EventEmitter {
 
-        postStepEvent: ***REMOVED***
+        postStepEvent: {
             type: string;
-        ***REMOVED***;
+        };
 
-        addBodyEvent: ***REMOVED***
+        addBodyEvent: {
             type: string;
-        ***REMOVED***;
+        };
 
-        removeBodyEvent: ***REMOVED***
+        removeBodyEvent: {
             type: string;
-        ***REMOVED***;
+        };
 
-        addSpringEvent: ***REMOVED***
+        addSpringEvent: {
             type: string;
-        ***REMOVED***;
+        };
 
-        impactEvent: ***REMOVED***
+        impactEvent: {
             type: string;
             bodyA: Body;
             bodyB: Body;
             shapeA: Shape;
             shapeB: Shape;
             contactEquation: ContactEquation;
-        ***REMOVED***;
+        };
 
-        postBroadphaseEvent: ***REMOVED***
+        postBroadphaseEvent: {
             type: string;
             pairs: Body[];
-        ***REMOVED***;
+        };
 
-        beginContactEvent: ***REMOVED***
+        beginContactEvent: {
             type: string;
             shapeA: Shape;
             shapeB: Shape;
             bodyA: Body;
             bodyB: Body;
             contactEquations: ContactEquation[];
-        ***REMOVED***;
+        };
 
-        endContactEvent: ***REMOVED***
+        endContactEvent: {
             type: string;
             shapeA: Shape;
             shapeB: Shape;
             bodyA: Body;
             bodyB: Body;
-        ***REMOVED***;
+        };
 
-        preSolveEvent: ***REMOVED***
+        preSolveEvent: {
             type: string;
             contactEquations: ContactEquation[];
             frictionEquations: FrictionEquation[];
-        ***REMOVED***;
+        };
 
         static NO_SLEEPING: number;
         static BODY_SLEEPING: number;
@@ -885,13 +885,13 @@ declare module p2 ***REMOVED***
 
         static integrateBody(body: Body, dy: number): void;
 
-        constructor(options?: ***REMOVED***
+        constructor(options?: {
             solver?: Solver;
             gravity?: number[];
             broadphase?: Broadphase;
             islandSplit?: boolean;
             doProfiling?: boolean;
-        ***REMOVED***);
+        });
 
         springs: Spring[];
         bodies: Body[];
@@ -937,12 +937,12 @@ declare module p2 ***REMOVED***
         clear(): void;
         clone(): World;
         hitTest(worldPoint: number[], bodies: Body[], precision: number): Body[];
-        setGlobalEquationParameters(parameters: ***REMOVED***
+        setGlobalEquationParameters(parameters: {
             relaxation?: number;
             stiffness?: number;
-        ***REMOVED***): void;
+        }): void;
         setGlobalStiffness(stiffness: number): void;
         setGlobalRelaxation(relaxation: number): void;
-    ***REMOVED***
+    }
 
-***REMOVED***
+}

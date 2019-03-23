@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1296,7 +1296,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 * @private
 */
 PIXI.WebGLShaderManager = function()
-***REMOVED***
+{
     /**
      * @property maxAttibs
      * @type Number
@@ -1316,9 +1316,9 @@ PIXI.WebGLShaderManager = function()
     this.tempAttribState = [];
 
     for (var i = 0; i &lt; this.maxAttibs; i++)
-    ***REMOVED***
+    {
         this.attribState[i] = false;
-    ***REMOVED***
+    }
 
     /**
      * @property stack
@@ -1326,7 +1326,7 @@ PIXI.WebGLShaderManager = function()
      */
     this.stack = [];
 
-***REMOVED***;
+};
 
 PIXI.WebGLShaderManager.prototype.constructor = PIXI.WebGLShaderManager;
 
@@ -1334,10 +1334,10 @@ PIXI.WebGLShaderManager.prototype.constructor = PIXI.WebGLShaderManager;
 * Initialises the context and the properties.
 * 
 * @method setContext 
-* @param gl ***REMOVED***WebGLContext***REMOVED*** the current WebGL drawing context
+* @param gl {WebGLContext} the current WebGL drawing context
 */
 PIXI.WebGLShaderManager.prototype.setContext = function(gl)
-***REMOVED***
+{
     this.gl = gl;
     
     // the next one is used for rendering primitives
@@ -1356,59 +1356,59 @@ PIXI.WebGLShaderManager.prototype.setContext = function(gl)
     this.stripShader = new PIXI.StripShader(gl);
 
     this.setShader(this.defaultShader);
-***REMOVED***;
+};
 
 /**
 * Takes the attributes given in parameters.
 * 
 * @method setAttribs
-* @param attribs ***REMOVED***Array***REMOVED*** attribs 
+* @param attribs {Array} attribs 
 */
 PIXI.WebGLShaderManager.prototype.setAttribs = function(attribs)
-***REMOVED***
+{
     // reset temp state
     var i;
 
     for (i = 0; i &lt; this.tempAttribState.length; i++)
-    ***REMOVED***
+    {
         this.tempAttribState[i] = false;
-    ***REMOVED***
+    }
 
     // set the new attribs
     for (i = 0; i &lt; attribs.length; i++)
-    ***REMOVED***
+    {
         var attribId = attribs[i];
         this.tempAttribState[attribId] = true;
-    ***REMOVED***
+    }
 
     var gl = this.gl;
 
     for (i = 0; i &lt; this.attribState.length; i++)
-    ***REMOVED***
+    {
         if(this.attribState[i] !== this.tempAttribState[i])
-        ***REMOVED***
+        {
             this.attribState[i] = this.tempAttribState[i];
 
             if(this.tempAttribState[i])
-            ***REMOVED***
+            {
                 gl.enableVertexAttribArray(i);
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 gl.disableVertexAttribArray(i);
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
-***REMOVED***;
+            }
+        }
+    }
+};
 
 /**
 * Sets the current shader.
 * 
 * @method setShader
-* @param shader ***REMOVED***Any***REMOVED***
+* @param shader {Any}
 */
 PIXI.WebGLShaderManager.prototype.setShader = function(shader)
-***REMOVED***
+{
     if(this._currentId === shader._UID)return false;
     
     this._currentId = shader._UID;
@@ -1419,7 +1419,7 @@ PIXI.WebGLShaderManager.prototype.setShader = function(shader)
     this.setAttribs(shader.attributes);
 
     return true;
-***REMOVED***;
+};
 
 /**
 * Destroys this object.
@@ -1427,7 +1427,7 @@ PIXI.WebGLShaderManager.prototype.setShader = function(shader)
 * @method destroy
 */
 PIXI.WebGLShaderManager.prototype.destroy = function()
-***REMOVED***
+{
     this.attribState = null;
 
     this.tempAttribState = null;
@@ -1443,7 +1443,7 @@ PIXI.WebGLShaderManager.prototype.destroy = function()
     this.stripShader.destroy();
 
     this.gl = null;
-***REMOVED***;
+};
 </pre>
         </article>
     </section>
@@ -1486,22 +1486,22 @@ PIXI.WebGLShaderManager.prototype.destroy = function()
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -9,7 +9,7 @@
 *
 * @class
 */
-Phaser.Component.Core = function () ***REMOVED******REMOVED***;
+Phaser.Component.Core = function () {};
 
 /**
 * Installs / registers mixin components.
@@ -19,29 +19,29 @@ Phaser.Component.Core = function () ***REMOVED******REMOVED***;
 * @method
 * @protected
 */
-Phaser.Component.Core.install = function (components) ***REMOVED***
+Phaser.Component.Core.install = function (components) {
 
     // Always install 'Core' first
     Phaser.Utils.mixinPrototype(this, Phaser.Component.Core.prototype);
 
-    this.components = ***REMOVED******REMOVED***;
+    this.components = {};
 
     for (var i = 0; i < components.length; i++)
-    ***REMOVED***
+    {
         var id = components[i];
         var replace = false;
 
         if (id === 'Destroy')
-        ***REMOVED***
+        {
             replace = true;
-        ***REMOVED***
+        }
 
         Phaser.Utils.mixinPrototype(this, Phaser.Component[id].prototype, replace);
 
         this.components[id] = true;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Initializes the mixin components.
@@ -51,13 +51,13 @@ Phaser.Component.Core.install = function (components) ***REMOVED***
 * @method
 * @protected
 */
-Phaser.Component.Core.init = function (game, x, y, key, frame) ***REMOVED***
+Phaser.Component.Core.init = function (game, x, y, key, frame) {
 
     this.game = game;
 
     this.key = key;
 
-    this.data = ***REMOVED******REMOVED***;
+    this.data = {};
 
     this.position.set(x, y);
     this.world = new Phaser.Point(x, y);
@@ -68,83 +68,83 @@ Phaser.Component.Core.init = function (game, x, y, key, frame) ***REMOVED***
     this._bounds = new Phaser.Rectangle();
 
     if (this.components.PhysicsBody)
-    ***REMOVED***
+    {
         // Enable-body checks for hasOwnProperty; makes sure to lift property from prototype.
         this.body = this.body;
-    ***REMOVED***
+    }
 
     if (this.components.Animation)
-    ***REMOVED***
+    {
         this.animations = new Phaser.AnimationManager(this);
-    ***REMOVED***
+    }
 
     if (this.components.LoadTexture && key !== null)
-    ***REMOVED***
+    {
         this.loadTexture(key, frame);
-    ***REMOVED***
+    }
 
     if (this.components.FixedToCamera)
-    ***REMOVED***
+    {
         this.cameraOffset = new Phaser.Point(x, y);
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
-Phaser.Component.Core.preUpdate = function () ***REMOVED***
+Phaser.Component.Core.preUpdate = function () {
 
     if (this.pendingDestroy)
-    ***REMOVED***
+    {
         this.destroy();
         return;
-    ***REMOVED***
+    }
 
     this.previousPosition.set(this.world.x, this.world.y);
     this.previousRotation = this.rotation;
 
     if (!this.exists || !this.parent.exists)
-    ***REMOVED***
+    {
         this.renderOrderID = -1;
         return false;
-    ***REMOVED***
+    }
 
     this.world.setTo(this.game.camera.x + this.worldTransform.tx, this.game.camera.y + this.worldTransform.ty);
 
     if (this.visible)
-    ***REMOVED***
+    {
         this.renderOrderID = this.game.stage.currentRenderOrderID++;
-    ***REMOVED***
+    }
 
     if (this.animations)
-    ***REMOVED***
+    {
         this.animations.update();
-    ***REMOVED***
+    }
 
     if (this.body)
-    ***REMOVED***
+    {
         this.body.preUpdate();
-    ***REMOVED***
+    }
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         this.children[i].preUpdate();
-    ***REMOVED***
+    }
 
     return true;
 
-***REMOVED***;
+};
 
-Phaser.Component.Core.prototype = ***REMOVED***
+Phaser.Component.Core.prototype = {
 
     /**
     * A reference to the currently running Game.
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game
+    * @property {Phaser.Game} game
     */
     game: null,
 
     /**
     * A user defined name given to this Game Object.
     * This value isn't ever used internally by Phaser, it is meant as a game level property.
-    * @property ***REMOVED***string***REMOVED*** name
+    * @property {string} name
     * @default
     */
     name: '',
@@ -154,24 +154,24 @@ Phaser.Component.Core.prototype = ***REMOVED***
     * This value isn't ever used internally by Phaser, but may be used by your own code, or
     * by Phaser Plugins, to store data that needs to be associated with the Game Object,
     * without polluting the Game Object directly.
-    * @property ***REMOVED***Object***REMOVED*** data
+    * @property {Object} data
     * @default
     */
-    data: ***REMOVED******REMOVED***,
+    data: {},
 
     /**
     * The components this Game Object has installed.
-    * @property ***REMOVED***object***REMOVED*** components
+    * @property {object} components
     * @protected
     */
-    components: ***REMOVED******REMOVED***,
+    components: {},
 
     /**
     * The z depth of this Game Object within its parent Group.
     * No two objects in a Group can have the same z value.
     * This value is adjusted automatically whenever the Group hierarchy changes.
     * If you wish to re-order the layering of a Game Object then see methods like Group.moveUp or Group.bringToTop.
-    * @property ***REMOVED***number***REMOVED*** z
+    * @property {number} z
     * @readOnly
     */
     z: 0,
@@ -180,7 +180,7 @@ Phaser.Component.Core.prototype = ***REMOVED***
     * All Phaser Game Objects have an Events class which contains all of the events that are dispatched when certain things happen to this
     * Game Object, or any of its components.
     * @see Phaser.Events
-    * @property ***REMOVED***Phaser.Events***REMOVED*** events
+    * @property {Phaser.Events} events
     */
     events: undefined,
 
@@ -188,7 +188,7 @@ Phaser.Component.Core.prototype = ***REMOVED***
     * If the Game Object is enabled for animation (such as a Phaser.Sprite) this is a reference to its AnimationManager instance.
     * Through it you can create, play, pause and stop animations.
     * @see Phaser.AnimationManager
-    * @property ***REMOVED***Phaser.AnimationManager***REMOVED*** animations
+    * @property {Phaser.AnimationManager} animations
     */
     animations: undefined,
 
@@ -198,7 +198,7 @@ Phaser.Component.Core.prototype = ***REMOVED***
     * It can also be an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
     * If a Game Object is created without a key it is automatically assigned the key `__default` which is a 32x32 transparent PNG stored within the Cache.
     * If a Game Object is given a key which doesn't exist in the Image Cache it is re-assigned the key `__missing` which is a 32x32 PNG of a green box with a line through it.
-    * @property ***REMOVED***string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture***REMOVED*** key
+    * @property {string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture} key
     */
     key: '',
 
@@ -206,27 +206,27 @@ Phaser.Component.Core.prototype = ***REMOVED***
     * The world coordinates of this Game Object in pixels.
     * Depending on where in the display list this Game Object is placed this value can differ from `position`, 
     * which contains the x/y coordinates relative to the Game Objects parent.
-    * @property ***REMOVED***Phaser.Point***REMOVED*** world
+    * @property {Phaser.Point} world
     */
     world: null,
 
     /**
     * A debug flag designed for use with `Game.enableStep`.
-    * @property ***REMOVED***boolean***REMOVED*** debug
+    * @property {boolean} debug
     * @default
     */
     debug: false,
 
     /**
     * The position the Game Object was located in the previous frame.
-    * @property ***REMOVED***Phaser.Point***REMOVED*** previousPosition
+    * @property {Phaser.Point} previousPosition
     * @readOnly
     */
     previousPosition: null,
 
     /**
     * The rotation the Game Object was in set to in the previous frame. Value is in radians.
-    * @property ***REMOVED***number***REMOVED*** previousRotation
+    * @property {number} previousRotation
     * @readOnly
     */
     previousRotation: 0,
@@ -234,7 +234,7 @@ Phaser.Component.Core.prototype = ***REMOVED***
     /**
     * The render order ID is used internally by the renderer and Input Manager and should not be modified.
     * This property is mostly used internally by the renderers, but is exposed for the use of plugins.
-    * @property ***REMOVED***number***REMOVED*** renderOrderID
+    * @property {number} renderOrderID
     * @readOnly
     */
     renderOrderID: 0,
@@ -242,7 +242,7 @@ Phaser.Component.Core.prototype = ***REMOVED***
     /**
     * A Game Object is considered `fresh` if it has just been created or reset and is yet to receive a renderer transform update.
     * This property is mostly used internally by the physics systems, but is exposed for the use of plugins.
-    * @property ***REMOVED***boolean***REMOVED*** fresh
+    * @property {boolean} fresh
     * @readOnly
     */
     fresh: true,
@@ -254,18 +254,18 @@ Phaser.Component.Core.prototype = ***REMOVED***
     * This is extremely useful if you wish to destroy an object from within one of its own callbacks 
     * such as with Buttons or other Input events.
     * 
-    * @property ***REMOVED***boolean***REMOVED*** pendingDestroy
+    * @property {boolean} pendingDestroy
     */
     pendingDestroy: false,
 
     /**
-    * @property ***REMOVED***Phaser.Rectangle***REMOVED*** _bounds - Internal cache var.
+    * @property {Phaser.Rectangle} _bounds - Internal cache var.
     * @private
     */
     _bounds: null,
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _exists - Internal cache var.
+    * @property {boolean} _exists - Internal cache var.
     * @private
     */
     _exists: true,
@@ -279,44 +279,44 @@ Phaser.Component.Core.prototype = ***REMOVED***
     * Setting `exists` to true will add its physics body back in to the physics world, if it has one.
     * It will also set the `visible` property to `true`.
     *
-    * @property ***REMOVED***boolean***REMOVED*** exists
+    * @property {boolean} exists
     */
-    exists: ***REMOVED***
+    exists: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return this._exists;
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             if (value)
-            ***REMOVED***
+            {
                 this._exists = true;
 
                 if (this.body && this.body.type === Phaser.Physics.P2JS)
-                ***REMOVED***
+                {
                     this.body.addToWorld();
-                ***REMOVED***
+                }
 
                 this.visible = true;
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this._exists = false;
 
                 if (this.body && this.body.type === Phaser.Physics.P2JS)
-                ***REMOVED***
+                {
                     this.body.removeFromWorld();
-                ***REMOVED***
+                }
 
                 this.visible = false;
-            ***REMOVED***
+            }
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Override this method in your own custom objects to handle any update requirements.
@@ -325,9 +325,9 @@ Phaser.Component.Core.prototype = ***REMOVED***
     *
     * @method
     */
-    update: function() ***REMOVED***
+    update: function() {
 
-    ***REMOVED***,
+    },
 
     /**
     * Internal method called by the World postUpdate cycle.
@@ -335,28 +335,28 @@ Phaser.Component.Core.prototype = ***REMOVED***
     * @method
     * @protected
     */
-    postUpdate: function() ***REMOVED***
+    postUpdate: function() {
 
         if (this.customRender)
-        ***REMOVED***
+        {
             this.key.render();
-        ***REMOVED***
+        }
 
         if (this.components.PhysicsBody)
-        ***REMOVED***
+        {
             Phaser.Component.PhysicsBody.postUpdate.call(this);
-        ***REMOVED***
+        }
 
         if (this.components.FixedToCamera)
-        ***REMOVED***
+        {
             Phaser.Component.FixedToCamera.postUpdate.call(this);
-        ***REMOVED***
+        }
 
         for (var i = 0; i < this.children.length; i++)
-        ***REMOVED***
+        {
             this.children[i].postUpdate();
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};

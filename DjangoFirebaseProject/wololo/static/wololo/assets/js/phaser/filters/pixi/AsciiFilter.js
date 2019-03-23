@@ -11,16 +11,16 @@
  * @constructor
  */
 PIXI.AsciiFilter = function()
-***REMOVED***
+{
     PIXI.AbstractFilter.call(this);
 
     this.passes = [this];
 
     // set the uniforms
-    this.uniforms = ***REMOVED***
-        dimensions: ***REMOVED***type: '4fv', value:new PIXI.Float32Array([10000, 100, 10, 10])***REMOVED***,
-        pixelSize: ***REMOVED***type: '1f', value:8***REMOVED***
-    ***REMOVED***;
+    this.uniforms = {
+        dimensions: {type: '4fv', value:new PIXI.Float32Array([10000, 100, 10, 10])},
+        pixelSize: {type: '1f', value:8}
+    };
 
     this.fragmentSrc = [
         
@@ -30,17 +30,17 @@ PIXI.AsciiFilter = function()
         'uniform sampler2D uSampler;',
 
         'float character(float n, vec2 p)',
-        '***REMOVED***',
+        '{',
         '    p = floor(p*vec2(4.0, -4.0) + 2.5);',
         '    if (clamp(p.x, 0.0, 4.0) == p.x && clamp(p.y, 0.0, 4.0) == p.y)',
-        '    ***REMOVED***',
+        '    {',
         '        if (int(mod(n/exp2(p.x + 5.0*p.y), 2.0)) == 1) return 1.0;',
-        '    ***REMOVED***',
+        '    }',
         '    return 0.0;',
-        '***REMOVED***',
+        '}',
 
         'void main()',
-        '***REMOVED***',
+        '{',
         '    vec2 uv = gl_FragCoord.xy;',
         '    vec3 col = texture2D(uSampler, floor( uv / pixelSize ) * pixelSize / dimensions.xy).rgb;',
             
@@ -63,9 +63,9 @@ PIXI.AsciiFilter = function()
         '    col = col * character(n, p);',
             
         '    gl_FragColor = vec4(col, 1.0);',
-        '***REMOVED***'
+        '}'
     ];
-***REMOVED***;
+};
 
 PIXI.AsciiFilter.prototype = Object.create( PIXI.AbstractFilter.prototype );
 PIXI.AsciiFilter.prototype.constructor = PIXI.AsciiFilter;
@@ -76,14 +76,14 @@ PIXI.AsciiFilter.prototype.constructor = PIXI.AsciiFilter;
  * @property size
  * @type Number
  */
-Object.defineProperty(PIXI.AsciiFilter.prototype, 'size', ***REMOVED***
+Object.defineProperty(PIXI.AsciiFilter.prototype, 'size', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.pixelSize.value;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.dirty = true;
         this.uniforms.pixelSize.value = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});

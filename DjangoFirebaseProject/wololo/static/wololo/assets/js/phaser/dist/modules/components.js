@@ -1,15 +1,15 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
-Phaser.Component = function () ***REMOVED******REMOVED***;
+Phaser.Component = function () {};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -17,9 +17,9 @@ Phaser.Component = function () ***REMOVED******REMOVED***;
 *
 * @class
 */
-Phaser.Component.Angle = function () ***REMOVED******REMOVED***;
+Phaser.Component.Angle = function () {};
 
-Phaser.Component.Angle.prototype = ***REMOVED***
+Phaser.Component.Angle.prototype = {
 
     /**
     * The angle property is the rotation of the Game Object in *degrees* from its original orientation.
@@ -32,30 +32,30 @@ Phaser.Component.Angle.prototype = ***REMOVED***
     * If you wish to work in radians instead of degrees you can use the property `rotation` instead. 
     * Working in radians is slightly faster as it doesn't have to perform any calculations.
     *
-    * @property ***REMOVED***number***REMOVED*** angle
+    * @property {number} angle
     */
-    angle: ***REMOVED***
+    angle: {
 
-        get: function() ***REMOVED***
+        get: function() {
 
             return Phaser.Math.wrapAngle(Phaser.Math.radToDeg(this.rotation));
 
-        ***REMOVED***,
+        },
 
-        set: function(value) ***REMOVED***
+        set: function(value) {
 
             this.rotation = Phaser.Math.degToRad(Phaser.Math.wrapAngle(value));
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -63,9 +63,9 @@ Phaser.Component.Angle.prototype = ***REMOVED***
 *
 * @class
 */
-Phaser.Component.Animation = function () ***REMOVED******REMOVED***;
+Phaser.Component.Animation = function () {};
 
-Phaser.Component.Animation.prototype = ***REMOVED***
+Phaser.Component.Animation.prototype = {
 
     /**
     * Plays an Animation.
@@ -76,27 +76,27 @@ Phaser.Component.Animation.prototype = ***REMOVED***
     * If you need to reset an already running animation do so directly on the Animation object itself or via `AnimationManager.stop`.
     *
     * @method
-    * @param ***REMOVED***string***REMOVED*** name - The name of the animation to be played, e.g. "fire", "walk", "jump". Must have been previously created via 'AnimationManager.add'.
-    * @param ***REMOVED***number***REMOVED*** [frameRate=null] - The framerate to play the animation at. The speed is given in frames per second. If not provided the previously set frameRate of the Animation is used.
-    * @param ***REMOVED***boolean***REMOVED*** [loop=false] - Should the animation be looped after playback. If not provided the previously set loop value of the Animation is used.
-    * @param ***REMOVED***boolean***REMOVED*** [killOnComplete=false] - If set to true when the animation completes (only happens if loop=false) the parent Sprite will be killed.
-    * @return ***REMOVED***Phaser.Animation***REMOVED*** A reference to playing Animation.
+    * @param {string} name - The name of the animation to be played, e.g. "fire", "walk", "jump". Must have been previously created via 'AnimationManager.add'.
+    * @param {number} [frameRate=null] - The framerate to play the animation at. The speed is given in frames per second. If not provided the previously set frameRate of the Animation is used.
+    * @param {boolean} [loop=false] - Should the animation be looped after playback. If not provided the previously set loop value of the Animation is used.
+    * @param {boolean} [killOnComplete=false] - If set to true when the animation completes (only happens if loop=false) the parent Sprite will be killed.
+    * @return {Phaser.Animation} A reference to playing Animation.
     */
-    play: function (name, frameRate, loop, killOnComplete) ***REMOVED***
+    play: function (name, frameRate, loop, killOnComplete) {
 
         if (this.animations)
-        ***REMOVED***
+        {
             return this.animations.play(name, frameRate, loop, killOnComplete);
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -105,9 +105,9 @@ Phaser.Component.Animation.prototype = ***REMOVED***
 *
 * @class
 */
-Phaser.Component.AutoCull = function () ***REMOVED******REMOVED***;
+Phaser.Component.AutoCull = function () {};
 
-Phaser.Component.AutoCull.prototype = ***REMOVED***
+Phaser.Component.AutoCull.prototype = {
 
     /**
     * A Game Object with `autoCull` set to true will check its bounds against the World Camera every frame.
@@ -117,7 +117,7 @@ Phaser.Component.AutoCull.prototype = ***REMOVED***
     * This is a relatively expensive operation, especially if enabled on hundreds of Game Objects. So enable it only if you know it's required,
     * or you have tested performance and find it acceptable.
     *
-    * @property ***REMOVED***boolean***REMOVED*** autoCull
+    * @property {boolean} autoCull
     * @default
     */
     autoCull: false,
@@ -126,32 +126,32 @@ Phaser.Component.AutoCull.prototype = ***REMOVED***
     * Checks if the Game Objects bounds intersect with the Game Camera bounds.
     * Returns `true` if they do, otherwise `false` if fully outside of the Cameras bounds.
     *
-    * @property ***REMOVED***boolean***REMOVED*** inCamera
+    * @property {boolean} inCamera
     * @readonly
     */
-    inCamera: ***REMOVED***
+    inCamera: {
 
-        get: function() ***REMOVED***
+        get: function() {
 
             if (!this.autoCull && !this.checkWorldBounds)
-            ***REMOVED***
+            {
                 this._bounds.copyFrom(this.getBounds());
                 this._bounds.x += this.game.camera.view.x;
                 this._bounds.y += this.game.camera.view.y;
-            ***REMOVED***
+            }
 
             return this.game.world.camera.view.intersects(this._bounds);
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -159,177 +159,177 @@ Phaser.Component.AutoCull.prototype = ***REMOVED***
 *
 * @class
 */
-Phaser.Component.Bounds = function () ***REMOVED******REMOVED***;
+Phaser.Component.Bounds = function () {};
 
-Phaser.Component.Bounds.prototype = ***REMOVED***
+Phaser.Component.Bounds.prototype = {
 
     /**
     * The amount the Game Object is visually offset from its x coordinate.
     * This is the same as `width * anchor.x`.
     * It will only be > 0 if anchor.x is not equal to zero.
     *
-    * @property ***REMOVED***number***REMOVED*** offsetX
+    * @property {number} offsetX
     * @readOnly
     */
-    offsetX: ***REMOVED***
+    offsetX: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return this.anchor.x * this.width;
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The amount the Game Object is visually offset from its y coordinate.
     * This is the same as `height * anchor.y`.
     * It will only be > 0 if anchor.y is not equal to zero.
     *
-    * @property ***REMOVED***number***REMOVED*** offsetY
+    * @property {number} offsetY
     * @readOnly
     */
-    offsetY: ***REMOVED***
+    offsetY: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return this.anchor.y * this.height;
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The center x coordinate of the Game Object.
     * This is the same as `(x - offsetX) + (width / 2)`.
     *
-    * @property ***REMOVED***number***REMOVED*** centerX
+    * @property {number} centerX
     */
-    centerX: ***REMOVED***
+    centerX: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return (this.x - this.offsetX) + (this.width * 0.5);
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             this.x = (value + this.offsetX) - (this.width * 0.5);
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The center y coordinate of the Game Object.
     * This is the same as `(y - offsetY) + (height / 2)`.
     *
-    * @property ***REMOVED***number***REMOVED*** centerY
+    * @property {number} centerY
     */
-    centerY: ***REMOVED***
+    centerY: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return (this.y - this.offsetY) + (this.height * 0.5);
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             this.y = (value + this.offsetY) - (this.height * 0.5);
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The left coordinate of the Game Object.
     * This is the same as `x - offsetX`.
     *
-    * @property ***REMOVED***number***REMOVED*** left
+    * @property {number} left
     */
-    left: ***REMOVED***
+    left: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return this.x - this.offsetX;
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             this.x = value + this.offsetX;
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The right coordinate of the Game Object.
     * This is the same as `x + width - offsetX`.
     *
-    * @property ***REMOVED***number***REMOVED*** right
+    * @property {number} right
     */
-    right: ***REMOVED***
+    right: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return (this.x + this.width) - this.offsetX;
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             this.x = value - (this.width) + this.offsetX;
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The y coordinate of the Game Object.
     * This is the same as `y - offsetY`.
     *
-    * @property ***REMOVED***number***REMOVED*** top
+    * @property {number} top
     */
-    top: ***REMOVED***
+    top: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return this.y - this.offsetY;
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             this.y = value + this.offsetY;
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The sum of the y and height properties.
     * This is the same as `y + height - offsetY`.
     *
-    * @property ***REMOVED***number***REMOVED*** bottom
+    * @property {number} bottom
     */
-    bottom: ***REMOVED***
+    bottom: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return (this.y + this.height) - this.offsetY;
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             this.y = value - (this.height) + this.offsetY;
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Aligns this Game Object within another Game Object, or Rectangle, known as the
@@ -364,19 +364,19 @@ Phaser.Component.Bounds.prototype = ***REMOVED***
     * one expands it.
     *
     * @method
-    * @param ***REMOVED***Phaser.Rectangle|Phaser.Sprite|Phaser.Image|Phaser.Text|Phaser.BitmapText|Phaser.Button|Phaser.Graphics|Phaser.TileSprite***REMOVED*** container - The Game Object or Rectangle with which to align this Game Object to. Can also include properties such as `World.bounds` or `Camera.view`.
-    * @param ***REMOVED***integer***REMOVED*** [position] - The position constant. One of `Phaser.TOP_LEFT` (default), `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_CENTER`, `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-    * @param ***REMOVED***integer***REMOVED*** [offsetX=0] - A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-    * @param ***REMOVED***integer***REMOVED*** [offsetY=0] - A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-    * @return ***REMOVED***Object***REMOVED*** This Game Object.
+    * @param {Phaser.Rectangle|Phaser.Sprite|Phaser.Image|Phaser.Text|Phaser.BitmapText|Phaser.Button|Phaser.Graphics|Phaser.TileSprite} container - The Game Object or Rectangle with which to align this Game Object to. Can also include properties such as `World.bounds` or `Camera.view`.
+    * @param {integer} [position] - The position constant. One of `Phaser.TOP_LEFT` (default), `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_CENTER`, `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
+    * @param {integer} [offsetX=0] - A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
+    * @param {integer} [offsetY=0] - A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
+    * @return {Object} This Game Object.
     */
-    alignIn: function (container, position, offsetX, offsetY) ***REMOVED***
+    alignIn: function (container, position, offsetX, offsetY) {
 
-        if (offsetX === undefined) ***REMOVED*** offsetX = 0; ***REMOVED***
-        if (offsetY === undefined) ***REMOVED*** offsetY = 0; ***REMOVED***
+        if (offsetX === undefined) { offsetX = 0; }
+        if (offsetY === undefined) { offsetY = 0; }
 
         switch (position)
-        ***REMOVED***
+        {
             default:
             case Phaser.TOP_LEFT:
                 this.left = container.left - offsetX;
@@ -422,11 +422,11 @@ Phaser.Component.Bounds.prototype = ***REMOVED***
                 this.right = container.right + offsetX;
                 this.bottom = container.bottom + offsetY;
                 break;
-        ***REMOVED***
+        }
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Aligns this Game Object to the side of another Game Object, or Rectangle, known as the
@@ -462,19 +462,19 @@ Phaser.Component.Bounds.prototype = ***REMOVED***
     * one expands it.
     *
     * @method
-    * @param ***REMOVED***Phaser.Rectangle|Phaser.Sprite|Phaser.Image|Phaser.Text|Phaser.BitmapText|Phaser.Button|Phaser.Graphics|Phaser.TileSprite***REMOVED*** parent - The Game Object or Rectangle with which to align this Game Object to. Can also include properties such as `World.bounds` or `Camera.view`.
-    * @param ***REMOVED***integer***REMOVED*** [position] - The position constant. One of `Phaser.TOP_LEFT`, `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_TOP`, `Phaser.LEFT_CENTER`, `Phaser.LEFT_BOTTOM`, `Phaser.RIGHT_TOP`, `Phaser.RIGHT_CENTER`, `Phaser.RIGHT_BOTTOM`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-    * @param ***REMOVED***integer***REMOVED*** [offsetX=0] - A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-    * @param ***REMOVED***integer***REMOVED*** [offsetY=0] - A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-    * @return ***REMOVED***Object***REMOVED*** This Game Object.
+    * @param {Phaser.Rectangle|Phaser.Sprite|Phaser.Image|Phaser.Text|Phaser.BitmapText|Phaser.Button|Phaser.Graphics|Phaser.TileSprite} parent - The Game Object or Rectangle with which to align this Game Object to. Can also include properties such as `World.bounds` or `Camera.view`.
+    * @param {integer} [position] - The position constant. One of `Phaser.TOP_LEFT`, `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_TOP`, `Phaser.LEFT_CENTER`, `Phaser.LEFT_BOTTOM`, `Phaser.RIGHT_TOP`, `Phaser.RIGHT_CENTER`, `Phaser.RIGHT_BOTTOM`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
+    * @param {integer} [offsetX=0] - A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
+    * @param {integer} [offsetY=0] - A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
+    * @return {Object} This Game Object.
     */
-    alignTo: function (parent, position, offsetX, offsetY) ***REMOVED***
+    alignTo: function (parent, position, offsetX, offsetY) {
 
-        if (offsetX === undefined) ***REMOVED*** offsetX = 0; ***REMOVED***
-        if (offsetY === undefined) ***REMOVED*** offsetY = 0; ***REMOVED***
+        if (offsetX === undefined) { offsetX = 0; }
+        if (offsetY === undefined) { offsetY = 0; }
 
         switch (position)
-        ***REMOVED***
+        {
             default:
             case Phaser.TOP_LEFT:
                 this.left = parent.left - offsetX;
@@ -535,13 +535,13 @@ Phaser.Component.Bounds.prototype = ***REMOVED***
                 this.right = parent.right + offsetX;
                 this.top = parent.bottom + offsetY;
                 break;
-        ***REMOVED***
+        }
 
         return this;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 //  Phaser.Group extensions
 
@@ -551,7 +551,7 @@ Phaser.Group.prototype.alignTo = Phaser.Component.Bounds.prototype.alignTo;
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -559,7 +559,7 @@ Phaser.Group.prototype.alignTo = Phaser.Component.Bounds.prototype.alignTo;
 *
 * @class
 */
-Phaser.Component.BringToTop = function () ***REMOVED******REMOVED***;
+Phaser.Component.BringToTop = function () {};
 
 /**
 * Brings this Game Object to the top of its parents display list.
@@ -569,18 +569,18 @@ Phaser.Component.BringToTop = function () ***REMOVED******REMOVED***;
 * because the World is the root Group from which all Game Objects descend.
 *
 * @method
-* @return ***REMOVED***PIXI.DisplayObject***REMOVED*** This instance.
+* @return {PIXI.DisplayObject} This instance.
 */
-Phaser.Component.BringToTop.prototype.bringToTop = function() ***REMOVED***
+Phaser.Component.BringToTop.prototype.bringToTop = function() {
 
     if (this.parent)
-    ***REMOVED***
+    {
         this.parent.bringToTop(this);
-    ***REMOVED***
+    }
 
     return this;
 
-***REMOVED***;
+};
 
 /**
 * Sends this Game Object to the bottom of its parents display list.
@@ -590,18 +590,18 @@ Phaser.Component.BringToTop.prototype.bringToTop = function() ***REMOVED***
 * because the World is the root Group from which all Game Objects descend.
 *
 * @method
-* @return ***REMOVED***PIXI.DisplayObject***REMOVED*** This instance.
+* @return {PIXI.DisplayObject} This instance.
 */
-Phaser.Component.BringToTop.prototype.sendToBack = function() ***REMOVED***
+Phaser.Component.BringToTop.prototype.sendToBack = function() {
 
     if (this.parent)
-    ***REMOVED***
+    {
         this.parent.sendToBack(this);
-    ***REMOVED***
+    }
 
     return this;
 
-***REMOVED***;
+};
 
 /**
 * Moves this Game Object up one place in its parents display list.
@@ -611,18 +611,18 @@ Phaser.Component.BringToTop.prototype.sendToBack = function() ***REMOVED***
 * because the World is the root Group from which all Game Objects descend.
 *
 * @method
-* @return ***REMOVED***PIXI.DisplayObject***REMOVED*** This instance.
+* @return {PIXI.DisplayObject} This instance.
 */
-Phaser.Component.BringToTop.prototype.moveUp = function () ***REMOVED***
+Phaser.Component.BringToTop.prototype.moveUp = function () {
 
     if (this.parent)
-    ***REMOVED***
+    {
         this.parent.moveUp(this);
-    ***REMOVED***
+    }
 
     return this;
 
-***REMOVED***;
+};
 
 /**
 * Moves this Game Object down one place in its parents display list.
@@ -632,23 +632,23 @@ Phaser.Component.BringToTop.prototype.moveUp = function () ***REMOVED***
 * because the World is the root Group from which all Game Objects descend.
 *
 * @method
-* @return ***REMOVED***PIXI.DisplayObject***REMOVED*** This instance.
+* @return {PIXI.DisplayObject} This instance.
 */
-Phaser.Component.BringToTop.prototype.moveDown = function () ***REMOVED***
+Phaser.Component.BringToTop.prototype.moveDown = function () {
 
     if (this.parent)
-    ***REMOVED***
+    {
         this.parent.moveDown(this);
-    ***REMOVED***
+    }
 
     return this;
 
-***REMOVED***;
+};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -656,7 +656,7 @@ Phaser.Component.BringToTop.prototype.moveDown = function () ***REMOVED***
 *
 * @class
 */
-Phaser.Component.Core = function () ***REMOVED******REMOVED***;
+Phaser.Component.Core = function () {};
 
 /**
 * Installs / registers mixin components.
@@ -666,29 +666,29 @@ Phaser.Component.Core = function () ***REMOVED******REMOVED***;
 * @method
 * @protected
 */
-Phaser.Component.Core.install = function (components) ***REMOVED***
+Phaser.Component.Core.install = function (components) {
 
     // Always install 'Core' first
     Phaser.Utils.mixinPrototype(this, Phaser.Component.Core.prototype);
 
-    this.components = ***REMOVED******REMOVED***;
+    this.components = {};
 
     for (var i = 0; i < components.length; i++)
-    ***REMOVED***
+    {
         var id = components[i];
         var replace = false;
 
         if (id === 'Destroy')
-        ***REMOVED***
+        {
             replace = true;
-        ***REMOVED***
+        }
 
         Phaser.Utils.mixinPrototype(this, Phaser.Component[id].prototype, replace);
 
         this.components[id] = true;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Initializes the mixin components.
@@ -698,13 +698,13 @@ Phaser.Component.Core.install = function (components) ***REMOVED***
 * @method
 * @protected
 */
-Phaser.Component.Core.init = function (game, x, y, key, frame) ***REMOVED***
+Phaser.Component.Core.init = function (game, x, y, key, frame) {
 
     this.game = game;
 
     this.key = key;
 
-    this.data = ***REMOVED******REMOVED***;
+    this.data = {};
 
     this.position.set(x, y);
     this.world = new Phaser.Point(x, y);
@@ -715,83 +715,83 @@ Phaser.Component.Core.init = function (game, x, y, key, frame) ***REMOVED***
     this._bounds = new Phaser.Rectangle();
 
     if (this.components.PhysicsBody)
-    ***REMOVED***
+    {
         // Enable-body checks for hasOwnProperty; makes sure to lift property from prototype.
         this.body = this.body;
-    ***REMOVED***
+    }
 
     if (this.components.Animation)
-    ***REMOVED***
+    {
         this.animations = new Phaser.AnimationManager(this);
-    ***REMOVED***
+    }
 
     if (this.components.LoadTexture && key !== null)
-    ***REMOVED***
+    {
         this.loadTexture(key, frame);
-    ***REMOVED***
+    }
 
     if (this.components.FixedToCamera)
-    ***REMOVED***
+    {
         this.cameraOffset = new Phaser.Point(x, y);
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
-Phaser.Component.Core.preUpdate = function () ***REMOVED***
+Phaser.Component.Core.preUpdate = function () {
 
     if (this.pendingDestroy)
-    ***REMOVED***
+    {
         this.destroy();
         return;
-    ***REMOVED***
+    }
 
     this.previousPosition.set(this.world.x, this.world.y);
     this.previousRotation = this.rotation;
 
     if (!this.exists || !this.parent.exists)
-    ***REMOVED***
+    {
         this.renderOrderID = -1;
         return false;
-    ***REMOVED***
+    }
 
     this.world.setTo(this.game.camera.x + this.worldTransform.tx, this.game.camera.y + this.worldTransform.ty);
 
     if (this.visible)
-    ***REMOVED***
+    {
         this.renderOrderID = this.game.stage.currentRenderOrderID++;
-    ***REMOVED***
+    }
 
     if (this.animations)
-    ***REMOVED***
+    {
         this.animations.update();
-    ***REMOVED***
+    }
 
     if (this.body)
-    ***REMOVED***
+    {
         this.body.preUpdate();
-    ***REMOVED***
+    }
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         this.children[i].preUpdate();
-    ***REMOVED***
+    }
 
     return true;
 
-***REMOVED***;
+};
 
-Phaser.Component.Core.prototype = ***REMOVED***
+Phaser.Component.Core.prototype = {
 
     /**
     * A reference to the currently running Game.
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game
+    * @property {Phaser.Game} game
     */
     game: null,
 
     /**
     * A user defined name given to this Game Object.
     * This value isn't ever used internally by Phaser, it is meant as a game level property.
-    * @property ***REMOVED***string***REMOVED*** name
+    * @property {string} name
     * @default
     */
     name: '',
@@ -801,24 +801,24 @@ Phaser.Component.Core.prototype = ***REMOVED***
     * This value isn't ever used internally by Phaser, but may be used by your own code, or
     * by Phaser Plugins, to store data that needs to be associated with the Game Object,
     * without polluting the Game Object directly.
-    * @property ***REMOVED***Object***REMOVED*** data
+    * @property {Object} data
     * @default
     */
-    data: ***REMOVED******REMOVED***,
+    data: {},
 
     /**
     * The components this Game Object has installed.
-    * @property ***REMOVED***object***REMOVED*** components
+    * @property {object} components
     * @protected
     */
-    components: ***REMOVED******REMOVED***,
+    components: {},
 
     /**
     * The z depth of this Game Object within its parent Group.
     * No two objects in a Group can have the same z value.
     * This value is adjusted automatically whenever the Group hierarchy changes.
     * If you wish to re-order the layering of a Game Object then see methods like Group.moveUp or Group.bringToTop.
-    * @property ***REMOVED***number***REMOVED*** z
+    * @property {number} z
     * @readOnly
     */
     z: 0,
@@ -827,7 +827,7 @@ Phaser.Component.Core.prototype = ***REMOVED***
     * All Phaser Game Objects have an Events class which contains all of the events that are dispatched when certain things happen to this
     * Game Object, or any of its components.
     * @see Phaser.Events
-    * @property ***REMOVED***Phaser.Events***REMOVED*** events
+    * @property {Phaser.Events} events
     */
     events: undefined,
 
@@ -835,7 +835,7 @@ Phaser.Component.Core.prototype = ***REMOVED***
     * If the Game Object is enabled for animation (such as a Phaser.Sprite) this is a reference to its AnimationManager instance.
     * Through it you can create, play, pause and stop animations.
     * @see Phaser.AnimationManager
-    * @property ***REMOVED***Phaser.AnimationManager***REMOVED*** animations
+    * @property {Phaser.AnimationManager} animations
     */
     animations: undefined,
 
@@ -845,7 +845,7 @@ Phaser.Component.Core.prototype = ***REMOVED***
     * It can also be an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
     * If a Game Object is created without a key it is automatically assigned the key `__default` which is a 32x32 transparent PNG stored within the Cache.
     * If a Game Object is given a key which doesn't exist in the Image Cache it is re-assigned the key `__missing` which is a 32x32 PNG of a green box with a line through it.
-    * @property ***REMOVED***string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture***REMOVED*** key
+    * @property {string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture} key
     */
     key: '',
 
@@ -853,27 +853,27 @@ Phaser.Component.Core.prototype = ***REMOVED***
     * The world coordinates of this Game Object in pixels.
     * Depending on where in the display list this Game Object is placed this value can differ from `position`, 
     * which contains the x/y coordinates relative to the Game Objects parent.
-    * @property ***REMOVED***Phaser.Point***REMOVED*** world
+    * @property {Phaser.Point} world
     */
     world: null,
 
     /**
     * A debug flag designed for use with `Game.enableStep`.
-    * @property ***REMOVED***boolean***REMOVED*** debug
+    * @property {boolean} debug
     * @default
     */
     debug: false,
 
     /**
     * The position the Game Object was located in the previous frame.
-    * @property ***REMOVED***Phaser.Point***REMOVED*** previousPosition
+    * @property {Phaser.Point} previousPosition
     * @readOnly
     */
     previousPosition: null,
 
     /**
     * The rotation the Game Object was in set to in the previous frame. Value is in radians.
-    * @property ***REMOVED***number***REMOVED*** previousRotation
+    * @property {number} previousRotation
     * @readOnly
     */
     previousRotation: 0,
@@ -881,7 +881,7 @@ Phaser.Component.Core.prototype = ***REMOVED***
     /**
     * The render order ID is used internally by the renderer and Input Manager and should not be modified.
     * This property is mostly used internally by the renderers, but is exposed for the use of plugins.
-    * @property ***REMOVED***number***REMOVED*** renderOrderID
+    * @property {number} renderOrderID
     * @readOnly
     */
     renderOrderID: 0,
@@ -889,7 +889,7 @@ Phaser.Component.Core.prototype = ***REMOVED***
     /**
     * A Game Object is considered `fresh` if it has just been created or reset and is yet to receive a renderer transform update.
     * This property is mostly used internally by the physics systems, but is exposed for the use of plugins.
-    * @property ***REMOVED***boolean***REMOVED*** fresh
+    * @property {boolean} fresh
     * @readOnly
     */
     fresh: true,
@@ -901,18 +901,18 @@ Phaser.Component.Core.prototype = ***REMOVED***
     * This is extremely useful if you wish to destroy an object from within one of its own callbacks 
     * such as with Buttons or other Input events.
     * 
-    * @property ***REMOVED***boolean***REMOVED*** pendingDestroy
+    * @property {boolean} pendingDestroy
     */
     pendingDestroy: false,
 
     /**
-    * @property ***REMOVED***Phaser.Rectangle***REMOVED*** _bounds - Internal cache var.
+    * @property {Phaser.Rectangle} _bounds - Internal cache var.
     * @private
     */
     _bounds: null,
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _exists - Internal cache var.
+    * @property {boolean} _exists - Internal cache var.
     * @private
     */
     _exists: true,
@@ -926,44 +926,44 @@ Phaser.Component.Core.prototype = ***REMOVED***
     * Setting `exists` to true will add its physics body back in to the physics world, if it has one.
     * It will also set the `visible` property to `true`.
     *
-    * @property ***REMOVED***boolean***REMOVED*** exists
+    * @property {boolean} exists
     */
-    exists: ***REMOVED***
+    exists: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return this._exists;
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             if (value)
-            ***REMOVED***
+            {
                 this._exists = true;
 
                 if (this.body && this.body.type === Phaser.Physics.P2JS)
-                ***REMOVED***
+                {
                     this.body.addToWorld();
-                ***REMOVED***
+                }
 
                 this.visible = true;
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this._exists = false;
 
                 if (this.body && this.body.type === Phaser.Physics.P2JS)
-                ***REMOVED***
+                {
                     this.body.removeFromWorld();
-                ***REMOVED***
+                }
 
                 this.visible = false;
-            ***REMOVED***
+            }
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Override this method in your own custom objects to handle any update requirements.
@@ -972,9 +972,9 @@ Phaser.Component.Core.prototype = ***REMOVED***
     *
     * @method
     */
-    update: function() ***REMOVED***
+    update: function() {
 
-    ***REMOVED***,
+    },
 
     /**
     * Internal method called by the World postUpdate cycle.
@@ -982,36 +982,36 @@ Phaser.Component.Core.prototype = ***REMOVED***
     * @method
     * @protected
     */
-    postUpdate: function() ***REMOVED***
+    postUpdate: function() {
 
         if (this.customRender)
-        ***REMOVED***
+        {
             this.key.render();
-        ***REMOVED***
+        }
 
         if (this.components.PhysicsBody)
-        ***REMOVED***
+        {
             Phaser.Component.PhysicsBody.postUpdate.call(this);
-        ***REMOVED***
+        }
 
         if (this.components.FixedToCamera)
-        ***REMOVED***
+        {
             Phaser.Component.FixedToCamera.postUpdate.call(this);
-        ***REMOVED***
+        }
 
         for (var i = 0; i < this.children.length; i++)
-        ***REMOVED***
+        {
             this.children[i].postUpdate();
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1020,21 +1020,21 @@ Phaser.Component.Core.prototype = ***REMOVED***
 *
 * @class
 */
-Phaser.Component.Crop = function () ***REMOVED******REMOVED***;
+Phaser.Component.Crop = function () {};
 
-Phaser.Component.Crop.prototype = ***REMOVED***
+Phaser.Component.Crop.prototype = {
 
     /**
     * The Rectangle used to crop the texture this Game Object uses.
     * Set this property via `crop`. 
     * If you modify this property directly you must call `updateCrop` in order to have the change take effect.
-    * @property ***REMOVED***Phaser.Rectangle***REMOVED*** cropRect
+    * @property {Phaser.Rectangle} cropRect
     * @default
     */
     cropRect: null,
 
     /**
-    * @property ***REMOVED***Phaser.Rectangle***REMOVED*** _crop - Internal cache var.
+    * @property {Phaser.Rectangle} _crop - Internal cache var.
     * @private
     */
     _crop: null,
@@ -1053,39 +1053,39 @@ Phaser.Component.Crop.prototype = ***REMOVED***
     * in which case the values are duplicated to a local object.
     *
     * @method
-    * @param ***REMOVED***Phaser.Rectangle***REMOVED*** rect - The Rectangle used during cropping. Pass null or no parameters to clear a previously set crop rectangle.
-    * @param ***REMOVED***boolean***REMOVED*** [copy=false] - If false `cropRect` will be stored as a reference to the given rect. If true it will copy the rect values into a local Phaser Rectangle object stored in cropRect.
+    * @param {Phaser.Rectangle} rect - The Rectangle used during cropping. Pass null or no parameters to clear a previously set crop rectangle.
+    * @param {boolean} [copy=false] - If false `cropRect` will be stored as a reference to the given rect. If true it will copy the rect values into a local Phaser Rectangle object stored in cropRect.
     */
-    crop: function (rect, copy) ***REMOVED***
+    crop: function (rect, copy) {
 
-        if (copy === undefined) ***REMOVED*** copy = false; ***REMOVED***
+        if (copy === undefined) { copy = false; }
 
         if (rect)
-        ***REMOVED***
+        {
             if (copy && this.cropRect !== null)
-            ***REMOVED***
+            {
                 this.cropRect.setTo(rect.x, rect.y, rect.width, rect.height);
-            ***REMOVED***
+            }
             else if (copy && this.cropRect === null)
-            ***REMOVED***
+            {
                 this.cropRect = new Phaser.Rectangle(rect.x, rect.y, rect.width, rect.height);
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this.cropRect = rect;
-            ***REMOVED***
+            }
 
             this.updateCrop();
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this._crop = null;
             this.cropRect = null;
 
             this.resetFrame();
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * If you have set a crop rectangle on this Game Object via `crop` and since modified the `cropRect` property,
@@ -1093,12 +1093,12 @@ Phaser.Component.Crop.prototype = ***REMOVED***
     *
     * @method
     */
-    updateCrop: function () ***REMOVED***
+    updateCrop: function () {
 
         if (!this.cropRect)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         var oldX = this.texture.crop.x;
         var oldY = this.texture.crop.y;
@@ -1128,18 +1128,18 @@ Phaser.Component.Crop.prototype = ***REMOVED***
         this.texture._updateUvs();
 
         if (this.tint !== 0xffffff && (oldX !== cx || oldY !== cy || oldW !== cw || oldH !== ch))
-        ***REMOVED***
+        {
             this.texture.requiresReTint = true;
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1147,68 +1147,68 @@ Phaser.Component.Crop.prototype = ***REMOVED***
 *
 * @class
 */
-Phaser.Component.Delta = function () ***REMOVED******REMOVED***;
+Phaser.Component.Delta = function () {};
 
-Phaser.Component.Delta.prototype = ***REMOVED***
+Phaser.Component.Delta.prototype = {
 
     /**
     * Returns the delta x value. The difference between world.x now and in the previous frame.
     * 
     * The value will be positive if the Game Object has moved to the right or negative if to the left.
     *
-    * @property ***REMOVED***number***REMOVED*** deltaX
+    * @property {number} deltaX
     * @readonly
     */
-    deltaX: ***REMOVED***
+    deltaX: {
 
-        get: function() ***REMOVED***
+        get: function() {
 
             return this.world.x - this.previousPosition.x;
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns the delta y value. The difference between world.y now and in the previous frame.
     * 
     * The value will be positive if the Game Object has moved down or negative if up.
     *
-    * @property ***REMOVED***number***REMOVED*** deltaY
+    * @property {number} deltaY
     * @readonly
     */
-    deltaY: ***REMOVED***
+    deltaY: {
 
-        get: function() ***REMOVED***
+        get: function() {
 
             return this.world.y - this.previousPosition.y;
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns the delta z value. The difference between rotation now and in the previous frame.
     *
-    * @property ***REMOVED***number***REMOVED*** deltaZ - The delta value.
+    * @property {number} deltaZ - The delta value.
     * @readonly
     */
-    deltaZ: ***REMOVED***
+    deltaZ: {
 
-        get: function() ***REMOVED***
+        get: function() {
 
             return this.rotation - this.previousRotation;
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1216,14 +1216,14 @@ Phaser.Component.Delta.prototype = ***REMOVED***
 *
 * @class
 */
-Phaser.Component.Destroy = function () ***REMOVED******REMOVED***;
+Phaser.Component.Destroy = function () {};
 
-Phaser.Component.Destroy.prototype = ***REMOVED***
+Phaser.Component.Destroy.prototype = {
 
     /**
     * As a Game Object runs through its destroy method this flag is set to true, 
     * and can be checked in any sub-systems or plugins it is being destroyed from.
-    * @property ***REMOVED***boolean***REMOVED*** destroyPhase
+    * @property {boolean} destroyPhase
     * @readOnly
     */
     destroyPhase: false,
@@ -1238,94 +1238,94 @@ Phaser.Component.Destroy.prototype = ***REMOVED***
     * more than one Game Object sharing the same BaseTexture.
     *
     * @method
-    * @param ***REMOVED***boolean***REMOVED*** [destroyChildren=true] - Should every child of this object have its destroy method called as well?
-    * @param ***REMOVED***boolean***REMOVED*** [destroyTexture=false] - Destroy the BaseTexture this Game Object is using? Note that if another Game Object is sharing the same BaseTexture it will invalidate it.
+    * @param {boolean} [destroyChildren=true] - Should every child of this object have its destroy method called as well?
+    * @param {boolean} [destroyTexture=false] - Destroy the BaseTexture this Game Object is using? Note that if another Game Object is sharing the same BaseTexture it will invalidate it.
     */
-    destroy: function (destroyChildren, destroyTexture) ***REMOVED***
+    destroy: function (destroyChildren, destroyTexture) {
 
-        if (this.game === null || this.destroyPhase) ***REMOVED*** return; ***REMOVED***
+        if (this.game === null || this.destroyPhase) { return; }
 
-        if (destroyChildren === undefined) ***REMOVED*** destroyChildren = true; ***REMOVED***
-        if (destroyTexture === undefined) ***REMOVED*** destroyTexture = false; ***REMOVED***
+        if (destroyChildren === undefined) { destroyChildren = true; }
+        if (destroyTexture === undefined) { destroyTexture = false; }
 
         this.destroyPhase = true;
 
         if (this.events)
-        ***REMOVED***
+        {
             this.events.onDestroy$dispatch(this);
-        ***REMOVED***
+        }
 
         if (this.parent)
-        ***REMOVED***
+        {
             if (this.parent instanceof Phaser.Group)
-            ***REMOVED***
+            {
                 this.parent.remove(this);
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this.parent.removeChild(this);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         if (this.input)
-        ***REMOVED***
+        {
             this.input.destroy();
-        ***REMOVED***
+        }
 
         if (this.animations)
-        ***REMOVED***
+        {
             this.animations.destroy();
-        ***REMOVED***
+        }
 
         if (this.body)
-        ***REMOVED***
+        {
             this.body.destroy();
-        ***REMOVED***
+        }
 
         if (this.events)
-        ***REMOVED***
+        {
             this.events.destroy();
-        ***REMOVED***
+        }
 
         this.game.tweens.removeFrom(this);
 
         var i = this.children.length;
 
         if (destroyChildren)
-        ***REMOVED***
+        {
             while (i--)
-            ***REMOVED***
+            {
                 this.children[i].destroy(destroyChildren);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             while (i--)
-            ***REMOVED***
+            {
                 this.removeChild(this.children[i]);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         if (this._crop)
-        ***REMOVED***
+        {
             this._crop = null;
             this.cropRect = null;
-        ***REMOVED***
+        }
 
         if (this._frame)
-        ***REMOVED***
+        {
             this._frame = null;
-        ***REMOVED***
+        }
 
         if (Phaser.Video && this.key instanceof Phaser.Video)
-        ***REMOVED***
+        {
             this.key.onChangeSource.remove(this.resizeFrame, this);
-        ***REMOVED***
+        }
 
         if (Phaser.BitmapText && this._glyphs)
-        ***REMOVED***
+        {
             this._glyphs = [];
-        ***REMOVED***
+        }
 
         this.alive = false;
         this.exists = false;
@@ -1335,16 +1335,16 @@ Phaser.Component.Destroy.prototype = ***REMOVED***
         this.mask = null;
         this.game = null;
 
-        this.data = ***REMOVED******REMOVED***;
+        this.data = {};
 
         //  In case Pixi is still going to try and render it even though destroyed
         this.renderable = false;
 
         if (this.transformCallback)
-        ***REMOVED***
+        {
             this.transformCallback = null;
             this.transformCallbackContext = null;
-        ***REMOVED***
+        }
 
         //  Pixi level DisplayObject destroy
         this.hitArea = null;
@@ -1360,21 +1360,21 @@ Phaser.Component.Destroy.prototype = ***REMOVED***
 
         //  Texture?
         if (destroyTexture)
-        ***REMOVED***
+        {
             this.texture.destroy(true);
-        ***REMOVED***
+        }
 
         this.destroyPhase = false;
         this.pendingDestroy = false;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1394,81 +1394,81 @@ Phaser.Component.Destroy.prototype = ***REMOVED***
 * For more details about how signals work please see the Phaser.Signal class.
 *
 * The Input-related events will only be dispatched if the Sprite has had `inputEnabled` set to `true`
-* and the Animation-related events only apply to game objects with animations like ***REMOVED***@link Phaser.Sprite***REMOVED***.
+* and the Animation-related events only apply to game objects with animations like {@link Phaser.Sprite}.
 *
 * @class Phaser.Events
 * @constructor
-* @param ***REMOVED***Phaser.Sprite***REMOVED*** sprite - A reference to the game object / Sprite that owns this Events object.
+* @param {Phaser.Sprite} sprite - A reference to the game object / Sprite that owns this Events object.
 */
-Phaser.Events = function (sprite) ***REMOVED***
+Phaser.Events = function (sprite) {
 
     /**
-    * @property ***REMOVED***Phaser.Sprite***REMOVED*** parent - The Sprite that owns these events.
+    * @property {Phaser.Sprite} parent - The Sprite that owns these events.
     */
     this.parent = sprite;
 
     // The signals are automatically added by the corresponding proxy properties
 
-***REMOVED***;
+};
 
-Phaser.Events.prototype = ***REMOVED***
+Phaser.Events.prototype = {
 
     /**
      * Removes all events.
      *
      * @method Phaser.Events#destroy
      */
-    destroy: function () ***REMOVED***
+    destroy: function () {
 
         this._parent = null;
 
-        if (this._onDestroy)           ***REMOVED*** this._onDestroy.dispose(); ***REMOVED***
-        if (this._onAddedToGroup)      ***REMOVED*** this._onAddedToGroup.dispose(); ***REMOVED***
-        if (this._onRemovedFromGroup)  ***REMOVED*** this._onRemovedFromGroup.dispose(); ***REMOVED***
-        if (this._onRemovedFromWorld)  ***REMOVED*** this._onRemovedFromWorld.dispose(); ***REMOVED***
-        if (this._onKilled)            ***REMOVED*** this._onKilled.dispose(); ***REMOVED***
-        if (this._onRevived)           ***REMOVED*** this._onRevived.dispose(); ***REMOVED***
-        if (this._onEnterBounds)       ***REMOVED*** this._onEnterBounds.dispose(); ***REMOVED***
-        if (this._onOutOfBounds)       ***REMOVED*** this._onOutOfBounds.dispose(); ***REMOVED***
+        if (this._onDestroy)           { this._onDestroy.dispose(); }
+        if (this._onAddedToGroup)      { this._onAddedToGroup.dispose(); }
+        if (this._onRemovedFromGroup)  { this._onRemovedFromGroup.dispose(); }
+        if (this._onRemovedFromWorld)  { this._onRemovedFromWorld.dispose(); }
+        if (this._onKilled)            { this._onKilled.dispose(); }
+        if (this._onRevived)           { this._onRevived.dispose(); }
+        if (this._onEnterBounds)       { this._onEnterBounds.dispose(); }
+        if (this._onOutOfBounds)       { this._onOutOfBounds.dispose(); }
 
-        if (this._onInputOver)         ***REMOVED*** this._onInputOver.dispose(); ***REMOVED***
-        if (this._onInputOut)          ***REMOVED*** this._onInputOut.dispose(); ***REMOVED***
-        if (this._onInputDown)         ***REMOVED*** this._onInputDown.dispose(); ***REMOVED***
-        if (this._onInputUp)           ***REMOVED*** this._onInputUp.dispose(); ***REMOVED***
-        if (this._onDragStart)         ***REMOVED*** this._onDragStart.dispose(); ***REMOVED***
-        if (this._onDragUpdate)        ***REMOVED*** this._onDragUpdate.dispose(); ***REMOVED***
-        if (this._onDragStop)          ***REMOVED*** this._onDragStop.dispose(); ***REMOVED***
+        if (this._onInputOver)         { this._onInputOver.dispose(); }
+        if (this._onInputOut)          { this._onInputOut.dispose(); }
+        if (this._onInputDown)         { this._onInputDown.dispose(); }
+        if (this._onInputUp)           { this._onInputUp.dispose(); }
+        if (this._onDragStart)         { this._onDragStart.dispose(); }
+        if (this._onDragUpdate)        { this._onDragUpdate.dispose(); }
+        if (this._onDragStop)          { this._onDragStop.dispose(); }
 
-        if (this._onAnimationStart)    ***REMOVED*** this._onAnimationStart.dispose(); ***REMOVED***
-        if (this._onAnimationComplete) ***REMOVED*** this._onAnimationComplete.dispose(); ***REMOVED***
-        if (this._onAnimationLoop)     ***REMOVED*** this._onAnimationLoop.dispose(); ***REMOVED***
+        if (this._onAnimationStart)    { this._onAnimationStart.dispose(); }
+        if (this._onAnimationComplete) { this._onAnimationComplete.dispose(); }
+        if (this._onAnimationLoop)     { this._onAnimationLoop.dispose(); }
 
-    ***REMOVED***,
+    },
 
     // The following properties are sentinels that will be replaced with getters
 
     /**
     * This signal is dispatched when this Game Object is added to a new Group.
     * It is sent two arguments:
-    * ***REMOVED***any***REMOVED*** The Game Object that was added to the Group.
-    * ***REMOVED***Phaser.Group***REMOVED*** The Group it was added to.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onAddedToGroup
+    * {any} The Game Object that was added to the Group.
+    * {Phaser.Group} The Group it was added to.
+    * @property {Phaser.Signal} onAddedToGroup
     */
     onAddedToGroup: null,
 
     /**
     * This signal is dispatched when the Game Object is removed from a Group.
     * It is sent two arguments:
-    * ***REMOVED***any***REMOVED*** The Game Object that was removed from the Group.
-    * ***REMOVED***Phaser.Group***REMOVED*** The Group it was removed from.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onRemovedFromGroup
+    * {any} The Game Object that was removed from the Group.
+    * {Phaser.Group} The Group it was removed from.
+    * @property {Phaser.Signal} onRemovedFromGroup
     */
     onRemovedFromGroup: null,
 
     /**
     * This Signal is never used internally by Phaser and is now deprecated.
     * @deprecated
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onRemovedFromWorld
+    * @property {Phaser.Signal} onRemovedFromWorld
     */
     onRemovedFromWorld: null,
 
@@ -1476,8 +1476,8 @@ Phaser.Events.prototype = ***REMOVED***
     * This signal is dispatched when the Game Object is destroyed.
     * This happens when `Sprite.destroy()` is called, or `Group.destroy()` with `destroyChildren` set to true.
     * It is sent one argument:
-    * ***REMOVED***any***REMOVED*** The Game Object that was destroyed.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onDestroy
+    * {any} The Game Object that was destroyed.
+    * @property {Phaser.Signal} onDestroy
     */
     onDestroy: null,
 
@@ -1486,8 +1486,8 @@ Phaser.Events.prototype = ***REMOVED***
     * This happens when `Sprite.kill()` is called.
     * Please understand the difference between `kill` and `destroy` by looking at their respective methods.
     * It is sent one argument:
-    * ***REMOVED***any***REMOVED*** The Game Object that was killed.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onKilled
+    * {any} The Game Object that was killed.
+    * @property {Phaser.Signal} onKilled
     */
     onKilled: null,
 
@@ -1495,8 +1495,8 @@ Phaser.Events.prototype = ***REMOVED***
     * This signal is dispatched when the Game Object is revived from a previously killed state.
     * This happens when `Sprite.revive()` is called.
     * It is sent one argument:
-    * ***REMOVED***any***REMOVED*** The Game Object that was revived.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onRevived
+    * {any} The Game Object that was revived.
+    * @property {Phaser.Signal} onRevived
     */
     onRevived: null,
 
@@ -1504,8 +1504,8 @@ Phaser.Events.prototype = ***REMOVED***
     * This signal is dispatched when the Game Object leaves the Phaser.World bounds.
     * This signal is only if `Sprite.checkWorldBounds` is set to `true`.
     * It is sent one argument:
-    * ***REMOVED***any***REMOVED*** The Game Object that left the World bounds.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onOutOfBounds
+    * {any} The Game Object that left the World bounds.
+    * @property {Phaser.Signal} onOutOfBounds
     */
     onOutOfBounds: null,
 
@@ -1513,8 +1513,8 @@ Phaser.Events.prototype = ***REMOVED***
     * This signal is dispatched when the Game Object returns within the Phaser.World bounds, having previously been outside of them.
     * This signal is only if `Sprite.checkWorldBounds` is set to `true`.
     * It is sent one argument:
-    * ***REMOVED***any***REMOVED*** The Game Object that entered the World bounds.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onEnterBounds
+    * {any} The Game Object that entered the World bounds.
+    * @property {Phaser.Signal} onEnterBounds
     */
     onEnterBounds: null,
 
@@ -1522,9 +1522,9 @@ Phaser.Events.prototype = ***REMOVED***
     * This signal is dispatched if the Game Object has `inputEnabled` set to `true`, 
     * and receives an over event from a Phaser.Pointer.
     * It is sent two arguments:
-    * ***REMOVED***any***REMOVED*** The Game Object that received the event.
-    * ***REMOVED***Phaser.Pointer***REMOVED*** The Phaser.Pointer object that caused the event.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onInputOver
+    * {any} The Game Object that received the event.
+    * {Phaser.Pointer} The Phaser.Pointer object that caused the event.
+    * @property {Phaser.Signal} onInputOver
     */
     onInputOver: null,
 
@@ -1532,9 +1532,9 @@ Phaser.Events.prototype = ***REMOVED***
     * This signal is dispatched if the Game Object has `inputEnabled` set to `true`, 
     * and receives an out event from a Phaser.Pointer, which was previously over it.
     * It is sent two arguments:
-    * ***REMOVED***any***REMOVED*** The Game Object that received the event.
-    * ***REMOVED***Phaser.Pointer***REMOVED*** The Phaser.Pointer object that caused the event.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onInputOut
+    * {any} The Game Object that received the event.
+    * {Phaser.Pointer} The Phaser.Pointer object that caused the event.
+    * @property {Phaser.Signal} onInputOut
     */
     onInputOut: null,
 
@@ -1543,9 +1543,9 @@ Phaser.Events.prototype = ***REMOVED***
     * and receives a down event from a Phaser.Pointer. This effectively means the Pointer has been
     * pressed down (but not yet released) on the Game Object.
     * It is sent two arguments:
-    * ***REMOVED***any***REMOVED*** The Game Object that received the event.
-    * ***REMOVED***Phaser.Pointer***REMOVED*** The Phaser.Pointer object that caused the event.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onInputDown
+    * {any} The Game Object that received the event.
+    * {Phaser.Pointer} The Phaser.Pointer object that caused the event.
+    * @property {Phaser.Signal} onInputDown
     */
     onInputDown: null,
 
@@ -1554,10 +1554,10 @@ Phaser.Events.prototype = ***REMOVED***
     * and receives an up event from a Phaser.Pointer. This effectively means the Pointer had been
     * pressed down, and was then released on the Game Object.
     * It is sent three arguments:
-    * ***REMOVED***any***REMOVED*** The Game Object that received the event.
-    * ***REMOVED***Phaser.Pointer***REMOVED*** The Phaser.Pointer object that caused the event.
-    * ***REMOVED***boolean***REMOVED*** isOver - Is the Pointer still over the Game Object?
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onInputUp
+    * {any} The Game Object that received the event.
+    * {Phaser.Pointer} The Phaser.Pointer object that caused the event.
+    * {boolean} isOver - Is the Pointer still over the Game Object?
+    * @property {Phaser.Signal} onInputUp
     */
     onInputUp: null,
 
@@ -1566,11 +1566,11 @@ Phaser.Events.prototype = ***REMOVED***
     * It is sent when a Phaser.Pointer starts to drag the Game Object, taking into consideration the various
     * drag limitations that may be set.
     * It is sent four arguments:
-    * ***REMOVED***any***REMOVED*** The Game Object that received the event.
-    * ***REMOVED***Phaser.Pointer***REMOVED*** The Phaser.Pointer object that caused the event.
-    * ***REMOVED***number***REMOVED*** The x coordinate that the drag started from.
-    * ***REMOVED***number***REMOVED*** The y coordinate that the drag started from.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onDragStart
+    * {any} The Game Object that received the event.
+    * {Phaser.Pointer} The Phaser.Pointer object that caused the event.
+    * {number} The x coordinate that the drag started from.
+    * {number} The y coordinate that the drag started from.
+    * @property {Phaser.Signal} onDragStart
     */
     onDragStart: null,
 
@@ -1579,13 +1579,13 @@ Phaser.Events.prototype = ***REMOVED***
     * It is sent when a Phaser.Pointer is actively dragging the Game Object.
     * Be warned: This is a high volume Signal. Be careful what you bind to it.
     * It is sent six arguments:
-    * ***REMOVED***any***REMOVED*** The Game Object that received the event.
-    * ***REMOVED***Phaser.Pointer***REMOVED*** The Phaser.Pointer object that caused the event.
-    * ***REMOVED***number***REMOVED*** The new x coordinate of the Game Object.
-    * ***REMOVED***number***REMOVED*** The new y coordinate of the Game Object.
-    * ***REMOVED***Phaser.Point***REMOVED*** A Point object that contains the point the Game Object was snapped to, if `snapOnDrag` has been enabled.
-    * ***REMOVED***boolean***REMOVED*** The `fromStart` boolean, indicates if this is the first update immediately after the drag has started.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onDragUpdate
+    * {any} The Game Object that received the event.
+    * {Phaser.Pointer} The Phaser.Pointer object that caused the event.
+    * {number} The new x coordinate of the Game Object.
+    * {number} The new y coordinate of the Game Object.
+    * {Phaser.Point} A Point object that contains the point the Game Object was snapped to, if `snapOnDrag` has been enabled.
+    * {boolean} The `fromStart` boolean, indicates if this is the first update immediately after the drag has started.
+    * @property {Phaser.Signal} onDragUpdate
     */
     onDragUpdate: null,
 
@@ -1593,9 +1593,9 @@ Phaser.Events.prototype = ***REMOVED***
     * This signal is dispatched if the Game Object has been `inputEnabled` and `enableDrag` has been set.
     * It is sent when a Phaser.Pointer stops dragging the Game Object.
     * It is sent two arguments:
-    * ***REMOVED***any***REMOVED*** The Game Object that received the event.
-    * ***REMOVED***Phaser.Pointer***REMOVED*** The Phaser.Pointer object that caused the event.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onDragStop
+    * {any} The Game Object that received the event.
+    * {Phaser.Pointer} The Phaser.Pointer object that caused the event.
+    * @property {Phaser.Signal} onDragStop
     */
     onDragStop: null,
 
@@ -1604,9 +1604,9 @@ Phaser.Events.prototype = ***REMOVED***
     * and an Animation has been played.
     * You can also listen to `Animation.onStart` rather than via the Game Objects events.
     * It is sent two arguments:
-    * ***REMOVED***any***REMOVED*** The Game Object that received the event.
-    * ***REMOVED***Phaser.Animation***REMOVED*** The Phaser.Animation that was started.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onAnimationStart
+    * {any} The Game Object that received the event.
+    * {Phaser.Animation} The Phaser.Animation that was started.
+    * @property {Phaser.Signal} onAnimationStart
     */
     onAnimationStart: null,
 
@@ -1615,9 +1615,9 @@ Phaser.Events.prototype = ***REMOVED***
     * and an Animation has been stopped (via `animation.stop()` and the `dispatchComplete` argument has been set.
     * You can also listen to `Animation.onComplete` rather than via the Game Objects events.
     * It is sent two arguments:
-    * ***REMOVED***any***REMOVED*** The Game Object that received the event.
-    * ***REMOVED***Phaser.Animation***REMOVED*** The Phaser.Animation that was stopped.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onAnimationComplete
+    * {any} The Game Object that received the event.
+    * {Phaser.Animation} The Phaser.Animation that was stopped.
+    * @property {Phaser.Signal} onAnimationComplete
     */
     onAnimationComplete: null,
 
@@ -1626,13 +1626,13 @@ Phaser.Events.prototype = ***REMOVED***
     * and an Animation has looped playback.
     * You can also listen to `Animation.onLoop` rather than via the Game Objects events.
     * It is sent two arguments:
-    * ***REMOVED***any***REMOVED*** The Game Object that received the event.
-    * ***REMOVED***Phaser.Animation***REMOVED*** The Phaser.Animation that looped.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onAnimationLoop
+    * {any} The Game Object that received the event.
+    * {Phaser.Animation} The Phaser.Animation that looped.
+    * @property {Phaser.Signal} onAnimationLoop
     */
     onAnimationLoop: null
 
-***REMOVED***;
+};
 
 Phaser.Events.prototype.constructor = Phaser.Events;
 
@@ -1640,37 +1640,37 @@ Phaser.Events.prototype.constructor = Phaser.Events;
 // The backing property is the same as the event name, prefixed with '_'
 // and the dispatch method is the same as the event name postfixed with '$dispatch'.
 for (var prop in Phaser.Events.prototype)
-***REMOVED***
+{
     if (!Phaser.Events.prototype.hasOwnProperty(prop) ||
         prop.indexOf('on') !== 0 ||
         Phaser.Events.prototype[prop] !== null)
-    ***REMOVED***
+    {
         continue;
-    ***REMOVED***
+    }
 
-    (function (prop, backing) ***REMOVED***
+    (function (prop, backing) {
         'use strict';
 
         // The accessor creates a new Signal; and so it should only be used from user-code.
-        Object.defineProperty(Phaser.Events.prototype, prop, ***REMOVED***
-            get: function () ***REMOVED***
+        Object.defineProperty(Phaser.Events.prototype, prop, {
+            get: function () {
                 return this[backing] || (this[backing] = new Phaser.Signal());
-            ***REMOVED***
-        ***REMOVED***);
+            }
+        });
 
         // The dispatcher will only broadcast on an already-created signal; call this internally.
-        Phaser.Events.prototype[prop + '$dispatch'] = function () ***REMOVED***
+        Phaser.Events.prototype[prop + '$dispatch'] = function () {
             return this[backing] ? this[backing].dispatch.apply(this[backing], arguments) : null;
-        ***REMOVED***;
+        };
 
-    ***REMOVED***)(prop, '_' + prop);
+    })(prop, '_' + prop);
 
-***REMOVED***
+}
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1679,7 +1679,7 @@ for (var prop in Phaser.Events.prototype)
 *
 * @class
 */
-Phaser.Component.FixedToCamera = function () ***REMOVED******REMOVED***;
+Phaser.Component.FixedToCamera = function () {};
 
 /**
  * The FixedToCamera component postUpdate handler.
@@ -1687,20 +1687,20 @@ Phaser.Component.FixedToCamera = function () ***REMOVED******REMOVED***;
  *
  * @method
  */
-Phaser.Component.FixedToCamera.postUpdate = function () ***REMOVED***
+Phaser.Component.FixedToCamera.postUpdate = function () {
 
     if (this.fixedToCamera)
-    ***REMOVED***
+    {
         this.position.x = (this.game.camera.view.x + this.cameraOffset.x) / this.game.camera.scale.x;
         this.position.y = (this.game.camera.view.y + this.cameraOffset.y) / this.game.camera.scale.y;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
-Phaser.Component.FixedToCamera.prototype = ***REMOVED***
+Phaser.Component.FixedToCamera.prototype = {
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _fixedToCamera
+    * @property {boolean} _fixedToCamera
     * @private
     */
     _fixedToCamera: false,
@@ -1720,46 +1720,46 @@ Phaser.Component.FixedToCamera.prototype = ***REMOVED***
     *
     * Be careful not to set `fixedToCamera` on Game Objects which are in Groups that already have `fixedToCamera` enabled on them.
     *
-    * @property ***REMOVED***boolean***REMOVED*** fixedToCamera
+    * @property {boolean} fixedToCamera
     */
-    fixedToCamera: ***REMOVED***
+    fixedToCamera: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return this._fixedToCamera;
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             if (value)
-            ***REMOVED***
+            {
                 this._fixedToCamera = true;
                 this.cameraOffset.set(this.x, this.y);
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this._fixedToCamera = false;
-            ***REMOVED***
+            }
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The x/y coordinate offset applied to the top-left of the camera that this Game Object will be drawn at if `fixedToCamera` is true.
     * 
     * The values are relative to the top-left of the camera view and in addition to any parent of the Game Object on the display list.
-    * @property ***REMOVED***Phaser.Point***REMOVED*** cameraOffset
+    * @property {Phaser.Point} cameraOffset
     */
     cameraOffset: new Phaser.Point()
 
-***REMOVED***;
+};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1769,16 +1769,16 @@ Phaser.Component.FixedToCamera.prototype = ***REMOVED***
 *
 * @class
 */
-Phaser.Component.Health = function () ***REMOVED******REMOVED***;
+Phaser.Component.Health = function () {};
 
-Phaser.Component.Health.prototype = ***REMOVED***
+Phaser.Component.Health.prototype = {
 
     /**
     * The Game Objects health value. This is a handy property for setting and manipulating health on a Game Object.
     * 
     * It can be used in combination with the `damage` method or modified directly.
     * 
-    * @property ***REMOVED***number***REMOVED*** health
+    * @property {number} health
     * @default
     */
     health: 1,
@@ -1787,7 +1787,7 @@ Phaser.Component.Health.prototype = ***REMOVED***
     * The Game Objects maximum health value. This works in combination with the `heal` method to ensure
     * the health value never exceeds the maximum.
     * 
-    * @property ***REMOVED***number***REMOVED*** maxHealth
+    * @property {number} maxHealth
     * @default
     */
     maxHealth: 100,
@@ -1798,75 +1798,75 @@ Phaser.Component.Health.prototype = ***REMOVED***
     * If health is taken below or is equal to zero then the `kill` method is called.
     *
     * @member
-    * @param ***REMOVED***number***REMOVED*** amount - The amount to subtract from the current `health` value.
-    * @return ***REMOVED***Phaser.Sprite***REMOVED*** This instance.
+    * @param {number} amount - The amount to subtract from the current `health` value.
+    * @return {Phaser.Sprite} This instance.
     */
-    damage: function (amount) ***REMOVED***
+    damage: function (amount) {
 
         if (this.alive)
-        ***REMOVED***
+        {
             this.health -= amount;
 
             if (this.health <= 0)
-            ***REMOVED***
+            {
                 this.kill();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the health property of the Game Object to the given amount.
     * Will never exceed the `maxHealth` value.
     *
     * @member
-    * @param ***REMOVED***number***REMOVED*** amount - The amount to set the `health` value to. The total will never exceed `maxHealth`.
-    * @return ***REMOVED***Phaser.Sprite***REMOVED*** This instance.
+    * @param {number} amount - The amount to set the `health` value to. The total will never exceed `maxHealth`.
+    * @return {Phaser.Sprite} This instance.
     */
-    setHealth: function (amount) ***REMOVED***
+    setHealth: function (amount) {
 
         this.health = amount;
 
         if (this.health > this.maxHealth)
-        ***REMOVED***
+        {
             this.health = this.maxHealth;
-        ***REMOVED***
+        }
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Heal the Game Object. This adds the given amount of health to the `health` property.
     *
     * @member
-    * @param ***REMOVED***number***REMOVED*** amount - The amount to add to the current `health` value. The total will never exceed `maxHealth`.
-    * @return ***REMOVED***Phaser.Sprite***REMOVED*** This instance.
+    * @param {number} amount - The amount to add to the current `health` value. The total will never exceed `maxHealth`.
+    * @return {Phaser.Sprite} This instance.
     */
-    heal: function (amount) ***REMOVED***
+    heal: function (amount) {
 
         if (this.alive)
-        ***REMOVED***
+        {
             this.health += amount;
 
             if (this.health > this.maxHealth)
-            ***REMOVED***
+            {
                 this.health = this.maxHealth;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return this;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1874,9 +1874,9 @@ Phaser.Component.Health.prototype = ***REMOVED***
 *
 * @class
 */
-Phaser.Component.InCamera = function () ***REMOVED******REMOVED***;
+Phaser.Component.InCamera = function () {};
 
-Phaser.Component.InCamera.prototype = ***REMOVED***
+Phaser.Component.InCamera.prototype = {
 
     /**
     * Checks if this Game Objects bounds intersects with the Game Cameras bounds.
@@ -1885,25 +1885,25 @@ Phaser.Component.InCamera.prototype = ***REMOVED***
     * 
     * An object outside the bounds can be considered for camera culling if it has the AutoCull component.
     *
-    * @property ***REMOVED***boolean***REMOVED*** inCamera
+    * @property {boolean} inCamera
     * @readonly
     */
-    inCamera: ***REMOVED***
+    inCamera: {
 
-        get: function() ***REMOVED***
+        get: function() {
 
             return this.game.world.camera.view.intersects(this._bounds);
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1911,9 +1911,9 @@ Phaser.Component.InCamera.prototype = ***REMOVED***
 *
 * @class
 */
-Phaser.Component.InputEnabled = function () ***REMOVED******REMOVED***;
+Phaser.Component.InputEnabled = function () {};
 
-Phaser.Component.InputEnabled.prototype = ***REMOVED***
+Phaser.Component.InputEnabled.prototype = {
 
     /**
     * The Input Handler for this Game Object.
@@ -1921,7 +1921,7 @@ Phaser.Component.InputEnabled.prototype = ***REMOVED***
     * By default it is disabled. If you wish this Game Object to process input events you should enable it with: `inputEnabled = true`.
     * 
     * After you have done this, this property will be a reference to the Phaser InputHandler.
-    * @property ***REMOVED***Phaser.InputHandler|null***REMOVED*** input 
+    * @property {Phaser.InputHandler|null} input 
     */
     input: null,
 
@@ -1939,48 +1939,48 @@ Phaser.Component.InputEnabled.prototype = ***REMOVED***
     * `input.enabled = false`, as it won't reset any of the Input Handlers internal properties.
     * You can then toggle this back on as needed.
     *
-    * @property ***REMOVED***boolean***REMOVED*** inputEnabled
+    * @property {boolean} inputEnabled
     */
-    inputEnabled: ***REMOVED***
+    inputEnabled: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return (this.input && this.input.enabled);
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             if (value)
-            ***REMOVED***
+            {
                 if (this.input === null)
-                ***REMOVED***
+                {
                     this.input = new Phaser.InputHandler(this);
                     this.input.start();
-                ***REMOVED***
+                }
                 else if (this.input && !this.input.enabled)
-                ***REMOVED***
+                {
                     this.input.start();
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
             else
-            ***REMOVED***
+            {
                 if (this.input && this.input.enabled)
-                ***REMOVED***
+                {
                     this.input.stop();
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1990,7 +1990,7 @@ Phaser.Component.InputEnabled.prototype = ***REMOVED***
 *
 * @class
 */
-Phaser.Component.InWorld = function () ***REMOVED******REMOVED***;
+Phaser.Component.InWorld = function () {};
 
 /**
  * The InWorld component preUpdate handler.
@@ -1998,64 +1998,64 @@ Phaser.Component.InWorld = function () ***REMOVED******REMOVED***;
  *
  * @method
  */
-Phaser.Component.InWorld.preUpdate = function () ***REMOVED***
+Phaser.Component.InWorld.preUpdate = function () {
 
     //  Cache the bounds if we need it
     if (this.autoCull || this.checkWorldBounds)
-    ***REMOVED***
+    {
         this._bounds.copyFrom(this.getBounds());
 
         this._bounds.x += this.game.camera.view.x;
         this._bounds.y += this.game.camera.view.y;
 
         if (this.autoCull)
-        ***REMOVED***
+        {
             //  Won't get rendered but will still get its transform updated
             if (this.game.world.camera.view.intersects(this._bounds))
-            ***REMOVED***
+            {
                 this.renderable = true;
                 this.game.world.camera.totalInView++;
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this.renderable = false;
 
                 if (this.outOfCameraBoundsKill)
-                ***REMOVED***
+                {
                     this.kill();
                     return false;
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
 
         if (this.checkWorldBounds)
-        ***REMOVED***
+        {
             //  The Sprite is already out of the world bounds, so let's check to see if it has come back again
             if (this._outOfBoundsFired && this.game.world.bounds.intersects(this._bounds))
-            ***REMOVED***
+            {
                 this._outOfBoundsFired = false;
                 this.events.onEnterBounds$dispatch(this);
-            ***REMOVED***
+            }
             else if (!this._outOfBoundsFired && !this.game.world.bounds.intersects(this._bounds))
-            ***REMOVED***
+            {
                 //  The Sprite WAS in the screen, but has now left.
                 this._outOfBoundsFired = true;
                 this.events.onOutOfBounds$dispatch(this);
 
                 if (this.outOfBoundsKill)
-                ***REMOVED***
+                {
                     this.kill();
                     return false;
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+                }
+            }
+        }
+    }
 
     return true;
 
-***REMOVED***;
+};
 
-Phaser.Component.InWorld.prototype = ***REMOVED***
+Phaser.Component.InWorld.prototype = {
 
     /**
     * If this is set to `true` the Game Object checks if it is within the World bounds each frame. 
@@ -2071,7 +2071,7 @@ Phaser.Component.InWorld.prototype = ***REMOVED***
     * This is a relatively expensive operation, especially if enabled on hundreds of Game Objects. So enable it only if you know it's required,
     * or you have tested performance and find it acceptable.
     * 
-    * @property ***REMOVED***boolean***REMOVED*** checkWorldBounds
+    * @property {boolean} checkWorldBounds
     * @default
     */
     checkWorldBounds: false,
@@ -2079,7 +2079,7 @@ Phaser.Component.InWorld.prototype = ***REMOVED***
     /**
     * If this and the `checkWorldBounds` property are both set to `true` then the `kill` method is called as soon as `inWorld` returns false.
     * 
-    * @property ***REMOVED***boolean***REMOVED*** outOfBoundsKill
+    * @property {boolean} outOfBoundsKill
     * @default
     */
     outOfBoundsKill: false,
@@ -2088,13 +2088,13 @@ Phaser.Component.InWorld.prototype = ***REMOVED***
      * If this and the `autoCull` property are both set to `true`, then the `kill` method
      * is called as soon as the Game Object leaves the camera bounds.
      *
-     * @property ***REMOVED***boolean***REMOVED*** outOfCameraBoundsKill
+     * @property {boolean} outOfCameraBoundsKill
      * @default
      */
     outOfCameraBoundsKill: false,
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _outOfBoundsFired - Internal state var.
+    * @property {boolean} _outOfBoundsFired - Internal state var.
     * @private
     */
     _outOfBoundsFired: false,
@@ -2102,25 +2102,25 @@ Phaser.Component.InWorld.prototype = ***REMOVED***
     /**
     * Checks if the Game Objects bounds are within, or intersect at any point with the Game World bounds.
     *
-    * @property ***REMOVED***boolean***REMOVED*** inWorld
+    * @property {boolean} inWorld
     * @readonly
     */
-    inWorld: ***REMOVED***
+    inWorld: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return this.game.world.bounds.intersects(this.getBounds());
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -2128,7 +2128,7 @@ Phaser.Component.InWorld.prototype = ***REMOVED***
 *
 * @class
 */
-Phaser.Component.LifeSpan = function () ***REMOVED******REMOVED***;
+Phaser.Component.LifeSpan = function () {};
 
 /**
  * The LifeSpan component preUpdate handler.
@@ -2136,24 +2136,24 @@ Phaser.Component.LifeSpan = function () ***REMOVED******REMOVED***;
  *
  * @method
  */
-Phaser.Component.LifeSpan.preUpdate = function () ***REMOVED***
+Phaser.Component.LifeSpan.preUpdate = function () {
 
     if (this.lifespan > 0)
-    ***REMOVED***
+    {
         this.lifespan -= this.game.time.physicsElapsedMS;
 
         if (this.lifespan <= 0)
-        ***REMOVED***
+        {
             this.kill();
             return false;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return true;
 
-***REMOVED***;
+};
 
-Phaser.Component.LifeSpan.prototype = ***REMOVED***
+Phaser.Component.LifeSpan.prototype = {
 
     /**
     * A useful flag to control if the Game Object is alive or dead.
@@ -2163,7 +2163,7 @@ Phaser.Component.LifeSpan.prototype = ***REMOVED***
     *
     * This property is mostly just provided to be used by your game - it doesn't effect rendering or logic updates.
     * However you can use `Group.getFirstAlive` in conjunction with this property for fast object pooling and recycling.
-    * @property ***REMOVED***boolean***REMOVED*** alive
+    * @property {boolean} alive
     * @default
     */
     alive: true,
@@ -2178,7 +2178,7 @@ Phaser.Component.LifeSpan.prototype = ***REMOVED***
     *
     * Very handy for particles, bullets, collectibles, or any other short-lived entity.
     *
-    * @property ***REMOVED***number***REMOVED*** lifespan
+    * @property {number} lifespan
     * @default
     */
     lifespan: 0,
@@ -2191,30 +2191,30 @@ Phaser.Component.LifeSpan.prototype = ***REMOVED***
     * It will dispatch the `onRevived` event. Listen to `events.onRevived` for the signal.
     *
     * @method
-    * @param ***REMOVED***number***REMOVED*** [health=100] - The health to give the Game Object. Only set if the GameObject has the Health component.
-    * @return ***REMOVED***PIXI.DisplayObject***REMOVED*** This instance.
+    * @param {number} [health=100] - The health to give the Game Object. Only set if the GameObject has the Health component.
+    * @return {PIXI.DisplayObject} This instance.
     */
-    revive: function (health) ***REMOVED***
+    revive: function (health) {
 
-        if (health === undefined) ***REMOVED*** health = 100; ***REMOVED***
+        if (health === undefined) { health = 100; }
 
         this.alive = true;
         this.exists = true;
         this.visible = true;
 
         if (typeof this.setHealth === 'function')
-        ***REMOVED***
+        {
             this.setHealth(health);
-        ***REMOVED***
+        }
 
         if (this.events)
-        ***REMOVED***
+        {
             this.events.onRevived$dispatch(this);
-        ***REMOVED***
+        }
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Kills a Game Object. A killed Game Object has its `alive`, `exists` and `visible` properties all set to false.
@@ -2227,29 +2227,29 @@ Phaser.Component.LifeSpan.prototype = ***REMOVED***
     * If you don't need this Game Object any more you should call `destroy` instead.
     *
     * @method
-    * @return ***REMOVED***PIXI.DisplayObject***REMOVED*** This instance.
+    * @return {PIXI.DisplayObject} This instance.
     */
-    kill: function () ***REMOVED***
+    kill: function () {
 
         this.alive = false;
         this.exists = false;
         this.visible = false;
 
         if (this.events)
-        ***REMOVED***
+        {
             this.events.onKilled$dispatch(this);
-        ***REMOVED***
+        }
 
         return this;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -2257,18 +2257,18 @@ Phaser.Component.LifeSpan.prototype = ***REMOVED***
 *
 * @class
 */
-Phaser.Component.LoadTexture = function () ***REMOVED******REMOVED***;
+Phaser.Component.LoadTexture = function () {};
 
-Phaser.Component.LoadTexture.prototype = ***REMOVED***
+Phaser.Component.LoadTexture.prototype = {
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** customRender - Does this texture require a custom render call? (as set by BitmapData, Video, etc)
+    * @property {boolean} customRender - Does this texture require a custom render call? (as set by BitmapData, Video, etc)
     * @private
     */
     customRender: false,
 
     /**
-    * @property ***REMOVED***Phaser.Rectangle***REMOVED*** _frame - Internal cache var.
+    * @property {Phaser.Rectangle} _frame - Internal cache var.
     * @private
     */
     _frame: null,
@@ -2292,26 +2292,26 @@ Phaser.Component.LoadTexture.prototype = ***REMOVED***
     * Note: You cannot use a RenderTexture as a texture for a TileSprite.
     *
     * @method
-    * @param ***REMOVED***string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture***REMOVED*** key - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
-    * @param ***REMOVED***string|number***REMOVED*** [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
-    * @param ***REMOVED***boolean***REMOVED*** [stopAnimation=true] - If an animation is already playing on this Sprite you can choose to stop it or let it carry on playing.
+    * @param {string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture} key - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
+    * @param {string|number} [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
+    * @param {boolean} [stopAnimation=true] - If an animation is already playing on this Sprite you can choose to stop it or let it carry on playing.
     */
-    loadTexture: function (key, frame, stopAnimation) ***REMOVED***
+    loadTexture: function (key, frame, stopAnimation) {
 
         if (key === Phaser.PENDING_ATLAS)
-        ***REMOVED***
+        {
             key = frame;
             frame = 0;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             frame = frame || 0;
-        ***REMOVED***
+        }
 
         if ((stopAnimation || stopAnimation === undefined) && this.animations)
-        ***REMOVED***
+        {
             this.animations.stop();
-        ***REMOVED***
+        }
 
         this.key = key;
         this.customRender = false;
@@ -2321,27 +2321,27 @@ Phaser.Component.LoadTexture.prototype = ***REMOVED***
         var smoothed = !this.texture.baseTexture.scaleMode;
 
         if (Phaser.RenderTexture && key instanceof Phaser.RenderTexture)
-        ***REMOVED***
+        {
             this.key = key.key;
             this.setTexture(key);
-        ***REMOVED***
+        }
         else if (Phaser.BitmapData && key instanceof Phaser.BitmapData)
-        ***REMOVED***
+        {
             this.customRender = true;
 
             this.setTexture(key.texture);
 
             if (cache.hasFrameData(key.key, Phaser.Cache.BITMAPDATA))
-            ***REMOVED***
+            {
                 setFrame = !this.animations.loadFrameData(cache.getFrameData(key.key, Phaser.Cache.BITMAPDATA), frame);
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 setFrame = !this.animations.loadFrameData(key.frameData, 0);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else if (Phaser.Video && key instanceof Phaser.Video)
-        ***REMOVED***
+        {
             this.customRender = true;
 
             //  This works from a reference, which probably isn't what we need here
@@ -2350,47 +2350,47 @@ Phaser.Component.LoadTexture.prototype = ***REMOVED***
             this.setFrame(key.texture.frame.clone());
             key.onChangeSource.add(this.resizeFrame, this);
             this.texture.valid = valid;
-        ***REMOVED***
+        }
         else if (Phaser.Tilemap && key instanceof Phaser.TilemapLayer)
-        ***REMOVED***
+        {
             // this.customRender = true;
 
             this.setTexture(PIXI.Texture.fromCanvas(key.canvas));
-        ***REMOVED***
+        }
         else if (key instanceof PIXI.Texture)
-        ***REMOVED***
+        {
             this.setTexture(key);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             var img = cache.getImage(key, true);
 
             this.key = img.key;
             this.setTexture(new PIXI.Texture(img.base));
 
             if (key === '__default')
-            ***REMOVED***
+            {
                 this.texture.baseTexture.skipRender = true;
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this.texture.baseTexture.skipRender = false;
-            ***REMOVED***
+            }
 
             setFrame = !this.animations.loadFrameData(img.frameData, frame);
-        ***REMOVED***
+        }
         
         if (setFrame)
-        ***REMOVED***
+        {
             this._frame = Phaser.Rectangle.clone(this.texture.frame);
-        ***REMOVED***
+        }
 
         if (!smoothed)
-        ***REMOVED***
+        {
             this.texture.baseTexture.scaleMode = 1;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the texture frame the Game Object uses for rendering.
@@ -2398,9 +2398,9 @@ Phaser.Component.LoadTexture.prototype = ***REMOVED***
     * This is primarily an internal method used by `loadTexture`, but is exposed for the use of plugins and custom classes.
     *
     * @method
-    * @param ***REMOVED***Phaser.Frame***REMOVED*** frame - The Frame to be used by the texture.
+    * @param {Phaser.Frame} frame - The Frame to be used by the texture.
     */
-    setFrame: function (frame) ***REMOVED***
+    setFrame: function (frame) {
 
         this._frame = frame;
 
@@ -2415,44 +2415,44 @@ Phaser.Component.LoadTexture.prototype = ***REMOVED***
         this.texture.crop.height = frame.height;
 
         if (frame.trimmed)
-        ***REMOVED***
+        {
             if (this.texture.trim)
-            ***REMOVED***
+            {
                 this.texture.trim.x = frame.spriteSourceSizeX;
                 this.texture.trim.y = frame.spriteSourceSizeY;
                 this.texture.trim.width = frame.sourceSizeW;
                 this.texture.trim.height = frame.sourceSizeH;
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
-                this.texture.trim = ***REMOVED*** x: frame.spriteSourceSizeX, y: frame.spriteSourceSizeY, width: frame.sourceSizeW, height: frame.sourceSizeH ***REMOVED***;
-            ***REMOVED***
+            {
+                this.texture.trim = { x: frame.spriteSourceSizeX, y: frame.spriteSourceSizeY, width: frame.sourceSizeW, height: frame.sourceSizeH };
+            }
 
             this.texture.width = frame.sourceSizeW;
             this.texture.height = frame.sourceSizeH;
             this.texture.frame.width = frame.sourceSizeW;
             this.texture.frame.height = frame.sourceSizeH;
-        ***REMOVED***
+        }
         else if (!frame.trimmed && this.texture.trim)
-        ***REMOVED***
+        {
             this.texture.trim = null;
-        ***REMOVED***
+        }
 
         if (this.cropRect)
-        ***REMOVED***
+        {
             this.updateCrop();
-        ***REMOVED***
+        }
         
         this.texture.requiresReTint = true;
         
         this.texture._updateUvs();
 
         if (this.tilingTexture)
-        ***REMOVED***
+        {
             this.refreshTexture = true;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Resizes the Frame dimensions that the Game Object uses for rendering.
@@ -2461,30 +2461,30 @@ Phaser.Component.LoadTexture.prototype = ***REMOVED***
     * it can be useful to adjust the dimensions directly in this way.
     *
     * @method
-    * @param ***REMOVED***object***REMOVED*** parent - The parent texture object that caused the resize, i.e. a Phaser.Video object.
-    * @param ***REMOVED***integer***REMOVED*** width - The new width of the texture.
-    * @param ***REMOVED***integer***REMOVED*** height - The new height of the texture.
+    * @param {object} parent - The parent texture object that caused the resize, i.e. a Phaser.Video object.
+    * @param {integer} width - The new width of the texture.
+    * @param {integer} height - The new height of the texture.
     */
-    resizeFrame: function (parent, width, height) ***REMOVED***
+    resizeFrame: function (parent, width, height) {
 
         this.texture.frame.resize(width, height);
         this.texture.setFrame(this.texture.frame);
 
-    ***REMOVED***,
+    },
 
     /**
     * Resets the texture frame dimensions that the Game Object uses for rendering.
     *
     * @method
     */
-    resetFrame: function () ***REMOVED***
+    resetFrame: function () {
 
         if (this._frame)
-        ***REMOVED***
+        {
             this.setFrame(this._frame);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Gets or sets the current frame index of the texture being used to render this Game Object.
@@ -2497,19 +2497,19 @@ Phaser.Component.LoadTexture.prototype = ***REMOVED***
     * If you are using a texture atlas then you should use the `frameName` property instead.
     * 
     * If you wish to fully replace the texture being used see `loadTexture`.
-    * @property ***REMOVED***integer***REMOVED*** frame
+    * @property {integer} frame
     */
-    frame: ***REMOVED***
+    frame: {
 
-        get: function () ***REMOVED***
+        get: function () {
             return this.animations.frame;
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
             this.animations.frame = value;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Gets or sets the current frame name of the texture being used to render this Game Object.
@@ -2522,26 +2522,26 @@ Phaser.Component.LoadTexture.prototype = ***REMOVED***
     * If you are using a sprite sheet then you should use the `frame` property instead.
     * 
     * If you wish to fully replace the texture being used see `loadTexture`.
-    * @property ***REMOVED***string***REMOVED*** frameName
+    * @property {string} frameName
     */
-    frameName: ***REMOVED***
+    frameName: {
 
-        get: function () ***REMOVED***
+        get: function () {
             return this.animations.frameName;
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
             this.animations.frameName = value;
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -2549,9 +2549,9 @@ Phaser.Component.LoadTexture.prototype = ***REMOVED***
 *
 * @class
 */
-Phaser.Component.Overlap = function () ***REMOVED******REMOVED***;
+Phaser.Component.Overlap = function () {};
 
-Phaser.Component.Overlap.prototype = ***REMOVED***
+Phaser.Component.Overlap.prototype = {
 
     /**
     * Checks to see if the bounds of this Game Object overlaps with the bounds of the given Display Object, 
@@ -2563,21 +2563,21 @@ Phaser.Component.Overlap.prototype = ***REMOVED***
     * It should be fine for low-volume testing where physics isn't required.
     *
     * @method
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Image|Phaser.TileSprite|Phaser.Button|PIXI.DisplayObject***REMOVED*** displayObject - The display object to check against.
-    * @return ***REMOVED***boolean***REMOVED*** True if the bounds of this Game Object intersects at any point with the bounds of the given display object.
+    * @param {Phaser.Sprite|Phaser.Image|Phaser.TileSprite|Phaser.Button|PIXI.DisplayObject} displayObject - The display object to check against.
+    * @return {boolean} True if the bounds of this Game Object intersects at any point with the bounds of the given display object.
     */
-    overlap: function (displayObject) ***REMOVED***
+    overlap: function (displayObject) {
 
         return Phaser.Rectangle.intersects(this.getBounds(), displayObject.getBounds());
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -2586,7 +2586,7 @@ Phaser.Component.Overlap.prototype = ***REMOVED***
 *
 * @class
 */
-Phaser.Component.PhysicsBody = function () ***REMOVED******REMOVED***;
+Phaser.Component.PhysicsBody = function () {};
 
 /**
  * The PhysicsBody component preUpdate handler.
@@ -2594,10 +2594,10 @@ Phaser.Component.PhysicsBody = function () ***REMOVED******REMOVED***;
  *
  * @method
  */
-Phaser.Component.PhysicsBody.preUpdate = function () ***REMOVED***
+Phaser.Component.PhysicsBody.preUpdate = function () {
 
     if (this.fresh && this.exists)
-    ***REMOVED***
+    {
         this.world.setTo(this.parent.position.x + this.position.x, this.parent.position.y + this.position.y);
         this.worldTransform.tx = this.world.x;
         this.worldTransform.ty = this.world.y;
@@ -2606,27 +2606,27 @@ Phaser.Component.PhysicsBody.preUpdate = function () ***REMOVED***
         this.previousRotation = this.rotation;
 
         if (this.body)
-        ***REMOVED***
+        {
             this.body.preUpdate();
-        ***REMOVED***
+        }
 
         this.fresh = false;
 
         return false;
-    ***REMOVED***
+    }
 
     this.previousPosition.set(this.world.x, this.world.y);
     this.previousRotation = this.rotation;
 
     if (!this._exists || !this.parent.exists)
-    ***REMOVED***
+    {
         this.renderOrderID = -1;
         return false;
-    ***REMOVED***
+    }
 
     return true;
 
-***REMOVED***;
+};
 
 /**
  * The PhysicsBody component postUpdate handler.
@@ -2634,16 +2634,16 @@ Phaser.Component.PhysicsBody.preUpdate = function () ***REMOVED***
  *
  * @method
  */
-Phaser.Component.PhysicsBody.postUpdate = function () ***REMOVED***
+Phaser.Component.PhysicsBody.postUpdate = function () {
 
     if (this.exists && this.body)
-    ***REMOVED***
+    {
         this.body.postUpdate();
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
-Phaser.Component.PhysicsBody.prototype = ***REMOVED***
+Phaser.Component.PhysicsBody.prototype = {
 
     /**
     * `body` is the Game Objects physics body. Once a Game Object is enabled for physics you access all associated 
@@ -2661,7 +2661,7 @@ Phaser.Component.PhysicsBody.prototype = ***REMOVED***
     * 
     * If you need a different result then adjust or re-create the Body shape offsets manually or reset the anchor after enabling physics.
     *
-    * @property ***REMOVED***Phaser.Physics.Arcade.Body|Phaser.Physics.P2.Body|Phaser.Physics.Ninja.Body|null***REMOVED*** body
+    * @property {Phaser.Physics.Arcade.Body|Phaser.Physics.P2.Body|Phaser.Physics.Ninja.Body|null} body
     * @default
     */
     body: null,
@@ -2669,61 +2669,61 @@ Phaser.Component.PhysicsBody.prototype = ***REMOVED***
     /**
     * The position of the Game Object on the x axis relative to the local coordinates of the parent.
     *
-    * @property ***REMOVED***number***REMOVED*** x
+    * @property {number} x
     */
-    x: ***REMOVED***
+    x: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return this.position.x;
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             this.position.x = value;
 
             if (this.body && !this.body.dirty)
-            ***REMOVED***
+            {
                 this.body._reset = true;
-            ***REMOVED***
+            }
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The position of the Game Object on the y axis relative to the local coordinates of the parent.
     *
-    * @property ***REMOVED***number***REMOVED*** y
+    * @property {number} y
     */
-    y: ***REMOVED***
+    y: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return this.position.y;
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             this.position.y = value;
 
             if (this.body && !this.body.dirty)
-            ***REMOVED***
+            {
                 this.body._reset = true;
-            ***REMOVED***
+            }
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -2731,7 +2731,7 @@ Phaser.Component.PhysicsBody.prototype = ***REMOVED***
 *
 * @class
 */
-Phaser.Component.Reset = function () ***REMOVED******REMOVED***;
+Phaser.Component.Reset = function () {};
 
 /**
 * Resets the Game Object.
@@ -2744,14 +2744,14 @@ Phaser.Component.Reset = function () ***REMOVED******REMOVED***;
 * If this Game Object has a Physics Body it will reset the Body.
 *
 * @method
-* @param ***REMOVED***number***REMOVED*** x - The x coordinate (in world space) to position the Game Object at.
-* @param ***REMOVED***number***REMOVED*** y - The y coordinate (in world space) to position the Game Object at.
-* @param ***REMOVED***number***REMOVED*** [health=1] - The health to give the Game Object if it has the Health component.
-* @return ***REMOVED***PIXI.DisplayObject***REMOVED*** This instance.
+* @param {number} x - The x coordinate (in world space) to position the Game Object at.
+* @param {number} y - The y coordinate (in world space) to position the Game Object at.
+* @param {number} [health=1] - The health to give the Game Object if it has the Health component.
+* @return {PIXI.DisplayObject} This instance.
 */
-Phaser.Component.Reset.prototype.reset = function (x, y, health) ***REMOVED***
+Phaser.Component.Reset.prototype.reset = function (x, y, health) {
 
-    if (health === undefined) ***REMOVED*** health = 1; ***REMOVED***
+    if (health === undefined) { health = 1; }
 
     this.world.set(x, y);
     this.position.set(x, y);
@@ -2762,32 +2762,32 @@ Phaser.Component.Reset.prototype.reset = function (x, y, health) ***REMOVED***
     this.renderable = true;
 
     if (this.components.InWorld)
-    ***REMOVED***
+    {
         this._outOfBoundsFired = false;
-    ***REMOVED***
+    }
 
     if (this.components.LifeSpan)
-    ***REMOVED***
+    {
         this.alive = true;
         this.health = health;
-    ***REMOVED***
+    }
 
     if (this.components.PhysicsBody)
-    ***REMOVED***
+    {
         if (this.body)
-        ***REMOVED***
+        {
             this.body.reset(x, y, false, false);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return this;
 
-***REMOVED***;
+};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -2795,19 +2795,19 @@ Phaser.Component.Reset.prototype.reset = function (x, y, health) ***REMOVED***
 *
 * @class
 */
-Phaser.Component.ScaleMinMax = function () ***REMOVED******REMOVED***;
+Phaser.Component.ScaleMinMax = function () {};
 
-Phaser.Component.ScaleMinMax.prototype = ***REMOVED***
+Phaser.Component.ScaleMinMax.prototype = {
 
     /**
     * The callback that will apply any scale limiting to the worldTransform.
-    * @property ***REMOVED***function***REMOVED*** transformCallback
+    * @property {function} transformCallback
     */
     transformCallback: null,
 
     /**
     * The context under which `transformCallback` is called.
-    * @property ***REMOVED***object***REMOVED*** transformCallbackContext
+    * @property {object} transformCallbackContext
     */
     transformCallbackContext: this,
 
@@ -2817,7 +2817,7 @@ Phaser.Component.ScaleMinMax.prototype = ***REMOVED***
     * It allows you to prevent a parent from scaling this Game Object lower than the given value.
     * 
     * Set it to `null` to remove the limit.
-    * @property ***REMOVED***Phaser.Point***REMOVED*** scaleMin
+    * @property {Phaser.Point} scaleMin
     */
     scaleMin: null,
 
@@ -2827,7 +2827,7 @@ Phaser.Component.ScaleMinMax.prototype = ***REMOVED***
     * It allows you to prevent a parent from scaling this Game Object higher than the given value.
     * 
     * Set it to `null` to remove the limit.
-    * @property ***REMOVED***Phaser.Point***REMOVED*** scaleMax
+    * @property {Phaser.Point} scaleMax
     */
     scaleMax: null,
 
@@ -2836,37 +2836,37 @@ Phaser.Component.ScaleMinMax.prototype = ***REMOVED***
      *
      * @method
      * @private
-     * @param ***REMOVED***PIXI.Matrix***REMOVED*** wt - The updated worldTransform matrix.
+     * @param {PIXI.Matrix} wt - The updated worldTransform matrix.
      */
-    checkTransform: function (wt) ***REMOVED***
+    checkTransform: function (wt) {
 
         if (this.scaleMin)
-        ***REMOVED***
+        {
             if (wt.a < this.scaleMin.x)
-            ***REMOVED***
+            {
                 wt.a = this.scaleMin.x;
-            ***REMOVED***
+            }
 
             if (wt.d < this.scaleMin.y)
-            ***REMOVED***
+            {
                 wt.d = this.scaleMin.y;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         if (this.scaleMax)
-        ***REMOVED***
+        {
             if (wt.a > this.scaleMax.x)
-            ***REMOVED***
+            {
                 wt.a = this.scaleMax.x;
-            ***REMOVED***
+            }
 
             if (wt.d > this.scaleMax.y)
-            ***REMOVED***
+            {
                 wt.d = this.scaleMax.y;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
      * Sets the scaleMin and scaleMax values. These values are used to limit how far this Game Object will scale based on its parent.
@@ -2888,74 +2888,74 @@ Phaser.Component.ScaleMinMax.prototype = ***REMOVED***
      * Call `setScaleMinMax(null)` to clear all previously set values.
      *
      * @method
-     * @param ***REMOVED***number|null***REMOVED*** minX - The minimum horizontal scale value this Game Object can scale down to.
-     * @param ***REMOVED***number|null***REMOVED*** minY - The minimum vertical scale value this Game Object can scale down to.
-     * @param ***REMOVED***number|null***REMOVED*** maxX - The maximum horizontal scale value this Game Object can scale up to.
-     * @param ***REMOVED***number|null***REMOVED*** maxY - The maximum vertical scale value this Game Object can scale up to.
+     * @param {number|null} minX - The minimum horizontal scale value this Game Object can scale down to.
+     * @param {number|null} minY - The minimum vertical scale value this Game Object can scale down to.
+     * @param {number|null} maxX - The maximum horizontal scale value this Game Object can scale up to.
+     * @param {number|null} maxY - The maximum vertical scale value this Game Object can scale up to.
      */
-    setScaleMinMax: function (minX, minY, maxX, maxY) ***REMOVED***
+    setScaleMinMax: function (minX, minY, maxX, maxY) {
 
         if (minY === undefined)
-        ***REMOVED***
+        {
             //  1 parameter, set all to it
             minY = maxX = maxY = minX;
-        ***REMOVED***
+        }
         else if (maxX === undefined)
-        ***REMOVED***
+        {
             //  2 parameters, the first is min, the second max
             maxX = maxY = minY;
             minY = minX;
-        ***REMOVED***
+        }
 
         if (minX === null)
-        ***REMOVED***
+        {
             this.scaleMin = null;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             if (this.scaleMin)
-            ***REMOVED***
+            {
                 this.scaleMin.set(minX, minY);
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this.scaleMin = new Phaser.Point(minX, minY);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         if (maxX === null)
-        ***REMOVED***
+        {
             this.scaleMax = null;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             if (this.scaleMax)
-            ***REMOVED***
+            {
                 this.scaleMax.set(maxX, maxY);
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this.scaleMax = new Phaser.Point(maxX, maxY);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         if (this.scaleMin === null)
-        ***REMOVED***
+        {
             this.transformCallback = null;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this.transformCallback = this.checkTransform;
             this.transformCallbackContext = this;
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -2963,9 +2963,9 @@ Phaser.Component.ScaleMinMax.prototype = ***REMOVED***
 *
 * @class
 */
-Phaser.Component.Smoothed = function () ***REMOVED******REMOVED***;
+Phaser.Component.Smoothed = function () {};
 
-Phaser.Component.Smoothed.prototype = ***REMOVED***
+Phaser.Component.Smoothed.prototype = {
 
     /**
     * Enable or disable texture smoothing for this Game Object.
@@ -2974,34 +2974,34 @@ Phaser.Component.Smoothed.prototype = ***REMOVED***
     * 
     * Smoothing is enabled by default.
     *
-    * @property ***REMOVED***boolean***REMOVED*** smoothed
+    * @property {boolean} smoothed
     */
-    smoothed: ***REMOVED***
+    smoothed: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return !this.texture.baseTexture.scaleMode;
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             if (value)
-            ***REMOVED***
+            {
                 if (this.texture)
-                ***REMOVED***
+                {
                     this.texture.baseTexture.scaleMode = 0;
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
             else
-            ***REMOVED***
+            {
                 if (this.texture)
-                ***REMOVED***
+                {
                     this.texture.baseTexture.scaleMode = 1;
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};

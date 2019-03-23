@@ -10,17 +10,17 @@
  * @constructor
  */
 PIXI.PixelateFilter = function()
-***REMOVED***
+{
     PIXI.AbstractFilter.call( this );
 
     this.passes = [this];
 
     // set the uniforms
-    this.uniforms = ***REMOVED***
-        invert: ***REMOVED***type: '1f', value: 0***REMOVED***,
-        dimensions: ***REMOVED***type: '4fv', value:new PIXI.Float32Array([10000, 100, 10, 10])***REMOVED***,
-        pixelSize: ***REMOVED***type: '2f', value:***REMOVED***x:10, y:10***REMOVED******REMOVED***
-    ***REMOVED***;
+    this.uniforms = {
+        invert: {type: '1f', value: 0},
+        dimensions: {type: '4fv', value:new PIXI.Float32Array([10000, 100, 10, 10])},
+        pixelSize: {type: '2f', value:{x:10, y:10}}
+    };
 
     this.fragmentSrc = [
         'precision mediump float;',
@@ -31,16 +31,16 @@ PIXI.PixelateFilter = function()
         'uniform vec2 pixelSize;',
         'uniform sampler2D uSampler;',
 
-        'void main(void) ***REMOVED***',
+        'void main(void) {',
         '   vec2 coord = vTextureCoord;',
 
         '   vec2 size = dimensions.xy/pixelSize;',
 
         '   vec2 color = floor( ( vTextureCoord * size ) ) / size + pixelSize/dimensions.xy * 0.5;',
         '   gl_FragColor = texture2D(uSampler, color);',
-        '***REMOVED***'
+        '}'
     ];
-***REMOVED***;
+};
 
 PIXI.PixelateFilter.prototype = Object.create( PIXI.AbstractFilter.prototype );
 PIXI.PixelateFilter.prototype.constructor = PIXI.PixelateFilter;
@@ -51,12 +51,12 @@ PIXI.PixelateFilter.prototype.constructor = PIXI.PixelateFilter;
  * @property size
  * @type Point
  */
-Object.defineProperty(PIXI.PixelateFilter.prototype, 'size', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.PixelateFilter.prototype, 'size', {
+    get: function() {
         return this.uniforms.pixelSize.value;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.dirty = true;
         this.uniforms.pixelSize.value = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});

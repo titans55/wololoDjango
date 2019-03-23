@@ -2,7 +2,7 @@
 * @author       Mat Groves http://matgroves.com/ @Doormat23
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -16,67 +16,67 @@
 *
 * @class Phaser.Matrix
 * @constructor
-* @param ***REMOVED***number***REMOVED*** [a=1] - Horizontal scaling
-* @param ***REMOVED***number***REMOVED*** [b=0] - Horizontal skewing
-* @param ***REMOVED***number***REMOVED*** [c=0] - Vertical skewing
-* @param ***REMOVED***number***REMOVED*** [d=1] - Vertical scaling
-* @param ***REMOVED***number***REMOVED*** [tx=0] - Horizontal translation
-* @param ***REMOVED***number***REMOVED*** [ty=0] - Vertical translation
+* @param {number} [a=1] - Horizontal scaling
+* @param {number} [b=0] - Horizontal skewing
+* @param {number} [c=0] - Vertical skewing
+* @param {number} [d=1] - Vertical scaling
+* @param {number} [tx=0] - Horizontal translation
+* @param {number} [ty=0] - Vertical translation
 */
-Phaser.Matrix = function (a, b, c, d, tx, ty) ***REMOVED***
+Phaser.Matrix = function (a, b, c, d, tx, ty) {
 
-    if (a === undefined || a === null) ***REMOVED*** a = 1; ***REMOVED***
-    if (b === undefined || b === null) ***REMOVED*** b = 0; ***REMOVED***
-    if (c === undefined || c === null) ***REMOVED*** c = 0; ***REMOVED***
-    if (d === undefined || d === null) ***REMOVED*** d = 1; ***REMOVED***
-    if (tx === undefined || tx === null) ***REMOVED*** tx = 0; ***REMOVED***
-    if (ty === undefined || ty === null) ***REMOVED*** ty = 0; ***REMOVED***
+    if (a === undefined || a === null) { a = 1; }
+    if (b === undefined || b === null) { b = 0; }
+    if (c === undefined || c === null) { c = 0; }
+    if (d === undefined || d === null) { d = 1; }
+    if (tx === undefined || tx === null) { tx = 0; }
+    if (ty === undefined || ty === null) { ty = 0; }
 
     /**
-    * @property ***REMOVED***number***REMOVED*** a
+    * @property {number} a
     * @default 1
     */
     this.a = a;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** b
+    * @property {number} b
     * @default 0
     */
     this.b = b;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** c
+    * @property {number} c
     * @default 0
     */
     this.c = c;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** d
+    * @property {number} d
     * @default 1
     */
     this.d = d;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** tx
+    * @property {number} tx
     * @default 0
     */
     this.tx = tx;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** ty
+    * @property {number} ty
     * @default 0
     */
     this.ty = ty;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** type - The const type of this object.
+    * @property {number} type - The const type of this object.
     * @readonly
     */
     this.type = Phaser.MATRIX;
 
-***REMOVED***;
+};
 
-Phaser.Matrix.prototype = ***REMOVED***
+Phaser.Matrix.prototype = {
 
     /**
     * Sets the values of this Matrix to the values in the given array.
@@ -91,28 +91,28 @@ Phaser.Matrix.prototype = ***REMOVED***
     * ty = array[5]
     *
     * @method Phaser.Matrix#fromArray
-    * @param ***REMOVED***Array***REMOVED*** array - The array to copy from.
-    * @return ***REMOVED***Phaser.Matrix***REMOVED*** This Matrix object.
+    * @param {Array} array - The array to copy from.
+    * @return {Phaser.Matrix} This Matrix object.
     */
-    fromArray: function (array) ***REMOVED***
+    fromArray: function (array) {
 
         return this.setTo(array[0], array[1], array[3], array[4], array[2], array[5]);
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the values of this Matrix to the given values.
     *
     * @method Phaser.Matrix#setTo
-    * @param ***REMOVED***number***REMOVED*** a - Horizontal scaling
-    * @param ***REMOVED***number***REMOVED*** b - Horizontal skewing
-    * @param ***REMOVED***number***REMOVED*** c - Vertical skewing
-    * @param ***REMOVED***number***REMOVED*** d - Vertical scaling
-    * @param ***REMOVED***number***REMOVED*** tx - Horizontal translation
-    * @param ***REMOVED***number***REMOVED*** ty - Vertical translation
-    * @return ***REMOVED***Phaser.Matrix***REMOVED*** This Matrix object.
+    * @param {number} a - Horizontal scaling
+    * @param {number} b - Horizontal skewing
+    * @param {number} c - Vertical skewing
+    * @param {number} d - Vertical scaling
+    * @param {number} tx - Horizontal translation
+    * @param {number} ty - Vertical translation
+    * @return {Phaser.Matrix} This Matrix object.
     */
-    setTo: function (a, b, c, d, tx, ty) ***REMOVED***
+    setTo: function (a, b, c, d, tx, ty) {
 
         this.a = a;
         this.b = b;
@@ -123,7 +123,7 @@ Phaser.Matrix.prototype = ***REMOVED***
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
      * Creates a new Matrix object based on the values of this Matrix.
@@ -131,52 +131,52 @@ Phaser.Matrix.prototype = ***REMOVED***
      * If the output parameter is blank a new Matrix object will be created.
      *
      * @method Phaser.Matrix#clone
-     * @param ***REMOVED***Phaser.Matrix***REMOVED*** [output] - If provided the values of this Matrix will be copied to it, otherwise a new Matrix object is created.
-     * @return ***REMOVED***Phaser.Matrix***REMOVED*** A clone of this Matrix.
+     * @param {Phaser.Matrix} [output] - If provided the values of this Matrix will be copied to it, otherwise a new Matrix object is created.
+     * @return {Phaser.Matrix} A clone of this Matrix.
      */
-    clone: function (output) ***REMOVED***
+    clone: function (output) {
 
         if (output === undefined || output === null)
-        ***REMOVED***
+        {
             output = new Phaser.Matrix(this.a, this.b, this.c, this.d, this.tx, this.ty);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             output.a = this.a;
             output.b = this.b;
             output.c = this.c;
             output.d = this.d;
             output.tx = this.tx;
             output.ty = this.ty;
-        ***REMOVED***
+        }
 
         return output;
 
-    ***REMOVED***,
+    },
 
     /**
     * Copies the properties from this Matrix to the given Matrix.
     *
     * @method Phaser.Matrix#copyTo
-    * @param ***REMOVED***Phaser.Matrix***REMOVED*** matrix - The Matrix to copy from.
-    * @return ***REMOVED***Phaser.Matrix***REMOVED*** The destination Matrix object.
+    * @param {Phaser.Matrix} matrix - The Matrix to copy from.
+    * @return {Phaser.Matrix} The destination Matrix object.
     */
-    copyTo: function (matrix) ***REMOVED***
+    copyTo: function (matrix) {
 
         matrix.copyFrom(this);
 
         return matrix;
 
-    ***REMOVED***,
+    },
 
     /**
     * Copies the properties from the given Matrix into this Matrix.
     *
     * @method Phaser.Matrix#copyFrom
-    * @param ***REMOVED***Phaser.Matrix***REMOVED*** matrix - The Matrix to copy from.
-    * @return ***REMOVED***Phaser.Matrix***REMOVED*** This Matrix object.
+    * @param {Phaser.Matrix} matrix - The Matrix to copy from.
+    * @return {Phaser.Matrix} This Matrix object.
     */
-    copyFrom: function (matrix) ***REMOVED***
+    copyFrom: function (matrix) {
 
         this.a = matrix.a;
         this.b = matrix.b;
@@ -187,22 +187,22 @@ Phaser.Matrix.prototype = ***REMOVED***
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a Float32 Array with values populated from this Matrix object.
     *
     * @method Phaser.Matrix#toArray
-    * @param ***REMOVED***boolean***REMOVED*** [transpose=false] - Whether the values in the array are transposed or not.
-    * @param ***REMOVED***PIXI.Float32Array***REMOVED*** [array] - If provided the values will be set into this array, otherwise a new Float32Array is created.
-    * @return ***REMOVED***PIXI.Float32Array***REMOVED*** The newly created array which contains the matrix.
+    * @param {boolean} [transpose=false] - Whether the values in the array are transposed or not.
+    * @param {PIXI.Float32Array} [array] - If provided the values will be set into this array, otherwise a new Float32Array is created.
+    * @return {PIXI.Float32Array} The newly created array which contains the matrix.
     */
-    toArray: function (transpose, array) ***REMOVED***
+    toArray: function (transpose, array) {
 
-        if (array === undefined) ***REMOVED*** array = new PIXI.Float32Array(9); ***REMOVED***
+        if (array === undefined) { array = new PIXI.Float32Array(9); }
 
         if (transpose)
-        ***REMOVED***
+        {
             array[0] = this.a;
             array[1] = this.b;
             array[2] = 0;
@@ -212,9 +212,9 @@ Phaser.Matrix.prototype = ***REMOVED***
             array[6] = this.tx;
             array[7] = this.ty;
             array[8] = 1;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             array[0] = this.a;
             array[1] = this.c;
             array[2] = this.tx;
@@ -224,11 +224,11 @@ Phaser.Matrix.prototype = ***REMOVED***
             array[6] = 0;
             array[7] = 0;
             array[8] = 1;
-        ***REMOVED***
+        }
 
         return array;
 
-    ***REMOVED***,
+    },
 
     /**
     * Get a new position with the current transformation applied.
@@ -236,20 +236,20 @@ Phaser.Matrix.prototype = ***REMOVED***
     * Can be used to go from a childs coordinate space to the world coordinate space (e.g. rendering)
     *
     * @method Phaser.Matrix#apply
-    * @param ***REMOVED***Phaser.Point***REMOVED*** pos - The origin Point.
-    * @param ***REMOVED***Phaser.Point***REMOVED*** [newPos] - The point that the new position is assigned to. This can be same as input point.
-    * @return ***REMOVED***Phaser.Point***REMOVED*** The new point, transformed through this matrix.
+    * @param {Phaser.Point} pos - The origin Point.
+    * @param {Phaser.Point} [newPos] - The point that the new position is assigned to. This can be same as input point.
+    * @return {Phaser.Point} The new point, transformed through this matrix.
     */
-    apply: function (pos, newPos) ***REMOVED***
+    apply: function (pos, newPos) {
 
-        if (newPos === undefined) ***REMOVED*** newPos = new Phaser.Point(); ***REMOVED***
+        if (newPos === undefined) { newPos = new Phaser.Point(); }
 
         newPos.x = this.a * pos.x + this.c * pos.y + this.tx;
         newPos.y = this.b * pos.x + this.d * pos.y + this.ty;
 
         return newPos;
 
-    ***REMOVED***,
+    },
 
     /**
     * Get a new position with the inverse of the current transformation applied.
@@ -257,13 +257,13 @@ Phaser.Matrix.prototype = ***REMOVED***
     * Can be used to go from the world coordinate space to a childs coordinate space. (e.g. input)
     *
     * @method Phaser.Matrix#applyInverse
-    * @param ***REMOVED***Phaser.Point***REMOVED*** pos - The origin Point.
-    * @param ***REMOVED***Phaser.Point***REMOVED*** [newPos] - The point that the new position is assigned to. This can be same as input point.
-    * @return ***REMOVED***Phaser.Point***REMOVED*** The new point, inverse transformed through this matrix.
+    * @param {Phaser.Point} pos - The origin Point.
+    * @param {Phaser.Point} [newPos] - The point that the new position is assigned to. This can be same as input point.
+    * @return {Phaser.Point} The new point, inverse transformed through this matrix.
     */
-    applyInverse: function (pos, newPos) ***REMOVED***
+    applyInverse: function (pos, newPos) {
 
-        if (newPos === undefined) ***REMOVED*** newPos = new Phaser.Point(); ***REMOVED***
+        if (newPos === undefined) { newPos = new Phaser.Point(); }
 
         var id = 1 / (this.a * this.d + this.c * -this.b);
         var x = pos.x;
@@ -274,35 +274,35 @@ Phaser.Matrix.prototype = ***REMOVED***
 
         return newPos;
 
-    ***REMOVED***,
+    },
 
     /**
     * Translates the matrix on the x and y.
     * This is the same as Matrix.tx += x.
     * 
     * @method Phaser.Matrix#translate
-    * @param ***REMOVED***number***REMOVED*** x - The x value to translate on.
-    * @param ***REMOVED***number***REMOVED*** y - The y value to translate on.
-    * @return ***REMOVED***Phaser.Matrix***REMOVED*** This Matrix object.
+    * @param {number} x - The x value to translate on.
+    * @param {number} y - The y value to translate on.
+    * @return {Phaser.Matrix} This Matrix object.
     */
-    translate: function (x, y) ***REMOVED***
+    translate: function (x, y) {
 
         this.tx += x;
         this.ty += y;
         
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Applies a scale transformation to this matrix.
     * 
     * @method Phaser.Matrix#scale
-    * @param ***REMOVED***number***REMOVED*** x - The amount to scale horizontally.
-    * @param ***REMOVED***number***REMOVED*** y - The amount to scale vertically.
-    * @return ***REMOVED***Phaser.Matrix***REMOVED*** This Matrix object.
+    * @param {number} x - The amount to scale horizontally.
+    * @param {number} y - The amount to scale vertically.
+    * @return {Phaser.Matrix} This Matrix object.
     */
-    scale: function (x, y) ***REMOVED***
+    scale: function (x, y) {
 
         this.a *= x;
         this.d *= y;
@@ -313,16 +313,16 @@ Phaser.Matrix.prototype = ***REMOVED***
 
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Applies a rotation transformation to this matrix.
     * 
     * @method Phaser.Matrix#rotate
-    * @param ***REMOVED***number***REMOVED*** angle - The angle to rotate by, given in radians.
-    * @return ***REMOVED***Phaser.Matrix***REMOVED*** This Matrix object.
+    * @param {number} angle - The angle to rotate by, given in radians.
+    * @return {Phaser.Matrix} This Matrix object.
     */
-    rotate: function (angle) ***REMOVED***
+    rotate: function (angle) {
 
         var cos = Math.cos(angle);
         var sin = Math.sin(angle);
@@ -340,16 +340,16 @@ Phaser.Matrix.prototype = ***REMOVED***
      
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Appends the given Matrix to this Matrix.
     * 
     * @method Phaser.Matrix#append
-    * @param ***REMOVED***Phaser.Matrix***REMOVED*** matrix - The matrix to append to this one.
-    * @return ***REMOVED***Phaser.Matrix***REMOVED*** This Matrix object.
+    * @param {Phaser.Matrix} matrix - The matrix to append to this one.
+    * @return {Phaser.Matrix} This Matrix object.
     */
-    append: function (matrix) ***REMOVED***
+    append: function (matrix) {
 
         var a1 = this.a;
         var b1 = this.b;
@@ -366,21 +366,21 @@ Phaser.Matrix.prototype = ***REMOVED***
         
         return this;
 
-    ***REMOVED***,
+    },
 
     /**
     * Resets this Matrix to an identity (default) matrix.
     * 
     * @method Phaser.Matrix#identity
-    * @return ***REMOVED***Phaser.Matrix***REMOVED*** This Matrix object.
+    * @return {Phaser.Matrix} This Matrix object.
     */
-    identity: function () ***REMOVED***
+    identity: function () {
 
         return this.setTo(1, 0, 0, 1, 0, 0);
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.identityMatrix = new Phaser.Matrix();
 

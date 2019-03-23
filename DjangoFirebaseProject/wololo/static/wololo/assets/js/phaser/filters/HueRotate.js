@@ -2,13 +2,13 @@
 * Original shader by Daniil (https://www.shadertoy.com/view/4sl3DH)
 * Tweaked, uniforms added and converted to Phaser/PIXI by Richard Davey
 */
-Phaser.Filter.HueRotate = function (game) ***REMOVED***
+Phaser.Filter.HueRotate = function (game) {
 
     Phaser.Filter.call(this, game);
 
-    this.uniforms.alpha = ***REMOVED*** type: '1f', value: 1.0 ***REMOVED***;
-    this.uniforms.size = ***REMOVED*** type: '1f', value: 0.03 ***REMOVED***;
-    this.uniforms.iChannel0 = ***REMOVED*** type: 'sampler2D', value: null, textureData: ***REMOVED*** repeat: true ***REMOVED*** ***REMOVED***;
+    this.uniforms.alpha = { type: '1f', value: 1.0 };
+    this.uniforms.size = { type: '1f', value: 0.03 };
+    this.uniforms.iChannel0 = { type: 'sampler2D', value: null, textureData: { repeat: true } };
 
     this.fragmentSrc = [
 
@@ -25,7 +25,7 @@ Phaser.Filter.HueRotate = function (game) ***REMOVED***
         "#define SPEED 10.0",
 
         "void main(void)",
-        "***REMOVED***",
+        "{",
             "vec2 uv = gl_FragCoord.xy / resolution.xy;",
 
             "float c = cos(time * SPEED);",
@@ -50,30 +50,30 @@ Phaser.Filter.HueRotate = function (game) ***REMOVED***
             "vec4 pixel = texture2D(iChannel0, uv);",
 
             "gl_FragColor = pixel * hueRotation;",
-        "***REMOVED***"
+        "}"
     ];
 
-***REMOVED***;
+};
 
 Phaser.Filter.HueRotate.prototype = Object.create(Phaser.Filter.prototype);
 Phaser.Filter.HueRotate.prototype.constructor = Phaser.Filter.HueRotate;
 
-Phaser.Filter.HueRotate.prototype.init = function (width, height, texture) ***REMOVED***
+Phaser.Filter.HueRotate.prototype.init = function (width, height, texture) {
 
     this.setResolution(width, height);
 
     this.uniforms.iChannel0.value = texture;
 
-***REMOVED***;
+};
 
-Object.defineProperty(Phaser.Filter.HueRotate.prototype, 'alpha', ***REMOVED***
+Object.defineProperty(Phaser.Filter.HueRotate.prototype, 'alpha', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.alpha.value;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.alpha.value = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});

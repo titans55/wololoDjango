@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd, Richard Davey
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -32,14 +32,14 @@
 * @extends Phaser.Component.Reset
 * @extends Phaser.Component.ScaleMinMax
 * @extends Phaser.Component.Smoothed
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
-* @param ***REMOVED***number***REMOVED*** x - The x coordinate (in world space) to position the Rope at.
-* @param ***REMOVED***number***REMOVED*** y - The y coordinate (in world space) to position the Rope at.
-* @param ***REMOVED***string|Phaser.RenderTexture|Phaser.BitmapData|PIXI.Texture***REMOVED*** key - This is the image or texture used by the Rope during rendering. It can be a string which is a reference to the Cache entry, or an instance of a RenderTexture or PIXI.Texture.
-* @param ***REMOVED***string|number***REMOVED*** frame - If this Rope is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
-* @param ***REMOVED***Array***REMOVED*** points - An array of ***REMOVED***Phaser.Point***REMOVED***.
+* @param {Phaser.Game} game - A reference to the currently running game.
+* @param {number} x - The x coordinate (in world space) to position the Rope at.
+* @param {number} y - The y coordinate (in world space) to position the Rope at.
+* @param {string|Phaser.RenderTexture|Phaser.BitmapData|PIXI.Texture} key - This is the image or texture used by the Rope during rendering. It can be a string which is a reference to the Cache entry, or an instance of a RenderTexture or PIXI.Texture.
+* @param {string|number} frame - If this Rope is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
+* @param {Array} points - An array of {Phaser.Point}.
 */
-Phaser.Rope = function (game, x, y, key, frame, points) ***REMOVED***
+Phaser.Rope = function (game, x, y, key, frame, points) {
 
     this.points = [];
     this.points = points;
@@ -51,7 +51,7 @@ Phaser.Rope = function (game, x, y, key, frame, points) ***REMOVED***
     frame = frame || null;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** type - The const type of this object.
+    * @property {number} type - The const type of this object.
     * @readonly
     */
     this.type = Phaser.ROPE;
@@ -60,7 +60,7 @@ Phaser.Rope = function (game, x, y, key, frame, points) ***REMOVED***
 
     Phaser.Component.Core.init.call(this, game, x, y, key, frame);
 
-***REMOVED***;
+};
 
 Phaser.Rope.prototype = Object.create(PIXI.Rope.prototype);
 Phaser.Rope.prototype.constructor = Phaser.Rope;
@@ -96,16 +96,16 @@ Phaser.Rope.prototype.preUpdateCore = Phaser.Component.Core.preUpdate;
 * @method Phaser.Rope#preUpdate
 * @memberof Phaser.Rope
 */
-Phaser.Rope.prototype.preUpdate = function() ***REMOVED***
+Phaser.Rope.prototype.preUpdate = function() {
 
     if (!this.preUpdatePhysics() || !this.preUpdateLifeSpan() || !this.preUpdateInWorld())
-    ***REMOVED***
+    {
         return false;
-    ***REMOVED***
+    }
 
     return this.preUpdateCore();
 
-***REMOVED***;
+};
 
 /**
 * Override and use this function in your own custom objects to handle any update requirements you may have.
@@ -113,14 +113,14 @@ Phaser.Rope.prototype.preUpdate = function() ***REMOVED***
 * @method Phaser.Rope#update
 * @memberof Phaser.Rope
 */
-Phaser.Rope.prototype.update = function() ***REMOVED***
+Phaser.Rope.prototype.update = function() {
 
     if (this._hasUpdateAnimation)
-    ***REMOVED***
+    {
         this.updateAnimation.call(this);
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Resets the Rope. This places the Rope at the given x/y world coordinates and then
@@ -129,64 +129,64 @@ Phaser.Rope.prototype.update = function() ***REMOVED***
 *
 * @method Phaser.Rope#reset
 * @memberof Phaser.Rope
-* @param ***REMOVED***number***REMOVED*** x - The x coordinate (in world space) to position the Sprite at.
-* @param ***REMOVED***number***REMOVED*** y - The y coordinate (in world space) to position the Sprite at.
-* @return ***REMOVED***Phaser.Rope***REMOVED*** This instance.
+* @param {number} x - The x coordinate (in world space) to position the Sprite at.
+* @param {number} y - The y coordinate (in world space) to position the Sprite at.
+* @return {Phaser.Rope} This instance.
 */
-Phaser.Rope.prototype.reset = function(x, y) ***REMOVED***
+Phaser.Rope.prototype.reset = function(x, y) {
 
     Phaser.Component.Reset.prototype.reset.call(this, x, y);
 
     return this;
 
-***REMOVED***;
+};
 
 /**
 * A Rope will call its updateAnimation function on each update loop if it has one.
 *
 * @name Phaser.Rope#updateAnimation
-* @property ***REMOVED***function***REMOVED*** updateAnimation - Set to a function if you'd like the rope to animate during the update phase. Set to false or null to remove it.
+* @property {function} updateAnimation - Set to a function if you'd like the rope to animate during the update phase. Set to false or null to remove it.
 */
-Object.defineProperty(Phaser.Rope.prototype, "updateAnimation", ***REMOVED***
+Object.defineProperty(Phaser.Rope.prototype, "updateAnimation", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this._updateAnimation;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         if (value && typeof value === 'function')
-        ***REMOVED***
+        {
             this._hasUpdateAnimation = true;
             this._updateAnimation = value;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this._hasUpdateAnimation = false;
             this._updateAnimation = null;
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * The segments that make up the rope body as an array of Phaser.Rectangles
 *
 * @name Phaser.Rope#segments
-* @property ***REMOVED***Phaser.Rectangles[]***REMOVED*** updateAnimation - Returns an array of Phaser.Rectangles that represent the segments of the given rope
+* @property {Phaser.Rectangles[]} updateAnimation - Returns an array of Phaser.Rectangles that represent the segments of the given rope
 */
-Object.defineProperty(Phaser.Rope.prototype, "segments", ***REMOVED***
+Object.defineProperty(Phaser.Rope.prototype, "segments", {
 
-    get: function() ***REMOVED***
+    get: function() {
 
         var segments = [];
         var index, x1, y1, x2, y2, width, height, rect;
 
         for (var i = 0; i < this.points.length; i++)
-        ***REMOVED***
+        {
             index = i * 4;
 
             x1 = this.vertices[index] * this.scale.x;
@@ -201,9 +201,9 @@ Object.defineProperty(Phaser.Rope.prototype, "segments", ***REMOVED***
             y1 += this.world.y;
             rect = new Phaser.Rectangle(x1, y1, width, height);
             segments.push(rect);
-        ***REMOVED***
+        }
 
         return segments;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});

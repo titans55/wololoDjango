@@ -1,1 +1,1 @@
-Phaser.TileSprite = function () ***REMOVED******REMOVED***;
+Phaser.TileSprite = function () {};

@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1472,7 +1472,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
     
     <div class="description">
         <p>create a new Path from JSON data</p>
-<p>JSON data format:<br>required: &quot;coordinateSystem&quot;:, &quot;smoothness&quot;:, &quot;loops&quot;:, &quot;speed&quot;:, &quot;pointList&quot;:[ ***REMOVED***&quot;x&quot;:, &quot;y&quot;:***REMOVED***, ... ]<br>optional: &quot;branchFrom&quot;: ***REMOVED*** &quot;path&quot;:, &quot;point&quot;: ***REMOVED***, &quot;joinTo&quot;: ***REMOVED*** &quot;path&quot;:, &quot;point&quot;: ***REMOVED***</p>
+<p>JSON data format:<br>required: &quot;coordinateSystem&quot;:, &quot;smoothness&quot;:, &quot;loops&quot;:, &quot;speed&quot;:, &quot;pointList&quot;:[ {&quot;x&quot;:, &quot;y&quot;:}, ... ]<br>optional: &quot;branchFrom&quot;: { &quot;path&quot;:, &quot;point&quot;: }, &quot;joinTo&quot;: { &quot;path&quot;:, &quot;point&quot;: }</p>
     </div>
     
 
@@ -1580,22 +1580,22 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

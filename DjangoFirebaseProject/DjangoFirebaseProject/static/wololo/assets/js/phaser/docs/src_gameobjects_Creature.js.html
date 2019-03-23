@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1290,7 +1290,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 * @author       Richard Davey &lt;rich@photonstorm.com>
 * @author       Kestrel Moon Studios &lt;creature@kestrelmoon.com>
 * @copyright    2016 Photon Storm Ltd and Kestrel Moon Studios
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1320,64 +1320,64 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 * @extends Phaser.Component.LifeSpan
 * @extends Phaser.Component.Reset
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
-* @param ***REMOVED***number***REMOVED*** x - The x coordinate of the Game Object. The coordinate is relative to any parent container this Game Object may be in.
-* @param ***REMOVED***number***REMOVED*** y - The y coordinate of the Game Object. The coordinate is relative to any parent container this Game Object may be in.
-* @param ***REMOVED***string|PIXI.Texture***REMOVED*** key - The texture used by the Creature Object during rendering. It can be a string which is a reference to the Cache entry, or an instance of a PIXI.Texture.
-* @param ***REMOVED***string***REMOVED*** mesh - The mesh data for the Creature Object. It should be a string which is a reference to the Cache JSON entry.
-* @param ***REMOVED***string***REMOVED*** [animation='default'] - The animation within the mesh data  to play.
+* @param {Phaser.Game} game - A reference to the currently running game.
+* @param {number} x - The x coordinate of the Game Object. The coordinate is relative to any parent container this Game Object may be in.
+* @param {number} y - The y coordinate of the Game Object. The coordinate is relative to any parent container this Game Object may be in.
+* @param {string|PIXI.Texture} key - The texture used by the Creature Object during rendering. It can be a string which is a reference to the Cache entry, or an instance of a PIXI.Texture.
+* @param {string} mesh - The mesh data for the Creature Object. It should be a string which is a reference to the Cache JSON entry.
+* @param {string} [animation='default'] - The animation within the mesh data  to play.
 */
-Phaser.Creature = function (game, x, y, key, mesh, animation) ***REMOVED***
+Phaser.Creature = function (game, x, y, key, mesh, animation) {
 
-    if (animation === undefined) ***REMOVED*** animation = 'default'; ***REMOVED***
+    if (animation === undefined) { animation = 'default'; }
 
     /**
-    * @property ***REMOVED***number***REMOVED*** type - The const type of this object.
+    * @property {number} type - The const type of this object.
     * @readonly
     */
     this.type = Phaser.CREATURE;
 
     if (!game.cache.checkJSONKey(mesh))
-    ***REMOVED***
+    {
         console.warn('Phaser.Creature: Invalid mesh key given. Not found in Phaser.Cache');
         return;
-    ***REMOVED***
+    }
 
     var meshData = game.cache.getJSON(mesh);
 
     /**
-    * @property ***REMOVED***Creature***REMOVED*** _creature - The Creature instance.
+    * @property {Creature} _creature - The Creature instance.
     * @private
     */
     this._creature = new Creature(meshData);
 
     /**
-    * @property ***REMOVED***CreatureAnimation***REMOVED*** animation - The CreatureAnimation instance.
+    * @property {CreatureAnimation} animation - The CreatureAnimation instance.
     */
     this.animation = new CreatureAnimation(meshData, animation, this._creature);
 
     /**
-    * @property ***REMOVED***CreatureManager***REMOVED*** manager - The CreatureManager instance for this object.
+    * @property {CreatureManager} manager - The CreatureManager instance for this object.
     */
     this.manager = new CreatureManager(this._creature);
 
     /**
-    * @property ***REMOVED***number***REMOVED*** timeDelta - How quickly the animation advances.
+    * @property {number} timeDelta - How quickly the animation advances.
     * @default
     */
     this.timeDelta = 0.05;
 
     if (typeof key === 'string')
-    ***REMOVED***
+    {
         var texture = new PIXI.Texture(game.cache.getBaseTexture(key));
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         var texture = key;
-    ***REMOVED***
+    }
 
     /**
-    * @property ***REMOVED***PIXI.Texture***REMOVED*** texture - The texture the animation is using.
+    * @property {PIXI.Texture} texture - The texture the animation is using.
     */
     this.texture = texture;
 
@@ -1387,13 +1387,13 @@ Phaser.Creature = function (game, x, y, key, mesh, animation) ***REMOVED***
     this.blendMode = PIXI.blendModes.NORMAL;
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** creatureBoundsMin - The minimum bounds point.
+    * @property {Phaser.Point} creatureBoundsMin - The minimum bounds point.
     * @protected
     */
     this.creatureBoundsMin = new Phaser.Point();
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** creatureBoundsMax - The maximum bounds point.
+    * @property {Phaser.Point} creatureBoundsMax - The maximum bounds point.
     * @protected
     */
     this.creatureBoundsMax = new Phaser.Point();
@@ -1401,30 +1401,30 @@ Phaser.Creature = function (game, x, y, key, mesh, animation) ***REMOVED***
     var target = this.manager.target_creature;
 
     /**
-    * @property ***REMOVED***PIXI.Float32Array***REMOVED*** vertices - The vertices data.
+    * @property {PIXI.Float32Array} vertices - The vertices data.
     * @protected
     */
     this.vertices = new PIXI.Float32Array(target.total_num_pts * 2);
 
     /**
-    * @property ***REMOVED***PIXI.Float32Array***REMOVED*** uvs - The UV data.
+    * @property {PIXI.Float32Array} uvs - The UV data.
     * @protected
     */
     this.uvs = new PIXI.Float32Array(target.total_num_pts * 2);
     
     /**
-    * @property ***REMOVED***PIXI.Uint16Array***REMOVED*** indices
+    * @property {PIXI.Uint16Array} indices
     * @protected
     */
     this.indices = new PIXI.Uint16Array(target.global_indices.length);
 
     for (var i = 0; i &lt; this.indices.length; i++)
-    ***REMOVED***
+    {
         this.indices[i] = target.global_indices[i];
-    ***REMOVED***
+    }
     
     /**
-    * @property ***REMOVED***PIXI.Uint16Array***REMOVED*** colors - The vertices colors
+    * @property {PIXI.Uint16Array} colors - The vertices colors
     * @protected
     */
     this.colors = new PIXI.Float32Array([1, 1, 1, 1]);
@@ -1436,7 +1436,7 @@ Phaser.Creature = function (game, x, y, key, mesh, animation) ***REMOVED***
 
     Phaser.Component.Core.init.call(this, game, x, y);
 
-***REMOVED***;
+};
 
 Phaser.Creature.prototype = Object.create(PIXI.DisplayObjectContainer.prototype);
 Phaser.Creature.prototype.constructor = Phaser.Creature;
@@ -1460,12 +1460,12 @@ Phaser.Creature.prototype.preUpdateCore = Phaser.Component.Core.preUpdate;
 * @method Phaser.Creature#preUpdate
 * @memberof Phaser.Creature
 */
-Phaser.Creature.prototype.preUpdate = function () ***REMOVED***
+Phaser.Creature.prototype.preUpdate = function () {
 
     if (!this.preUpdateInWorld())
-    ***REMOVED***
+    {
         return false;
-    ***REMOVED***
+    }
 
     this.manager.Update(this.timeDelta);
 
@@ -1473,7 +1473,7 @@ Phaser.Creature.prototype.preUpdate = function () ***REMOVED***
 
     return this.preUpdateCore();
 
-***REMOVED***;
+};
 
 /**
 * 
@@ -1482,7 +1482,7 @@ Phaser.Creature.prototype.preUpdate = function () ***REMOVED***
 * @memberof Phaser.Creature
 * @private
 */
-Phaser.Creature.prototype._initWebGL = function (renderSession) ***REMOVED***
+Phaser.Creature.prototype._initWebGL = function (renderSession) {
 
     // build the strip!
     var gl = renderSession.gl;
@@ -1504,28 +1504,28 @@ Phaser.Creature.prototype._initWebGL = function (renderSession) ***REMOVED***
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, this.indices, gl.STATIC_DRAW);
 
-***REMOVED***;
+};
 
 /**
 * @method Phaser.Creature#_renderWebGL
 * @memberof Phaser.Creature
 * @private
 */
-Phaser.Creature.prototype._renderWebGL = function (renderSession) ***REMOVED***
+Phaser.Creature.prototype._renderWebGL = function (renderSession) {
 
     //  If the sprite is not visible or the alpha is 0 then no need to render this element
     if (!this.visible || this.alpha &lt;= 0)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     renderSession.spriteBatch.stop();
 
     // init! init!
     if (!this._vertexBuffer)
-    ***REMOVED***
+    {
         this._initWebGL(renderSession);
-    ***REMOVED***
+    }
     
     renderSession.shaderManager.setShader(renderSession.shaderManager.stripShader);
 
@@ -1533,14 +1533,14 @@ Phaser.Creature.prototype._renderWebGL = function (renderSession) ***REMOVED***
 
     renderSession.spriteBatch.start();
 
-***REMOVED***;
+};
 
 /**
 * @method Phaser.Creature#_renderCreature
 * @memberof Phaser.Creature
 * @private
 */
-Phaser.Creature.prototype._renderCreature = function (renderSession) ***REMOVED***
+Phaser.Creature.prototype._renderCreature = function (renderSession) {
 
     var gl = renderSession.gl;
 
@@ -1557,7 +1557,7 @@ Phaser.Creature.prototype._renderCreature = function (renderSession) ***REMOVED*
     gl.uniform1f(shader.alpha, this.worldAlpha);
 
     if (!this.dirty)
-    ***REMOVED***
+    {
         gl.bindBuffer(gl.ARRAY_BUFFER, this._vertexBuffer);
         gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.vertices);
         gl.vertexAttribPointer(shader.aVertexPosition, 2, gl.FLOAT, false, 0, 0);
@@ -1570,20 +1570,20 @@ Phaser.Creature.prototype._renderCreature = function (renderSession) ***REMOVED*
 
         //  Check if a texture is dirty..
         if (this.texture.baseTexture._dirty[gl.id])
-        ***REMOVED***
+        {
             renderSession.renderer.updateTexture(this.texture.baseTexture);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             //  Bind the current texture
             gl.bindTexture(gl.TEXTURE_2D, this.texture.baseTexture._glTextures[gl.id]);
-        ***REMOVED***
+        }
     
         //  Don't need to upload!
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         this.dirty = false;
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this._vertexBuffer);
@@ -1599,29 +1599,29 @@ Phaser.Creature.prototype._renderCreature = function (renderSession) ***REMOVED*
 
         //  Check if a texture is dirty
         if (this.texture.baseTexture._dirty[gl.id])
-        ***REMOVED***
+        {
             renderSession.renderer.updateTexture(this.texture.baseTexture);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             gl.bindTexture(gl.TEXTURE_2D, this.texture.baseTexture._glTextures[gl.id]);
-        ***REMOVED***
+        }
     
         //  Don't need to upload!
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
         gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, this.indices, gl.STATIC_DRAW);
-    ***REMOVED***
+    }
     
     gl.drawElements(gl.TRIANGLES, this.indices.length, gl.UNSIGNED_SHORT, 0);
 
-***REMOVED***;
+};
 
 /**
 * @method Phaser.Creature#updateCreatureBounds
 * @memberof Phaser.Creature
 * @private
 */
-Phaser.Creature.prototype.updateCreatureBounds = function () ***REMOVED***
+Phaser.Creature.prototype.updateCreatureBounds = function () {
 
     //  Update bounds based off world transform matrix
     var target = this.manager.target_creature;
@@ -1634,14 +1634,14 @@ Phaser.Creature.prototype.updateCreatureBounds = function () ***REMOVED***
     this.worldTransform.apply(this.creatureBoundsMin, this.creatureBoundsMin);  
     this.worldTransform.apply(this.creatureBoundsMax, this.creatureBoundsMax);              
 
-***REMOVED***;
+};
 
 /**
 * @method Phaser.Creature#updateData
 * @memberof Phaser.Creature
 * @private
 */
-Phaser.Creature.prototype.updateData = function () ***REMOVED***
+Phaser.Creature.prototype.updateData = function () {
 
     var target = this.manager.target_creature;
 
@@ -1653,14 +1653,14 @@ Phaser.Creature.prototype.updateData = function () ***REMOVED***
 
     this.dirty = true;
 
-***REMOVED***;
+};
 
 /**
 * @method Phaser.Creature#updateRenderData
 * @memberof Phaser.Creature
 * @private
 */
-Phaser.Creature.prototype.updateRenderData = function (verts, uvs) ***REMOVED***
+Phaser.Creature.prototype.updateRenderData = function (verts, uvs) {
 
     var target = this.manager.target_creature;
 
@@ -1670,7 +1670,7 @@ Phaser.Creature.prototype.updateRenderData = function (verts, uvs) ***REMOVED***
     var write_pt_index = 0;
     
     for (var i = 0; i &lt; target.total_num_pts; i++)
-    ***REMOVED***
+    {
         this.vertices[write_pt_index] = verts[pt_index];
         this.vertices[write_pt_index + 1] = -verts[pt_index + 1];
         
@@ -1681,40 +1681,40 @@ Phaser.Creature.prototype.updateRenderData = function (verts, uvs) ***REMOVED***
         uv_index += 2;
         
         write_pt_index += 2;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Sets the Animation this Creature object will play, as defined in the mesh data.
 *
 * @method Phaser.Creature#setAnimation
 * @memberof Phaser.Creature
-* @param ***REMOVED***string***REMOVED*** key - The key of the animation to set, as defined in the mesh data.
+* @param {string} key - The key of the animation to set, as defined in the mesh data.
 */
-Phaser.Creature.prototype.setAnimation = function (key) ***REMOVED***
+Phaser.Creature.prototype.setAnimation = function (key) {
 
     this.manager.SetActiveAnimationName(key, true);
 
-***REMOVED***;
+};
 
 /**
 * Plays the currently set animation.
 *
 * @method Phaser.Creature#play
 * @memberof Phaser.Creature
-* @param ***REMOVED***boolean***REMOVED*** [loop=false] - Should the animation loop?
+* @param {boolean} [loop=false] - Should the animation loop?
 */
-Phaser.Creature.prototype.play = function (loop) ***REMOVED***
+Phaser.Creature.prototype.play = function (loop) {
 
-    if (loop === undefined) ***REMOVED*** loop = false; ***REMOVED***
+    if (loop === undefined) { loop = false; }
 
     this.loop = loop;
 
     this.manager.SetIsPlaying(true);
     this.manager.RunAtTime(0);
 
-***REMOVED***;
+};
 
 /**
 * Stops the currently playing animation.
@@ -1722,51 +1722,51 @@ Phaser.Creature.prototype.play = function (loop) ***REMOVED***
 * @method Phaser.Creature#stop
 * @memberof Phaser.Creature
 */
-Phaser.Creature.prototype.stop = function () ***REMOVED***
+Phaser.Creature.prototype.stop = function () {
 
     this.manager.SetIsPlaying(false);
 
-***REMOVED***;
+};
 
 /**
 * @name Phaser.Creature#isPlaying
-* @property ***REMOVED***boolean***REMOVED*** isPlaying - Is the _current_ animation playing?
+* @property {boolean} isPlaying - Is the _current_ animation playing?
 */
-Object.defineProperty(Phaser.Creature.prototype, 'isPlaying', ***REMOVED***
+Object.defineProperty(Phaser.Creature.prototype, 'isPlaying', {
 
-    get: function() ***REMOVED***
+    get: function() {
 
         return this.manager.GetIsPlaying();
 
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
 
         this.manager.SetIsPlaying(value);
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Creature#loop
-* @property ***REMOVED***boolean***REMOVED*** loop - Should the _current_ animation loop or not?
+* @property {boolean} loop - Should the _current_ animation loop or not?
 */
-Object.defineProperty(Phaser.Creature.prototype, 'loop', ***REMOVED***
+Object.defineProperty(Phaser.Creature.prototype, 'loop', {
 
-    get: function() ***REMOVED***
+    get: function() {
 
         return this.manager.should_loop;
 
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
 
         this.manager.SetShouldLoop(value);
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 </pre>
         </article>
     </section>
@@ -1809,22 +1809,22 @@ Object.defineProperty(Phaser.Creature.prototype, 'loop', ***REMOVED***
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

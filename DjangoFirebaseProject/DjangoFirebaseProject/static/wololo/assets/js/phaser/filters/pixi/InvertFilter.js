@@ -10,15 +10,15 @@
  * @constructor
  */
 PIXI.InvertFilter = function()
-***REMOVED***
+{
     PIXI.AbstractFilter.call( this );
 
     this.passes = [this];
 
     // set the uniforms
-    this.uniforms = ***REMOVED***
-        invert: ***REMOVED***type: '1f', value: 1***REMOVED***
-    ***REMOVED***;
+    this.uniforms = {
+        invert: {type: '1f', value: 1}
+    };
 
     this.fragmentSrc = [
         'precision mediump float;',
@@ -27,14 +27,14 @@ PIXI.InvertFilter = function()
         'uniform float invert;',
         'uniform sampler2D uSampler;',
 
-        'void main(void) ***REMOVED***',
+        'void main(void) {',
         '   gl_FragColor = texture2D(uSampler, vTextureCoord);',
         '   gl_FragColor.rgb = mix( (vec3(1)-gl_FragColor.rgb) * gl_FragColor.a, gl_FragColor.rgb, 1.0 - invert);',
         //'   gl_FragColor.rgb = gl_FragColor.rgb  * gl_FragColor.a;',
       //  '   gl_FragColor = gl_FragColor * vColor;',
-        '***REMOVED***'
+        '}'
     ];
-***REMOVED***;
+};
 
 PIXI.InvertFilter.prototype = Object.create( PIXI.AbstractFilter.prototype );
 PIXI.InvertFilter.prototype.constructor = PIXI.InvertFilter;
@@ -44,11 +44,11 @@ PIXI.InvertFilter.prototype.constructor = PIXI.InvertFilter;
  * @property invert
  * @type Number
 */
-Object.defineProperty(PIXI.InvertFilter.prototype, 'invert', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.InvertFilter.prototype, 'invert', {
+    get: function() {
         return this.uniforms.invert.value;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.uniforms.invert.value = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});

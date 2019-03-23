@@ -7,7 +7,7 @@
 * @constructor
 */
 PIXI.WebGLFilterManager = function()
-***REMOVED***
+{
     /**
      * @property filterStack
      * @type Array
@@ -25,7 +25,7 @@ PIXI.WebGLFilterManager = function()
      * @type Number
      */
     this.offsetY = 0;
-***REMOVED***;
+};
 
 PIXI.WebGLFilterManager.prototype.constructor = PIXI.WebGLFilterManager;
 
@@ -33,23 +33,23 @@ PIXI.WebGLFilterManager.prototype.constructor = PIXI.WebGLFilterManager;
 * Initialises the context and the properties.
 * 
 * @method setContext 
-* @param gl ***REMOVED***WebGLContext***REMOVED*** the current WebGL drawing context
+* @param gl {WebGLContext} the current WebGL drawing context
 */
 PIXI.WebGLFilterManager.prototype.setContext = function(gl)
-***REMOVED***
+{
     this.gl = gl;
     this.texturePool = [];
 
     this.initShaderBuffers();
-***REMOVED***;
+};
 
 /**
 * @method begin
-* @param renderSession ***REMOVED***RenderSession***REMOVED*** 
-* @param buffer ***REMOVED***ArrayBuffer***REMOVED*** 
+* @param renderSession {RenderSession} 
+* @param buffer {ArrayBuffer} 
 */
 PIXI.WebGLFilterManager.prototype.begin = function(renderSession, buffer)
-***REMOVED***
+{
     this.renderSession = renderSession;
     this.defaultShader = renderSession.shaderManager.defaultShader;
 
@@ -57,16 +57,16 @@ PIXI.WebGLFilterManager.prototype.begin = function(renderSession, buffer)
     this.width = projection.x * 2;
     this.height = -projection.y * 2;
     this.buffer = buffer;
-***REMOVED***;
+};
 
 /**
 * Applies the filter and adds it to the current filter stack.
 * 
 * @method pushFilter
-* @param filterBlock ***REMOVED***Object***REMOVED*** the filter that will be pushed to the current filter stack
+* @param filterBlock {Object} the filter that will be pushed to the current filter stack
 */
 PIXI.WebGLFilterManager.prototype.pushFilter = function(filterBlock)
-***REMOVED***
+{
     var gl = this.gl;
 
     var projection = this.renderSession.projection;
@@ -92,13 +92,13 @@ PIXI.WebGLFilterManager.prototype.pushFilter = function(filterBlock)
 
     var texture = this.texturePool.pop();
     if(!texture)
-    ***REMOVED***
+    {
         texture = new PIXI.FilterTexture(this.gl, this.width * this.renderSession.resolution, this.height * this.renderSession.resolution);
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         texture.resize(this.width * this.renderSession.resolution, this.height * this.renderSession.resolution);
-    ***REMOVED***
+    }
 
     gl.bindTexture(gl.TEXTURE_2D,  texture.texture);
 
@@ -140,7 +140,7 @@ PIXI.WebGLFilterManager.prototype.pushFilter = function(filterBlock)
 
     filterBlock._glFilterTexture = texture;
 
-***REMOVED***;
+};
 
 /**
 * Removes the last filter from the filter stack and doesn't return it.
@@ -148,7 +148,7 @@ PIXI.WebGLFilterManager.prototype.pushFilter = function(filterBlock)
 * @method popFilter
 */
 PIXI.WebGLFilterManager.prototype.popFilter = function()
-***REMOVED***
+{
     var gl = this.gl;
     var filterBlock = this.filterStack.pop();
     var filterArea = filterBlock._filterArea;
@@ -157,7 +157,7 @@ PIXI.WebGLFilterManager.prototype.popFilter = function()
     var offset = this.renderSession.offset;
 
     if(filterBlock.filterPasses.length > 1)
-    ***REMOVED***
+    {
         gl.viewport(0, 0, filterArea.width * this.renderSession.resolution, filterArea.height * this.renderSession.resolution);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexBuffer);
@@ -197,7 +197,7 @@ PIXI.WebGLFilterManager.prototype.popFilter = function()
         gl.disable(gl.BLEND);
 
         for (var i = 0; i < filterBlock.filterPasses.length-1; i++)
-        ***REMOVED***
+        {
             var filterPass = filterBlock.filterPasses[i];
 
             gl.bindFramebuffer(gl.FRAMEBUFFER, outputTexture.frameBuffer );
@@ -214,13 +214,13 @@ PIXI.WebGLFilterManager.prototype.popFilter = function()
             var temp = inputTexture;
             inputTexture = outputTexture;
             outputTexture = temp;
-        ***REMOVED***
+        }
 
         gl.enable(gl.BLEND);
 
         texture = inputTexture;
         this.texturePool.push(outputTexture);
-    ***REMOVED***
+    }
 
     var filter = filterBlock.filterPasses[filterBlock.filterPasses.length-1];
 
@@ -237,11 +237,11 @@ PIXI.WebGLFilterManager.prototype.popFilter = function()
 
     // time to render the filters texture to the previous scene
     if(this.filterStack.length === 0)
-    ***REMOVED***
+    {
         gl.colorMask(true, true, true, true);//this.transparent);
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         var currentFilter = this.filterStack[this.filterStack.length-1];
         filterArea = currentFilter._filterArea;
 
@@ -252,7 +252,7 @@ PIXI.WebGLFilterManager.prototype.popFilter = function()
         offsetY = filterArea.y;
 
         buffer =  currentFilter._glFilterTexture.frameBuffer;
-    ***REMOVED***
+    }
 
     // TODO need to remove these global elements..
     projection.x = sizeX/2;
@@ -306,17 +306,17 @@ PIXI.WebGLFilterManager.prototype.popFilter = function()
     gl.bindTexture(gl.TEXTURE_2D, texture.texture);
 
     // >>> modify by nextht
-    if (this.renderSession.stencilManager) ***REMOVED***
+    if (this.renderSession.stencilManager) {
         this.renderSession.stencilManager.destroy();
-    ***REMOVED***
+    }
     this.renderSession.stencilManager = filterBlock._previous_stencil_mgr;
     filterBlock._previous_stencil_mgr = null;
-    if (this.renderSession.stencilManager.count > 0) ***REMOVED***
+    if (this.renderSession.stencilManager.count > 0) {
         gl.enable(gl.STENCIL_TEST);
-    ***REMOVED***
-    else ***REMOVED***
+    }
+    else {
         gl.disable(gl.STENCIL_TEST);
-    ***REMOVED***    
+    }    
     // <<< modify by nextht
 
     // apply!
@@ -330,26 +330,26 @@ PIXI.WebGLFilterManager.prototype.popFilter = function()
     // return the texture to the pool
     this.texturePool.push(texture);
     filterBlock._glFilterTexture = null;
-***REMOVED***;
+};
 
 
 /**
 * Applies the filter to the specified area.
 * 
 * @method applyFilterPass
-* @param filter ***REMOVED***AbstractFilter***REMOVED*** the filter that needs to be applied
-* @param filterArea ***REMOVED***Texture***REMOVED*** TODO - might need an update
-* @param width ***REMOVED***Number***REMOVED*** the horizontal range of the filter
-* @param height ***REMOVED***Number***REMOVED*** the vertical range of the filter
+* @param filter {AbstractFilter} the filter that needs to be applied
+* @param filterArea {Texture} TODO - might need an update
+* @param width {Number} the horizontal range of the filter
+* @param height {Number} the vertical range of the filter
 */
 PIXI.WebGLFilterManager.prototype.applyFilterPass = function(filter, filterArea, width, height)
-***REMOVED***
+{
     // use program
     var gl = this.gl;
     var shader = filter.shaders[gl.id];
 
     if(!shader)
-    ***REMOVED***
+    {
         shader = new PIXI.PixiShader(gl);
 
         shader.fragmentSrc = filter.fragmentSrc;
@@ -357,7 +357,7 @@ PIXI.WebGLFilterManager.prototype.applyFilterPass = function(filter, filterArea,
         shader.init();
 
         filter.shaders[gl.id] = shader;
-    ***REMOVED***
+    }
 
     // set the shader
     this.renderSession.shaderManager.setShader(shader);
@@ -368,12 +368,12 @@ PIXI.WebGLFilterManager.prototype.applyFilterPass = function(filter, filterArea,
     gl.uniform2f(shader.offsetVector, 0,0);
 
     if(filter.uniforms.dimensions)
-    ***REMOVED***
+    {
         filter.uniforms.dimensions.value[0] = this.width;//width;
         filter.uniforms.dimensions.value[1] = this.height;//height;
         filter.uniforms.dimensions.value[2] = this.vertexArray[0];
         filter.uniforms.dimensions.value[3] = this.vertexArray[5];//filterArea.height;
-    ***REMOVED***
+    }
 
     shader.syncUniforms();
 
@@ -392,7 +392,7 @@ PIXI.WebGLFilterManager.prototype.applyFilterPass = function(filter, filterArea,
     gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0 );
 
     this.renderSession.drawCount++;
-***REMOVED***;
+};
 
 /**
 * Initialises the shader buffers.
@@ -400,7 +400,7 @@ PIXI.WebGLFilterManager.prototype.applyFilterPass = function(filter, filterArea,
 * @method initShaderBuffers
 */
 PIXI.WebGLFilterManager.prototype.initShaderBuffers = function()
-***REMOVED***
+{
     var gl = this.gl;
 
     // create some buffers
@@ -440,7 +440,7 @@ PIXI.WebGLFilterManager.prototype.initShaderBuffers = function()
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.indexBuffer);
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array([0, 1, 2, 1, 3, 2]), gl.STATIC_DRAW);
 
-***REMOVED***;
+};
 
 /**
 * Destroys the filter and removes it from the filter stack.
@@ -448,7 +448,7 @@ PIXI.WebGLFilterManager.prototype.initShaderBuffers = function()
 * @method destroy
 */
 PIXI.WebGLFilterManager.prototype.destroy = function()
-***REMOVED***
+{
     var gl = this.gl;
 
     this.filterStack = null;
@@ -457,9 +457,9 @@ PIXI.WebGLFilterManager.prototype.destroy = function()
     this.offsetY = 0;
 
     // destroy textures
-    for (var i = 0; i < this.texturePool.length; i++) ***REMOVED***
+    for (var i = 0; i < this.texturePool.length; i++) {
         this.texturePool[i].destroy();
-    ***REMOVED***
+    }
     
     this.texturePool = null;
 
@@ -468,4 +468,4 @@ PIXI.WebGLFilterManager.prototype.destroy = function()
     gl.deleteBuffer(this.uvBuffer);
     gl.deleteBuffer(this.colorBuffer);
     gl.deleteBuffer(this.indexBuffer);
-***REMOVED***;
+};

@@ -10,17 +10,17 @@
  * @constructor
  */
 PIXI.TwistFilter = function()
-***REMOVED***
+{
     PIXI.AbstractFilter.call( this );
 
     this.passes = [this];
 
     // set the uniforms
-    this.uniforms = ***REMOVED***
-        radius: ***REMOVED***type: '1f', value:0.5***REMOVED***,
-        angle: ***REMOVED***type: '1f', value:5***REMOVED***,
-        offset: ***REMOVED***type: '2f', value:***REMOVED***x:0.5, y:0.5***REMOVED******REMOVED***
-    ***REMOVED***;
+    this.uniforms = {
+        radius: {type: '1f', value:0.5},
+        angle: {type: '1f', value:5},
+        offset: {type: '2f', value:{x:0.5, y:0.5}}
+    };
 
     this.fragmentSrc = [
         'precision mediump float;',
@@ -33,22 +33,22 @@ PIXI.TwistFilter = function()
         'uniform float angle;',
         'uniform vec2 offset;',
 
-        'void main(void) ***REMOVED***',
+        'void main(void) {',
         '   vec2 coord = vTextureCoord - offset;',
         '   float distance = length(coord);',
 
-        '   if (distance < radius) ***REMOVED***',
+        '   if (distance < radius) {',
         '       float ratio = (radius - distance) / radius;',
         '       float angleMod = ratio * ratio * angle;',
         '       float s = sin(angleMod);',
         '       float c = cos(angleMod);',
         '       coord = vec2(coord.x * c - coord.y * s, coord.x * s + coord.y * c);',
-        '   ***REMOVED***',
+        '   }',
 
         '   gl_FragColor = texture2D(uSampler, coord+offset);',
-        '***REMOVED***'
+        '}'
     ];
-***REMOVED***;
+};
 
 PIXI.TwistFilter.prototype = Object.create( PIXI.AbstractFilter.prototype );
 PIXI.TwistFilter.prototype.constructor = PIXI.TwistFilter;
@@ -59,15 +59,15 @@ PIXI.TwistFilter.prototype.constructor = PIXI.TwistFilter;
  * @property offset
  * @type Point
  */
-Object.defineProperty(PIXI.TwistFilter.prototype, 'offset', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.TwistFilter.prototype, 'offset', {
+    get: function() {
         return this.uniforms.offset.value;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.dirty = true;
         this.uniforms.offset.value = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});
 
 /**
  * This radius of the twist.
@@ -75,15 +75,15 @@ Object.defineProperty(PIXI.TwistFilter.prototype, 'offset', ***REMOVED***
  * @property radius
  * @type Number
  */
-Object.defineProperty(PIXI.TwistFilter.prototype, 'radius', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.TwistFilter.prototype, 'radius', {
+    get: function() {
         return this.uniforms.radius.value;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.dirty = true;
         this.uniforms.radius.value = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});
 
 /**
  * This angle of the twist.
@@ -91,12 +91,12 @@ Object.defineProperty(PIXI.TwistFilter.prototype, 'radius', ***REMOVED***
  * @property angle
  * @type Number
  */
-Object.defineProperty(PIXI.TwistFilter.prototype, 'angle', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.TwistFilter.prototype, 'angle', {
+    get: function() {
         return this.uniforms.angle.value;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.dirty = true;
         this.uniforms.angle.value = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});

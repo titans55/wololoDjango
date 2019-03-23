@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -10,7 +10,7 @@
 *
 * @class
 */
-Phaser.Component.FixedToCamera = function () ***REMOVED******REMOVED***;
+Phaser.Component.FixedToCamera = function () {};
 
 /**
  * The FixedToCamera component postUpdate handler.
@@ -18,20 +18,20 @@ Phaser.Component.FixedToCamera = function () ***REMOVED******REMOVED***;
  *
  * @method
  */
-Phaser.Component.FixedToCamera.postUpdate = function () ***REMOVED***
+Phaser.Component.FixedToCamera.postUpdate = function () {
 
     if (this.fixedToCamera)
-    ***REMOVED***
+    {
         this.position.x = (this.game.camera.view.x + this.cameraOffset.x) / this.game.camera.scale.x;
         this.position.y = (this.game.camera.view.y + this.cameraOffset.y) / this.game.camera.scale.y;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
-Phaser.Component.FixedToCamera.prototype = ***REMOVED***
+Phaser.Component.FixedToCamera.prototype = {
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _fixedToCamera
+    * @property {boolean} _fixedToCamera
     * @private
     */
     _fixedToCamera: false,
@@ -51,38 +51,38 @@ Phaser.Component.FixedToCamera.prototype = ***REMOVED***
     *
     * Be careful not to set `fixedToCamera` on Game Objects which are in Groups that already have `fixedToCamera` enabled on them.
     *
-    * @property ***REMOVED***boolean***REMOVED*** fixedToCamera
+    * @property {boolean} fixedToCamera
     */
-    fixedToCamera: ***REMOVED***
+    fixedToCamera: {
 
-        get: function () ***REMOVED***
+        get: function () {
 
             return this._fixedToCamera;
 
-        ***REMOVED***,
+        },
 
-        set: function (value) ***REMOVED***
+        set: function (value) {
 
             if (value)
-            ***REMOVED***
+            {
                 this._fixedToCamera = true;
                 this.cameraOffset.set(this.x, this.y);
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this._fixedToCamera = false;
-            ***REMOVED***
+            }
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The x/y coordinate offset applied to the top-left of the camera that this Game Object will be drawn at if `fixedToCamera` is true.
     * 
     * The values are relative to the top-left of the camera view and in addition to any parent of the Game Object on the display list.
-    * @property ***REMOVED***Phaser.Point***REMOVED*** cameraOffset
+    * @property {Phaser.Point} cameraOffset
     */
     cameraOffset: new Phaser.Point()
 
-***REMOVED***;
+};

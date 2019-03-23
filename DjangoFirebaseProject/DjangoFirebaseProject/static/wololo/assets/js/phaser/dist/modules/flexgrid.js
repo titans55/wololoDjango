@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -14,19 +14,19 @@
 *
 * @class Phaser.FlexGrid
 * @constructor
-* @param ***REMOVED***Phaser.ScaleManager***REMOVED*** manager - The ScaleManager.
-* @param ***REMOVED***number***REMOVED*** width - The width of the game.
-* @param ***REMOVED***number***REMOVED*** height - The height of the game.
+* @param {Phaser.ScaleManager} manager - The ScaleManager.
+* @param {number} width - The width of the game.
+* @param {number} height - The height of the game.
 */
-Phaser.FlexGrid = function (manager, width, height) ***REMOVED***
+Phaser.FlexGrid = function (manager, width, height) {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running Game.
+    * @property {Phaser.Game} game - A reference to the currently running Game.
     */
     this.game = manager.game;
 
     /**
-    * @property ***REMOVED***Phaser.ScaleManager***REMOVED*** manager - A reference to the ScaleManager.
+    * @property {Phaser.ScaleManager} manager - A reference to the ScaleManager.
     */
     this.manager = manager;
 
@@ -40,7 +40,7 @@ Phaser.FlexGrid = function (manager, width, height) ***REMOVED***
     this.boundsNone = new Phaser.Rectangle(0, 0, width, height);
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** position - 
+    * @property {Phaser.Point} position - 
     * @readonly
     */
     this.positionCustom = new Phaser.Point(0, 0);
@@ -49,7 +49,7 @@ Phaser.FlexGrid = function (manager, width, height) ***REMOVED***
     this.positionNone = new Phaser.Point(0, 0);
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** scaleFactor - The scale factor based on the game dimensions vs. the scaled dimensions.
+    * @property {Phaser.Point} scaleFactor - The scale factor based on the game dimensions vs. the scaled dimensions.
     * @readonly
     */
     this.scaleCustom = new Phaser.Point(1, 1);
@@ -70,18 +70,18 @@ Phaser.FlexGrid = function (manager, width, height) ***REMOVED***
 
     this.layers = [];
 
-***REMOVED***;
+};
 
-Phaser.FlexGrid.prototype = ***REMOVED***
+Phaser.FlexGrid.prototype = {
 
     /**
      * Sets the core game size. This resets the w/h parameters and bounds.
      *
      * @method Phaser.FlexGrid#setSize
-     * @param ***REMOVED***number***REMOVED*** width - The new dimensions.
-     * @param ***REMOVED***number***REMOVED*** height - The new dimensions.
+     * @param {number} width - The new dimensions.
+     * @param {number} height - The new dimensions.
      */
-    setSize: function (width, height) ***REMOVED***
+    setSize: function (width, height) {
 
         //  These are locked and don't change until setSize is called again
         this.width = width;
@@ -97,7 +97,7 @@ Phaser.FlexGrid.prototype = ***REMOVED***
 
         this.refresh();
 
-    ***REMOVED***,
+    },
 
     //  Need ability to create your own layers with custom scaling, etc.
 
@@ -105,14 +105,14 @@ Phaser.FlexGrid.prototype = ***REMOVED***
      * A custom layer is centered on the game and maintains its aspect ratio as it scales up and down.
      *
      * @method Phaser.FlexGrid#createCustomLayer
-     * @param ***REMOVED***number***REMOVED*** width - Width of this layer in pixels.
-     * @param ***REMOVED***number***REMOVED*** height - Height of this layer in pixels.
-     * @param ***REMOVED***PIXI.DisplayObject[]***REMOVED*** [children] - An array of children that are used to populate the FlexLayer.
-     * @return ***REMOVED***Phaser.FlexLayer***REMOVED*** The Layer object.
+     * @param {number} width - Width of this layer in pixels.
+     * @param {number} height - Height of this layer in pixels.
+     * @param {PIXI.DisplayObject[]} [children] - An array of children that are used to populate the FlexLayer.
+     * @return {Phaser.FlexLayer} The Layer object.
      */
-    createCustomLayer: function (width, height, children, addToWorld) ***REMOVED***
+    createCustomLayer: function (width, height, children, addToWorld) {
 
-        if (addToWorld === undefined) ***REMOVED*** addToWorld = true; ***REMOVED***
+        if (addToWorld === undefined) { addToWorld = true; }
 
         this.customWidth = width;
         this.customHeight = height;
@@ -123,58 +123,58 @@ Phaser.FlexGrid.prototype = ***REMOVED***
         var layer = new Phaser.FlexLayer(this, this.positionCustom, this.boundsCustom, this.scaleCustom);
 
         if (addToWorld)
-        ***REMOVED***
+        {
             this.game.world.add(layer);
-        ***REMOVED***
+        }
 
         this.layers.push(layer);
 
         if (typeof children !== 'undefined' && typeof children !== null)
-        ***REMOVED***
+        {
             layer.addMultiple(children);
-        ***REMOVED***
+        }
 
         return layer;
 
-    ***REMOVED***,
+    },
 
     /**
      * A fluid layer is centered on the game and maintains its aspect ratio as it scales up and down.
      *
      * @method Phaser.FlexGrid#createFluidLayer
-     * @param ***REMOVED***array***REMOVED*** [children] - An array of children that are used to populate the FlexLayer.
-     * @return ***REMOVED***Phaser.FlexLayer***REMOVED*** The Layer object.
+     * @param {array} [children] - An array of children that are used to populate the FlexLayer.
+     * @return {Phaser.FlexLayer} The Layer object.
      */
-    createFluidLayer: function (children, addToWorld) ***REMOVED***
+    createFluidLayer: function (children, addToWorld) {
 
-        if (addToWorld === undefined) ***REMOVED*** addToWorld = true; ***REMOVED***
+        if (addToWorld === undefined) { addToWorld = true; }
 
         var layer = new Phaser.FlexLayer(this, this.positionFluid, this.boundsFluid, this.scaleFluid);
 
         if (addToWorld)
-        ***REMOVED***
+        {
             this.game.world.add(layer);
-        ***REMOVED***
+        }
 
         this.layers.push(layer);
 
         if (typeof children !== 'undefined' && typeof children !== null)
-        ***REMOVED***
+        {
             layer.addMultiple(children);
-        ***REMOVED***
+        }
 
         return layer;
 
-    ***REMOVED***,
+    },
 
     /**
      * A full layer is placed at 0,0 and extends to the full size of the game. Children are scaled according to the fluid ratios.
      *
      * @method Phaser.FlexGrid#createFullLayer
-     * @param ***REMOVED***array***REMOVED*** [children] - An array of children that are used to populate the FlexLayer.
-     * @return ***REMOVED***Phaser.FlexLayer***REMOVED*** The Layer object.
+     * @param {array} [children] - An array of children that are used to populate the FlexLayer.
+     * @return {Phaser.FlexLayer} The Layer object.
      */
-    createFullLayer: function (children) ***REMOVED***
+    createFullLayer: function (children) {
 
         var layer = new Phaser.FlexLayer(this, this.positionFull, this.boundsFull, this.scaleFluid);
 
@@ -183,22 +183,22 @@ Phaser.FlexGrid.prototype = ***REMOVED***
         this.layers.push(layer);
 
         if (typeof children !== 'undefined')
-        ***REMOVED***
+        {
             layer.addMultiple(children);
-        ***REMOVED***
+        }
 
         return layer;
 
-    ***REMOVED***,
+    },
 
     /**
      * A fixed layer is centered on the game and is the size of the required dimensions and is never scaled.
      *
      * @method Phaser.FlexGrid#createFixedLayer
-     * @param ***REMOVED***PIXI.DisplayObject[]***REMOVED*** [children] - An array of children that are used to populate the FlexLayer.
-     * @return ***REMOVED***Phaser.FlexLayer***REMOVED*** The Layer object.
+     * @param {PIXI.DisplayObject[]} [children] - An array of children that are used to populate the FlexLayer.
+     * @return {Phaser.FlexLayer} The Layer object.
      */
-    createFixedLayer: function (children) ***REMOVED***
+    createFixedLayer: function (children) {
 
         var layer = new Phaser.FlexLayer(this, this.positionNone, this.boundsNone, this.scaleNone);
 
@@ -207,58 +207,58 @@ Phaser.FlexGrid.prototype = ***REMOVED***
         this.layers.push(layer);
 
         if (typeof children !== 'undefined')
-        ***REMOVED***
+        {
             layer.addMultiple(children);
-        ***REMOVED***
+        }
 
         return layer;
 
-    ***REMOVED***,
+    },
 
     /**
      * Resets the layer children references
      *
      * @method Phaser.FlexGrid#reset
      */
-    reset: function () ***REMOVED***
+    reset: function () {
 
         var i = this.layers.length;
 
         while (i--)
-        ***REMOVED***
+        {
             if (!this.layers[i].persist)
-            ***REMOVED***
+            {
                 //  Remove references to this class
                 this.layers[i].position = null;
                 this.layers[i].scale = null;
                 this.layers.slice(i, 1);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
      * Called when the game container changes dimensions.
      *
      * @method Phaser.FlexGrid#onResize
-     * @param ***REMOVED***number***REMOVED*** width - The new width of the game container.
-     * @param ***REMOVED***number***REMOVED*** height - The new height of the game container.
+     * @param {number} width - The new width of the game container.
+     * @param {number} height - The new height of the game container.
      */
-    onResize: function (width, height) ***REMOVED***
+    onResize: function (width, height) {
 
         this.ratioH = width / height;
         this.ratioV = height / width;
 
         this.refresh(width, height);
 
-    ***REMOVED***,
+    },
 
     /**
      * Updates all internal vars such as the bounds and scale values.
      *
      * @method Phaser.FlexGrid#refresh
      */
-    refresh: function () ***REMOVED***
+    refresh: function () {
 
         this.multiplier = Math.min((this.manager.height / this.height), (this.manager.width / this.width));
 
@@ -279,34 +279,34 @@ Phaser.FlexGrid.prototype = ***REMOVED***
         this.positionFluid.set(this.boundsFluid.x, this.boundsFluid.y);
         this.positionNone.set(this.boundsNone.x, this.boundsNone.y);
 
-    ***REMOVED***,
+    },
 
     /**
      * Fits a sprites width to the bounds.
      *
      * @method Phaser.FlexGrid#fitSprite
-     * @param ***REMOVED***Phaser.Sprite***REMOVED*** sprite - The Sprite to fit.
+     * @param {Phaser.Sprite} sprite - The Sprite to fit.
      */
-    fitSprite: function (sprite) ***REMOVED***
+    fitSprite: function (sprite) {
 
         this.manager.scaleSprite(sprite);
 
         sprite.x = this.manager.bounds.centerX;
         sprite.y = this.manager.bounds.centerY;
 
-    ***REMOVED***,
+    },
 
     /**
      * Call in the render function to output the bounds rects.
      *
      * @method Phaser.FlexGrid#debug
      */
-    debug: function () ***REMOVED***
+    debug: function () {
 
         // for (var i = 0; i < this.layers.length; i++)
-        // ***REMOVED***
+        // {
         //     this.layers[i].debug();
-        // ***REMOVED***
+        // }
 
         // this.game.debug.text(this.boundsFull.width + ' x ' + this.boundsFull.height, this.boundsFull.x + 4, this.boundsFull.y + 16);
         // this.game.debug.geom(this.boundsFull, 'rgba(0,0,255,0.9', false);
@@ -320,16 +320,16 @@ Phaser.FlexGrid.prototype = ***REMOVED***
         // this.game.debug.text(this.boundsCustom.width + ' x ' + this.boundsCustom.height, this.boundsCustom.x + 4, this.boundsCustom.y + 16);
         // this.game.debug.geom(this.boundsCustom, 'rgba(255,255,0,0.9', false);
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.FlexGrid.prototype.constructor = Phaser.FlexGrid;
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -342,78 +342,78 @@ Phaser.FlexGrid.prototype.constructor = Phaser.FlexGrid;
 * @class Phaser.FlexLayer
 * @extends Phaser.Group
 * @constructor
-* @param ***REMOVED***Phaser.FlexGrid***REMOVED*** manager - The FlexGrid that owns this FlexLayer.
-* @param ***REMOVED***Phaser.Point***REMOVED*** position - A reference to the Point object used for positioning.
-* @param ***REMOVED***Phaser.Rectangle***REMOVED*** bounds - A reference to the Rectangle used for the layer bounds.
-* @param ***REMOVED***Phaser.Point***REMOVED*** scale - A reference to the Point object used for layer scaling.
+* @param {Phaser.FlexGrid} manager - The FlexGrid that owns this FlexLayer.
+* @param {Phaser.Point} position - A reference to the Point object used for positioning.
+* @param {Phaser.Rectangle} bounds - A reference to the Rectangle used for the layer bounds.
+* @param {Phaser.Point} scale - A reference to the Point object used for layer scaling.
 */
-Phaser.FlexLayer = function (manager, position, bounds, scale) ***REMOVED***
+Phaser.FlexLayer = function (manager, position, bounds, scale) {
 
     Phaser.Group.call(this, manager.game, null, '__flexLayer' + manager.game.rnd.uuid(), false);
 
     /**
-    * @property ***REMOVED***Phaser.ScaleManager***REMOVED*** scale - A reference to the ScaleManager.
+    * @property {Phaser.ScaleManager} scale - A reference to the ScaleManager.
     */
     this.manager = manager.manager;
 
     /**
-    * @property ***REMOVED***Phaser.FlexGrid***REMOVED*** grid - A reference to the FlexGrid that owns this layer.
+    * @property {Phaser.FlexGrid} grid - A reference to the FlexGrid that owns this layer.
     */
     this.grid = manager;
 
     /**
      * Should the FlexLayer remain through a State swap?
      *
-     * @type ***REMOVED***boolean***REMOVED***
+     * @type {boolean}
      */
     this.persist = false;
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** position
+    * @property {Phaser.Point} position
     */
     this.position = position;
 
     /**
-    * @property ***REMOVED***Phaser.Rectangle***REMOVED*** bounds
+    * @property {Phaser.Rectangle} bounds
     */
     this.bounds = bounds;
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** scale
+    * @property {Phaser.Point} scale
     */
     this.scale = scale;
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** topLeft
+    * @property {Phaser.Point} topLeft
     */
     this.topLeft = bounds.topLeft;
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** topMiddle
+    * @property {Phaser.Point} topMiddle
     */
     this.topMiddle = new Phaser.Point(bounds.halfWidth, 0);
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** topRight
+    * @property {Phaser.Point} topRight
     */
     this.topRight = bounds.topRight;
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** bottomLeft
+    * @property {Phaser.Point} bottomLeft
     */
     this.bottomLeft = bounds.bottomLeft;
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** bottomMiddle
+    * @property {Phaser.Point} bottomMiddle
     */
     this.bottomMiddle = new Phaser.Point(bounds.halfWidth, bounds.bottom);
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** bottomRight
+    * @property {Phaser.Point} bottomRight
     */
     this.bottomRight = bounds.bottomRight;
 
-***REMOVED***;
+};
 
 Phaser.FlexLayer.prototype = Object.create(Phaser.Group.prototype);
 Phaser.FlexLayer.prototype.constructor = Phaser.FlexLayer;
@@ -423,15 +423,15 @@ Phaser.FlexLayer.prototype.constructor = Phaser.FlexLayer;
  *
  * @method Phaser.FlexLayer#resize
  */
-Phaser.FlexLayer.prototype.resize = function () ***REMOVED***
-***REMOVED***;
+Phaser.FlexLayer.prototype.resize = function () {
+};
 
 /**
  * Debug.
  *
  * @method Phaser.FlexLayer#debug
  */
-Phaser.FlexLayer.prototype.debug = function () ***REMOVED***
+Phaser.FlexLayer.prototype.debug = function () {
 
     this.game.debug.text(this.bounds.width + ' x ' + this.bounds.height, this.bounds.x + 4, this.bounds.y + 16);
     this.game.debug.geom(this.bounds, 'rgba(0,0,255,0.9', false);
@@ -440,4 +440,4 @@ Phaser.FlexLayer.prototype.debug = function () ***REMOVED***
     this.game.debug.geom(this.topMiddle, 'rgba(255,255,255,0.9');
     this.game.debug.geom(this.topRight, 'rgba(255,255,255,0.9');
 
-***REMOVED***;
+};

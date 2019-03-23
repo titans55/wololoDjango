@@ -1,4 +1,4 @@
-  .business-header ***REMOVED***
+  .business-header {
     height: 50vh;
     min-height: 300px;
     background: url('http://placehold.it/1920x400') center center no-repeat scroll;
@@ -6,9 +6,9 @@
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-  ***REMOVED***
+  }
   
-  .card ***REMOVED***
+  .card {
     height: 100%;
-  ***REMOVED***
+  }
   

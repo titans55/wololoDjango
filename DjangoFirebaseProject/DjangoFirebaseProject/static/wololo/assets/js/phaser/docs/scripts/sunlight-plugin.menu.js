@@ -8,42 +8,42 @@
  * 	- showMenu: true/false (default is false)
  * 	- autoCollapse: true/false (default is false)
  */
-(function(sunlight, document, undefined)***REMOVED***
-	if (sunlight === undefined) ***REMOVED***
+(function(sunlight, document, undefined){
+	if (sunlight === undefined) {
 		throw "Include sunlight.js before including plugin files";
-	***REMOVED***
+	}
 	
 	//http://dean.edwards.name/weblog/2007/03/sniff/#comment83695
 	//eval()'d so that it compresses correctly
 	var ieVersion = eval("0 /*@cc_on+ScriptEngineMajorVersion()@*/");
 	
-	function createLink(href, title, text) ***REMOVED***
+	function createLink(href, title, text) {
 		var link = document.createElement("a");
 		link.setAttribute("href", href);
 		link.setAttribute("title", title);
-		if (text) ***REMOVED***
+		if (text) {
 			link.appendChild(document.createTextNode(text));
-		***REMOVED***
+		}
 		return link;
-	***REMOVED***
+	}
 	
-	function getTextRecursive(node) ***REMOVED***
+	function getTextRecursive(node) {
 		var text = "",
 			i = 0;
 		
-		if (node.nodeType === 3) ***REMOVED***
+		if (node.nodeType === 3) {
 			return node.nodeValue;
-		***REMOVED***
+		}
 		
 		text = "";
-		for (i = 0; i < node.childNodes.length; i++) ***REMOVED***
+		for (i = 0; i < node.childNodes.length; i++) {
 			text += getTextRecursive(node.childNodes[i]);
-		***REMOVED***
+		}
 		
 		return text;
-	***REMOVED***
+	}
 	
-	sunlight.bind("afterHighlightNode", function(context) ***REMOVED***
+	sunlight.bind("afterHighlightNode", function(context) {
 		var menu,
 			sunlightIcon,
 			ul,
@@ -56,9 +56,9 @@
 			aboutLink,
 			icon;
 		
-		if ((ieVersion && ieVersion < 7) || !this.options.showMenu || sunlight.util.getComputedStyle(context.node, "display") !== "block") ***REMOVED***
+		if ((ieVersion && ieVersion < 7) || !this.options.showMenu || sunlight.util.getComputedStyle(context.node, "display") !== "block") {
 			return;
-		***REMOVED***
+		}
 		
 		menu = document.createElement("div");
 		menu.className = this.options.classPrefix + "menu";
@@ -76,11 +76,11 @@
 		mDash = String.fromCharCode(0x2014);
 		collapseLink = createLink("#", "collapse code block", mDash);
 		
-		collapseLink.onclick = function() ***REMOVED***
+		collapseLink.onclick = function() {
 			var originalHeight = sunlight.util.getComputedStyle(context.codeContainer, "height"),
 				originalOverflow = sunlight.util.getComputedStyle(context.codeContainer, "overflowY");
 			
-			return function() ***REMOVED***
+			return function() {
 				var needsToExpand = sunlight.util.getComputedStyle(context.codeContainer, "height") !== originalHeight;
 				
 				this.replaceChild(document.createTextNode(needsToExpand ? mDash : "+"), this.firstChild);
@@ -89,25 +89,25 @@
 				context.codeContainer.style.overflowY = needsToExpand ? originalOverflow : "hidden";
 				
 				return false;
-			***REMOVED***
-		***REMOVED***();
+			}
+		}();
 		
 		collapse.appendChild(collapseLink);
 		
 		viewRaw = document.createElement("li");
 		viewRawLink = createLink("#", "view raw code", "raw");
-		viewRawLink.onclick = function() ***REMOVED***
+		viewRawLink.onclick = function() {
 			var textarea;
-			return function() ***REMOVED***
+			return function() {
 				var rawCode;
 				
-				if (textarea) ***REMOVED***
+				if (textarea) {
 					textarea.parentNode.removeChild(textarea);
 					textarea = null;
 					context.node.style.display = "block";
 					this.replaceChild(document.createTextNode("raw"), this.firstChild);
 					this.setAttribute("title", "view raw code");
-				***REMOVED*** else ***REMOVED***
+				} else {
 					//hide the codeContainer, flatten all text nodes, create a <textarea>, append it
 					rawCode = getTextRecursive(context.node);
 					textarea = document.createElement("textarea");
@@ -124,11 +124,11 @@
 					this.replaceChild(document.createTextNode("highlighted"), this.firstChild);
 					this.setAttribute("title", "view highlighted code");
 					textarea.select(); //highlight everything
-				***REMOVED***
+				}
 				
 				return false;
-			***REMOVED***
-		***REMOVED***();
+			}
+		}();
 		
 		viewRaw.appendChild(viewRawLink);
 		
@@ -148,12 +148,12 @@
 		menu.appendChild(ul);
 		context.container.insertBefore(menu, context.container.firstChild);
 		
-		if (this.options.autoCollapse) ***REMOVED***
+		if (this.options.autoCollapse) {
 			collapseLink.onclick.call(collapseLink);
-		***REMOVED***
-	***REMOVED***);
+		}
+	});
 	
 	sunlight.globalOptions.showMenu = false;
 	sunlight.globalOptions.autoCollapse = false;
 	
-***REMOVED***(this["Sunlight"], document));
+}(this["Sunlight"], document));

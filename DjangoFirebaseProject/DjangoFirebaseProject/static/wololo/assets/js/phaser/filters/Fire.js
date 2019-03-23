@@ -2,13 +2,13 @@
 * Original shader by @301z (http://glsl.heroku.com/e#11707.0)
 * Tweaked, uniforms added and converted to Phaser/PIXI by Richard Davey
 */
-Phaser.Filter.Fire = function (game) ***REMOVED***
+Phaser.Filter.Fire = function (game) {
 
     Phaser.Filter.call(this, game);
 
-    this.uniforms.alpha = ***REMOVED*** type: '1f', value: 1.0 ***REMOVED***;
-    this.uniforms.shift = ***REMOVED*** type: '1f', value: 1.6 ***REMOVED***;
-    this.uniforms.speed = ***REMOVED*** type: '2f', value: ***REMOVED*** x: 0.7, y: 0.4 ***REMOVED*** ***REMOVED***;
+    this.uniforms.alpha = { type: '1f', value: 1.0 };
+    this.uniforms.shift = { type: '1f', value: 1.6 };
+    this.uniforms.speed = { type: '2f', value: { x: 0.7, y: 0.4 } };
 
     this.fragmentSrc = [
 
@@ -19,27 +19,27 @@ Phaser.Filter.Fire = function (game) ***REMOVED***
         "uniform vec2      speed;",
         "uniform float     shift;",
 
-        "float rand(vec2 n) ***REMOVED***",
+        "float rand(vec2 n) {",
             "return fract(cos(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);",
-        "***REMOVED***",
+        "}",
 
-        "float noise(vec2 n) ***REMOVED***",
+        "float noise(vec2 n) {",
             "const vec2 d = vec2(0.0, 1.0);",
             "vec2 b = floor(n), f = smoothstep(vec2(0.0), vec2(1.0), fract(n));",
             "return mix(mix(rand(b), rand(b + d.yx), f.x), mix(rand(b + d.xy), rand(b + d.yy), f.x), f.y);",
-        "***REMOVED***",
+        "}",
 
-        "float fbm(vec2 n) ***REMOVED***",
+        "float fbm(vec2 n) {",
             "float total = 0.0, amplitude = 1.0;",
-            "for (int i = 0; i < 4; i++) ***REMOVED***",
+            "for (int i = 0; i < 4; i++) {",
                 "total += noise(n) * amplitude;",
                 "n += n;",
                 "amplitude *= 0.5;",
-            "***REMOVED***",
+            "}",
             "return total;",
-        "***REMOVED***",
+        "}",
 
-        "void main() ***REMOVED***",
+        "void main() {",
 
             "const vec3 c1 = vec3(0.5, 0.0, 0.1);",
             "const vec3 c2 = vec3(0.9, 0.0, 0.0);",
@@ -53,60 +53,60 @@ Phaser.Filter.Fire = function (game) ***REMOVED***
             "vec2 r = vec2(fbm(p + q + time * speed.x - p.x - p.y), fbm(p + q - time * speed.y));",
             "vec3 c = mix(c1, c2, fbm(p + r)) + mix(c3, c4, r.x) - mix(c5, c6, r.y);",
             "gl_FragColor = vec4(c * cos(shift * gl_FragCoord.y / resolution.y), alpha);",
-        "***REMOVED***"
+        "}"
     ];
 
-***REMOVED***;
+};
 
 Phaser.Filter.Fire.prototype = Object.create(Phaser.Filter.prototype);
 Phaser.Filter.Fire.prototype.constructor = Phaser.Filter.Fire;
 
-Phaser.Filter.Fire.prototype.init = function (width, height, alpha, shift) ***REMOVED***
+Phaser.Filter.Fire.prototype.init = function (width, height, alpha, shift) {
 
     this.setResolution(width, height);
 
-    if (typeof alpha !== 'undefined') ***REMOVED***
+    if (typeof alpha !== 'undefined') {
         this.uniforms.alpha.value = alpha;
-    ***REMOVED***
+    }
 
-    if (typeof shift !== 'undefined') ***REMOVED***
+    if (typeof shift !== 'undefined') {
         this.uniforms.shift.value = shift;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
-Object.defineProperty(Phaser.Filter.Fire.prototype, 'alpha', ***REMOVED***
+Object.defineProperty(Phaser.Filter.Fire.prototype, 'alpha', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.alpha.value;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.alpha.value = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
-Object.defineProperty(Phaser.Filter.Fire.prototype, 'shift', ***REMOVED***
+Object.defineProperty(Phaser.Filter.Fire.prototype, 'shift', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.shift.value;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.shift.value = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
-Object.defineProperty(Phaser.Filter.Fire.prototype, 'speed', ***REMOVED***
+Object.defineProperty(Phaser.Filter.Fire.prototype, 'speed', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.speed.value;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.speed.value = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});

@@ -309,7 +309,7 @@ Please note that Phaser uses a custom build of Pixi and always has done. The fol
 * The Physics Manager will now throw a console warning if you try to enable a physics body using an unknown physics engine type (thanks @jakewilson #2415)
 * The Tileset class will tell you the name of the tileset image throwing the uneven size error (thanks @jakewilson #2415)
 * Emitter.start when used with a false `explode` parameter would cumulatively add particles to the current total. With quantity 10 the first call would emit 10 particles, the next 20, and so on. Calls to start will now reset the quantity each time. This is a behavior change from earlier versions, so if you relied on the old way please account for it in your code (thanks @BdR76 #2187)
-* You can now pass in your own Canvas element to Phaser and it will use that instead of creating one itself. To do so you must pass a Game Configuration object to Phaser when you instantiate it, and set the `canvas` property of the config object to be the DOM element you wish to use, i.e.: `***REMOVED*** canvas: document.getElementById('yourCanvas') ***REMOVED***` (thanks @Friksel #2311)
+* You can now pass in your own Canvas element to Phaser and it will use that instead of creating one itself. To do so you must pass a Game Configuration object to Phaser when you instantiate it, and set the `canvas` property of the config object to be the DOM element you wish to use, i.e.: `{ canvas: document.getElementById('yourCanvas') }` (thanks @Friksel #2311)
 * When loading Video with the `asBlob` argument set it now uses a 'blob' type for the XHR loader, and doesn't cast the resulting file as a Blob upon load. This fixes loading videos as blobs on Chrome for Android (thanks @JuCarr #2433)
 * When the Loader loads audio via the Audio tag, instead of Web Audio, it used to use `Phaser.GAMES[_this.game.id].load` as the callback handler, which would stop it from working if you had multiple Loaders set-up within Phaser. It now uses a local reference to `_this` instead (thanks @SBCGames #2435)
 
@@ -748,7 +748,7 @@ For the full list of p2 additions please read [their change log](https://github.
 * Text.setTextBounds is a rectangular region that allows you to align your text within it, regardless of the number of lines of text or position within the world. For example in an 800x600 sized game if you set the textBounds to be 0,0,800,600 and text alignment to 'left' and vertical alignment to 'bottom' then the text will render in the bottom-right hand corner of the game, regardless of the size of font you're using or the number of lines in the text itself (thanks @boostermedia for the idea #1824)
 * Text.autoRound allows you to control if the text is allowed to render at sub-pixel coordinates or not. Set to `true` to round the coordinates, often eliminating anti-aliasing from certain font types (#1867)
 * Tiled Image Collection support is now available and has been added to the TilemapParser and Tilemap classes (thanks @asyed94 #1879)
-* Keyboard.addKeys is a practical way to create an object containing user selected hotkeys. For example: `addKeys( ***REMOVED*** 'up': Phaser.Keyboard.W, 'down': Phaser.Keyboard.S, 'left': Phaser.Keyboard.A, 'right': Phaser.Keyboard.D ***REMOVED*** );` would return an object containing the properties `up`, `down`, `left` and `right` that you could poll just like a Phaser.Key object. (thanks @Mourtz #1857)
+* Keyboard.addKeys is a practical way to create an object containing user selected hotkeys. For example: `addKeys( { 'up': Phaser.Keyboard.W, 'down': Phaser.Keyboard.S, 'left': Phaser.Keyboard.A, 'right': Phaser.Keyboard.D } );` would return an object containing the properties `up`, `down`, `left` and `right` that you could poll just like a Phaser.Key object. (thanks @Mourtz #1857)
 * TilemapLayer.resize allows you to resize a TilemapLayer. It will update the internal canvas object and corresponding texture dimensions (#1881)
 * Pointer button handling has been given an overhaul. It has the following new DeviceButton properties: `leftButton`, `rightButton`, `middleButton`, `backButton`, `forwardButton` and `eraserButton`. So you can now easily check which buttons are active and build right or middle click support into your games. The Pointer object normalises these properties for you, regardless if they came from a MouseEvent or PointerEvent (thanks @youssefdetovernickr for the idea #1848)
 * Text has a new style property: tabs. This allows you to specify a pixel value (or values) that allows you to space out text that contains tab characters within it. `Text.tabs` can be either an integer, in which case all tabs share the same spacing, or an array of pixel values corresponding exactly to the number of tabs per line of text. This allows you to easily align columns of data in a single Text object.
@@ -1070,7 +1070,7 @@ We've rolled our own fixes into our version of Pixi, ensuring we keep it as bug-
 * World.setBounds will now adjust the World.x/y values to match those given (#1555)
 * ArcadePhysics.distanceToPointer now calculates the distance in world space values.
 * Sound.fadeIn now supports fading from a marker, as well as the entire audio clip, so now works with audio sprites (thanks @vorrin #1413)
-* Text font components can now be specified as part of "style". There is a breaking change in that the `fontWeight` now only handles the CSS font-weight component. The `fontStyle` property handles 'italic', 'oblique', values from font-style. This makes the overall consistency cleaner but some code may need to be updated. This does not affect font-weight/font-style as with setStyle(***REMOVED***font:..***REMOVED***). Also fixes overwrite font/size/weight oddities - which may result in different behavior for code that was relying on such. All of the text examples appear to work and modification using the new features (while respecting the change in previous behavior) work better (thanks @pnstickne #1375 #1370)
+* Text font components can now be specified as part of "style". There is a breaking change in that the `fontWeight` now only handles the CSS font-weight component. The `fontStyle` property handles 'italic', 'oblique', values from font-style. This makes the overall consistency cleaner but some code may need to be updated. This does not affect font-weight/font-style as with setStyle({font:..}). Also fixes overwrite font/size/weight oddities - which may result in different behavior for code that was relying on such. All of the text examples appear to work and modification using the new features (while respecting the change in previous behavior) work better (thanks @pnstickne #1375 #1370)
 * Loader.audiosprite has a new `jsonData` parameter. It allows you to pass a pre-existing JSON object (or a string which will be parsed as JSON) to use as the audiosprite data, instead of specifying a URL to a JSON file on the server (thanks @jounii #1447)
 * Loader.audiosprite has a new `autoDecode` parameter. If `true` the audio file will be decoded immediately upon load.
 * Tile.properties is now unique to that specific Tile, and not a reference to the Tileset index bound properties object. Tile.properties can now be modified freely without impacting other tiles sharing the same id (#1254)
@@ -1298,7 +1298,7 @@ device from trying to resize the game when zooming.
 
     Including the the new changes the defaults have been changed to
 
-    windowContraints = ***REMOVED*** right: 'layout', bottom: '' ***REMOVED***
+    windowContraints = { right: 'layout', bottom: '' }
 
     This changes the current scaling behavior as seen in "Game Scaling" (as it
 will only scale for the right edge) but also prevents such scaling from
@@ -1874,7 +1874,7 @@ After talking with Mat at GoodBoyDigital about the issue it was his idea to just
 * Rectangle.randomY will return a random value located within the vertical bounds of the Rectangle.
 * Using a Game configuration object you can now specify the value of the  `preserveDrawingBuffer` flag for the WebGL renderer. By default this is disabled for performance reasons. But if you need to be able to take screen shots of your WebGL games using toDataUrl on the game canvas then you'll need to set this to `true` (#987)
 * Added options to disable horizontal and vertical world wrapping individually (thanks @jackrugile, #988)
-* You can now prevent the Debug class from being created or booted by using the Game configuration setting: `enableDebug`. By default it is `true`, set to `false` to prevent the class from being created. Please note you are responsible for checking if this class exists before calling it, but you can do that via `if (game.debug) ***REMOVED*** ... ***REMOVED***` (request #984)
+* You can now prevent the Debug class from being created or booted by using the Game configuration setting: `enableDebug`. By default it is `true`, set to `false` to prevent the class from being created. Please note you are responsible for checking if this class exists before calling it, but you can do that via `if (game.debug) { ... }` (request #984)
 
 ### Bug Fixes
 
@@ -2670,7 +2670,7 @@ There is an extensive [Migration Guide](https://github.com/photonstorm/phaser/bl
 * Group.set will let you deep set a new propery on a single child of the Group.
 * Stage.display property added. A direct reference to the root Pixi Stage object (very useful for RenderTexture manipulation)
 * Added Ejecta detection to Device (thanks endel)
-* Tweens can now work with relative + and - values. You can do: `tween(sprite).to( ***REMOVED*** x: '+400' ***REMOVED***)` and it will add 400 to the current sprite.x value.
+* Tweens can now work with relative + and - values. You can do: `tween(sprite).to( { x: '+400' })` and it will add 400 to the current sprite.x value.
 * Buttons now properly use their upFrame if set.
 * InputHandler now has snapOffsetX and snapOffsetY properties so your snap grid doesn't have to be 0,0 aligned (thanks srmeier)
 * Loader.progressFloat contains the actual non-rounded progress value, where-as Loader.progress contains a rounded value. Use progressFloat if you've > 100 files to load.

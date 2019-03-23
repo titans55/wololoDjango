@@ -3,24 +3,24 @@ Default styles for some custom classes.
 Change with theme as appropriate..
 */
 
-.deprecated-notice ***REMOVED***
+.deprecated-notice {
     border: 2px solid rgb(255, 238, 238);
     padding: 10px;
     margin-bottom: 10px;
-***REMOVED***
+}
 
-.toc-deprecated ***REMOVED***
+.toc-deprecated {
     text-decoration: line-through;
-***REMOVED***
+}
 
-.returns-type ***REMOVED***
+.returns-type {
     float: left;
     padding-right: 10px;
-***REMOVED***
+}
 
-.returns-desc ***REMOVED***    
-***REMOVED***
+.returns-desc {    
+}
 
-dt a ***REMOVED***
+dt a {
     font-weight: normal;
-***REMOVED***
+}

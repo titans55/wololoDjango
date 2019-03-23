@@ -1,27 +1,27 @@
 /* DASHBOARD */
 
-.dashboard .module table th ***REMOVED***
+.dashboard .module table th {
     width: 100%;
-***REMOVED***
+}
 
-.dashboard .module table td ***REMOVED***
+.dashboard .module table td {
     white-space: nowrap;
-***REMOVED***
+}
 
-.dashboard .module table td a ***REMOVED***
+.dashboard .module table td a {
     display: block;
     padding-right: .6em;
-***REMOVED***
+}
 
 /* RECENT ACTIONS MODULE */
 
-.module ul.actionlist ***REMOVED***
+.module ul.actionlist {
     margin-left: 0;
-***REMOVED***
+}
 
-ul.actionlist li ***REMOVED***
+ul.actionlist li {
     list-style-type: none;
     overflow: hidden;
     text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
-***REMOVED***
+}

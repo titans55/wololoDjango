@@ -5,10 +5,10 @@
 /**
 * @class PixiFastShader
 * @constructor
-* @param gl ***REMOVED***WebGLContext***REMOVED*** the current WebGL drawing context
+* @param gl {WebGLContext} the current WebGL drawing context
 */
 PIXI.PixiFastShader = function(gl)
-***REMOVED***
+{
     /**
      * @property _UID
      * @type Number
@@ -39,9 +39,9 @@ PIXI.PixiFastShader = function(gl)
         'varying vec2 vTextureCoord;',
         'varying float vColor;',
         'uniform sampler2D uSampler;',
-        'void main(void) ***REMOVED***',
+        'void main(void) {',
         '   gl_FragColor = texture2D(uSampler, vTextureCoord) * vColor ;',
-        '***REMOVED***'
+        '}'
     ];
 
     /**
@@ -66,7 +66,7 @@ PIXI.PixiFastShader = function(gl)
 
         'const vec2 center = vec2(-1.0, 1.0);',
 
-        'void main(void) ***REMOVED***',
+        'void main(void) {',
         '   vec2 v;',
         '   vec2 sv = aVertexPosition * aScale;',
         '   v.x = (sv.x) * cos(aRotation) - (sv.y) * sin(aRotation);',
@@ -76,7 +76,7 @@ PIXI.PixiFastShader = function(gl)
         '   vTextureCoord = aTextureCoord;',
       //  '   vec3 color = mod(vec3(aColor.y/65536.0, aColor.y/256.0, aColor.y), 256.0) / 256.0;',
         '   vColor = aColor;',
-        '***REMOVED***'
+        '}'
     ];
 
     /**
@@ -87,7 +87,7 @@ PIXI.PixiFastShader = function(gl)
     this.textureCount = 0;
     
     this.init();
-***REMOVED***;
+};
 
 PIXI.PixiFastShader.prototype.constructor = PIXI.PixiFastShader;
 
@@ -97,7 +97,7 @@ PIXI.PixiFastShader.prototype.constructor = PIXI.PixiFastShader;
 * @method init
 */
 PIXI.PixiFastShader.prototype.init = function()
-***REMOVED***
+{
     var gl = this.gl;
 
     var program = PIXI.compileProgram(gl, this.vertexSrc, this.fragmentSrc);
@@ -129,16 +129,16 @@ PIXI.PixiFastShader.prototype.init = function()
     // Im convinced this is a bug in the chrome browser as there is NO reason why this should be returning -1 especially as it only manifests on my chrome pixel
     // If theres any webGL people that know why could happen please help :)
     if(this.colorAttribute === -1)
-    ***REMOVED***
+    {
         this.colorAttribute = 2;
-    ***REMOVED***
+    }
 
     this.attributes = [this.aVertexPosition, this.aPositionCoord,  this.aScale, this.aRotation, this.aTextureCoord, this.colorAttribute];
     
     // End worst hack eva //
 
     this.program = program;
-***REMOVED***;
+};
 
 /**
 * Destroys the shader.
@@ -146,10 +146,10 @@ PIXI.PixiFastShader.prototype.init = function()
 * @method destroy
 */
 PIXI.PixiFastShader.prototype.destroy = function()
-***REMOVED***
+{
     this.gl.deleteProgram( this.program );
     this.uniforms = null;
     this.gl = null;
 
     this.attributes = null;
-***REMOVED***;
+};

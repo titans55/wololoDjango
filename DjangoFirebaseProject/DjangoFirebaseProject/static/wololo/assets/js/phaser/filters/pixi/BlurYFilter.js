@@ -10,15 +10,15 @@
  * @constructor
  */
 PIXI.BlurYFilter = function()
-***REMOVED***
+{
     PIXI.AbstractFilter.call( this );
 
     this.passes = [this];
 
     // set the uniforms
-    this.uniforms = ***REMOVED***
-        blur: ***REMOVED***type: '1f', value: 1/512***REMOVED***
-    ***REMOVED***;
+    this.uniforms = {
+        blur: {type: '1f', value: 1/512}
+    };
 
     this.fragmentSrc = [
         'precision mediump float;',
@@ -27,7 +27,7 @@ PIXI.BlurYFilter = function()
         'uniform float blur;',
         'uniform sampler2D uSampler;',
 
-        'void main(void) ***REMOVED***',
+        'void main(void) {',
         '   vec4 sum = vec4(0.0);',
 
         '   sum += texture2D(uSampler, vec2(vTextureCoord.x, vTextureCoord.y - 4.0*blur)) * 0.05;',
@@ -41,9 +41,9 @@ PIXI.BlurYFilter = function()
         '   sum += texture2D(uSampler, vec2(vTextureCoord.x, vTextureCoord.y + 4.0*blur)) * 0.05;',
 
         '   gl_FragColor = sum;',
-        '***REMOVED***'
+        '}'
     ];
-***REMOVED***;
+};
 
 PIXI.BlurYFilter.prototype = Object.create( PIXI.AbstractFilter.prototype );
 PIXI.BlurYFilter.prototype.constructor = PIXI.BlurYFilter;
@@ -55,12 +55,12 @@ PIXI.BlurYFilter.prototype.constructor = PIXI.BlurYFilter;
  * @type Number
  * @default 2
  */
-Object.defineProperty(PIXI.BlurYFilter.prototype, 'blur', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.BlurYFilter.prototype, 'blur', {
+    get: function() {
         return this.uniforms.blur.value / (1/7000);
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         //this.padding = value;
         this.uniforms.blur.value = (1/7000) * value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});

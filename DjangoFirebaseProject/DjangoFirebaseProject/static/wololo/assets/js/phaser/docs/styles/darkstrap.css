@@ -7,18 +7,18 @@
 tr.warning,
 tr.success,
 tr.error,
-tr.info ***REMOVED***
+tr.info {
   color: #fff;
-***REMOVED***
+}
 
-body ***REMOVED***
+body {
   color: #c6c6c6;
   background-color: #2f2f2f;
-***REMOVED***
+}
 
-a:hover ***REMOVED***
+a:hover {
   color: #1ab2ff;
-***REMOVED***
+}
 
 textarea,
 input[type="text"],
@@ -35,118 +35,118 @@ input[type="url"],
 input[type="search"],
 input[type="tel"],
 input[type="color"],
-.uneditable-input ***REMOVED***
+.uneditable-input {
   background-color: #cccccc;
-***REMOVED***
-select ***REMOVED***
+}
+select {
   background-color: #cccccc;
-***REMOVED***
+}
 
 .uneditable-input,
-.uneditable-textarea ***REMOVED***
+.uneditable-textarea {
   background-color: #c9c9c9;
-***REMOVED***
+}
 
 input:-moz-placeholder,
-textarea:-moz-placeholder ***REMOVED***
+textarea:-moz-placeholder {
   color: #666666;
-***REMOVED***
+}
 input:-ms-input-placeholder,
-textarea:-ms-input-placeholder ***REMOVED***
+textarea:-ms-input-placeholder {
   color: #666666;
-***REMOVED***
+}
 input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder ***REMOVED***
+textarea::-webkit-input-placeholder {
   color: #666666;
-***REMOVED***
+}
 
 .control-group.warning .input-prepend .add-on,
-.control-group.warning .input-append .add-on ***REMOVED***
+.control-group.warning .input-append .add-on {
   background-color: #faa732;
-***REMOVED***
+}
 
 .control-group.error .input-prepend .add-on,
-.control-group.error .input-append .add-on ***REMOVED***
+.control-group.error .input-append .add-on {
   background-color: #fc5b5e;
-***REMOVED***
+}
 
 .control-group.success .input-prepend .add-on,
-.control-group.success .input-append .add-on ***REMOVED***
+.control-group.success .input-append .add-on {
   background-color: #5bb75b;
-***REMOVED***
+}
 
 .control-group.info .input-prepend .add-on,
-.control-group.info .input-append .add-on ***REMOVED***
+.control-group.info .input-append .add-on {
   background-color: #3a87ad;
-***REMOVED***
+}
 
-.form-actions ***REMOVED***
+.form-actions {
   background-color: #444444;
-***REMOVED***
+}
 .help-block,
-.help-inline ***REMOVED***
+.help-inline {
   color: #ececec;
-***REMOVED***
+}
 
 .table th,
-.table td ***REMOVED***
+.table td {
   border-top: 1px solid #666666;
-***REMOVED***
-.table tbody + tbody ***REMOVED***
+}
+.table tbody + tbody {
   border-top: 2px solid #666666;
-***REMOVED***
-.table .table ***REMOVED***
+}
+.table .table {
   background-color: #2f2f2f;
-***REMOVED***
+}
 
-.table-bordered ***REMOVED***
+.table-bordered {
   border: 1px solid #666666;
-***REMOVED***
+}
 .table-bordered th,
-.table-bordered td ***REMOVED***
+.table-bordered td {
   border-left: 1px solid #666666;
-***REMOVED***
+}
 .table-striped tbody > tr:nth-child(odd) > td,
-.table-striped tbody > tr:nth-child(odd) > th ***REMOVED***
+.table-striped tbody > tr:nth-child(odd) > th {
   background-color: #444444;
-***REMOVED***
+}
 
 .table-hover tbody tr:hover td,
-.table-hover tbody tr:hover th ***REMOVED***
+.table-hover tbody tr:hover th {
   background-color: #666666;
-***REMOVED***
+}
 
 
-.table tbody tr.success td ***REMOVED***
+.table tbody tr.success td {
   background-color: #5bb75b;
-***REMOVED***
-.table tbody tr.error td ***REMOVED***
+}
+.table tbody tr.error td {
   background-color: #fc5b5e;
-***REMOVED***
-.table tbody tr.warning td ***REMOVED***
+}
+.table tbody tr.warning td {
   background-color: #faa732;
-***REMOVED***
-.table tbody tr.info td ***REMOVED***
+}
+.table tbody tr.info td {
   background-color: #3a87ad;
-***REMOVED***
+}
 
-.table-hover tbody tr.success:hover td ***REMOVED***
+.table-hover tbody tr.success:hover td {
   background-color: #4cad4c;
-***REMOVED***
-.table-hover tbody tr.error:hover td ***REMOVED***
+}
+.table-hover tbody tr.error:hover td {
   background-color: #fc4245;
-***REMOVED***
-.table-hover tbody tr.warning:hover td ***REMOVED***
+}
+.table-hover tbody tr.warning:hover td {
   background-color: #f99c19;
-***REMOVED***
-.table-hover tbody tr.info:hover td ***REMOVED***
+}
+.table-hover tbody tr.info:hover td {
   background-color: #34789a;
-***REMOVED***
+}
 
 [class^="icon-"],
-[class*=" icon-"] ***REMOVED***
+[class*=" icon-"] {
   background-image: url("../img/glyphicons-halflings.png");
-***REMOVED***
+}
 
 .icon-white,
 .nav-pills > .active > a > [class^="icon-"],
@@ -160,49 +160,49 @@ textarea::-webkit-input-placeholder ***REMOVED***
 .dropdown-menu > .active > a > [class^="icon-"],
 .dropdown-menu > .active > a > [class*=" icon-"],
 .dropdown-submenu:hover > a > [class^="icon-"],
-.dropdown-submenu:hover > a > [class*=" icon-"] ***REMOVED***
+.dropdown-submenu:hover > a > [class*=" icon-"] {
   background-image: url("../img/glyphicons-halflings-white.png");
-***REMOVED***
+}
 
 
-.btn-link:hover ***REMOVED***
+.btn-link:hover {
   color: #1ab2ff;
-***REMOVED***
+}
 
-.alert ***REMOVED***
+.alert {
   background-color: #faa732;
   border: 1px solid #fa7d23;
-***REMOVED***
+}
 
 
-.alert-success ***REMOVED***
+.alert-success {
   background-color: #5bb75b;
   border-color: #5cad4c;
-***REMOVED***
+}
 
 
 .alert-danger,
-.alert-error ***REMOVED***
+.alert-error {
   background-color: #fc5b5e;
   border-color: #fc4c6d;
-***REMOVED***
+}
 
-.alert-info ***REMOVED***
+.alert-info {
   background-color: #3a87ad;
   border-color: #318292;
-***REMOVED***
+}
 
 .nav-tabs > .active > a,
-.nav-tabs > .active > a:hover ***REMOVED***
+.nav-tabs > .active > a:hover {
   background-color: #2f2f2f;
-***REMOVED***
+}
 
-.nav .dropdown-toggle:hover .caret ***REMOVED***
+.nav .dropdown-toggle:hover .caret {
   border-top-color: #1ab2ff;
   border-bottom-color: #1ab2ff;
-***REMOVED***
+}
 
-.navbar-inner ***REMOVED***
+.navbar-inner {
   background-color: #363636;
   background-image: -moz-linear-gradient(top, #444444, #222222);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));
@@ -211,46 +211,46 @@ textarea::-webkit-input-placeholder ***REMOVED***
   background-image: linear-gradient(to bottom, #444444, #222222);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF444444', endColorstr='#FF222222', GradientType=0);
   border: 1px solid #030303;
-***REMOVED***
-.navbar .brand ***REMOVED***
+}
+.navbar .brand {
   color: #c6c6c6;
   text-shadow: 0 1px 0 #444444;
-***REMOVED***
-.navbar-text ***REMOVED***
+}
+.navbar-text {
   color: #c6c6c6;
-***REMOVED***
+}
 
-.navbar-link ***REMOVED***
+.navbar-link {
   color: #c6c6c6;
-***REMOVED***
-.navbar-link:hover ***REMOVED***
+}
+.navbar-link:hover {
   color: white;
-***REMOVED***
+}
 
-.navbar .divider-vertical ***REMOVED***
+.navbar .divider-vertical {
   border-left: 1px solid #222222;
   border-right: 1px solid #444444;
-***REMOVED***
+}
 
 
-.navbar .nav > li > a ***REMOVED***
+.navbar .nav > li > a {
   color: #c6c6c6;
   text-shadow: 0 1px 0 #444444;
-***REMOVED***
+}
 
 .navbar .nav > li > a:focus,
-.navbar .nav > li > a:hover ***REMOVED***
+.navbar .nav > li > a:hover {
   color: white;
-***REMOVED***
+}
 
 .navbar .nav > .active > a,
 .navbar .nav > .active > a:hover,
-.navbar .nav > .active > a:focus ***REMOVED***
+.navbar .nav > .active > a:focus {
   color: white;
   background-color: #151515;
-***REMOVED***
+}
 
-.navbar .btn-navbar ***REMOVED***
+.navbar .btn-navbar {
   background-color: #292929;
   background-image: -moz-linear-gradient(top, #373737, #151515);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#373737), to(#151515));
@@ -260,47 +260,47 @@ textarea::-webkit-input-placeholder ***REMOVED***
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF373737', endColorstr='#FF151515', GradientType=0);
   border-color: #151515 #151515 black;
   *background-color: #151515;
-***REMOVED***
-.navbar .btn-navbar:hover, .navbar .btn-navbar:active, .navbar .btn-navbar.active, .navbar .btn-navbar.disabled, .navbar .btn-navbar[disabled] ***REMOVED***
+}
+.navbar .btn-navbar:hover, .navbar .btn-navbar:active, .navbar .btn-navbar.active, .navbar .btn-navbar.disabled, .navbar .btn-navbar[disabled] {
   background-color: #151515;
   *background-color: #090909;
-***REMOVED***
-.navbar .btn-navbar:active, .navbar .btn-navbar.active ***REMOVED***
+}
+.navbar .btn-navbar:active, .navbar .btn-navbar.active {
   background-color: black \9;
-***REMOVED***
+}
 
-.navbar .nav li.dropdown > a:hover .caret ***REMOVED***
+.navbar .nav li.dropdown > a:hover .caret {
   border-top-color: white;
   border-bottom-color: white;
-***REMOVED***
+}
 
 .navbar .nav li.dropdown.open > .dropdown-toggle,
 .navbar .nav li.dropdown.active > .dropdown-toggle,
-.navbar .nav li.dropdown.open.active > .dropdown-toggle ***REMOVED***
+.navbar .nav li.dropdown.open.active > .dropdown-toggle {
   background-color: #151515;
   color: white;
-***REMOVED***
+}
 
-.navbar .nav li.dropdown > .dropdown-toggle .caret ***REMOVED***
+.navbar .nav li.dropdown > .dropdown-toggle .caret {
   border-top-color: #c6c6c6;
   border-bottom-color: #c6c6c6;
-***REMOVED***
+}
 
 .navbar .nav li.dropdown.open > .dropdown-toggle .caret,
 .navbar .nav li.dropdown.active > .dropdown-toggle .caret,
-.navbar .nav li.dropdown.open.active > .dropdown-toggle .caret ***REMOVED***
+.navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
   border-top-color: white;
   border-bottom-color: white;
-***REMOVED***
+}
 
-.well ***REMOVED***
+.well {
   -webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
   -moz-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
   box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
   background: #202020;
   background-color: rgba(0, 0, 0, 0.3);
   border: 0;
-***REMOVED***
+}
 
 .darkwell, .breadcrumb, code, pre, select,
 input[type="text"],
@@ -317,70 +317,70 @@ input[type="url"],
 input[type="search"],
 input[type="tel"],
 input[type="color"],
-.uneditable-input, textarea, .hero-unit, .progress ***REMOVED***
+.uneditable-input, textarea, .hero-unit, .progress {
   -webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
   -moz-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
   box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
   background: #202020;
   background-color: rgba(0, 0, 0, 0.3);
   border: 0;
-***REMOVED***
+}
 
-.breadcrumb ***REMOVED***
+.breadcrumb {
   border: 0;
-***REMOVED***
-.breadcrumb li ***REMOVED***
+}
+.breadcrumb li {
   text-shadow: 0 1px 0 black;
-***REMOVED***
+}
 
-.page-header ***REMOVED***
+.page-header {
   -webkit-box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
   -moz-box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
   box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
   border-bottom: 1px solid #121212;
-***REMOVED***
+}
 
-h1, h2, h3, h4, h5, h6 ***REMOVED***
+h1, h2, h3, h4, h5, h6 {
   color: white;
-***REMOVED***
+}
 
-h6 ***REMOVED***
+h6 {
   color: #999;
-***REMOVED***
+}
 
-blockquote ***REMOVED***
+blockquote {
   border-left-color: #111;
-***REMOVED***
-blockquote.pull-right ***REMOVED***
+}
+blockquote.pull-right {
   border-right-color: #111;
-***REMOVED***
+}
 
-hr ***REMOVED***
+hr {
   -webkit-box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
   -moz-box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
   box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
   border-bottom: 1px solid #121212;
   border-top: none;
-***REMOVED***
+}
 
-code ***REMOVED***
+code {
   border: none;
   padding: 2px 4px;
-***REMOVED***
+}
 
-pre ***REMOVED***
+pre {
   border: none;
   color: #c6c6c6;
   padding: 8px;
-***REMOVED***
+}
 
-legend ***REMOVED***
+legend {
   -webkit-box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
   -moz-box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
   box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
   border-bottom: 1px solid #121212;
   color: #fff;
-***REMOVED***
+}
 
 select,
 input[type="text"],
@@ -397,10 +397,10 @@ input[type="url"],
 input[type="search"],
 input[type="tel"],
 input[type="color"],
-.uneditable-input ***REMOVED***
+.uneditable-input {
   color: white;
   height: 21px;
-***REMOVED***
+}
 select:-moz-placeholder,
 input[type="text"]:-moz-placeholder,
 input[type="password"]:-moz-placeholder,
@@ -416,9 +416,9 @@ input[type="url"]:-moz-placeholder,
 input[type="search"]:-moz-placeholder,
 input[type="tel"]:-moz-placeholder,
 input[type="color"]:-moz-placeholder,
-.uneditable-input:-moz-placeholder ***REMOVED***
+.uneditable-input:-moz-placeholder {
   color: #666666;
-***REMOVED***
+}
 select:-ms-input-placeholder,
 input[type="text"]:-ms-input-placeholder,
 input[type="password"]:-ms-input-placeholder,
@@ -434,9 +434,9 @@ input[type="url"]:-ms-input-placeholder,
 input[type="search"]:-ms-input-placeholder,
 input[type="tel"]:-ms-input-placeholder,
 input[type="color"]:-ms-input-placeholder,
-.uneditable-input:-ms-input-placeholder ***REMOVED***
+.uneditable-input:-ms-input-placeholder {
   color: #666666;
-***REMOVED***
+}
 select::-webkit-input-placeholder,
 input[type="text"]::-webkit-input-placeholder,
 input[type="password"]::-webkit-input-placeholder,
@@ -452,53 +452,53 @@ input[type="url"]::-webkit-input-placeholder,
 input[type="search"]::-webkit-input-placeholder,
 input[type="tel"]::-webkit-input-placeholder,
 input[type="color"]::-webkit-input-placeholder,
-.uneditable-input::-webkit-input-placeholder ***REMOVED***
+.uneditable-input::-webkit-input-placeholder {
   color: #666666;
-***REMOVED***
+}
 
-textarea ***REMOVED***
+textarea {
   color: white;
-***REMOVED***
-textarea:-moz-placeholder ***REMOVED***
+}
+textarea:-moz-placeholder {
   color: #666666;
-***REMOVED***
-textarea:-ms-input-placeholder ***REMOVED***
+}
+textarea:-ms-input-placeholder {
   color: #666666;
-***REMOVED***
-textarea::-webkit-input-placeholder ***REMOVED***
+}
+textarea::-webkit-input-placeholder {
   color: #666666;
-***REMOVED***
+}
 
-select ***REMOVED***
+select {
   height: 29px;
-***REMOVED***
+}
 
 .input-prepend .add-on,
-.input-append .add-on ***REMOVED***
+.input-append .add-on {
   background: #444;
   color: #c6c6c6;
   border-color: #111;
   text-shadow: 0 1px 0 black;
-***REMOVED***
+}
 
-.form-actions ***REMOVED***
+.form-actions {
   border-top-color: #222;
-***REMOVED***
+}
 
-.well .form-actions ***REMOVED***
+.well .form-actions {
   border-top-color: #000;
   background-color: rgba(0, 0, 0, 0.3);
   margin-left: -17px;
   margin-right: -17px;
   margin-bottom: -17px;
-***REMOVED***
+}
 
 .help-inline,
-.help-block ***REMOVED***
+.help-block {
   color: #999;
-***REMOVED***
+}
 
-.control-group.warning input, .control-group.warning select, .control-group.warning textarea ***REMOVED***
+.control-group.warning input, .control-group.warning select, .control-group.warning textarea {
   color: #faa732;
   border-color: #faa732;
   -webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
@@ -506,21 +506,21 @@ select ***REMOVED***
   box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
   background: #202020;
   background-color: rgba(0, 0, 0, 0.3);
-***REMOVED***
+}
 .control-group.warning input:focus,
 .control-group.warning select:focus,
-.control-group.warning textarea:focus ***REMOVED***
+.control-group.warning textarea:focus {
   border-color: #faa732;
   -webkit-box-shadow: 0 0 6px #faa732;
   -moz-box-shadow: 0 0 6px #faa732;
   box-shadow: 0 0 6px #faa732;
-***REMOVED***
+}
 .control-group.warning .control-label,
 .control-group.warning .help-block,
-.control-group.warning .help-inline ***REMOVED***
+.control-group.warning .help-inline {
   color: #faa732;
-***REMOVED***
-.control-group.success input, .control-group.success select, .control-group.success textarea ***REMOVED***
+}
+.control-group.success input, .control-group.success select, .control-group.success textarea {
   color: #5bb75b;
   border-color: #5bb75b;
   -webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
@@ -528,21 +528,21 @@ select ***REMOVED***
   box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
   background: #202020;
   background-color: rgba(0, 0, 0, 0.3);
-***REMOVED***
+}
 .control-group.success input:focus,
 .control-group.success select:focus,
-.control-group.success textarea:focus ***REMOVED***
+.control-group.success textarea:focus {
   border-color: #5bb75b;
   -webkit-box-shadow: 0 0 6px #5bb75b;
   -moz-box-shadow: 0 0 6px #5bb75b;
   box-shadow: 0 0 6px #5bb75b;
-***REMOVED***
+}
 .control-group.success .control-label,
 .control-group.success .help-block,
-.control-group.success .help-inline ***REMOVED***
+.control-group.success .help-inline {
   color: #5bb75b;
-***REMOVED***
-.control-group.error input, .control-group.error select, .control-group.error textarea ***REMOVED***
+}
+.control-group.error input, .control-group.error select, .control-group.error textarea {
   color: #fc5b5e;
   border-color: #fc5b5e;
   -webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
@@ -550,21 +550,21 @@ select ***REMOVED***
   box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
   background: #202020;
   background-color: rgba(0, 0, 0, 0.3);
-***REMOVED***
+}
 .control-group.error input:focus,
 .control-group.error select:focus,
-.control-group.error textarea:focus ***REMOVED***
+.control-group.error textarea:focus {
   border-color: #fc5b5e;
   -webkit-box-shadow: 0 0 6px #fc5b5e;
   -moz-box-shadow: 0 0 6px #fc5b5e;
   box-shadow: 0 0 6px #fc5b5e;
-***REMOVED***
+}
 .control-group.error .control-label,
 .control-group.error .help-block,
-.control-group.error .help-inline ***REMOVED***
+.control-group.error .help-inline {
   color: #fc5b5e;
-***REMOVED***
-.control-group.info input, .control-group.info select, .control-group.info textarea ***REMOVED***
+}
+.control-group.info input, .control-group.info select, .control-group.info textarea {
   color: #3a87ad;
   border-color: #3a87ad;
   -webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
@@ -572,180 +572,180 @@ select ***REMOVED***
   box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
   background: #202020;
   background-color: rgba(0, 0, 0, 0.3);
-***REMOVED***
+}
 .control-group.info input:focus,
 .control-group.info select:focus,
-.control-group.info textarea:focus ***REMOVED***
+.control-group.info textarea:focus {
   border-color: #3a87ad;
   -webkit-box-shadow: 0 0 6px #3a87ad;
   -moz-box-shadow: 0 0 6px #3a87ad;
   box-shadow: 0 0 6px #3a87ad;
-***REMOVED***
+}
 .control-group.info .control-label,
 .control-group.info .help-block,
-.control-group.info .help-inline ***REMOVED***
+.control-group.info .help-inline {
   color: #3a87ad;
-***REMOVED***
+}
 
 input:focus:invalid,
 textarea:focus:invalid,
-select:focus:invalid ***REMOVED***
+select:focus:invalid {
   border-color: #fc5b5e;
-***REMOVED***
+}
 
 input:focus:invalid:focus,
 textarea:focus:invalid:focus,
-select:focus:invalid:focus ***REMOVED***
+select:focus:invalid:focus {
   border-color: #fc5b5e;
   box-shadow: 0 0 6px #fc5b5e;
-***REMOVED***
+}
 
-.btn-link ***REMOVED***
+.btn-link {
   text-shadow: none;
-***REMOVED***
+}
 
-.img-polaroid ***REMOVED***
+.img-polaroid {
   background-color: #111;
   background-color: rgba(0, 0, 0, 0.3);
-***REMOVED***
+}
 
 .nav-tabs .open .dropdown-toggle,
 .nav-pills .open .dropdown-toggle,
-.nav > .open.active > a:hover ***REMOVED***
+.nav > .open.active > a:hover {
   background-color: rgba(0, 0, 0, 0.25);
   border-color: transparent transparent #666666 transparent;
-***REMOVED***
+}
 
-.nav > .dropdown.active > a:hover ***REMOVED***
+.nav > .dropdown.active > a:hover {
   color: #fff;
-***REMOVED***
+}
 
 .nav-tabs .active .dropdown-toggle .caret,
-.nav-pills .active .dropdown-toggle .caret ***REMOVED***
+.nav-pills .active .dropdown-toggle .caret {
   border-top-color: #fff;
-***REMOVED***
+}
 
-.nav-tabs ***REMOVED***
+.nav-tabs {
   border-bottom: 1px solid #666666;
-***REMOVED***
-.nav-tabs > .active > a, .nav-tabs > .active > a:hover ***REMOVED***
+}
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover {
   background-color: #2f2f2f;
   color: #fff;
   border-color: #666666 #666666 transparent #666666;
-***REMOVED***
-.nav-tabs > li > a:hover ***REMOVED***
+}
+.nav-tabs > li > a:hover {
   border-color: #2f2f2f #2f2f2f #666666 #2f2f2f;
   background-color: rgba(0, 0, 0, 0.25);
   color: #00aaff;
-***REMOVED***
-.nav-tabs.nav-stacked > li > a, .nav-tabs.nav-stacked > li > a:hover ***REMOVED***
+}
+.nav-tabs.nav-stacked > li > a, .nav-tabs.nav-stacked > li > a:hover {
   border-color: #666;
-***REMOVED***
+}
 
-.well > .nav-tabs > .active > a, .well > .nav-tabs > .active > a:hover ***REMOVED***
+.well > .nav-tabs > .active > a, .well > .nav-tabs > .active > a:hover {
   background-color: #202020;
-***REMOVED***
+}
 
-.nav-pills > li > a:hover ***REMOVED***
+.nav-pills > li > a:hover {
   background-color: rgba(0, 0, 0, 0.25);
   color: #00aaff;
-***REMOVED***
+}
 
 .nav-list > li > a,
-.nav-list .nav-header ***REMOVED***
+.nav-list .nav-header {
   text-shadow: 0 1px 0 black;
-***REMOVED***
+}
 
-.nav-list > li > a:hover ***REMOVED***
+.nav-list > li > a:hover {
   background-color: rgba(0, 0, 0, 0.25);
   color: #00aaff;
-***REMOVED***
+}
 
-.nav-list .active > a:hover ***REMOVED***
+.nav-list .active > a:hover {
   background-color: #0088cc;
   color: white;
-***REMOVED***
+}
 
-.tabs-below .nav-tabs ***REMOVED***
+.tabs-below .nav-tabs {
   border-top: 1px solid #666666;
-***REMOVED***
+}
 
-.tabs-left .nav-tabs ***REMOVED***
+.tabs-left .nav-tabs {
   border-right: 1px solid #666666;
-***REMOVED***
+}
 
-.tabs-right .nav-tabs ***REMOVED***
+.tabs-right .nav-tabs {
   border-left: 1px solid #666666;
-***REMOVED***
+}
 
-.tabs-below .nav-tabs > li > a:hover ***REMOVED***
+.tabs-below .nav-tabs > li > a:hover {
   border-top: 1px solid #666666;
-***REMOVED***
+}
 
-.tabs-left .nav-tabs > li > a:hover ***REMOVED***
+.tabs-left .nav-tabs > li > a:hover {
   border-color: transparent #666666 transparent transparent;
-***REMOVED***
+}
 
-.tabs-right .nav-tabs > li > a:hover ***REMOVED***
+.tabs-right .nav-tabs > li > a:hover {
   border-color: transparent transparent transparent #666666;
-***REMOVED***
+}
 
 .tabs-below .nav-tabs .active > a,
-.tabs-below .nav-tabs .active > a:hover ***REMOVED***
+.tabs-below .nav-tabs .active > a:hover {
   border-color: transparent #666666 #666666 #666666;
-***REMOVED***
+}
 
 .tabs-left .nav-tabs .active > a,
-.tabs-left .nav-tabs .active > a:hover ***REMOVED***
+.tabs-left .nav-tabs .active > a:hover {
   border-color: #666666 transparent #666666 #666666;
-***REMOVED***
+}
 
 .tabs-right .nav-tabs .active > a,
-.tabs-right .nav-tabs .active > a:hover ***REMOVED***
+.tabs-right .nav-tabs .active > a:hover {
   border-color: #666666 #666666 #666666 transparent;
-***REMOVED***
+}
 
 .nav-list > li > a,
-.nav-list .nav-header ***REMOVED***
+.nav-list .nav-header {
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
-***REMOVED***
+}
 
-.nav-tabs > li > a:hover ***REMOVED***
+.nav-tabs > li > a:hover {
   border-color: transparent transparent #666666 transparent;
-***REMOVED***
+}
 
-.nav > .disabled > a:hover ***REMOVED***
+.nav > .disabled > a:hover {
   color: #999;
-***REMOVED***
+}
 
-.nav-list .divider ***REMOVED***
+.nav-list .divider {
   background-color: transparent;
   -webkit-box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
   -moz-box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
   box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
   border-bottom: 1px solid #121212;
-***REMOVED***
+}
 
-.navbar .brand ***REMOVED***
+.navbar .brand {
   text-shadow: 0 1px 0 black;
-***REMOVED***
+}
 
-.navbar .divider-vertical ***REMOVED***
+.navbar .divider-vertical {
   border: transparent;
   -webkit-box-shadow: rgba(255, 255, 255, 0.07) 1px 0 0;
   -moz-box-shadow: rgba(255, 255, 255, 0.07) 1px 0 0;
   box-shadow: rgba(255, 255, 255, 0.07) 1px 0 0;
   border-right: 1px solid #121212;
-***REMOVED***
+}
 
-.navbar-inverse .brand ***REMOVED***
+.navbar-inverse .brand {
   color: #555;
   text-shadow: 0 1px 0 white;
-***REMOVED***
-.navbar-inverse .brand:hover ***REMOVED***
+}
+.navbar-inverse .brand:hover {
   color: #555;
-***REMOVED***
-.navbar-inverse .navbar-inner ***REMOVED***
+}
+.navbar-inverse .navbar-inner {
   background: #fafafa;
   border: 1px solid #030303;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
@@ -756,205 +756,205 @@ select:focus:invalid:focus ***REMOVED***
   background: -ms-linear-gradient(top, white 0%, #999999 100%);
   background: linear-gradient(to bottom, #ffffff 0%, #999999 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#999999',GradientType=0 );
-***REMOVED***
-.navbar-inverse .nav > li > a ***REMOVED***
+}
+.navbar-inverse .nav > li > a {
   color: #555;
-***REMOVED***
-.navbar-inverse .nav > li > a:hover ***REMOVED***
+}
+.navbar-inverse .nav > li > a:hover {
   color: #333;
-***REMOVED***
+}
 .navbar-inverse .nav > .active > a,
-.navbar-inverse .nav > .active > a:hover ***REMOVED***
+.navbar-inverse .nav > .active > a:hover {
   background-color: #e5e5e5;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125) inset;
   color: #555555;
-***REMOVED***
+}
 .navbar-inverse .nav li.dropdown.open > .dropdown-toggle,
 .navbar-inverse .nav li.dropdown.active > .dropdown-toggle,
-.navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle ***REMOVED***
+.navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
   background-color: #e5e5e5;
   color: #555;
-***REMOVED***
-.navbar-inverse .nav li.dropdown > a:hover .caret ***REMOVED***
+}
+.navbar-inverse .nav li.dropdown > a:hover .caret {
   border-top-color: #555;
   color: #555;
-***REMOVED***
+}
 .navbar-inverse .nav > li > a:focus,
-.navbar-inverse .nav > li > a:hover ***REMOVED***
+.navbar-inverse .nav > li > a:hover {
   background-color: transparent;
   color: #333;
-***REMOVED***
+}
 .navbar-inverse .nav li.dropdown.open > .dropdown-toggle,
 .navbar-inverse .nav li.dropdown.active > .dropdown-toggle,
-.navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle ***REMOVED***
+.navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
   background-color: #e5e5e5;
   color: #555;
-***REMOVED***
+}
 .navbar-inverse .nav li.dropdown.open > .dropdown-toggle .caret,
 .navbar-inverse .nav li.dropdown.active > .dropdown-toggle .caret,
-.navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle .caret ***REMOVED***
+.navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle .caret {
   border-bottom-color: #555;
   border-top-color: #555;
   color: #555;
-***REMOVED***
-.navbar-inverse .navbar-search .search-query ***REMOVED***
+}
+.navbar-inverse .navbar-search .search-query {
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6) inset;
   background-color: white;
   color: #333;
-***REMOVED***
-.navbar-inverse .navbar-search input.search-query:focus ***REMOVED***
+}
+.navbar-inverse .navbar-search input.search-query:focus {
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6) inset, 0 0 8px rgba(82, 168, 236, 0.6);
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6) inset, 0 0 8px rgba(82, 168, 236, 0.9);
   padding: 4px 14px;
   outline: 0 none;
-***REMOVED***
-.navbar-inverse .nav li.dropdown > .dropdown-toggle .caret ***REMOVED***
+}
+.navbar-inverse .nav li.dropdown > .dropdown-toggle .caret {
   border-bottom-color: #555;
   border-top-color: #555;
-***REMOVED***
-.navbar-inverse .nav li.dropdown > a:hover .caret ***REMOVED***
+}
+.navbar-inverse .nav li.dropdown > a:hover .caret {
   border-bottom-color: #333;
   border-top-color: #333;
-***REMOVED***
-.navbar-inverse .navbar-search .search-query:-moz-placeholder ***REMOVED***
+}
+.navbar-inverse .navbar-search .search-query:-moz-placeholder {
   color: #999;
-***REMOVED***
+}
 
 .pagination ul > li > a,
-.pagination ul > li > span ***REMOVED***
+.pagination ul > li > span {
   background: transparent;
   border-color: #666;
-***REMOVED***
+}
 
 .pagination ul > li > a:hover,
 .pagination ul > .active > a,
-.pagination ul > .active > span ***REMOVED***
+.pagination ul > .active > span {
   background-color: rgba(0, 0, 0, 0.25);
-***REMOVED***
+}
 
-.pager li > a, .pager li > span ***REMOVED***
+.pager li > a, .pager li > span {
   background-color: transparent;
   border-color: #666;
-***REMOVED***
+}
 
-.pager li > a:hover ***REMOVED***
+.pager li > a:hover {
   background-color: rgba(0, 0, 0, 0.25);
-***REMOVED***
+}
 
 .pager .disabled > a,
 .pager .disabled > a:hover,
-.pager .disabled > span ***REMOVED***
+.pager .disabled > span {
   background-color: transparent;
-***REMOVED***
+}
 
 .label,
-.badge ***REMOVED***
+.badge {
   text-shadow: 1px 1px 0 black;
   box-shadow: 1px 1px 0 black;
-***REMOVED***
+}
 
 .label-inverse,
-.badge-inverse ***REMOVED***
+.badge-inverse {
   background-color: #111;
-***REMOVED***
+}
 
-.hero-unit ***REMOVED***
+.hero-unit {
   background: #111;
   color: #ccc;
-***REMOVED***
+}
 
-.thumbnail ***REMOVED***
+.thumbnail {
   border-color: #666;
   box-shadow: 0 1px 3px black;
-***REMOVED***
-.thumbnail .caption ***REMOVED***
+}
+.thumbnail .caption {
   color: #999;
-***REMOVED***
+}
 
-.alert ***REMOVED***
+.alert {
   color: white;
   border-color: #a86404;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-***REMOVED***
-.alert h1, .alert h2, .alert h3, .alert h4, .alert h5, .alert h6 ***REMOVED***
+}
+.alert h1, .alert h2, .alert h3, .alert h4, .alert h5, .alert h6 {
   color: #c17305;
-***REMOVED***
+}
 
-.alert-error ***REMOVED***
+.alert-error {
   border-color: #d40408;
-***REMOVED***
-.alert-error h1, .alert-error h2, .alert-error h3, .alert-error h4, .alert-error h5, .alert-error h6 ***REMOVED***
+}
+.alert-error h1, .alert-error h2, .alert-error h3, .alert-error h4, .alert-error h5, .alert-error h6 {
   color: #ed0409;
-***REMOVED***
+}
 
-.alert-success ***REMOVED***
+.alert-success {
   border-color: #2d662d;
-***REMOVED***
-.alert-success h1, .alert-success h2, .alert-success h3, .alert-success h4, .alert-success h5, .alert-success h6 ***REMOVED***
+}
+.alert-success h1, .alert-success h2, .alert-success h3, .alert-success h4, .alert-success h5, .alert-success h6 {
   color: #347834;
-***REMOVED***
+}
 
-.alert-info ***REMOVED***
+.alert-info {
   border-color: #1a3c4e;
-***REMOVED***
-.alert-info h1, .alert-info h2, .alert-info h3, .alert-info h4, .alert-info h5, .alert-info h6 ***REMOVED***
+}
+.alert-info h1, .alert-info h2, .alert-info h3, .alert-info h4, .alert-info h5, .alert-info h6 {
   color: #204B61;
-***REMOVED***
+}
 
-select::-webkit-scrollbar ***REMOVED***
+select::-webkit-scrollbar {
   -webkit-appearance: none;
   width: 11px;
-***REMOVED***
-select::-webkit-scrollbar-thumb ***REMOVED***
+}
+select::-webkit-scrollbar-thumb {
   border-radius: 8px;
   border: 2px solid #202020;
   background-color: rgba(0, 0, 0, 0.5);
-***REMOVED***
+}
 
-.modal ***REMOVED***
+.modal {
   background-color: #444;
-***REMOVED***
+}
 
-.modal-header ***REMOVED***
+.modal-header {
   border-bottom: 1px solid #222222;
-***REMOVED***
+}
 
-.modal-body p ***REMOVED***
+.modal-body p {
   color: #c6c6c6;
-***REMOVED***
+}
 
-.modal-footer ***REMOVED***
+.modal-footer {
   background-color: #373737;
   border-top: 1px solid #222222;
   -moz-box-shadow: 0 1px 0 #333333 inset;
   -webkit-box-shadow: 0 1px 0 #333333 inset;
   -o-box-shadow: 0 1px 0 #333333 inset;
   box-shadow: 0 1px 0 #333333 inset;
-***REMOVED***
+}
 
-.popover ***REMOVED***
+.popover {
   background: #444;
   border: 1px solid rgba(0, 0, 0, 0.5);
   border: 1px solid black;
-***REMOVED***
+}
 
-.popover-title ***REMOVED***
+.popover-title {
   background: #373737;
   border-bottom-color: #222;
-***REMOVED***
+}
 
-.popover.top .arrow:after ***REMOVED***
+.popover.top .arrow:after {
   border-top-color: #444;
-***REMOVED***
+}
 
-.popover.right .arrow:after ***REMOVED***
+.popover.right .arrow:after {
   border-right-color: #444;
-***REMOVED***
+}
 
-.popover.bottom .arrow:after ***REMOVED***
+.popover.bottom .arrow:after {
   border-bottom-color: #444;
-***REMOVED***
+}
 
-.popover.left .arrow:after ***REMOVED***
+.popover.left .arrow:after {
   border-left-color: #444;
-***REMOVED***
+}

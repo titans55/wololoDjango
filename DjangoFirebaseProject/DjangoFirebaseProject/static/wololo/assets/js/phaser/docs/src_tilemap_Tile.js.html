@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1289,7 +1289,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
             <pre class="sunlight-highlight-javascript linenums">/**
 * @author       Richard Davey &lt;rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1297,237 +1297,237 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 *
 * @class Phaser.Tile
 * @constructor
-* @param ***REMOVED***object***REMOVED*** layer - The layer in the Tilemap data that this tile belongs to.
-* @param ***REMOVED***number***REMOVED*** index - The index of this tile type in the core map data.
-* @param ***REMOVED***number***REMOVED*** x - The x coordinate of this tile.
-* @param ***REMOVED***number***REMOVED*** y - The y coordinate of this tile.
-* @param ***REMOVED***number***REMOVED*** width - Width of the tile.
-* @param ***REMOVED***number***REMOVED*** height - Height of the tile.
+* @param {object} layer - The layer in the Tilemap data that this tile belongs to.
+* @param {number} index - The index of this tile type in the core map data.
+* @param {number} x - The x coordinate of this tile.
+* @param {number} y - The y coordinate of this tile.
+* @param {number} width - Width of the tile.
+* @param {number} height - Height of the tile.
 */
-Phaser.Tile = function (layer, index, x, y, width, height) ***REMOVED***
+Phaser.Tile = function (layer, index, x, y, width, height) {
 
     /**
-    * @property ***REMOVED***object***REMOVED*** layer - The layer in the Tilemap data that this tile belongs to.
+    * @property {object} layer - The layer in the Tilemap data that this tile belongs to.
     */
     this.layer = layer;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** index - The index of this tile within the map data corresponding to the tileset, or -1 if this represents a blank/null tile.
+    * @property {number} index - The index of this tile within the map data corresponding to the tileset, or -1 if this represents a blank/null tile.
     */
     this.index = index;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** x - The x map coordinate of this tile.
+    * @property {number} x - The x map coordinate of this tile.
     */
     this.x = x;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** y - The y map coordinate of this tile.
+    * @property {number} y - The y map coordinate of this tile.
     */
     this.y = y;
     
     /**
-    * @property ***REMOVED***number***REMOVED*** rotation - The rotation angle of this tile.
+    * @property {number} rotation - The rotation angle of this tile.
     */
     this.rotation = 0;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** flipped - Whether this tile is flipped (mirrored) or not.
+    * @property {boolean} flipped - Whether this tile is flipped (mirrored) or not.
     */
     this.flipped = false;
     
     /**
-    * @property ***REMOVED***number***REMOVED*** x - The x map coordinate of this tile.
+    * @property {number} x - The x map coordinate of this tile.
     */
     this.worldX = x * width;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** y - The y map coordinate of this tile.
+    * @property {number} y - The y map coordinate of this tile.
     */
     this.worldY = y * height;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** width - The width of the tile in pixels.
+    * @property {number} width - The width of the tile in pixels.
     */
     this.width = width;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** height - The height of the tile in pixels.
+    * @property {number} height - The height of the tile in pixels.
     */
     this.height = height;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** width - The width of the tile in pixels.
+    * @property {number} width - The width of the tile in pixels.
     */
     this.centerX = Math.abs(width / 2);
 
     /**
-    * @property ***REMOVED***number***REMOVED*** height - The height of the tile in pixels.
+    * @property {number} height - The height of the tile in pixels.
     */
     this.centerY = Math.abs(height / 2);
 
     /**
-    * @property ***REMOVED***number***REMOVED*** alpha - The alpha value at which this tile is drawn to the canvas.
+    * @property {number} alpha - The alpha value at which this tile is drawn to the canvas.
     */
     this.alpha = 1;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** properties - Tile specific properties.
+    * @property {object} properties - Tile specific properties.
     */
-    this.properties = ***REMOVED******REMOVED***;
+    this.properties = {};
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** scanned - Has this tile been walked / turned into a poly?
+    * @property {boolean} scanned - Has this tile been walked / turned into a poly?
     */
     this.scanned = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** faceTop - Is the top of this tile an interesting edge?
+    * @property {boolean} faceTop - Is the top of this tile an interesting edge?
     */
     this.faceTop = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** faceBottom - Is the bottom of this tile an interesting edge?
+    * @property {boolean} faceBottom - Is the bottom of this tile an interesting edge?
     */
     this.faceBottom = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** faceLeft - Is the left of this tile an interesting edge?
+    * @property {boolean} faceLeft - Is the left of this tile an interesting edge?
     */
     this.faceLeft = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** faceRight - Is the right of this tile an interesting edge?
+    * @property {boolean} faceRight - Is the right of this tile an interesting edge?
     */
     this.faceRight = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** collideLeft - Indicating collide with any object on the left.
+    * @property {boolean} collideLeft - Indicating collide with any object on the left.
     * @default
     */
     this.collideLeft = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** collideRight - Indicating collide with any object on the right.
+    * @property {boolean} collideRight - Indicating collide with any object on the right.
     * @default
     */
     this.collideRight = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** collideUp - Indicating collide with any object on the top.
+    * @property {boolean} collideUp - Indicating collide with any object on the top.
     * @default
     */
     this.collideUp = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** collideDown - Indicating collide with any object on the bottom.
+    * @property {boolean} collideDown - Indicating collide with any object on the bottom.
     * @default
     */
     this.collideDown = false;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** collisionCallback - Tile collision callback.
+    * @property {function} collisionCallback - Tile collision callback.
     * @default
     */
     this.collisionCallback = null;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** collisionCallbackContext - The context in which the collision callback will be called.
+    * @property {object} collisionCallbackContext - The context in which the collision callback will be called.
     * @default
     */
     this.collisionCallbackContext = this;
 
-***REMOVED***;
+};
 
-Phaser.Tile.prototype = ***REMOVED***
+Phaser.Tile.prototype = {
 
     /**
     * Check if the given x and y world coordinates are within this Tile.
     *
     * @method Phaser.Tile#containsPoint
-    * @param ***REMOVED***number***REMOVED*** x - The x coordinate to test.
-    * @param ***REMOVED***number***REMOVED*** y - The y coordinate to test.
-    * @return ***REMOVED***boolean***REMOVED*** True if the coordinates are within this Tile, otherwise false.
+    * @param {number} x - The x coordinate to test.
+    * @param {number} y - The y coordinate to test.
+    * @return {boolean} True if the coordinates are within this Tile, otherwise false.
     */
-    containsPoint: function (x, y) ***REMOVED***
+    containsPoint: function (x, y) {
 
         return !(x &lt; this.worldX || y &lt; this.worldY || x > this.right || y > this.bottom);
 
-    ***REMOVED***,
+    },
 
     /**
     * Check for intersection with this tile.
     *
     * @method Phaser.Tile#intersects
-    * @param ***REMOVED***number***REMOVED*** x - The x axis in pixels.
-    * @param ***REMOVED***number***REMOVED*** y - The y axis in pixels.
-    * @param ***REMOVED***number***REMOVED*** right - The right point.
-    * @param ***REMOVED***number***REMOVED*** bottom - The bottom point.
+    * @param {number} x - The x axis in pixels.
+    * @param {number} y - The y axis in pixels.
+    * @param {number} right - The right point.
+    * @param {number} bottom - The bottom point.
     */
-    intersects: function (x, y, right, bottom) ***REMOVED***
+    intersects: function (x, y, right, bottom) {
 
         if (right &lt;= this.worldX)
-        ***REMOVED***
+        {
             return false;
-        ***REMOVED***
+        }
 
         if (bottom &lt;= this.worldY)
-        ***REMOVED***
+        {
             return false;
-        ***REMOVED***
+        }
 
         if (x >= this.worldX + this.width)
-        ***REMOVED***
+        {
             return false;
-        ***REMOVED***
+        }
 
         if (y >= this.worldY + this.height)
-        ***REMOVED***
+        {
             return false;
-        ***REMOVED***
+        }
 
         return true;
 
-    ***REMOVED***,
+    },
 
     /**
     * Set a callback to be called when this tile is hit by an object.
     * The callback must true true for collision processing to take place.
     *
     * @method Phaser.Tile#setCollisionCallback
-    * @param ***REMOVED***function***REMOVED*** callback - Callback function.
-    * @param ***REMOVED***object***REMOVED*** context - Callback will be called within this context.
+    * @param {function} callback - Callback function.
+    * @param {object} context - Callback will be called within this context.
     */
-    setCollisionCallback: function (callback, context) ***REMOVED***
+    setCollisionCallback: function (callback, context) {
 
         this.collisionCallback = callback;
         this.collisionCallbackContext = context;
 
-    ***REMOVED***,
+    },
 
     /**
     * Clean up memory.
     *
     * @method Phaser.Tile#destroy
     */
-    destroy: function () ***REMOVED***
+    destroy: function () {
 
         this.collisionCallback = null;
         this.collisionCallbackContext = null;
         this.properties = null;
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the collision flags for each side of this tile and updates the interesting faces list.
     *
     * @method Phaser.Tile#setCollision
-    * @param ***REMOVED***boolean***REMOVED*** left - Indicating collide with any object on the left.
-    * @param ***REMOVED***boolean***REMOVED*** right - Indicating collide with any object on the right.
-    * @param ***REMOVED***boolean***REMOVED*** up - Indicating collide with any object on the top.
-    * @param ***REMOVED***boolean***REMOVED*** down - Indicating collide with any object on the bottom.
+    * @param {boolean} left - Indicating collide with any object on the left.
+    * @param {boolean} right - Indicating collide with any object on the right.
+    * @param {boolean} up - Indicating collide with any object on the top.
+    * @param {boolean} down - Indicating collide with any object on the bottom.
     */
-    setCollision: function (left, right, up, down) ***REMOVED***
+    setCollision: function (left, right, up, down) {
 
         this.collideLeft = left;
         this.collideRight = right;
@@ -1539,14 +1539,14 @@ Phaser.Tile.prototype = ***REMOVED***
         this.faceTop = up;
         this.faceBottom = down;
 
-    ***REMOVED***,
+    },
 
     /**
     * Reset collision status flags.
     *
     * @method Phaser.Tile#resetCollision
     */
-    resetCollision: function () ***REMOVED***
+    resetCollision: function () {
 
         this.collideLeft = false;
         this.collideRight = false;
@@ -1558,45 +1558,45 @@ Phaser.Tile.prototype = ***REMOVED***
         this.faceLeft = false;
         this.faceRight = false;
 
-    ***REMOVED***,
+    },
 
     /**
     * Is this tile interesting?
     *
     * @method Phaser.Tile#isInteresting
-    * @param ***REMOVED***boolean***REMOVED*** collides - If true will check any collides value.
-    * @param ***REMOVED***boolean***REMOVED*** faces - If true will check any face value.
-    * @return ***REMOVED***boolean***REMOVED*** True if the Tile is interesting, otherwise false.
+    * @param {boolean} collides - If true will check any collides value.
+    * @param {boolean} faces - If true will check any face value.
+    * @return {boolean} True if the Tile is interesting, otherwise false.
     */
-    isInteresting: function (collides, faces) ***REMOVED***
+    isInteresting: function (collides, faces) {
 
         if (collides &amp;&amp; faces)
-        ***REMOVED***
+        {
             //  Does this tile have any collide flags OR interesting face?
             return (this.collideLeft || this.collideRight || this.collideUp || this.collideDown || this.faceTop || this.faceBottom || this.faceLeft || this.faceRight || this.collisionCallback);
-        ***REMOVED***
+        }
         else if (collides)
-        ***REMOVED***
+        {
             //  Does this tile collide?
             return (this.collideLeft || this.collideRight || this.collideUp || this.collideDown);
-        ***REMOVED***
+        }
         else if (faces)
-        ***REMOVED***
+        {
             //  Does this tile have an interesting face?
             return (this.faceTop || this.faceBottom || this.faceLeft || this.faceRight);
-        ***REMOVED***
+        }
 
         return false;
 
-    ***REMOVED***,
+    },
 
     /**
     * Copies the tile data and properties from the given tile to this tile.
     *
     * @method Phaser.Tile#copy
-    * @param ***REMOVED***Phaser.Tile***REMOVED*** tile - The tile to copy from.
+    * @param {Phaser.Tile} tile - The tile to copy from.
     */
-    copy: function (tile) ***REMOVED***
+    copy: function (tile) {
 
         this.index = tile.index;
         this.alpha = tile.alpha;
@@ -1610,89 +1610,89 @@ Phaser.Tile.prototype = ***REMOVED***
         this.collisionCallback = tile.collisionCallback;
         this.collisionCallbackContext = tile.collisionCallbackContext;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.Tile.prototype.constructor = Phaser.Tile;
 
 /**
 * @name Phaser.Tile#collides
-* @property ***REMOVED***boolean***REMOVED*** collides - True if this tile can collide on any of its faces.
+* @property {boolean} collides - True if this tile can collide on any of its faces.
 * @readonly
 */
-Object.defineProperty(Phaser.Tile.prototype, "collides", ***REMOVED***
+Object.defineProperty(Phaser.Tile.prototype, "collides", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return (this.collideLeft || this.collideRight || this.collideUp || this.collideDown);
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Tile#canCollide
-* @property ***REMOVED***boolean***REMOVED*** canCollide - True if this tile can collide on any of its faces or has a collision callback set.
+* @property {boolean} canCollide - True if this tile can collide on any of its faces or has a collision callback set.
 * @readonly
 */
-Object.defineProperty(Phaser.Tile.prototype, "canCollide", ***REMOVED***
+Object.defineProperty(Phaser.Tile.prototype, "canCollide", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return (this.collideLeft || this.collideRight || this.collideUp || this.collideDown || this.collisionCallback);
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Tile#left
-* @property ***REMOVED***number***REMOVED*** left - The x value in pixels.
+* @property {number} left - The x value in pixels.
 * @readonly
 */
-Object.defineProperty(Phaser.Tile.prototype, "left", ***REMOVED***
+Object.defineProperty(Phaser.Tile.prototype, "left", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this.worldX;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Tile#right
-* @property ***REMOVED***number***REMOVED*** right - The sum of the x and width properties.
+* @property {number} right - The sum of the x and width properties.
 * @readonly
 */
-Object.defineProperty(Phaser.Tile.prototype, "right", ***REMOVED***
+Object.defineProperty(Phaser.Tile.prototype, "right", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this.worldX + this.width;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Tile#top
-* @property ***REMOVED***number***REMOVED*** top - The y value.
+* @property {number} top - The y value.
 * @readonly
 */
-Object.defineProperty(Phaser.Tile.prototype, "top", ***REMOVED***
+Object.defineProperty(Phaser.Tile.prototype, "top", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this.worldY;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Tile#bottom
-* @property ***REMOVED***number***REMOVED*** bottom - The sum of the y and height properties.
+* @property {number} bottom - The sum of the y and height properties.
 * @readonly
 */
-Object.defineProperty(Phaser.Tile.prototype, "bottom", ***REMOVED***
+Object.defineProperty(Phaser.Tile.prototype, "bottom", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this.worldY + this.height;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 </pre>
         </article>
     </section>
@@ -1735,22 +1735,22 @@ Object.defineProperty(Phaser.Tile.prototype, "bottom", ***REMOVED***
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

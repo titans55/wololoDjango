@@ -18,7 +18,7 @@
  * ============================================================ */
 
 
-!function ($) ***REMOVED***
+!function ($) {
 
   "use strict"; // jshint ;_;
 
@@ -27,18 +27,18 @@
   * ========================= */
 
   var toggle = '[data-toggle=dropdown]'
-    , Dropdown = function (element) ***REMOVED***
+    , Dropdown = function (element) {
         var $el = $(element).on('click.dropdown.data-api', this.toggle)
-        $('html').on('click.dropdown.data-api', function () ***REMOVED***
+        $('html').on('click.dropdown.data-api', function () {
           $el.parent().removeClass('open')
-        ***REMOVED***)
-      ***REMOVED***
+        })
+      }
 
-  Dropdown.prototype = ***REMOVED***
+  Dropdown.prototype = {
 
     constructor: Dropdown
 
-  , toggle: function (e) ***REMOVED***
+  , toggle: function (e) {
       var $this = $(this)
         , $parent
         , isActive
@@ -51,16 +51,16 @@
 
       clearMenus()
 
-      if (!isActive) ***REMOVED***
+      if (!isActive) {
         $parent.toggleClass('open')
-      ***REMOVED***
+      }
 
       $this.focus()
 
       return false
-    ***REMOVED***
+    }
 
-  , keydown: function (e) ***REMOVED***
+  , keydown: function (e) {
       var $this
         , $items
         , $active
@@ -81,10 +81,10 @@
 
       isActive = $parent.hasClass('open')
 
-      if (!isActive || (isActive && e.keyCode == 27)) ***REMOVED***
+      if (!isActive || (isActive && e.keyCode == 27)) {
         if (e.which == 27) $parent.find(toggle).focus()
         return $this.click()
-      ***REMOVED***
+      }
 
       $items = $('[role=menu] li:not(.divider):visible a', $parent)
 
@@ -99,31 +99,31 @@
       $items
         .eq(index)
         .focus()
-    ***REMOVED***
+    }
 
-  ***REMOVED***
+  }
 
-  function clearMenus() ***REMOVED***
-    $(toggle).each(function () ***REMOVED***
+  function clearMenus() {
+    $(toggle).each(function () {
       getParent($(this)).removeClass('open')
-    ***REMOVED***)
-  ***REMOVED***
+    })
+  }
 
-  function getParent($this) ***REMOVED***
+  function getParent($this) {
     var selector = $this.attr('data-target')
       , $parent
 
-    if (!selector) ***REMOVED***
+    if (!selector) {
       selector = $this.attr('href')
       selector = selector && /#/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
-    ***REMOVED***
+    }
 
     $parent = selector && $(selector)
 
     if (!$parent || !$parent.length) $parent = $this.parent()
 
     return $parent
-  ***REMOVED***
+  }
 
 
   /* DROPDOWN PLUGIN DEFINITION
@@ -131,14 +131,14 @@
 
   var old = $.fn.dropdown
 
-  $.fn.dropdown = function (option) ***REMOVED***
-    return this.each(function () ***REMOVED***
+  $.fn.dropdown = function (option) {
+    return this.each(function () {
       var $this = $(this)
         , data = $this.data('dropdown')
       if (!data) $this.data('dropdown', (data = new Dropdown(this)))
       if (typeof option == 'string') data[option].call($this)
-    ***REMOVED***)
-  ***REMOVED***
+    })
+  }
 
   $.fn.dropdown.Constructor = Dropdown
 
@@ -146,10 +146,10 @@
  /* DROPDOWN NO CONFLICT
   * ==================== */
 
-  $.fn.dropdown.noConflict = function () ***REMOVED***
+  $.fn.dropdown.noConflict = function () {
     $.fn.dropdown = old
     return this
-  ***REMOVED***
+  }
 
 
   /* APPLY TO STANDARD DROPDOWN ELEMENTS
@@ -157,9 +157,9 @@
 
   $(document)
     .on('click.dropdown.data-api', clearMenus)
-    .on('click.dropdown.data-api', '.dropdown form', function (e) ***REMOVED*** e.stopPropagation() ***REMOVED***)
-    .on('click.dropdown-menu', function (e) ***REMOVED*** e.stopPropagation() ***REMOVED***)
+    .on('click.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+    .on('click.dropdown-menu', function (e) { e.stopPropagation() })
     .on('click.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
     .on('keydown.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
 
-***REMOVED***(window.jQuery);
+}(window.jQuery);

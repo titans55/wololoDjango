@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -9,4 +9,4 @@
 *
 * @class Phaser.Particles.Arcade
 */
-Phaser.Particles.Arcade = ***REMOVED******REMOVED***;
+Phaser.Particles.Arcade = {};

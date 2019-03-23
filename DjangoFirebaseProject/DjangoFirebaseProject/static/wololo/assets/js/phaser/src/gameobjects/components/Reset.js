@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -9,7 +9,7 @@
 *
 * @class
 */
-Phaser.Component.Reset = function () ***REMOVED******REMOVED***;
+Phaser.Component.Reset = function () {};
 
 /**
 * Resets the Game Object.
@@ -22,14 +22,14 @@ Phaser.Component.Reset = function () ***REMOVED******REMOVED***;
 * If this Game Object has a Physics Body it will reset the Body.
 *
 * @method
-* @param ***REMOVED***number***REMOVED*** x - The x coordinate (in world space) to position the Game Object at.
-* @param ***REMOVED***number***REMOVED*** y - The y coordinate (in world space) to position the Game Object at.
-* @param ***REMOVED***number***REMOVED*** [health=1] - The health to give the Game Object if it has the Health component.
-* @return ***REMOVED***PIXI.DisplayObject***REMOVED*** This instance.
+* @param {number} x - The x coordinate (in world space) to position the Game Object at.
+* @param {number} y - The y coordinate (in world space) to position the Game Object at.
+* @param {number} [health=1] - The health to give the Game Object if it has the Health component.
+* @return {PIXI.DisplayObject} This instance.
 */
-Phaser.Component.Reset.prototype.reset = function (x, y, health) ***REMOVED***
+Phaser.Component.Reset.prototype.reset = function (x, y, health) {
 
-    if (health === undefined) ***REMOVED*** health = 1; ***REMOVED***
+    if (health === undefined) { health = 1; }
 
     this.world.set(x, y);
     this.position.set(x, y);
@@ -40,24 +40,24 @@ Phaser.Component.Reset.prototype.reset = function (x, y, health) ***REMOVED***
     this.renderable = true;
 
     if (this.components.InWorld)
-    ***REMOVED***
+    {
         this._outOfBoundsFired = false;
-    ***REMOVED***
+    }
 
     if (this.components.LifeSpan)
-    ***REMOVED***
+    {
         this.alive = true;
         this.health = health;
-    ***REMOVED***
+    }
 
     if (this.components.PhysicsBody)
-    ***REMOVED***
+    {
         if (this.body)
-        ***REMOVED***
+        {
             this.body.reset(x, y, false, false);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return this;
 
-***REMOVED***;
+};

@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -11,14 +11,14 @@
 *
 * @class Phaser.Math
 * @static
-* @see ***REMOVED***@link Phaser.Utils***REMOVED***
-* @see ***REMOVED***@link Phaser.ArrayUtils***REMOVED***
+* @see {@link Phaser.Utils}
+* @see {@link Phaser.ArrayUtils}
 */
-Phaser.Math = ***REMOVED***
+Phaser.Math = {
 
     /**
     * Twice PI.
-    * @property ***REMOVED***number***REMOVED*** Phaser.Math#PI2
+    * @property {number} Phaser.Math#PI2
     * @default ~6.283
     */
     PI2: Math.PI * 2,
@@ -27,130 +27,130 @@ Phaser.Math = ***REMOVED***
     * Returns a number between the `min` and `max` values.
     *
     * @method Phaser.Math#between
-    * @param ***REMOVED***number***REMOVED*** min - The minimum value. Must be positive, and less than 'max'.
-    * @param ***REMOVED***number***REMOVED*** max - The maximum value. Must be position, and greater than 'min'.
-    * @return ***REMOVED***number***REMOVED*** A value between the range min to max.
+    * @param {number} min - The minimum value. Must be positive, and less than 'max'.
+    * @param {number} max - The maximum value. Must be position, and greater than 'min'.
+    * @return {number} A value between the range min to max.
     */
-    between: function (min, max) ***REMOVED***
+    between: function (min, max) {
 
         return Math.floor(Math.random() * (max - min + 1) + min);
 
-    ***REMOVED***,
+    },
 
     /**
     * Two number are fuzzyEqual if their difference is less than epsilon.
     *
     * @method Phaser.Math#fuzzyEqual
-    * @param ***REMOVED***number***REMOVED*** a - The first number to compare.
-    * @param ***REMOVED***number***REMOVED*** b - The second number to compare.
-    * @param ***REMOVED***number***REMOVED*** [epsilon=0.0001] - The epsilon (a small value used in the calculation)
-    * @return ***REMOVED***boolean***REMOVED*** True if |a-b|<epsilon
+    * @param {number} a - The first number to compare.
+    * @param {number} b - The second number to compare.
+    * @param {number} [epsilon=0.0001] - The epsilon (a small value used in the calculation)
+    * @return {boolean} True if |a-b|<epsilon
     */
-    fuzzyEqual: function (a, b, epsilon) ***REMOVED***
+    fuzzyEqual: function (a, b, epsilon) {
 
-        if (epsilon === undefined) ***REMOVED*** epsilon = 0.0001; ***REMOVED***
+        if (epsilon === undefined) { epsilon = 0.0001; }
 
         return Math.abs(a - b) < epsilon;
 
-    ***REMOVED***,
+    },
 
     /**
     * `a` is fuzzyLessThan `b` if it is less than b + epsilon.
     *
     * @method Phaser.Math#fuzzyLessThan
-    * @param ***REMOVED***number***REMOVED*** a - The first number to compare.
-    * @param ***REMOVED***number***REMOVED*** b - The second number to compare.
-    * @param ***REMOVED***number***REMOVED*** [epsilon=0.0001] - The epsilon (a small value used in the calculation)
-    * @return ***REMOVED***boolean***REMOVED*** True if a<b+epsilon
+    * @param {number} a - The first number to compare.
+    * @param {number} b - The second number to compare.
+    * @param {number} [epsilon=0.0001] - The epsilon (a small value used in the calculation)
+    * @return {boolean} True if a<b+epsilon
     */
-    fuzzyLessThan: function (a, b, epsilon) ***REMOVED***
+    fuzzyLessThan: function (a, b, epsilon) {
 
-        if (epsilon === undefined) ***REMOVED*** epsilon = 0.0001; ***REMOVED***
+        if (epsilon === undefined) { epsilon = 0.0001; }
 
         return a < b + epsilon;
 
-    ***REMOVED***,
+    },
 
     /**
     * `a` is fuzzyGreaterThan `b` if it is more than b - epsilon.
     *
     * @method Phaser.Math#fuzzyGreaterThan
-    * @param ***REMOVED***number***REMOVED*** a - The first number to compare.
-    * @param ***REMOVED***number***REMOVED*** b - The second number to compare.
-    * @param ***REMOVED***number***REMOVED*** [epsilon=0.0001] - The epsilon (a small value used in the calculation)
-    * @return ***REMOVED***boolean***REMOVED*** True if a>b+epsilon
+    * @param {number} a - The first number to compare.
+    * @param {number} b - The second number to compare.
+    * @param {number} [epsilon=0.0001] - The epsilon (a small value used in the calculation)
+    * @return {boolean} True if a>b+epsilon
     */
-    fuzzyGreaterThan: function (a, b, epsilon) ***REMOVED***
+    fuzzyGreaterThan: function (a, b, epsilon) {
 
-        if (epsilon === undefined) ***REMOVED*** epsilon = 0.0001; ***REMOVED***
+        if (epsilon === undefined) { epsilon = 0.0001; }
 
         return a > b - epsilon;
 
-    ***REMOVED***,
+    },
 
     /**
     * Applies a fuzzy ceil to the given value.
     * 
     * @method Phaser.Math#fuzzyCeil
-    * @param ***REMOVED***number***REMOVED*** val - The value to ceil.
-    * @param ***REMOVED***number***REMOVED*** [epsilon=0.0001] - The epsilon (a small value used in the calculation)
-    * @return ***REMOVED***number***REMOVED*** ceiling(val-epsilon)
+    * @param {number} val - The value to ceil.
+    * @param {number} [epsilon=0.0001] - The epsilon (a small value used in the calculation)
+    * @return {number} ceiling(val-epsilon)
     */
-    fuzzyCeil: function (val, epsilon) ***REMOVED***
+    fuzzyCeil: function (val, epsilon) {
 
-        if (epsilon === undefined) ***REMOVED*** epsilon = 0.0001; ***REMOVED***
+        if (epsilon === undefined) { epsilon = 0.0001; }
 
         return Math.ceil(val - epsilon);
 
-    ***REMOVED***,
+    },
 
     /**
     * Applies a fuzzy floor to the given value.
     * 
     * @method Phaser.Math#fuzzyFloor
-    * @param ***REMOVED***number***REMOVED*** val - The value to floor.
-    * @param ***REMOVED***number***REMOVED*** [epsilon=0.0001] - The epsilon (a small value used in the calculation)
-    * @return ***REMOVED***number***REMOVED*** floor(val+epsilon)
+    * @param {number} val - The value to floor.
+    * @param {number} [epsilon=0.0001] - The epsilon (a small value used in the calculation)
+    * @return {number} floor(val+epsilon)
     */
-    fuzzyFloor: function (val, epsilon) ***REMOVED***
+    fuzzyFloor: function (val, epsilon) {
 
-        if (epsilon === undefined) ***REMOVED*** epsilon = 0.0001; ***REMOVED***
+        if (epsilon === undefined) { epsilon = 0.0001; }
 
         return Math.floor(val + epsilon);
 
-    ***REMOVED***,
+    },
 
     /**
     * Averages all values passed to the function and returns the result.
     *
     * @method Phaser.Math#average
-    * @params ***REMOVED***...number***REMOVED*** The numbers to average
-    * @return ***REMOVED***number***REMOVED*** The average of all given values.
+    * @params {...number} The numbers to average
+    * @return {number} The average of all given values.
     */
-    average: function () ***REMOVED***
+    average: function () {
 
         var sum = 0;
         var len = arguments.length;
 
         for (var i = 0; i < len; i++)
-        ***REMOVED***
+        {
             sum += (+arguments[i]);
-        ***REMOVED***
+        }
 
         return sum / len;
 
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.Math#shear
-    * @param ***REMOVED***number***REMOVED*** n
-    * @return ***REMOVED***number***REMOVED*** n mod 1
+    * @param {number} n
+    * @return {number} n mod 1
     */
-    shear: function (n) ***REMOVED***
+    shear: function (n) {
 
         return n % 1;
 
-    ***REMOVED***,
+    },
 
     /**
     * Snap a value to nearest grid slice, using rounding.
@@ -158,25 +158,25 @@ Phaser.Math = ***REMOVED***
     * Example: if you have an interval gap of 5 and a position of 12... you will snap to 10 whereas 14 will snap to 15.
     *
     * @method Phaser.Math#snapTo
-    * @param ***REMOVED***number***REMOVED*** input - The value to snap.
-    * @param ***REMOVED***number***REMOVED*** gap - The interval gap of the grid.
-    * @param ***REMOVED***number***REMOVED*** [start=0] - Optional starting offset for gap.
-    * @return ***REMOVED***number***REMOVED*** The snapped value.
+    * @param {number} input - The value to snap.
+    * @param {number} gap - The interval gap of the grid.
+    * @param {number} [start=0] - Optional starting offset for gap.
+    * @return {number} The snapped value.
     */
-    snapTo: function (input, gap, start) ***REMOVED***
+    snapTo: function (input, gap, start) {
 
-        if (start === undefined) ***REMOVED*** start = 0; ***REMOVED***
+        if (start === undefined) { start = 0; }
 
-        if (gap === 0) ***REMOVED***
+        if (gap === 0) {
             return input;
-        ***REMOVED***
+        }
 
         input -= start;
         input = gap * Math.round(input / gap);
 
         return start + input;
 
-    ***REMOVED***,
+    },
 
     /**
     * Snap a value to nearest grid slice, using floor.
@@ -185,25 +185,25 @@ Phaser.Math = ***REMOVED***
     * As will 14 snap to 10... but 16 will snap to 15.
     *
     * @method Phaser.Math#snapToFloor
-    * @param ***REMOVED***number***REMOVED*** input - The value to snap.
-    * @param ***REMOVED***number***REMOVED*** gap - The interval gap of the grid.
-    * @param ***REMOVED***number***REMOVED*** [start=0] - Optional starting offset for gap.
-    * @return ***REMOVED***number***REMOVED*** The snapped value.
+    * @param {number} input - The value to snap.
+    * @param {number} gap - The interval gap of the grid.
+    * @param {number} [start=0] - Optional starting offset for gap.
+    * @return {number} The snapped value.
     */
-    snapToFloor: function (input, gap, start) ***REMOVED***
+    snapToFloor: function (input, gap, start) {
 
-        if (start === undefined) ***REMOVED*** start = 0; ***REMOVED***
+        if (start === undefined) { start = 0; }
 
-        if (gap === 0) ***REMOVED***
+        if (gap === 0) {
             return input;
-        ***REMOVED***
+        }
 
         input -= start;
         input = gap * Math.floor(input / gap);
 
         return start + input;
 
-    ***REMOVED***,
+    },
 
     /**
     * Snap a value to nearest grid slice, using ceil.
@@ -212,25 +212,25 @@ Phaser.Math = ***REMOVED***
     * As will 14 will snap to 15... but 16 will snap to 20.
     *
     * @method Phaser.Math#snapToCeil
-    * @param ***REMOVED***number***REMOVED*** input - The value to snap.
-    * @param ***REMOVED***number***REMOVED*** gap - The interval gap of the grid.
-    * @param ***REMOVED***number***REMOVED*** [start=0] - Optional starting offset for gap.
-    * @return ***REMOVED***number***REMOVED*** The snapped value.
+    * @param {number} input - The value to snap.
+    * @param {number} gap - The interval gap of the grid.
+    * @param {number} [start=0] - Optional starting offset for gap.
+    * @return {number} The snapped value.
     */
-    snapToCeil: function (input, gap, start) ***REMOVED***
+    snapToCeil: function (input, gap, start) {
 
-        if (start === undefined) ***REMOVED*** start = 0; ***REMOVED***
+        if (start === undefined) { start = 0; }
 
-        if (gap === 0) ***REMOVED***
+        if (gap === 0) {
             return input;
-        ***REMOVED***
+        }
 
         input -= start;
         input = gap * Math.ceil(input / gap);
 
         return start + input;
 
-    ***REMOVED***,
+    },
 
     /**
     * Round to some place comparative to a `base`, default is 10 for decimal place.
@@ -262,114 +262,114 @@ Phaser.Math = ***REMOVED***
     * because we are rounding 100011.1011011011011011 which rounds up.
     *
     * @method Phaser.Math#roundTo
-    * @param ***REMOVED***number***REMOVED*** value - The value to round.
-    * @param ***REMOVED***number***REMOVED*** [place=0] - The place to round to.
-    * @param ***REMOVED***number***REMOVED*** [base=10] - The base to round in. Default is 10 for decimal.
-    * @return ***REMOVED***number***REMOVED*** The rounded value.
+    * @param {number} value - The value to round.
+    * @param {number} [place=0] - The place to round to.
+    * @param {number} [base=10] - The base to round in. Default is 10 for decimal.
+    * @return {number} The rounded value.
     */
-    roundTo: function (value, place, base) ***REMOVED***
+    roundTo: function (value, place, base) {
 
-        if (place === undefined) ***REMOVED*** place = 0; ***REMOVED***
-        if (base === undefined) ***REMOVED*** base = 10; ***REMOVED***
+        if (place === undefined) { place = 0; }
+        if (base === undefined) { base = 10; }
 
         var p = Math.pow(base, -place);
 
         return Math.round(value * p) / p;
 
-    ***REMOVED***,
+    },
 
     /**
     * Floors to some place comparative to a `base`, default is 10 for decimal place.
     * The `place` is represented by the power applied to `base` to get that place.
     * 
     * @method Phaser.Math#floorTo
-    * @param ***REMOVED***number***REMOVED*** value - The value to round.
-    * @param ***REMOVED***number***REMOVED*** [place=0] - The place to round to.
-    * @param ***REMOVED***number***REMOVED*** [base=10] - The base to round in. Default is 10 for decimal.
-    * @return ***REMOVED***number***REMOVED*** The rounded value.
+    * @param {number} value - The value to round.
+    * @param {number} [place=0] - The place to round to.
+    * @param {number} [base=10] - The base to round in. Default is 10 for decimal.
+    * @return {number} The rounded value.
     */
-    floorTo: function (value, place, base) ***REMOVED***
+    floorTo: function (value, place, base) {
 
-        if (place === undefined) ***REMOVED*** place = 0; ***REMOVED***
-        if (base === undefined) ***REMOVED*** base = 10; ***REMOVED***
+        if (place === undefined) { place = 0; }
+        if (base === undefined) { base = 10; }
 
         var p = Math.pow(base, -place);
 
         return Math.floor(value * p) / p;
 
-    ***REMOVED***,
+    },
 
     /**
     * Ceils to some place comparative to a `base`, default is 10 for decimal place.
     * The `place` is represented by the power applied to `base` to get that place.
     * 
     * @method Phaser.Math#ceilTo
-    * @param ***REMOVED***number***REMOVED*** value - The value to round.
-    * @param ***REMOVED***number***REMOVED*** [place=0] - The place to round to.
-    * @param ***REMOVED***number***REMOVED*** [base=10] - The base to round in. Default is 10 for decimal.
-    * @return ***REMOVED***number***REMOVED*** The rounded value.
+    * @param {number} value - The value to round.
+    * @param {number} [place=0] - The place to round to.
+    * @param {number} [base=10] - The base to round in. Default is 10 for decimal.
+    * @return {number} The rounded value.
     */
-    ceilTo: function (value, place, base) ***REMOVED***
+    ceilTo: function (value, place, base) {
 
-        if (place === undefined) ***REMOVED*** place = 0; ***REMOVED***
-        if (base === undefined) ***REMOVED*** base = 10; ***REMOVED***
+        if (place === undefined) { place = 0; }
+        if (base === undefined) { base = 10; }
 
         var p = Math.pow(base, -place);
 
         return Math.ceil(value * p) / p;
 
-    ***REMOVED***,
+    },
 
     /**
     * Rotates currentAngle towards targetAngle, taking the shortest rotation distance.
     * The lerp argument is the amount to rotate by in this call.
     * 
     * @method Phaser.Math#rotateToAngle
-    * @param ***REMOVED***number***REMOVED*** currentAngle - The current angle, in radians.
-    * @param ***REMOVED***number***REMOVED*** targetAngle - The target angle to rotate to, in radians.
-    * @param ***REMOVED***number***REMOVED*** [lerp=0.05] - The lerp value to add to the current angle.
-    * @return ***REMOVED***number***REMOVED*** The adjusted angle.
+    * @param {number} currentAngle - The current angle, in radians.
+    * @param {number} targetAngle - The target angle to rotate to, in radians.
+    * @param {number} [lerp=0.05] - The lerp value to add to the current angle.
+    * @return {number} The adjusted angle.
     */
-    rotateToAngle: function (currentAngle, targetAngle, lerp) ***REMOVED***
+    rotateToAngle: function (currentAngle, targetAngle, lerp) {
 
-        if (lerp === undefined) ***REMOVED*** lerp = 0.05; ***REMOVED***
+        if (lerp === undefined) { lerp = 0.05; }
 
         if (currentAngle === targetAngle)
-        ***REMOVED***
+        {
             return currentAngle;
-        ***REMOVED***
+        }
 
         if (Math.abs(targetAngle - currentAngle) <= lerp || Math.abs(targetAngle - currentAngle) >= (Phaser.Math.PI2 - lerp))
-        ***REMOVED***
+        {
             currentAngle = targetAngle;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             if (Math.abs(targetAngle - currentAngle) > Math.PI)
-            ***REMOVED***
+            {
                 if (targetAngle < currentAngle)
-                ***REMOVED***
+                {
                     targetAngle += Phaser.Math.PI2;
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     targetAngle -= Phaser.Math.PI2;
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
 
             if (targetAngle > currentAngle)
-            ***REMOVED***
+            {
                 currentAngle += lerp;
-            ***REMOVED***
+            }
             else if (targetAngle < currentAngle)
-            ***REMOVED***
+            {
                 currentAngle -= lerp;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return currentAngle;
 
-    ***REMOVED***,
+    },
 
     /**
     * Gets the shortest angle between `angle1` and `angle2`.
@@ -382,40 +382,40 @@ Phaser.Math = ***REMOVED***
     * a clockwise rotation.
     * 
     * @method Phaser.Math#getShortestAngle
-    * @param ***REMOVED***number***REMOVED*** angle1 - The first angle. In the range -180 to 180.
-    * @param ***REMOVED***number***REMOVED*** angle2 - The second angle. In the range -180 to 180.
-    * @return ***REMOVED***number***REMOVED*** The shortest angle, in degrees. If greater than zero it's a counter-clockwise rotation.
+    * @param {number} angle1 - The first angle. In the range -180 to 180.
+    * @param {number} angle2 - The second angle. In the range -180 to 180.
+    * @return {number} The shortest angle, in degrees. If greater than zero it's a counter-clockwise rotation.
     */
-    getShortestAngle: function (angle1, angle2) ***REMOVED***
+    getShortestAngle: function (angle1, angle2) {
 
         var difference = angle2 - angle1;
 
         if (difference === 0)
-        ***REMOVED***
+        {
             return 0;
-        ***REMOVED***
+        }
 
         var times = Math.floor((difference - (-180)) / 360);
 
         return difference - (times * 360);
 
-    ***REMOVED***,
+    },
 
     /**
     * Find the angle of a segment from (x1, y1) -> (x2, y2).
     * 
     * @method Phaser.Math#angleBetween
-    * @param ***REMOVED***number***REMOVED*** x1 - The x coordinate of the first value.
-    * @param ***REMOVED***number***REMOVED*** y1 - The y coordinate of the first value.
-    * @param ***REMOVED***number***REMOVED*** x2 - The x coordinate of the second value.
-    * @param ***REMOVED***number***REMOVED*** y2 - The y coordinate of the second value.
-    * @return ***REMOVED***number***REMOVED*** The angle, in radians.
+    * @param {number} x1 - The x coordinate of the first value.
+    * @param {number} y1 - The y coordinate of the first value.
+    * @param {number} x2 - The x coordinate of the second value.
+    * @param {number} y2 - The y coordinate of the second value.
+    * @return {number} The angle, in radians.
     */
-    angleBetween: function (x1, y1, x2, y2) ***REMOVED***
+    angleBetween: function (x1, y1, x2, y2) {
 
         return Math.atan2(y2 - y1, x2 - x1);
 
-    ***REMOVED***,
+    },
 
     /**
     * Find the angle of a segment from (x1, y1) -> (x2, y2).
@@ -424,99 +424,99 @@ Phaser.Math = ***REMOVED***
     * down the screen.
     *
     * @method Phaser.Math#angleBetweenY
-    * @param ***REMOVED***number***REMOVED*** x1 - The x coordinate of the first value.
-    * @param ***REMOVED***number***REMOVED*** y1 - The y coordinate of the first value.
-    * @param ***REMOVED***number***REMOVED*** x2 - The x coordinate of the second value.
-    * @param ***REMOVED***number***REMOVED*** y2 - The y coordinate of the second value.
-    * @return ***REMOVED***number***REMOVED*** The angle, in radians.
+    * @param {number} x1 - The x coordinate of the first value.
+    * @param {number} y1 - The y coordinate of the first value.
+    * @param {number} x2 - The x coordinate of the second value.
+    * @param {number} y2 - The y coordinate of the second value.
+    * @return {number} The angle, in radians.
     */
-    angleBetweenY: function (x1, y1, x2, y2) ***REMOVED***
+    angleBetweenY: function (x1, y1, x2, y2) {
 
         return Math.atan2(x2 - x1, y2 - y1);
 
-    ***REMOVED***,
+    },
 
     /**
     * Find the angle of a segment from (point1.x, point1.y) -> (point2.x, point2.y).
     * 
     * @method Phaser.Math#angleBetweenPoints
-    * @param ***REMOVED***Phaser.Point***REMOVED*** point1 - The first point.
-    * @param ***REMOVED***Phaser.Point***REMOVED*** point2 - The second point.
-    * @return ***REMOVED***number***REMOVED*** The angle between the two points, in radians.
+    * @param {Phaser.Point} point1 - The first point.
+    * @param {Phaser.Point} point2 - The second point.
+    * @return {number} The angle between the two points, in radians.
     */
-    angleBetweenPoints: function (point1, point2) ***REMOVED***
+    angleBetweenPoints: function (point1, point2) {
 
         return Math.atan2(point2.y - point1.y, point2.x - point1.x);
 
-    ***REMOVED***,
+    },
 
     /**
     * Find the angle of a segment from (point1.x, point1.y) -> (point2.x, point2.y).
     * @method Phaser.Math#angleBetweenPointsY
-    * @param ***REMOVED***Phaser.Point***REMOVED*** point1
-    * @param ***REMOVED***Phaser.Point***REMOVED*** point2
-    * @return ***REMOVED***number***REMOVED*** The angle, in radians.
+    * @param {Phaser.Point} point1
+    * @param {Phaser.Point} point2
+    * @return {number} The angle, in radians.
     */
-    angleBetweenPointsY: function (point1, point2) ***REMOVED***
+    angleBetweenPointsY: function (point1, point2) {
 
         return Math.atan2(point2.x - point1.x, point2.y - point1.y);
 
-    ***REMOVED***,
+    },
 
     /**
     * Reverses an angle.
     * @method Phaser.Math#reverseAngle
-    * @param ***REMOVED***number***REMOVED*** angleRad - The angle to reverse, in radians.
-    * @return ***REMOVED***number***REMOVED*** The reverse angle, in radians.
+    * @param {number} angleRad - The angle to reverse, in radians.
+    * @return {number} The reverse angle, in radians.
     */
-    reverseAngle: function (angleRad) ***REMOVED***
+    reverseAngle: function (angleRad) {
 
         return this.normalizeAngle(angleRad + Math.PI, true);
 
-    ***REMOVED***,
+    },
 
     /**
     * Normalizes an angle to the [0,2pi) range.
     * @method Phaser.Math#normalizeAngle
-    * @param ***REMOVED***number***REMOVED*** angleRad - The angle to normalize, in radians.
-    * @return ***REMOVED***number***REMOVED*** The angle, fit within the [0,2pi] range, in radians.
+    * @param {number} angleRad - The angle to normalize, in radians.
+    * @return {number} The angle, fit within the [0,2pi] range, in radians.
     */
-    normalizeAngle: function (angleRad) ***REMOVED***
+    normalizeAngle: function (angleRad) {
 
         angleRad = angleRad % (2 * Math.PI);
         return angleRad >= 0 ? angleRad : angleRad + 2 * Math.PI;
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds the given amount to the value, but never lets the value go over the specified maximum.
     *
     * @method Phaser.Math#maxAdd
-    * @param ***REMOVED***number***REMOVED*** value - The value to add the amount to.
-    * @param ***REMOVED***number***REMOVED*** amount - The amount to add to the value.
-    * @param ***REMOVED***number***REMOVED*** max - The maximum the value is allowed to be.
-    * @return ***REMOVED***number***REMOVED*** The new value.
+    * @param {number} value - The value to add the amount to.
+    * @param {number} amount - The amount to add to the value.
+    * @param {number} max - The maximum the value is allowed to be.
+    * @return {number} The new value.
     */
-    maxAdd: function (value, amount, max) ***REMOVED***
+    maxAdd: function (value, amount, max) {
 
         return Math.min(value + amount, max);
 
-    ***REMOVED***,
+    },
 
     /**
     * Subtracts the given amount from the value, but never lets the value go below the specified minimum.
     *
     * @method Phaser.Math#minSub
-    * @param ***REMOVED***number***REMOVED*** value - The base value.
-    * @param ***REMOVED***number***REMOVED*** amount - The amount to subtract from the base value.
-    * @param ***REMOVED***number***REMOVED*** min - The minimum the value is allowed to be.
-    * @return ***REMOVED***number***REMOVED*** The new value.
+    * @param {number} value - The base value.
+    * @param {number} amount - The amount to subtract from the base value.
+    * @param {number} min - The minimum the value is allowed to be.
+    * @return {number} The new value.
     */
-    minSub: function (value, amount, min) ***REMOVED***
+    minSub: function (value, amount, min) {
 
         return Math.max(value - amount, min);
 
-    ***REMOVED***,
+    },
 
     /**
     * Ensures that the value always stays between min and max, by wrapping the value around.
@@ -524,43 +524,43 @@ Phaser.Math = ***REMOVED***
     * If `max` is not larger than `min` the result is 0.
     *
     * @method Phaser.Math#wrap
-    * @param ***REMOVED***number***REMOVED*** value - The value to wrap.
-    * @param ***REMOVED***number***REMOVED*** min - The minimum the value is allowed to be.
-    * @param ***REMOVED***number***REMOVED*** max - The maximum the value is allowed to be, should be larger than `min`.
-    * @return ***REMOVED***number***REMOVED*** The wrapped value.
+    * @param {number} value - The value to wrap.
+    * @param {number} min - The minimum the value is allowed to be.
+    * @param {number} max - The maximum the value is allowed to be, should be larger than `min`.
+    * @return {number} The wrapped value.
     */
-    wrap: function (value, min, max) ***REMOVED***
+    wrap: function (value, min, max) {
 
         var range = max - min;
 
         if (range <= 0)
-        ***REMOVED***
+        {
             return 0;
-        ***REMOVED***
+        }
 
         var result = (value - min) % range;
 
         if (result < 0)
-        ***REMOVED***
+        {
             result += range;
-        ***REMOVED***
+        }
 
         return result + min;
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds value to amount and ensures that the result always stays between 0 and max, by wrapping the value around.
     *
-    * Values _must_ be positive integers, and are passed through Math.abs. See ***REMOVED***@link Phaser.Math#wrap***REMOVED*** for an alternative.
+    * Values _must_ be positive integers, and are passed through Math.abs. See {@link Phaser.Math#wrap} for an alternative.
     *
     * @method Phaser.Math#wrapValue
-    * @param ***REMOVED***number***REMOVED*** value - The value to add the amount to.
-    * @param ***REMOVED***number***REMOVED*** amount - The amount to add to the value.
-    * @param ***REMOVED***number***REMOVED*** max - The maximum the value is allowed to be.
-    * @return ***REMOVED***number***REMOVED*** The wrapped value.
+    * @param {number} value - The value to add the amount to.
+    * @param {number} amount - The amount to add to the value.
+    * @param {number} max - The maximum the value is allowed to be.
+    * @return {number} The wrapped value.
     */
-    wrapValue: function (value, amount, max) ***REMOVED***
+    wrapValue: function (value, amount, max) {
 
         var diff;
         value = Math.abs(value);
@@ -570,35 +570,35 @@ Phaser.Math = ***REMOVED***
 
         return diff;
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns true if the number given is odd.
     *
     * @method Phaser.Math#isOdd
-    * @param ***REMOVED***integer***REMOVED*** n - The number to check.
-    * @return ***REMOVED***boolean***REMOVED*** True if the given number is odd. False if the given number is even.
+    * @param {integer} n - The number to check.
+    * @return {boolean} True if the given number is odd. False if the given number is even.
     */
-    isOdd: function (n) ***REMOVED***
+    isOdd: function (n) {
 
         // Does not work with extremely large values
         return !!(n & 1);
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns true if the number given is even.
     *
     * @method Phaser.Math#isEven
-    * @param ***REMOVED***integer***REMOVED*** n - The number to check.
-    * @return ***REMOVED***boolean***REMOVED*** True if the given number is even. False if the given number is odd.
+    * @param {integer} n - The number to check.
+    * @return {boolean} True if the given number is even. False if the given number is odd.
     */
-    isEven: function (n) ***REMOVED***
+    isEven: function (n) {
 
         // Does not work with extremely large values
         return !(n & 1);
 
-    ***REMOVED***,
+    },
 
     /**
     * Variation of Math.min that can be passed either an array of numbers or the numbers as parameters.
@@ -606,31 +606,31 @@ Phaser.Math = ***REMOVED***
     * Prefer the standard `Math.min` function when appropriate.
     *
     * @method Phaser.Math#min
-    * @return ***REMOVED***number***REMOVED*** The lowest value from those given.
-    * @see ***REMOVED***@link http://jsperf.com/math-s-min-max-vs-homemade***REMOVED***
+    * @return {number} The lowest value from those given.
+    * @see {@link http://jsperf.com/math-s-min-max-vs-homemade}
     */
-    min: function () ***REMOVED***
+    min: function () {
 
         if (arguments.length === 1 && typeof arguments[0] === 'object')
-        ***REMOVED***
+        {
             var data = arguments[0];
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             var data = arguments;
-        ***REMOVED***
+        }
 
         for (var i = 1, min = 0, len = data.length; i < len; i++)
-        ***REMOVED***
+        {
             if (data[i] < data[min])
-            ***REMOVED***
+            {
                 min = i;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return data[min];
 
-    ***REMOVED***,
+    },
 
     /**
     * Variation of Math.max that can be passed either an array of numbers or the numbers as parameters.
@@ -638,294 +638,294 @@ Phaser.Math = ***REMOVED***
     * Prefer the standard `Math.max` function when appropriate.
     *
     * @method Phaser.Math#max
-    * @return ***REMOVED***number***REMOVED*** The largest value from those given.
-    * @see ***REMOVED***@link http://jsperf.com/math-s-min-max-vs-homemade***REMOVED***
+    * @return {number} The largest value from those given.
+    * @see {@link http://jsperf.com/math-s-min-max-vs-homemade}
     */
-    max: function () ***REMOVED***
+    max: function () {
 
         if (arguments.length === 1 && typeof arguments[0] === 'object')
-        ***REMOVED***
+        {
             var data = arguments[0];
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             var data = arguments;
-        ***REMOVED***
+        }
 
         for (var i = 1, max = 0, len = data.length; i < len; i++)
-        ***REMOVED***
+        {
             if (data[i] > data[max])
-            ***REMOVED***
+            {
                 max = i;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return data[max];
 
-    ***REMOVED***,
+    },
 
     /**
     * Variation of Math.min that can be passed a property and either an array of objects or the objects as parameters.
     * It will find the lowest matching property value from the given objects.
     *
     * @method Phaser.Math#minProperty
-    * @return ***REMOVED***number***REMOVED*** The lowest value from those given.
+    * @return {number} The lowest value from those given.
     */
-    minProperty: function (property) ***REMOVED***
+    minProperty: function (property) {
 
         if (arguments.length === 2 && typeof arguments[1] === 'object')
-        ***REMOVED***
+        {
             var data = arguments[1];
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             var data = arguments.slice(1);
-        ***REMOVED***
+        }
 
         for (var i = 1, min = 0, len = data.length; i < len; i++)
-        ***REMOVED***
+        {
             if (data[i][property] < data[min][property])
-            ***REMOVED***
+            {
                 min = i;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return data[min][property];
 
-    ***REMOVED***,
+    },
 
     /**
     * Variation of Math.max that can be passed a property and either an array of objects or the objects as parameters.
     * It will find the largest matching property value from the given objects.
     *
     * @method Phaser.Math#maxProperty
-    * @return ***REMOVED***number***REMOVED*** The largest value from those given.
+    * @return {number} The largest value from those given.
     */
-    maxProperty: function (property) ***REMOVED***
+    maxProperty: function (property) {
 
         if (arguments.length === 2 && typeof arguments[1] === 'object')
-        ***REMOVED***
+        {
             var data = arguments[1];
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             var data = arguments.slice(1);
-        ***REMOVED***
+        }
 
         for (var i = 1, max = 0, len = data.length; i < len; i++)
-        ***REMOVED***
+        {
             if (data[i][property] > data[max][property])
-            ***REMOVED***
+            {
                 max = i;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return data[max][property];
 
-    ***REMOVED***,
+    },
 
     /**
     * Keeps an angle value between -180 and +180; or -PI and PI if radians.
     *
     * @method Phaser.Math#wrapAngle
-    * @param ***REMOVED***number***REMOVED*** angle - The angle value to wrap
-    * @param ***REMOVED***boolean***REMOVED*** [radians=false] - Set to `true` if the angle is given in radians, otherwise degrees is expected.
-    * @return ***REMOVED***number***REMOVED*** The new angle value; will be the same as the input angle if it was within bounds.
+    * @param {number} angle - The angle value to wrap
+    * @param {boolean} [radians=false] - Set to `true` if the angle is given in radians, otherwise degrees is expected.
+    * @return {number} The new angle value; will be the same as the input angle if it was within bounds.
     */
-    wrapAngle: function (angle, radians) ***REMOVED***
+    wrapAngle: function (angle, radians) {
 
         return radians ? this.wrap(angle, -Math.PI, Math.PI) : this.wrap(angle, -180, 180);
 
-    ***REMOVED***,
+    },
 
     /**
     * A Linear Interpolation Method, mostly used by Phaser.Tween.
     *
     * @method Phaser.Math#linearInterpolation
-    * @param ***REMOVED***Array***REMOVED*** v - The input array of values to interpolate between.
-    * @param ***REMOVED***number***REMOVED*** k - The percentage of interpolation, between 0 and 1.
-    * @return ***REMOVED***number***REMOVED*** The interpolated value
+    * @param {Array} v - The input array of values to interpolate between.
+    * @param {number} k - The percentage of interpolation, between 0 and 1.
+    * @return {number} The interpolated value
     */
-    linearInterpolation: function (v, k) ***REMOVED***
+    linearInterpolation: function (v, k) {
 
         var m = v.length - 1;
         var f = m * k;
         var i = Math.floor(f);
 
         if (k < 0)
-        ***REMOVED***
+        {
             return this.linear(v[0], v[1], f);
-        ***REMOVED***
+        }
 
         if (k > 1)
-        ***REMOVED***
+        {
             return this.linear(v[m], v[m - 1], m - f);
-        ***REMOVED***
+        }
 
         return this.linear(v[i], v[i + 1 > m ? m : i + 1], f - i);
 
-    ***REMOVED***,
+    },
 
     /**
     * A Bezier Interpolation Method, mostly used by Phaser.Tween.
     *
     * @method Phaser.Math#bezierInterpolation
-    * @param ***REMOVED***Array***REMOVED*** v - The input array of values to interpolate between.
-    * @param ***REMOVED***number***REMOVED*** k - The percentage of interpolation, between 0 and 1.
-    * @return ***REMOVED***number***REMOVED*** The interpolated value
+    * @param {Array} v - The input array of values to interpolate between.
+    * @param {number} k - The percentage of interpolation, between 0 and 1.
+    * @return {number} The interpolated value
     */
-    bezierInterpolation: function (v, k) ***REMOVED***
+    bezierInterpolation: function (v, k) {
 
         var b = 0;
         var n = v.length - 1;
 
         for (var i = 0; i <= n; i++)
-        ***REMOVED***
+        {
             b += Math.pow(1 - k, n - i) * Math.pow(k, i) * v[i] * this.bernstein(n, i);
-        ***REMOVED***
+        }
 
         return b;
 
-    ***REMOVED***,
+    },
 
     /**
     * A Catmull Rom Interpolation Method, mostly used by Phaser.Tween.
     *
     * @method Phaser.Math#catmullRomInterpolation
-    * @param ***REMOVED***Array***REMOVED*** v - The input array of values to interpolate between.
-    * @param ***REMOVED***number***REMOVED*** k - The percentage of interpolation, between 0 and 1.
-    * @return ***REMOVED***number***REMOVED*** The interpolated value
+    * @param {Array} v - The input array of values to interpolate between.
+    * @param {number} k - The percentage of interpolation, between 0 and 1.
+    * @return {number} The interpolated value
     */
-    catmullRomInterpolation: function (v, k) ***REMOVED***
+    catmullRomInterpolation: function (v, k) {
 
         var m = v.length - 1;
         var f = m * k;
         var i = Math.floor(f);
 
         if (v[0] === v[m])
-        ***REMOVED***
+        {
             if (k < 0)
-            ***REMOVED***
+            {
                 i = Math.floor(f = m * (1 + k));
-            ***REMOVED***
+            }
 
             return this.catmullRom(v[(i - 1 + m) % m], v[i], v[(i + 1) % m], v[(i + 2) % m], f - i);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             if (k < 0)
-            ***REMOVED***
+            {
                 return v[0] - (this.catmullRom(v[0], v[0], v[1], v[1], -f) - v[0]);
-            ***REMOVED***
+            }
 
             if (k > 1)
-            ***REMOVED***
+            {
                 return v[m] - (this.catmullRom(v[m], v[m], v[m - 1], v[m - 1], f - m) - v[m]);
-            ***REMOVED***
+            }
 
             return this.catmullRom(v[i ? i - 1 : 0], v[i], v[m < i + 1 ? m : i + 1], v[m < i + 2 ? m : i + 2], f - i);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Calculates a linear (interpolation) value over t.
     *
     * @method Phaser.Math#linear
-    * @param ***REMOVED***number***REMOVED*** p0
-    * @param ***REMOVED***number***REMOVED*** p1
-    * @param ***REMOVED***number***REMOVED*** t - A value between 0 and 1.
-    * @return ***REMOVED***number***REMOVED***
+    * @param {number} p0
+    * @param {number} p1
+    * @param {number} t - A value between 0 and 1.
+    * @return {number}
     */
-    linear: function (p0, p1, t) ***REMOVED***
+    linear: function (p0, p1, t) {
 
         return (p1 - p0) * t + p0;
 
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.Math#bernstein
     * @protected
-    * @param ***REMOVED***number***REMOVED*** n
-    * @param ***REMOVED***number***REMOVED*** i
-    * @return ***REMOVED***number***REMOVED***
+    * @param {number} n
+    * @param {number} i
+    * @return {number}
     */
-    bernstein: function (n, i) ***REMOVED***
+    bernstein: function (n, i) {
 
         return this.factorial(n) / this.factorial(i) / this.factorial(n - i);
 
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.Math#factorial
-    * @param ***REMOVED***number***REMOVED*** value - the number you want to evaluate
-    * @return ***REMOVED***number***REMOVED***
+    * @param {number} value - the number you want to evaluate
+    * @return {number}
     */
-    factorial: function (value) ***REMOVED***
+    factorial: function (value) {
 
         if (value === 0)
-        ***REMOVED***
+        {
             return 1;
-        ***REMOVED***
+        }
 
         var res = value;
 
         while(--value)
-        ***REMOVED***
+        {
             res *= value;
-        ***REMOVED***
+        }
 
         return res;
 
-    ***REMOVED***,
+    },
 
     /**
     * Calculates a catmum rom value.
     *
     * @method Phaser.Math#catmullRom
     * @protected
-    * @param ***REMOVED***number***REMOVED*** p0
-    * @param ***REMOVED***number***REMOVED*** p1
-    * @param ***REMOVED***number***REMOVED*** p2
-    * @param ***REMOVED***number***REMOVED*** p3
-    * @param ***REMOVED***number***REMOVED*** t
-    * @return ***REMOVED***number***REMOVED***
+    * @param {number} p0
+    * @param {number} p1
+    * @param {number} p2
+    * @param {number} p3
+    * @param {number} t
+    * @return {number}
     */
-    catmullRom: function (p0, p1, p2, p3, t) ***REMOVED***
+    catmullRom: function (p0, p1, p2, p3, t) {
 
         var v0 = (p2 - p0) * 0.5, v1 = (p3 - p1) * 0.5, t2 = t * t, t3 = t * t2;
 
         return (2 * p1 - 2 * p2 + v0 + v1) * t3 + (-3 * p1 + 3 * p2 - 2 * v0 - v1) * t2 + v0 * t + p1;
 
-    ***REMOVED***,
+    },
 
     /**
     * The absolute difference between two values.
     *
     * @method Phaser.Math#difference
-    * @param ***REMOVED***number***REMOVED*** a - The first value to check.
-    * @param ***REMOVED***number***REMOVED*** b - The second value to check.
-    * @return ***REMOVED***number***REMOVED*** The absolute difference between the two values.
+    * @param {number} a - The first value to check.
+    * @param {number} b - The second value to check.
+    * @return {number} The absolute difference between the two values.
     */
-    difference: function (a, b) ***REMOVED***
+    difference: function (a, b) {
 
         return Math.abs(a - b);
 
-    ***REMOVED***,
+    },
 
     /**
     * Round to the next whole number _away_ from zero.
     *
     * @method Phaser.Math#roundAwayFromZero
-    * @param ***REMOVED***number***REMOVED*** value - Any number.
-    * @return ***REMOVED***integer***REMOVED*** The rounded value of that number.
+    * @param {number} value - Any number.
+    * @return {integer} The rounded value of that number.
     */
-    roundAwayFromZero: function (value) ***REMOVED***
+    roundAwayFromZero: function (value) {
 
         // "Opposite" of truncate.
         return (value > 0) ? Math.ceil(value) : Math.floor(value);
 
-    ***REMOVED***,
+    },
 
     /**
     * Generate a sine and cosine table simultaneously and extremely quickly.
@@ -934,17 +934,17 @@ Phaser.Math = ***REMOVED***
     * Code based on research by Franky of scene.at
     *
     * @method Phaser.Math#sinCosGenerator
-    * @param ***REMOVED***number***REMOVED*** length - The length of the wave
-    * @param ***REMOVED***number***REMOVED*** sinAmplitude - The amplitude to apply to the sine table (default 1.0) if you need values between say -+ 125 then give 125 as the value
-    * @param ***REMOVED***number***REMOVED*** cosAmplitude - The amplitude to apply to the cosine table (default 1.0) if you need values between say -+ 125 then give 125 as the value
-    * @param ***REMOVED***number***REMOVED*** frequency  - The frequency of the sine and cosine table data
-    * @return ***REMOVED******REMOVED***sin:number[], cos:number[]***REMOVED******REMOVED*** Returns the table data.
+    * @param {number} length - The length of the wave
+    * @param {number} sinAmplitude - The amplitude to apply to the sine table (default 1.0) if you need values between say -+ 125 then give 125 as the value
+    * @param {number} cosAmplitude - The amplitude to apply to the cosine table (default 1.0) if you need values between say -+ 125 then give 125 as the value
+    * @param {number} frequency  - The frequency of the sine and cosine table data
+    * @return {{sin:number[], cos:number[]}} Returns the table data.
     */
-    sinCosGenerator: function (length, sinAmplitude, cosAmplitude, frequency) ***REMOVED***
+    sinCosGenerator: function (length, sinAmplitude, cosAmplitude, frequency) {
 
-        if (sinAmplitude === undefined) ***REMOVED*** sinAmplitude = 1.0; ***REMOVED***
-        if (cosAmplitude === undefined) ***REMOVED*** cosAmplitude = 1.0; ***REMOVED***
-        if (frequency === undefined) ***REMOVED*** frequency = 1.0; ***REMOVED***
+        if (sinAmplitude === undefined) { sinAmplitude = 1.0; }
+        if (cosAmplitude === undefined) { cosAmplitude = 1.0; }
+        if (frequency === undefined) { frequency = 1.0; }
 
         var sin = sinAmplitude;
         var cos = cosAmplitude;
@@ -953,7 +953,7 @@ Phaser.Math = ***REMOVED***
         var cosTable = [];
         var sinTable = [];
 
-        for (var c = 0; c < length; c++) ***REMOVED***
+        for (var c = 0; c < length; c++) {
 
             cos -= sin * frq;
             sin += cos * frq;
@@ -961,154 +961,154 @@ Phaser.Math = ***REMOVED***
             cosTable[c] = cos;
             sinTable[c] = sin;
 
-        ***REMOVED***
+        }
 
-        return ***REMOVED*** sin: sinTable, cos: cosTable, length: length ***REMOVED***;
+        return { sin: sinTable, cos: cosTable, length: length };
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns the euclidian distance between the two given set of coordinates.
     *
     * @method Phaser.Math#distance
-    * @param ***REMOVED***number***REMOVED*** x1
-    * @param ***REMOVED***number***REMOVED*** y1
-    * @param ***REMOVED***number***REMOVED*** x2
-    * @param ***REMOVED***number***REMOVED*** y2
-    * @return ***REMOVED***number***REMOVED*** The distance between the two sets of coordinates.
+    * @param {number} x1
+    * @param {number} y1
+    * @param {number} x2
+    * @param {number} y2
+    * @return {number} The distance between the two sets of coordinates.
     */
-    distance: function (x1, y1, x2, y2) ***REMOVED***
+    distance: function (x1, y1, x2, y2) {
 
         var dx = x1 - x2;
         var dy = y1 - y2;
 
         return Math.sqrt(dx * dx + dy * dy);
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns the euclidean distance squared between the two given set of
     * coordinates (cuts out a square root operation before returning).
     *
     * @method Phaser.Math#distanceSq
-    * @param ***REMOVED***number***REMOVED*** x1
-    * @param ***REMOVED***number***REMOVED*** y1
-    * @param ***REMOVED***number***REMOVED*** x2
-    * @param ***REMOVED***number***REMOVED*** y2
-    * @return ***REMOVED***number***REMOVED*** The distance squared between the two sets of coordinates.
+    * @param {number} x1
+    * @param {number} y1
+    * @param {number} x2
+    * @param {number} y2
+    * @return {number} The distance squared between the two sets of coordinates.
     */
-    distanceSq: function (x1, y1, x2, y2) ***REMOVED***
+    distanceSq: function (x1, y1, x2, y2) {
 
         var dx = x1 - x2;
         var dy = y1 - y2;
 
         return dx * dx + dy * dy;
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns the distance between the two given set of coordinates at the power given.
     *
     * @method Phaser.Math#distancePow
-    * @param ***REMOVED***number***REMOVED*** x1
-    * @param ***REMOVED***number***REMOVED*** y1
-    * @param ***REMOVED***number***REMOVED*** x2
-    * @param ***REMOVED***number***REMOVED*** y2
-    * @param ***REMOVED***number***REMOVED*** [pow=2]
-    * @return ***REMOVED***number***REMOVED*** The distance between the two sets of coordinates.
+    * @param {number} x1
+    * @param {number} y1
+    * @param {number} x2
+    * @param {number} y2
+    * @param {number} [pow=2]
+    * @return {number} The distance between the two sets of coordinates.
     */
-    distancePow: function (x1, y1, x2, y2, pow) ***REMOVED***
+    distancePow: function (x1, y1, x2, y2, pow) {
 
-        if (pow === undefined) ***REMOVED*** pow = 2; ***REMOVED***
+        if (pow === undefined) { pow = 2; }
 
         return Math.sqrt(Math.pow(x2 - x1, pow) + Math.pow(y2 - y1, pow));
 
-    ***REMOVED***,
+    },
 
     /**
     * Force a value within the boundaries by clamping it to the range `min`, `max`.
     *
     * @method Phaser.Math#clamp
-    * @param ***REMOVED***float***REMOVED*** v - The value to be clamped.
-    * @param ***REMOVED***float***REMOVED*** min - The minimum bounds.
-    * @param ***REMOVED***float***REMOVED*** max - The maximum bounds.
-    * @return ***REMOVED***number***REMOVED*** The clamped value.
+    * @param {float} v - The value to be clamped.
+    * @param {float} min - The minimum bounds.
+    * @param {float} max - The maximum bounds.
+    * @return {number} The clamped value.
     */
-    clamp: function (v, min, max) ***REMOVED***
+    clamp: function (v, min, max) {
 
         if (v < min)
-        ***REMOVED***
+        {
             return min;
-        ***REMOVED***
+        }
         else if (max < v)
-        ***REMOVED***
+        {
             return max;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return v;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Clamp `x` to the range `[a, Infinity)`.
     * Roughly the same as `Math.max(x, a)`, except for NaN handling.
     *
     * @method Phaser.Math#clampBottom
-    * @param ***REMOVED***number***REMOVED*** x
-    * @param ***REMOVED***number***REMOVED*** a
-    * @return ***REMOVED***number***REMOVED***
+    * @param {number} x
+    * @param {number} a
+    * @return {number}
     */
-    clampBottom: function (x, a) ***REMOVED***
+    clampBottom: function (x, a) {
 
         return x < a ? a : x;
 
-    ***REMOVED***,
+    },
 
     /**
     * Checks if two values are within the given tolerance of each other.
     *
     * @method Phaser.Math#within
-    * @param ***REMOVED***number***REMOVED*** a - The first number to check
-    * @param ***REMOVED***number***REMOVED*** b - The second number to check
-    * @param ***REMOVED***number***REMOVED*** tolerance - The tolerance. Anything equal to or less than this is considered within the range.
-    * @return ***REMOVED***boolean***REMOVED*** True if a is <= tolerance of b.
-    * @see ***REMOVED***@link Phaser.Math.fuzzyEqual***REMOVED***
+    * @param {number} a - The first number to check
+    * @param {number} b - The second number to check
+    * @param {number} tolerance - The tolerance. Anything equal to or less than this is considered within the range.
+    * @return {boolean} True if a is <= tolerance of b.
+    * @see {@link Phaser.Math.fuzzyEqual}
     */
-    within: function (a, b, tolerance) ***REMOVED***
+    within: function (a, b, tolerance) {
 
         return (Math.abs(a - b) <= tolerance);
 
-    ***REMOVED***,
+    },
 
     /**
     * Linear mapping from range <a1, a2> to range <b1, b2>
     *
     * @method Phaser.Math#mapLinear
-    * @param ***REMOVED***number***REMOVED*** x - The value to map
-    * @param ***REMOVED***number***REMOVED*** a1 - First endpoint of the range <a1, a2>
-    * @param ***REMOVED***number***REMOVED*** a2 - Final endpoint of the range <a1, a2>
-    * @param ***REMOVED***number***REMOVED*** b1 - First endpoint of the range <b1, b2>
-    * @param ***REMOVED***number***REMOVED*** b2 - Final endpoint of the range  <b1, b2>
-    * @return ***REMOVED***number***REMOVED***
+    * @param {number} x - The value to map
+    * @param {number} a1 - First endpoint of the range <a1, a2>
+    * @param {number} a2 - Final endpoint of the range <a1, a2>
+    * @param {number} b1 - First endpoint of the range <b1, b2>
+    * @param {number} b2 - Final endpoint of the range  <b1, b2>
+    * @return {number}
     */
-    mapLinear: function (x, a1, a2, b1, b2) ***REMOVED***
+    mapLinear: function (x, a1, a2, b1, b2) {
 
         return b1 + ( x - a1 ) * ( b2 - b1 ) / ( a2 - a1 );
 
-    ***REMOVED***,
+    },
 
     /**
     * Smoothstep function as detailed at http://en.wikipedia.org/wiki/Smoothstep
     *
     * @method Phaser.Math#smoothstep
-    * @param ***REMOVED***float***REMOVED*** x - The input value.
-    * @param ***REMOVED***float***REMOVED*** min - The left edge. Should be smaller than the right edge.
-    * @param ***REMOVED***float***REMOVED*** max - The right edge.
-    * @return ***REMOVED***float***REMOVED*** A value between 0 and 1.
+    * @param {float} x - The input value.
+    * @param {float} min - The left edge. Should be smaller than the right edge.
+    * @param {float} max - The right edge.
+    * @return {float} A value between 0 and 1.
     */
-    smoothstep: function (x, min, max) ***REMOVED***
+    smoothstep: function (x, min, max) {
 
         // Scale, bias and saturate x to 0..1 range
         x = Math.max(0, Math.min(1, (x - min) / (max - min)));
@@ -1116,24 +1116,24 @@ Phaser.Math = ***REMOVED***
         // Evaluate polynomial
         return x * x * (3 - 2 * x);
 
-    ***REMOVED***,
+    },
 
     /**
     * Smootherstep function as detailed at http://en.wikipedia.org/wiki/Smoothstep
     *
     * @method Phaser.Math#smootherstep
-    * @param ***REMOVED***float***REMOVED*** x - The input value.
-    * @param ***REMOVED***float***REMOVED*** min - The left edge. Should be smaller than the right edge.
-    * @param ***REMOVED***float***REMOVED*** max - The right edge.
-    * @return ***REMOVED***float***REMOVED*** A value between 0 and 1.
+    * @param {float} x - The input value.
+    * @param {float} min - The left edge. Should be smaller than the right edge.
+    * @param {float} max - The right edge.
+    * @return {float} A value between 0 and 1.
     */
-    smootherstep: function (x, min, max) ***REMOVED***
+    smootherstep: function (x, min, max) {
 
         x = Math.max(0, Math.min(1, (x - min) / (max - min)));
 
         return x * x * x * (x * (x * 6 - 15) + 10);
 
-    ***REMOVED***,
+    },
 
     /**
     * A value representing the sign of the value: -1 for negative, +1 for positive, 0 if value is 0.
@@ -1141,44 +1141,44 @@ Phaser.Math = ***REMOVED***
     * This works differently from `Math.sign` for values of NaN and -0, etc.
     *
     * @method Phaser.Math#sign
-    * @param ***REMOVED***number***REMOVED*** x
-    * @return ***REMOVED***integer***REMOVED*** An integer in ***REMOVED***-1, 0, 1***REMOVED***
+    * @param {number} x
+    * @return {integer} An integer in {-1, 0, 1}
     */
-    sign: function (x) ***REMOVED***
+    sign: function (x) {
 
         return ( x < 0 ) ? -1 : ( ( x > 0 ) ? 1 : 0 );
 
-    ***REMOVED***,
+    },
 
     /**
     * Work out what percentage value `a` is of value `b` using the given base.
     *
     * @method Phaser.Math#percent
-    * @param ***REMOVED***number***REMOVED*** a - The value to work out the percentage for.
-    * @param ***REMOVED***number***REMOVED*** b - The value you wish to get the percentage of.
-    * @param ***REMOVED***number***REMOVED*** [base=0] - The base value.
-    * @return ***REMOVED***number***REMOVED*** The percentage a is of b, between 0 and 1.
+    * @param {number} a - The value to work out the percentage for.
+    * @param {number} b - The value you wish to get the percentage of.
+    * @param {number} [base=0] - The base value.
+    * @return {number} The percentage a is of b, between 0 and 1.
     */
-    percent: function (a, b, base) ***REMOVED***
+    percent: function (a, b, base) {
 
-        if (base === undefined) ***REMOVED*** base = 0; ***REMOVED***
+        if (base === undefined) { base = 0; }
 
         if (a > b || base > b)
-        ***REMOVED***
+        {
             return 1;
-        ***REMOVED***
+        }
         else if (a < base || base > a)
-        ***REMOVED***
+        {
             return 0;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return (a - base) / b;
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 var degreeToRadiansFactor = Math.PI / 180;
 var radianToDegreesFactor = 180 / Math.PI;
@@ -1187,30 +1187,30 @@ var radianToDegreesFactor = 180 / Math.PI;
 * Convert degrees to radians.
 *
 * @method Phaser.Math#degToRad
-* @param ***REMOVED***number***REMOVED*** degrees - Angle in degrees.
-* @return ***REMOVED***number***REMOVED*** Angle in radians.
+* @param {number} degrees - Angle in degrees.
+* @return {number} Angle in radians.
 */
-Phaser.Math.degToRad = function degToRad (degrees) ***REMOVED***
+Phaser.Math.degToRad = function degToRad (degrees) {
     return degrees * degreeToRadiansFactor;
-***REMOVED***;
+};
 
 /**
 * Convert radians to degrees.
 *
 * @method Phaser.Math#radToDeg
-* @param ***REMOVED***number***REMOVED*** radians - Angle in radians.
-* @return ***REMOVED***number***REMOVED*** Angle in degrees
+* @param {number} radians - Angle in radians.
+* @return {number} Angle in degrees
 */
-Phaser.Math.radToDeg = function radToDeg (radians) ***REMOVED***
+Phaser.Math.radToDeg = function radToDeg (radians) {
     return radians * radianToDegreesFactor;
-***REMOVED***;
+};
 
 /* jshint noempty: false */
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1225,57 +1225,57 @@ Phaser.Math.radToDeg = function radToDeg (radians) ***REMOVED***
 *
 * @class Phaser.RandomDataGenerator
 * @constructor
-* @param ***REMOVED***any[]|string***REMOVED*** [seeds] - An array of values to use as the seed, or a generator state (from ***REMOVED***#state***REMOVED***).
+* @param {any[]|string} [seeds] - An array of values to use as the seed, or a generator state (from {#state}).
 */
-Phaser.RandomDataGenerator = function (seeds) ***REMOVED***
+Phaser.RandomDataGenerator = function (seeds) {
 
-    if (seeds === undefined) ***REMOVED*** seeds = []; ***REMOVED***
+    if (seeds === undefined) { seeds = []; }
 
     /**
-    * @property ***REMOVED***number***REMOVED*** c - Internal var.
+    * @property {number} c - Internal var.
     * @private
     */
     this.c = 1;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** s0 - Internal var.
+    * @property {number} s0 - Internal var.
     * @private
     */
     this.s0 = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** s1 - Internal var.
+    * @property {number} s1 - Internal var.
     * @private
     */
     this.s1 = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** s2 - Internal var.
+    * @property {number} s2 - Internal var.
     * @private
     */
     this.s2 = 0;
 
     if (typeof seeds === 'string')
-    ***REMOVED***
+    {
         this.state(seeds);
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         this.sow(seeds);
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
-Phaser.RandomDataGenerator.prototype = ***REMOVED***
+Phaser.RandomDataGenerator.prototype = {
 
     /**
     * Private random helper.
     *
     * @method Phaser.RandomDataGenerator#rnd
     * @private
-    * @return ***REMOVED***number***REMOVED***
+    * @return {number}
     */
-    rnd: function () ***REMOVED***
+    rnd: function () {
 
         var t = 2091639 * this.s0 + this.c * 2.3283064365386963e-10; // 2^-32
 
@@ -1285,7 +1285,7 @@ Phaser.RandomDataGenerator.prototype = ***REMOVED***
         this.s2 = t - this.c;
 
         return this.s2;
-    ***REMOVED***,
+    },
 
     /**
     * Reset the seed of the random data generator.
@@ -1293,9 +1293,9 @@ Phaser.RandomDataGenerator.prototype = ***REMOVED***
     * _Note_: the seed array is only processed up to the first `undefined` (or `null`) value, should such be present.
     *
     * @method Phaser.RandomDataGenerator#sow
-    * @param ***REMOVED***any[]***REMOVED*** seeds - The array of seeds: the `toString()` of each value is used.
+    * @param {any[]} seeds - The array of seeds: the `toString()` of each value is used.
     */
-    sow: function (seeds) ***REMOVED***
+    sow: function (seeds) {
 
         // Always reset to default seed
         this.s0 = this.hash(' ');
@@ -1304,13 +1304,13 @@ Phaser.RandomDataGenerator.prototype = ***REMOVED***
         this.c = 1;
 
         if (!seeds)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         // Apply any seeds
         for (var i = 0; i < seeds.length && (seeds[i] != null); i++)
-        ***REMOVED***
+        {
             var seed = seeds[i];
 
             this.s0 -= this.hash(seed);
@@ -1319,25 +1319,25 @@ Phaser.RandomDataGenerator.prototype = ***REMOVED***
             this.s1 += ~~(this.s1 < 0);
             this.s2 -= this.hash(seed);
             this.s2 += ~~(this.s2 < 0);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Internal method that creates a seed hash.
     *
     * @method Phaser.RandomDataGenerator#hash
     * @private
-    * @param ***REMOVED***any***REMOVED*** data
-    * @return ***REMOVED***number***REMOVED*** hashed value.
+    * @param {any} data
+    * @return {number} hashed value.
     */
-    hash: function (data) ***REMOVED***
+    hash: function (data) {
 
         var h, i, n;
         n = 0xefc8249d;
         data = data.toString();
 
-        for (i = 0; i < data.length; i++) ***REMOVED***
+        for (i = 0; i < data.length; i++) {
             n += data.charCodeAt(i);
             h = 0.02519603282416938 * n;
             n = h >>> 0;
@@ -1346,185 +1346,185 @@ Phaser.RandomDataGenerator.prototype = ***REMOVED***
             n = h >>> 0;
             h -= n;
             n += h * 0x100000000;// 2^32
-        ***REMOVED***
+        }
 
         return (n >>> 0) * 2.3283064365386963e-10;// 2^-32
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns a random integer between 0 and 2^32.
     *
     * @method Phaser.RandomDataGenerator#integer
-    * @return ***REMOVED***number***REMOVED*** A random integer between 0 and 2^32.
+    * @return {number} A random integer between 0 and 2^32.
     */
-    integer: function() ***REMOVED***
+    integer: function() {
 
         return this.rnd.apply(this) * 0x100000000;// 2^32
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns a random real number between 0 and 1.
     *
     * @method Phaser.RandomDataGenerator#frac
-    * @return ***REMOVED***number***REMOVED*** A random real number between 0 and 1.
+    * @return {number} A random real number between 0 and 1.
     */
-    frac: function() ***REMOVED***
+    frac: function() {
 
         return this.rnd.apply(this) + (this.rnd.apply(this) * 0x200000 | 0) * 1.1102230246251565e-16;   // 2^-53
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns a random real number between 0 and 2^32.
     *
     * @method Phaser.RandomDataGenerator#real
-    * @return ***REMOVED***number***REMOVED*** A random real number between 0 and 2^32.
+    * @return {number} A random real number between 0 and 2^32.
     */
-    real: function() ***REMOVED***
+    real: function() {
 
         return this.integer() + this.frac();
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns a random integer between and including min and max.
     *
     * @method Phaser.RandomDataGenerator#integerInRange
-    * @param ***REMOVED***number***REMOVED*** min - The minimum value in the range.
-    * @param ***REMOVED***number***REMOVED*** max - The maximum value in the range.
-    * @return ***REMOVED***number***REMOVED*** A random number between min and max.
+    * @param {number} min - The minimum value in the range.
+    * @param {number} max - The maximum value in the range.
+    * @return {number} A random number between min and max.
     */
-    integerInRange: function (min, max) ***REMOVED***
+    integerInRange: function (min, max) {
 
         return Math.floor(this.realInRange(0, max - min + 1) + min);
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns a random integer between and including min and max.
     * This method is an alias for RandomDataGenerator.integerInRange.
     *
     * @method Phaser.RandomDataGenerator#between
-    * @param ***REMOVED***number***REMOVED*** min - The minimum value in the range.
-    * @param ***REMOVED***number***REMOVED*** max - The maximum value in the range.
-    * @return ***REMOVED***number***REMOVED*** A random number between min and max.
+    * @param {number} min - The minimum value in the range.
+    * @param {number} max - The maximum value in the range.
+    * @return {number} A random number between min and max.
     */
-    between: function (min, max) ***REMOVED***
+    between: function (min, max) {
 
         return this.integerInRange(min, max);
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns a random real number between min and max.
     *
     * @method Phaser.RandomDataGenerator#realInRange
-    * @param ***REMOVED***number***REMOVED*** min - The minimum value in the range.
-    * @param ***REMOVED***number***REMOVED*** max - The maximum value in the range.
-    * @return ***REMOVED***number***REMOVED*** A random number between min and max.
+    * @param {number} min - The minimum value in the range.
+    * @param {number} max - The maximum value in the range.
+    * @return {number} A random number between min and max.
     */
-    realInRange: function (min, max) ***REMOVED***
+    realInRange: function (min, max) {
 
         return this.frac() * (max - min) + min;
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns a random real number between -1 and 1.
     *
     * @method Phaser.RandomDataGenerator#normal
-    * @return ***REMOVED***number***REMOVED*** A random real number between -1 and 1.
+    * @return {number} A random real number between -1 and 1.
     */
-    normal: function () ***REMOVED***
+    normal: function () {
 
         return 1 - 2 * this.frac();
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns a valid RFC4122 version4 ID hex string from https://gist.github.com/1308368
     *
     * @method Phaser.RandomDataGenerator#uuid
-    * @return ***REMOVED***string***REMOVED*** A valid RFC4122 version4 ID hex string
+    * @return {string} A valid RFC4122 version4 ID hex string
     */
-    uuid: function () ***REMOVED***
+    uuid: function () {
 
         var a = '';
         var b = '';
 
         for (b = a = ''; a++ < 36; b +=~a % 5 | a * 3&4 ? (a^15 ? 8^this.frac() * (a^20 ? 16 : 4) : 4).toString(16) : '-')
-        ***REMOVED***
-        ***REMOVED***
+        {
+        }
 
         return b;
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns a random member of `array`.
     *
     * @method Phaser.RandomDataGenerator#pick
-    * @param ***REMOVED***Array***REMOVED*** ary - An Array to pick a random member of.
-    * @return ***REMOVED***any***REMOVED*** A random member of the array.
+    * @param {Array} ary - An Array to pick a random member of.
+    * @return {any} A random member of the array.
     */
-    pick: function (ary) ***REMOVED***
+    pick: function (ary) {
 
         return ary[this.integerInRange(0, ary.length - 1)];
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns a sign to be used with multiplication operator.
     *
     * @method Phaser.RandomDataGenerator#sign
-    * @return ***REMOVED***number***REMOVED*** -1 or +1.
+    * @return {number} -1 or +1.
     */
-    sign: function () ***REMOVED***
+    sign: function () {
 
         return this.pick([-1, 1]);
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns a random member of `array`, favoring the earlier entries.
     *
     * @method Phaser.RandomDataGenerator#weightedPick
-    * @param ***REMOVED***Array***REMOVED*** ary - An Array to pick a random member of.
-    * @return ***REMOVED***any***REMOVED*** A random member of the array.
+    * @param {Array} ary - An Array to pick a random member of.
+    * @return {any} A random member of the array.
     */
-    weightedPick: function (ary) ***REMOVED***
+    weightedPick: function (ary) {
 
         return ary[~~(Math.pow(this.frac(), 2) * (ary.length - 1) + 0.5)];
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns a random timestamp between min and max, or between the beginning of 2000 and the end of 2020 if min and max aren't specified.
     *
     * @method Phaser.RandomDataGenerator#timestamp
-    * @param ***REMOVED***number***REMOVED*** min - The minimum value in the range.
-    * @param ***REMOVED***number***REMOVED*** max - The maximum value in the range.
-    * @return ***REMOVED***number***REMOVED*** A random timestamp between min and max.
+    * @param {number} min - The minimum value in the range.
+    * @param {number} max - The maximum value in the range.
+    * @return {number} A random timestamp between min and max.
     */
-    timestamp: function (min, max) ***REMOVED***
+    timestamp: function (min, max) {
 
         return this.realInRange(min || 946684800000, max || 1577862000000);
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns a random angle between -180 and 180.
     *
     * @method Phaser.RandomDataGenerator#angle
-    * @return ***REMOVED***number***REMOVED*** A random number between -180 and 180.
+    * @return {number} A random number between -180 and 180.
     */
-    angle: function() ***REMOVED***
+    angle: function() {
 
         return this.integerInRange(-180, 180);
 
-    ***REMOVED***,
+    },
 
     /**
     * Gets or Sets the state of the generator. This allows you to retain the values
@@ -1540,26 +1540,26 @@ Phaser.RandomDataGenerator.prototype = ***REMOVED***
     * `s0`, `s1` and `s2` values respectively, each comma-delimited. 
     *
     * @method Phaser.RandomDataGenerator#state
-    * @param ***REMOVED***string***REMOVED*** [state] - Generator state to be set.
-    * @return ***REMOVED***string***REMOVED*** The current state of the generator.
+    * @param {string} [state] - Generator state to be set.
+    * @return {string} The current state of the generator.
     */
-    state: function (state) ***REMOVED***
+    state: function (state) {
 
         if (typeof state === 'string' && state.match(/^!rnd/))
-        ***REMOVED***
+        {
             state = state.split(',');
 
             this.c = parseFloat(state[1]);
             this.s0 = parseFloat(state[2]);
             this.s1 = parseFloat(state[3]);
             this.s2 = parseFloat(state[4]);
-        ***REMOVED***
+        }
 
         return ['!rnd', this.c, this.s0, this.s1, this.s2].join(',');
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.RandomDataGenerator.prototype.constructor = Phaser.RandomDataGenerator;
 
@@ -1567,7 +1567,7 @@ Phaser.RandomDataGenerator.prototype.constructor = Phaser.RandomDataGenerator;
  * @author       Timo Hausmann
  * @author       Richard Davey <rich@photonstorm.com>
  * @copyright    2016 Photon Storm Ltd.
- * @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
 
 /**
@@ -1577,79 +1577,79 @@ Phaser.RandomDataGenerator.prototype.constructor = Phaser.RandomDataGenerator;
 *
 * @class Phaser.QuadTree
 * @constructor
-* @param ***REMOVED***number***REMOVED*** x - The top left coordinate of the quadtree.
-* @param ***REMOVED***number***REMOVED*** y - The top left coordinate of the quadtree.
-* @param ***REMOVED***number***REMOVED*** width - The width of the quadtree in pixels.
-* @param ***REMOVED***number***REMOVED*** height - The height of the quadtree in pixels.
-* @param ***REMOVED***number***REMOVED*** [maxObjects=10] - The maximum number of objects per node.
-* @param ***REMOVED***number***REMOVED*** [maxLevels=4] - The maximum number of levels to iterate to.
-* @param ***REMOVED***number***REMOVED*** [level=0] - Which level is this?
+* @param {number} x - The top left coordinate of the quadtree.
+* @param {number} y - The top left coordinate of the quadtree.
+* @param {number} width - The width of the quadtree in pixels.
+* @param {number} height - The height of the quadtree in pixels.
+* @param {number} [maxObjects=10] - The maximum number of objects per node.
+* @param {number} [maxLevels=4] - The maximum number of levels to iterate to.
+* @param {number} [level=0] - Which level is this?
 */
-Phaser.QuadTree = function(x, y, width, height, maxObjects, maxLevels, level) ***REMOVED***
+Phaser.QuadTree = function(x, y, width, height, maxObjects, maxLevels, level) {
 
     /**
-    * @property ***REMOVED***number***REMOVED*** maxObjects - The maximum number of objects per node.
+    * @property {number} maxObjects - The maximum number of objects per node.
     * @default
     */
     this.maxObjects = 10;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** maxLevels - The maximum number of levels to break down to.
+    * @property {number} maxLevels - The maximum number of levels to break down to.
     * @default
     */
     this.maxLevels = 4;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** level - The current level.
+    * @property {number} level - The current level.
     */
     this.level = 0;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** bounds - Object that contains the quadtree bounds.
+    * @property {object} bounds - Object that contains the quadtree bounds.
     */
-    this.bounds = ***REMOVED******REMOVED***;
+    this.bounds = {};
 
     /**
-    * @property ***REMOVED***array***REMOVED*** objects - Array of quadtree children.
+    * @property {array} objects - Array of quadtree children.
     */
     this.objects = [];
 
     /**
-    * @property ***REMOVED***array***REMOVED*** nodes - Array of associated child nodes.
+    * @property {array} nodes - Array of associated child nodes.
     */
     this.nodes = [];
 
     /**
-    * @property ***REMOVED***array***REMOVED*** _empty - Internal empty array.
+    * @property {array} _empty - Internal empty array.
     * @private
     */
     this._empty = [];
 
     this.reset(x, y, width, height, maxObjects, maxLevels, level);
 
-***REMOVED***;
+};
 
-Phaser.QuadTree.prototype = ***REMOVED***
+Phaser.QuadTree.prototype = {
 
     /**
     * Resets the QuadTree.
     *
     * @method Phaser.QuadTree#reset
-    * @param ***REMOVED***number***REMOVED*** x - The top left coordinate of the quadtree.
-    * @param ***REMOVED***number***REMOVED*** y - The top left coordinate of the quadtree.
-    * @param ***REMOVED***number***REMOVED*** width - The width of the quadtree in pixels.
-    * @param ***REMOVED***number***REMOVED*** height - The height of the quadtree in pixels.
-    * @param ***REMOVED***number***REMOVED*** [maxObjects=10] - The maximum number of objects per node.
-    * @param ***REMOVED***number***REMOVED*** [maxLevels=4] - The maximum number of levels to iterate to.
-    * @param ***REMOVED***number***REMOVED*** [level=0] - Which level is this?
+    * @param {number} x - The top left coordinate of the quadtree.
+    * @param {number} y - The top left coordinate of the quadtree.
+    * @param {number} width - The width of the quadtree in pixels.
+    * @param {number} height - The height of the quadtree in pixels.
+    * @param {number} [maxObjects=10] - The maximum number of objects per node.
+    * @param {number} [maxLevels=4] - The maximum number of levels to iterate to.
+    * @param {number} [level=0] - Which level is this?
     */
-    reset: function (x, y, width, height, maxObjects, maxLevels, level) ***REMOVED***
+    reset: function (x, y, width, height, maxObjects, maxLevels, level) {
 
         this.maxObjects = maxObjects || 10;
         this.maxLevels = maxLevels || 4;
         this.level = level || 0;
 
-        this.bounds = ***REMOVED***
+        this.bounds = {
             x: Math.round(x),
             y: Math.round(y),
             width: width,
@@ -1658,46 +1658,46 @@ Phaser.QuadTree.prototype = ***REMOVED***
             subHeight: Math.floor(height / 2),
             right: Math.round(x) + Math.floor(width / 2),
             bottom: Math.round(y) + Math.floor(height / 2)
-        ***REMOVED***;
+        };
 
         this.objects.length = 0;
         this.nodes.length = 0;
 
-    ***REMOVED***,
+    },
 
     /**
     * Populates this quadtree with the children of the given Group. In order to be added the child must exist and have a body property.
     *
     * @method Phaser.QuadTree#populate
-    * @param ***REMOVED***Phaser.Group***REMOVED*** group - The Group to add to the quadtree.
+    * @param {Phaser.Group} group - The Group to add to the quadtree.
     */
-    populate: function (group) ***REMOVED***
+    populate: function (group) {
 
         group.forEach(this.populateHandler, this, true);
 
-    ***REMOVED***,
+    },
 
     /**
     * Handler for the populate method.
     *
     * @method Phaser.QuadTree#populateHandler
-    * @param ***REMOVED***Phaser.Sprite|object***REMOVED*** sprite - The Sprite to check.
+    * @param {Phaser.Sprite|object} sprite - The Sprite to check.
     */
-    populateHandler: function (sprite) ***REMOVED***
+    populateHandler: function (sprite) {
 
         if (sprite.body && sprite.exists)
-        ***REMOVED***
+        {
             this.insert(sprite.body);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Split the node into 4 subnodes
     *
     * @method Phaser.QuadTree#split
     */
-    split: function () ***REMOVED***
+    split: function () {
 
         //  top right node
         this.nodes[0] = new Phaser.QuadTree(this.bounds.right, this.bounds.y, this.bounds.subWidth, this.bounds.subHeight, this.maxObjects, this.maxLevels, (this.level + 1));
@@ -1711,172 +1711,172 @@ Phaser.QuadTree.prototype = ***REMOVED***
         //  bottom right node
         this.nodes[3] = new Phaser.QuadTree(this.bounds.right, this.bounds.bottom, this.bounds.subWidth, this.bounds.subHeight, this.maxObjects, this.maxLevels, (this.level + 1));
 
-    ***REMOVED***,
+    },
 
     /**
     * Insert the object into the node. If the node exceeds the capacity, it will split and add all objects to their corresponding subnodes.
     *
     * @method Phaser.QuadTree#insert
-    * @param ***REMOVED***Phaser.Physics.Arcade.Body|object***REMOVED*** body - The Body object to insert into the quadtree. Can be any object so long as it exposes x, y, right and bottom properties.
+    * @param {Phaser.Physics.Arcade.Body|object} body - The Body object to insert into the quadtree. Can be any object so long as it exposes x, y, right and bottom properties.
     */
-    insert: function (body) ***REMOVED***
+    insert: function (body) {
 
         var i = 0;
         var index;
 
         //  if we have subnodes ...
         if (this.nodes[0] != null)
-        ***REMOVED***
+        {
             index = this.getIndex(body);
 
             if (index !== -1)
-            ***REMOVED***
+            {
                 this.nodes[index].insert(body);
                 return;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         this.objects.push(body);
 
         if (this.objects.length > this.maxObjects && this.level < this.maxLevels)
-        ***REMOVED***
+        {
             //  Split if we don't already have subnodes
             if (this.nodes[0] == null)
-            ***REMOVED***
+            {
                 this.split();
-            ***REMOVED***
+            }
 
             //  Add objects to subnodes
             while (i < this.objects.length)
-            ***REMOVED***
+            {
                 index = this.getIndex(this.objects[i]);
 
                 if (index !== -1)
-                ***REMOVED***
+                {
                     //  this is expensive - see what we can do about it
                     this.nodes[index].insert(this.objects.splice(i, 1)[0]);
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     i++;
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Determine which node the object belongs to.
     *
     * @method Phaser.QuadTree#getIndex
-    * @param ***REMOVED***Phaser.Rectangle|object***REMOVED*** rect - The bounds in which to check.
-    * @return ***REMOVED***number***REMOVED*** index - Index of the subnode (0-3), or -1 if rect cannot completely fit within a subnode and is part of the parent node.
+    * @param {Phaser.Rectangle|object} rect - The bounds in which to check.
+    * @return {number} index - Index of the subnode (0-3), or -1 if rect cannot completely fit within a subnode and is part of the parent node.
     */
-    getIndex: function (rect) ***REMOVED***
+    getIndex: function (rect) {
 
         //  default is that rect doesn't fit, i.e. it straddles the internal quadrants
         var index = -1;
 
         if (rect.x < this.bounds.right && rect.right < this.bounds.right)
-        ***REMOVED***
+        {
             if (rect.y < this.bounds.bottom && rect.bottom < this.bounds.bottom)
-            ***REMOVED***
+            {
                 //  rect fits within the top-left quadrant of this quadtree
                 index = 1;
-            ***REMOVED***
+            }
             else if (rect.y > this.bounds.bottom)
-            ***REMOVED***
+            {
                 //  rect fits within the bottom-left quadrant of this quadtree
                 index = 2;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else if (rect.x > this.bounds.right)
-        ***REMOVED***
+        {
             //  rect can completely fit within the right quadrants
             if (rect.y < this.bounds.bottom && rect.bottom < this.bounds.bottom)
-            ***REMOVED***
+            {
                 //  rect fits within the top-right quadrant of this quadtree
                 index = 0;
-            ***REMOVED***
+            }
             else if (rect.y > this.bounds.bottom)
-            ***REMOVED***
+            {
                 //  rect fits within the bottom-right quadrant of this quadtree
                 index = 3;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return index;
 
-    ***REMOVED***,
+    },
 
     /**
     * Return all objects that could collide with the given Sprite or Rectangle.
     *
     * @method Phaser.QuadTree#retrieve
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Rectangle***REMOVED*** source - The source object to check the QuadTree against. Either a Sprite or Rectangle.
-    * @return ***REMOVED***array***REMOVED*** - Array with all detected objects.
+    * @param {Phaser.Sprite|Phaser.Rectangle} source - The source object to check the QuadTree against. Either a Sprite or Rectangle.
+    * @return {array} - Array with all detected objects.
     */
-    retrieve: function (source) ***REMOVED***
+    retrieve: function (source) {
 
         if (source instanceof Phaser.Rectangle)
-        ***REMOVED***
+        {
             var returnObjects = this.objects;
 
             var index = this.getIndex(source);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             if (!source.body)
-            ***REMOVED***
+            {
                 return this._empty;
-            ***REMOVED***
+            }
 
             var returnObjects = this.objects;
 
             var index = this.getIndex(source.body);
-        ***REMOVED***
+        }
 
         if (this.nodes[0])
-        ***REMOVED***
+        {
             //  If rect fits into a subnode ..
             if (index !== -1)
-            ***REMOVED***
+            {
                 returnObjects = returnObjects.concat(this.nodes[index].retrieve(source));
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 //  If rect does not fit into a subnode, check it against all subnodes (unrolled for speed)
                 returnObjects = returnObjects.concat(this.nodes[0].retrieve(source));
                 returnObjects = returnObjects.concat(this.nodes[1].retrieve(source));
                 returnObjects = returnObjects.concat(this.nodes[2].retrieve(source));
                 returnObjects = returnObjects.concat(this.nodes[3].retrieve(source));
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return returnObjects;
 
-    ***REMOVED***,
+    },
 
     /**
     * Clear the quadtree.
     * @method Phaser.QuadTree#clear
     */
-    clear: function () ***REMOVED***
+    clear: function () {
 
         this.objects.length = 0;
 
         var i = this.nodes.length;
 
         while (i--)
-        ***REMOVED***
+        {
             this.nodes[i].clear();
             this.nodes.splice(i, 1);
-        ***REMOVED***
+        }
 
         this.nodes.length = 0;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.QuadTree.prototype.constructor = Phaser.QuadTree;
 

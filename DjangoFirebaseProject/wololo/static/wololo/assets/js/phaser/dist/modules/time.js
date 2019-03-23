@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -10,7 +10,7 @@
 * It manages the elapsed time and calculation of elapsed values, used for game object motion and tweens,
 * and also handles the standard Timer pool.
 *
-* To create a general timed event, use the master ***REMOVED***@link Phaser.Timer***REMOVED*** accessible through ***REMOVED***@link Phaser.Time.events events***REMOVED***.
+* To create a general timed event, use the master {@link Phaser.Timer} accessible through {@link Phaser.Time.events events}.
 *
 * There are different *types* of time in Phaser:
 *
@@ -18,41 +18,41 @@
 *
 *   Unlike wall-clock time, *game time stops when Phaser is paused*.
 *
-*   Game time is used for ***REMOVED***@link Phaser.Timer timer events***REMOVED***.
+*   Game time is used for {@link Phaser.Timer timer events}.
 *
 * - ***Physics time*** represents the amount of time given to physics calculations.
 *
-*   *When ***REMOVED***@link #slowMotion***REMOVED*** is in effect physics time runs slower than game time.*
+*   *When {@link #slowMotion} is in effect physics time runs slower than game time.*
 *   Like game time, physics time stops when Phaser is paused.
 *
-*   Physics time is used for physics calculations and ***REMOVED***@link Phaser.Tween tweens***REMOVED***.
+*   Physics time is used for physics calculations and {@link Phaser.Tween tweens}.
 *
-* - ***REMOVED***@link https://en.wikipedia.org/wiki/Wall-clock_time ***Wall-clock time******REMOVED*** represents the duration between two events in real life time.
+* - {@link https://en.wikipedia.org/wiki/Wall-clock_time ***Wall-clock time***} represents the duration between two events in real life time.
 *
 *   This time is independent of Phaser and always progresses, regardless of if Phaser is paused.
 *
 * @class Phaser.Time
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game A reference to the currently running game.
+* @param {Phaser.Game} game A reference to the currently running game.
 */
-Phaser.Time = function (game) ***REMOVED***
+Phaser.Time = function (game) {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - Local reference to game.
+    * @property {Phaser.Game} game - Local reference to game.
     * @protected
     */
     this.game = game;
 
     /**
     * The `Date.now()` value when the time was last updated.
-    * @property ***REMOVED***integer***REMOVED*** time
+    * @property {integer} time
     * @protected
     */
     this.time = 0;
 
     /**
     * The `now` when the previous update occurred.
-    * @property ***REMOVED***number***REMOVED*** prevTime
+    * @property {number} prevTime
     * @protected
     */
     this.prevTime = 0;
@@ -66,7 +66,7 @@ Phaser.Time = function (game) ***REMOVED***
     * The source may either be from a high-res source (eg. if RAF is available) or the standard Date.now;
     * the value can only be relied upon within a particular game instance.
     *
-    * @property ***REMOVED***number***REMOVED*** now
+    * @property {number} now
     * @protected
     */
     this.now = 0;
@@ -77,9 +77,9 @@ Phaser.Time = function (game) ***REMOVED***
     * This value _may_ include time that the game is paused/inactive.
     *
     * _Note:_ This is updated only once per game loop - even if multiple logic update steps are done.
-    * Use ***REMOVED***@link Phaser.Timer#physicsTime physicsTime***REMOVED*** as a basis of game/logic calculations instead.
+    * Use {@link Phaser.Timer#physicsTime physicsTime} as a basis of game/logic calculations instead.
     *
-    * @property ***REMOVED***number***REMOVED*** elapsed
+    * @property {number} elapsed
     * @see Phaser.Time.time
     * @protected
     */
@@ -91,9 +91,9 @@ Phaser.Time = function (game) ***REMOVED***
     * This value is corrected for game pauses and will be "about zero" after a game is resumed.
     *
     * _Note:_ This is updated once per game loop - even if multiple logic update steps are done.
-    * Use ***REMOVED***@link Phaser.Timer#physicsTime physicsTime***REMOVED*** as a basis of game/logic calculations instead.
+    * Use {@link Phaser.Timer#physicsTime physicsTime} as a basis of game/logic calculations instead.
     *
-    * @property ***REMOVED***integer***REMOVED*** elapsedMS
+    * @property {integer} elapsedMS
     * @protected
     */
     this.elapsedMS = 0;
@@ -107,20 +107,20 @@ Phaser.Time = function (game) ***REMOVED***
     *
     * With fixed-step updates this is normally equivalent to `1.0 / desiredFps`.
     *
-    * @property ***REMOVED***number***REMOVED*** physicsElapsed
+    * @property {number} physicsElapsed
     */
     this.physicsElapsed = 1 / 60;
 
     /**
     * The physics update delta, in milliseconds - equivalent to `physicsElapsed * 1000`.
     *
-    * @property ***REMOVED***number***REMOVED*** physicsElapsedMS
+    * @property {number} physicsElapsedMS
     */
     this.physicsElapsedMS = (1 / 60) * 1000;
 
     /**
     * The desiredFps multiplier as used by Game.update.
-    * @property ***REMOVED***integer***REMOVED*** desiredFpsMult
+    * @property {integer} desiredFpsMult
     * @protected
     */
     this.desiredFpsMult = 1.0 / 60;
@@ -130,7 +130,7 @@ Phaser.Time = function (game) ***REMOVED***
     *
     * This is used is used to calculate the physic/logic multiplier and how to apply catch-up logic updates.
     *
-    * @property ***REMOVED***number***REMOVED*** _desiredFps
+    * @property {number} _desiredFps
     * @private
     * @default
     */
@@ -143,7 +143,7 @@ Phaser.Time = function (game) ***REMOVED***
     * _Note:_ This is not available until after a few frames have passed; until then
     * it's set to the same value as desiredFps.
     *
-    * @property ***REMOVED***number***REMOVED*** suggestedFps
+    * @property {number} suggestedFps
     * @default
     */
     this.suggestedFps = this.desiredFps;
@@ -152,14 +152,14 @@ Phaser.Time = function (game) ***REMOVED***
     * Scaling factor to make the game move smoothly in slow motion
     * - 1.0 = normal speed
     * - 2.0 = half speed
-    * @property ***REMOVED***number***REMOVED*** slowMotion
+    * @property {number} slowMotion
     * @default
     */
     this.slowMotion = 1.0;
 
     /**
     * If true then advanced profiling, including the fps rate, fps min/max, suggestedFps and msMin/msMax are updated.
-    * @property ***REMOVED***boolean***REMOVED*** advancedTiming
+    * @property {boolean} advancedTiming
     * @default
     */
     this.advancedTiming = false;
@@ -167,8 +167,8 @@ Phaser.Time = function (game) ***REMOVED***
     /**
     * Advanced timing result: The number of render frames record in the last second.
     *
-    * Only calculated if ***REMOVED***@link Phaser.Time#advancedTiming advancedTiming***REMOVED*** is enabled.
-    * @property ***REMOVED***integer***REMOVED*** frames
+    * Only calculated if {@link Phaser.Time#advancedTiming advancedTiming} is enabled.
+    * @property {integer} frames
     * @readonly
     */
     this.frames = 0;
@@ -176,8 +176,8 @@ Phaser.Time = function (game) ***REMOVED***
     /**
     * Advanced timing result: Frames per second.
     *
-    * Only calculated if ***REMOVED***@link Phaser.Time#advancedTiming advancedTiming***REMOVED*** is enabled.
-    * @property ***REMOVED***number***REMOVED*** fps
+    * Only calculated if {@link Phaser.Time#advancedTiming advancedTiming} is enabled.
+    * @property {number} fps
     * @readonly
     */
     this.fps = 0;
@@ -185,27 +185,27 @@ Phaser.Time = function (game) ***REMOVED***
     /**
     * Advanced timing result: The lowest rate the fps has dropped to.
     *
-    * Only calculated if ***REMOVED***@link Phaser.Time#advancedTiming advancedTiming***REMOVED*** is enabled.
+    * Only calculated if {@link Phaser.Time#advancedTiming advancedTiming} is enabled.
     * This value can be manually reset.
-    * @property ***REMOVED***number***REMOVED*** fpsMin
+    * @property {number} fpsMin
     */
     this.fpsMin = 1000;
 
     /**
     * Advanced timing result: The highest rate the fps has reached (usually no higher than 60fps).
     *
-    * Only calculated if ***REMOVED***@link Phaser.Time#advancedTiming advancedTiming***REMOVED*** is enabled.
+    * Only calculated if {@link Phaser.Time#advancedTiming advancedTiming} is enabled.
     * This value can be manually reset.
-    * @property ***REMOVED***number***REMOVED*** fpsMax
+    * @property {number} fpsMax
     */
     this.fpsMax = 0;
 
     /**
     * Advanced timing result: The minimum amount of time the game has taken between consecutive frames.
     *
-    * Only calculated if ***REMOVED***@link Phaser.Time#advancedTiming advancedTiming***REMOVED*** is enabled.
+    * Only calculated if {@link Phaser.Time#advancedTiming advancedTiming} is enabled.
     * This value can be manually reset.
-    * @property ***REMOVED***number***REMOVED*** msMin
+    * @property {number} msMin
     * @default
     */
     this.msMin = 1000;
@@ -213,82 +213,82 @@ Phaser.Time = function (game) ***REMOVED***
     /**
     * Advanced timing result: The maximum amount of time the game has taken between consecutive frames.
     *
-    * Only calculated if ***REMOVED***@link Phaser.Time#advancedTiming advancedTiming***REMOVED*** is enabled.
+    * Only calculated if {@link Phaser.Time#advancedTiming advancedTiming} is enabled.
     * This value can be manually reset.
-    * @property ***REMOVED***number***REMOVED*** msMax
+    * @property {number} msMax
     */
     this.msMax = 0;
 
     /**
     * Records how long the game was last paused, in milliseconds.
     * (This is not updated until the game is resumed.)
-    * @property ***REMOVED***number***REMOVED*** pauseDuration
+    * @property {number} pauseDuration
     */
     this.pauseDuration = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** timeToCall - The value that setTimeout needs to work out when to next update
+    * @property {number} timeToCall - The value that setTimeout needs to work out when to next update
     * @protected
     */
     this.timeToCall = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** timeExpected - The time when the next call is expected when using setTimer to control the update loop
+    * @property {number} timeExpected - The time when the next call is expected when using setTimer to control the update loop
     * @protected
     */
     this.timeExpected = 0;
 
     /**
-    * A ***REMOVED***@link Phaser.Timer***REMOVED*** object bound to the master clock (this Time object) which events can be added to.
-    * @property ***REMOVED***Phaser.Timer***REMOVED*** events
+    * A {@link Phaser.Timer} object bound to the master clock (this Time object) which events can be added to.
+    * @property {Phaser.Timer} events
     */
     this.events = new Phaser.Timer(this.game, false);
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _frameCount - count the number of calls to time.update since the last suggestedFps was calculated
+    * @property {number} _frameCount - count the number of calls to time.update since the last suggestedFps was calculated
     * @private
     */
     this._frameCount = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _elapsedAcumulator - sum of the elapsed time since the last suggestedFps was calculated
+    * @property {number} _elapsedAcumulator - sum of the elapsed time since the last suggestedFps was calculated
     * @private
     */
     this._elapsedAccumulator = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _started - The time at which the Game instance started.
+    * @property {number} _started - The time at which the Game instance started.
     * @private
     */
     this._started = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _timeLastSecond - The time (in ms) that the last second counter ticked over.
+    * @property {number} _timeLastSecond - The time (in ms) that the last second counter ticked over.
     * @private
     */
     this._timeLastSecond = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _pauseStarted - The time the game started being paused.
+    * @property {number} _pauseStarted - The time the game started being paused.
     * @private
     */
     this._pauseStarted = 0;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _justResumed - Internal value used to recover from the game pause state.
+    * @property {boolean} _justResumed - Internal value used to recover from the game pause state.
     * @private
     */
     this._justResumed = false;
 
     /**
-    * @property ***REMOVED***Phaser.Timer[]***REMOVED*** _timers - Internal store of Phaser.Timer objects.
+    * @property {Phaser.Timer[]} _timers - Internal store of Phaser.Timer objects.
     * @private
     */
     this._timers = [];
 
-***REMOVED***;
+};
 
-Phaser.Time.prototype = ***REMOVED***
+Phaser.Time.prototype = {
 
     /**
     * Called automatically by Phaser.Game after boot. Should not be called directly.
@@ -296,40 +296,40 @@ Phaser.Time.prototype = ***REMOVED***
     * @method Phaser.Time#boot
     * @protected
     */
-    boot: function () ***REMOVED***
+    boot: function () {
 
         this._started = Date.now();
         this.time = Date.now();
         this.events.start();
         this.timeExpected = this.time;
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds an existing Phaser.Timer object to the Timer pool.
     *
     * @method Phaser.Time#add
-    * @param ***REMOVED***Phaser.Timer***REMOVED*** timer - An existing Phaser.Timer object.
-    * @return ***REMOVED***Phaser.Timer***REMOVED*** The given Phaser.Timer object.
+    * @param {Phaser.Timer} timer - An existing Phaser.Timer object.
+    * @return {Phaser.Timer} The given Phaser.Timer object.
     */
-    add: function (timer) ***REMOVED***
+    add: function (timer) {
 
         this._timers.push(timer);
 
         return timer;
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a new stand-alone Phaser.Timer object.
     *
     * @method Phaser.Time#create
-    * @param ***REMOVED***boolean***REMOVED*** [autoDestroy=true] - A Timer that is set to automatically destroy itself will do so after all of its events have been dispatched (assuming no looping events).
-    * @return ***REMOVED***Phaser.Timer***REMOVED*** The Timer object that was created.
+    * @param {boolean} [autoDestroy=true] - A Timer that is set to automatically destroy itself will do so after all of its events have been dispatched (assuming no looping events).
+    * @return {Phaser.Timer} The Timer object that was created.
     */
-    create: function (autoDestroy) ***REMOVED***
+    create: function (autoDestroy) {
 
-        if (autoDestroy === undefined) ***REMOVED*** autoDestroy = true; ***REMOVED***
+        if (autoDestroy === undefined) { autoDestroy = true; }
 
         var timer = new Phaser.Timer(this.game, autoDestroy);
 
@@ -337,32 +337,32 @@ Phaser.Time.prototype = ***REMOVED***
 
         return timer;
 
-    ***REMOVED***,
+    },
 
     /**
-    * Remove all Timer objects, regardless of their state and clears all Timers from the ***REMOVED***@link Phaser.Time#events events***REMOVED*** timer.
+    * Remove all Timer objects, regardless of their state and clears all Timers from the {@link Phaser.Time#events events} timer.
     *
     * @method Phaser.Time#removeAll
     */
-    removeAll: function () ***REMOVED***
+    removeAll: function () {
 
         for (var i = 0; i < this._timers.length; i++)
-        ***REMOVED***
+        {
             this._timers[i].destroy();
-        ***REMOVED***
+        }
 
         this._timers = [];
 
         this.events.removeAll();
 
-    ***REMOVED***,
+    },
 
     /**
     * Refreshes the Time.time and Time.elapsedMS properties from the system clock.
     *
     * @method Phaser.Time#refresh
     */
-    refresh: function () ***REMOVED***
+    refresh: function () {
 
         //  Set to the old Date.now value
         var previousDateNow = this.time;
@@ -373,16 +373,16 @@ Phaser.Time.prototype = ***REMOVED***
         //  Adjust accordingly.
         this.elapsedMS = this.time - previousDateNow;
 
-    ***REMOVED***,
+    },
 
     /**
     * Updates the game clock and if enabled the advanced timing data. This is called automatically by Phaser.Game.
     *
     * @method Phaser.Time#update
     * @protected
-    * @param ***REMOVED***number***REMOVED*** time - The current relative timestamp; see ***REMOVED***@link Phaser.Time#now now***REMOVED***.
+    * @param {number} time - The current relative timestamp; see {@link Phaser.Time#now now}.
     */
-    update: function (time) ***REMOVED***
+    update: function (time) {
 
         //  Set to the old Date.now value
         var previousDateNow = this.time;
@@ -404,7 +404,7 @@ Phaser.Time.prototype = ***REMOVED***
         this.elapsed = this.now - this.prevTime;
 
         if (this.game.raf._isSetTimeOut)
-        ***REMOVED***
+        {
             // console.log('Time isSet', this._desiredFps, 'te', this.timeExpected, 'time', time);
 
             // time to call this function again in ms in case we're using timers instead of RequestAnimationFrame to update the game
@@ -414,26 +414,26 @@ Phaser.Time.prototype = ***REMOVED***
             this.timeExpected = time + this.timeToCall;
 
             // console.log('Time expect', this.timeExpected);
-        ***REMOVED***
+        }
 
         if (this.advancedTiming)
-        ***REMOVED***
+        {
             this.updateAdvancedTiming();
-        ***REMOVED***
+        }
 
         //  Paused but still running?
         if (!this.game.paused)
-        ***REMOVED***
+        {
             //  Our internal Phaser.Timer
             this.events.update(this.time);
 
             if (this._timers.length)
-            ***REMOVED***
+            {
                 this.updateTimers();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Handles the updating of the Phaser.Timers (if any)
@@ -442,27 +442,27 @@ Phaser.Time.prototype = ***REMOVED***
     * @method Phaser.Time#updateTimers
     * @private
     */
-    updateTimers: function () ***REMOVED***
+    updateTimers: function () {
 
         //  Any game level timers
         var i = 0;
         var len = this._timers.length;
 
         while (i < len)
-        ***REMOVED***
+        {
             if (this._timers[i].update(this.time))
-            ***REMOVED***
+            {
                 i++;
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 //  Timer requests to be removed
                 this._timers.splice(i, 1);
                 len--;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Handles the updating of the advanced timing values (if enabled)
@@ -471,7 +471,7 @@ Phaser.Time.prototype = ***REMOVED***
     * @method Phaser.Time#updateAdvancedTiming
     * @private
     */
-    updateAdvancedTiming: function () ***REMOVED***
+    updateAdvancedTiming: function () {
 
         // count the number of time.update calls
         this._frameCount++;
@@ -479,12 +479,12 @@ Phaser.Time.prototype = ***REMOVED***
 
         // occasionally recalculate the suggestedFps based on the accumulated elapsed time
         if (this._frameCount >= this._desiredFps * 2)
-        ***REMOVED***
+        {
             // this formula calculates suggestedFps in multiples of 5 fps
             this.suggestedFps = Math.floor(200 / (this._elapsedAccumulator / this._frameCount)) * 5;
             this._frameCount = 0;
             this._elapsedAccumulator = 0;
-        ***REMOVED***
+        }
 
         this.msMin = Math.min(this.msMin, this.elapsed);
         this.msMax = Math.max(this.msMax, this.elapsed);
@@ -492,15 +492,15 @@ Phaser.Time.prototype = ***REMOVED***
         this.frames++;
 
         if (this.now > this._timeLastSecond + 1000)
-        ***REMOVED***
+        {
             this.fps = Math.round((this.frames * 1000) / (this.now - this._timeLastSecond));
             this.fpsMin = Math.min(this.fpsMin, this.fps);
             this.fpsMax = Math.max(this.fpsMax, this.fps);
             this._timeLastSecond = this.now;
             this.frames = 0;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Called when the game enters a paused state.
@@ -508,7 +508,7 @@ Phaser.Time.prototype = ***REMOVED***
     * @method Phaser.Time#gamePaused
     * @private
     */
-    gamePaused: function () ***REMOVED***
+    gamePaused: function () {
 
         this._pauseStarted = Date.now();
 
@@ -517,11 +517,11 @@ Phaser.Time.prototype = ***REMOVED***
         var i = this._timers.length;
 
         while (i--)
-        ***REMOVED***
+        {
             this._timers[i]._pause();
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Called when the game resumes from a paused state.
@@ -529,7 +529,7 @@ Phaser.Time.prototype = ***REMOVED***
     * @method Phaser.Time#gameResumed
     * @private
     */
-    gameResumed: function () ***REMOVED***
+    gameResumed: function () {
 
         // Set the parameter which stores Date.now() to make sure it's correct on resume
         this.time = Date.now();
@@ -541,57 +541,57 @@ Phaser.Time.prototype = ***REMOVED***
         var i = this._timers.length;
 
         while (i--)
-        ***REMOVED***
+        {
             this._timers[i]._resume();
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * The number of seconds that have elapsed since the game was started.
     *
     * @method Phaser.Time#totalElapsedSeconds
-    * @return ***REMOVED***number***REMOVED*** The number of seconds that have elapsed since the game was started.
+    * @return {number} The number of seconds that have elapsed since the game was started.
     */
-    totalElapsedSeconds: function() ***REMOVED***
+    totalElapsedSeconds: function() {
         return (this.time - this._started) * 0.001;
-    ***REMOVED***,
+    },
 
     /**
     * How long has passed since the given time.
     *
     * @method Phaser.Time#elapsedSince
-    * @param ***REMOVED***number***REMOVED*** since - The time you want to measure against.
-    * @return ***REMOVED***number***REMOVED*** The difference between the given time and now.
+    * @param {number} since - The time you want to measure against.
+    * @return {number} The difference between the given time and now.
     */
-    elapsedSince: function (since) ***REMOVED***
+    elapsedSince: function (since) {
         return this.time - since;
-    ***REMOVED***,
+    },
 
     /**
     * How long has passed since the given time (in seconds).
     *
     * @method Phaser.Time#elapsedSecondsSince
-    * @param ***REMOVED***number***REMOVED*** since - The time you want to measure (in seconds).
-    * @return ***REMOVED***number***REMOVED*** Duration between given time and now (in seconds).
+    * @param {number} since - The time you want to measure (in seconds).
+    * @return {number} Duration between given time and now (in seconds).
     */
-    elapsedSecondsSince: function (since) ***REMOVED***
+    elapsedSecondsSince: function (since) {
         return (this.time - since) * 0.001;
-    ***REMOVED***,
+    },
 
     /**
     * Resets the private _started value to now and removes all currently running Timers.
     *
     * @method Phaser.Time#reset
     */
-    reset: function () ***REMOVED***
+    reset: function () {
 
         this._started = this.time;
         this.removeAll();
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * The desired frame rate of the game.
@@ -599,17 +599,17 @@ Phaser.Time.prototype = ***REMOVED***
 * This is used is used to calculate the physic / logic multiplier and how to apply catch-up logic updates.
 * 
 * @name Phaser.Time#desiredFps
-* @property ***REMOVED***integer***REMOVED*** desiredFps - The desired frame rate of the game. Defaults to 60.
+* @property {integer} desiredFps - The desired frame rate of the game. Defaults to 60.
 */
-Object.defineProperty(Phaser.Time.prototype, "desiredFps", ***REMOVED***
+Object.defineProperty(Phaser.Time.prototype, "desiredFps", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this._desiredFps;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this._desiredFps = value;
 
@@ -621,38 +621,38 @@ Object.defineProperty(Phaser.Time.prototype, "desiredFps", ***REMOVED***
 
         this.desiredFpsMult = 1.0 / value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 Phaser.Time.prototype.constructor = Phaser.Time;
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
-* A Timer is a way to create and manage ***REMOVED***@link Phaser.TimerEvent timer events***REMOVED*** that wait for a specific duration and then run a callback.
+* A Timer is a way to create and manage {@link Phaser.TimerEvent timer events} that wait for a specific duration and then run a callback.
 * Many different timer events, with individual delays, can be added to the same Timer.
 *
 * All Timer delays are in milliseconds (there are 1000 ms in 1 second); so a delay value of 250 represents a quarter of a second.
 *
 * Timers are based on real life time, adjusted for game pause durations.
-* That is, *timer events are based on elapsed ***REMOVED***@link Phaser.Time game time***REMOVED**** and do *not* take physics time or slow motion into account.
+* That is, *timer events are based on elapsed {@link Phaser.Time game time}* and do *not* take physics time or slow motion into account.
 *
 * @class Phaser.Timer
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
-* @param ***REMOVED***boolean***REMOVED*** [autoDestroy=true] - If true, the timer will automatically destroy itself after all the events have been dispatched (assuming no looping events).
+* @param {Phaser.Game} game - A reference to the currently running game.
+* @param {boolean} [autoDestroy=true] - If true, the timer will automatically destroy itself after all the events have been dispatched (assuming no looping events).
 */
-Phaser.Timer = function (game, autoDestroy) ***REMOVED***
+Phaser.Timer = function (game, autoDestroy) {
 
-    if (autoDestroy === undefined) ***REMOVED*** autoDestroy = true; ***REMOVED***
+    if (autoDestroy === undefined) { autoDestroy = true; }
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - Local reference to game.
+    * @property {Phaser.Game} game - Local reference to game.
     * @protected
     */
     this.game = game;
@@ -660,8 +660,8 @@ Phaser.Timer = function (game, autoDestroy) ***REMOVED***
     /**
     * True if the Timer is actively running.
     *
-    * Do not modify this boolean - use ***REMOVED***@link Phaser.Timer#pause pause***REMOVED*** (and ***REMOVED***@link Phaser.Timer#resume resume***REMOVED***) to pause the timer.
-    * @property ***REMOVED***boolean***REMOVED*** running
+    * Do not modify this boolean - use {@link Phaser.Timer#pause pause} (and {@link Phaser.Timer#resume resume}) to pause the timer.
+    * @property {boolean} running
     * @default
     * @readonly
     */
@@ -669,25 +669,25 @@ Phaser.Timer = function (game, autoDestroy) ***REMOVED***
 
     /**
     * If true, the timer will automatically destroy itself after all the events have been dispatched (assuming no looping events).
-    * @property ***REMOVED***boolean***REMOVED*** autoDestroy
+    * @property {boolean} autoDestroy
     */
     this.autoDestroy = autoDestroy;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** expired - An expired Timer is one in which all of its events have been dispatched and none are pending.
+    * @property {boolean} expired - An expired Timer is one in which all of its events have been dispatched and none are pending.
     * @readonly
     * @default
     */
     this.expired = false;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** elapsed - Elapsed time since the last frame (in ms).
+    * @property {number} elapsed - Elapsed time since the last frame (in ms).
     * @protected
     */
     this.elapsed = 0;
 
     /**
-    * @property ***REMOVED***Phaser.TimerEvent[]***REMOVED*** events - An array holding all of this timers Phaser.TimerEvent objects. Use the methods add, repeat and loop to populate it.
+    * @property {Phaser.TimerEvent[]} events - An array holding all of this timers Phaser.TimerEvent objects. Use the methods add, repeat and loop to populate it.
     */
     this.events = [];
 
@@ -696,151 +696,151 @@ Phaser.Timer = function (game, autoDestroy) ***REMOVED***
     *
     * The signal is supplied with one argument, `timer`, which is this Timer object.
     *
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onComplete
+    * @property {Phaser.Signal} onComplete
     */
     this.onComplete = new Phaser.Signal();
 
     /**
-    * @property ***REMOVED***number***REMOVED*** nextTick - The time the next tick will occur.
+    * @property {number} nextTick - The time the next tick will occur.
     * @readonly
     * @protected
     */
     this.nextTick = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** timeCap - If the difference in time between two frame updates exceeds this value, the event times are reset to avoid catch-up situations.
+    * @property {number} timeCap - If the difference in time between two frame updates exceeds this value, the event times are reset to avoid catch-up situations.
     */
     this.timeCap = 1000;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** paused - The paused state of the Timer. You can pause the timer by calling Timer.pause() and Timer.resume() or by the game pausing.
+    * @property {boolean} paused - The paused state of the Timer. You can pause the timer by calling Timer.pause() and Timer.resume() or by the game pausing.
     * @readonly
     * @default
     */
     this.paused = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _codePaused - Was the Timer paused by code or by Game focus loss?
+    * @property {boolean} _codePaused - Was the Timer paused by code or by Game focus loss?
     * @private
     */
     this._codePaused = false;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _started - The time at which this Timer instance started running.
+    * @property {number} _started - The time at which this Timer instance started running.
     * @private
     * @default
     */
     this._started = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _pauseStarted - The time the game started being paused.
+    * @property {number} _pauseStarted - The time the game started being paused.
     * @private
     */
     this._pauseStarted = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _pauseTotal - Total paused time.
+    * @property {number} _pauseTotal - Total paused time.
     * @private
     */
     this._pauseTotal = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _now - The current start-time adjusted time.
+    * @property {number} _now - The current start-time adjusted time.
     * @private
     */
     this._now = Date.now();
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _len - Temp. array length variable.
+    * @property {number} _len - Temp. array length variable.
     * @private
     */
     this._len = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _marked - Temp. counter variable.
+    * @property {number} _marked - Temp. counter variable.
     * @private
     */
     this._marked = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _i - Temp. array counter variable.
+    * @property {number} _i - Temp. array counter variable.
     * @private
     */
     this._i = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _diff - Internal cache var.
+    * @property {number} _diff - Internal cache var.
     * @private
     */
     this._diff = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _newTick - Internal cache var.
+    * @property {number} _newTick - Internal cache var.
     * @private
     */
     this._newTick = 0;
 
-***REMOVED***;
+};
 
 /**
 * Number of milliseconds in a minute.
 * @constant
-* @type ***REMOVED***integer***REMOVED***
+* @type {integer}
 */
 Phaser.Timer.MINUTE = 60000;
 
 /**
 * Number of milliseconds in a second.
 * @constant
-* @type ***REMOVED***integer***REMOVED***
+* @type {integer}
 */
 Phaser.Timer.SECOND = 1000;
 
 /**
 * Number of milliseconds in half a second.
 * @constant
-* @type ***REMOVED***integer***REMOVED***
+* @type {integer}
 */
 Phaser.Timer.HALF = 500;
 
 /**
 * Number of milliseconds in a quarter of a second.
 * @constant
-* @type ***REMOVED***integer***REMOVED***
+* @type {integer}
 */
 Phaser.Timer.QUARTER = 250;
 
-Phaser.Timer.prototype = ***REMOVED***
+Phaser.Timer.prototype = {
 
     /**
     * Creates a new TimerEvent on this Timer.
     *
-    * Use ***REMOVED***@link Phaser.Timer#add***REMOVED***, ***REMOVED***@link Phaser.Timer#repeat***REMOVED***, or ***REMOVED***@link Phaser.Timer#loop***REMOVED*** methods to create a new event.
+    * Use {@link Phaser.Timer#add}, {@link Phaser.Timer#repeat}, or {@link Phaser.Timer#loop} methods to create a new event.
     *
     * @method Phaser.Timer#create
     * @private
-    * @param ***REMOVED***integer***REMOVED*** delay - The number of milliseconds, in ***REMOVED***@link Phaser.Time game time***REMOVED***, before the timer event occurs.
-    * @param ***REMOVED***boolean***REMOVED*** loop - Should the event loop or not?
-    * @param ***REMOVED***number***REMOVED*** repeatCount - The number of times the event will repeat.
-    * @param ***REMOVED***function***REMOVED*** callback - The callback that will be called when the timer event occurs.
-    * @param ***REMOVED***object***REMOVED*** callbackContext - The context in which the callback will be called.
-    * @param ***REMOVED***any[]***REMOVED*** arguments - The values to be sent to your callback function when it is called.
-    * @return ***REMOVED***Phaser.TimerEvent***REMOVED*** The Phaser.TimerEvent object that was created.
+    * @param {integer} delay - The number of milliseconds, in {@link Phaser.Time game time}, before the timer event occurs.
+    * @param {boolean} loop - Should the event loop or not?
+    * @param {number} repeatCount - The number of times the event will repeat.
+    * @param {function} callback - The callback that will be called when the timer event occurs.
+    * @param {object} callbackContext - The context in which the callback will be called.
+    * @param {any[]} arguments - The values to be sent to your callback function when it is called.
+    * @return {Phaser.TimerEvent} The Phaser.TimerEvent object that was created.
     */
-    create: function (delay, loop, repeatCount, callback, callbackContext, args) ***REMOVED***
+    create: function (delay, loop, repeatCount, callback, callbackContext, args) {
 
         delay = Math.round(delay);
 
         var tick = delay;
 
         if (this._now === 0)
-        ***REMOVED***
+        {
             tick += this.game.time.time;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             tick += this._now;
-        ***REMOVED***
+        }
 
         var event = new Phaser.TimerEvent(this, delay, tick, repeatCount, loop, callback, callbackContext, args);
 
@@ -852,7 +852,7 @@ Phaser.Timer.prototype = ***REMOVED***
 
         return event;
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a new Event to this Timer.
@@ -860,20 +860,20 @@ Phaser.Timer.prototype = ***REMOVED***
     * The event will fire after the given amount of `delay` in milliseconds has passed, once the Timer has started running.
     * The delay is in relation to when the Timer starts, not the time it was added. If the Timer is already running the delay will be calculated based on the timers current time.
     *
-    * Make sure to call ***REMOVED***@link Phaser.Timer#start start***REMOVED*** after adding all of the Events you require for this Timer.
+    * Make sure to call {@link Phaser.Timer#start start} after adding all of the Events you require for this Timer.
     *
     * @method Phaser.Timer#add
-    * @param ***REMOVED***integer***REMOVED*** delay - The number of milliseconds, in ***REMOVED***@link Phaser.Time game time***REMOVED***, before the timer event occurs.
-    * @param ***REMOVED***function***REMOVED*** callback - The callback that will be called when the timer event occurs.
-    * @param ***REMOVED***object***REMOVED*** callbackContext - The context in which the callback will be called.
-    * @param ***REMOVED***...****REMOVED*** arguments - Additional arguments that will be supplied to the callback.
-    * @return ***REMOVED***Phaser.TimerEvent***REMOVED*** The Phaser.TimerEvent object that was created.
+    * @param {integer} delay - The number of milliseconds, in {@link Phaser.Time game time}, before the timer event occurs.
+    * @param {function} callback - The callback that will be called when the timer event occurs.
+    * @param {object} callbackContext - The context in which the callback will be called.
+    * @param {...*} arguments - Additional arguments that will be supplied to the callback.
+    * @return {Phaser.TimerEvent} The Phaser.TimerEvent object that was created.
     */
-    add: function (delay, callback, callbackContext) ***REMOVED***
+    add: function (delay, callback, callbackContext) {
 
         return this.create(delay, false, 0, callback, callbackContext, Array.prototype.slice.call(arguments, 3));
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a new TimerEvent that will always play through once and then repeat for the given number of iterations.
@@ -882,21 +882,21 @@ Phaser.Timer.prototype = ***REMOVED***
     * The delay is in relation to when the Timer starts, not the time it was added.
     * If the Timer is already running the delay will be calculated based on the timers current time.
     *
-    * Make sure to call ***REMOVED***@link Phaser.Timer#start start***REMOVED*** after adding all of the Events you require for this Timer.
+    * Make sure to call {@link Phaser.Timer#start start} after adding all of the Events you require for this Timer.
     *
     * @method Phaser.Timer#repeat
-    * @param ***REMOVED***integer***REMOVED*** delay - The number of milliseconds, in ***REMOVED***@link Phaser.Time game time***REMOVED***, before the timer event occurs.
-    * @param ***REMOVED***number***REMOVED*** repeatCount - The number of times the event will repeat once is has finished playback. A repeatCount of 1 means it will repeat itself once, playing the event twice in total.
-    * @param ***REMOVED***function***REMOVED*** callback - The callback that will be called when the timer event occurs.
-    * @param ***REMOVED***object***REMOVED*** callbackContext - The context in which the callback will be called.
-    * @param ***REMOVED***...****REMOVED*** arguments - Additional arguments that will be supplied to the callback.
-    * @return ***REMOVED***Phaser.TimerEvent***REMOVED*** The Phaser.TimerEvent object that was created.
+    * @param {integer} delay - The number of milliseconds, in {@link Phaser.Time game time}, before the timer event occurs.
+    * @param {number} repeatCount - The number of times the event will repeat once is has finished playback. A repeatCount of 1 means it will repeat itself once, playing the event twice in total.
+    * @param {function} callback - The callback that will be called when the timer event occurs.
+    * @param {object} callbackContext - The context in which the callback will be called.
+    * @param {...*} arguments - Additional arguments that will be supplied to the callback.
+    * @return {Phaser.TimerEvent} The Phaser.TimerEvent object that was created.
     */
-    repeat: function (delay, repeatCount, callback, callbackContext) ***REMOVED***
+    repeat: function (delay, repeatCount, callback, callbackContext) {
 
         return this.create(delay, false, repeatCount, callback, callbackContext, Array.prototype.slice.call(arguments, 4));
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a new looped Event to this Timer that will repeat forever or until the Timer is stopped.
@@ -904,81 +904,81 @@ Phaser.Timer.prototype = ***REMOVED***
     * The event will fire after the given amount of `delay` in milliseconds has passed, once the Timer has started running.
     * The delay is in relation to when the Timer starts, not the time it was added. If the Timer is already running the delay will be calculated based on the timers current time.
     *
-    * Make sure to call ***REMOVED***@link Phaser.Timer#start start***REMOVED*** after adding all of the Events you require for this Timer.
+    * Make sure to call {@link Phaser.Timer#start start} after adding all of the Events you require for this Timer.
     *
     * @method Phaser.Timer#loop
-    * @param ***REMOVED***integer***REMOVED*** delay - The number of milliseconds, in ***REMOVED***@link Phaser.Time game time***REMOVED***, before the timer event occurs.
-    * @param ***REMOVED***function***REMOVED*** callback - The callback that will be called when the timer event occurs.
-    * @param ***REMOVED***object***REMOVED*** callbackContext - The context in which the callback will be called.
-    * @param ***REMOVED***...****REMOVED*** arguments - Additional arguments that will be supplied to the callback.
-    * @return ***REMOVED***Phaser.TimerEvent***REMOVED*** The Phaser.TimerEvent object that was created.
+    * @param {integer} delay - The number of milliseconds, in {@link Phaser.Time game time}, before the timer event occurs.
+    * @param {function} callback - The callback that will be called when the timer event occurs.
+    * @param {object} callbackContext - The context in which the callback will be called.
+    * @param {...*} arguments - Additional arguments that will be supplied to the callback.
+    * @return {Phaser.TimerEvent} The Phaser.TimerEvent object that was created.
     */
-    loop: function (delay, callback, callbackContext) ***REMOVED***
+    loop: function (delay, callback, callbackContext) {
 
         return this.create(delay, true, 0, callback, callbackContext, Array.prototype.slice.call(arguments, 3));
 
-    ***REMOVED***,
+    },
 
     /**
     * Starts this Timer running.
     * @method Phaser.Timer#start
-    * @param ***REMOVED***integer***REMOVED*** [delay=0] - The number of milliseconds, in ***REMOVED***@link Phaser.Time game time***REMOVED***, that should elapse before the Timer will start.
+    * @param {integer} [delay=0] - The number of milliseconds, in {@link Phaser.Time game time}, that should elapse before the Timer will start.
     */
-    start: function (delay) ***REMOVED***
+    start: function (delay) {
 
         if (this.running)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         this._started = this.game.time.time + (delay || 0);
 
         this.running = true;
 
         for (var i = 0; i < this.events.length; i++)
-        ***REMOVED***
+        {
             this.events[i].tick = this.events[i].delay + this._started;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Stops this Timer from running. Does not cause it to be destroyed if autoDestroy is set to true.
     * @method Phaser.Timer#stop
-    * @param ***REMOVED***boolean***REMOVED*** [clearEvents=true] - If true all the events in Timer will be cleared, otherwise they will remain.
+    * @param {boolean} [clearEvents=true] - If true all the events in Timer will be cleared, otherwise they will remain.
     */
-    stop: function (clearEvents) ***REMOVED***
+    stop: function (clearEvents) {
 
         this.running = false;
 
-        if (clearEvents === undefined) ***REMOVED*** clearEvents = true; ***REMOVED***
+        if (clearEvents === undefined) { clearEvents = true; }
 
         if (clearEvents)
-        ***REMOVED***
+        {
             this.events.length = 0;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Removes a pending TimerEvent from the queue.
-    * @param ***REMOVED***Phaser.TimerEvent***REMOVED*** event - The event to remove from the queue.
+    * @param {Phaser.TimerEvent} event - The event to remove from the queue.
     * @method Phaser.Timer#remove
     */
-    remove: function (event) ***REMOVED***
+    remove: function (event) {
 
         for (var i = 0; i < this.events.length; i++)
-        ***REMOVED***
+        {
             if (this.events[i] === event)
-            ***REMOVED***
+            {
                 this.events[i].pendingDelete = true;
                 return true;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return false;
 
-    ***REMOVED***,
+    },
 
     /**
     * Orders the events on this Timer so they are in tick order.
@@ -986,37 +986,37 @@ Phaser.Timer.prototype = ***REMOVED***
     * @method Phaser.Timer#order
     * @protected
     */
-    order: function () ***REMOVED***
+    order: function () {
 
         if (this.events.length > 0)
-        ***REMOVED***
+        {
             //  Sort the events so the one with the lowest tick is first
             this.events.sort(this.sortHandler);
 
             this.nextTick = this.events[0].tick;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Sort handler used by Phaser.Timer.order.
     * @method Phaser.Timer#sortHandler
     * @private
     */
-    sortHandler: function (a, b) ***REMOVED***
+    sortHandler: function (a, b) {
 
         if (a.tick < b.tick)
-        ***REMOVED***
+        {
             return -1;
-        ***REMOVED***
+        }
         else if (a.tick > b.tick)
-        ***REMOVED***
+        {
             return 1;
-        ***REMOVED***
+        }
 
         return 0;
 
-    ***REMOVED***,
+    },
 
     /**
     * Clears any events from the Timer which have pendingDelete set to true and then resets the private _len and _i values.
@@ -1024,49 +1024,49 @@ Phaser.Timer.prototype = ***REMOVED***
     * @method Phaser.Timer#clearPendingEvents
     * @protected
     */
-    clearPendingEvents: function () ***REMOVED***
+    clearPendingEvents: function () {
 
         this._i = this.events.length;
 
         while (this._i--)
-        ***REMOVED***
+        {
             if (this.events[this._i].pendingDelete)
-            ***REMOVED***
+            {
                 this.events.splice(this._i, 1);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         this._len = this.events.length;
         this._i = 0;
 
-    ***REMOVED***,
+    },
 
     /**
     * The main Timer update event, called automatically by Phaser.Time.update.
     *
     * @method Phaser.Timer#update
     * @protected
-    * @param ***REMOVED***number***REMOVED*** time - The time from the core game clock.
-    * @return ***REMOVED***boolean***REMOVED*** True if there are still events waiting to be dispatched, otherwise false if this Timer can be destroyed.
+    * @param {number} time - The time from the core game clock.
+    * @return {boolean} True if there are still events waiting to be dispatched, otherwise false if this Timer can be destroyed.
     */
-    update: function (time) ***REMOVED***
+    update: function (time) {
 
         if (this.paused)
-        ***REMOVED***
+        {
             return true;
-        ***REMOVED***
+        }
 
         this.elapsed = time - this._now;
         this._now = time;
 
         //  spike-dislike
         if (this.elapsed > this.timeCap)
-        ***REMOVED***
+        {
             //  For some reason the time between now and the last time the game was updated was larger than our timeCap.
             //  This can happen if the Stage.disableVisibilityChange is true and you swap tabs, which makes the raf pause.
             //  In this case we need to adjust the TimerEvents and nextTick.
             this.adjustEvents(time - this.elapsed);
-        ***REMOVED***
+        }
 
         this._marked = 0;
 
@@ -1074,109 +1074,109 @@ Phaser.Timer.prototype = ***REMOVED***
         this.clearPendingEvents();
 
         if (this.running && this._now >= this.nextTick && this._len > 0)
-        ***REMOVED***
+        {
             while (this._i < this._len && this.running)
-            ***REMOVED***
+            {
                 if (this._now >= this.events[this._i].tick && !this.events[this._i].pendingDelete)
-                ***REMOVED***
+                {
                     //  (now + delay) - (time difference from last tick to now)
                     this._newTick = (this._now + this.events[this._i].delay) - (this._now - this.events[this._i].tick);
 
                     if (this._newTick < 0)
-                    ***REMOVED***
+                    {
                         this._newTick = this._now + this.events[this._i].delay;
-                    ***REMOVED***
+                    }
 
                     if (this.events[this._i].loop === true)
-                    ***REMOVED***
+                    {
                         this.events[this._i].tick = this._newTick;
                         this.events[this._i].callback.apply(this.events[this._i].callbackContext, this.events[this._i].args);
-                    ***REMOVED***
+                    }
                     else if (this.events[this._i].repeatCount > 0)
-                    ***REMOVED***
+                    {
                         this.events[this._i].repeatCount--;
                         this.events[this._i].tick = this._newTick;
                         this.events[this._i].callback.apply(this.events[this._i].callbackContext, this.events[this._i].args);
-                    ***REMOVED***
+                    }
                     else
-                    ***REMOVED***
+                    {
                         this._marked++;
                         this.events[this._i].pendingDelete = true;
                         this.events[this._i].callback.apply(this.events[this._i].callbackContext, this.events[this._i].args);
-                    ***REMOVED***
+                    }
 
                     this._i++;
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     break;
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
 
             //  Are there any events left?
             if (this.events.length > this._marked)
-            ***REMOVED***
+            {
                 this.order();
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this.expired = true;
                 this.onComplete.dispatch(this);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         if (this.expired && this.autoDestroy)
-        ***REMOVED***
+        {
             return false;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return true;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Pauses the Timer and all events in the queue.
     * @method Phaser.Timer#pause
     */
-    pause: function () ***REMOVED***
+    pause: function () {
 
         if (!this.running)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         this._codePaused = true;
 
         if (this.paused)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         this._pauseStarted = this.game.time.time;
 
         this.paused = true;
 
-    ***REMOVED***,
+    },
 
     /**
     * Internal pause/resume control - user code should use Timer.pause instead.
     * @method Phaser.Timer#_pause
     * @private
     */
-    _pause: function () ***REMOVED***
+    _pause: function () {
 
         if (this.paused || !this.running)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         this._pauseStarted = this.game.time.time;
 
         this.paused = true;
 
-    ***REMOVED***,
+    },
 
     /**
     * Adjusts the time of all pending events and the nextTick by the given baseTime.
@@ -1184,49 +1184,49 @@ Phaser.Timer.prototype = ***REMOVED***
     * @method Phaser.Timer#adjustEvents
     * @protected
     */
-    adjustEvents: function (baseTime) ***REMOVED***
+    adjustEvents: function (baseTime) {
 
         for (var i = 0; i < this.events.length; i++)
-        ***REMOVED***
+        {
             if (!this.events[i].pendingDelete)
-            ***REMOVED***
+            {
                 //  Work out how long there would have been from when the game paused until the events next tick
                 var t = this.events[i].tick - baseTime;
 
                 if (t < 0)
-                ***REMOVED***
+                {
                     t = 0;
-                ***REMOVED***
+                }
 
                 //  Add the difference on to the time now
                 this.events[i].tick = this._now + t;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         var d = this.nextTick - baseTime;
 
         if (d < 0)
-        ***REMOVED***
+        {
             this.nextTick = this._now;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this.nextTick = this._now + d;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Resumes the Timer and updates all pending events.
     *
     * @method Phaser.Timer#resume
     */
-    resume: function () ***REMOVED***
+    resume: function () {
 
         if (!this.paused)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         var now = this.game.time.time;
         this._pauseTotal += now - this._now;
@@ -1237,25 +1237,25 @@ Phaser.Timer.prototype = ***REMOVED***
         this.paused = false;
         this._codePaused = false;
 
-    ***REMOVED***,
+    },
 
     /**
     * Internal pause/resume control - user code should use Timer.resume instead.
     * @method Phaser.Timer#_resume
     * @private
     */
-    _resume: function () ***REMOVED***
+    _resume: function () {
 
         if (this._codePaused)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this.resume();
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Removes all Events from this Timer and all callbacks linked to onComplete, but leaves the Timer running.    
@@ -1263,14 +1263,14 @@ Phaser.Timer.prototype = ***REMOVED***
     *
     * @method Phaser.Timer#removeAll
     */
-    removeAll: function () ***REMOVED***
+    removeAll: function () {
 
         this.onComplete.removeAll();
         this.events.length = 0;
         this._len = 0;
         this._i = 0;
 
-    ***REMOVED***,
+    },
 
     /**
     * Destroys this Timer. Any pending Events are not dispatched.
@@ -1278,7 +1278,7 @@ Phaser.Timer.prototype = ***REMOVED***
     *
     * @method Phaser.Timer#destroy
     */
-    destroy: function () ***REMOVED***
+    destroy: function () {
 
         this.onComplete.removeAll();
         this.running = false;
@@ -1286,108 +1286,108 @@ Phaser.Timer.prototype = ***REMOVED***
         this._len = 0;
         this._i = 0;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * @name Phaser.Timer#next
-* @property ***REMOVED***number***REMOVED*** next - The time at which the next event will occur.
+* @property {number} next - The time at which the next event will occur.
 * @readonly
 */
-Object.defineProperty(Phaser.Timer.prototype, "next", ***REMOVED***
+Object.defineProperty(Phaser.Timer.prototype, "next", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this.nextTick;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Timer#duration
-* @property ***REMOVED***number***REMOVED*** duration - The duration in ms remaining until the next event will occur.
+* @property {number} duration - The duration in ms remaining until the next event will occur.
 * @readonly
 */
-Object.defineProperty(Phaser.Timer.prototype, "duration", ***REMOVED***
+Object.defineProperty(Phaser.Timer.prototype, "duration", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         if (this.running && this.nextTick > this._now)
-        ***REMOVED***
+        {
             return this.nextTick - this._now;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return 0;
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Timer#length
-* @property ***REMOVED***number***REMOVED*** length - The number of pending events in the queue.
+* @property {number} length - The number of pending events in the queue.
 * @readonly
 */
-Object.defineProperty(Phaser.Timer.prototype, "length", ***REMOVED***
+Object.defineProperty(Phaser.Timer.prototype, "length", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this.events.length;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Timer#ms
-* @property ***REMOVED***number***REMOVED*** ms - The duration in milliseconds that this Timer has been running for.
+* @property {number} ms - The duration in milliseconds that this Timer has been running for.
 * @readonly
 */
-Object.defineProperty(Phaser.Timer.prototype, "ms", ***REMOVED***
+Object.defineProperty(Phaser.Timer.prototype, "ms", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         if (this.running)
-        ***REMOVED***
+        {
             return this._now - this._started - this._pauseTotal;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return 0;
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Timer#seconds
-* @property ***REMOVED***number***REMOVED*** seconds - The duration in seconds that this Timer has been running for.
+* @property {number} seconds - The duration in seconds that this Timer has been running for.
 * @readonly
 */
-Object.defineProperty(Phaser.Timer.prototype, "seconds", ***REMOVED***
+Object.defineProperty(Phaser.Timer.prototype, "seconds", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         if (this.running)
-        ***REMOVED***
+        {
             return this.ms * 0.001;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return 0;
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 Phaser.Timer.prototype.constructor = Phaser.Timer;
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1398,69 +1398,69 @@ Phaser.Timer.prototype.constructor = Phaser.Timer;
 * 
 * TimerEvents are removed by their parent timer once finished firing or repeating.
 * 
-* Use ***REMOVED***@link Phaser.Timer#add***REMOVED***, ***REMOVED***@link Phaser.Timer#repeat***REMOVED***, or ***REMOVED***@link Phaser.Timer#loop***REMOVED*** methods to create a new event.
+* Use {@link Phaser.Timer#add}, {@link Phaser.Timer#repeat}, or {@link Phaser.Timer#loop} methods to create a new event.
 *
 * @class Phaser.TimerEvent
 * @constructor
-* @param ***REMOVED***Phaser.Timer***REMOVED*** timer - The Timer object that this TimerEvent belongs to.
-* @param ***REMOVED***number***REMOVED*** delay - The delay in ms at which this TimerEvent fires.
-* @param ***REMOVED***number***REMOVED*** tick - The tick is the next game clock time that this event will fire at.
-* @param ***REMOVED***number***REMOVED*** repeatCount - If this TimerEvent repeats it will do so this many times.
-* @param ***REMOVED***boolean***REMOVED*** loop - True if this TimerEvent loops, otherwise false.
-* @param ***REMOVED***function***REMOVED*** callback - The callback that will be called when the TimerEvent occurs.
-* @param ***REMOVED***object***REMOVED*** callbackContext - The context in which the callback will be called.
-* @param ***REMOVED***any[]***REMOVED*** arguments - Additional arguments to be passed to the callback.
+* @param {Phaser.Timer} timer - The Timer object that this TimerEvent belongs to.
+* @param {number} delay - The delay in ms at which this TimerEvent fires.
+* @param {number} tick - The tick is the next game clock time that this event will fire at.
+* @param {number} repeatCount - If this TimerEvent repeats it will do so this many times.
+* @param {boolean} loop - True if this TimerEvent loops, otherwise false.
+* @param {function} callback - The callback that will be called when the TimerEvent occurs.
+* @param {object} callbackContext - The context in which the callback will be called.
+* @param {any[]} arguments - Additional arguments to be passed to the callback.
 */
-Phaser.TimerEvent = function (timer, delay, tick, repeatCount, loop, callback, callbackContext, args) ***REMOVED***
+Phaser.TimerEvent = function (timer, delay, tick, repeatCount, loop, callback, callbackContext, args) {
 
     /**
-    * @property ***REMOVED***Phaser.Timer***REMOVED*** timer - The Timer object that this TimerEvent belongs to.
+    * @property {Phaser.Timer} timer - The Timer object that this TimerEvent belongs to.
     * @protected
     * @readonly
     */
     this.timer = timer;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** delay - The delay in ms at which this TimerEvent fires.
+    * @property {number} delay - The delay in ms at which this TimerEvent fires.
     */
     this.delay = delay;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** tick - The tick is the next game clock time that this event will fire at.
+    * @property {number} tick - The tick is the next game clock time that this event will fire at.
     */
     this.tick = tick;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** repeatCount - If this TimerEvent repeats it will do so this many times.
+    * @property {number} repeatCount - If this TimerEvent repeats it will do so this many times.
     */
     this.repeatCount = repeatCount - 1;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** loop - True if this TimerEvent loops, otherwise false.
+    * @property {boolean} loop - True if this TimerEvent loops, otherwise false.
     */
     this.loop = loop;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** callback - The callback that will be called when the TimerEvent occurs.
+    * @property {function} callback - The callback that will be called when the TimerEvent occurs.
     */
     this.callback = callback;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** callbackContext - The context in which the callback will be called.
+    * @property {object} callbackContext - The context in which the callback will be called.
     */
     this.callbackContext = callbackContext;
 
     /**
-    * @property ***REMOVED***any[]***REMOVED*** arguments - Additional arguments to be passed to the callback.
+    * @property {any[]} arguments - Additional arguments to be passed to the callback.
     */
     this.args = args;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** pendingDelete - A flag that controls if the TimerEvent is pending deletion.
+    * @property {boolean} pendingDelete - A flag that controls if the TimerEvent is pending deletion.
     * @protected
     */
     this.pendingDelete = false;
 
-***REMOVED***;
+};
 
 Phaser.TimerEvent.prototype.constructor = Phaser.TimerEvent;

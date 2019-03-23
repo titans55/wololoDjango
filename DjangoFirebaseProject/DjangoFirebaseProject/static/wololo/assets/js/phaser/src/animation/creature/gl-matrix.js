@@ -28,27 +28,27 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 
-(function(_global) ***REMOVED***
+(function(_global) {
   "use strict";
 
-  var shim = ***REMOVED******REMOVED***;
-  if (typeof(exports) === 'undefined') ***REMOVED***
-    if(typeof define == 'function' && typeof define.amd == 'object' && define.amd) ***REMOVED***
-      shim.exports = ***REMOVED******REMOVED***;
-      define(function() ***REMOVED***
+  var shim = {};
+  if (typeof(exports) === 'undefined') {
+    if(typeof define == 'function' && typeof define.amd == 'object' && define.amd) {
+      shim.exports = {};
+      define(function() {
         return shim.exports;
-      ***REMOVED***);
-    ***REMOVED*** else ***REMOVED***
+      });
+    } else {
       // gl-matrix lives in a browser, define its namespaces in global
       shim.exports = typeof(window) !== 'undefined' ? window : _global;
-    ***REMOVED***
-  ***REMOVED***
-  else ***REMOVED***
+    }
+  }
+  else {
     // gl-matrix lives in commonjs, define its namespaces in exports
     shim.exports = exports;
-  ***REMOVED***
+  }
 
-  (function(exports) ***REMOVED***
+  (function(exports) {
     /* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -72,47 +72,47 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 
-if(!GLMAT_EPSILON) ***REMOVED***
+if(!GLMAT_EPSILON) {
     var GLMAT_EPSILON = 0.000001;
-***REMOVED***
+}
 
-if(!GLMAT_ARRAY_TYPE) ***REMOVED***
+if(!GLMAT_ARRAY_TYPE) {
     var GLMAT_ARRAY_TYPE = (typeof Float32Array !== 'undefined') ? Float32Array : Array;
-***REMOVED***
+}
 
-if(!GLMAT_RANDOM) ***REMOVED***
+if(!GLMAT_RANDOM) {
     var GLMAT_RANDOM = Math.random;
-***REMOVED***
+}
 
 /**
  * @class Common utilities
  * @name glMatrix
  */
-var glMatrix = ***REMOVED******REMOVED***;
+var glMatrix = {};
 
 /**
  * Sets the type of array used when creating new vectors and matrices
  *
- * @param ***REMOVED***Type***REMOVED*** type Array type, such as Float32Array or Array
+ * @param {Type} type Array type, such as Float32Array or Array
  */
-glMatrix.setMatrixArrayType = function(type) ***REMOVED***
+glMatrix.setMatrixArrayType = function(type) {
     GLMAT_ARRAY_TYPE = type;
-***REMOVED***
+}
 
-if(typeof(exports) !== 'undefined') ***REMOVED***
+if(typeof(exports) !== 'undefined') {
     exports.glMatrix = glMatrix;
-***REMOVED***
+}
 
 var degree = Math.PI / 180;
 
 /**
 * Convert Degree To Radian
 *
-* @param ***REMOVED***Number***REMOVED*** Angle in Degrees
+* @param {Number} Angle in Degrees
 */
-glMatrix.toRadian = function(a)***REMOVED***
+glMatrix.toRadian = function(a){
      return a * degree;
-***REMOVED***
+}
 ;
 /* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
 
@@ -141,104 +141,104 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
  * @name vec2
  */
 
-var vec2 = ***REMOVED******REMOVED***;
+var vec2 = {};
 
 /**
  * Creates a new, empty vec2
  *
- * @returns ***REMOVED***vec2***REMOVED*** a new 2D vector
+ * @returns {vec2} a new 2D vector
  */
-vec2.create = function() ***REMOVED***
+vec2.create = function() {
     var out = new GLMAT_ARRAY_TYPE(2);
     out[0] = 0;
     out[1] = 0;
     return out;
-***REMOVED***;
+};
 
 /**
  * Creates a new vec2 initialized with values from an existing vector
  *
- * @param ***REMOVED***vec2***REMOVED*** a vector to clone
- * @returns ***REMOVED***vec2***REMOVED*** a new 2D vector
+ * @param {vec2} a vector to clone
+ * @returns {vec2} a new 2D vector
  */
-vec2.clone = function(a) ***REMOVED***
+vec2.clone = function(a) {
     var out = new GLMAT_ARRAY_TYPE(2);
     out[0] = a[0];
     out[1] = a[1];
     return out;
-***REMOVED***;
+};
 
 /**
  * Creates a new vec2 initialized with the given values
  *
- * @param ***REMOVED***Number***REMOVED*** x X component
- * @param ***REMOVED***Number***REMOVED*** y Y component
- * @returns ***REMOVED***vec2***REMOVED*** a new 2D vector
+ * @param {Number} x X component
+ * @param {Number} y Y component
+ * @returns {vec2} a new 2D vector
  */
-vec2.fromValues = function(x, y) ***REMOVED***
+vec2.fromValues = function(x, y) {
     var out = new GLMAT_ARRAY_TYPE(2);
     out[0] = x;
     out[1] = y;
     return out;
-***REMOVED***;
+};
 
 /**
  * Copy the values from one vec2 to another
  *
- * @param ***REMOVED***vec2***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec2***REMOVED*** a the source vector
- * @returns ***REMOVED***vec2***REMOVED*** out
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the source vector
+ * @returns {vec2} out
  */
-vec2.copy = function(out, a) ***REMOVED***
+vec2.copy = function(out, a) {
     out[0] = a[0];
     out[1] = a[1];
     return out;
-***REMOVED***;
+};
 
 /**
  * Set the components of a vec2 to the given values
  *
- * @param ***REMOVED***vec2***REMOVED*** out the receiving vector
- * @param ***REMOVED***Number***REMOVED*** x X component
- * @param ***REMOVED***Number***REMOVED*** y Y component
- * @returns ***REMOVED***vec2***REMOVED*** out
+ * @param {vec2} out the receiving vector
+ * @param {Number} x X component
+ * @param {Number} y Y component
+ * @returns {vec2} out
  */
-vec2.set = function(out, x, y) ***REMOVED***
+vec2.set = function(out, x, y) {
     out[0] = x;
     out[1] = y;
     return out;
-***REMOVED***;
+};
 
 /**
  * Adds two vec2's
  *
- * @param ***REMOVED***vec2***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec2***REMOVED*** a the first operand
- * @param ***REMOVED***vec2***REMOVED*** b the second operand
- * @returns ***REMOVED***vec2***REMOVED*** out
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {vec2} out
  */
-vec2.add = function(out, a, b) ***REMOVED***
+vec2.add = function(out, a, b) {
     out[0] = a[0] + b[0];
     out[1] = a[1] + b[1];
     return out;
-***REMOVED***;
+};
 
 /**
  * Subtracts vector b from vector a
  *
- * @param ***REMOVED***vec2***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec2***REMOVED*** a the first operand
- * @param ***REMOVED***vec2***REMOVED*** b the second operand
- * @returns ***REMOVED***vec2***REMOVED*** out
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {vec2} out
  */
-vec2.subtract = function(out, a, b) ***REMOVED***
+vec2.subtract = function(out, a, b) {
     out[0] = a[0] - b[0];
     out[1] = a[1] - b[1];
     return out;
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec2.subtract***REMOVED***
+ * Alias for {@link vec2.subtract}
  * @function
  */
 vec2.sub = vec2.subtract;
@@ -246,19 +246,19 @@ vec2.sub = vec2.subtract;
 /**
  * Multiplies two vec2's
  *
- * @param ***REMOVED***vec2***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec2***REMOVED*** a the first operand
- * @param ***REMOVED***vec2***REMOVED*** b the second operand
- * @returns ***REMOVED***vec2***REMOVED*** out
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {vec2} out
  */
-vec2.multiply = function(out, a, b) ***REMOVED***
+vec2.multiply = function(out, a, b) {
     out[0] = a[0] * b[0];
     out[1] = a[1] * b[1];
     return out;
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec2.multiply***REMOVED***
+ * Alias for {@link vec2.multiply}
  * @function
  */
 vec2.mul = vec2.multiply;
@@ -266,19 +266,19 @@ vec2.mul = vec2.multiply;
 /**
  * Divides two vec2's
  *
- * @param ***REMOVED***vec2***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec2***REMOVED*** a the first operand
- * @param ***REMOVED***vec2***REMOVED*** b the second operand
- * @returns ***REMOVED***vec2***REMOVED*** out
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {vec2} out
  */
-vec2.divide = function(out, a, b) ***REMOVED***
+vec2.divide = function(out, a, b) {
     out[0] = a[0] / b[0];
     out[1] = a[1] / b[1];
     return out;
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec2.divide***REMOVED***
+ * Alias for {@link vec2.divide}
  * @function
  */
 vec2.div = vec2.divide;
@@ -286,75 +286,75 @@ vec2.div = vec2.divide;
 /**
  * Returns the minimum of two vec2's
  *
- * @param ***REMOVED***vec2***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec2***REMOVED*** a the first operand
- * @param ***REMOVED***vec2***REMOVED*** b the second operand
- * @returns ***REMOVED***vec2***REMOVED*** out
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {vec2} out
  */
-vec2.min = function(out, a, b) ***REMOVED***
+vec2.min = function(out, a, b) {
     out[0] = Math.min(a[0], b[0]);
     out[1] = Math.min(a[1], b[1]);
     return out;
-***REMOVED***;
+};
 
 /**
  * Returns the maximum of two vec2's
  *
- * @param ***REMOVED***vec2***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec2***REMOVED*** a the first operand
- * @param ***REMOVED***vec2***REMOVED*** b the second operand
- * @returns ***REMOVED***vec2***REMOVED*** out
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {vec2} out
  */
-vec2.max = function(out, a, b) ***REMOVED***
+vec2.max = function(out, a, b) {
     out[0] = Math.max(a[0], b[0]);
     out[1] = Math.max(a[1], b[1]);
     return out;
-***REMOVED***;
+};
 
 /**
  * Scales a vec2 by a scalar number
  *
- * @param ***REMOVED***vec2***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec2***REMOVED*** a the vector to scale
- * @param ***REMOVED***Number***REMOVED*** b amount to scale the vector by
- * @returns ***REMOVED***vec2***REMOVED*** out
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the vector to scale
+ * @param {Number} b amount to scale the vector by
+ * @returns {vec2} out
  */
-vec2.scale = function(out, a, b) ***REMOVED***
+vec2.scale = function(out, a, b) {
     out[0] = a[0] * b;
     out[1] = a[1] * b;
     return out;
-***REMOVED***;
+};
 
 /**
  * Adds two vec2's after scaling the second operand by a scalar value
  *
- * @param ***REMOVED***vec2***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec2***REMOVED*** a the first operand
- * @param ***REMOVED***vec2***REMOVED*** b the second operand
- * @param ***REMOVED***Number***REMOVED*** scale the amount to scale b by before adding
- * @returns ***REMOVED***vec2***REMOVED*** out
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @param {Number} scale the amount to scale b by before adding
+ * @returns {vec2} out
  */
-vec2.scaleAndAdd = function(out, a, b, scale) ***REMOVED***
+vec2.scaleAndAdd = function(out, a, b, scale) {
     out[0] = a[0] + (b[0] * scale);
     out[1] = a[1] + (b[1] * scale);
     return out;
-***REMOVED***;
+};
 
 /**
  * Calculates the euclidian distance between two vec2's
  *
- * @param ***REMOVED***vec2***REMOVED*** a the first operand
- * @param ***REMOVED***vec2***REMOVED*** b the second operand
- * @returns ***REMOVED***Number***REMOVED*** distance between a and b
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {Number} distance between a and b
  */
-vec2.distance = function(a, b) ***REMOVED***
+vec2.distance = function(a, b) {
     var x = b[0] - a[0],
         y = b[1] - a[1];
     return Math.sqrt(x*x + y*y);
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec2.distance***REMOVED***
+ * Alias for {@link vec2.distance}
  * @function
  */
 vec2.dist = vec2.distance;
@@ -362,18 +362,18 @@ vec2.dist = vec2.distance;
 /**
  * Calculates the squared euclidian distance between two vec2's
  *
- * @param ***REMOVED***vec2***REMOVED*** a the first operand
- * @param ***REMOVED***vec2***REMOVED*** b the second operand
- * @returns ***REMOVED***Number***REMOVED*** squared distance between a and b
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {Number} squared distance between a and b
  */
-vec2.squaredDistance = function(a, b) ***REMOVED***
+vec2.squaredDistance = function(a, b) {
     var x = b[0] - a[0],
         y = b[1] - a[1];
     return x*x + y*y;
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec2.squaredDistance***REMOVED***
+ * Alias for {@link vec2.squaredDistance}
  * @function
  */
 vec2.sqrDist = vec2.squaredDistance;
@@ -381,17 +381,17 @@ vec2.sqrDist = vec2.squaredDistance;
 /**
  * Calculates the length of a vec2
  *
- * @param ***REMOVED***vec2***REMOVED*** a vector to calculate length of
- * @returns ***REMOVED***Number***REMOVED*** length of a
+ * @param {vec2} a vector to calculate length of
+ * @returns {Number} length of a
  */
-vec2.length = function (a) ***REMOVED***
+vec2.length = function (a) {
     var x = a[0],
         y = a[1];
     return Math.sqrt(x*x + y*y);
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec2.length***REMOVED***
+ * Alias for {@link vec2.length}
  * @function
  */
 vec2.len = vec2.length;
@@ -399,17 +399,17 @@ vec2.len = vec2.length;
 /**
  * Calculates the squared length of a vec2
  *
- * @param ***REMOVED***vec2***REMOVED*** a vector to calculate squared length of
- * @returns ***REMOVED***Number***REMOVED*** squared length of a
+ * @param {vec2} a vector to calculate squared length of
+ * @returns {Number} squared length of a
  */
-vec2.squaredLength = function (a) ***REMOVED***
+vec2.squaredLength = function (a) {
     var x = a[0],
         y = a[1];
     return x*x + y*y;
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec2.squaredLength***REMOVED***
+ * Alias for {@link vec2.squaredLength}
  * @function
  */
 vec2.sqrLen = vec2.squaredLength;
@@ -417,229 +417,229 @@ vec2.sqrLen = vec2.squaredLength;
 /**
  * Negates the components of a vec2
  *
- * @param ***REMOVED***vec2***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec2***REMOVED*** a vector to negate
- * @returns ***REMOVED***vec2***REMOVED*** out
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a vector to negate
+ * @returns {vec2} out
  */
-vec2.negate = function(out, a) ***REMOVED***
+vec2.negate = function(out, a) {
     out[0] = -a[0];
     out[1] = -a[1];
     return out;
-***REMOVED***;
+};
 
 /**
  * Returns the inverse of the components of a vec2
  *
- * @param ***REMOVED***vec2***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec2***REMOVED*** a vector to invert
- * @returns ***REMOVED***vec2***REMOVED*** out
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a vector to invert
+ * @returns {vec2} out
  */
-vec2.inverse = function(out, a) ***REMOVED***
+vec2.inverse = function(out, a) {
   out[0] = 1.0 / a[0];
   out[1] = 1.0 / a[1];
   return out;
-***REMOVED***;
+};
 
 /**
  * Normalize a vec2
  *
- * @param ***REMOVED***vec2***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec2***REMOVED*** a vector to normalize
- * @returns ***REMOVED***vec2***REMOVED*** out
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a vector to normalize
+ * @returns {vec2} out
  */
-vec2.normalize = function(out, a) ***REMOVED***
+vec2.normalize = function(out, a) {
     var x = a[0],
         y = a[1];
     var len = x*x + y*y;
-    if (len > 0) ***REMOVED***
+    if (len > 0) {
         //TODO: evaluate use of glm_invsqrt here?
         len = 1 / Math.sqrt(len);
         out[0] = a[0] * len;
         out[1] = a[1] * len;
-    ***REMOVED***
+    }
     return out;
-***REMOVED***;
+};
 
 /**
  * Calculates the dot product of two vec2's
  *
- * @param ***REMOVED***vec2***REMOVED*** a the first operand
- * @param ***REMOVED***vec2***REMOVED*** b the second operand
- * @returns ***REMOVED***Number***REMOVED*** dot product of a and b
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {Number} dot product of a and b
  */
-vec2.dot = function (a, b) ***REMOVED***
+vec2.dot = function (a, b) {
     return a[0] * b[0] + a[1] * b[1];
-***REMOVED***;
+};
 
 /**
  * Computes the cross product of two vec2's
  * Note that the cross product must by definition produce a 3D vector
  *
- * @param ***REMOVED***vec3***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec2***REMOVED*** a the first operand
- * @param ***REMOVED***vec2***REMOVED*** b the second operand
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {vec3} out
  */
-vec2.cross = function(out, a, b) ***REMOVED***
+vec2.cross = function(out, a, b) {
     var z = a[0] * b[1] - a[1] * b[0];
     out[0] = out[1] = 0;
     out[2] = z;
     return out;
-***REMOVED***;
+};
 
 /**
  * Performs a linear interpolation between two vec2's
  *
- * @param ***REMOVED***vec2***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec2***REMOVED*** a the first operand
- * @param ***REMOVED***vec2***REMOVED*** b the second operand
- * @param ***REMOVED***Number***REMOVED*** t interpolation amount between the two inputs
- * @returns ***REMOVED***vec2***REMOVED*** out
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @param {Number} t interpolation amount between the two inputs
+ * @returns {vec2} out
  */
-vec2.lerp = function (out, a, b, t) ***REMOVED***
+vec2.lerp = function (out, a, b, t) {
     var ax = a[0],
         ay = a[1];
     out[0] = ax + t * (b[0] - ax);
     out[1] = ay + t * (b[1] - ay);
     return out;
-***REMOVED***;
+};
 
 /**
  * Generates a random vector with the given scale
  *
- * @param ***REMOVED***vec2***REMOVED*** out the receiving vector
- * @param ***REMOVED***Number***REMOVED*** [scale] Length of the resulting vector. If ommitted, a unit vector will be returned
- * @returns ***REMOVED***vec2***REMOVED*** out
+ * @param {vec2} out the receiving vector
+ * @param {Number} [scale] Length of the resulting vector. If ommitted, a unit vector will be returned
+ * @returns {vec2} out
  */
-vec2.random = function (out, scale) ***REMOVED***
+vec2.random = function (out, scale) {
     scale = scale || 1.0;
     var r = GLMAT_RANDOM() * 2.0 * Math.PI;
     out[0] = Math.cos(r) * scale;
     out[1] = Math.sin(r) * scale;
     return out;
-***REMOVED***;
+};
 
 /**
  * Transforms the vec2 with a mat2
  *
- * @param ***REMOVED***vec2***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec2***REMOVED*** a the vector to transform
- * @param ***REMOVED***mat2***REMOVED*** m matrix to transform with
- * @returns ***REMOVED***vec2***REMOVED*** out
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the vector to transform
+ * @param {mat2} m matrix to transform with
+ * @returns {vec2} out
  */
-vec2.transformMat2 = function(out, a, m) ***REMOVED***
+vec2.transformMat2 = function(out, a, m) {
     var x = a[0],
         y = a[1];
     out[0] = m[0] * x + m[2] * y;
     out[1] = m[1] * x + m[3] * y;
     return out;
-***REMOVED***;
+};
 
 /**
  * Transforms the vec2 with a mat2d
  *
- * @param ***REMOVED***vec2***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec2***REMOVED*** a the vector to transform
- * @param ***REMOVED***mat2d***REMOVED*** m matrix to transform with
- * @returns ***REMOVED***vec2***REMOVED*** out
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the vector to transform
+ * @param {mat2d} m matrix to transform with
+ * @returns {vec2} out
  */
-vec2.transformMat2d = function(out, a, m) ***REMOVED***
+vec2.transformMat2d = function(out, a, m) {
     var x = a[0],
         y = a[1];
     out[0] = m[0] * x + m[2] * y + m[4];
     out[1] = m[1] * x + m[3] * y + m[5];
     return out;
-***REMOVED***;
+};
 
 /**
  * Transforms the vec2 with a mat3
  * 3rd vector component is implicitly '1'
  *
- * @param ***REMOVED***vec2***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec2***REMOVED*** a the vector to transform
- * @param ***REMOVED***mat3***REMOVED*** m matrix to transform with
- * @returns ***REMOVED***vec2***REMOVED*** out
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the vector to transform
+ * @param {mat3} m matrix to transform with
+ * @returns {vec2} out
  */
-vec2.transformMat3 = function(out, a, m) ***REMOVED***
+vec2.transformMat3 = function(out, a, m) {
     var x = a[0],
         y = a[1];
     out[0] = m[0] * x + m[3] * y + m[6];
     out[1] = m[1] * x + m[4] * y + m[7];
     return out;
-***REMOVED***;
+};
 
 /**
  * Transforms the vec2 with a mat4
  * 3rd vector component is implicitly '0'
  * 4th vector component is implicitly '1'
  *
- * @param ***REMOVED***vec2***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec2***REMOVED*** a the vector to transform
- * @param ***REMOVED***mat4***REMOVED*** m matrix to transform with
- * @returns ***REMOVED***vec2***REMOVED*** out
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the vector to transform
+ * @param {mat4} m matrix to transform with
+ * @returns {vec2} out
  */
-vec2.transformMat4 = function(out, a, m) ***REMOVED***
+vec2.transformMat4 = function(out, a, m) {
     var x = a[0], 
         y = a[1];
     out[0] = m[0] * x + m[4] * y + m[12];
     out[1] = m[1] * x + m[5] * y + m[13];
     return out;
-***REMOVED***;
+};
 
 /**
  * Perform some operation over an array of vec2s.
  *
- * @param ***REMOVED***Array***REMOVED*** a the array of vectors to iterate over
- * @param ***REMOVED***Number***REMOVED*** stride Number of elements between the start of each vec2. If 0 assumes tightly packed
- * @param ***REMOVED***Number***REMOVED*** offset Number of elements to skip at the beginning of the array
- * @param ***REMOVED***Number***REMOVED*** count Number of vec2s to iterate over. If 0 iterates over entire array
- * @param ***REMOVED***Function***REMOVED*** fn Function to call for each vector in the array
- * @param ***REMOVED***Object***REMOVED*** [arg] additional argument to pass to fn
- * @returns ***REMOVED***Array***REMOVED*** a
+ * @param {Array} a the array of vectors to iterate over
+ * @param {Number} stride Number of elements between the start of each vec2. If 0 assumes tightly packed
+ * @param {Number} offset Number of elements to skip at the beginning of the array
+ * @param {Number} count Number of vec2s to iterate over. If 0 iterates over entire array
+ * @param {Function} fn Function to call for each vector in the array
+ * @param {Object} [arg] additional argument to pass to fn
+ * @returns {Array} a
  * @function
  */
-vec2.forEach = (function() ***REMOVED***
+vec2.forEach = (function() {
     var vec = vec2.create();
 
-    return function(a, stride, offset, count, fn, arg) ***REMOVED***
+    return function(a, stride, offset, count, fn, arg) {
         var i, l;
-        if(!stride) ***REMOVED***
+        if(!stride) {
             stride = 2;
-        ***REMOVED***
+        }
 
-        if(!offset) ***REMOVED***
+        if(!offset) {
             offset = 0;
-        ***REMOVED***
+        }
         
-        if(count) ***REMOVED***
+        if(count) {
             l = Math.min((count * stride) + offset, a.length);
-        ***REMOVED*** else ***REMOVED***
+        } else {
             l = a.length;
-        ***REMOVED***
+        }
 
-        for(i = offset; i < l; i += stride) ***REMOVED***
+        for(i = offset; i < l; i += stride) {
             vec[0] = a[i]; vec[1] = a[i+1];
             fn(vec, vec, arg);
             a[i] = vec[0]; a[i+1] = vec[1];
-        ***REMOVED***
+        }
         
         return a;
-    ***REMOVED***;
-***REMOVED***)();
+    };
+})();
 
 /**
  * Returns a string representation of a vector
  *
- * @param ***REMOVED***vec2***REMOVED*** vec vector to represent as a string
- * @returns ***REMOVED***String***REMOVED*** string representation of the vector
+ * @param {vec2} vec vector to represent as a string
+ * @returns {String} string representation of the vector
  */
-vec2.str = function (a) ***REMOVED***
+vec2.str = function (a) {
     return 'vec2(' + a[0] + ', ' + a[1] + ')';
-***REMOVED***;
+};
 
-if(typeof(exports) !== 'undefined') ***REMOVED***
+if(typeof(exports) !== 'undefined') {
     exports.vec2 = vec2;
-***REMOVED***
+}
 ;
 /* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
 
@@ -668,113 +668,113 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
  * @name vec3
  */
 
-var vec3 = ***REMOVED******REMOVED***;
+var vec3 = {};
 
 /**
  * Creates a new, empty vec3
  *
- * @returns ***REMOVED***vec3***REMOVED*** a new 3D vector
+ * @returns {vec3} a new 3D vector
  */
-vec3.create = function() ***REMOVED***
+vec3.create = function() {
     var out = new GLMAT_ARRAY_TYPE(3);
     out[0] = 0;
     out[1] = 0;
     out[2] = 0;
     return out;
-***REMOVED***;
+};
 
 /**
  * Creates a new vec3 initialized with values from an existing vector
  *
- * @param ***REMOVED***vec3***REMOVED*** a vector to clone
- * @returns ***REMOVED***vec3***REMOVED*** a new 3D vector
+ * @param {vec3} a vector to clone
+ * @returns {vec3} a new 3D vector
  */
-vec3.clone = function(a) ***REMOVED***
+vec3.clone = function(a) {
     var out = new GLMAT_ARRAY_TYPE(3);
     out[0] = a[0];
     out[1] = a[1];
     out[2] = a[2];
     return out;
-***REMOVED***;
+};
 
 /**
  * Creates a new vec3 initialized with the given values
  *
- * @param ***REMOVED***Number***REMOVED*** x X component
- * @param ***REMOVED***Number***REMOVED*** y Y component
- * @param ***REMOVED***Number***REMOVED*** z Z component
- * @returns ***REMOVED***vec3***REMOVED*** a new 3D vector
+ * @param {Number} x X component
+ * @param {Number} y Y component
+ * @param {Number} z Z component
+ * @returns {vec3} a new 3D vector
  */
-vec3.fromValues = function(x, y, z) ***REMOVED***
+vec3.fromValues = function(x, y, z) {
     var out = new GLMAT_ARRAY_TYPE(3);
     out[0] = x;
     out[1] = y;
     out[2] = z;
     return out;
-***REMOVED***;
+};
 
 /**
  * Copy the values from one vec3 to another
  *
- * @param ***REMOVED***vec3***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec3***REMOVED*** a the source vector
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a the source vector
+ * @returns {vec3} out
  */
-vec3.copy = function(out, a) ***REMOVED***
+vec3.copy = function(out, a) {
     out[0] = a[0];
     out[1] = a[1];
     out[2] = a[2];
     return out;
-***REMOVED***;
+};
 
 /**
  * Set the components of a vec3 to the given values
  *
- * @param ***REMOVED***vec3***REMOVED*** out the receiving vector
- * @param ***REMOVED***Number***REMOVED*** x X component
- * @param ***REMOVED***Number***REMOVED*** y Y component
- * @param ***REMOVED***Number***REMOVED*** z Z component
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out the receiving vector
+ * @param {Number} x X component
+ * @param {Number} y Y component
+ * @param {Number} z Z component
+ * @returns {vec3} out
  */
-vec3.set = function(out, x, y, z) ***REMOVED***
+vec3.set = function(out, x, y, z) {
     out[0] = x;
     out[1] = y;
     out[2] = z;
     return out;
-***REMOVED***;
+};
 
 /**
  * Adds two vec3's
  *
- * @param ***REMOVED***vec3***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec3***REMOVED*** a the first operand
- * @param ***REMOVED***vec3***REMOVED*** b the second operand
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a the first operand
+ * @param {vec3} b the second operand
+ * @returns {vec3} out
  */
-vec3.add = function(out, a, b) ***REMOVED***
+vec3.add = function(out, a, b) {
     out[0] = a[0] + b[0];
     out[1] = a[1] + b[1];
     out[2] = a[2] + b[2];
     return out;
-***REMOVED***;
+};
 
 /**
  * Subtracts vector b from vector a
  *
- * @param ***REMOVED***vec3***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec3***REMOVED*** a the first operand
- * @param ***REMOVED***vec3***REMOVED*** b the second operand
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a the first operand
+ * @param {vec3} b the second operand
+ * @returns {vec3} out
  */
-vec3.subtract = function(out, a, b) ***REMOVED***
+vec3.subtract = function(out, a, b) {
     out[0] = a[0] - b[0];
     out[1] = a[1] - b[1];
     out[2] = a[2] - b[2];
     return out;
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec3.subtract***REMOVED***
+ * Alias for {@link vec3.subtract}
  * @function
  */
 vec3.sub = vec3.subtract;
@@ -782,20 +782,20 @@ vec3.sub = vec3.subtract;
 /**
  * Multiplies two vec3's
  *
- * @param ***REMOVED***vec3***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec3***REMOVED*** a the first operand
- * @param ***REMOVED***vec3***REMOVED*** b the second operand
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a the first operand
+ * @param {vec3} b the second operand
+ * @returns {vec3} out
  */
-vec3.multiply = function(out, a, b) ***REMOVED***
+vec3.multiply = function(out, a, b) {
     out[0] = a[0] * b[0];
     out[1] = a[1] * b[1];
     out[2] = a[2] * b[2];
     return out;
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec3.multiply***REMOVED***
+ * Alias for {@link vec3.multiply}
  * @function
  */
 vec3.mul = vec3.multiply;
@@ -803,20 +803,20 @@ vec3.mul = vec3.multiply;
 /**
  * Divides two vec3's
  *
- * @param ***REMOVED***vec3***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec3***REMOVED*** a the first operand
- * @param ***REMOVED***vec3***REMOVED*** b the second operand
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a the first operand
+ * @param {vec3} b the second operand
+ * @returns {vec3} out
  */
-vec3.divide = function(out, a, b) ***REMOVED***
+vec3.divide = function(out, a, b) {
     out[0] = a[0] / b[0];
     out[1] = a[1] / b[1];
     out[2] = a[2] / b[2];
     return out;
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec3.divide***REMOVED***
+ * Alias for {@link vec3.divide}
  * @function
  */
 vec3.div = vec3.divide;
@@ -824,80 +824,80 @@ vec3.div = vec3.divide;
 /**
  * Returns the minimum of two vec3's
  *
- * @param ***REMOVED***vec3***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec3***REMOVED*** a the first operand
- * @param ***REMOVED***vec3***REMOVED*** b the second operand
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a the first operand
+ * @param {vec3} b the second operand
+ * @returns {vec3} out
  */
-vec3.min = function(out, a, b) ***REMOVED***
+vec3.min = function(out, a, b) {
     out[0] = Math.min(a[0], b[0]);
     out[1] = Math.min(a[1], b[1]);
     out[2] = Math.min(a[2], b[2]);
     return out;
-***REMOVED***;
+};
 
 /**
  * Returns the maximum of two vec3's
  *
- * @param ***REMOVED***vec3***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec3***REMOVED*** a the first operand
- * @param ***REMOVED***vec3***REMOVED*** b the second operand
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a the first operand
+ * @param {vec3} b the second operand
+ * @returns {vec3} out
  */
-vec3.max = function(out, a, b) ***REMOVED***
+vec3.max = function(out, a, b) {
     out[0] = Math.max(a[0], b[0]);
     out[1] = Math.max(a[1], b[1]);
     out[2] = Math.max(a[2], b[2]);
     return out;
-***REMOVED***;
+};
 
 /**
  * Scales a vec3 by a scalar number
  *
- * @param ***REMOVED***vec3***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec3***REMOVED*** a the vector to scale
- * @param ***REMOVED***Number***REMOVED*** b amount to scale the vector by
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a the vector to scale
+ * @param {Number} b amount to scale the vector by
+ * @returns {vec3} out
  */
-vec3.scale = function(out, a, b) ***REMOVED***
+vec3.scale = function(out, a, b) {
     out[0] = a[0] * b;
     out[1] = a[1] * b;
     out[2] = a[2] * b;
     return out;
-***REMOVED***;
+};
 
 /**
  * Adds two vec3's after scaling the second operand by a scalar value
  *
- * @param ***REMOVED***vec3***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec3***REMOVED*** a the first operand
- * @param ***REMOVED***vec3***REMOVED*** b the second operand
- * @param ***REMOVED***Number***REMOVED*** scale the amount to scale b by before adding
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a the first operand
+ * @param {vec3} b the second operand
+ * @param {Number} scale the amount to scale b by before adding
+ * @returns {vec3} out
  */
-vec3.scaleAndAdd = function(out, a, b, scale) ***REMOVED***
+vec3.scaleAndAdd = function(out, a, b, scale) {
     out[0] = a[0] + (b[0] * scale);
     out[1] = a[1] + (b[1] * scale);
     out[2] = a[2] + (b[2] * scale);
     return out;
-***REMOVED***;
+};
 
 /**
  * Calculates the euclidian distance between two vec3's
  *
- * @param ***REMOVED***vec3***REMOVED*** a the first operand
- * @param ***REMOVED***vec3***REMOVED*** b the second operand
- * @returns ***REMOVED***Number***REMOVED*** distance between a and b
+ * @param {vec3} a the first operand
+ * @param {vec3} b the second operand
+ * @returns {Number} distance between a and b
  */
-vec3.distance = function(a, b) ***REMOVED***
+vec3.distance = function(a, b) {
     var x = b[0] - a[0],
         y = b[1] - a[1],
         z = b[2] - a[2];
     return Math.sqrt(x*x + y*y + z*z);
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec3.distance***REMOVED***
+ * Alias for {@link vec3.distance}
  * @function
  */
 vec3.dist = vec3.distance;
@@ -905,19 +905,19 @@ vec3.dist = vec3.distance;
 /**
  * Calculates the squared euclidian distance between two vec3's
  *
- * @param ***REMOVED***vec3***REMOVED*** a the first operand
- * @param ***REMOVED***vec3***REMOVED*** b the second operand
- * @returns ***REMOVED***Number***REMOVED*** squared distance between a and b
+ * @param {vec3} a the first operand
+ * @param {vec3} b the second operand
+ * @returns {Number} squared distance between a and b
  */
-vec3.squaredDistance = function(a, b) ***REMOVED***
+vec3.squaredDistance = function(a, b) {
     var x = b[0] - a[0],
         y = b[1] - a[1],
         z = b[2] - a[2];
     return x*x + y*y + z*z;
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec3.squaredDistance***REMOVED***
+ * Alias for {@link vec3.squaredDistance}
  * @function
  */
 vec3.sqrDist = vec3.squaredDistance;
@@ -925,18 +925,18 @@ vec3.sqrDist = vec3.squaredDistance;
 /**
  * Calculates the length of a vec3
  *
- * @param ***REMOVED***vec3***REMOVED*** a vector to calculate length of
- * @returns ***REMOVED***Number***REMOVED*** length of a
+ * @param {vec3} a vector to calculate length of
+ * @returns {Number} length of a
  */
-vec3.length = function (a) ***REMOVED***
+vec3.length = function (a) {
     var x = a[0],
         y = a[1],
         z = a[2];
     return Math.sqrt(x*x + y*y + z*z);
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec3.length***REMOVED***
+ * Alias for {@link vec3.length}
  * @function
  */
 vec3.len = vec3.length;
@@ -944,18 +944,18 @@ vec3.len = vec3.length;
 /**
  * Calculates the squared length of a vec3
  *
- * @param ***REMOVED***vec3***REMOVED*** a vector to calculate squared length of
- * @returns ***REMOVED***Number***REMOVED*** squared length of a
+ * @param {vec3} a vector to calculate squared length of
+ * @returns {Number} squared length of a
  */
-vec3.squaredLength = function (a) ***REMOVED***
+vec3.squaredLength = function (a) {
     var x = a[0],
         y = a[1],
         z = a[2];
     return x*x + y*y + z*z;
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec3.squaredLength***REMOVED***
+ * Alias for {@link vec3.squaredLength}
  * @function
  */
 vec3.sqrLen = vec3.squaredLength;
@@ -963,73 +963,73 @@ vec3.sqrLen = vec3.squaredLength;
 /**
  * Negates the components of a vec3
  *
- * @param ***REMOVED***vec3***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec3***REMOVED*** a vector to negate
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a vector to negate
+ * @returns {vec3} out
  */
-vec3.negate = function(out, a) ***REMOVED***
+vec3.negate = function(out, a) {
     out[0] = -a[0];
     out[1] = -a[1];
     out[2] = -a[2];
     return out;
-***REMOVED***;
+};
 
 /**
  * Returns the inverse of the components of a vec3
  *
- * @param ***REMOVED***vec3***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec3***REMOVED*** a vector to invert
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a vector to invert
+ * @returns {vec3} out
  */
-vec3.inverse = function(out, a) ***REMOVED***
+vec3.inverse = function(out, a) {
   out[0] = 1.0 / a[0];
   out[1] = 1.0 / a[1];
   out[2] = 1.0 / a[2];
   return out;
-***REMOVED***;
+};
 
 /**
  * Normalize a vec3
  *
- * @param ***REMOVED***vec3***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec3***REMOVED*** a vector to normalize
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a vector to normalize
+ * @returns {vec3} out
  */
-vec3.normalize = function(out, a) ***REMOVED***
+vec3.normalize = function(out, a) {
     var x = a[0],
         y = a[1],
         z = a[2];
     var len = x*x + y*y + z*z;
-    if (len > 0) ***REMOVED***
+    if (len > 0) {
         //TODO: evaluate use of glm_invsqrt here?
         len = 1 / Math.sqrt(len);
         out[0] = a[0] * len;
         out[1] = a[1] * len;
         out[2] = a[2] * len;
-    ***REMOVED***
+    }
     return out;
-***REMOVED***;
+};
 
 /**
  * Calculates the dot product of two vec3's
  *
- * @param ***REMOVED***vec3***REMOVED*** a the first operand
- * @param ***REMOVED***vec3***REMOVED*** b the second operand
- * @returns ***REMOVED***Number***REMOVED*** dot product of a and b
+ * @param {vec3} a the first operand
+ * @param {vec3} b the second operand
+ * @returns {Number} dot product of a and b
  */
-vec3.dot = function (a, b) ***REMOVED***
+vec3.dot = function (a, b) {
     return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
-***REMOVED***;
+};
 
 /**
  * Computes the cross product of two vec3's
  *
- * @param ***REMOVED***vec3***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec3***REMOVED*** a the first operand
- * @param ***REMOVED***vec3***REMOVED*** b the second operand
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a the first operand
+ * @param {vec3} b the second operand
+ * @returns {vec3} out
  */
-vec3.cross = function(out, a, b) ***REMOVED***
+vec3.cross = function(out, a, b) {
     var ax = a[0], ay = a[1], az = a[2],
         bx = b[0], by = b[1], bz = b[2];
 
@@ -1037,18 +1037,18 @@ vec3.cross = function(out, a, b) ***REMOVED***
     out[1] = az * bx - ax * bz;
     out[2] = ax * by - ay * bx;
     return out;
-***REMOVED***;
+};
 
 /**
  * Performs a linear interpolation between two vec3's
  *
- * @param ***REMOVED***vec3***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec3***REMOVED*** a the first operand
- * @param ***REMOVED***vec3***REMOVED*** b the second operand
- * @param ***REMOVED***Number***REMOVED*** t interpolation amount between the two inputs
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a the first operand
+ * @param {vec3} b the second operand
+ * @param {Number} t interpolation amount between the two inputs
+ * @returns {vec3} out
  */
-vec3.lerp = function (out, a, b, t) ***REMOVED***
+vec3.lerp = function (out, a, b, t) {
     var ax = a[0],
         ay = a[1],
         az = a[2];
@@ -1056,16 +1056,16 @@ vec3.lerp = function (out, a, b, t) ***REMOVED***
     out[1] = ay + t * (b[1] - ay);
     out[2] = az + t * (b[2] - az);
     return out;
-***REMOVED***;
+};
 
 /**
  * Generates a random vector with the given scale
  *
- * @param ***REMOVED***vec3***REMOVED*** out the receiving vector
- * @param ***REMOVED***Number***REMOVED*** [scale] Length of the resulting vector. If ommitted, a unit vector will be returned
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out the receiving vector
+ * @param {Number} [scale] Length of the resulting vector. If ommitted, a unit vector will be returned
+ * @returns {vec3} out
  */
-vec3.random = function (out, scale) ***REMOVED***
+vec3.random = function (out, scale) {
     scale = scale || 1.0;
 
     var r = GLMAT_RANDOM() * 2.0 * Math.PI;
@@ -1076,18 +1076,18 @@ vec3.random = function (out, scale) ***REMOVED***
     out[1] = Math.sin(r) * zScale;
     out[2] = z * scale;
     return out;
-***REMOVED***;
+};
 
 /**
  * Transforms the vec3 with a mat4.
  * 4th vector component is implicitly '1'
  *
- * @param ***REMOVED***vec3***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec3***REMOVED*** a the vector to transform
- * @param ***REMOVED***mat4***REMOVED*** m matrix to transform with
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a the vector to transform
+ * @param {mat4} m matrix to transform with
+ * @returns {vec3} out
  */
-vec3.transformMat4 = function(out, a, m) ***REMOVED***
+vec3.transformMat4 = function(out, a, m) {
     var x = a[0], y = a[1], z = a[2],
         w = m[3] * x + m[7] * y + m[11] * z + m[15];
     w = w || 1.0;
@@ -1095,33 +1095,33 @@ vec3.transformMat4 = function(out, a, m) ***REMOVED***
     out[1] = (m[1] * x + m[5] * y + m[9] * z + m[13]) / w;
     out[2] = (m[2] * x + m[6] * y + m[10] * z + m[14]) / w;
     return out;
-***REMOVED***;
+};
 
 /**
  * Transforms the vec3 with a mat3.
  *
- * @param ***REMOVED***vec3***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec3***REMOVED*** a the vector to transform
- * @param ***REMOVED***mat4***REMOVED*** m the 3x3 matrix to transform with
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a the vector to transform
+ * @param {mat4} m the 3x3 matrix to transform with
+ * @returns {vec3} out
  */
-vec3.transformMat3 = function(out, a, m) ***REMOVED***
+vec3.transformMat3 = function(out, a, m) {
     var x = a[0], y = a[1], z = a[2];
     out[0] = x * m[0] + y * m[3] + z * m[6];
     out[1] = x * m[1] + y * m[4] + z * m[7];
     out[2] = x * m[2] + y * m[5] + z * m[8];
     return out;
-***REMOVED***;
+};
 
 /**
  * Transforms the vec3 with a quat
  *
- * @param ***REMOVED***vec3***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec3***REMOVED*** a the vector to transform
- * @param ***REMOVED***quat***REMOVED*** q quaternion to transform with
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a the vector to transform
+ * @param {quat} q quaternion to transform with
+ * @returns {vec3} out
  */
-vec3.transformQuat = function(out, a, q) ***REMOVED***
+vec3.transformQuat = function(out, a, q) {
     // benchmarks: http://jsperf.com/quaternion-transform-vec3-implementations
 
     var x = a[0], y = a[1], z = a[2],
@@ -1138,17 +1138,17 @@ vec3.transformQuat = function(out, a, q) ***REMOVED***
     out[1] = iy * qw + iw * -qy + iz * -qx - ix * -qz;
     out[2] = iz * qw + iw * -qz + ix * -qy - iy * -qx;
     return out;
-***REMOVED***;
+};
 
 /**
  * Rotate a 3D vector around the x-axis
- * @param ***REMOVED***vec3***REMOVED*** out The receiving vec3
- * @param ***REMOVED***vec3***REMOVED*** a The vec3 point to rotate
- * @param ***REMOVED***vec3***REMOVED*** b The origin of the rotation
- * @param ***REMOVED***Number***REMOVED*** c The angle of rotation
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out The receiving vec3
+ * @param {vec3} a The vec3 point to rotate
+ * @param {vec3} b The origin of the rotation
+ * @param {Number} c The angle of rotation
+ * @returns {vec3} out
  */
-vec3.rotateX = function(out, a, b, c)***REMOVED***
+vec3.rotateX = function(out, a, b, c){
    var p = [], r=[];
 	  //Translate point to the origin
 	  p[0] = a[0] - b[0];
@@ -1166,17 +1166,17 @@ vec3.rotateX = function(out, a, b, c)***REMOVED***
 	  out[2] = r[2] + b[2];
 
   	return out;
-***REMOVED***;
+};
 
 /**
  * Rotate a 3D vector around the y-axis
- * @param ***REMOVED***vec3***REMOVED*** out The receiving vec3
- * @param ***REMOVED***vec3***REMOVED*** a The vec3 point to rotate
- * @param ***REMOVED***vec3***REMOVED*** b The origin of the rotation
- * @param ***REMOVED***Number***REMOVED*** c The angle of rotation
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out The receiving vec3
+ * @param {vec3} a The vec3 point to rotate
+ * @param {vec3} b The origin of the rotation
+ * @param {Number} c The angle of rotation
+ * @returns {vec3} out
  */
-vec3.rotateY = function(out, a, b, c)***REMOVED***
+vec3.rotateY = function(out, a, b, c){
   	var p = [], r=[];
   	//Translate point to the origin
   	p[0] = a[0] - b[0];
@@ -1194,17 +1194,17 @@ vec3.rotateY = function(out, a, b, c)***REMOVED***
   	out[2] = r[2] + b[2];
   
   	return out;
-***REMOVED***;
+};
 
 /**
  * Rotate a 3D vector around the z-axis
- * @param ***REMOVED***vec3***REMOVED*** out The receiving vec3
- * @param ***REMOVED***vec3***REMOVED*** a The vec3 point to rotate
- * @param ***REMOVED***vec3***REMOVED*** b The origin of the rotation
- * @param ***REMOVED***Number***REMOVED*** c The angle of rotation
- * @returns ***REMOVED***vec3***REMOVED*** out
+ * @param {vec3} out The receiving vec3
+ * @param {vec3} a The vec3 point to rotate
+ * @param {vec3} b The origin of the rotation
+ * @param {Number} c The angle of rotation
+ * @returns {vec3} out
  */
-vec3.rotateZ = function(out, a, b, c)***REMOVED***
+vec3.rotateZ = function(out, a, b, c){
   	var p = [], r=[];
   	//Translate point to the origin
   	p[0] = a[0] - b[0];
@@ -1222,62 +1222,62 @@ vec3.rotateZ = function(out, a, b, c)***REMOVED***
   	out[2] = r[2] + b[2];
   
   	return out;
-***REMOVED***;
+};
 
 /**
  * Perform some operation over an array of vec3s.
  *
- * @param ***REMOVED***Array***REMOVED*** a the array of vectors to iterate over
- * @param ***REMOVED***Number***REMOVED*** stride Number of elements between the start of each vec3. If 0 assumes tightly packed
- * @param ***REMOVED***Number***REMOVED*** offset Number of elements to skip at the beginning of the array
- * @param ***REMOVED***Number***REMOVED*** count Number of vec3s to iterate over. If 0 iterates over entire array
- * @param ***REMOVED***Function***REMOVED*** fn Function to call for each vector in the array
- * @param ***REMOVED***Object***REMOVED*** [arg] additional argument to pass to fn
- * @returns ***REMOVED***Array***REMOVED*** a
+ * @param {Array} a the array of vectors to iterate over
+ * @param {Number} stride Number of elements between the start of each vec3. If 0 assumes tightly packed
+ * @param {Number} offset Number of elements to skip at the beginning of the array
+ * @param {Number} count Number of vec3s to iterate over. If 0 iterates over entire array
+ * @param {Function} fn Function to call for each vector in the array
+ * @param {Object} [arg] additional argument to pass to fn
+ * @returns {Array} a
  * @function
  */
-vec3.forEach = (function() ***REMOVED***
+vec3.forEach = (function() {
     var vec = vec3.create();
 
-    return function(a, stride, offset, count, fn, arg) ***REMOVED***
+    return function(a, stride, offset, count, fn, arg) {
         var i, l;
-        if(!stride) ***REMOVED***
+        if(!stride) {
             stride = 3;
-        ***REMOVED***
+        }
 
-        if(!offset) ***REMOVED***
+        if(!offset) {
             offset = 0;
-        ***REMOVED***
+        }
         
-        if(count) ***REMOVED***
+        if(count) {
             l = Math.min((count * stride) + offset, a.length);
-        ***REMOVED*** else ***REMOVED***
+        } else {
             l = a.length;
-        ***REMOVED***
+        }
 
-        for(i = offset; i < l; i += stride) ***REMOVED***
+        for(i = offset; i < l; i += stride) {
             vec[0] = a[i]; vec[1] = a[i+1]; vec[2] = a[i+2];
             fn(vec, vec, arg);
             a[i] = vec[0]; a[i+1] = vec[1]; a[i+2] = vec[2];
-        ***REMOVED***
+        }
         
         return a;
-    ***REMOVED***;
-***REMOVED***)();
+    };
+})();
 
 /**
  * Returns a string representation of a vector
  *
- * @param ***REMOVED***vec3***REMOVED*** vec vector to represent as a string
- * @returns ***REMOVED***String***REMOVED*** string representation of the vector
+ * @param {vec3} vec vector to represent as a string
+ * @returns {String} string representation of the vector
  */
-vec3.str = function (a) ***REMOVED***
+vec3.str = function (a) {
     return 'vec3(' + a[0] + ', ' + a[1] + ', ' + a[2] + ')';
-***REMOVED***;
+};
 
-if(typeof(exports) !== 'undefined') ***REMOVED***
+if(typeof(exports) !== 'undefined') {
     exports.vec3 = vec3;
-***REMOVED***
+}
 ;
 /* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
 
@@ -1306,122 +1306,122 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
  * @name vec4
  */
 
-var vec4 = ***REMOVED******REMOVED***;
+var vec4 = {};
 
 /**
  * Creates a new, empty vec4
  *
- * @returns ***REMOVED***vec4***REMOVED*** a new 4D vector
+ * @returns {vec4} a new 4D vector
  */
-vec4.create = function() ***REMOVED***
+vec4.create = function() {
     var out = new GLMAT_ARRAY_TYPE(4);
     out[0] = 0;
     out[1] = 0;
     out[2] = 0;
     out[3] = 0;
     return out;
-***REMOVED***;
+};
 
 /**
  * Creates a new vec4 initialized with values from an existing vector
  *
- * @param ***REMOVED***vec4***REMOVED*** a vector to clone
- * @returns ***REMOVED***vec4***REMOVED*** a new 4D vector
+ * @param {vec4} a vector to clone
+ * @returns {vec4} a new 4D vector
  */
-vec4.clone = function(a) ***REMOVED***
+vec4.clone = function(a) {
     var out = new GLMAT_ARRAY_TYPE(4);
     out[0] = a[0];
     out[1] = a[1];
     out[2] = a[2];
     out[3] = a[3];
     return out;
-***REMOVED***;
+};
 
 /**
  * Creates a new vec4 initialized with the given values
  *
- * @param ***REMOVED***Number***REMOVED*** x X component
- * @param ***REMOVED***Number***REMOVED*** y Y component
- * @param ***REMOVED***Number***REMOVED*** z Z component
- * @param ***REMOVED***Number***REMOVED*** w W component
- * @returns ***REMOVED***vec4***REMOVED*** a new 4D vector
+ * @param {Number} x X component
+ * @param {Number} y Y component
+ * @param {Number} z Z component
+ * @param {Number} w W component
+ * @returns {vec4} a new 4D vector
  */
-vec4.fromValues = function(x, y, z, w) ***REMOVED***
+vec4.fromValues = function(x, y, z, w) {
     var out = new GLMAT_ARRAY_TYPE(4);
     out[0] = x;
     out[1] = y;
     out[2] = z;
     out[3] = w;
     return out;
-***REMOVED***;
+};
 
 /**
  * Copy the values from one vec4 to another
  *
- * @param ***REMOVED***vec4***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec4***REMOVED*** a the source vector
- * @returns ***REMOVED***vec4***REMOVED*** out
+ * @param {vec4} out the receiving vector
+ * @param {vec4} a the source vector
+ * @returns {vec4} out
  */
-vec4.copy = function(out, a) ***REMOVED***
+vec4.copy = function(out, a) {
     out[0] = a[0];
     out[1] = a[1];
     out[2] = a[2];
     out[3] = a[3];
     return out;
-***REMOVED***;
+};
 
 /**
  * Set the components of a vec4 to the given values
  *
- * @param ***REMOVED***vec4***REMOVED*** out the receiving vector
- * @param ***REMOVED***Number***REMOVED*** x X component
- * @param ***REMOVED***Number***REMOVED*** y Y component
- * @param ***REMOVED***Number***REMOVED*** z Z component
- * @param ***REMOVED***Number***REMOVED*** w W component
- * @returns ***REMOVED***vec4***REMOVED*** out
+ * @param {vec4} out the receiving vector
+ * @param {Number} x X component
+ * @param {Number} y Y component
+ * @param {Number} z Z component
+ * @param {Number} w W component
+ * @returns {vec4} out
  */
-vec4.set = function(out, x, y, z, w) ***REMOVED***
+vec4.set = function(out, x, y, z, w) {
     out[0] = x;
     out[1] = y;
     out[2] = z;
     out[3] = w;
     return out;
-***REMOVED***;
+};
 
 /**
  * Adds two vec4's
  *
- * @param ***REMOVED***vec4***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec4***REMOVED*** a the first operand
- * @param ***REMOVED***vec4***REMOVED*** b the second operand
- * @returns ***REMOVED***vec4***REMOVED*** out
+ * @param {vec4} out the receiving vector
+ * @param {vec4} a the first operand
+ * @param {vec4} b the second operand
+ * @returns {vec4} out
  */
-vec4.add = function(out, a, b) ***REMOVED***
+vec4.add = function(out, a, b) {
     out[0] = a[0] + b[0];
     out[1] = a[1] + b[1];
     out[2] = a[2] + b[2];
     out[3] = a[3] + b[3];
     return out;
-***REMOVED***;
+};
 
 /**
  * Subtracts vector b from vector a
  *
- * @param ***REMOVED***vec4***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec4***REMOVED*** a the first operand
- * @param ***REMOVED***vec4***REMOVED*** b the second operand
- * @returns ***REMOVED***vec4***REMOVED*** out
+ * @param {vec4} out the receiving vector
+ * @param {vec4} a the first operand
+ * @param {vec4} b the second operand
+ * @returns {vec4} out
  */
-vec4.subtract = function(out, a, b) ***REMOVED***
+vec4.subtract = function(out, a, b) {
     out[0] = a[0] - b[0];
     out[1] = a[1] - b[1];
     out[2] = a[2] - b[2];
     out[3] = a[3] - b[3];
     return out;
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec4.subtract***REMOVED***
+ * Alias for {@link vec4.subtract}
  * @function
  */
 vec4.sub = vec4.subtract;
@@ -1429,21 +1429,21 @@ vec4.sub = vec4.subtract;
 /**
  * Multiplies two vec4's
  *
- * @param ***REMOVED***vec4***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec4***REMOVED*** a the first operand
- * @param ***REMOVED***vec4***REMOVED*** b the second operand
- * @returns ***REMOVED***vec4***REMOVED*** out
+ * @param {vec4} out the receiving vector
+ * @param {vec4} a the first operand
+ * @param {vec4} b the second operand
+ * @returns {vec4} out
  */
-vec4.multiply = function(out, a, b) ***REMOVED***
+vec4.multiply = function(out, a, b) {
     out[0] = a[0] * b[0];
     out[1] = a[1] * b[1];
     out[2] = a[2] * b[2];
     out[3] = a[3] * b[3];
     return out;
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec4.multiply***REMOVED***
+ * Alias for {@link vec4.multiply}
  * @function
  */
 vec4.mul = vec4.multiply;
@@ -1451,21 +1451,21 @@ vec4.mul = vec4.multiply;
 /**
  * Divides two vec4's
  *
- * @param ***REMOVED***vec4***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec4***REMOVED*** a the first operand
- * @param ***REMOVED***vec4***REMOVED*** b the second operand
- * @returns ***REMOVED***vec4***REMOVED*** out
+ * @param {vec4} out the receiving vector
+ * @param {vec4} a the first operand
+ * @param {vec4} b the second operand
+ * @returns {vec4} out
  */
-vec4.divide = function(out, a, b) ***REMOVED***
+vec4.divide = function(out, a, b) {
     out[0] = a[0] / b[0];
     out[1] = a[1] / b[1];
     out[2] = a[2] / b[2];
     out[3] = a[3] / b[3];
     return out;
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec4.divide***REMOVED***
+ * Alias for {@link vec4.divide}
  * @function
  */
 vec4.div = vec4.divide;
@@ -1473,85 +1473,85 @@ vec4.div = vec4.divide;
 /**
  * Returns the minimum of two vec4's
  *
- * @param ***REMOVED***vec4***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec4***REMOVED*** a the first operand
- * @param ***REMOVED***vec4***REMOVED*** b the second operand
- * @returns ***REMOVED***vec4***REMOVED*** out
+ * @param {vec4} out the receiving vector
+ * @param {vec4} a the first operand
+ * @param {vec4} b the second operand
+ * @returns {vec4} out
  */
-vec4.min = function(out, a, b) ***REMOVED***
+vec4.min = function(out, a, b) {
     out[0] = Math.min(a[0], b[0]);
     out[1] = Math.min(a[1], b[1]);
     out[2] = Math.min(a[2], b[2]);
     out[3] = Math.min(a[3], b[3]);
     return out;
-***REMOVED***;
+};
 
 /**
  * Returns the maximum of two vec4's
  *
- * @param ***REMOVED***vec4***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec4***REMOVED*** a the first operand
- * @param ***REMOVED***vec4***REMOVED*** b the second operand
- * @returns ***REMOVED***vec4***REMOVED*** out
+ * @param {vec4} out the receiving vector
+ * @param {vec4} a the first operand
+ * @param {vec4} b the second operand
+ * @returns {vec4} out
  */
-vec4.max = function(out, a, b) ***REMOVED***
+vec4.max = function(out, a, b) {
     out[0] = Math.max(a[0], b[0]);
     out[1] = Math.max(a[1], b[1]);
     out[2] = Math.max(a[2], b[2]);
     out[3] = Math.max(a[3], b[3]);
     return out;
-***REMOVED***;
+};
 
 /**
  * Scales a vec4 by a scalar number
  *
- * @param ***REMOVED***vec4***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec4***REMOVED*** a the vector to scale
- * @param ***REMOVED***Number***REMOVED*** b amount to scale the vector by
- * @returns ***REMOVED***vec4***REMOVED*** out
+ * @param {vec4} out the receiving vector
+ * @param {vec4} a the vector to scale
+ * @param {Number} b amount to scale the vector by
+ * @returns {vec4} out
  */
-vec4.scale = function(out, a, b) ***REMOVED***
+vec4.scale = function(out, a, b) {
     out[0] = a[0] * b;
     out[1] = a[1] * b;
     out[2] = a[2] * b;
     out[3] = a[3] * b;
     return out;
-***REMOVED***;
+};
 
 /**
  * Adds two vec4's after scaling the second operand by a scalar value
  *
- * @param ***REMOVED***vec4***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec4***REMOVED*** a the first operand
- * @param ***REMOVED***vec4***REMOVED*** b the second operand
- * @param ***REMOVED***Number***REMOVED*** scale the amount to scale b by before adding
- * @returns ***REMOVED***vec4***REMOVED*** out
+ * @param {vec4} out the receiving vector
+ * @param {vec4} a the first operand
+ * @param {vec4} b the second operand
+ * @param {Number} scale the amount to scale b by before adding
+ * @returns {vec4} out
  */
-vec4.scaleAndAdd = function(out, a, b, scale) ***REMOVED***
+vec4.scaleAndAdd = function(out, a, b, scale) {
     out[0] = a[0] + (b[0] * scale);
     out[1] = a[1] + (b[1] * scale);
     out[2] = a[2] + (b[2] * scale);
     out[3] = a[3] + (b[3] * scale);
     return out;
-***REMOVED***;
+};
 
 /**
  * Calculates the euclidian distance between two vec4's
  *
- * @param ***REMOVED***vec4***REMOVED*** a the first operand
- * @param ***REMOVED***vec4***REMOVED*** b the second operand
- * @returns ***REMOVED***Number***REMOVED*** distance between a and b
+ * @param {vec4} a the first operand
+ * @param {vec4} b the second operand
+ * @returns {Number} distance between a and b
  */
-vec4.distance = function(a, b) ***REMOVED***
+vec4.distance = function(a, b) {
     var x = b[0] - a[0],
         y = b[1] - a[1],
         z = b[2] - a[2],
         w = b[3] - a[3];
     return Math.sqrt(x*x + y*y + z*z + w*w);
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec4.distance***REMOVED***
+ * Alias for {@link vec4.distance}
  * @function
  */
 vec4.dist = vec4.distance;
@@ -1559,20 +1559,20 @@ vec4.dist = vec4.distance;
 /**
  * Calculates the squared euclidian distance between two vec4's
  *
- * @param ***REMOVED***vec4***REMOVED*** a the first operand
- * @param ***REMOVED***vec4***REMOVED*** b the second operand
- * @returns ***REMOVED***Number***REMOVED*** squared distance between a and b
+ * @param {vec4} a the first operand
+ * @param {vec4} b the second operand
+ * @returns {Number} squared distance between a and b
  */
-vec4.squaredDistance = function(a, b) ***REMOVED***
+vec4.squaredDistance = function(a, b) {
     var x = b[0] - a[0],
         y = b[1] - a[1],
         z = b[2] - a[2],
         w = b[3] - a[3];
     return x*x + y*y + z*z + w*w;
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec4.squaredDistance***REMOVED***
+ * Alias for {@link vec4.squaredDistance}
  * @function
  */
 vec4.sqrDist = vec4.squaredDistance;
@@ -1580,19 +1580,19 @@ vec4.sqrDist = vec4.squaredDistance;
 /**
  * Calculates the length of a vec4
  *
- * @param ***REMOVED***vec4***REMOVED*** a vector to calculate length of
- * @returns ***REMOVED***Number***REMOVED*** length of a
+ * @param {vec4} a vector to calculate length of
+ * @returns {Number} length of a
  */
-vec4.length = function (a) ***REMOVED***
+vec4.length = function (a) {
     var x = a[0],
         y = a[1],
         z = a[2],
         w = a[3];
     return Math.sqrt(x*x + y*y + z*z + w*w);
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec4.length***REMOVED***
+ * Alias for {@link vec4.length}
  * @function
  */
 vec4.len = vec4.length;
@@ -1600,19 +1600,19 @@ vec4.len = vec4.length;
 /**
  * Calculates the squared length of a vec4
  *
- * @param ***REMOVED***vec4***REMOVED*** a vector to calculate squared length of
- * @returns ***REMOVED***Number***REMOVED*** squared length of a
+ * @param {vec4} a vector to calculate squared length of
+ * @returns {Number} squared length of a
  */
-vec4.squaredLength = function (a) ***REMOVED***
+vec4.squaredLength = function (a) {
     var x = a[0],
         y = a[1],
         z = a[2],
         w = a[3];
     return x*x + y*y + z*z + w*w;
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link vec4.squaredLength***REMOVED***
+ * Alias for {@link vec4.squaredLength}
  * @function
  */
 vec4.sqrLen = vec4.squaredLength;
@@ -1620,77 +1620,77 @@ vec4.sqrLen = vec4.squaredLength;
 /**
  * Negates the components of a vec4
  *
- * @param ***REMOVED***vec4***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec4***REMOVED*** a vector to negate
- * @returns ***REMOVED***vec4***REMOVED*** out
+ * @param {vec4} out the receiving vector
+ * @param {vec4} a vector to negate
+ * @returns {vec4} out
  */
-vec4.negate = function(out, a) ***REMOVED***
+vec4.negate = function(out, a) {
     out[0] = -a[0];
     out[1] = -a[1];
     out[2] = -a[2];
     out[3] = -a[3];
     return out;
-***REMOVED***;
+};
 
 /**
  * Returns the inverse of the components of a vec4
  *
- * @param ***REMOVED***vec4***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec4***REMOVED*** a vector to invert
- * @returns ***REMOVED***vec4***REMOVED*** out
+ * @param {vec4} out the receiving vector
+ * @param {vec4} a vector to invert
+ * @returns {vec4} out
  */
-vec4.inverse = function(out, a) ***REMOVED***
+vec4.inverse = function(out, a) {
   out[0] = 1.0 / a[0];
   out[1] = 1.0 / a[1];
   out[2] = 1.0 / a[2];
   out[3] = 1.0 / a[3];
   return out;
-***REMOVED***;
+};
 
 /**
  * Normalize a vec4
  *
- * @param ***REMOVED***vec4***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec4***REMOVED*** a vector to normalize
- * @returns ***REMOVED***vec4***REMOVED*** out
+ * @param {vec4} out the receiving vector
+ * @param {vec4} a vector to normalize
+ * @returns {vec4} out
  */
-vec4.normalize = function(out, a) ***REMOVED***
+vec4.normalize = function(out, a) {
     var x = a[0],
         y = a[1],
         z = a[2],
         w = a[3];
     var len = x*x + y*y + z*z + w*w;
-    if (len > 0) ***REMOVED***
+    if (len > 0) {
         len = 1 / Math.sqrt(len);
         out[0] = a[0] * len;
         out[1] = a[1] * len;
         out[2] = a[2] * len;
         out[3] = a[3] * len;
-    ***REMOVED***
+    }
     return out;
-***REMOVED***;
+};
 
 /**
  * Calculates the dot product of two vec4's
  *
- * @param ***REMOVED***vec4***REMOVED*** a the first operand
- * @param ***REMOVED***vec4***REMOVED*** b the second operand
- * @returns ***REMOVED***Number***REMOVED*** dot product of a and b
+ * @param {vec4} a the first operand
+ * @param {vec4} b the second operand
+ * @returns {Number} dot product of a and b
  */
-vec4.dot = function (a, b) ***REMOVED***
+vec4.dot = function (a, b) {
     return a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + a[3] * b[3];
-***REMOVED***;
+};
 
 /**
  * Performs a linear interpolation between two vec4's
  *
- * @param ***REMOVED***vec4***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec4***REMOVED*** a the first operand
- * @param ***REMOVED***vec4***REMOVED*** b the second operand
- * @param ***REMOVED***Number***REMOVED*** t interpolation amount between the two inputs
- * @returns ***REMOVED***vec4***REMOVED*** out
+ * @param {vec4} out the receiving vector
+ * @param {vec4} a the first operand
+ * @param {vec4} b the second operand
+ * @param {Number} t interpolation amount between the two inputs
+ * @returns {vec4} out
  */
-vec4.lerp = function (out, a, b, t) ***REMOVED***
+vec4.lerp = function (out, a, b, t) {
     var ax = a[0],
         ay = a[1],
         az = a[2],
@@ -1700,16 +1700,16 @@ vec4.lerp = function (out, a, b, t) ***REMOVED***
     out[2] = az + t * (b[2] - az);
     out[3] = aw + t * (b[3] - aw);
     return out;
-***REMOVED***;
+};
 
 /**
  * Generates a random vector with the given scale
  *
- * @param ***REMOVED***vec4***REMOVED*** out the receiving vector
- * @param ***REMOVED***Number***REMOVED*** [scale] Length of the resulting vector. If ommitted, a unit vector will be returned
- * @returns ***REMOVED***vec4***REMOVED*** out
+ * @param {vec4} out the receiving vector
+ * @param {Number} [scale] Length of the resulting vector. If ommitted, a unit vector will be returned
+ * @returns {vec4} out
  */
-vec4.random = function (out, scale) ***REMOVED***
+vec4.random = function (out, scale) {
     scale = scale || 1.0;
 
     //TODO: This is a pretty awful way of doing this. Find something better.
@@ -1720,34 +1720,34 @@ vec4.random = function (out, scale) ***REMOVED***
     vec4.normalize(out, out);
     vec4.scale(out, out, scale);
     return out;
-***REMOVED***;
+};
 
 /**
  * Transforms the vec4 with a mat4.
  *
- * @param ***REMOVED***vec4***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec4***REMOVED*** a the vector to transform
- * @param ***REMOVED***mat4***REMOVED*** m matrix to transform with
- * @returns ***REMOVED***vec4***REMOVED*** out
+ * @param {vec4} out the receiving vector
+ * @param {vec4} a the vector to transform
+ * @param {mat4} m matrix to transform with
+ * @returns {vec4} out
  */
-vec4.transformMat4 = function(out, a, m) ***REMOVED***
+vec4.transformMat4 = function(out, a, m) {
     var x = a[0], y = a[1], z = a[2], w = a[3];
     out[0] = m[0] * x + m[4] * y + m[8] * z + m[12] * w;
     out[1] = m[1] * x + m[5] * y + m[9] * z + m[13] * w;
     out[2] = m[2] * x + m[6] * y + m[10] * z + m[14] * w;
     out[3] = m[3] * x + m[7] * y + m[11] * z + m[15] * w;
     return out;
-***REMOVED***;
+};
 
 /**
  * Transforms the vec4 with a quat
  *
- * @param ***REMOVED***vec4***REMOVED*** out the receiving vector
- * @param ***REMOVED***vec4***REMOVED*** a the vector to transform
- * @param ***REMOVED***quat***REMOVED*** q quaternion to transform with
- * @returns ***REMOVED***vec4***REMOVED*** out
+ * @param {vec4} out the receiving vector
+ * @param {vec4} a the vector to transform
+ * @param {quat} q quaternion to transform with
+ * @returns {vec4} out
  */
-vec4.transformQuat = function(out, a, q) ***REMOVED***
+vec4.transformQuat = function(out, a, q) {
     var x = a[0], y = a[1], z = a[2],
         qx = q[0], qy = q[1], qz = q[2], qw = q[3],
 
@@ -1762,62 +1762,62 @@ vec4.transformQuat = function(out, a, q) ***REMOVED***
     out[1] = iy * qw + iw * -qy + iz * -qx - ix * -qz;
     out[2] = iz * qw + iw * -qz + ix * -qy - iy * -qx;
     return out;
-***REMOVED***;
+};
 
 /**
  * Perform some operation over an array of vec4s.
  *
- * @param ***REMOVED***Array***REMOVED*** a the array of vectors to iterate over
- * @param ***REMOVED***Number***REMOVED*** stride Number of elements between the start of each vec4. If 0 assumes tightly packed
- * @param ***REMOVED***Number***REMOVED*** offset Number of elements to skip at the beginning of the array
- * @param ***REMOVED***Number***REMOVED*** count Number of vec4s to iterate over. If 0 iterates over entire array
- * @param ***REMOVED***Function***REMOVED*** fn Function to call for each vector in the array
- * @param ***REMOVED***Object***REMOVED*** [arg] additional argument to pass to fn
- * @returns ***REMOVED***Array***REMOVED*** a
+ * @param {Array} a the array of vectors to iterate over
+ * @param {Number} stride Number of elements between the start of each vec4. If 0 assumes tightly packed
+ * @param {Number} offset Number of elements to skip at the beginning of the array
+ * @param {Number} count Number of vec4s to iterate over. If 0 iterates over entire array
+ * @param {Function} fn Function to call for each vector in the array
+ * @param {Object} [arg] additional argument to pass to fn
+ * @returns {Array} a
  * @function
  */
-vec4.forEach = (function() ***REMOVED***
+vec4.forEach = (function() {
     var vec = vec4.create();
 
-    return function(a, stride, offset, count, fn, arg) ***REMOVED***
+    return function(a, stride, offset, count, fn, arg) {
         var i, l;
-        if(!stride) ***REMOVED***
+        if(!stride) {
             stride = 4;
-        ***REMOVED***
+        }
 
-        if(!offset) ***REMOVED***
+        if(!offset) {
             offset = 0;
-        ***REMOVED***
+        }
         
-        if(count) ***REMOVED***
+        if(count) {
             l = Math.min((count * stride) + offset, a.length);
-        ***REMOVED*** else ***REMOVED***
+        } else {
             l = a.length;
-        ***REMOVED***
+        }
 
-        for(i = offset; i < l; i += stride) ***REMOVED***
+        for(i = offset; i < l; i += stride) {
             vec[0] = a[i]; vec[1] = a[i+1]; vec[2] = a[i+2]; vec[3] = a[i+3];
             fn(vec, vec, arg);
             a[i] = vec[0]; a[i+1] = vec[1]; a[i+2] = vec[2]; a[i+3] = vec[3];
-        ***REMOVED***
+        }
         
         return a;
-    ***REMOVED***;
-***REMOVED***)();
+    };
+})();
 
 /**
  * Returns a string representation of a vector
  *
- * @param ***REMOVED***vec4***REMOVED*** vec vector to represent as a string
- * @returns ***REMOVED***String***REMOVED*** string representation of the vector
+ * @param {vec4} vec vector to represent as a string
+ * @returns {String} string representation of the vector
  */
-vec4.str = function (a) ***REMOVED***
+vec4.str = function (a) {
     return 'vec4(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ')';
-***REMOVED***;
+};
 
-if(typeof(exports) !== 'undefined') ***REMOVED***
+if(typeof(exports) !== 'undefined') {
     exports.vec4 = vec4;
-***REMOVED***
+}
 ;
 /* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
 
@@ -1846,105 +1846,105 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
  * @name mat2
  */
 
-var mat2 = ***REMOVED******REMOVED***;
+var mat2 = {};
 
 /**
  * Creates a new identity mat2
  *
- * @returns ***REMOVED***mat2***REMOVED*** a new 2x2 matrix
+ * @returns {mat2} a new 2x2 matrix
  */
-mat2.create = function() ***REMOVED***
+mat2.create = function() {
     var out = new GLMAT_ARRAY_TYPE(4);
     out[0] = 1;
     out[1] = 0;
     out[2] = 0;
     out[3] = 1;
     return out;
-***REMOVED***;
+};
 
 /**
  * Creates a new mat2 initialized with values from an existing matrix
  *
- * @param ***REMOVED***mat2***REMOVED*** a matrix to clone
- * @returns ***REMOVED***mat2***REMOVED*** a new 2x2 matrix
+ * @param {mat2} a matrix to clone
+ * @returns {mat2} a new 2x2 matrix
  */
-mat2.clone = function(a) ***REMOVED***
+mat2.clone = function(a) {
     var out = new GLMAT_ARRAY_TYPE(4);
     out[0] = a[0];
     out[1] = a[1];
     out[2] = a[2];
     out[3] = a[3];
     return out;
-***REMOVED***;
+};
 
 /**
  * Copy the values from one mat2 to another
  *
- * @param ***REMOVED***mat2***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat2***REMOVED*** a the source matrix
- * @returns ***REMOVED***mat2***REMOVED*** out
+ * @param {mat2} out the receiving matrix
+ * @param {mat2} a the source matrix
+ * @returns {mat2} out
  */
-mat2.copy = function(out, a) ***REMOVED***
+mat2.copy = function(out, a) {
     out[0] = a[0];
     out[1] = a[1];
     out[2] = a[2];
     out[3] = a[3];
     return out;
-***REMOVED***;
+};
 
 /**
  * Set a mat2 to the identity matrix
  *
- * @param ***REMOVED***mat2***REMOVED*** out the receiving matrix
- * @returns ***REMOVED***mat2***REMOVED*** out
+ * @param {mat2} out the receiving matrix
+ * @returns {mat2} out
  */
-mat2.identity = function(out) ***REMOVED***
+mat2.identity = function(out) {
     out[0] = 1;
     out[1] = 0;
     out[2] = 0;
     out[3] = 1;
     return out;
-***REMOVED***;
+};
 
 /**
  * Transpose the values of a mat2
  *
- * @param ***REMOVED***mat2***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat2***REMOVED*** a the source matrix
- * @returns ***REMOVED***mat2***REMOVED*** out
+ * @param {mat2} out the receiving matrix
+ * @param {mat2} a the source matrix
+ * @returns {mat2} out
  */
-mat2.transpose = function(out, a) ***REMOVED***
+mat2.transpose = function(out, a) {
     // If we are transposing ourselves we can skip a few steps but have to cache some values
-    if (out === a) ***REMOVED***
+    if (out === a) {
         var a1 = a[1];
         out[1] = a[2];
         out[2] = a1;
-    ***REMOVED*** else ***REMOVED***
+    } else {
         out[0] = a[0];
         out[1] = a[2];
         out[2] = a[1];
         out[3] = a[3];
-    ***REMOVED***
+    }
     
     return out;
-***REMOVED***;
+};
 
 /**
  * Inverts a mat2
  *
- * @param ***REMOVED***mat2***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat2***REMOVED*** a the source matrix
- * @returns ***REMOVED***mat2***REMOVED*** out
+ * @param {mat2} out the receiving matrix
+ * @param {mat2} a the source matrix
+ * @returns {mat2} out
  */
-mat2.invert = function(out, a) ***REMOVED***
+mat2.invert = function(out, a) {
     var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3],
 
         // Calculate the determinant
         det = a0 * a3 - a2 * a1;
 
-    if (!det) ***REMOVED***
+    if (!det) {
         return null;
-    ***REMOVED***
+    }
     det = 1.0 / det;
     
     out[0] =  a3 * det;
@@ -1953,16 +1953,16 @@ mat2.invert = function(out, a) ***REMOVED***
     out[3] =  a0 * det;
 
     return out;
-***REMOVED***;
+};
 
 /**
  * Calculates the adjugate of a mat2
  *
- * @param ***REMOVED***mat2***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat2***REMOVED*** a the source matrix
- * @returns ***REMOVED***mat2***REMOVED*** out
+ * @param {mat2} out the receiving matrix
+ * @param {mat2} a the source matrix
+ * @returns {mat2} out
  */
-mat2.adjoint = function(out, a) ***REMOVED***
+mat2.adjoint = function(out, a) {
     // Caching this value is nessecary if out == a
     var a0 = a[0];
     out[0] =  a[3];
@@ -1971,27 +1971,27 @@ mat2.adjoint = function(out, a) ***REMOVED***
     out[3] =  a0;
 
     return out;
-***REMOVED***;
+};
 
 /**
  * Calculates the determinant of a mat2
  *
- * @param ***REMOVED***mat2***REMOVED*** a the source matrix
- * @returns ***REMOVED***Number***REMOVED*** determinant of a
+ * @param {mat2} a the source matrix
+ * @returns {Number} determinant of a
  */
-mat2.determinant = function (a) ***REMOVED***
+mat2.determinant = function (a) {
     return a[0] * a[3] - a[2] * a[1];
-***REMOVED***;
+};
 
 /**
  * Multiplies two mat2's
  *
- * @param ***REMOVED***mat2***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat2***REMOVED*** a the first operand
- * @param ***REMOVED***mat2***REMOVED*** b the second operand
- * @returns ***REMOVED***mat2***REMOVED*** out
+ * @param {mat2} out the receiving matrix
+ * @param {mat2} a the first operand
+ * @param {mat2} b the second operand
+ * @returns {mat2} out
  */
-mat2.multiply = function (out, a, b) ***REMOVED***
+mat2.multiply = function (out, a, b) {
     var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3];
     var b0 = b[0], b1 = b[1], b2 = b[2], b3 = b[3];
     out[0] = a0 * b0 + a2 * b1;
@@ -1999,10 +1999,10 @@ mat2.multiply = function (out, a, b) ***REMOVED***
     out[2] = a0 * b2 + a2 * b3;
     out[3] = a1 * b2 + a3 * b3;
     return out;
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link mat2.multiply***REMOVED***
+ * Alias for {@link mat2.multiply}
  * @function
  */
 mat2.mul = mat2.multiply;
@@ -2010,12 +2010,12 @@ mat2.mul = mat2.multiply;
 /**
  * Rotates a mat2 by the given angle
  *
- * @param ***REMOVED***mat2***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat2***REMOVED*** a the matrix to rotate
- * @param ***REMOVED***Number***REMOVED*** rad the angle to rotate the matrix by
- * @returns ***REMOVED***mat2***REMOVED*** out
+ * @param {mat2} out the receiving matrix
+ * @param {mat2} a the matrix to rotate
+ * @param {Number} rad the angle to rotate the matrix by
+ * @returns {mat2} out
  */
-mat2.rotate = function (out, a, rad) ***REMOVED***
+mat2.rotate = function (out, a, rad) {
     var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3],
         s = Math.sin(rad),
         c = Math.cos(rad);
@@ -2024,17 +2024,17 @@ mat2.rotate = function (out, a, rad) ***REMOVED***
     out[2] = a0 * -s + a2 * c;
     out[3] = a1 * -s + a3 * c;
     return out;
-***REMOVED***;
+};
 
 /**
  * Scales the mat2 by the dimensions in the given vec2
  *
- * @param ***REMOVED***mat2***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat2***REMOVED*** a the matrix to rotate
- * @param ***REMOVED***vec2***REMOVED*** v the vec2 to scale the matrix by
- * @returns ***REMOVED***mat2***REMOVED*** out
+ * @param {mat2} out the receiving matrix
+ * @param {mat2} a the matrix to rotate
+ * @param {vec2} v the vec2 to scale the matrix by
+ * @returns {mat2} out
  **/
-mat2.scale = function(out, a, v) ***REMOVED***
+mat2.scale = function(out, a, v) {
     var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3],
         v0 = v[0], v1 = v[1];
     out[0] = a0 * v0;
@@ -2042,47 +2042,47 @@ mat2.scale = function(out, a, v) ***REMOVED***
     out[2] = a2 * v1;
     out[3] = a3 * v1;
     return out;
-***REMOVED***;
+};
 
 /**
  * Returns a string representation of a mat2
  *
- * @param ***REMOVED***mat2***REMOVED*** mat matrix to represent as a string
- * @returns ***REMOVED***String***REMOVED*** string representation of the matrix
+ * @param {mat2} mat matrix to represent as a string
+ * @returns {String} string representation of the matrix
  */
-mat2.str = function (a) ***REMOVED***
+mat2.str = function (a) {
     return 'mat2(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ')';
-***REMOVED***;
+};
 
 /**
  * Returns Frobenius norm of a mat2
  *
- * @param ***REMOVED***mat2***REMOVED*** a the matrix to calculate Frobenius norm of
- * @returns ***REMOVED***Number***REMOVED*** Frobenius norm
+ * @param {mat2} a the matrix to calculate Frobenius norm of
+ * @returns {Number} Frobenius norm
  */
-mat2.frob = function (a) ***REMOVED***
+mat2.frob = function (a) {
     return(Math.sqrt(Math.pow(a[0], 2) + Math.pow(a[1], 2) + Math.pow(a[2], 2) + Math.pow(a[3], 2)))
-***REMOVED***;
+};
 
 /**
  * Returns L, D and U matrices (Lower triangular, Diagonal and Upper triangular) by factorizing the input matrix
- * @param ***REMOVED***mat2***REMOVED*** L the lower triangular matrix 
- * @param ***REMOVED***mat2***REMOVED*** D the diagonal matrix 
- * @param ***REMOVED***mat2***REMOVED*** U the upper triangular matrix 
- * @param ***REMOVED***mat2***REMOVED*** a the input matrix to factorize
+ * @param {mat2} L the lower triangular matrix 
+ * @param {mat2} D the diagonal matrix 
+ * @param {mat2} U the upper triangular matrix 
+ * @param {mat2} a the input matrix to factorize
  */
 
-mat2.LDU = function (L, D, U, a) ***REMOVED*** 
+mat2.LDU = function (L, D, U, a) { 
     L[2] = a[2]/a[0]; 
     U[0] = a[0]; 
     U[1] = a[1]; 
     U[3] = a[3] - L[2] * U[1]; 
     return [L, D, U];       
-***REMOVED***; 
+}; 
 
-if(typeof(exports) !== 'undefined') ***REMOVED***
+if(typeof(exports) !== 'undefined') {
     exports.mat2 = mat2;
-***REMOVED***
+}
 ;
 /* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
 
@@ -2125,14 +2125,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
  * The last row is ignored so the array is shorter and operations are faster.
  */
 
-var mat2d = ***REMOVED******REMOVED***;
+var mat2d = {};
 
 /**
  * Creates a new identity mat2d
  *
- * @returns ***REMOVED***mat2d***REMOVED*** a new 2x3 matrix
+ * @returns {mat2d} a new 2x3 matrix
  */
-mat2d.create = function() ***REMOVED***
+mat2d.create = function() {
     var out = new GLMAT_ARRAY_TYPE(6);
     out[0] = 1;
     out[1] = 0;
@@ -2141,15 +2141,15 @@ mat2d.create = function() ***REMOVED***
     out[4] = 0;
     out[5] = 0;
     return out;
-***REMOVED***;
+};
 
 /**
  * Creates a new mat2d initialized with values from an existing matrix
  *
- * @param ***REMOVED***mat2d***REMOVED*** a matrix to clone
- * @returns ***REMOVED***mat2d***REMOVED*** a new 2x3 matrix
+ * @param {mat2d} a matrix to clone
+ * @returns {mat2d} a new 2x3 matrix
  */
-mat2d.clone = function(a) ***REMOVED***
+mat2d.clone = function(a) {
     var out = new GLMAT_ARRAY_TYPE(6);
     out[0] = a[0];
     out[1] = a[1];
@@ -2158,16 +2158,16 @@ mat2d.clone = function(a) ***REMOVED***
     out[4] = a[4];
     out[5] = a[5];
     return out;
-***REMOVED***;
+};
 
 /**
  * Copy the values from one mat2d to another
  *
- * @param ***REMOVED***mat2d***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat2d***REMOVED*** a the source matrix
- * @returns ***REMOVED***mat2d***REMOVED*** out
+ * @param {mat2d} out the receiving matrix
+ * @param {mat2d} a the source matrix
+ * @returns {mat2d} out
  */
-mat2d.copy = function(out, a) ***REMOVED***
+mat2d.copy = function(out, a) {
     out[0] = a[0];
     out[1] = a[1];
     out[2] = a[2];
@@ -2175,15 +2175,15 @@ mat2d.copy = function(out, a) ***REMOVED***
     out[4] = a[4];
     out[5] = a[5];
     return out;
-***REMOVED***;
+};
 
 /**
  * Set a mat2d to the identity matrix
  *
- * @param ***REMOVED***mat2d***REMOVED*** out the receiving matrix
- * @returns ***REMOVED***mat2d***REMOVED*** out
+ * @param {mat2d} out the receiving matrix
+ * @returns {mat2d} out
  */
-mat2d.identity = function(out) ***REMOVED***
+mat2d.identity = function(out) {
     out[0] = 1;
     out[1] = 0;
     out[2] = 0;
@@ -2191,23 +2191,23 @@ mat2d.identity = function(out) ***REMOVED***
     out[4] = 0;
     out[5] = 0;
     return out;
-***REMOVED***;
+};
 
 /**
  * Inverts a mat2d
  *
- * @param ***REMOVED***mat2d***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat2d***REMOVED*** a the source matrix
- * @returns ***REMOVED***mat2d***REMOVED*** out
+ * @param {mat2d} out the receiving matrix
+ * @param {mat2d} a the source matrix
+ * @returns {mat2d} out
  */
-mat2d.invert = function(out, a) ***REMOVED***
+mat2d.invert = function(out, a) {
     var aa = a[0], ab = a[1], ac = a[2], ad = a[3],
         atx = a[4], aty = a[5];
 
     var det = aa * ad - ab * ac;
-    if(!det)***REMOVED***
+    if(!det){
         return null;
-    ***REMOVED***
+    }
     det = 1.0 / det;
 
     out[0] = ad * det;
@@ -2217,27 +2217,27 @@ mat2d.invert = function(out, a) ***REMOVED***
     out[4] = (ac * aty - ad * atx) * det;
     out[5] = (ab * atx - aa * aty) * det;
     return out;
-***REMOVED***;
+};
 
 /**
  * Calculates the determinant of a mat2d
  *
- * @param ***REMOVED***mat2d***REMOVED*** a the source matrix
- * @returns ***REMOVED***Number***REMOVED*** determinant of a
+ * @param {mat2d} a the source matrix
+ * @returns {Number} determinant of a
  */
-mat2d.determinant = function (a) ***REMOVED***
+mat2d.determinant = function (a) {
     return a[0] * a[3] - a[1] * a[2];
-***REMOVED***;
+};
 
 /**
  * Multiplies two mat2d's
  *
- * @param ***REMOVED***mat2d***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat2d***REMOVED*** a the first operand
- * @param ***REMOVED***mat2d***REMOVED*** b the second operand
- * @returns ***REMOVED***mat2d***REMOVED*** out
+ * @param {mat2d} out the receiving matrix
+ * @param {mat2d} a the first operand
+ * @param {mat2d} b the second operand
+ * @returns {mat2d} out
  */
-mat2d.multiply = function (out, a, b) ***REMOVED***
+mat2d.multiply = function (out, a, b) {
     var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3], a4 = a[4], a5 = a[5],
         b0 = b[0], b1 = b[1], b2 = b[2], b3 = b[3], b4 = b[4], b5 = b[5];
     out[0] = a0 * b0 + a2 * b1;
@@ -2247,10 +2247,10 @@ mat2d.multiply = function (out, a, b) ***REMOVED***
     out[4] = a0 * b4 + a2 * b5 + a4;
     out[5] = a1 * b4 + a3 * b5 + a5;
     return out;
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link mat2d.multiply***REMOVED***
+ * Alias for {@link mat2d.multiply}
  * @function
  */
 mat2d.mul = mat2d.multiply;
@@ -2259,12 +2259,12 @@ mat2d.mul = mat2d.multiply;
 /**
  * Rotates a mat2d by the given angle
  *
- * @param ***REMOVED***mat2d***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat2d***REMOVED*** a the matrix to rotate
- * @param ***REMOVED***Number***REMOVED*** rad the angle to rotate the matrix by
- * @returns ***REMOVED***mat2d***REMOVED*** out
+ * @param {mat2d} out the receiving matrix
+ * @param {mat2d} a the matrix to rotate
+ * @param {Number} rad the angle to rotate the matrix by
+ * @returns {mat2d} out
  */
-mat2d.rotate = function (out, a, rad) ***REMOVED***
+mat2d.rotate = function (out, a, rad) {
     var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3], a4 = a[4], a5 = a[5],
         s = Math.sin(rad),
         c = Math.cos(rad);
@@ -2275,17 +2275,17 @@ mat2d.rotate = function (out, a, rad) ***REMOVED***
     out[4] = a4;
     out[5] = a5;
     return out;
-***REMOVED***;
+};
 
 /**
  * Scales the mat2d by the dimensions in the given vec2
  *
- * @param ***REMOVED***mat2d***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat2d***REMOVED*** a the matrix to translate
- * @param ***REMOVED***vec2***REMOVED*** v the vec2 to scale the matrix by
- * @returns ***REMOVED***mat2d***REMOVED*** out
+ * @param {mat2d} out the receiving matrix
+ * @param {mat2d} a the matrix to translate
+ * @param {vec2} v the vec2 to scale the matrix by
+ * @returns {mat2d} out
  **/
-mat2d.scale = function(out, a, v) ***REMOVED***
+mat2d.scale = function(out, a, v) {
     var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3], a4 = a[4], a5 = a[5],
         v0 = v[0], v1 = v[1];
     out[0] = a0 * v0;
@@ -2295,17 +2295,17 @@ mat2d.scale = function(out, a, v) ***REMOVED***
     out[4] = a4;
     out[5] = a5;
     return out;
-***REMOVED***;
+};
 
 /**
  * Translates the mat2d by the dimensions in the given vec2
  *
- * @param ***REMOVED***mat2d***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat2d***REMOVED*** a the matrix to translate
- * @param ***REMOVED***vec2***REMOVED*** v the vec2 to translate the matrix by
- * @returns ***REMOVED***mat2d***REMOVED*** out
+ * @param {mat2d} out the receiving matrix
+ * @param {mat2d} a the matrix to translate
+ * @param {vec2} v the vec2 to translate the matrix by
+ * @returns {mat2d} out
  **/
-mat2d.translate = function(out, a, v) ***REMOVED***
+mat2d.translate = function(out, a, v) {
     var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3], a4 = a[4], a5 = a[5],
         v0 = v[0], v1 = v[1];
     out[0] = a0;
@@ -2315,32 +2315,32 @@ mat2d.translate = function(out, a, v) ***REMOVED***
     out[4] = a0 * v0 + a2 * v1 + a4;
     out[5] = a1 * v0 + a3 * v1 + a5;
     return out;
-***REMOVED***;
+};
 
 /**
  * Returns a string representation of a mat2d
  *
- * @param ***REMOVED***mat2d***REMOVED*** a matrix to represent as a string
- * @returns ***REMOVED***String***REMOVED*** string representation of the matrix
+ * @param {mat2d} a matrix to represent as a string
+ * @returns {String} string representation of the matrix
  */
-mat2d.str = function (a) ***REMOVED***
+mat2d.str = function (a) {
     return 'mat2d(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + 
                     a[3] + ', ' + a[4] + ', ' + a[5] + ')';
-***REMOVED***;
+};
 
 /**
  * Returns Frobenius norm of a mat2d
  *
- * @param ***REMOVED***mat2d***REMOVED*** a the matrix to calculate Frobenius norm of
- * @returns ***REMOVED***Number***REMOVED*** Frobenius norm
+ * @param {mat2d} a the matrix to calculate Frobenius norm of
+ * @returns {Number} Frobenius norm
  */
-mat2d.frob = function (a) ***REMOVED*** 
+mat2d.frob = function (a) { 
     return(Math.sqrt(Math.pow(a[0], 2) + Math.pow(a[1], 2) + Math.pow(a[2], 2) + Math.pow(a[3], 2) + Math.pow(a[4], 2) + Math.pow(a[5], 2) + 1))
-***REMOVED***; 
+}; 
 
-if(typeof(exports) !== 'undefined') ***REMOVED***
+if(typeof(exports) !== 'undefined') {
     exports.mat2d = mat2d;
-***REMOVED***
+}
 ;
 /* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
 
@@ -2369,14 +2369,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
  * @name mat3
  */
 
-var mat3 = ***REMOVED******REMOVED***;
+var mat3 = {};
 
 /**
  * Creates a new identity mat3
  *
- * @returns ***REMOVED***mat3***REMOVED*** a new 3x3 matrix
+ * @returns {mat3} a new 3x3 matrix
  */
-mat3.create = function() ***REMOVED***
+mat3.create = function() {
     var out = new GLMAT_ARRAY_TYPE(9);
     out[0] = 1;
     out[1] = 0;
@@ -2388,16 +2388,16 @@ mat3.create = function() ***REMOVED***
     out[7] = 0;
     out[8] = 1;
     return out;
-***REMOVED***;
+};
 
 /**
  * Copies the upper-left 3x3 values into the given mat3.
  *
- * @param ***REMOVED***mat3***REMOVED*** out the receiving 3x3 matrix
- * @param ***REMOVED***mat4***REMOVED*** a   the source 4x4 matrix
- * @returns ***REMOVED***mat3***REMOVED*** out
+ * @param {mat3} out the receiving 3x3 matrix
+ * @param {mat4} a   the source 4x4 matrix
+ * @returns {mat3} out
  */
-mat3.fromMat4 = function(out, a) ***REMOVED***
+mat3.fromMat4 = function(out, a) {
     out[0] = a[0];
     out[1] = a[1];
     out[2] = a[2];
@@ -2408,15 +2408,15 @@ mat3.fromMat4 = function(out, a) ***REMOVED***
     out[7] = a[9];
     out[8] = a[10];
     return out;
-***REMOVED***;
+};
 
 /**
  * Creates a new mat3 initialized with values from an existing matrix
  *
- * @param ***REMOVED***mat3***REMOVED*** a matrix to clone
- * @returns ***REMOVED***mat3***REMOVED*** a new 3x3 matrix
+ * @param {mat3} a matrix to clone
+ * @returns {mat3} a new 3x3 matrix
  */
-mat3.clone = function(a) ***REMOVED***
+mat3.clone = function(a) {
     var out = new GLMAT_ARRAY_TYPE(9);
     out[0] = a[0];
     out[1] = a[1];
@@ -2428,16 +2428,16 @@ mat3.clone = function(a) ***REMOVED***
     out[7] = a[7];
     out[8] = a[8];
     return out;
-***REMOVED***;
+};
 
 /**
  * Copy the values from one mat3 to another
  *
- * @param ***REMOVED***mat3***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat3***REMOVED*** a the source matrix
- * @returns ***REMOVED***mat3***REMOVED*** out
+ * @param {mat3} out the receiving matrix
+ * @param {mat3} a the source matrix
+ * @returns {mat3} out
  */
-mat3.copy = function(out, a) ***REMOVED***
+mat3.copy = function(out, a) {
     out[0] = a[0];
     out[1] = a[1];
     out[2] = a[2];
@@ -2448,15 +2448,15 @@ mat3.copy = function(out, a) ***REMOVED***
     out[7] = a[7];
     out[8] = a[8];
     return out;
-***REMOVED***;
+};
 
 /**
  * Set a mat3 to the identity matrix
  *
- * @param ***REMOVED***mat3***REMOVED*** out the receiving matrix
- * @returns ***REMOVED***mat3***REMOVED*** out
+ * @param {mat3} out the receiving matrix
+ * @returns {mat3} out
  */
-mat3.identity = function(out) ***REMOVED***
+mat3.identity = function(out) {
     out[0] = 1;
     out[1] = 0;
     out[2] = 0;
@@ -2467,18 +2467,18 @@ mat3.identity = function(out) ***REMOVED***
     out[7] = 0;
     out[8] = 1;
     return out;
-***REMOVED***;
+};
 
 /**
  * Transpose the values of a mat3
  *
- * @param ***REMOVED***mat3***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat3***REMOVED*** a the source matrix
- * @returns ***REMOVED***mat3***REMOVED*** out
+ * @param {mat3} out the receiving matrix
+ * @param {mat3} a the source matrix
+ * @returns {mat3} out
  */
-mat3.transpose = function(out, a) ***REMOVED***
+mat3.transpose = function(out, a) {
     // If we are transposing ourselves we can skip a few steps but have to cache some values
-    if (out === a) ***REMOVED***
+    if (out === a) {
         var a01 = a[1], a02 = a[2], a12 = a[5];
         out[1] = a[3];
         out[2] = a[6];
@@ -2486,7 +2486,7 @@ mat3.transpose = function(out, a) ***REMOVED***
         out[5] = a[7];
         out[6] = a02;
         out[7] = a12;
-    ***REMOVED*** else ***REMOVED***
+    } else {
         out[0] = a[0];
         out[1] = a[3];
         out[2] = a[6];
@@ -2496,19 +2496,19 @@ mat3.transpose = function(out, a) ***REMOVED***
         out[6] = a[2];
         out[7] = a[5];
         out[8] = a[8];
-    ***REMOVED***
+    }
     
     return out;
-***REMOVED***;
+};
 
 /**
  * Inverts a mat3
  *
- * @param ***REMOVED***mat3***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat3***REMOVED*** a the source matrix
- * @returns ***REMOVED***mat3***REMOVED*** out
+ * @param {mat3} out the receiving matrix
+ * @param {mat3} a the source matrix
+ * @returns {mat3} out
  */
-mat3.invert = function(out, a) ***REMOVED***
+mat3.invert = function(out, a) {
     var a00 = a[0], a01 = a[1], a02 = a[2],
         a10 = a[3], a11 = a[4], a12 = a[5],
         a20 = a[6], a21 = a[7], a22 = a[8],
@@ -2520,9 +2520,9 @@ mat3.invert = function(out, a) ***REMOVED***
         // Calculate the determinant
         det = a00 * b01 + a01 * b11 + a02 * b21;
 
-    if (!det) ***REMOVED*** 
+    if (!det) { 
         return null; 
-    ***REMOVED***
+    }
     det = 1.0 / det;
 
     out[0] = b01 * det;
@@ -2535,16 +2535,16 @@ mat3.invert = function(out, a) ***REMOVED***
     out[7] = (-a21 * a00 + a01 * a20) * det;
     out[8] = (a11 * a00 - a01 * a10) * det;
     return out;
-***REMOVED***;
+};
 
 /**
  * Calculates the adjugate of a mat3
  *
- * @param ***REMOVED***mat3***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat3***REMOVED*** a the source matrix
- * @returns ***REMOVED***mat3***REMOVED*** out
+ * @param {mat3} out the receiving matrix
+ * @param {mat3} a the source matrix
+ * @returns {mat3} out
  */
-mat3.adjoint = function(out, a) ***REMOVED***
+mat3.adjoint = function(out, a) {
     var a00 = a[0], a01 = a[1], a02 = a[2],
         a10 = a[3], a11 = a[4], a12 = a[5],
         a20 = a[6], a21 = a[7], a22 = a[8];
@@ -2559,31 +2559,31 @@ mat3.adjoint = function(out, a) ***REMOVED***
     out[7] = (a01 * a20 - a00 * a21);
     out[8] = (a00 * a11 - a01 * a10);
     return out;
-***REMOVED***;
+};
 
 /**
  * Calculates the determinant of a mat3
  *
- * @param ***REMOVED***mat3***REMOVED*** a the source matrix
- * @returns ***REMOVED***Number***REMOVED*** determinant of a
+ * @param {mat3} a the source matrix
+ * @returns {Number} determinant of a
  */
-mat3.determinant = function (a) ***REMOVED***
+mat3.determinant = function (a) {
     var a00 = a[0], a01 = a[1], a02 = a[2],
         a10 = a[3], a11 = a[4], a12 = a[5],
         a20 = a[6], a21 = a[7], a22 = a[8];
 
     return a00 * (a22 * a11 - a12 * a21) + a01 * (-a22 * a10 + a12 * a20) + a02 * (a21 * a10 - a11 * a20);
-***REMOVED***;
+};
 
 /**
  * Multiplies two mat3's
  *
- * @param ***REMOVED***mat3***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat3***REMOVED*** a the first operand
- * @param ***REMOVED***mat3***REMOVED*** b the second operand
- * @returns ***REMOVED***mat3***REMOVED*** out
+ * @param {mat3} out the receiving matrix
+ * @param {mat3} a the first operand
+ * @param {mat3} b the second operand
+ * @returns {mat3} out
  */
-mat3.multiply = function (out, a, b) ***REMOVED***
+mat3.multiply = function (out, a, b) {
     var a00 = a[0], a01 = a[1], a02 = a[2],
         a10 = a[3], a11 = a[4], a12 = a[5],
         a20 = a[6], a21 = a[7], a22 = a[8],
@@ -2604,10 +2604,10 @@ mat3.multiply = function (out, a, b) ***REMOVED***
     out[7] = b20 * a01 + b21 * a11 + b22 * a21;
     out[8] = b20 * a02 + b21 * a12 + b22 * a22;
     return out;
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link mat3.multiply***REMOVED***
+ * Alias for {@link mat3.multiply}
  * @function
  */
 mat3.mul = mat3.multiply;
@@ -2615,12 +2615,12 @@ mat3.mul = mat3.multiply;
 /**
  * Translate a mat3 by the given vector
  *
- * @param ***REMOVED***mat3***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat3***REMOVED*** a the matrix to translate
- * @param ***REMOVED***vec2***REMOVED*** v vector to translate by
- * @returns ***REMOVED***mat3***REMOVED*** out
+ * @param {mat3} out the receiving matrix
+ * @param {mat3} a the matrix to translate
+ * @param {vec2} v vector to translate by
+ * @returns {mat3} out
  */
-mat3.translate = function(out, a, v) ***REMOVED***
+mat3.translate = function(out, a, v) {
     var a00 = a[0], a01 = a[1], a02 = a[2],
         a10 = a[3], a11 = a[4], a12 = a[5],
         a20 = a[6], a21 = a[7], a22 = a[8],
@@ -2638,17 +2638,17 @@ mat3.translate = function(out, a, v) ***REMOVED***
     out[7] = x * a01 + y * a11 + a21;
     out[8] = x * a02 + y * a12 + a22;
     return out;
-***REMOVED***;
+};
 
 /**
  * Rotates a mat3 by the given angle
  *
- * @param ***REMOVED***mat3***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat3***REMOVED*** a the matrix to rotate
- * @param ***REMOVED***Number***REMOVED*** rad the angle to rotate the matrix by
- * @returns ***REMOVED***mat3***REMOVED*** out
+ * @param {mat3} out the receiving matrix
+ * @param {mat3} a the matrix to rotate
+ * @param {Number} rad the angle to rotate the matrix by
+ * @returns {mat3} out
  */
-mat3.rotate = function (out, a, rad) ***REMOVED***
+mat3.rotate = function (out, a, rad) {
     var a00 = a[0], a01 = a[1], a02 = a[2],
         a10 = a[3], a11 = a[4], a12 = a[5],
         a20 = a[6], a21 = a[7], a22 = a[8],
@@ -2668,17 +2668,17 @@ mat3.rotate = function (out, a, rad) ***REMOVED***
     out[7] = a21;
     out[8] = a22;
     return out;
-***REMOVED***;
+};
 
 /**
  * Scales the mat3 by the dimensions in the given vec2
  *
- * @param ***REMOVED***mat3***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat3***REMOVED*** a the matrix to rotate
- * @param ***REMOVED***vec2***REMOVED*** v the vec2 to scale the matrix by
- * @returns ***REMOVED***mat3***REMOVED*** out
+ * @param {mat3} out the receiving matrix
+ * @param {mat3} a the matrix to rotate
+ * @param {vec2} v the vec2 to scale the matrix by
+ * @returns {mat3} out
  **/
-mat3.scale = function(out, a, v) ***REMOVED***
+mat3.scale = function(out, a, v) {
     var x = v[0], y = v[1];
 
     out[0] = x * a[0];
@@ -2693,16 +2693,16 @@ mat3.scale = function(out, a, v) ***REMOVED***
     out[7] = a[7];
     out[8] = a[8];
     return out;
-***REMOVED***;
+};
 
 /**
  * Copies the values from a mat2d into a mat3
  *
- * @param ***REMOVED***mat3***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat2d***REMOVED*** a the matrix to copy
- * @returns ***REMOVED***mat3***REMOVED*** out
+ * @param {mat3} out the receiving matrix
+ * @param {mat2d} a the matrix to copy
+ * @returns {mat3} out
  **/
-mat3.fromMat2d = function(out, a) ***REMOVED***
+mat3.fromMat2d = function(out, a) {
     out[0] = a[0];
     out[1] = a[1];
     out[2] = 0;
@@ -2715,17 +2715,17 @@ mat3.fromMat2d = function(out, a) ***REMOVED***
     out[7] = a[5];
     out[8] = 1;
     return out;
-***REMOVED***;
+};
 
 /**
 * Calculates a 3x3 matrix from the given quaternion
 *
-* @param ***REMOVED***mat3***REMOVED*** out mat3 receiving operation result
-* @param ***REMOVED***quat***REMOVED*** q Quaternion to create matrix from
+* @param {mat3} out mat3 receiving operation result
+* @param {quat} q Quaternion to create matrix from
 *
-* @returns ***REMOVED***mat3***REMOVED*** out
+* @returns {mat3} out
 */
-mat3.fromQuat = function (out, q) ***REMOVED***
+mat3.fromQuat = function (out, q) {
     var x = q[0], y = q[1], z = q[2], w = q[3],
         x2 = x + x,
         y2 = y + y,
@@ -2754,17 +2754,17 @@ mat3.fromQuat = function (out, q) ***REMOVED***
     out[8] = 1 - xx - yy;
 
     return out;
-***REMOVED***;
+};
 
 /**
 * Calculates a 3x3 normal matrix (transpose inverse) from the 4x4 matrix
 *
-* @param ***REMOVED***mat3***REMOVED*** out mat3 receiving operation result
-* @param ***REMOVED***mat4***REMOVED*** a Mat4 to derive the normal matrix from
+* @param {mat3} out mat3 receiving operation result
+* @param {mat4} a Mat4 to derive the normal matrix from
 *
-* @returns ***REMOVED***mat3***REMOVED*** out
+* @returns {mat3} out
 */
-mat3.normalFromMat4 = function (out, a) ***REMOVED***
+mat3.normalFromMat4 = function (out, a) {
     var a00 = a[0], a01 = a[1], a02 = a[2], a03 = a[3],
         a10 = a[4], a11 = a[5], a12 = a[6], a13 = a[7],
         a20 = a[8], a21 = a[9], a22 = a[10], a23 = a[11],
@@ -2786,9 +2786,9 @@ mat3.normalFromMat4 = function (out, a) ***REMOVED***
         // Calculate the determinant
         det = b00 * b11 - b01 * b10 + b02 * b09 + b03 * b08 - b04 * b07 + b05 * b06;
 
-    if (!det) ***REMOVED*** 
+    if (!det) { 
         return null; 
-    ***REMOVED***
+    }
     det = 1.0 / det;
 
     out[0] = (a11 * b11 - a12 * b10 + a13 * b09) * det;
@@ -2804,34 +2804,34 @@ mat3.normalFromMat4 = function (out, a) ***REMOVED***
     out[8] = (a30 * b04 - a31 * b02 + a33 * b00) * det;
 
     return out;
-***REMOVED***;
+};
 
 /**
  * Returns a string representation of a mat3
  *
- * @param ***REMOVED***mat3***REMOVED*** mat matrix to represent as a string
- * @returns ***REMOVED***String***REMOVED*** string representation of the matrix
+ * @param {mat3} mat matrix to represent as a string
+ * @returns {String} string representation of the matrix
  */
-mat3.str = function (a) ***REMOVED***
+mat3.str = function (a) {
     return 'mat3(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + 
                     a[3] + ', ' + a[4] + ', ' + a[5] + ', ' + 
                     a[6] + ', ' + a[7] + ', ' + a[8] + ')';
-***REMOVED***;
+};
 
 /**
  * Returns Frobenius norm of a mat3
  *
- * @param ***REMOVED***mat3***REMOVED*** a the matrix to calculate Frobenius norm of
- * @returns ***REMOVED***Number***REMOVED*** Frobenius norm
+ * @param {mat3} a the matrix to calculate Frobenius norm of
+ * @returns {Number} Frobenius norm
  */
-mat3.frob = function (a) ***REMOVED***
+mat3.frob = function (a) {
     return(Math.sqrt(Math.pow(a[0], 2) + Math.pow(a[1], 2) + Math.pow(a[2], 2) + Math.pow(a[3], 2) + Math.pow(a[4], 2) + Math.pow(a[5], 2) + Math.pow(a[6], 2) + Math.pow(a[7], 2) + Math.pow(a[8], 2)))
-***REMOVED***;
+};
 
 
-if(typeof(exports) !== 'undefined') ***REMOVED***
+if(typeof(exports) !== 'undefined') {
     exports.mat3 = mat3;
-***REMOVED***
+}
 ;
 /* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
 
@@ -2860,14 +2860,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
  * @name mat4
  */
 
-var mat4 = ***REMOVED******REMOVED***;
+var mat4 = {};
 
 /**
  * Creates a new identity mat4
  *
- * @returns ***REMOVED***mat4***REMOVED*** a new 4x4 matrix
+ * @returns {mat4} a new 4x4 matrix
  */
-mat4.create = function() ***REMOVED***
+mat4.create = function() {
     var out = new GLMAT_ARRAY_TYPE(16);
     out[0] = 1;
     out[1] = 0;
@@ -2886,15 +2886,15 @@ mat4.create = function() ***REMOVED***
     out[14] = 0;
     out[15] = 1;
     return out;
-***REMOVED***;
+};
 
 /**
  * Creates a new mat4 initialized with values from an existing matrix
  *
- * @param ***REMOVED***mat4***REMOVED*** a matrix to clone
- * @returns ***REMOVED***mat4***REMOVED*** a new 4x4 matrix
+ * @param {mat4} a matrix to clone
+ * @returns {mat4} a new 4x4 matrix
  */
-mat4.clone = function(a) ***REMOVED***
+mat4.clone = function(a) {
     var out = new GLMAT_ARRAY_TYPE(16);
     out[0] = a[0];
     out[1] = a[1];
@@ -2913,16 +2913,16 @@ mat4.clone = function(a) ***REMOVED***
     out[14] = a[14];
     out[15] = a[15];
     return out;
-***REMOVED***;
+};
 
 /**
  * Copy the values from one mat4 to another
  *
- * @param ***REMOVED***mat4***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat4***REMOVED*** a the source matrix
- * @returns ***REMOVED***mat4***REMOVED*** out
+ * @param {mat4} out the receiving matrix
+ * @param {mat4} a the source matrix
+ * @returns {mat4} out
  */
-mat4.copy = function(out, a) ***REMOVED***
+mat4.copy = function(out, a) {
     out[0] = a[0];
     out[1] = a[1];
     out[2] = a[2];
@@ -2940,15 +2940,15 @@ mat4.copy = function(out, a) ***REMOVED***
     out[14] = a[14];
     out[15] = a[15];
     return out;
-***REMOVED***;
+};
 
 /**
  * Set a mat4 to the identity matrix
  *
- * @param ***REMOVED***mat4***REMOVED*** out the receiving matrix
- * @returns ***REMOVED***mat4***REMOVED*** out
+ * @param {mat4} out the receiving matrix
+ * @returns {mat4} out
  */
-mat4.identity = function(out) ***REMOVED***
+mat4.identity = function(out) {
     out[0] = 1;
     out[1] = 0;
     out[2] = 0;
@@ -2966,18 +2966,18 @@ mat4.identity = function(out) ***REMOVED***
     out[14] = 0;
     out[15] = 1;
     return out;
-***REMOVED***;
+};
 
 /**
  * Transpose the values of a mat4
  *
- * @param ***REMOVED***mat4***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat4***REMOVED*** a the source matrix
- * @returns ***REMOVED***mat4***REMOVED*** out
+ * @param {mat4} out the receiving matrix
+ * @param {mat4} a the source matrix
+ * @returns {mat4} out
  */
-mat4.transpose = function(out, a) ***REMOVED***
+mat4.transpose = function(out, a) {
     // If we are transposing ourselves we can skip a few steps but have to cache some values
-    if (out === a) ***REMOVED***
+    if (out === a) {
         var a01 = a[1], a02 = a[2], a03 = a[3],
             a12 = a[6], a13 = a[7],
             a23 = a[11];
@@ -2994,7 +2994,7 @@ mat4.transpose = function(out, a) ***REMOVED***
         out[12] = a03;
         out[13] = a13;
         out[14] = a23;
-    ***REMOVED*** else ***REMOVED***
+    } else {
         out[0] = a[0];
         out[1] = a[4];
         out[2] = a[8];
@@ -3011,19 +3011,19 @@ mat4.transpose = function(out, a) ***REMOVED***
         out[13] = a[7];
         out[14] = a[11];
         out[15] = a[15];
-    ***REMOVED***
+    }
     
     return out;
-***REMOVED***;
+};
 
 /**
  * Inverts a mat4
  *
- * @param ***REMOVED***mat4***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat4***REMOVED*** a the source matrix
- * @returns ***REMOVED***mat4***REMOVED*** out
+ * @param {mat4} out the receiving matrix
+ * @param {mat4} a the source matrix
+ * @returns {mat4} out
  */
-mat4.invert = function(out, a) ***REMOVED***
+mat4.invert = function(out, a) {
     var a00 = a[0], a01 = a[1], a02 = a[2], a03 = a[3],
         a10 = a[4], a11 = a[5], a12 = a[6], a13 = a[7],
         a20 = a[8], a21 = a[9], a22 = a[10], a23 = a[11],
@@ -3045,9 +3045,9 @@ mat4.invert = function(out, a) ***REMOVED***
         // Calculate the determinant
         det = b00 * b11 - b01 * b10 + b02 * b09 + b03 * b08 - b04 * b07 + b05 * b06;
 
-    if (!det) ***REMOVED*** 
+    if (!det) { 
         return null; 
-    ***REMOVED***
+    }
     det = 1.0 / det;
 
     out[0] = (a11 * b11 - a12 * b10 + a13 * b09) * det;
@@ -3068,16 +3068,16 @@ mat4.invert = function(out, a) ***REMOVED***
     out[15] = (a20 * b03 - a21 * b01 + a22 * b00) * det;
 
     return out;
-***REMOVED***;
+};
 
 /**
  * Calculates the adjugate of a mat4
  *
- * @param ***REMOVED***mat4***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat4***REMOVED*** a the source matrix
- * @returns ***REMOVED***mat4***REMOVED*** out
+ * @param {mat4} out the receiving matrix
+ * @param {mat4} a the source matrix
+ * @returns {mat4} out
  */
-mat4.adjoint = function(out, a) ***REMOVED***
+mat4.adjoint = function(out, a) {
     var a00 = a[0], a01 = a[1], a02 = a[2], a03 = a[3],
         a10 = a[4], a11 = a[5], a12 = a[6], a13 = a[7],
         a20 = a[8], a21 = a[9], a22 = a[10], a23 = a[11],
@@ -3100,15 +3100,15 @@ mat4.adjoint = function(out, a) ***REMOVED***
     out[14] = -(a00 * (a11 * a32 - a12 * a31) - a10 * (a01 * a32 - a02 * a31) + a30 * (a01 * a12 - a02 * a11));
     out[15] =  (a00 * (a11 * a22 - a12 * a21) - a10 * (a01 * a22 - a02 * a21) + a20 * (a01 * a12 - a02 * a11));
     return out;
-***REMOVED***;
+};
 
 /**
  * Calculates the determinant of a mat4
  *
- * @param ***REMOVED***mat4***REMOVED*** a the source matrix
- * @returns ***REMOVED***Number***REMOVED*** determinant of a
+ * @param {mat4} a the source matrix
+ * @returns {Number} determinant of a
  */
-mat4.determinant = function (a) ***REMOVED***
+mat4.determinant = function (a) {
     var a00 = a[0], a01 = a[1], a02 = a[2], a03 = a[3],
         a10 = a[4], a11 = a[5], a12 = a[6], a13 = a[7],
         a20 = a[8], a21 = a[9], a22 = a[10], a23 = a[11],
@@ -3129,17 +3129,17 @@ mat4.determinant = function (a) ***REMOVED***
 
     // Calculate the determinant
     return b00 * b11 - b01 * b10 + b02 * b09 + b03 * b08 - b04 * b07 + b05 * b06;
-***REMOVED***;
+};
 
 /**
  * Multiplies two mat4's
  *
- * @param ***REMOVED***mat4***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat4***REMOVED*** a the first operand
- * @param ***REMOVED***mat4***REMOVED*** b the second operand
- * @returns ***REMOVED***mat4***REMOVED*** out
+ * @param {mat4} out the receiving matrix
+ * @param {mat4} a the first operand
+ * @param {mat4} b the second operand
+ * @returns {mat4} out
  */
-mat4.multiply = function (out, a, b) ***REMOVED***
+mat4.multiply = function (out, a, b) {
     var a00 = a[0], a01 = a[1], a02 = a[2], a03 = a[3],
         a10 = a[4], a11 = a[5], a12 = a[6], a13 = a[7],
         a20 = a[8], a21 = a[9], a22 = a[10], a23 = a[11],
@@ -3170,10 +3170,10 @@ mat4.multiply = function (out, a, b) ***REMOVED***
     out[14] = b0*a02 + b1*a12 + b2*a22 + b3*a32;
     out[15] = b0*a03 + b1*a13 + b2*a23 + b3*a33;
     return out;
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link mat4.multiply***REMOVED***
+ * Alias for {@link mat4.multiply}
  * @function
  */
 mat4.mul = mat4.multiply;
@@ -3181,23 +3181,23 @@ mat4.mul = mat4.multiply;
 /**
  * Translate a mat4 by the given vector
  *
- * @param ***REMOVED***mat4***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat4***REMOVED*** a the matrix to translate
- * @param ***REMOVED***vec3***REMOVED*** v vector to translate by
- * @returns ***REMOVED***mat4***REMOVED*** out
+ * @param {mat4} out the receiving matrix
+ * @param {mat4} a the matrix to translate
+ * @param {vec3} v vector to translate by
+ * @returns {mat4} out
  */
-mat4.translate = function (out, a, v) ***REMOVED***
+mat4.translate = function (out, a, v) {
     var x = v[0], y = v[1], z = v[2],
         a00, a01, a02, a03,
         a10, a11, a12, a13,
         a20, a21, a22, a23;
 
-    if (a === out) ***REMOVED***
+    if (a === out) {
         out[12] = a[0] * x + a[4] * y + a[8] * z + a[12];
         out[13] = a[1] * x + a[5] * y + a[9] * z + a[13];
         out[14] = a[2] * x + a[6] * y + a[10] * z + a[14];
         out[15] = a[3] * x + a[7] * y + a[11] * z + a[15];
-    ***REMOVED*** else ***REMOVED***
+    } else {
         a00 = a[0]; a01 = a[1]; a02 = a[2]; a03 = a[3];
         a10 = a[4]; a11 = a[5]; a12 = a[6]; a13 = a[7];
         a20 = a[8]; a21 = a[9]; a22 = a[10]; a23 = a[11];
@@ -3210,20 +3210,20 @@ mat4.translate = function (out, a, v) ***REMOVED***
         out[13] = a01 * x + a11 * y + a21 * z + a[13];
         out[14] = a02 * x + a12 * y + a22 * z + a[14];
         out[15] = a03 * x + a13 * y + a23 * z + a[15];
-    ***REMOVED***
+    }
 
     return out;
-***REMOVED***;
+};
 
 /**
  * Scales the mat4 by the dimensions in the given vec3
  *
- * @param ***REMOVED***mat4***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat4***REMOVED*** a the matrix to scale
- * @param ***REMOVED***vec3***REMOVED*** v the vec3 to scale the matrix by
- * @returns ***REMOVED***mat4***REMOVED*** out
+ * @param {mat4} out the receiving matrix
+ * @param {mat4} a the matrix to scale
+ * @param {vec3} v the vec3 to scale the matrix by
+ * @returns {mat4} out
  **/
-mat4.scale = function(out, a, v) ***REMOVED***
+mat4.scale = function(out, a, v) {
     var x = v[0], y = v[1], z = v[2];
 
     out[0] = a[0] * x;
@@ -3243,18 +3243,18 @@ mat4.scale = function(out, a, v) ***REMOVED***
     out[14] = a[14];
     out[15] = a[15];
     return out;
-***REMOVED***;
+};
 
 /**
  * Rotates a mat4 by the given angle
  *
- * @param ***REMOVED***mat4***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat4***REMOVED*** a the matrix to rotate
- * @param ***REMOVED***Number***REMOVED*** rad the angle to rotate the matrix by
- * @param ***REMOVED***vec3***REMOVED*** axis the axis to rotate around
- * @returns ***REMOVED***mat4***REMOVED*** out
+ * @param {mat4} out the receiving matrix
+ * @param {mat4} a the matrix to rotate
+ * @param {Number} rad the angle to rotate the matrix by
+ * @param {vec3} axis the axis to rotate around
+ * @returns {mat4} out
  */
-mat4.rotate = function (out, a, rad, axis) ***REMOVED***
+mat4.rotate = function (out, a, rad, axis) {
     var x = axis[0], y = axis[1], z = axis[2],
         len = Math.sqrt(x * x + y * y + z * z),
         s, c, t,
@@ -3265,7 +3265,7 @@ mat4.rotate = function (out, a, rad, axis) ***REMOVED***
         b10, b11, b12,
         b20, b21, b22;
 
-    if (Math.abs(len) < GLMAT_EPSILON) ***REMOVED*** return null; ***REMOVED***
+    if (Math.abs(len) < GLMAT_EPSILON) { return null; }
     
     len = 1 / len;
     x *= len;
@@ -3299,24 +3299,24 @@ mat4.rotate = function (out, a, rad, axis) ***REMOVED***
     out[10] = a02 * b20 + a12 * b21 + a22 * b22;
     out[11] = a03 * b20 + a13 * b21 + a23 * b22;
 
-    if (a !== out) ***REMOVED*** // If the source and destination differ, copy the unchanged last row
+    if (a !== out) { // If the source and destination differ, copy the unchanged last row
         out[12] = a[12];
         out[13] = a[13];
         out[14] = a[14];
         out[15] = a[15];
-    ***REMOVED***
+    }
     return out;
-***REMOVED***;
+};
 
 /**
  * Rotates a matrix by the given angle around the X axis
  *
- * @param ***REMOVED***mat4***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat4***REMOVED*** a the matrix to rotate
- * @param ***REMOVED***Number***REMOVED*** rad the angle to rotate the matrix by
- * @returns ***REMOVED***mat4***REMOVED*** out
+ * @param {mat4} out the receiving matrix
+ * @param {mat4} a the matrix to rotate
+ * @param {Number} rad the angle to rotate the matrix by
+ * @returns {mat4} out
  */
-mat4.rotateX = function (out, a, rad) ***REMOVED***
+mat4.rotateX = function (out, a, rad) {
     var s = Math.sin(rad),
         c = Math.cos(rad),
         a10 = a[4],
@@ -3328,7 +3328,7 @@ mat4.rotateX = function (out, a, rad) ***REMOVED***
         a22 = a[10],
         a23 = a[11];
 
-    if (a !== out) ***REMOVED*** // If the source and destination differ, copy the unchanged rows
+    if (a !== out) { // If the source and destination differ, copy the unchanged rows
         out[0]  = a[0];
         out[1]  = a[1];
         out[2]  = a[2];
@@ -3337,7 +3337,7 @@ mat4.rotateX = function (out, a, rad) ***REMOVED***
         out[13] = a[13];
         out[14] = a[14];
         out[15] = a[15];
-    ***REMOVED***
+    }
 
     // Perform axis-specific matrix multiplication
     out[4] = a10 * c + a20 * s;
@@ -3349,17 +3349,17 @@ mat4.rotateX = function (out, a, rad) ***REMOVED***
     out[10] = a22 * c - a12 * s;
     out[11] = a23 * c - a13 * s;
     return out;
-***REMOVED***;
+};
 
 /**
  * Rotates a matrix by the given angle around the Y axis
  *
- * @param ***REMOVED***mat4***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat4***REMOVED*** a the matrix to rotate
- * @param ***REMOVED***Number***REMOVED*** rad the angle to rotate the matrix by
- * @returns ***REMOVED***mat4***REMOVED*** out
+ * @param {mat4} out the receiving matrix
+ * @param {mat4} a the matrix to rotate
+ * @param {Number} rad the angle to rotate the matrix by
+ * @returns {mat4} out
  */
-mat4.rotateY = function (out, a, rad) ***REMOVED***
+mat4.rotateY = function (out, a, rad) {
     var s = Math.sin(rad),
         c = Math.cos(rad),
         a00 = a[0],
@@ -3371,7 +3371,7 @@ mat4.rotateY = function (out, a, rad) ***REMOVED***
         a22 = a[10],
         a23 = a[11];
 
-    if (a !== out) ***REMOVED*** // If the source and destination differ, copy the unchanged rows
+    if (a !== out) { // If the source and destination differ, copy the unchanged rows
         out[4]  = a[4];
         out[5]  = a[5];
         out[6]  = a[6];
@@ -3380,7 +3380,7 @@ mat4.rotateY = function (out, a, rad) ***REMOVED***
         out[13] = a[13];
         out[14] = a[14];
         out[15] = a[15];
-    ***REMOVED***
+    }
 
     // Perform axis-specific matrix multiplication
     out[0] = a00 * c - a20 * s;
@@ -3392,17 +3392,17 @@ mat4.rotateY = function (out, a, rad) ***REMOVED***
     out[10] = a02 * s + a22 * c;
     out[11] = a03 * s + a23 * c;
     return out;
-***REMOVED***;
+};
 
 /**
  * Rotates a matrix by the given angle around the Z axis
  *
- * @param ***REMOVED***mat4***REMOVED*** out the receiving matrix
- * @param ***REMOVED***mat4***REMOVED*** a the matrix to rotate
- * @param ***REMOVED***Number***REMOVED*** rad the angle to rotate the matrix by
- * @returns ***REMOVED***mat4***REMOVED*** out
+ * @param {mat4} out the receiving matrix
+ * @param {mat4} a the matrix to rotate
+ * @param {Number} rad the angle to rotate the matrix by
+ * @returns {mat4} out
  */
-mat4.rotateZ = function (out, a, rad) ***REMOVED***
+mat4.rotateZ = function (out, a, rad) {
     var s = Math.sin(rad),
         c = Math.cos(rad),
         a00 = a[0],
@@ -3414,7 +3414,7 @@ mat4.rotateZ = function (out, a, rad) ***REMOVED***
         a12 = a[6],
         a13 = a[7];
 
-    if (a !== out) ***REMOVED*** // If the source and destination differ, copy the unchanged last row
+    if (a !== out) { // If the source and destination differ, copy the unchanged last row
         out[8]  = a[8];
         out[9]  = a[9];
         out[10] = a[10];
@@ -3423,7 +3423,7 @@ mat4.rotateZ = function (out, a, rad) ***REMOVED***
         out[13] = a[13];
         out[14] = a[14];
         out[15] = a[15];
-    ***REMOVED***
+    }
 
     // Perform axis-specific matrix multiplication
     out[0] = a00 * c + a10 * s;
@@ -3435,7 +3435,7 @@ mat4.rotateZ = function (out, a, rad) ***REMOVED***
     out[6] = a12 * c - a02 * s;
     out[7] = a13 * c - a03 * s;
     return out;
-***REMOVED***;
+};
 
 /**
  * Creates a matrix from a quaternion rotation and vector translation
@@ -3447,12 +3447,12 @@ mat4.rotateZ = function (out, a, rad) ***REMOVED***
  *     quat4.toMat4(quat, quatMat);
  *     mat4.multiply(dest, quatMat);
  *
- * @param ***REMOVED***mat4***REMOVED*** out mat4 receiving operation result
- * @param ***REMOVED***quat4***REMOVED*** q Rotation quaternion
- * @param ***REMOVED***vec3***REMOVED*** v Translation vector
- * @returns ***REMOVED***mat4***REMOVED*** out
+ * @param {mat4} out mat4 receiving operation result
+ * @param {quat4} q Rotation quaternion
+ * @param {vec3} v Translation vector
+ * @returns {mat4} out
  */
-mat4.fromRotationTranslation = function (out, q, v) ***REMOVED***
+mat4.fromRotationTranslation = function (out, q, v) {
     // Quaternion math
     var x = q[0], y = q[1], z = q[2], w = q[3],
         x2 = x + x,
@@ -3487,9 +3487,9 @@ mat4.fromRotationTranslation = function (out, q, v) ***REMOVED***
     out[15] = 1;
     
     return out;
-***REMOVED***;
+};
 
-mat4.fromQuat = function (out, q) ***REMOVED***
+mat4.fromQuat = function (out, q) {
     var x = q[0], y = q[1], z = q[2], w = q[3],
         x2 = x + x,
         y2 = y + y,
@@ -3526,21 +3526,21 @@ mat4.fromQuat = function (out, q) ***REMOVED***
     out[15] = 1;
 
     return out;
-***REMOVED***;
+};
 
 /**
  * Generates a frustum matrix with the given bounds
  *
- * @param ***REMOVED***mat4***REMOVED*** out mat4 frustum matrix will be written into
- * @param ***REMOVED***Number***REMOVED*** left Left bound of the frustum
- * @param ***REMOVED***Number***REMOVED*** right Right bound of the frustum
- * @param ***REMOVED***Number***REMOVED*** bottom Bottom bound of the frustum
- * @param ***REMOVED***Number***REMOVED*** top Top bound of the frustum
- * @param ***REMOVED***Number***REMOVED*** near Near bound of the frustum
- * @param ***REMOVED***Number***REMOVED*** far Far bound of the frustum
- * @returns ***REMOVED***mat4***REMOVED*** out
+ * @param {mat4} out mat4 frustum matrix will be written into
+ * @param {Number} left Left bound of the frustum
+ * @param {Number} right Right bound of the frustum
+ * @param {Number} bottom Bottom bound of the frustum
+ * @param {Number} top Top bound of the frustum
+ * @param {Number} near Near bound of the frustum
+ * @param {Number} far Far bound of the frustum
+ * @returns {mat4} out
  */
-mat4.frustum = function (out, left, right, bottom, top, near, far) ***REMOVED***
+mat4.frustum = function (out, left, right, bottom, top, near, far) {
     var rl = 1 / (right - left),
         tb = 1 / (top - bottom),
         nf = 1 / (near - far);
@@ -3561,19 +3561,19 @@ mat4.frustum = function (out, left, right, bottom, top, near, far) ***REMOVED***
     out[14] = (far * near * 2) * nf;
     out[15] = 0;
     return out;
-***REMOVED***;
+};
 
 /**
  * Generates a perspective projection matrix with the given bounds
  *
- * @param ***REMOVED***mat4***REMOVED*** out mat4 frustum matrix will be written into
- * @param ***REMOVED***number***REMOVED*** fovy Vertical field of view in radians
- * @param ***REMOVED***number***REMOVED*** aspect Aspect ratio. typically viewport width/height
- * @param ***REMOVED***number***REMOVED*** near Near bound of the frustum
- * @param ***REMOVED***number***REMOVED*** far Far bound of the frustum
- * @returns ***REMOVED***mat4***REMOVED*** out
+ * @param {mat4} out mat4 frustum matrix will be written into
+ * @param {number} fovy Vertical field of view in radians
+ * @param {number} aspect Aspect ratio. typically viewport width/height
+ * @param {number} near Near bound of the frustum
+ * @param {number} far Far bound of the frustum
+ * @returns {mat4} out
  */
-mat4.perspective = function (out, fovy, aspect, near, far) ***REMOVED***
+mat4.perspective = function (out, fovy, aspect, near, far) {
     var f = 1.0 / Math.tan(fovy / 2),
         nf = 1 / (near - far);
     out[0] = f / aspect;
@@ -3593,21 +3593,21 @@ mat4.perspective = function (out, fovy, aspect, near, far) ***REMOVED***
     out[14] = (2 * far * near) * nf;
     out[15] = 0;
     return out;
-***REMOVED***;
+};
 
 /**
  * Generates a orthogonal projection matrix with the given bounds
  *
- * @param ***REMOVED***mat4***REMOVED*** out mat4 frustum matrix will be written into
- * @param ***REMOVED***number***REMOVED*** left Left bound of the frustum
- * @param ***REMOVED***number***REMOVED*** right Right bound of the frustum
- * @param ***REMOVED***number***REMOVED*** bottom Bottom bound of the frustum
- * @param ***REMOVED***number***REMOVED*** top Top bound of the frustum
- * @param ***REMOVED***number***REMOVED*** near Near bound of the frustum
- * @param ***REMOVED***number***REMOVED*** far Far bound of the frustum
- * @returns ***REMOVED***mat4***REMOVED*** out
+ * @param {mat4} out mat4 frustum matrix will be written into
+ * @param {number} left Left bound of the frustum
+ * @param {number} right Right bound of the frustum
+ * @param {number} bottom Bottom bound of the frustum
+ * @param {number} top Top bound of the frustum
+ * @param {number} near Near bound of the frustum
+ * @param {number} far Far bound of the frustum
+ * @returns {mat4} out
  */
-mat4.ortho = function (out, left, right, bottom, top, near, far) ***REMOVED***
+mat4.ortho = function (out, left, right, bottom, top, near, far) {
     var lr = 1 / (left - right),
         bt = 1 / (bottom - top),
         nf = 1 / (near - far);
@@ -3628,18 +3628,18 @@ mat4.ortho = function (out, left, right, bottom, top, near, far) ***REMOVED***
     out[14] = (far + near) * nf;
     out[15] = 1;
     return out;
-***REMOVED***;
+};
 
 /**
  * Generates a look-at matrix with the given eye position, focal point, and up axis
  *
- * @param ***REMOVED***mat4***REMOVED*** out mat4 frustum matrix will be written into
- * @param ***REMOVED***vec3***REMOVED*** eye Position of the viewer
- * @param ***REMOVED***vec3***REMOVED*** center Point the viewer is looking at
- * @param ***REMOVED***vec3***REMOVED*** up vec3 pointing up
- * @returns ***REMOVED***mat4***REMOVED*** out
+ * @param {mat4} out mat4 frustum matrix will be written into
+ * @param {vec3} eye Position of the viewer
+ * @param {vec3} center Point the viewer is looking at
+ * @param {vec3} up vec3 pointing up
+ * @returns {mat4} out
  */
-mat4.lookAt = function (out, eye, center, up) ***REMOVED***
+mat4.lookAt = function (out, eye, center, up) {
     var x0, x1, x2, y0, y1, y2, z0, z1, z2, len,
         eyex = eye[0],
         eyey = eye[1],
@@ -3653,9 +3653,9 @@ mat4.lookAt = function (out, eye, center, up) ***REMOVED***
 
     if (Math.abs(eyex - centerx) < GLMAT_EPSILON &&
         Math.abs(eyey - centery) < GLMAT_EPSILON &&
-        Math.abs(eyez - centerz) < GLMAT_EPSILON) ***REMOVED***
+        Math.abs(eyez - centerz) < GLMAT_EPSILON) {
         return mat4.identity(out);
-    ***REMOVED***
+    }
 
     z0 = eyex - centerx;
     z1 = eyey - centery;
@@ -3670,32 +3670,32 @@ mat4.lookAt = function (out, eye, center, up) ***REMOVED***
     x1 = upz * z0 - upx * z2;
     x2 = upx * z1 - upy * z0;
     len = Math.sqrt(x0 * x0 + x1 * x1 + x2 * x2);
-    if (!len) ***REMOVED***
+    if (!len) {
         x0 = 0;
         x1 = 0;
         x2 = 0;
-    ***REMOVED*** else ***REMOVED***
+    } else {
         len = 1 / len;
         x0 *= len;
         x1 *= len;
         x2 *= len;
-    ***REMOVED***
+    }
 
     y0 = z1 * x2 - z2 * x1;
     y1 = z2 * x0 - z0 * x2;
     y2 = z0 * x1 - z1 * x0;
 
     len = Math.sqrt(y0 * y0 + y1 * y1 + y2 * y2);
-    if (!len) ***REMOVED***
+    if (!len) {
         y0 = 0;
         y1 = 0;
         y2 = 0;
-    ***REMOVED*** else ***REMOVED***
+    } else {
         len = 1 / len;
         y0 *= len;
         y1 *= len;
         y2 *= len;
-    ***REMOVED***
+    }
 
     out[0] = x0;
     out[1] = y0;
@@ -3715,35 +3715,35 @@ mat4.lookAt = function (out, eye, center, up) ***REMOVED***
     out[15] = 1;
 
     return out;
-***REMOVED***;
+};
 
 /**
  * Returns a string representation of a mat4
  *
- * @param ***REMOVED***mat4***REMOVED*** mat matrix to represent as a string
- * @returns ***REMOVED***String***REMOVED*** string representation of the matrix
+ * @param {mat4} mat matrix to represent as a string
+ * @returns {String} string representation of the matrix
  */
-mat4.str = function (a) ***REMOVED***
+mat4.str = function (a) {
     return 'mat4(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ', ' +
                     a[4] + ', ' + a[5] + ', ' + a[6] + ', ' + a[7] + ', ' +
                     a[8] + ', ' + a[9] + ', ' + a[10] + ', ' + a[11] + ', ' + 
                     a[12] + ', ' + a[13] + ', ' + a[14] + ', ' + a[15] + ')';
-***REMOVED***;
+};
 
 /**
  * Returns Frobenius norm of a mat4
  *
- * @param ***REMOVED***mat4***REMOVED*** a the matrix to calculate Frobenius norm of
- * @returns ***REMOVED***Number***REMOVED*** Frobenius norm
+ * @param {mat4} a the matrix to calculate Frobenius norm of
+ * @returns {Number} Frobenius norm
  */
-mat4.frob = function (a) ***REMOVED***
+mat4.frob = function (a) {
     return(Math.sqrt(Math.pow(a[0], 2) + Math.pow(a[1], 2) + Math.pow(a[2], 2) + Math.pow(a[3], 2) + Math.pow(a[4], 2) + Math.pow(a[5], 2) + Math.pow(a[6], 2) + Math.pow(a[7], 2) + Math.pow(a[8], 2) + Math.pow(a[9], 2) + Math.pow(a[10], 2) + Math.pow(a[11], 2) + Math.pow(a[12], 2) + Math.pow(a[13], 2) + Math.pow(a[14], 2) + Math.pow(a[15], 2) ))
-***REMOVED***;
+};
 
 
-if(typeof(exports) !== 'undefined') ***REMOVED***
+if(typeof(exports) !== 'undefined') {
     exports.mat4 = mat4;
-***REMOVED***
+}
 ;
 /* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
 
@@ -3772,21 +3772,21 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
  * @name quat
  */
 
-var quat = ***REMOVED******REMOVED***;
+var quat = {};
 
 /**
  * Creates a new identity quat
  *
- * @returns ***REMOVED***quat***REMOVED*** a new quaternion
+ * @returns {quat} a new quaternion
  */
-quat.create = function() ***REMOVED***
+quat.create = function() {
     var out = new GLMAT_ARRAY_TYPE(4);
     out[0] = 0;
     out[1] = 0;
     out[2] = 0;
     out[3] = 1;
     return out;
-***REMOVED***;
+};
 
 /**
  * Sets a quaternion to represent the shortest rotation from one
@@ -3794,56 +3794,56 @@ quat.create = function() ***REMOVED***
  *
  * Both vectors are assumed to be unit length.
  *
- * @param ***REMOVED***quat***REMOVED*** out the receiving quaternion.
- * @param ***REMOVED***vec3***REMOVED*** a the initial vector
- * @param ***REMOVED***vec3***REMOVED*** b the destination vector
- * @returns ***REMOVED***quat***REMOVED*** out
+ * @param {quat} out the receiving quaternion.
+ * @param {vec3} a the initial vector
+ * @param {vec3} b the destination vector
+ * @returns {quat} out
  */
-quat.rotationTo = (function() ***REMOVED***
+quat.rotationTo = (function() {
     var tmpvec3 = vec3.create();
     var xUnitVec3 = vec3.fromValues(1,0,0);
     var yUnitVec3 = vec3.fromValues(0,1,0);
 
-    return function(out, a, b) ***REMOVED***
+    return function(out, a, b) {
         var dot = vec3.dot(a, b);
-        if (dot < -0.999999) ***REMOVED***
+        if (dot < -0.999999) {
             vec3.cross(tmpvec3, xUnitVec3, a);
             if (vec3.length(tmpvec3) < 0.000001)
                 vec3.cross(tmpvec3, yUnitVec3, a);
             vec3.normalize(tmpvec3, tmpvec3);
             quat.setAxisAngle(out, tmpvec3, Math.PI);
             return out;
-        ***REMOVED*** else if (dot > 0.999999) ***REMOVED***
+        } else if (dot > 0.999999) {
             out[0] = 0;
             out[1] = 0;
             out[2] = 0;
             out[3] = 1;
             return out;
-        ***REMOVED*** else ***REMOVED***
+        } else {
             vec3.cross(tmpvec3, a, b);
             out[0] = tmpvec3[0];
             out[1] = tmpvec3[1];
             out[2] = tmpvec3[2];
             out[3] = 1 + dot;
             return quat.normalize(out, out);
-        ***REMOVED***
-    ***REMOVED***;
-***REMOVED***)();
+        }
+    };
+})();
 
 /**
  * Sets the specified quaternion with values corresponding to the given
  * axes. Each axis is a vec3 and is expected to be unit length and
  * perpendicular to all other specified axes.
  *
- * @param ***REMOVED***vec3***REMOVED*** view  the vector representing the viewing direction
- * @param ***REMOVED***vec3***REMOVED*** right the vector representing the local "right" direction
- * @param ***REMOVED***vec3***REMOVED*** up    the vector representing the local "up" direction
- * @returns ***REMOVED***quat***REMOVED*** out
+ * @param {vec3} view  the vector representing the viewing direction
+ * @param {vec3} right the vector representing the local "right" direction
+ * @param {vec3} up    the vector representing the local "up" direction
+ * @returns {quat} out
  */
-quat.setAxes = (function() ***REMOVED***
+quat.setAxes = (function() {
     var matr = mat3.create();
 
-    return function(out, view, right, up) ***REMOVED***
+    return function(out, view, right, up) {
         matr[0] = right[0];
         matr[3] = right[1];
         matr[6] = right[2];
@@ -3857,14 +3857,14 @@ quat.setAxes = (function() ***REMOVED***
         matr[8] = -view[2];
 
         return quat.normalize(out, quat.fromMat3(out, matr));
-    ***REMOVED***;
-***REMOVED***)();
+    };
+})();
 
 /**
  * Creates a new quat initialized with values from an existing quaternion
  *
- * @param ***REMOVED***quat***REMOVED*** a quaternion to clone
- * @returns ***REMOVED***quat***REMOVED*** a new quaternion
+ * @param {quat} a quaternion to clone
+ * @returns {quat} a new quaternion
  * @function
  */
 quat.clone = vec4.clone;
@@ -3872,11 +3872,11 @@ quat.clone = vec4.clone;
 /**
  * Creates a new quat initialized with the given values
  *
- * @param ***REMOVED***Number***REMOVED*** x X component
- * @param ***REMOVED***Number***REMOVED*** y Y component
- * @param ***REMOVED***Number***REMOVED*** z Z component
- * @param ***REMOVED***Number***REMOVED*** w W component
- * @returns ***REMOVED***quat***REMOVED*** a new quaternion
+ * @param {Number} x X component
+ * @param {Number} y Y component
+ * @param {Number} z Z component
+ * @param {Number} w W component
+ * @returns {quat} a new quaternion
  * @function
  */
 quat.fromValues = vec4.fromValues;
@@ -3884,9 +3884,9 @@ quat.fromValues = vec4.fromValues;
 /**
  * Copy the values from one quat to another
  *
- * @param ***REMOVED***quat***REMOVED*** out the receiving quaternion
- * @param ***REMOVED***quat***REMOVED*** a the source quaternion
- * @returns ***REMOVED***quat***REMOVED*** out
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a the source quaternion
+ * @returns {quat} out
  * @function
  */
 quat.copy = vec4.copy;
@@ -3894,12 +3894,12 @@ quat.copy = vec4.copy;
 /**
  * Set the components of a quat to the given values
  *
- * @param ***REMOVED***quat***REMOVED*** out the receiving quaternion
- * @param ***REMOVED***Number***REMOVED*** x X component
- * @param ***REMOVED***Number***REMOVED*** y Y component
- * @param ***REMOVED***Number***REMOVED*** z Z component
- * @param ***REMOVED***Number***REMOVED*** w W component
- * @returns ***REMOVED***quat***REMOVED*** out
+ * @param {quat} out the receiving quaternion
+ * @param {Number} x X component
+ * @param {Number} y Y component
+ * @param {Number} z Z component
+ * @param {Number} w W component
+ * @returns {quat} out
  * @function
  */
 quat.set = vec4.set;
@@ -3907,27 +3907,27 @@ quat.set = vec4.set;
 /**
  * Set a quat to the identity quaternion
  *
- * @param ***REMOVED***quat***REMOVED*** out the receiving quaternion
- * @returns ***REMOVED***quat***REMOVED*** out
+ * @param {quat} out the receiving quaternion
+ * @returns {quat} out
  */
-quat.identity = function(out) ***REMOVED***
+quat.identity = function(out) {
     out[0] = 0;
     out[1] = 0;
     out[2] = 0;
     out[3] = 1;
     return out;
-***REMOVED***;
+};
 
 /**
  * Sets a quat from the given angle and rotation axis,
  * then returns it.
  *
- * @param ***REMOVED***quat***REMOVED*** out the receiving quaternion
- * @param ***REMOVED***vec3***REMOVED*** axis the axis around which to rotate
- * @param ***REMOVED***Number***REMOVED*** rad the angle in radians
- * @returns ***REMOVED***quat***REMOVED*** out
+ * @param {quat} out the receiving quaternion
+ * @param {vec3} axis the axis around which to rotate
+ * @param {Number} rad the angle in radians
+ * @returns {quat} out
  **/
-quat.setAxisAngle = function(out, axis, rad) ***REMOVED***
+quat.setAxisAngle = function(out, axis, rad) {
     rad = rad * 0.5;
     var s = Math.sin(rad);
     out[0] = s * axis[0];
@@ -3935,15 +3935,15 @@ quat.setAxisAngle = function(out, axis, rad) ***REMOVED***
     out[2] = s * axis[2];
     out[3] = Math.cos(rad);
     return out;
-***REMOVED***;
+};
 
 /**
  * Adds two quat's
  *
- * @param ***REMOVED***quat***REMOVED*** out the receiving quaternion
- * @param ***REMOVED***quat***REMOVED*** a the first operand
- * @param ***REMOVED***quat***REMOVED*** b the second operand
- * @returns ***REMOVED***quat***REMOVED*** out
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a the first operand
+ * @param {quat} b the second operand
+ * @returns {quat} out
  * @function
  */
 quat.add = vec4.add;
@@ -3951,12 +3951,12 @@ quat.add = vec4.add;
 /**
  * Multiplies two quat's
  *
- * @param ***REMOVED***quat***REMOVED*** out the receiving quaternion
- * @param ***REMOVED***quat***REMOVED*** a the first operand
- * @param ***REMOVED***quat***REMOVED*** b the second operand
- * @returns ***REMOVED***quat***REMOVED*** out
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a the first operand
+ * @param {quat} b the second operand
+ * @returns {quat} out
  */
-quat.multiply = function(out, a, b) ***REMOVED***
+quat.multiply = function(out, a, b) {
     var ax = a[0], ay = a[1], az = a[2], aw = a[3],
         bx = b[0], by = b[1], bz = b[2], bw = b[3];
 
@@ -3965,10 +3965,10 @@ quat.multiply = function(out, a, b) ***REMOVED***
     out[2] = az * bw + aw * bz + ax * by - ay * bx;
     out[3] = aw * bw - ax * bx - ay * by - az * bz;
     return out;
-***REMOVED***;
+};
 
 /**
- * Alias for ***REMOVED***@link quat.multiply***REMOVED***
+ * Alias for {@link quat.multiply}
  * @function
  */
 quat.mul = quat.multiply;
@@ -3976,10 +3976,10 @@ quat.mul = quat.multiply;
 /**
  * Scales a quat by a scalar number
  *
- * @param ***REMOVED***quat***REMOVED*** out the receiving vector
- * @param ***REMOVED***quat***REMOVED*** a the vector to scale
- * @param ***REMOVED***Number***REMOVED*** b amount to scale the vector by
- * @returns ***REMOVED***quat***REMOVED*** out
+ * @param {quat} out the receiving vector
+ * @param {quat} a the vector to scale
+ * @param {Number} b amount to scale the vector by
+ * @returns {quat} out
  * @function
  */
 quat.scale = vec4.scale;
@@ -3987,12 +3987,12 @@ quat.scale = vec4.scale;
 /**
  * Rotates a quaternion by the given angle about the X axis
  *
- * @param ***REMOVED***quat***REMOVED*** out quat receiving operation result
- * @param ***REMOVED***quat***REMOVED*** a quat to rotate
- * @param ***REMOVED***number***REMOVED*** rad angle (in radians) to rotate
- * @returns ***REMOVED***quat***REMOVED*** out
+ * @param {quat} out quat receiving operation result
+ * @param {quat} a quat to rotate
+ * @param {number} rad angle (in radians) to rotate
+ * @returns {quat} out
  */
-quat.rotateX = function (out, a, rad) ***REMOVED***
+quat.rotateX = function (out, a, rad) {
     rad *= 0.5; 
 
     var ax = a[0], ay = a[1], az = a[2], aw = a[3],
@@ -4003,17 +4003,17 @@ quat.rotateX = function (out, a, rad) ***REMOVED***
     out[2] = az * bw - ay * bx;
     out[3] = aw * bw - ax * bx;
     return out;
-***REMOVED***;
+};
 
 /**
  * Rotates a quaternion by the given angle about the Y axis
  *
- * @param ***REMOVED***quat***REMOVED*** out quat receiving operation result
- * @param ***REMOVED***quat***REMOVED*** a quat to rotate
- * @param ***REMOVED***number***REMOVED*** rad angle (in radians) to rotate
- * @returns ***REMOVED***quat***REMOVED*** out
+ * @param {quat} out quat receiving operation result
+ * @param {quat} a quat to rotate
+ * @param {number} rad angle (in radians) to rotate
+ * @returns {quat} out
  */
-quat.rotateY = function (out, a, rad) ***REMOVED***
+quat.rotateY = function (out, a, rad) {
     rad *= 0.5; 
 
     var ax = a[0], ay = a[1], az = a[2], aw = a[3],
@@ -4024,17 +4024,17 @@ quat.rotateY = function (out, a, rad) ***REMOVED***
     out[2] = az * bw + ax * by;
     out[3] = aw * bw - ay * by;
     return out;
-***REMOVED***;
+};
 
 /**
  * Rotates a quaternion by the given angle about the Z axis
  *
- * @param ***REMOVED***quat***REMOVED*** out quat receiving operation result
- * @param ***REMOVED***quat***REMOVED*** a quat to rotate
- * @param ***REMOVED***number***REMOVED*** rad angle (in radians) to rotate
- * @returns ***REMOVED***quat***REMOVED*** out
+ * @param {quat} out quat receiving operation result
+ * @param {quat} a quat to rotate
+ * @param {number} rad angle (in radians) to rotate
+ * @returns {quat} out
  */
-quat.rotateZ = function (out, a, rad) ***REMOVED***
+quat.rotateZ = function (out, a, rad) {
     rad *= 0.5; 
 
     var ax = a[0], ay = a[1], az = a[2], aw = a[3],
@@ -4045,18 +4045,18 @@ quat.rotateZ = function (out, a, rad) ***REMOVED***
     out[2] = az * bw + aw * bz;
     out[3] = aw * bw - az * bz;
     return out;
-***REMOVED***;
+};
 
 /**
  * Calculates the W component of a quat from the X, Y, and Z components.
  * Assumes that quaternion is 1 unit in length.
  * Any existing W component will be ignored.
  *
- * @param ***REMOVED***quat***REMOVED*** out the receiving quaternion
- * @param ***REMOVED***quat***REMOVED*** a quat to calculate W component of
- * @returns ***REMOVED***quat***REMOVED*** out
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a quat to calculate W component of
+ * @returns {quat} out
  */
-quat.calculateW = function (out, a) ***REMOVED***
+quat.calculateW = function (out, a) {
     var x = a[0], y = a[1], z = a[2];
 
     out[0] = x;
@@ -4064,14 +4064,14 @@ quat.calculateW = function (out, a) ***REMOVED***
     out[2] = z;
     out[3] = Math.sqrt(Math.abs(1.0 - x * x - y * y - z * z));
     return out;
-***REMOVED***;
+};
 
 /**
  * Calculates the dot product of two quat's
  *
- * @param ***REMOVED***quat***REMOVED*** a the first operand
- * @param ***REMOVED***quat***REMOVED*** b the second operand
- * @returns ***REMOVED***Number***REMOVED*** dot product of a and b
+ * @param {quat} a the first operand
+ * @param {quat} b the second operand
+ * @returns {Number} dot product of a and b
  * @function
  */
 quat.dot = vec4.dot;
@@ -4079,11 +4079,11 @@ quat.dot = vec4.dot;
 /**
  * Performs a linear interpolation between two quat's
  *
- * @param ***REMOVED***quat***REMOVED*** out the receiving quaternion
- * @param ***REMOVED***quat***REMOVED*** a the first operand
- * @param ***REMOVED***quat***REMOVED*** b the second operand
- * @param ***REMOVED***Number***REMOVED*** t interpolation amount between the two inputs
- * @returns ***REMOVED***quat***REMOVED*** out
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a the first operand
+ * @param {quat} b the second operand
+ * @param {Number} t interpolation amount between the two inputs
+ * @returns {quat} out
  * @function
  */
 quat.lerp = vec4.lerp;
@@ -4091,13 +4091,13 @@ quat.lerp = vec4.lerp;
 /**
  * Performs a spherical linear interpolation between two quat
  *
- * @param ***REMOVED***quat***REMOVED*** out the receiving quaternion
- * @param ***REMOVED***quat***REMOVED*** a the first operand
- * @param ***REMOVED***quat***REMOVED*** b the second operand
- * @param ***REMOVED***Number***REMOVED*** t interpolation amount between the two inputs
- * @returns ***REMOVED***quat***REMOVED*** out
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a the first operand
+ * @param {quat} b the second operand
+ * @param {Number} t interpolation amount between the two inputs
+ * @returns {quat} out
  */
-quat.slerp = function (out, a, b, t) ***REMOVED***
+quat.slerp = function (out, a, b, t) {
     // benchmarks:
     //    http://jsperf.com/quaternion-slerp-implementations
 
@@ -4109,26 +4109,26 @@ quat.slerp = function (out, a, b, t) ***REMOVED***
     // calc cosine
     cosom = ax * bx + ay * by + az * bz + aw * bw;
     // adjust signs (if necessary)
-    if ( cosom < 0.0 ) ***REMOVED***
+    if ( cosom < 0.0 ) {
         cosom = -cosom;
         bx = - bx;
         by = - by;
         bz = - bz;
         bw = - bw;
-    ***REMOVED***
+    }
     // calculate coefficients
-    if ( (1.0 - cosom) > 0.000001 ) ***REMOVED***
+    if ( (1.0 - cosom) > 0.000001 ) {
         // standard case (slerp)
         omega  = Math.acos(cosom);
         sinom  = Math.sin(omega);
         scale0 = Math.sin((1.0 - t) * omega) / sinom;
         scale1 = Math.sin(t * omega) / sinom;
-    ***REMOVED*** else ***REMOVED***        
+    } else {        
         // "from" and "to" quaternions are very close 
         //  ... so we can do a linear interpolation
         scale0 = 1.0 - t;
         scale1 = t;
-    ***REMOVED***
+    }
     // calculate final values
     out[0] = scale0 * ax + scale1 * bx;
     out[1] = scale0 * ay + scale1 * by;
@@ -4136,16 +4136,16 @@ quat.slerp = function (out, a, b, t) ***REMOVED***
     out[3] = scale0 * aw + scale1 * bw;
     
     return out;
-***REMOVED***;
+};
 
 /**
  * Calculates the inverse of a quat
  *
- * @param ***REMOVED***quat***REMOVED*** out the receiving quaternion
- * @param ***REMOVED***quat***REMOVED*** a quat to calculate inverse of
- * @returns ***REMOVED***quat***REMOVED*** out
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a quat to calculate inverse of
+ * @returns {quat} out
  */
-quat.invert = function(out, a) ***REMOVED***
+quat.invert = function(out, a) {
     var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3],
         dot = a0*a0 + a1*a1 + a2*a2 + a3*a3,
         invDot = dot ? 1.0/dot : 0;
@@ -4157,35 +4157,35 @@ quat.invert = function(out, a) ***REMOVED***
     out[2] = -a2*invDot;
     out[3] = a3*invDot;
     return out;
-***REMOVED***;
+};
 
 /**
  * Calculates the conjugate of a quat
  * If the quaternion is normalized, this function is faster than quat.inverse and produces the same result.
  *
- * @param ***REMOVED***quat***REMOVED*** out the receiving quaternion
- * @param ***REMOVED***quat***REMOVED*** a quat to calculate conjugate of
- * @returns ***REMOVED***quat***REMOVED*** out
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a quat to calculate conjugate of
+ * @returns {quat} out
  */
-quat.conjugate = function (out, a) ***REMOVED***
+quat.conjugate = function (out, a) {
     out[0] = -a[0];
     out[1] = -a[1];
     out[2] = -a[2];
     out[3] = a[3];
     return out;
-***REMOVED***;
+};
 
 /**
  * Calculates the length of a quat
  *
- * @param ***REMOVED***quat***REMOVED*** a vector to calculate length of
- * @returns ***REMOVED***Number***REMOVED*** length of a
+ * @param {quat} a vector to calculate length of
+ * @returns {Number} length of a
  * @function
  */
 quat.length = vec4.length;
 
 /**
- * Alias for ***REMOVED***@link quat.length***REMOVED***
+ * Alias for {@link quat.length}
  * @function
  */
 quat.len = quat.length;
@@ -4193,14 +4193,14 @@ quat.len = quat.length;
 /**
  * Calculates the squared length of a quat
  *
- * @param ***REMOVED***quat***REMOVED*** a vector to calculate squared length of
- * @returns ***REMOVED***Number***REMOVED*** squared length of a
+ * @param {quat} a vector to calculate squared length of
+ * @returns {Number} squared length of a
  * @function
  */
 quat.squaredLength = vec4.squaredLength;
 
 /**
- * Alias for ***REMOVED***@link quat.squaredLength***REMOVED***
+ * Alias for {@link quat.squaredLength}
  * @function
  */
 quat.sqrLen = quat.squaredLength;
@@ -4208,9 +4208,9 @@ quat.sqrLen = quat.squaredLength;
 /**
  * Normalize a quat
  *
- * @param ***REMOVED***quat***REMOVED*** out the receiving quaternion
- * @param ***REMOVED***quat***REMOVED*** a quaternion to normalize
- * @returns ***REMOVED***quat***REMOVED*** out
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a quaternion to normalize
+ * @returns {quat} out
  * @function
  */
 quat.normalize = vec4.normalize;
@@ -4221,18 +4221,18 @@ quat.normalize = vec4.normalize;
  * NOTE: The resultant quaternion is not normalized, so you should be sure
  * to renormalize the quaternion yourself where necessary.
  *
- * @param ***REMOVED***quat***REMOVED*** out the receiving quaternion
- * @param ***REMOVED***mat3***REMOVED*** m rotation matrix
- * @returns ***REMOVED***quat***REMOVED*** out
+ * @param {quat} out the receiving quaternion
+ * @param {mat3} m rotation matrix
+ * @returns {quat} out
  * @function
  */
-quat.fromMat3 = function(out, m) ***REMOVED***
+quat.fromMat3 = function(out, m) {
     // Algorithm in Ken Shoemake's article in 1987 SIGGRAPH course notes
     // article "Quaternion Calculus and Fast Animation".
     var fTrace = m[0] + m[4] + m[8];
     var fRoot;
 
-    if ( fTrace > 0.0 ) ***REMOVED***
+    if ( fTrace > 0.0 ) {
         // |w| > 1/2, may as well choose w > 1/2
         fRoot = Math.sqrt(fTrace + 1.0);  // 2w
         out[3] = 0.5 * fRoot;
@@ -4240,7 +4240,7 @@ quat.fromMat3 = function(out, m) ***REMOVED***
         out[0] = (m[5]-m[7])*fRoot;
         out[1] = (m[6]-m[2])*fRoot;
         out[2] = (m[1]-m[3])*fRoot;
-    ***REMOVED*** else ***REMOVED***
+    } else {
         // |w| <= 1/2
         var i = 0;
         if ( m[4] > m[0] )
@@ -4256,24 +4256,24 @@ quat.fromMat3 = function(out, m) ***REMOVED***
         out[3] = (m[j*3+k] - m[k*3+j]) * fRoot;
         out[j] = (m[j*3+i] + m[i*3+j]) * fRoot;
         out[k] = (m[k*3+i] + m[i*3+k]) * fRoot;
-    ***REMOVED***
+    }
     
     return out;
-***REMOVED***;
+};
 
 /**
  * Returns a string representation of a quatenion
  *
- * @param ***REMOVED***quat***REMOVED*** vec vector to represent as a string
- * @returns ***REMOVED***String***REMOVED*** string representation of the vector
+ * @param {quat} vec vector to represent as a string
+ * @returns {String} string representation of the vector
  */
-quat.str = function (a) ***REMOVED***
+quat.str = function (a) {
     return 'quat(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ')';
-***REMOVED***;
+};
 
-if(typeof(exports) !== 'undefined') ***REMOVED***
+if(typeof(exports) !== 'undefined') {
     exports.quat = quat;
-***REMOVED***
+}
 ;
 
 
@@ -4288,5 +4288,5 @@ if(typeof(exports) !== 'undefined') ***REMOVED***
 
 
 
-  ***REMOVED***)(shim.exports);
-***REMOVED***)(this);
+  })(shim.exports);
+})(this);

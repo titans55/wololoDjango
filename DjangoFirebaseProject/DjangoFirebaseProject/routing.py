@@ -3,7 +3,7 @@ from channels.routing import ProtocolTypeRouter, URLRouter, ChannelNameRouter
 import wololo.routing
 from wololo.consumers import ChatConsumer
 
-application = ProtocolTypeRouter(***REMOVED***
+application = ProtocolTypeRouter({
     # (http->django views is added by default)
 
     'websocket': AuthMiddlewareStack(
@@ -11,4 +11,4 @@ application = ProtocolTypeRouter(***REMOVED***
             wololo.routing.websocket_urlpatterns
         )
     ),
-***REMOVED***)
+})

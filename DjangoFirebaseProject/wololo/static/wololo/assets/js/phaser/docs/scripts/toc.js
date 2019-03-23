@@ -1,7 +1,7 @@
-(function($) ***REMOVED***
-    $.fn.toc = function(options) ***REMOVED***
+(function($) {
+    $.fn.toc = function(options) {
         var self = this;
-        var opts = $.extend(***REMOVED******REMOVED***, jQuery.fn.toc.defaults, options);
+        var opts = $.extend({}, jQuery.fn.toc.defaults, options);
 
         var container = $(opts.container);
         var headings = $(opts.selectors, container);
@@ -9,54 +9,54 @@
         var activeClassName = opts.prefix + '-active';
         var navbarHeight = $('.navbar').height();
 
-        var scrollTo = function(e) ***REMOVED***
-            if (opts.smoothScrolling) ***REMOVED***
+        var scrollTo = function(e) {
+            if (opts.smoothScrolling) {
                 e.preventDefault();
                 var elScrollTo = $(e.target).attr('href');
                 var $el = $(elScrollTo);
                 var offsetTop = $el.offset().top - navbarHeight;
 
-                $('body,html').animate(***REMOVED***
+                $('body,html').animate({
                     scrollTop: offsetTop
-                ***REMOVED***, 400, 'swing', function() ***REMOVED***
+                }, 400, 'swing', function() {
                     location.hash = elScrollTo;
-                ***REMOVED***);
-            ***REMOVED***
+                });
+            }
             $('li', self).removeClass(activeClassName);
             $(e.target).parent().addClass(activeClassName);
-        ***REMOVED***;
+        };
 
         //highlight on scroll
         var timeout;
-        var highlightOnScroll = function(e) ***REMOVED***
-            if (timeout) ***REMOVED***
+        var highlightOnScroll = function(e) {
+            if (timeout) {
                 clearTimeout(timeout);
-            ***REMOVED***
-            timeout = setTimeout(function() ***REMOVED***
+            }
+            timeout = setTimeout(function() {
                 var top = $(window).scrollTop(),
                     highlighted;
-                for (var i = 0, c = headingOffsets.length; i < c; i++) ***REMOVED***
-                    if (headingOffsets[i] >= top) ***REMOVED***
+                for (var i = 0, c = headingOffsets.length; i < c; i++) {
+                    if (headingOffsets[i] >= top) {
                         $('li', self).removeClass(activeClassName);
-                        if (i > 0) ***REMOVED***
+                        if (i > 0) {
                             highlighted = $('li:eq(' + (i - 1) + ')', self).addClass(activeClassName);
                             opts.onHighlight(highlighted);
-                        ***REMOVED***
+                        }
                         break;
-                    ***REMOVED***
-                ***REMOVED***
-            ***REMOVED***, 50);
-        ***REMOVED***;
-        if (opts.highlightOnScroll) ***REMOVED***
+                    }
+                }
+            }, 50);
+        };
+        if (opts.highlightOnScroll) {
             $(window).bind('scroll', highlightOnScroll);
             highlightOnScroll();
-        ***REMOVED***
+        }
 
-        return this.each(function() ***REMOVED***
+        return this.each(function() {
             //build TOC
             var el = $(this);
             var ul = $('<ul/>');
-            headings.each(function(i, heading) ***REMOVED***
+            headings.each(function(i, heading) {
                 var $h = $(heading);
                 headingOffsets.push($h.offset().top - opts.highlightOffset);
 
@@ -67,40 +67,40 @@
                 var a = $('<a/>')
                     .text(opts.headerText(i, heading, $h))
                     .attr('href', '#' + opts.anchorName(i, heading, opts.prefix))
-                    .bind('click', function(e) ***REMOVED***
+                    .bind('click', function(e) {
                         scrollTo(e);
                         el.trigger('selected', $(this).attr('href'));
-                    ***REMOVED***);
+                    });
 
                 var li = $('<li/>')
                     .addClass(opts.itemClass(i, heading, $h, opts.prefix))
                     .append(a);
 
                 ul.append(li);
-            ***REMOVED***);
+            });
             el.html(ul);
-        ***REMOVED***);
-    ***REMOVED***;
+        });
+    };
 
 
-    jQuery.fn.toc.defaults = ***REMOVED***
+    jQuery.fn.toc.defaults = {
         container: 'body',
         selectors: 'h1,h2,h3',
         smoothScrolling: true,
         prefix: 'toc',
-        onHighlight: function() ***REMOVED******REMOVED***,
+        onHighlight: function() {},
         highlightOnScroll: true,
         highlightOffset: 100,
-        anchorName: function(i, heading, prefix) ***REMOVED***
+        anchorName: function(i, heading, prefix) {
             return prefix + i;
-        ***REMOVED***,
-        headerText: function(i, heading, $heading) ***REMOVED***
+        },
+        headerText: function(i, heading, $heading) {
             return $heading.text();
-        ***REMOVED***,
-        itemClass: function(i, heading, $heading, prefix) ***REMOVED***
+        },
+        itemClass: function(i, heading, $heading, prefix) {
             return prefix + '-' + $heading[0].tagName.toLowerCase();
-        ***REMOVED***
+        }
 
-    ***REMOVED***;
+    };
 
-***REMOVED***)(jQuery);
+})(jQuery);

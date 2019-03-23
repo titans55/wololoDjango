@@ -10,7 +10,7 @@
  * @constructor
  */
 PIXI.Graphics = function()
-***REMOVED***
+{
     PIXI.DisplayObjectContainer.call(this);
 
     this.renderable = true;
@@ -140,7 +140,7 @@ PIXI.Graphics = function()
      */
     this.cachedSpriteDirty = false;
 
-***REMOVED***;
+};
 
 // constructor
 PIXI.Graphics.prototype = Object.create( PIXI.DisplayObjectContainer.prototype );
@@ -150,98 +150,98 @@ PIXI.Graphics.prototype.constructor = PIXI.Graphics;
  * Specifies the line style used for subsequent calls to Graphics methods such as the lineTo() method or the drawCircle() method.
  *
  * @method lineStyle
- * @param lineWidth ***REMOVED***Number***REMOVED*** width of the line to draw, will update the objects stored style
- * @param color ***REMOVED***Number***REMOVED*** color of the line to draw, will update the objects stored style
- * @param alpha ***REMOVED***Number***REMOVED*** alpha of the line to draw, will update the objects stored style
- * @return ***REMOVED***Graphics***REMOVED***
+ * @param lineWidth {Number} width of the line to draw, will update the objects stored style
+ * @param color {Number} color of the line to draw, will update the objects stored style
+ * @param alpha {Number} alpha of the line to draw, will update the objects stored style
+ * @return {Graphics}
  */
 PIXI.Graphics.prototype.lineStyle = function(lineWidth, color, alpha)
-***REMOVED***
+{
     this.lineWidth = lineWidth || 0;
     this.lineColor = color || 0;
     this.lineAlpha = (alpha === undefined) ? 1 : alpha;
 
     if (this.currentPath)
-    ***REMOVED***
+    {
         if (this.currentPath.shape.points.length)
-        ***REMOVED***
+        {
             // halfway through a line? start a new one!
             this.drawShape(new PIXI.Polygon(this.currentPath.shape.points.slice(-2)));
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             // otherwise its empty so lets just set the line properties
             this.currentPath.lineWidth = this.lineWidth;
             this.currentPath.lineColor = this.lineColor;
             this.currentPath.lineAlpha = this.lineAlpha;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return this;
-***REMOVED***;
+};
 
 /**
  * Moves the current drawing position to x, y.
  *
  * @method moveTo
- * @param x ***REMOVED***Number***REMOVED*** the X coordinate to move to
- * @param y ***REMOVED***Number***REMOVED*** the Y coordinate to move to
- * @return ***REMOVED***Graphics***REMOVED***
+ * @param x {Number} the X coordinate to move to
+ * @param y {Number} the Y coordinate to move to
+ * @return {Graphics}
   */
 PIXI.Graphics.prototype.moveTo = function(x, y)
-***REMOVED***
+{
     this.drawShape(new PIXI.Polygon([x, y]));
 
     return this;
-***REMOVED***;
+};
 
 /**
  * Draws a line using the current line style from the current drawing position to (x, y);
  * The current drawing position is then set to (x, y).
  *
  * @method lineTo
- * @param x ***REMOVED***Number***REMOVED*** the X coordinate to draw to
- * @param y ***REMOVED***Number***REMOVED*** the Y coordinate to draw to
- * @return ***REMOVED***Graphics***REMOVED***
+ * @param x {Number} the X coordinate to draw to
+ * @param y {Number} the Y coordinate to draw to
+ * @return {Graphics}
  */
 PIXI.Graphics.prototype.lineTo = function(x, y)
-***REMOVED***
+{
     if (!this.currentPath)
-    ***REMOVED***
+    {
         this.moveTo(0, 0);
-    ***REMOVED***
+    }
 
     this.currentPath.shape.points.push(x, y);
     this.dirty = true;
     this._boundsDirty = true;
 
     return this;
-***REMOVED***;
+};
 
 /**
  * Calculate the points for a quadratic bezier curve and then draws it.
  * Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier-curve-in-c
  *
  * @method quadraticCurveTo
- * @param cpX ***REMOVED***Number***REMOVED*** Control point x
- * @param cpY ***REMOVED***Number***REMOVED*** Control point y
- * @param toX ***REMOVED***Number***REMOVED*** Destination point x
- * @param toY ***REMOVED***Number***REMOVED*** Destination point y
- * @return ***REMOVED***Graphics***REMOVED***
+ * @param cpX {Number} Control point x
+ * @param cpY {Number} Control point y
+ * @param toX {Number} Destination point x
+ * @param toY {Number} Destination point y
+ * @return {Graphics}
  */
 PIXI.Graphics.prototype.quadraticCurveTo = function(cpX, cpY, toX, toY)
-***REMOVED***
+{
     if (this.currentPath)
-    ***REMOVED***
+    {
         if (this.currentPath.shape.points.length === 0)
-        ***REMOVED***
+        {
             this.currentPath.shape.points = [0, 0];
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     else
-    ***REMOVED***
+    {
         this.moveTo(0,0);
-    ***REMOVED***
+    }
 
     var xa,
         ya,
@@ -249,15 +249,15 @@ PIXI.Graphics.prototype.quadraticCurveTo = function(cpX, cpY, toX, toY)
         points = this.currentPath.shape.points;
 
     if (points.length === 0)
-    ***REMOVED***
+    {
         this.moveTo(0, 0);
-    ***REMOVED***
+    }
 
     var fromX = points[points.length - 2];
     var fromY = points[points.length - 1];
     var j = 0;
     for (var i = 1; i <= n; ++i)
-    ***REMOVED***
+    {
         j = i / n;
 
         xa = fromX + ( (cpX - fromX) * j );
@@ -265,39 +265,39 @@ PIXI.Graphics.prototype.quadraticCurveTo = function(cpX, cpY, toX, toY)
 
         points.push( xa + ( ((cpX + ( (toX - cpX) * j )) - xa) * j ),
                      ya + ( ((cpY + ( (toY - cpY) * j )) - ya) * j ) );
-    ***REMOVED***
+    }
 
     this.dirty = true;
     this._boundsDirty = true;
 
     return this;
-***REMOVED***;
+};
 
 /**
  * Calculate the points for a bezier curve and then draws it.
  *
  * @method bezierCurveTo
- * @param cpX ***REMOVED***Number***REMOVED*** Control point x
- * @param cpY ***REMOVED***Number***REMOVED*** Control point y
- * @param cpX2 ***REMOVED***Number***REMOVED*** Second Control point x
- * @param cpY2 ***REMOVED***Number***REMOVED*** Second Control point y
- * @param toX ***REMOVED***Number***REMOVED*** Destination point x
- * @param toY ***REMOVED***Number***REMOVED*** Destination point y
- * @return ***REMOVED***Graphics***REMOVED***
+ * @param cpX {Number} Control point x
+ * @param cpY {Number} Control point y
+ * @param cpX2 {Number} Second Control point x
+ * @param cpY2 {Number} Second Control point y
+ * @param toX {Number} Destination point x
+ * @param toY {Number} Destination point y
+ * @return {Graphics}
  */
 PIXI.Graphics.prototype.bezierCurveTo = function(cpX, cpY, cpX2, cpY2, toX, toY)
-***REMOVED***
+{
     if (this.currentPath)
-    ***REMOVED***
+    {
         if (this.currentPath.shape.points.length === 0)
-        ***REMOVED***
+        {
             this.currentPath.shape.points = [0, 0];
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     else
-    ***REMOVED***
+    {
         this.moveTo(0,0);
-    ***REMOVED***
+    }
 
     var n = 20,
         dt,
@@ -312,7 +312,7 @@ PIXI.Graphics.prototype.bezierCurveTo = function(cpX, cpY, cpX2, cpY2, toX, toY)
     var j = 0;
 
     for (var i = 1; i <= n; ++i)
-    ***REMOVED***
+    {
         j = i / n;
 
         dt = (1 - j);
@@ -324,13 +324,13 @@ PIXI.Graphics.prototype.bezierCurveTo = function(cpX, cpY, cpX2, cpY2, toX, toY)
         
         points.push( dt3 * fromX + 3 * dt2 * j * cpX + 3 * dt * t2 * cpX2 + t3 * toX,
                      dt3 * fromY + 3 * dt2 * j * cpY + 3 * dt * t2 * cpY2 + t3 * toY);
-    ***REMOVED***
+    }
     
     this.dirty = true;
     this._boundsDirty = true;
 
     return this;
-***REMOVED***;
+};
 
 /*
  * The arcTo() method creates an arc/curve between two tangents on the canvas.
@@ -338,26 +338,26 @@ PIXI.Graphics.prototype.bezierCurveTo = function(cpX, cpY, cpX2, cpY2, toX, toY)
  * "borrowed" from https://code.google.com/p/fxcanvas/ - thanks google!
  *
  * @method arcTo
- * @param x1 ***REMOVED***Number***REMOVED*** The x-coordinate of the beginning of the arc
- * @param y1 ***REMOVED***Number***REMOVED*** The y-coordinate of the beginning of the arc
- * @param x2 ***REMOVED***Number***REMOVED*** The x-coordinate of the end of the arc
- * @param y2 ***REMOVED***Number***REMOVED*** The y-coordinate of the end of the arc
- * @param radius ***REMOVED***Number***REMOVED*** The radius of the arc
- * @return ***REMOVED***Graphics***REMOVED***
+ * @param x1 {Number} The x-coordinate of the beginning of the arc
+ * @param y1 {Number} The y-coordinate of the beginning of the arc
+ * @param x2 {Number} The x-coordinate of the end of the arc
+ * @param y2 {Number} The y-coordinate of the end of the arc
+ * @param radius {Number} The radius of the arc
+ * @return {Graphics}
  */
 PIXI.Graphics.prototype.arcTo = function(x1, y1, x2, y2, radius)
-***REMOVED***
+{
     if (this.currentPath)
-    ***REMOVED***
+    {
         if (this.currentPath.shape.points.length === 0)
-        ***REMOVED***
+        {
             this.currentPath.shape.points.push(x1, y1);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     else
-    ***REMOVED***
+    {
         this.moveTo(x1, y1);
-    ***REMOVED***
+    }
 
     var points = this.currentPath.shape.points,
         fromX = points[points.length-2],
@@ -369,14 +369,14 @@ PIXI.Graphics.prototype.arcTo = function(x1, y1, x2, y2, radius)
         mm = Math.abs(a1 * b2 - b1 * a2);
 
     if (mm < 1.0e-8 || radius === 0)
-    ***REMOVED***
+    {
         if (points[points.length-2] !== x1 || points[points.length-1] !== y1)
-        ***REMOVED***
+        {
             points.push(x1, y1);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     else
-    ***REMOVED***
+    {
         var dd = a1 * a1 + b1 * b1,
             cc = a2 * a2 + b2 * b2,
             tt = a1 * a2 + b1 * b2,
@@ -394,67 +394,67 @@ PIXI.Graphics.prototype.arcTo = function(x1, y1, x2, y2, radius)
             endAngle   = Math.atan2(qy - cy, qx - cx);
 
         this.arc(cx + x1, cy + y1, radius, startAngle, endAngle, b1 * a2 > b2 * a1);
-    ***REMOVED***
+    }
 
     this.dirty = true;
     this._boundsDirty = true;
 
     return this;
-***REMOVED***;
+};
 
 /**
  * The arc method creates an arc/curve (used to create circles, or parts of circles).
  *
  * @method arc
- * @param cx ***REMOVED***Number***REMOVED*** The x-coordinate of the center of the circle
- * @param cy ***REMOVED***Number***REMOVED*** The y-coordinate of the center of the circle
- * @param radius ***REMOVED***Number***REMOVED*** The radius of the circle
- * @param startAngle ***REMOVED***Number***REMOVED*** The starting angle, in radians (0 is at the 3 o'clock position of the arc's circle)
- * @param endAngle ***REMOVED***Number***REMOVED*** The ending angle, in radians
- * @param anticlockwise ***REMOVED***Boolean***REMOVED*** Optional. Specifies whether the drawing should be counterclockwise or clockwise. False is default, and indicates clockwise, while true indicates counter-clockwise.
- * @param segments ***REMOVED***Number***REMOVED*** Optional. The number of segments to use when calculating the arc. The default is 40. If you need more fidelity use a higher number.
- * @return ***REMOVED***Graphics***REMOVED***
+ * @param cx {Number} The x-coordinate of the center of the circle
+ * @param cy {Number} The y-coordinate of the center of the circle
+ * @param radius {Number} The radius of the circle
+ * @param startAngle {Number} The starting angle, in radians (0 is at the 3 o'clock position of the arc's circle)
+ * @param endAngle {Number} The ending angle, in radians
+ * @param anticlockwise {Boolean} Optional. Specifies whether the drawing should be counterclockwise or clockwise. False is default, and indicates clockwise, while true indicates counter-clockwise.
+ * @param segments {Number} Optional. The number of segments to use when calculating the arc. The default is 40. If you need more fidelity use a higher number.
+ * @return {Graphics}
  */
 PIXI.Graphics.prototype.arc = function(cx, cy, radius, startAngle, endAngle, anticlockwise, segments)
-***REMOVED***
+{
     //  If we do this we can never draw a full circle
     if (startAngle === endAngle)
-    ***REMOVED***
+    {
         return this;
-    ***REMOVED***
+    }
 
-    if (anticlockwise === undefined) ***REMOVED*** anticlockwise = false; ***REMOVED***
-    if (segments === undefined) ***REMOVED*** segments = 40; ***REMOVED***
+    if (anticlockwise === undefined) { anticlockwise = false; }
+    if (segments === undefined) { segments = 40; }
 
     if (!anticlockwise && endAngle <= startAngle)
-    ***REMOVED***
+    {
         endAngle += Math.PI * 2;
-    ***REMOVED***
+    }
     else if (anticlockwise && startAngle <= endAngle)
-    ***REMOVED***
+    {
         startAngle += Math.PI * 2;
-    ***REMOVED***
+    }
 
     var sweep = anticlockwise ? (startAngle - endAngle) * -1 : (endAngle - startAngle);
     var segs =  Math.ceil(Math.abs(sweep) / (Math.PI * 2)) * segments;
 
     //  Sweep check - moved here because we don't want to do the moveTo below if the arc fails
     if (sweep === 0)
-    ***REMOVED***
+    {
         return this;
-    ***REMOVED***
+    }
 
     var startX = cx + Math.cos(startAngle) * radius;
     var startY = cy + Math.sin(startAngle) * radius;
 
     if (anticlockwise && this.filling)
-    ***REMOVED***
+    {
         this.moveTo(cx, cy);
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         this.moveTo(startX, startY);
-    ***REMOVED***
+    }
 
     //  currentPath will always exist after calling a moveTo
     var points = this.currentPath.shape.points;
@@ -470,7 +470,7 @@ PIXI.Graphics.prototype.arc = function(cx, cy, radius, startAngle, endAngle, ant
     var remainder = (segMinus % 1) / segMinus;
 
     for (var i = 0; i <= segMinus; i++)
-    ***REMOVED***
+    {
         var real =  i + remainder * i;
     
         var angle = ((theta) + startAngle + (theta2 * real));
@@ -480,164 +480,164 @@ PIXI.Graphics.prototype.arc = function(cx, cy, radius, startAngle, endAngle, ant
 
         points.push(( (cTheta *  c) + (sTheta * s) ) * radius + cx,
                     ( (cTheta * -s) + (sTheta * c) ) * radius + cy);
-    ***REMOVED***
+    }
 
     this.dirty = true;
     this._boundsDirty = true;
 
     return this;
-***REMOVED***;
+};
 
 /**
  * Specifies a simple one-color fill that subsequent calls to other Graphics methods
  * (such as lineTo() or drawCircle()) use when drawing.
  *
  * @method beginFill
- * @param color ***REMOVED***Number***REMOVED*** the color of the fill
- * @param alpha ***REMOVED***Number***REMOVED*** the alpha of the fill
- * @return ***REMOVED***Graphics***REMOVED***
+ * @param color {Number} the color of the fill
+ * @param alpha {Number} the alpha of the fill
+ * @return {Graphics}
  */
 PIXI.Graphics.prototype.beginFill = function(color, alpha)
-***REMOVED***
+{
     this.filling = true;
     this.fillColor = color || 0;
     this.fillAlpha = (alpha === undefined) ? 1 : alpha;
 
     if (this.currentPath)
-    ***REMOVED***
+    {
         if (this.currentPath.shape.points.length <= 2)
-        ***REMOVED***
+        {
             this.currentPath.fill = this.filling;
             this.currentPath.fillColor = this.fillColor;
             this.currentPath.fillAlpha = this.fillAlpha;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return this;
-***REMOVED***;
+};
 
 /**
  * Applies a fill to the lines and shapes that were added since the last call to the beginFill() method.
  *
  * @method endFill
- * @return ***REMOVED***Graphics***REMOVED***
+ * @return {Graphics}
  */
 PIXI.Graphics.prototype.endFill = function()
-***REMOVED***
+{
     this.filling = false;
     this.fillColor = null;
     this.fillAlpha = 1;
 
     return this;
-***REMOVED***;
+};
 
 /**
  * @method drawRect
  *
- * @param x ***REMOVED***Number***REMOVED*** The X coord of the top-left of the rectangle
- * @param y ***REMOVED***Number***REMOVED*** The Y coord of the top-left of the rectangle
- * @param width ***REMOVED***Number***REMOVED*** The width of the rectangle
- * @param height ***REMOVED***Number***REMOVED*** The height of the rectangle
- * @return ***REMOVED***Graphics***REMOVED***
+ * @param x {Number} The X coord of the top-left of the rectangle
+ * @param y {Number} The Y coord of the top-left of the rectangle
+ * @param width {Number} The width of the rectangle
+ * @param height {Number} The height of the rectangle
+ * @return {Graphics}
  */
 PIXI.Graphics.prototype.drawRect = function(x, y, width, height)
-***REMOVED***
+{
     this.drawShape(new PIXI.Rectangle(x, y, width, height));
 
     return this;
-***REMOVED***;
+};
 
 /**
  * @method drawRoundedRect
- * @param x ***REMOVED***Number***REMOVED*** The X coord of the top-left of the rectangle
- * @param y ***REMOVED***Number***REMOVED*** The Y coord of the top-left of the rectangle
- * @param width ***REMOVED***Number***REMOVED*** The width of the rectangle
- * @param height ***REMOVED***Number***REMOVED*** The height of the rectangle
- * @param radius ***REMOVED***Number***REMOVED*** Radius of the rectangle corners. In WebGL this must be a value between 0 and 9.
+ * @param x {Number} The X coord of the top-left of the rectangle
+ * @param y {Number} The Y coord of the top-left of the rectangle
+ * @param width {Number} The width of the rectangle
+ * @param height {Number} The height of the rectangle
+ * @param radius {Number} Radius of the rectangle corners. In WebGL this must be a value between 0 and 9.
  */
 PIXI.Graphics.prototype.drawRoundedRect = function(x, y, width, height, radius)
-***REMOVED***
+{
     this.drawShape(new PIXI.RoundedRectangle(x, y, width, height, radius));
 
     return this;
-***REMOVED***;
+};
 
 /**
  * Draws a circle.
  *
  * @method drawCircle
- * @param x ***REMOVED***Number***REMOVED*** The X coordinate of the center of the circle
- * @param y ***REMOVED***Number***REMOVED*** The Y coordinate of the center of the circle
- * @param diameter ***REMOVED***Number***REMOVED*** The diameter of the circle
- * @return ***REMOVED***Graphics***REMOVED***
+ * @param x {Number} The X coordinate of the center of the circle
+ * @param y {Number} The Y coordinate of the center of the circle
+ * @param diameter {Number} The diameter of the circle
+ * @return {Graphics}
  */
 PIXI.Graphics.prototype.drawCircle = function(x, y, diameter)
-***REMOVED***
+{
     this.drawShape(new PIXI.Circle(x, y, diameter));
 
     return this;
-***REMOVED***;
+};
 
 /**
  * Draws an ellipse.
  *
  * @method drawEllipse
- * @param x ***REMOVED***Number***REMOVED*** The X coordinate of the center of the ellipse
- * @param y ***REMOVED***Number***REMOVED*** The Y coordinate of the center of the ellipse
- * @param width ***REMOVED***Number***REMOVED*** The half width of the ellipse
- * @param height ***REMOVED***Number***REMOVED*** The half height of the ellipse
- * @return ***REMOVED***Graphics***REMOVED***
+ * @param x {Number} The X coordinate of the center of the ellipse
+ * @param y {Number} The Y coordinate of the center of the ellipse
+ * @param width {Number} The half width of the ellipse
+ * @param height {Number} The half height of the ellipse
+ * @return {Graphics}
  */
 PIXI.Graphics.prototype.drawEllipse = function(x, y, width, height)
-***REMOVED***
+{
     this.drawShape(new PIXI.Ellipse(x, y, width, height));
 
     return this;
-***REMOVED***;
+};
 
 /**
  * Draws a polygon using the given path.
  *
  * @method drawPolygon
- * @param path ***REMOVED***Array|Phaser.Polygon***REMOVED*** The path data used to construct the polygon. Can either be an array of points or a Phaser.Polygon object.
- * @return ***REMOVED***Graphics***REMOVED***
+ * @param path {Array|Phaser.Polygon} The path data used to construct the polygon. Can either be an array of points or a Phaser.Polygon object.
+ * @return {Graphics}
  */
 PIXI.Graphics.prototype.drawPolygon = function(path)
-***REMOVED***
+{
     if (path instanceof Phaser.Polygon || path instanceof PIXI.Polygon)
-    ***REMOVED***
+    {
         path = path.points;
-    ***REMOVED***
+    }
 
     // prevents an argument assignment deopt
     // see section 3.1: https://github.com/petkaantonov/bluebird/wiki/Optimization-killers#3-managing-arguments
     var points = path;
 
     if (!Array.isArray(points))
-    ***REMOVED***
+    {
         // prevents an argument leak deopt
         // see section 3.2: https://github.com/petkaantonov/bluebird/wiki/Optimization-killers#3-managing-arguments
         points = new Array(arguments.length);
 
         for (var i = 0; i < points.length; ++i)
-        ***REMOVED***
+        {
             points[i] = arguments[i];
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     this.drawShape(new Phaser.Polygon(points));
 
     return this;
-***REMOVED***;
+};
 
 /**
  * Clears the graphics that were drawn to this Graphics object, and resets fill and line style settings.
  *
  * @method clear
- * @return ***REMOVED***Graphics***REMOVED***
+ * @return {Graphics}
  */
 PIXI.Graphics.prototype.clear = function()
-***REMOVED***
+{
     this.lineWidth = 0;
     this.filling = false;
 
@@ -649,23 +649,23 @@ PIXI.Graphics.prototype.clear = function()
     this.updateLocalBounds();
 
     return this;
-***REMOVED***;
+};
 
 /**
  * Useful function that returns a texture of the graphics object that can then be used to create sprites
  * This can be quite useful if your geometry is complicated and needs to be reused multiple times.
  *
  * @method generateTexture
- * @param [resolution=1] ***REMOVED***Number***REMOVED*** The resolution of the texture being generated
- * @param [scaleMode=0] ***REMOVED***Number***REMOVED*** Should be one of the PIXI.scaleMode consts
- * @param [padding=0] ***REMOVED***Number***REMOVED*** Add optional extra padding to the generated texture (default 0)
- * @return ***REMOVED***Texture***REMOVED*** a texture of the graphics object
+ * @param [resolution=1] {Number} The resolution of the texture being generated
+ * @param [scaleMode=0] {Number} Should be one of the PIXI.scaleMode consts
+ * @param [padding=0] {Number} Add optional extra padding to the generated texture (default 0)
+ * @return {Texture} a texture of the graphics object
  */
 PIXI.Graphics.prototype.generateTexture = function(resolution, scaleMode, padding)
-***REMOVED***
-    if (resolution === undefined) ***REMOVED*** resolution = 1; ***REMOVED***
-    if (scaleMode === undefined) ***REMOVED*** scaleMode = PIXI.scaleModes.DEFAULT; ***REMOVED***
-    if (padding === undefined) ***REMOVED*** padding = 0; ***REMOVED***
+{
+    if (resolution === undefined) { resolution = 1; }
+    if (scaleMode === undefined) { scaleMode = PIXI.scaleModes.DEFAULT; }
+    if (padding === undefined) { padding = 0; }
 
     var bounds = this.getBounds();
 
@@ -685,24 +685,24 @@ PIXI.Graphics.prototype.generateTexture = function(resolution, scaleMode, paddin
     PIXI.CanvasGraphics.renderGraphics(this, canvasBuffer.context);
 
     return texture;
-***REMOVED***;
+};
 
 /**
 * Renders the object using the WebGL renderer
 *
 * @method _renderWebGL
-* @param renderSession ***REMOVED***RenderSession***REMOVED*** 
+* @param renderSession {RenderSession} 
 * @private
 */
 PIXI.Graphics.prototype._renderWebGL = function(renderSession)
-***REMOVED***
+{
     // if the sprite is not visible or the alpha is 0 then no need to render this element
     if (this.visible === false || this.alpha === 0 || this.isMask === true) return;
 
     if (this._cacheAsBitmap)
-    ***REMOVED***
+    {
         if (this.dirty || this.cachedSpriteDirty)
-        ***REMOVED***
+        {
             this._generateCachedSprite();
    
             // we will also need to update the texture on the gpu too!
@@ -710,16 +710,16 @@ PIXI.Graphics.prototype._renderWebGL = function(renderSession)
 
             this.cachedSpriteDirty = false;
             this.dirty = false;
-        ***REMOVED***
+        }
 
         this._cachedSprite.worldAlpha = this.worldAlpha;
 
         PIXI.Sprite.prototype._renderWebGL.call(this._cachedSprite, renderSession);
 
         return;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         renderSession.spriteBatch.stop();
         renderSession.blendModeManager.setBlendMode(this.blendMode);
 
@@ -728,34 +728,34 @@ PIXI.Graphics.prototype._renderWebGL = function(renderSession)
       
         // check blend mode
         if (this.blendMode !== renderSession.spriteBatch.currentBlendMode)
-        ***REMOVED***
+        {
             renderSession.spriteBatch.currentBlendMode = this.blendMode;
             var blendModeWebGL = PIXI.blendModesWebGL[renderSession.spriteBatch.currentBlendMode];
             renderSession.spriteBatch.gl.blendFunc(blendModeWebGL[0], blendModeWebGL[1]);
-        ***REMOVED***
+        }
         
         // check if the webgl graphic needs to be updated
         if (this.webGLDirty)
-        ***REMOVED***
+        {
             this.dirty = true;
             this.webGLDirty = false;
-        ***REMOVED***
+        }
         
         PIXI.WebGLGraphics.renderGraphics(this, renderSession);
         
         // only render if it has children!
         if (this.children.length)
-        ***REMOVED***
+        {
             renderSession.spriteBatch.start();
 
             // simple render children!
             for (var i = 0; i < this.children.length; i++)
-            ***REMOVED***
+            {
                 this.children[i]._renderWebGL(renderSession);
-            ***REMOVED***
+            }
 
             renderSession.spriteBatch.stop();
-        ***REMOVED***
+        }
 
         if (this._filters) renderSession.filterManager.popFilter();
         if (this._mask) renderSession.maskManager.popMask(this.mask, renderSession);
@@ -763,31 +763,31 @@ PIXI.Graphics.prototype._renderWebGL = function(renderSession)
         renderSession.drawCount++;
 
         renderSession.spriteBatch.start();
-    ***REMOVED***
-***REMOVED***;
+    }
+};
 
 /**
 * Renders the object using the Canvas renderer
 *
 * @method _renderCanvas
-* @param renderSession ***REMOVED***RenderSession***REMOVED*** 
+* @param renderSession {RenderSession} 
 * @private
 */
 PIXI.Graphics.prototype._renderCanvas = function(renderSession)
-***REMOVED***
+{
     // if the sprite is not visible or the alpha is 0 then no need to render this element
     if (this.visible === false || this.alpha === 0 || this.isMask === true) return;
 
     // if the tint has changed, set the graphics object to dirty.
-    if (this._prevTint !== this.tint) ***REMOVED***
+    if (this._prevTint !== this.tint) {
         this.dirty = true;
         this._prevTint = this.tint;
-    ***REMOVED***
+    }
 
     if (this._cacheAsBitmap)
-    ***REMOVED***
+    {
         if (this.dirty || this.cachedSpriteDirty)
-        ***REMOVED***
+        {
             this._generateCachedSprite();
    
             // we will also need to update the texture
@@ -795,29 +795,29 @@ PIXI.Graphics.prototype._renderCanvas = function(renderSession)
 
             this.cachedSpriteDirty = false;
             this.dirty = false;
-        ***REMOVED***
+        }
 
         this._cachedSprite.alpha = this.alpha;
 
         PIXI.Sprite.prototype._renderCanvas.call(this._cachedSprite, renderSession);
 
         return;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         var context = renderSession.context;
         var transform = this.worldTransform;
         
         if (this.blendMode !== renderSession.currentBlendMode)
-        ***REMOVED***
+        {
             renderSession.currentBlendMode = this.blendMode;
             context.globalCompositeOperation = PIXI.blendModesCanvas[renderSession.currentBlendMode];
-        ***REMOVED***
+        }
 
         if (this._mask)
-        ***REMOVED***
+        {
             renderSession.maskManager.pushMask(this._mask, renderSession);
-        ***REMOVED***
+        }
 
         var resolution = renderSession.resolution;
         var tx = (transform.tx * renderSession.resolution) + renderSession.shakeX;
@@ -834,40 +834,40 @@ PIXI.Graphics.prototype._renderCanvas = function(renderSession)
 
          // simple render children!
         for (var i = 0; i < this.children.length; i++)
-        ***REMOVED***
+        {
             this.children[i]._renderCanvas(renderSession);
-        ***REMOVED***
+        }
 
         if (this._mask)
-        ***REMOVED***
+        {
             renderSession.maskManager.popMask(renderSession);
-        ***REMOVED***
-    ***REMOVED***
-***REMOVED***;
+        }
+    }
+};
 
 /**
  * Retrieves the bounds of the graphic shape as a rectangle object
  *
  * @method getBounds
- * @return ***REMOVED***Rectangle***REMOVED*** the rectangular bounding area
+ * @return {Rectangle} the rectangular bounding area
  */
 PIXI.Graphics.prototype.getBounds = function(matrix)
-***REMOVED***
+{
     if (!this._currentBounds)
-    ***REMOVED***
+    {
         //  Return an empty object if the item is a mask!
         if (!this.renderable)
-        ***REMOVED***
+        {
             return PIXI.EmptyRectangle;
-        ***REMOVED***
+        }
 
         if (this.dirty)
-        ***REMOVED***
+        {
             this.updateLocalBounds();
             this.webGLDirty = true;
             this.cachedSpriteDirty = true;
             this.dirty = false;
-        ***REMOVED***
+        }
 
         var bounds = this._localBounds;
 
@@ -927,72 +927,72 @@ PIXI.Graphics.prototype.getBounds = function(matrix)
         this._bounds.height = maxY - minY;
 
         this._currentBounds = this._bounds;
-    ***REMOVED***
+    }
 
     return this._currentBounds;
 
-***REMOVED***;
+};
 
 /**
  * Retrieves the non-global local bounds of the graphic shape as a rectangle. The calculation takes all visible children into consideration.
  *
  * @method getLocalBounds
- * @return ***REMOVED***Rectangle***REMOVED*** The rectangular bounding area
+ * @return {Rectangle} The rectangular bounding area
  */
-PIXI.Graphics.prototype.getLocalBounds = function () ***REMOVED***
+PIXI.Graphics.prototype.getLocalBounds = function () {
     var matrixCache = this.worldTransform;
 
     this.worldTransform = PIXI.identityMatrix;
 
-    for (var i = 0; i < this.children.length; i++) ***REMOVED***
+    for (var i = 0; i < this.children.length; i++) {
         this.children[i].updateTransform();
-    ***REMOVED***
+    }
 
     var bounds = this.getBounds();
 
     this.worldTransform = matrixCache;
 
-    for (i = 0; i < this.children.length; i++) ***REMOVED***
+    for (i = 0; i < this.children.length; i++) {
         this.children[i].updateTransform();
-    ***REMOVED***
+    }
 
     return bounds;
-***REMOVED***;
+};
 
 /**
 * Tests if a point is inside this graphics object
 *
-* @param point ***REMOVED***Point***REMOVED*** the point to test
-* @return ***REMOVED***boolean***REMOVED*** the result of the test
+* @param point {Point} the point to test
+* @return {boolean} the result of the test
 */
 PIXI.Graphics.prototype.containsPoint = function( point )
-***REMOVED***
+{
     this.worldTransform.applyInverse(point,  tempPoint);
 
     var graphicsData = this.graphicsData;
 
     for (var i = 0; i < graphicsData.length; i++)
-    ***REMOVED***
+    {
         var data = graphicsData[i];
 
         if (!data.fill)
-        ***REMOVED***
+        {
             continue;
-        ***REMOVED***
+        }
 
         // only deal with fills..
         if (data.shape)
-        ***REMOVED***
+        {
             if (data.shape.contains(tempPoint.x, tempPoint.y))
-            ***REMOVED***
+            {
                 return true;
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
     return false;
 
-***REMOVED***;
+};
 
 /**
  * Update the bounds of the object
@@ -1000,7 +1000,7 @@ PIXI.Graphics.prototype.containsPoint = function( point )
  * @method updateLocalBounds
  */
 PIXI.Graphics.prototype.updateLocalBounds = function()
-***REMOVED***
+{
     var minX = Infinity;
     var maxX = -Infinity;
 
@@ -1008,18 +1008,18 @@ PIXI.Graphics.prototype.updateLocalBounds = function()
     var maxY = -Infinity;
 
     if (this.graphicsData.length)
-    ***REMOVED***
+    {
         var shape, points, x, y, w, h;
 
         for (var i = 0; i < this.graphicsData.length; i++)
-        ***REMOVED***
+        {
             var data = this.graphicsData[i];
             var type = data.type;
             var lineWidth = data.lineWidth;
             shape = data.shape;
 
             if (type === PIXI.Graphics.RECT || type === PIXI.Graphics.RREC)
-            ***REMOVED***
+            {
                 x = shape.x - lineWidth / 2;
                 y = shape.y - lineWidth / 2;
                 w = shape.width + lineWidth;
@@ -1030,9 +1030,9 @@ PIXI.Graphics.prototype.updateLocalBounds = function()
 
                 minY = y < minY ? y : minY;
                 maxY = y + h > maxY ? y + h : maxY;
-            ***REMOVED***
+            }
             else if (type === PIXI.Graphics.CIRC)
-            ***REMOVED***
+            {
                 x = shape.x;
                 y = shape.y;
                 w = shape.radius + lineWidth / 2;
@@ -1043,9 +1043,9 @@ PIXI.Graphics.prototype.updateLocalBounds = function()
 
                 minY = y - h < minY ? y - h : minY;
                 maxY = y + h > maxY ? y + h : maxY;
-            ***REMOVED***
+            }
             else if (type === PIXI.Graphics.ELIP)
-            ***REMOVED***
+            {
                 x = shape.x;
                 y = shape.y;
                 w = shape.width + lineWidth / 2;
@@ -1056,46 +1056,46 @@ PIXI.Graphics.prototype.updateLocalBounds = function()
 
                 minY = y - h < minY ? y - h : minY;
                 maxY = y + h > maxY ? y + h : maxY;
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 // POLY - assumes points are sequential, not Point objects
                 points = shape.points;
 
                 for (var j = 0; j < points.length; j++)
-                ***REMOVED***
+                {
                     if (points[j] instanceof Phaser.Point)
-                    ***REMOVED***
+                    {
                         x = points[j].x;
                         y = points[j].y;
-                    ***REMOVED***
+                    }
                     else
-                    ***REMOVED***
+                    {
                         x = points[j];
                         y = points[j + 1];
 
                         if (j < points.length - 1)
-                        ***REMOVED***
+                        {
                             j++;
-                        ***REMOVED***
-                    ***REMOVED***
+                        }
+                    }
 
                     minX = x - lineWidth < minX ? x - lineWidth : minX;
                     maxX = x + lineWidth > maxX ? x + lineWidth : maxX;
 
                     minY = y - lineWidth < minY ? y - lineWidth : minY;
                     maxY = y + lineWidth > maxY ? y + lineWidth : maxY;
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+                }
+            }
+        }
+    }
     else
-    ***REMOVED***
+    {
         minX = 0;
         maxX = 0;
         minY = 0;
         maxY = 0;
-    ***REMOVED***
+    }
 
     var padding = this.boundsPadding;
     
@@ -1104,7 +1104,7 @@ PIXI.Graphics.prototype.updateLocalBounds = function()
 
     this._localBounds.y = minY - padding;
     this._localBounds.height = (maxY - minY) + padding * 2;
-***REMOVED***;
+};
 
 /**
  * Generates the cached sprite when the sprite has cacheAsBitmap = true
@@ -1113,11 +1113,11 @@ PIXI.Graphics.prototype.updateLocalBounds = function()
  * @private
  */
 PIXI.Graphics.prototype._generateCachedSprite = function()
-***REMOVED***
+{
     var bounds = this.getLocalBounds();
 
     if (!this._cachedSprite)
-    ***REMOVED***
+    {
         var canvasBuffer = new PIXI.CanvasBuffer(bounds.width, bounds.height);
         var texture = PIXI.Texture.fromCanvas(canvasBuffer.canvas);
         
@@ -1125,11 +1125,11 @@ PIXI.Graphics.prototype._generateCachedSprite = function()
         this._cachedSprite.buffer = canvasBuffer;
 
         this._cachedSprite.worldTransform = this.worldTransform;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         this._cachedSprite.buffer.resize(bounds.width, bounds.height);
-    ***REMOVED***
+    }
 
     // leverage the anchor to account for the offset of the element
     this._cachedSprite.anchor.x = -(bounds.x / bounds.width);
@@ -1144,7 +1144,7 @@ PIXI.Graphics.prototype._generateCachedSprite = function()
     // now render the graphic..
     PIXI.CanvasGraphics.renderGraphics(this, this._cachedSprite.buffer.context);
     this._cachedSprite.alpha = this.alpha;
-***REMOVED***;
+};
 
 /**
  * Updates texture size based on canvas size
@@ -1153,7 +1153,7 @@ PIXI.Graphics.prototype._generateCachedSprite = function()
  * @private
  */
 PIXI.Graphics.prototype.updateCachedSpriteTexture = function()
-***REMOVED***
+{
     var cachedSprite = this._cachedSprite;
     var texture = cachedSprite.texture;
     var canvas = cachedSprite.buffer.canvas;
@@ -1168,7 +1168,7 @@ PIXI.Graphics.prototype.updateCachedSpriteTexture = function()
 
     // update the dirty base textures
     texture.baseTexture.dirty();
-***REMOVED***;
+};
 
 /**
  * Destroys a previous cached sprite.
@@ -1176,54 +1176,54 @@ PIXI.Graphics.prototype.updateCachedSpriteTexture = function()
  * @method destroyCachedSprite
  */
 PIXI.Graphics.prototype.destroyCachedSprite = function()
-***REMOVED***
+{
     this._cachedSprite.texture.destroy(true);
     this._cachedSprite = null;
-***REMOVED***;
+};
 
 /**
  * Draws the given shape to this Graphics object. Can be any of Circle, Rectangle, Ellipse, Line or Polygon.
  *
  * @method drawShape
- * @param ***REMOVED***Circle|Rectangle|Ellipse|Line|Polygon***REMOVED*** shape The Shape object to draw.
- * @return ***REMOVED***GraphicsData***REMOVED*** The generated GraphicsData object.
+ * @param {Circle|Rectangle|Ellipse|Line|Polygon} shape The Shape object to draw.
+ * @return {GraphicsData} The generated GraphicsData object.
  */
 PIXI.Graphics.prototype.drawShape = function(shape)
-***REMOVED***
+{
     if (this.currentPath)
-    ***REMOVED***
+    {
         // check current path!
         if (this.currentPath.shape.points.length <= 2)
-        ***REMOVED***
+        {
             this.graphicsData.pop();
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     this.currentPath = null;
 
     //  Handle mixed-type polygons
     if (shape instanceof Phaser.Polygon)
-    ***REMOVED***
+    {
         shape = shape.clone();
         shape.flatten();
-    ***REMOVED***
+    }
 
     var data = new PIXI.GraphicsData(this.lineWidth, this.lineColor, this.lineAlpha, this.fillColor, this.fillAlpha, this.filling, shape);
     
     this.graphicsData.push(data);
 
     if (data.type === PIXI.Graphics.POLY)
-    ***REMOVED***
+    {
         data.shape.closed = this.filling;
         this.currentPath = data;
-    ***REMOVED***
+    }
 
     this.dirty = true;
     this._boundsDirty = true;
 
     return data;
 
-***REMOVED***;
+};
 
 /**
  * When cacheAsBitmap is set to true the graphics object will be rendered as if it was a sprite.
@@ -1236,30 +1236,30 @@ PIXI.Graphics.prototype.drawShape = function(shape)
  * @default false
  * @private
  */
-Object.defineProperty(PIXI.Graphics.prototype, "cacheAsBitmap", ***REMOVED***
+Object.defineProperty(PIXI.Graphics.prototype, "cacheAsBitmap", {
 
-    get: function() ***REMOVED***
+    get: function() {
         return  this._cacheAsBitmap;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
 
         this._cacheAsBitmap = value;
 
         if (this._cacheAsBitmap)
-        ***REMOVED***
+        {
             this._generateCachedSprite();
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this.destroyCachedSprite();
-        ***REMOVED***
+        }
 
         this.dirty = true;
         this.webGLDirty = true;
 
-    ***REMOVED***
-***REMOVED***);
+    }
+});
 
 /**
  * A GraphicsData object.
@@ -1267,7 +1267,7 @@ Object.defineProperty(PIXI.Graphics.prototype, "cacheAsBitmap", ***REMOVED***
  * @class GraphicsData
  * @constructor
 PIXI.GraphicsData = function(lineWidth, lineColor, lineAlpha, fillColor, fillAlpha, fill, shape)
-***REMOVED***
+{
     this.lineWidth = lineWidth;
     this.lineColor = lineColor;
     this.lineAlpha = lineAlpha;
@@ -1280,7 +1280,7 @@ PIXI.GraphicsData = function(lineWidth, lineColor, lineAlpha, fillColor, fillAlp
 
     this.shape = shape;
     this.type = shape.type;
-***REMOVED***;
+};
  */
 
 /**
@@ -1288,77 +1288,77 @@ PIXI.GraphicsData = function(lineWidth, lineColor, lineAlpha, fillColor, fillAlp
  *
  * @class
  * @memberof PIXI
- * @param lineWidth ***REMOVED***number***REMOVED*** the width of the line to draw
- * @param lineColor ***REMOVED***number***REMOVED*** the color of the line to draw
- * @param lineAlpha ***REMOVED***number***REMOVED*** the alpha of the line to draw
- * @param fillColor ***REMOVED***number***REMOVED*** the color of the fill
- * @param fillAlpha ***REMOVED***number***REMOVED*** the alpha of the fill
- * @param fill      ***REMOVED***boolean***REMOVED*** whether or not the shape is filled with a colour
- * @param shape     ***REMOVED***Circle|Rectangle|Ellipse|Line|Polygon***REMOVED*** The shape object to draw.
+ * @param lineWidth {number} the width of the line to draw
+ * @param lineColor {number} the color of the line to draw
+ * @param lineAlpha {number} the alpha of the line to draw
+ * @param fillColor {number} the color of the fill
+ * @param fillAlpha {number} the alpha of the fill
+ * @param fill      {boolean} whether or not the shape is filled with a colour
+ * @param shape     {Circle|Rectangle|Ellipse|Line|Polygon} The shape object to draw.
  */
 
-PIXI.GraphicsData = function(lineWidth, lineColor, lineAlpha, fillColor, fillAlpha, fill, shape) ***REMOVED***
+PIXI.GraphicsData = function(lineWidth, lineColor, lineAlpha, fillColor, fillAlpha, fill, shape) {
 
     /*
-     * @member ***REMOVED***number***REMOVED*** the width of the line to draw
+     * @member {number} the width of the line to draw
      */
     this.lineWidth = lineWidth;
 
     /*
-     * @member ***REMOVED***number***REMOVED*** the color of the line to draw
+     * @member {number} the color of the line to draw
      */
     this.lineColor = lineColor;
 
     /*
-     * @member ***REMOVED***number***REMOVED*** the alpha of the line to draw
+     * @member {number} the alpha of the line to draw
      */
     this.lineAlpha = lineAlpha;
 
     /*
-     * @member ***REMOVED***number***REMOVED*** cached tint of the line to draw
+     * @member {number} cached tint of the line to draw
      */
     this._lineTint = lineColor;
 
     /*
-     * @member ***REMOVED***number***REMOVED*** the color of the fill
+     * @member {number} the color of the fill
      */
     this.fillColor = fillColor;
 
     /*
-     * @member ***REMOVED***number***REMOVED*** the alpha of the fill
+     * @member {number} the alpha of the fill
      */
     this.fillAlpha = fillAlpha;
 
     /*
-     * @member ***REMOVED***number***REMOVED*** cached tint of the fill
+     * @member {number} cached tint of the fill
      */
     this._fillTint = fillColor;
 
     /*
-     * @member ***REMOVED***boolean***REMOVED*** whether or not the shape is filled with a color
+     * @member {boolean} whether or not the shape is filled with a color
      */
     this.fill = fill;
 
     /*
-     * @member ***REMOVED***Circle|Rectangle|Ellipse|Line|Polygon***REMOVED*** The shape object to draw.
+     * @member {Circle|Rectangle|Ellipse|Line|Polygon} The shape object to draw.
      */
     this.shape = shape;
 
     /*
-     * @member ***REMOVED***number***REMOVED*** The type of the shape, see the Const.Shapes file for all the existing types,
+     * @member {number} The type of the shape, see the Const.Shapes file for all the existing types,
      */
     this.type = shape.type;
 
-***REMOVED***;
+};
 
 PIXI.GraphicsData.prototype.constructor = PIXI.GraphicsData;
 
 /**
  * Creates a new GraphicsData object with the same values as this one.
  *
- * @return ***REMOVED***GraphicsData***REMOVED***
+ * @return {GraphicsData}
  */
-PIXI.GraphicsData.prototype.clone = function() ***REMOVED***
+PIXI.GraphicsData.prototype.clone = function() {
 
     return new GraphicsData(
         this.lineWidth,
@@ -1370,7 +1370,7 @@ PIXI.GraphicsData.prototype.clone = function() ***REMOVED***
         this.shape
     );
 
-***REMOVED***;
+};
 /*
 Copyright (c) 2016, Mapbox
 
@@ -1390,9 +1390,9 @@ THIS SOFTWARE.
 /**
 * @class EarCut
 */
-PIXI.EarCut = ***REMOVED******REMOVED***;
+PIXI.EarCut = {};
 
-PIXI.EarCut.Triangulate = function (data, holeIndices, dim) ***REMOVED***
+PIXI.EarCut.Triangulate = function (data, holeIndices, dim) {
 
     dim = dim || 2;
 
@@ -1408,78 +1408,78 @@ PIXI.EarCut.Triangulate = function (data, holeIndices, dim) ***REMOVED***
     if (hasHoles) outerNode = PIXI.EarCut.eliminateHoles(data, holeIndices, outerNode, dim);
 
     // if the shape is not too simple, we'll use z-order curve hash later; calculate polygon bbox
-    if (data.length > 80 * dim) ***REMOVED***
+    if (data.length > 80 * dim) {
         minX = maxX = data[0];
         minY = maxY = data[1];
 
-        for (var i = dim; i < outerLen; i += dim) ***REMOVED***
+        for (var i = dim; i < outerLen; i += dim) {
             x = data[i];
             y = data[i + 1];
             if (x < minX) minX = x;
             if (y < minY) minY = y;
             if (x > maxX) maxX = x;
             if (y > maxY) maxY = y;
-        ***REMOVED***
+        }
 
         // minX, minY and size are later used to transform coords into integers for z-order calculation
         size = Math.max(maxX - minX, maxY - minY);
-    ***REMOVED***
+    }
 
     PIXI.EarCut.earcutLinked(outerNode, triangles, dim, minX, minY, size);
 
     return triangles;
-***REMOVED***
+}
 
 // create a circular doubly linked list from polygon points in the specified winding order
 
-PIXI.EarCut.linkedList = function (data, start, end, dim, clockwise) ***REMOVED***
+PIXI.EarCut.linkedList = function (data, start, end, dim, clockwise) {
     var sum = 0,
         i, j, last;
 
     // calculate original winding order of a polygon ring
-    for (i = start, j = end - dim; i < end; i += dim) ***REMOVED***
+    for (i = start, j = end - dim; i < end; i += dim) {
         sum += (data[j] - data[i]) * (data[i + 1] + data[j + 1]);
         j = i;
-    ***REMOVED***
+    }
 
     // link points into circular doubly-linked list in the specified winding order
-    if (clockwise === (sum > 0)) ***REMOVED***
+    if (clockwise === (sum > 0)) {
         for (i = start; i < end; i += dim) last = PIXI.EarCut.insertNode(i, data[i], data[i + 1], last);
-    ***REMOVED*** else ***REMOVED***
+    } else {
         for (i = end - dim; i >= start; i -= dim) last = PIXI.EarCut.insertNode(i, data[i], data[i + 1], last);
-    ***REMOVED***
+    }
 
     return last;
-***REMOVED***
+}
 
 // eliminate colinear or duplicate points
 
-PIXI.EarCut.filterPoints = function (start, end) ***REMOVED***
+PIXI.EarCut.filterPoints = function (start, end) {
     if (!start) return start;
     if (!end) end = start;
 
     var p = start,
         again;
-    do ***REMOVED***
+    do {
         again = false;
 
-        if (!p.steiner && (PIXI.EarCut.equals(p, p.next) || PIXI.EarCut.area(p.prev, p, p.next) === 0)) ***REMOVED***
+        if (!p.steiner && (PIXI.EarCut.equals(p, p.next) || PIXI.EarCut.area(p.prev, p, p.next) === 0)) {
             PIXI.EarCut.removeNode(p);
             p = end = p.prev;
             if (p === p.next) return null;
             again = true;
 
-        ***REMOVED*** else ***REMOVED***
+        } else {
             p = p.next;
-        ***REMOVED***
-    ***REMOVED*** while (again || p !== end);
+        }
+    } while (again || p !== end);
 
     return end;
-***REMOVED***
+}
 
 // main ear slicing loop which triangulates a polygon (given as a linked list)
 
-PIXI.EarCut.earcutLinked = function (ear, triangles, dim, minX, minY, size, pass) ***REMOVED***
+PIXI.EarCut.earcutLinked = function (ear, triangles, dim, minX, minY, size, pass) {
     if (!ear) return;
 
     // interlink polygon nodes in z-order
@@ -1489,11 +1489,11 @@ PIXI.EarCut.earcutLinked = function (ear, triangles, dim, minX, minY, size, pass
         prev, next;
 
     // iterate through ears, slicing them one by one
-    while (ear.prev !== ear.next) ***REMOVED***
+    while (ear.prev !== ear.next) {
         prev = ear.prev;
         next = ear.next;
 
-        if (size ? PIXI.EarCut.isEarHashed(ear, minX, minY, size) : PIXI.EarCut.isEar(ear)) ***REMOVED***
+        if (size ? PIXI.EarCut.isEarHashed(ear, minX, minY, size) : PIXI.EarCut.isEar(ear)) {
             // cut off the triangle
             triangles.push(prev.i / dim);
             triangles.push(ear.i / dim);
@@ -1506,34 +1506,34 @@ PIXI.EarCut.earcutLinked = function (ear, triangles, dim, minX, minY, size, pass
             stop = next.next;
 
             continue;
-        ***REMOVED***
+        }
 
         ear = next;
 
         // if we looped through the whole remaining polygon and can't find any more ears
-        if (ear === stop) ***REMOVED***
+        if (ear === stop) {
             // try filtering points and slicing again
-            if (!pass) ***REMOVED***
+            if (!pass) {
                 PIXI.EarCut.earcutLinked(PIXI.EarCut.filterPoints(ear), triangles, dim, minX, minY, size, 1);
 
                 // if this didn't work, try curing all small self-intersections locally
-            ***REMOVED*** else if (pass === 1) ***REMOVED***
+            } else if (pass === 1) {
                 ear = PIXI.EarCut.cureLocalIntersections(ear, triangles, dim);
                 PIXI.EarCut.earcutLinked(ear, triangles, dim, minX, minY, size, 2);
 
                 // as a last resort, try splitting the remaining polygon into two
-            ***REMOVED*** else if (pass === 2) ***REMOVED***
+            } else if (pass === 2) {
                 PIXI.EarCut.splitEarcut(ear, triangles, dim, minX, minY, size);
-            ***REMOVED***
+            }
 
             break;
-        ***REMOVED***
-    ***REMOVED***
-***REMOVED***
+        }
+    }
+}
 
 // check whether a polygon node forms a valid ear with adjacent nodes
 
-PIXI.EarCut.isEar = function (ear) ***REMOVED***
+PIXI.EarCut.isEar = function (ear) {
     var a = ear.prev,
         b = ear,
         c = ear.next;
@@ -1543,16 +1543,16 @@ PIXI.EarCut.isEar = function (ear) ***REMOVED***
     // now make sure we don't have other points inside the potential ear
     var p = ear.next.next;
 
-    while (p !== ear.prev) ***REMOVED***
+    while (p !== ear.prev) {
         if (PIXI.EarCut.pointInTriangle(a.x, a.y, b.x, b.y, c.x, c.y, p.x, p.y) &&
             PIXI.EarCut.area(p.prev, p, p.next) >= 0) return false;
         p = p.next;
-    ***REMOVED***
+    }
 
     return true;
-***REMOVED***
+}
 
-PIXI.EarCut.isEarHashed = function (ear, minX, minY, size) ***REMOVED***
+PIXI.EarCut.isEarHashed = function (ear, minX, minY, size) {
     var a = ear.prev,
         b = ear,
         c = ear.next;
@@ -1572,36 +1572,36 @@ PIXI.EarCut.isEarHashed = function (ear, minX, minY, size) ***REMOVED***
     // first look for points inside the triangle in increasing z-order
     var p = ear.nextZ;
 
-    while (p && p.z <= maxZ) ***REMOVED***
+    while (p && p.z <= maxZ) {
         if (p !== ear.prev && p !== ear.next &&
             PIXI.EarCut.pointInTriangle(a.x, a.y, b.x, b.y, c.x, c.y, p.x, p.y) &&
             PIXI.EarCut.area(p.prev, p, p.next) >= 0) return false;
         p = p.nextZ;
-    ***REMOVED***
+    }
 
     // then look for points in decreasing z-order
     p = ear.prevZ;
 
-    while (p && p.z >= minZ) ***REMOVED***
+    while (p && p.z >= minZ) {
         if (p !== ear.prev && p !== ear.next &&
             PIXI.EarCut.pointInTriangle(a.x, a.y, b.x, b.y, c.x, c.y, p.x, p.y) &&
             PIXI.EarCut.area(p.prev, p, p.next) >= 0) return false;
         p = p.prevZ;
-    ***REMOVED***
+    }
 
     return true;
-***REMOVED***
+}
 
 // go through all polygon nodes and cure small local self-intersections
 
-PIXI.EarCut.cureLocalIntersections = function (start, triangles, dim) ***REMOVED***
+PIXI.EarCut.cureLocalIntersections = function (start, triangles, dim) {
     var p = start;
-    do ***REMOVED***
+    do {
         var a = p.prev,
             b = p.next.next;
 
         // a self-intersection where edge (v[i-1],v[i]) intersects (v[i+1],v[i+2])
-        if (PIXI.EarCut.intersects(a, p, p.next, b) && PIXI.EarCut.locallyInside(a, b) && PIXI.EarCut.locallyInside(b, a)) ***REMOVED***
+        if (PIXI.EarCut.intersects(a, p, p.next, b) && PIXI.EarCut.locallyInside(a, b) && PIXI.EarCut.locallyInside(b, a)) {
 
             triangles.push(a.i / dim);
             triangles.push(p.i / dim);
@@ -1612,22 +1612,22 @@ PIXI.EarCut.cureLocalIntersections = function (start, triangles, dim) ***REMOVED
             PIXI.EarCut.removeNode(p.next);
 
             p = start = b;
-        ***REMOVED***
+        }
         p = p.next;
-    ***REMOVED*** while (p !== start);
+    } while (p !== start);
 
     return p;
-***REMOVED***
+}
 
 // try splitting polygon into two and triangulate them independently
 
-PIXI.EarCut.splitEarcut = function (start, triangles, dim, minX, minY, size) ***REMOVED***
+PIXI.EarCut.splitEarcut = function (start, triangles, dim, minX, minY, size) {
     // look for a valid diagonal that divides the polygon into two
     var a = start;
-    do ***REMOVED***
+    do {
         var b = a.next.next;
-        while (b !== a.prev) ***REMOVED***
-            if (a.i !== b.i && PIXI.EarCut.isValidDiagonal(a, b)) ***REMOVED***
+        while (b !== a.prev) {
+            if (a.i !== b.i && PIXI.EarCut.isValidDiagonal(a, b)) {
                 // split the polygon in two by the diagonal
                 var c = PIXI.EarCut.splitPolygon(a, b);
 
@@ -1639,55 +1639,55 @@ PIXI.EarCut.splitEarcut = function (start, triangles, dim, minX, minY, size) ***
                 PIXI.EarCut.earcutLinked(a, triangles, dim, minX, minY, size);
                 PIXI.EarCut.earcutLinked(c, triangles, dim, minX, minY, size);
                 return;
-            ***REMOVED***
+            }
             b = b.next;
-        ***REMOVED***
+        }
         a = a.next;
-    ***REMOVED*** while (a !== start);
-***REMOVED***
+    } while (a !== start);
+}
 
 // link every hole into the outer loop, producing a single-ring polygon without holes
 
-PIXI.EarCut.eliminateHoles = function (data, holeIndices, outerNode, dim) ***REMOVED***
+PIXI.EarCut.eliminateHoles = function (data, holeIndices, outerNode, dim) {
     var queue = [],
         i, len, start, end, list;
 
-    for (i = 0, len = holeIndices.length; i < len; i++) ***REMOVED***
+    for (i = 0, len = holeIndices.length; i < len; i++) {
         start = holeIndices[i] * dim;
         end = i < len - 1 ? holeIndices[i + 1] * dim : data.length;
         list = PIXI.EarCut.linkedList(data, start, end, dim, false);
         if (list === list.next) list.steiner = true;
         queue.push(PIXI.EarCut.getLeftmost(list));
-    ***REMOVED***
+    }
 
     queue.sort(compareX);
 
     // process holes from left to right
-    for (i = 0; i < queue.length; i++) ***REMOVED***
+    for (i = 0; i < queue.length; i++) {
         PIXI.EarCut.eliminateHole(queue[i], outerNode);
         outerNode = PIXI.EarCut.filterPoints(outerNode, outerNode.next);
-    ***REMOVED***
+    }
 
     return outerNode;
-***REMOVED***
+}
 
-PIXI.EarCut.compareX = function (a, b) ***REMOVED***
+PIXI.EarCut.compareX = function (a, b) {
     return a.x - b.x;
-***REMOVED***
+}
 
 // find a bridge between vertices that connects hole with an outer ring and and link it
 
-PIXI.EarCut.eliminateHole = function (hole, outerNode) ***REMOVED***
+PIXI.EarCut.eliminateHole = function (hole, outerNode) {
     outerNode = PIXI.EarCut.findHoleBridge(hole, outerNode);
-    if (outerNode) ***REMOVED***
+    if (outerNode) {
         var b = PIXI.EarCut.splitPolygon(outerNode, hole);
         PIXI.EarCut.filterPoints(b, b.next);
-    ***REMOVED***
-***REMOVED***
+    }
+}
 
 // David Eberly's algorithm for finding a bridge between hole and outer polygon
 
-PIXI.EarCut.findHoleBridge = function (hole, outerNode) ***REMOVED***
+PIXI.EarCut.findHoleBridge = function (hole, outerNode) {
     var p = outerNode,
         hx = hole.x,
         hy = hole.y,
@@ -1696,16 +1696,16 @@ PIXI.EarCut.findHoleBridge = function (hole, outerNode) ***REMOVED***
 
     // find a segment intersected by a ray from the hole's leftmost point to the left;
     // segment's endpoint with lesser x will be potential connection point
-    do ***REMOVED***
-        if (hy <= p.y && hy >= p.next.y) ***REMOVED***
+    do {
+        if (hy <= p.y && hy >= p.next.y) {
             var x = p.x + (hy - p.y) * (p.next.x - p.x) / (p.next.y - p.y);
-            if (x <= hx && x > qx) ***REMOVED***
+            if (x <= hx && x > qx) {
                 qx = x;
                 m = p.x < p.next.x ? p : p.next;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         p = p.next;
-    ***REMOVED*** while (p !== outerNode);
+    } while (p !== outerNode);
 
     if (!m) return null;
 
@@ -1721,107 +1721,107 @@ PIXI.EarCut.findHoleBridge = function (hole, outerNode) ***REMOVED***
 
     p = m.next;
 
-    while (p !== stop) ***REMOVED***
+    while (p !== stop) {
         if (hx >= p.x && p.x >= m.x &&
-            PIXI.EarCut.pointInTriangle(hy < m.y ? hx : qx, hy, m.x, m.y, hy < m.y ? qx : hx, hy, p.x, p.y)) ***REMOVED***
+            PIXI.EarCut.pointInTriangle(hy < m.y ? hx : qx, hy, m.x, m.y, hy < m.y ? qx : hx, hy, p.x, p.y)) {
 
             tan = Math.abs(hy - p.y) / (hx - p.x); // tangential
 
-            if ((tan < tanMin || (tan === tanMin && p.x > m.x)) && PIXI.EarCut.locallyInside(p, hole)) ***REMOVED***
+            if ((tan < tanMin || (tan === tanMin && p.x > m.x)) && PIXI.EarCut.locallyInside(p, hole)) {
                 m = p;
                 tanMin = tan;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         p = p.next;
-    ***REMOVED***
+    }
 
     return m;
-***REMOVED***
+}
 
 // interlink polygon nodes in z-order
 
-PIXI.EarCut.indexCurve = function (start, minX, minY, size) ***REMOVED***
+PIXI.EarCut.indexCurve = function (start, minX, minY, size) {
     var p = start;
-    do ***REMOVED***
+    do {
         if (p.z === null) p.z = PIXI.EarCut.zOrder(p.x, p.y, minX, minY, size);
         p.prevZ = p.prev;
         p.nextZ = p.next;
         p = p.next;
-    ***REMOVED*** while (p !== start);
+    } while (p !== start);
 
     p.prevZ.nextZ = null;
     p.prevZ = null;
 
     PIXI.EarCut.sortLinked(p);
-***REMOVED***
+}
 
 // Simon Tatham's linked list merge sort algorithm
 // http://www.chiark.greenend.org.uk/~sgtatham/algorithms/listsort.html
 
-PIXI.EarCut.sortLinked = function (list) ***REMOVED***
+PIXI.EarCut.sortLinked = function (list) {
     var i, p, q, e, tail, numMerges, pSize, qSize,
         inSize = 1;
 
-    do ***REMOVED***
+    do {
         p = list;
         list = null;
         tail = null;
         numMerges = 0;
 
-        while (p) ***REMOVED***
+        while (p) {
             numMerges++;
             q = p;
             pSize = 0;
-            for (i = 0; i < inSize; i++) ***REMOVED***
+            for (i = 0; i < inSize; i++) {
                 pSize++;
                 q = q.nextZ;
                 if (!q) break;
-            ***REMOVED***
+            }
 
             qSize = inSize;
 
-            while (pSize > 0 || (qSize > 0 && q)) ***REMOVED***
+            while (pSize > 0 || (qSize > 0 && q)) {
 
-                if (pSize === 0) ***REMOVED***
+                if (pSize === 0) {
                     e = q;
                     q = q.nextZ;
                     qSize--;
-                ***REMOVED*** else if (qSize === 0 || !q) ***REMOVED***
+                } else if (qSize === 0 || !q) {
                     e = p;
                     p = p.nextZ;
                     pSize--;
-                ***REMOVED*** else if (p.z <= q.z) ***REMOVED***
+                } else if (p.z <= q.z) {
                     e = p;
                     p = p.nextZ;
                     pSize--;
-                ***REMOVED*** else ***REMOVED***
+                } else {
                     e = q;
                     q = q.nextZ;
                     qSize--;
-                ***REMOVED***
+                }
 
                 if (tail) tail.nextZ = e;
                 else list = e;
 
                 e.prevZ = tail;
                 tail = e;
-            ***REMOVED***
+            }
 
             p = q;
-        ***REMOVED***
+        }
 
         tail.nextZ = null;
         inSize *= 2;
 
-    ***REMOVED*** while (numMerges > 1);
+    } while (numMerges > 1);
 
     return list;
-***REMOVED***
+}
 
 // z-order of a point given coords and size of the data bounding box
 
-PIXI.EarCut.zOrder = function (x, y, minX, minY, size) ***REMOVED***
+PIXI.EarCut.zOrder = function (x, y, minX, minY, size) {
     // coords are transformed into non-negative 15-bit integer range
     x = 32767 * (x - minX) / size;
     y = 32767 * (y - minY) / size;
@@ -1837,96 +1837,96 @@ PIXI.EarCut.zOrder = function (x, y, minX, minY, size) ***REMOVED***
     y = (y | (y << 1)) & 0x55555555;
 
     return x | (y << 1);
-***REMOVED***
+}
 
 // find the leftmost node of a polygon ring
 
-PIXI.EarCut.getLeftmost = function (start) ***REMOVED***
+PIXI.EarCut.getLeftmost = function (start) {
     var p = start,
         leftmost = start;
-    do ***REMOVED***
+    do {
         if (p.x < leftmost.x) leftmost = p;
         p = p.next;
-    ***REMOVED*** while (p !== start);
+    } while (p !== start);
 
     return leftmost;
-***REMOVED***
+}
 
 // check if a point lies within a convex triangle
 
-PIXI.EarCut.pointInTriangle = function (ax, ay, bx, by, cx, cy, px, py) ***REMOVED***
+PIXI.EarCut.pointInTriangle = function (ax, ay, bx, by, cx, cy, px, py) {
     return (cx - px) * (ay - py) - (ax - px) * (cy - py) >= 0 &&
         (ax - px) * (by - py) - (bx - px) * (ay - py) >= 0 &&
         (bx - px) * (cy - py) - (cx - px) * (by - py) >= 0;
-***REMOVED***
+}
 
 // check if a diagonal between two polygon nodes is valid (lies in polygon interior)
 
-PIXI.EarCut.isValidDiagonal = function (a, b) ***REMOVED***
+PIXI.EarCut.isValidDiagonal = function (a, b) {
     return PIXI.EarCut.equals(a, b) || a.next.i !== b.i && a.prev.i !== b.i && !PIXI.EarCut.intersectsPolygon(a, b) &&
         PIXI.EarCut.locallyInside(a, b) && PIXI.EarCut.locallyInside(b, a) && PIXI.EarCut.middleInside(a, b);
-***REMOVED***
+}
 
 // signed area of a triangle
 
-PIXI.EarCut.area = function (p, q, r) ***REMOVED***
+PIXI.EarCut.area = function (p, q, r) {
     return (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
-***REMOVED***
+}
 
 // check if two points are equal
 
-PIXI.EarCut.equals = function (p1, p2) ***REMOVED***
+PIXI.EarCut.equals = function (p1, p2) {
     return p1.x === p2.x && p1.y === p2.y;
-***REMOVED***
+}
 
 // check if two segments intersect
 
-PIXI.EarCut.intersects = function (p1, q1, p2, q2) ***REMOVED***
+PIXI.EarCut.intersects = function (p1, q1, p2, q2) {
     return PIXI.EarCut.area(p1, q1, p2) > 0 !== PIXI.EarCut.area(p1, q1, q2) > 0 &&
         PIXI.EarCut.area(p2, q2, p1) > 0 !== PIXI.EarCut.area(p2, q2, q1) > 0;
-***REMOVED***
+}
 
 // check if a polygon diagonal intersects any polygon segments
 
-PIXI.EarCut.intersectsPolygon = function (a, b) ***REMOVED***
+PIXI.EarCut.intersectsPolygon = function (a, b) {
     var p = a;
-    do ***REMOVED***
+    do {
         if (p.i !== a.i && p.next.i !== a.i && p.i !== b.i && p.next.i !== b.i &&
             PIXI.EarCut.intersects(p, p.next, a, b)) return true;
         p = p.next;
-    ***REMOVED*** while (p !== a);
+    } while (p !== a);
 
     return false;
-***REMOVED***
+}
 
 // check if a polygon diagonal is locally inside the polygon
 
-PIXI.EarCut.locallyInside = function (a, b) ***REMOVED***
+PIXI.EarCut.locallyInside = function (a, b) {
     return PIXI.EarCut.area(a.prev, a, a.next) < 0 ?
         PIXI.EarCut.area(a, b, a.next) >= 0 && PIXI.EarCut.area(a, a.prev, b) >= 0 :
         PIXI.EarCut.area(a, b, a.prev) < 0 || PIXI.EarCut.area(a, a.next, b) < 0;
-***REMOVED***
+}
 
 // check if the middle point of a polygon diagonal is inside the polygon
 
-PIXI.EarCut.middleInside = function (a, b) ***REMOVED***
+PIXI.EarCut.middleInside = function (a, b) {
     var p = a,
         inside = false,
         px = (a.x + b.x) / 2,
         py = (a.y + b.y) / 2;
-    do ***REMOVED***
+    do {
         if (((p.y > py) !== (p.next.y > py)) && (px < (p.next.x - p.x) * (py - p.y) / (p.next.y - p.y) + p.x))
             inside = !inside;
         p = p.next;
-    ***REMOVED*** while (p !== a);
+    } while (p !== a);
 
     return inside;
-***REMOVED***
+}
 
 // link two polygon vertices with a bridge; if the vertices belong to the same ring, it splits polygon into two;
 // if one belongs to the outer ring and another to a hole, it merges it into a single ring
 
-PIXI.EarCut.splitPolygon = function (a, b) ***REMOVED***
+PIXI.EarCut.splitPolygon = function (a, b) {
     var a2 = new PIXI.EarCut.Node(a.i, a.x, a.y),
         b2 = new PIXI.EarCut.Node(b.i, b.x, b.y),
         an = a.next,
@@ -1945,35 +1945,35 @@ PIXI.EarCut.splitPolygon = function (a, b) ***REMOVED***
     b2.prev = bp;
 
     return b2;
-***REMOVED***
+}
 
 // create a node and optionally link it with previous one (in a circular doubly linked list)
 
-PIXI.EarCut.insertNode = function (i, x, y, last) ***REMOVED***
+PIXI.EarCut.insertNode = function (i, x, y, last) {
     var p = new PIXI.EarCut.Node(i, x, y);
 
-    if (!last) ***REMOVED***
+    if (!last) {
         p.prev = p;
         p.next = p;
 
-    ***REMOVED*** else ***REMOVED***
+    } else {
         p.next = last.next;
         p.prev = last;
         last.next.prev = p;
         last.next = p;
-    ***REMOVED***
+    }
     return p;
-***REMOVED***
+}
 
-PIXI.EarCut.removeNode = function (p) ***REMOVED***
+PIXI.EarCut.removeNode = function (p) {
     p.next.prev = p.prev;
     p.prev.next = p.next;
 
     if (p.prevZ) p.prevZ.nextZ = p.nextZ;
     if (p.nextZ) p.nextZ.prevZ = p.prevZ;
-***REMOVED***
+}
 
-PIXI.EarCut.Node = function (i, x, y) ***REMOVED***
+PIXI.EarCut.Node = function (i, x, y) {
     // vertice index in coordinates array
     this.i = i;
 
@@ -1994,7 +1994,7 @@ PIXI.EarCut.Node = function (i, x, y) ***REMOVED***
 
     // indicates whether this is a steiner point
     this.steiner = false;
-***REMOVED***
+}
 
 /**
  * @author Mat Groves http://matgroves.com/ @Doormat23
@@ -2008,13 +2008,13 @@ PIXI.EarCut.Node = function (i, x, y) ***REMOVED***
  * @static
  */
 PIXI.WebGLGraphics = function()
-***REMOVED***
-***REMOVED***;
+{
+};
 
 /**
  * The number of points beyond which Pixi swaps to using the Stencil Buffer to render the Graphics.
  *
- * @type ***REMOVED***number***REMOVED***
+ * @type {number}
  */
 PIXI.WebGLGraphics.stencilBufferLimit = 6;
 
@@ -2024,11 +2024,11 @@ PIXI.WebGLGraphics.stencilBufferLimit = 6;
  * @static
  * @private
  * @method renderGraphics
- * @param graphics ***REMOVED***Graphics***REMOVED***
- * @param renderSession ***REMOVED***Object***REMOVED***
+ * @param graphics {Graphics}
+ * @param renderSession {Object}
  */
 PIXI.WebGLGraphics.renderGraphics = function(graphics, renderSession)//projection, offset)
-***REMOVED***
+{
     var gl = renderSession.gl;
     var projection = renderSession.projection,
         offset = renderSession.offset,
@@ -2036,18 +2036,18 @@ PIXI.WebGLGraphics.renderGraphics = function(graphics, renderSession)//projectio
         webGLData;
 
     if(graphics.dirty)
-    ***REMOVED***
+    {
         PIXI.WebGLGraphics.updateGraphics(graphics, gl);
-    ***REMOVED***
+    }
 
     var webGL = graphics._webGL[gl.id];
 
     // This  could be speeded up for sure!
 
     for (var i = 0; i < webGL.data.length; i++)
-    ***REMOVED***
+    {
         if(webGL.data[i].mode === 1)
-        ***REMOVED***
+        {
             webGLData = webGL.data[i];
 
             renderSession.stencilManager.pushStencil(graphics, webGLData, renderSession);
@@ -2056,9 +2056,9 @@ PIXI.WebGLGraphics.renderGraphics = function(graphics, renderSession)//projectio
             gl.drawElements(gl.TRIANGLE_FAN, 4, gl.UNSIGNED_SHORT, ( webGLData.indices.length - 4 ) * 2 );
             
             renderSession.stencilManager.popStencil(graphics, webGLData, renderSession);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             webGLData = webGL.data[i];
            
 
@@ -2084,9 +2084,9 @@ PIXI.WebGLGraphics.renderGraphics = function(graphics, renderSession)//projectio
             // set the index buffer!
             gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, webGLData.indexBuffer);
             gl.drawElements(gl.TRIANGLE_STRIP,  webGLData.indices.length, gl.UNSIGNED_SHORT, 0 );
-        ***REMOVED***
-    ***REMOVED***
-***REMOVED***;
+        }
+    }
+};
 
 /**
  * Updates the graphics object
@@ -2094,15 +2094,15 @@ PIXI.WebGLGraphics.renderGraphics = function(graphics, renderSession)//projectio
  * @static
  * @private
  * @method updateGraphics
- * @param graphicsData ***REMOVED***Graphics***REMOVED*** The graphics object to update
- * @param gl ***REMOVED***WebGLContext***REMOVED*** the current WebGL drawing context
+ * @param graphicsData {Graphics} The graphics object to update
+ * @param gl {WebGLContext} the current WebGL drawing context
  */
 PIXI.WebGLGraphics.updateGraphics = function(graphics, gl)
-***REMOVED***
+{
     // get the contexts graphics object
     var webGL = graphics._webGL[gl.id];
     // if the graphics object does not exist in the webGL context time to create it!
-    if(!webGL)webGL = graphics._webGL[gl.id] = ***REMOVED***lastIndex:0, data:[], gl:gl***REMOVED***;
+    if(!webGL)webGL = graphics._webGL[gl.id] = {lastIndex:0, data:[], gl:gl};
 
     // flag the graphics as not dirty as we are about to update it...
     graphics.dirty = false;
@@ -2111,21 +2111,21 @@ PIXI.WebGLGraphics.updateGraphics = function(graphics, gl)
 
     // if the user cleared the graphics object we will need to clear every object
     if(graphics.clearDirty)
-    ***REMOVED***
+    {
         graphics.clearDirty = false;
 
         // lop through and return all the webGLDatas to the object pool so than can be reused later on
         for (i = 0; i < webGL.data.length; i++)
-        ***REMOVED***
+        {
             var graphicsData = webGL.data[i];
             graphicsData.reset();
             PIXI.WebGLGraphics.graphicsDataPool.push( graphicsData );
-        ***REMOVED***
+        }
 
         // clear the array and reset the index.. 
         webGL.data = [];
         webGL.lastIndex = 0;
-    ***REMOVED***
+    }
     
     var webGLData;
     
@@ -2133,119 +2133,119 @@ PIXI.WebGLGraphics.updateGraphics = function(graphics, gl)
     // if the object is a complex fill then the new stencil buffer technique will be used
     // other wise graphics objects will be pushed into a batch..
     for (i = webGL.lastIndex; i < graphics.graphicsData.length; i++)
-    ***REMOVED***
+    {
         var data = graphics.graphicsData[i];
 
         if(data.type === PIXI.Graphics.POLY)
-        ***REMOVED***
+        {
             // need to add the points the the graphics object..
             data.points = data.shape.points.slice();
             if(data.shape.closed)
-            ***REMOVED***
+            {
                 // close the poly if the value is true!
                 if(data.points[0] !== data.points[data.points.length-2] || data.points[1] !== data.points[data.points.length-1])
-                ***REMOVED***
+                {
                     data.points.push(data.points[0], data.points[1]);
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
 
             // MAKE SURE WE HAVE THE CORRECT TYPE..
             if(data.fill)
-            ***REMOVED***
+            {
                 if(data.points.length >= PIXI.WebGLGraphics.stencilBufferLimit)
-                ***REMOVED***
+                {
                     if(data.points.length < PIXI.WebGLGraphics.stencilBufferLimit * 2)
-                    ***REMOVED***
+                    {
                         webGLData = PIXI.WebGLGraphics.switchMode(webGL, 0);
                         
                         var canDrawUsingSimple = PIXI.WebGLGraphics.buildPoly(data, webGLData);
                    //     console.log(canDrawUsingSimple);
 
                         if(!canDrawUsingSimple)
-                        ***REMOVED***
+                        {
                         //    console.log("<>>>")
                             webGLData = PIXI.WebGLGraphics.switchMode(webGL, 1);
                             PIXI.WebGLGraphics.buildComplexPoly(data, webGLData);
-                        ***REMOVED***
+                        }
                         
-                    ***REMOVED***
+                    }
                     else
-                    ***REMOVED***
+                    {
                         webGLData = PIXI.WebGLGraphics.switchMode(webGL, 1);
                         PIXI.WebGLGraphics.buildComplexPoly(data, webGLData);
-                    ***REMOVED***
-                ***REMOVED***
-            ***REMOVED***
+                    }
+                }
+            }
 
             if(data.lineWidth > 0)
-            ***REMOVED***
+            {
                 webGLData = PIXI.WebGLGraphics.switchMode(webGL, 0);
                 PIXI.WebGLGraphics.buildLine(data, webGLData);
 
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             webGLData = PIXI.WebGLGraphics.switchMode(webGL, 0);
             
             if(data.type === PIXI.Graphics.RECT)
-            ***REMOVED***
+            {
                 PIXI.WebGLGraphics.buildRectangle(data, webGLData);
-            ***REMOVED***
+            }
             else if(data.type === PIXI.Graphics.CIRC || data.type === PIXI.Graphics.ELIP)
-            ***REMOVED***
+            {
                 PIXI.WebGLGraphics.buildCircle(data, webGLData);
-            ***REMOVED***
+            }
             else if(data.type === PIXI.Graphics.RREC)
-            ***REMOVED***
+            {
                 PIXI.WebGLGraphics.buildRoundedRectangle(data, webGLData);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         webGL.lastIndex++;
-    ***REMOVED***
+    }
 
     // upload all the dirty data...
     for (i = 0; i < webGL.data.length; i++)
-    ***REMOVED***
+    {
         webGLData = webGL.data[i];
         if(webGLData.dirty)webGLData.upload();
-    ***REMOVED***
-***REMOVED***;
+    }
+};
 
 /**
  * @static
  * @private
  * @method switchMode
- * @param webGL ***REMOVED***WebGLContext***REMOVED***
- * @param type ***REMOVED***Number***REMOVED***
+ * @param webGL {WebGLContext}
+ * @param type {Number}
  */
 PIXI.WebGLGraphics.switchMode = function(webGL, type)
-***REMOVED***
+{
     var webGLData;
 
     if(!webGL.data.length)
-    ***REMOVED***
+    {
         webGLData = PIXI.WebGLGraphics.graphicsDataPool.pop() || new PIXI.WebGLGraphicsData(webGL.gl);
         webGLData.mode = type;
         webGL.data.push(webGLData);
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         webGLData = webGL.data[webGL.data.length-1];
 
         if(webGLData.mode !== type || type === 1)
-        ***REMOVED***
+        {
             webGLData = PIXI.WebGLGraphics.graphicsDataPool.pop() || new PIXI.WebGLGraphicsData(webGL.gl);
             webGLData.mode = type;
             webGL.data.push(webGLData);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     webGLData.dirty = true;
 
     return webGLData;
-***REMOVED***;
+};
 
 /**
  * Builds a rectangle to draw
@@ -2253,11 +2253,11 @@ PIXI.WebGLGraphics.switchMode = function(webGL, type)
  * @static
  * @private
  * @method buildRectangle
- * @param graphicsData ***REMOVED***Graphics***REMOVED*** The graphics object containing all the necessary properties
- * @param webGLData ***REMOVED***Object***REMOVED***
+ * @param graphicsData {Graphics} The graphics object containing all the necessary properties
+ * @param webGLData {Object}
  */
 PIXI.WebGLGraphics.buildRectangle = function(graphicsData, webGLData)
-***REMOVED***
+{
     // --- //
     // need to convert points to a nice regular data
     //
@@ -2268,7 +2268,7 @@ PIXI.WebGLGraphics.buildRectangle = function(graphicsData, webGLData)
     var height = rectData.height;
 
     if(graphicsData.fill)
-    ***REMOVED***
+    {
         var color = PIXI.hex2rgb(graphicsData.fillColor);
         var alpha = graphicsData.fillAlpha;
 
@@ -2296,10 +2296,10 @@ PIXI.WebGLGraphics.buildRectangle = function(graphicsData, webGLData)
 
         // insert 2 dead triangles..
         indices.push(vertPos, vertPos, vertPos + 1, vertPos + 2, vertPos + 3, vertPos + 3);
-    ***REMOVED***
+    }
 
     if (graphicsData.lineWidth)
-    ***REMOVED***
+    {
         var tempPoints = graphicsData.points;
 
         graphicsData.points = [x, y,
@@ -2312,8 +2312,8 @@ PIXI.WebGLGraphics.buildRectangle = function(graphicsData, webGLData)
         PIXI.WebGLGraphics.buildLine(graphicsData, webGLData);
 
         graphicsData.points = tempPoints;
-    ***REMOVED***
-***REMOVED***;
+    }
+};
 
 /**
  * Builds a rounded rectangle to draw
@@ -2321,11 +2321,11 @@ PIXI.WebGLGraphics.buildRectangle = function(graphicsData, webGLData)
  * @static
  * @private
  * @method buildRoundedRectangle
- * @param graphicsData ***REMOVED***Graphics***REMOVED*** The graphics object containing all the necessary properties
- * @param webGLData ***REMOVED***Object***REMOVED***
+ * @param graphicsData {Graphics} The graphics object containing all the necessary properties
+ * @param webGLData {Object}
  */
 PIXI.WebGLGraphics.buildRoundedRectangle = function(graphicsData, webGLData)
-***REMOVED***
+{
     var rrectData = graphicsData.shape;
     var x = rrectData.x;
     var y = rrectData.y;
@@ -2341,7 +2341,7 @@ PIXI.WebGLGraphics.buildRoundedRectangle = function(graphicsData, webGLData)
     recPoints = recPoints.concat(PIXI.WebGLGraphics.quadraticBezierCurve(x + width, y + radius, x + width, y, x + width - radius, y));
     recPoints = recPoints.concat(PIXI.WebGLGraphics.quadraticBezierCurve(x + radius, y, x, y, x, y + radius));
 
-    if (graphicsData.fill) ***REMOVED***
+    if (graphicsData.fill) {
         var color = PIXI.hex2rgb(graphicsData.fillColor);
         var alpha = graphicsData.fillAlpha;
 
@@ -2359,22 +2359,22 @@ PIXI.WebGLGraphics.buildRoundedRectangle = function(graphicsData, webGLData)
         var i = 0;
 
         for (i = 0; i < triangles.length; i+=3)
-        ***REMOVED***
+        {
             indices.push(triangles[i] + vecPos);
             indices.push(triangles[i] + vecPos);
             indices.push(triangles[i+1] + vecPos);
             indices.push(triangles[i+2] + vecPos);
             indices.push(triangles[i+2] + vecPos);
-        ***REMOVED***
+        }
 
 
         for (i = 0; i < recPoints.length; i++)
-        ***REMOVED***
+        {
             verts.push(recPoints[i], recPoints[++i], r, g, b, alpha);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
-    if (graphicsData.lineWidth) ***REMOVED***
+    if (graphicsData.lineWidth) {
         var tempPoints = graphicsData.points;
 
         graphicsData.points = recPoints;
@@ -2382,8 +2382,8 @@ PIXI.WebGLGraphics.buildRoundedRectangle = function(graphicsData, webGLData)
         PIXI.WebGLGraphics.buildLine(graphicsData, webGLData);
 
         graphicsData.points = tempPoints;
-    ***REMOVED***
-***REMOVED***;
+    }
+};
 
 /**
  * Calculate the points for a quadratic bezier curve. (helper function..)
@@ -2392,15 +2392,15 @@ PIXI.WebGLGraphics.buildRoundedRectangle = function(graphicsData, webGLData)
  * @static
  * @private
  * @method quadraticBezierCurve
- * @param fromX ***REMOVED***Number***REMOVED*** Origin point x
- * @param fromY ***REMOVED***Number***REMOVED*** Origin point x
- * @param cpX ***REMOVED***Number***REMOVED*** Control point x
- * @param cpY ***REMOVED***Number***REMOVED*** Control point y
- * @param toX ***REMOVED***Number***REMOVED*** Destination point x
- * @param toY ***REMOVED***Number***REMOVED*** Destination point y
- * @return ***REMOVED***Array(Number)***REMOVED***
+ * @param fromX {Number} Origin point x
+ * @param fromY {Number} Origin point x
+ * @param cpX {Number} Control point x
+ * @param cpY {Number} Control point y
+ * @param toX {Number} Destination point x
+ * @param toY {Number} Destination point y
+ * @return {Array(Number)}
  */
-PIXI.WebGLGraphics.quadraticBezierCurve = function(fromX, fromY, cpX, cpY, toX, toY) ***REMOVED***
+PIXI.WebGLGraphics.quadraticBezierCurve = function(fromX, fromY, cpX, cpY, toX, toY) {
 
     var xa,
         ya,
@@ -2411,15 +2411,15 @@ PIXI.WebGLGraphics.quadraticBezierCurve = function(fromX, fromY, cpX, cpY, toX, 
         n = 20,
         points = [];
 
-    function getPt(n1 , n2, perc) ***REMOVED***
+    function getPt(n1 , n2, perc) {
         var diff = n2 - n1;
 
         return n1 + ( diff * perc );
-    ***REMOVED***
+    }
 
     var j = 0;
     for (var i = 0; i <= n; i++ )
-    ***REMOVED***
+    {
         j = i / n;
 
         // The Green Line
@@ -2433,9 +2433,9 @@ PIXI.WebGLGraphics.quadraticBezierCurve = function(fromX, fromY, cpX, cpY, toX, 
         y = getPt( ya , yb , j );
 
         points.push(x, y);
-    ***REMOVED***
+    }
     return points;
-***REMOVED***;
+};
 
 /**
  * Builds a circle to draw
@@ -2443,11 +2443,11 @@ PIXI.WebGLGraphics.quadraticBezierCurve = function(fromX, fromY, cpX, cpY, toX, 
  * @static
  * @private
  * @method buildCircle
- * @param graphicsData ***REMOVED***Graphics***REMOVED*** The graphics object to draw
- * @param webGLData ***REMOVED***Object***REMOVED***
+ * @param graphicsData {Graphics} The graphics object to draw
+ * @param webGLData {Object}
  */
 PIXI.WebGLGraphics.buildCircle = function(graphicsData, webGLData)
-***REMOVED***
+{
     // need to convert points to a nice regular data
     var circleData = graphicsData.shape;
     var x = circleData.x;
@@ -2457,15 +2457,15 @@ PIXI.WebGLGraphics.buildCircle = function(graphicsData, webGLData)
     
     // TODO - bit hacky??
     if(graphicsData.type === PIXI.Graphics.CIRC)
-    ***REMOVED***
+    {
         width = circleData.radius;
         height = circleData.radius;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         width = circleData.width;
         height = circleData.height;
-    ***REMOVED***
+    }
 
     var totalSegs = 40;
     var seg = (Math.PI * 2) / totalSegs ;
@@ -2473,7 +2473,7 @@ PIXI.WebGLGraphics.buildCircle = function(graphicsData, webGLData)
     var i = 0;
 
     if(graphicsData.fill)
-    ***REMOVED***
+    {
         var color = PIXI.hex2rgb(graphicsData.fillColor);
         var alpha = graphicsData.fillAlpha;
 
@@ -2489,7 +2489,7 @@ PIXI.WebGLGraphics.buildCircle = function(graphicsData, webGLData)
         indices.push(vecPos);
 
         for (i = 0; i < totalSegs + 1 ; i++)
-        ***REMOVED***
+        {
             verts.push(x,y, r, g, b, alpha);
 
             verts.push(x + Math.sin(seg * i) * width,
@@ -2497,28 +2497,28 @@ PIXI.WebGLGraphics.buildCircle = function(graphicsData, webGLData)
                        r, g, b, alpha);
 
             indices.push(vecPos++, vecPos++);
-        ***REMOVED***
+        }
 
         indices.push(vecPos-1);
-    ***REMOVED***
+    }
 
     if(graphicsData.lineWidth)
-    ***REMOVED***
+    {
         var tempPoints = graphicsData.points;
 
         graphicsData.points = [];
 
         for (i = 0; i < totalSegs + 1; i++)
-        ***REMOVED***
+        {
             graphicsData.points.push(x + Math.sin(seg * i) * width,
                                      y + Math.cos(seg * i) * height);
-        ***REMOVED***
+        }
 
         PIXI.WebGLGraphics.buildLine(graphicsData, webGLData);
 
         graphicsData.points = tempPoints;
-    ***REMOVED***
-***REMOVED***;
+    }
+};
 
 /**
  * Builds a line to draw
@@ -2526,11 +2526,11 @@ PIXI.WebGLGraphics.buildCircle = function(graphicsData, webGLData)
  * @static
  * @private
  * @method buildLine
- * @param graphicsData ***REMOVED***Graphics***REMOVED*** The graphics object containing all the necessary properties
- * @param webGLData ***REMOVED***Object***REMOVED***
+ * @param graphicsData {Graphics} The graphics object containing all the necessary properties
+ * @param webGLData {Object}
  */
 PIXI.WebGLGraphics.buildLine = function(graphicsData, webGLData)
-***REMOVED***
+{
     // TODO OPTIMISE!
     var i = 0;
     var points = graphicsData.points;
@@ -2538,11 +2538,11 @@ PIXI.WebGLGraphics.buildLine = function(graphicsData, webGLData)
 
     // if the line width is an odd number add 0.5 to align to a whole pixel
     if(graphicsData.lineWidth%2)
-    ***REMOVED***
-        for (i = 0; i < points.length; i++) ***REMOVED***
+    {
+        for (i = 0; i < points.length; i++) {
             points[i] += 0.5;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     // get first and last point.. figure out the middle!
     var firstPoint = new PIXI.Point( points[0], points[1] );
@@ -2550,7 +2550,7 @@ PIXI.WebGLGraphics.buildLine = function(graphicsData, webGLData)
 
     // if the first point is the last point - gonna have issues :)
     if(firstPoint.x === lastPoint.x && firstPoint.y === lastPoint.y)
-    ***REMOVED***
+    {
         // need to clone as we are going to slightly modify the shape..
         points = points.slice();
 
@@ -2564,7 +2564,7 @@ PIXI.WebGLGraphics.buildLine = function(graphicsData, webGLData)
 
         points.unshift(midPointX, midPointY);
         points.push(midPointX, midPointY);
-    ***REMOVED***
+    }
 
     var verts = webGLData.points;
     var indices = webGLData.indices;
@@ -2611,7 +2611,7 @@ PIXI.WebGLGraphics.buildLine = function(graphicsData, webGLData)
                 r, g, b, alpha);
 
     for (i = 1; i < length-1; i++)
-    ***REMOVED***
+    {
         p1x = points[(i-1)*2];
         p1y = points[(i-1)*2 + 1];
 
@@ -2649,7 +2649,7 @@ PIXI.WebGLGraphics.buildLine = function(graphicsData, webGLData)
         denom = a1*b2 - a2*b1;
 
         if(Math.abs(denom) < 0.1 )
-        ***REMOVED***
+        {
 
             denom+=10.1;
             verts.push(p2x - perpx , p2y - perpy,
@@ -2659,7 +2659,7 @@ PIXI.WebGLGraphics.buildLine = function(graphicsData, webGLData)
                 r, g, b, alpha);
 
             continue;
-        ***REMOVED***
+        }
 
         px = (b1*c2 - b2*c1)/denom;
         py = (a2*c1 - a1*c2)/denom;
@@ -2669,7 +2669,7 @@ PIXI.WebGLGraphics.buildLine = function(graphicsData, webGLData)
 
 
         if(pdist > 140 * 140)
-        ***REMOVED***
+        {
             perp3x = perpx - perp2x;
             perp3y = perpy - perp2y;
 
@@ -2689,17 +2689,17 @@ PIXI.WebGLGraphics.buildLine = function(graphicsData, webGLData)
             verts.push(r, g, b, alpha);
 
             indexCount++;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
 
             verts.push(px , py);
             verts.push(r, g, b, alpha);
 
             verts.push(p2x - (px-p2x), p2y - (py - p2y));
             verts.push(r, g, b, alpha);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     p1x = points[(length-2)*2];
     p1y = points[(length-2)*2 + 1];
@@ -2725,12 +2725,12 @@ PIXI.WebGLGraphics.buildLine = function(graphicsData, webGLData)
     indices.push(indexStart);
 
     for (i = 0; i < indexCount; i++)
-    ***REMOVED***
+    {
         indices.push(indexStart++);
-    ***REMOVED***
+    }
 
     indices.push(indexStart-1);
-***REMOVED***;
+};
 
 /**
  * Builds a complex polygon to draw
@@ -2738,11 +2738,11 @@ PIXI.WebGLGraphics.buildLine = function(graphicsData, webGLData)
  * @static
  * @private
  * @method buildComplexPoly
- * @param graphicsData ***REMOVED***Graphics***REMOVED*** The graphics object containing all the necessary properties
- * @param webGLData ***REMOVED***Object***REMOVED***
+ * @param graphicsData {Graphics} The graphics object containing all the necessary properties
+ * @param webGLData {Object}
  */
 PIXI.WebGLGraphics.buildComplexPoly = function(graphicsData, webGLData)
-***REMOVED***
+{
     //TODO - no need to copy this as it gets turned into a FLoat32Array anyways..
     var points = graphicsData.points.slice();
     if(points.length < 6)return;
@@ -2766,7 +2766,7 @@ PIXI.WebGLGraphics.buildComplexPoly = function(graphicsData, webGLData)
 
     // get size..
     for (var i = 0; i < points.length; i+=2)
-    ***REMOVED***
+    {
         x = points[i];
         y = points[i+1];
 
@@ -2775,7 +2775,7 @@ PIXI.WebGLGraphics.buildComplexPoly = function(graphicsData, webGLData)
 
         minY = y < minY ? y : minY;
         maxY = y > maxY ? y : maxY;
-    ***REMOVED***
+    }
 
     // add a quad to the end cos there is no point making another buffer!
     points.push(minX, minY,
@@ -2788,11 +2788,11 @@ PIXI.WebGLGraphics.buildComplexPoly = function(graphicsData, webGLData)
     //TODO - this aint needed!
     var length = points.length / 2;
     for (i = 0; i < length; i++)
-    ***REMOVED***
+    {
         indices.push( i );
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
  * Builds a polygon to draw
@@ -2800,11 +2800,11 @@ PIXI.WebGLGraphics.buildComplexPoly = function(graphicsData, webGLData)
  * @static
  * @private
  * @method buildPoly
- * @param graphicsData ***REMOVED***Graphics***REMOVED*** The graphics object containing all the necessary properties
- * @param webGLData ***REMOVED***Object***REMOVED***
+ * @param graphicsData {Graphics} The graphics object containing all the necessary properties
+ * @param webGLData {Object}
  */
 PIXI.WebGLGraphics.buildPoly = function(graphicsData, webGLData)
-***REMOVED***
+{
     var points = graphicsData.points;
 
     if(points.length < 6)return;
@@ -2830,22 +2830,22 @@ PIXI.WebGLGraphics.buildPoly = function(graphicsData, webGLData)
     var i = 0;
 
     for (i = 0; i < triangles.length; i+=3)
-    ***REMOVED***
+    {
         indices.push(triangles[i] + vertPos);
         indices.push(triangles[i] + vertPos);
         indices.push(triangles[i+1] + vertPos);
         indices.push(triangles[i+2] +vertPos);
         indices.push(triangles[i+2] + vertPos);
-    ***REMOVED***
+    }
 
     for (i = 0; i < length; i++)
-    ***REMOVED***
+    {
         verts.push(points[i * 2], points[i * 2 + 1],
                    r, g, b, alpha);
-    ***REMOVED***
+    }
 
     return true;
-***REMOVED***;
+};
 
 PIXI.WebGLGraphics.graphicsDataPool = [];
 
@@ -2855,7 +2855,7 @@ PIXI.WebGLGraphics.graphicsDataPool = [];
  * @static
  */
 PIXI.WebGLGraphicsData = function(gl)
-***REMOVED***
+{
     this.gl = gl;
 
     //TODO does this need to be split before uploding??
@@ -2867,22 +2867,22 @@ PIXI.WebGLGraphicsData = function(gl)
     this.mode = 1;
     this.alpha = 1;
     this.dirty = true;
-***REMOVED***;
+};
 
 /**
  * @method reset
  */
 PIXI.WebGLGraphicsData.prototype.reset = function()
-***REMOVED***
+{
     this.points = [];
     this.indices = [];
-***REMOVED***;
+};
 
 /**
  * @method upload
  */
 PIXI.WebGLGraphicsData.prototype.upload = function()
-***REMOVED***
+{
     var gl = this.gl;
 
 //    this.lastIndex = graphics.graphicsData.length;
@@ -2897,7 +2897,7 @@ PIXI.WebGLGraphicsData.prototype.upload = function()
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, this.glIndicies, gl.STATIC_DRAW);
 
     this.dirty = false;
-***REMOVED***;
+};
 
 /**
  * @author Mat Groves http://matgroves.com/ @Doormat23
@@ -2911,29 +2911,29 @@ PIXI.WebGLGraphicsData.prototype.upload = function()
  * @static
  */
 PIXI.CanvasGraphics = function()
-***REMOVED***
-***REMOVED***;
+{
+};
 
 /*
  * Renders a PIXI.Graphics object to a canvas.
  *
  * @method renderGraphics
  * @static
- * @param graphics ***REMOVED***Graphics***REMOVED*** the actual graphics object to render
- * @param context ***REMOVED***CanvasRenderingContext2D***REMOVED*** the 2d drawing method of the canvas
+ * @param graphics {Graphics} the actual graphics object to render
+ * @param context {CanvasRenderingContext2D} the 2d drawing method of the canvas
  */
 PIXI.CanvasGraphics.renderGraphics = function(graphics, context)
-***REMOVED***
+{
     var worldAlpha = graphics.worldAlpha;
 
     if (graphics.dirty)
-    ***REMOVED***
+    {
         this.updateGraphicsTint(graphics);
         graphics.dirty = false;
-    ***REMOVED***
+    }
 
     for (var i = 0; i < graphics.graphicsData.length; i++)
-    ***REMOVED***
+    {
         var data = graphics.graphicsData[i];
         var shape = data.shape;
 
@@ -2943,7 +2943,7 @@ PIXI.CanvasGraphics.renderGraphics = function(graphics, context)
         context.lineWidth = data.lineWidth;
 
         if (data.type === PIXI.Graphics.POLY)
-        ***REMOVED***
+        {
             context.beginPath();
 
             var points = shape.points;
@@ -2951,74 +2951,74 @@ PIXI.CanvasGraphics.renderGraphics = function(graphics, context)
             context.moveTo(points[0], points[1]);
 
             for (var j=1; j < points.length/2; j++)
-            ***REMOVED***
+            {
                 context.lineTo(points[j * 2], points[j * 2 + 1]);
-            ***REMOVED***
+            }
 
             if (shape.closed)
-            ***REMOVED***
+            {
                 context.lineTo(points[0], points[1]);
-            ***REMOVED***
+            }
 
             // if the first and last point are the same close the path - much neater :)
             if (points[0] === points[points.length-2] && points[1] === points[points.length-1])
-            ***REMOVED***
+            {
                 context.closePath();
-            ***REMOVED***
+            }
 
             if (data.fill)
-            ***REMOVED***
+            {
                 context.globalAlpha = data.fillAlpha * worldAlpha;
                 context.fillStyle = '#' + ('00000' + ( fillColor | 0).toString(16)).substr(-6);
                 context.fill();
-            ***REMOVED***
+            }
 
             if (data.lineWidth)
-            ***REMOVED***
+            {
                 context.globalAlpha = data.lineAlpha * worldAlpha;
                 context.strokeStyle = '#' + ('00000' + ( lineColor | 0).toString(16)).substr(-6);
                 context.stroke();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else if (data.type === PIXI.Graphics.RECT)
-        ***REMOVED***
+        {
             if (data.fillColor || data.fillColor === 0)
-            ***REMOVED***
+            {
                 context.globalAlpha = data.fillAlpha * worldAlpha;
                 context.fillStyle = '#' + ('00000' + ( fillColor | 0).toString(16)).substr(-6);
                 context.fillRect(shape.x, shape.y, shape.width, shape.height);
-            ***REMOVED***
+            }
 
             if (data.lineWidth)
-            ***REMOVED***
+            {
                 context.globalAlpha = data.lineAlpha * worldAlpha;
                 context.strokeStyle = '#' + ('00000' + ( lineColor | 0).toString(16)).substr(-6);
                 context.strokeRect(shape.x, shape.y, shape.width, shape.height);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else if (data.type === PIXI.Graphics.CIRC)
-        ***REMOVED***
+        {
             // TODO - need to be Undefined!
             context.beginPath();
             context.arc(shape.x, shape.y, shape.radius,0,2*Math.PI);
             context.closePath();
 
             if (data.fill)
-            ***REMOVED***
+            {
                 context.globalAlpha = data.fillAlpha * worldAlpha;
                 context.fillStyle = '#' + ('00000' + ( fillColor | 0).toString(16)).substr(-6);
                 context.fill();
-            ***REMOVED***
+            }
 
             if (data.lineWidth)
-            ***REMOVED***
+            {
                 context.globalAlpha = data.lineAlpha * worldAlpha;
                 context.strokeStyle = '#' + ('00000' + ( lineColor | 0).toString(16)).substr(-6);
                 context.stroke();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else if (data.type === PIXI.Graphics.ELIP)
-        ***REMOVED***
+        {
             // ellipse code taken from: http://stackoverflow.com/questions/2172798/how-to-draw-an-oval-in-html5-canvas
 
             var w = shape.width * 2;
@@ -3046,21 +3046,21 @@ PIXI.CanvasGraphics.renderGraphics = function(graphics, context)
             context.closePath();
 
             if (data.fill)
-            ***REMOVED***
+            {
                 context.globalAlpha = data.fillAlpha * worldAlpha;
                 context.fillStyle = '#' + ('00000' + ( fillColor | 0).toString(16)).substr(-6);
                 context.fill();
-            ***REMOVED***
+            }
 
             if (data.lineWidth)
-            ***REMOVED***
+            {
                 context.globalAlpha = data.lineAlpha * worldAlpha;
                 context.strokeStyle = '#' + ('00000' + ( lineColor | 0).toString(16)).substr(-6);
                 context.stroke();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else if (data.type === PIXI.Graphics.RREC)
-        ***REMOVED***
+        {
             var rx = shape.x;
             var ry = shape.y;
             var width = shape.width;
@@ -3083,22 +3083,22 @@ PIXI.CanvasGraphics.renderGraphics = function(graphics, context)
             context.closePath();
 
             if (data.fillColor || data.fillColor === 0)
-            ***REMOVED***
+            {
                 context.globalAlpha = data.fillAlpha * worldAlpha;
                 context.fillStyle = '#' + ('00000' + ( fillColor | 0).toString(16)).substr(-6);
                 context.fill();
-            ***REMOVED***
+            }
 
             if (data.lineWidth)
-            ***REMOVED***
+            {
                 context.globalAlpha = data.lineAlpha * worldAlpha;
                 context.strokeStyle = '#' + ('00000' + ( lineColor | 0).toString(16)).substr(-6);
                 context.stroke();
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
-***REMOVED***;
+};
 
 /*
  * Renders a graphics mask
@@ -3106,57 +3106,57 @@ PIXI.CanvasGraphics.renderGraphics = function(graphics, context)
  * @static
  * @private
  * @method renderGraphicsMask
- * @param graphics ***REMOVED***Graphics***REMOVED*** the graphics which will be used as a mask
- * @param context ***REMOVED***CanvasRenderingContext2D***REMOVED*** the context 2d method of the canvas
+ * @param graphics {Graphics} the graphics which will be used as a mask
+ * @param context {CanvasRenderingContext2D} the context 2d method of the canvas
  */
 PIXI.CanvasGraphics.renderGraphicsMask = function(graphics, context)
-***REMOVED***
+{
     var len = graphics.graphicsData.length;
 
     if (len === 0)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     context.beginPath();
 
     for (var i = 0; i < len; i++)
-    ***REMOVED***
+    {
         var data = graphics.graphicsData[i];
         var shape = data.shape;
 
         if (data.type === PIXI.Graphics.POLY)
-        ***REMOVED***
+        {
 
             var points = shape.points;
         
             context.moveTo(points[0], points[1]);
 
             for (var j=1; j < points.length/2; j++)
-            ***REMOVED***
+            {
                 context.lineTo(points[j * 2], points[j * 2 + 1]);
-            ***REMOVED***
+            }
 
             // if the first and last point are the same close the path - much neater :)
             if (points[0] === points[points.length-2] && points[1] === points[points.length-1])
-            ***REMOVED***
+            {
                 context.closePath();
-            ***REMOVED***
+            }
 
-        ***REMOVED***
+        }
         else if (data.type === PIXI.Graphics.RECT)
-        ***REMOVED***
+        {
             context.rect(shape.x, shape.y, shape.width, shape.height);
             context.closePath();
-        ***REMOVED***
+        }
         else if (data.type === PIXI.Graphics.CIRC)
-        ***REMOVED***
+        {
             // TODO - need to be Undefined!
             context.arc(shape.x, shape.y, shape.radius, 0, 2 * Math.PI);
             context.closePath();
-        ***REMOVED***
+        }
         else if (data.type === PIXI.Graphics.ELIP)
-        ***REMOVED***
+        {
 
             // ellipse code taken from: http://stackoverflow.com/questions/2172798/how-to-draw-an-oval-in-html5-canvas
 
@@ -3180,9 +3180,9 @@ PIXI.CanvasGraphics.renderGraphicsMask = function(graphics, context)
             context.bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye);
             context.bezierCurveTo(xm - ox, ye, x, ym + oy, x, ym);
             context.closePath();
-        ***REMOVED***
+        }
         else if (data.type === PIXI.Graphics.RREC)
-        ***REMOVED***
+        {
 
             var rx = shape.x;
             var ry = shape.y;
@@ -3203,23 +3203,23 @@ PIXI.CanvasGraphics.renderGraphicsMask = function(graphics, context)
             context.lineTo(rx + radius, ry);
             context.quadraticCurveTo(rx, ry, rx, ry + radius);
             context.closePath();
-        ***REMOVED***
-    ***REMOVED***
-***REMOVED***;
+        }
+    }
+};
 
 PIXI.CanvasGraphics.updateGraphicsTint = function(graphics)
-***REMOVED***
+{
     if (graphics.tint === 0xFFFFFF)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     var tintR = (graphics.tint >> 16 & 0xFF) / 255;
     var tintG = (graphics.tint >> 8 & 0xFF) / 255;
     var tintB = (graphics.tint & 0xFF)/ 255;
 
     for (var i = 0; i < graphics.graphicsData.length; i++)
-    ***REMOVED***
+    {
         var data = graphics.graphicsData[i];
 
         var fillColor = data.fillColor | 0;
@@ -3228,14 +3228,14 @@ PIXI.CanvasGraphics.updateGraphicsTint = function(graphics)
         data._fillTint = (((fillColor >> 16 & 0xFF) / 255 * tintR*255 << 16) + ((fillColor >> 8 & 0xFF) / 255 * tintG*255 << 8) +  (fillColor & 0xFF) / 255 * tintB*255);
         data._lineTint = (((lineColor >> 16 & 0xFF) / 255 * tintR*255 << 16) + ((lineColor >> 8 & 0xFF) / 255 * tintG*255 << 8) +  (lineColor & 0xFF) / 255 * tintB*255);
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -3277,29 +3277,29 @@ PIXI.CanvasGraphics.updateGraphicsTint = function(graphics)
 * @extends Phaser.Component.LifeSpan
 * @extends Phaser.Component.PhysicsBody
 * @extends Phaser.Component.Reset
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - Current game instance.
-* @param ***REMOVED***number***REMOVED*** [x=0] - X position of the new graphics object.
-* @param ***REMOVED***number***REMOVED*** [y=0] - Y position of the new graphics object.
+* @param {Phaser.Game} game - Current game instance.
+* @param {number} [x=0] - X position of the new graphics object.
+* @param {number} [y=0] - Y position of the new graphics object.
 */
-Phaser.Graphics = function (game, x, y) ***REMOVED***
+Phaser.Graphics = function (game, x, y) {
 
-    if (x === undefined) ***REMOVED*** x = 0; ***REMOVED***
-    if (y === undefined) ***REMOVED*** y = 0; ***REMOVED***
+    if (x === undefined) { x = 0; }
+    if (y === undefined) { y = 0; }
 
     /**
-    * @property ***REMOVED***number***REMOVED*** type - The const type of this object.
+    * @property {number} type - The const type of this object.
     * @default
     */
     this.type = Phaser.GRAPHICS;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** physicsType - The const physics body type of this object.
+    * @property {number} physicsType - The const physics body type of this object.
     * @readonly
     */
     this.physicsType = Phaser.SPRITE;
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** anchor - Required for a Graphics shape to work as a Physics body, do not modify this value.
+    * @property {Phaser.Point} anchor - Required for a Graphics shape to work as a Physics body, do not modify this value.
     * @private
     */
     this.anchor = new Phaser.Point();
@@ -3308,7 +3308,7 @@ Phaser.Graphics = function (game, x, y) ***REMOVED***
 
     Phaser.Component.Core.init.call(this, game, x, y, '', null);
 
-***REMOVED***;
+};
 
 Phaser.Graphics.prototype = Object.create(PIXI.Graphics.prototype);
 Phaser.Graphics.prototype.constructor = Phaser.Graphics;
@@ -3337,96 +3337,96 @@ Phaser.Graphics.prototype.preUpdateCore = Phaser.Component.Core.preUpdate;
 * @method
 * @memberof Phaser.Graphics
 */
-Phaser.Graphics.prototype.preUpdate = function () ***REMOVED***
+Phaser.Graphics.prototype.preUpdate = function () {
 
     if (!this.preUpdatePhysics() || !this.preUpdateLifeSpan() || !this.preUpdateInWorld())
-    ***REMOVED***
+    {
         return false;
-    ***REMOVED***
+    }
 
     return this.preUpdateCore();
 
-***REMOVED***;
+};
 
 /**
 * Automatically called by World
 * @method Phaser.Graphics.prototype.postUpdate
 */
-Phaser.Graphics.prototype.postUpdate = function () ***REMOVED***
+Phaser.Graphics.prototype.postUpdate = function () {
 
     Phaser.Component.PhysicsBody.postUpdate.call(this);
     Phaser.Component.FixedToCamera.postUpdate.call(this);
 
     if (this._boundsDirty)
-    ***REMOVED***
+    {
         this.updateLocalBounds();
         this._boundsDirty = false;
-    ***REMOVED***
+    }
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         this.children[i].postUpdate();
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Destroy this Graphics instance.
 *
 * @method Phaser.Graphics.prototype.destroy
-* @param ***REMOVED***boolean***REMOVED*** [destroyChildren=true] - Should every child of this object have its destroy method called?
+* @param {boolean} [destroyChildren=true] - Should every child of this object have its destroy method called?
 */
-Phaser.Graphics.prototype.destroy = function(destroyChildren) ***REMOVED***
+Phaser.Graphics.prototype.destroy = function(destroyChildren) {
 
     this.clear();
 
     Phaser.Component.Destroy.prototype.destroy.call(this, destroyChildren);
 
-***REMOVED***;
+};
 
 /*
-* Draws a single ***REMOVED***Phaser.Polygon***REMOVED*** triangle from a ***REMOVED***Phaser.Point***REMOVED*** array
+* Draws a single {Phaser.Polygon} triangle from a {Phaser.Point} array
 *
 * @method Phaser.Graphics.prototype.drawTriangle
-* @param ***REMOVED***Array<Phaser.Point>***REMOVED*** points - An array of Phaser.Points that make up the three vertices of this triangle
-* @param ***REMOVED***boolean***REMOVED*** [cull=false] - Should we check if the triangle is back-facing
+* @param {Array<Phaser.Point>} points - An array of Phaser.Points that make up the three vertices of this triangle
+* @param {boolean} [cull=false] - Should we check if the triangle is back-facing
 */
-Phaser.Graphics.prototype.drawTriangle = function(points, cull) ***REMOVED***
+Phaser.Graphics.prototype.drawTriangle = function(points, cull) {
 
-    if (cull === undefined) ***REMOVED*** cull = false; ***REMOVED***
+    if (cull === undefined) { cull = false; }
 
     var triangle = new Phaser.Polygon(points);
 
     if (cull)
-    ***REMOVED***
+    {
         var cameraToFace = new Phaser.Point(this.game.camera.x - points[0].x, this.game.camera.y - points[0].y);
         var ab = new Phaser.Point(points[1].x - points[0].x, points[1].y - points[0].y);
         var cb = new Phaser.Point(points[1].x - points[2].x, points[1].y - points[2].y);
         var faceNormal = cb.cross(ab);
 
         if (cameraToFace.dot(faceNormal) > 0)
-        ***REMOVED***
+        {
             this.drawPolygon(triangle);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     else
-    ***REMOVED***
+    {
         this.drawPolygon(triangle);
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /*
-* Draws ***REMOVED***Phaser.Polygon***REMOVED*** triangles 
+* Draws {Phaser.Polygon} triangles 
 *
 * @method Phaser.Graphics.prototype.drawTriangles
-* @param ***REMOVED***Array<Phaser.Point>|Array<number>***REMOVED*** vertices - An array of Phaser.Points or numbers that make up the vertices of the triangles
-* @param ***REMOVED***Array<number>***REMOVED*** ***REMOVED***indices=null***REMOVED*** - An array of numbers that describe what order to draw the vertices in
-* @param ***REMOVED***boolean***REMOVED*** [cull=false] - Should we check if the triangle is back-facing
+* @param {Array<Phaser.Point>|Array<number>} vertices - An array of Phaser.Points or numbers that make up the vertices of the triangles
+* @param {Array<number>} {indices=null} - An array of numbers that describe what order to draw the vertices in
+* @param {boolean} [cull=false] - Should we check if the triangle is back-facing
 */
-Phaser.Graphics.prototype.drawTriangles = function(vertices, indices, cull) ***REMOVED***
+Phaser.Graphics.prototype.drawTriangles = function(vertices, indices, cull) {
 
-    if (cull === undefined) ***REMOVED*** cull = false; ***REMOVED***
+    if (cull === undefined) { cull = false; }
 
     var point1 = new Phaser.Point();
     var point2 = new Phaser.Point();
@@ -3435,18 +3435,18 @@ Phaser.Graphics.prototype.drawTriangles = function(vertices, indices, cull) ***R
     var i;
 
     if (!indices)
-    ***REMOVED***
+    {
         if (vertices[0] instanceof Phaser.Point)
-        ***REMOVED***
+        {
             for (i = 0; i < vertices.length / 3; i++)
-            ***REMOVED***
+            {
                 this.drawTriangle([vertices[i * 3], vertices[i * 3 + 1], vertices[i * 3 + 2]], cull);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             for (i = 0; i < vertices.length / 6; i++)
-            ***REMOVED***
+            {
                 point1.x = vertices[i * 6 + 0];
                 point1.y = vertices[i * 6 + 1];
                 point2.x = vertices[i * 6 + 2];
@@ -3454,40 +3454,40 @@ Phaser.Graphics.prototype.drawTriangles = function(vertices, indices, cull) ***R
                 point3.x = vertices[i * 6 + 4];
                 point3.y = vertices[i * 6 + 5];
                 this.drawTriangle([point1, point2, point3], cull);
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
     else
-    ***REMOVED***
+    {
         if (vertices[0] instanceof Phaser.Point)
-        ***REMOVED***
+        {
             for (i = 0; i < indices.length /3; i++)
-            ***REMOVED***
+            {
                 points.push(vertices[indices[i * 3 ]]);
                 points.push(vertices[indices[i * 3 + 1]]);
                 points.push(vertices[indices[i * 3 + 2]]);
 
                 if (points.length === 3)
-                ***REMOVED***
+                {
                     this.drawTriangle(points, cull);
                     points = [];
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
         else
-        ***REMOVED***
+        {
             for (i = 0; i < indices.length; i++)
-            ***REMOVED***
+            {
                 point1.x = vertices[indices[i] * 2];
                 point1.y = vertices[indices[i] * 2 + 1];
-                points.push(point1.copyTo(***REMOVED******REMOVED***));
+                points.push(point1.copyTo({}));
 
                 if (points.length === 3)
-                ***REMOVED***
+                {
                     this.drawTriangle(points, cull);
                     points = [];
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
-***REMOVED***;
+                }
+            }
+        }
+    }
+};

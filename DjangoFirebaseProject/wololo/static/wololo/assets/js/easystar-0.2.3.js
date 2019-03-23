@@ -1,26 +1,26 @@
 // NameSpace
-var EasyStar = EasyStar || ***REMOVED******REMOVED***;
+var EasyStar = EasyStar || {};
 
 // For require.js
-if (typeof define === "function" && define.amd) ***REMOVED***
-	define("easystar", [], function() ***REMOVED***
+if (typeof define === "function" && define.amd) {
+	define("easystar", [], function() {
 		return EasyStar;
-	***REMOVED***);
-***REMOVED***
+	});
+}
 
 // For browserify and node.js
-if (typeof module !== 'undefined' && module.exports) ***REMOVED***
+if (typeof module !== 'undefined' && module.exports) {
 	module.exports = EasyStar;
-***REMOVED***
+}
 /**
 * A simple Node that represents a single tile on the grid.
-* @param ***REMOVED***Object***REMOVED*** parent The parent node.
-* @param ***REMOVED***Number***REMOVED*** x The x position on the grid.
-* @param ***REMOVED***Number***REMOVED*** y The y position on the grid.
-* @param ***REMOVED***Number***REMOVED*** costSoFar How far this node is in moves*cost from the start.
-* @param ***REMOVED***Number***REMOVED*** simpleDistanceToTarget Manhatten distance to the end point.
+* @param {Object} parent The parent node.
+* @param {Number} x The x position on the grid.
+* @param {Number} y The y position on the grid.
+* @param {Number} costSoFar How far this node is in moves*cost from the start.
+* @param {Number} simpleDistanceToTarget Manhatten distance to the end point.
 **/
-EasyStar.Node = function(parent, x, y, costSoFar, simpleDistanceToTarget) ***REMOVED***
+EasyStar.Node = function(parent, x, y, costSoFar, simpleDistanceToTarget) {
 	this.parent = parent;
 	this.x = x;
 	this.y = y;
@@ -28,12 +28,12 @@ EasyStar.Node = function(parent, x, y, costSoFar, simpleDistanceToTarget) ***REM
 	this.simpleDistanceToTarget = simpleDistanceToTarget;
 
 	/**
-	* @return ***REMOVED***Number***REMOVED*** Best guess distance of a cost using this node.
+	* @return {Number} Best guess distance of a cost using this node.
 	**/
-	this.bestGuessDistance = function() ***REMOVED***
+	this.bestGuessDistance = function() {
 		return this.costSoFar + this.simpleDistanceToTarget;
-	***REMOVED***
-***REMOVED***;
+	}
+};
 
 // Constants
 EasyStar.Node.OPEN_LIST = 0;
@@ -44,149 +44,149 @@ EasyStar.Node.CLOSED_LIST = 1;
 *
 * For more on binary heaps see: http://en.wikipedia.org/wiki/Binary_heap
 *
-* @param ***REMOVED***String***REMOVED*** criteria The criteria by which to sort the objects.
+* @param {String} criteria The criteria by which to sort the objects.
 * This should be a property of the objects you're sorting.
 *
-* @param ***REMOVED***Number***REMOVED*** heapType either PriorityQueue.MAX_HEAP or PriorityQueue.MIN_HEAP.
+* @param {Number} heapType either PriorityQueue.MAX_HEAP or PriorityQueue.MIN_HEAP.
 **/
-EasyStar.PriorityQueue = function(criteria,heapType) ***REMOVED***
+EasyStar.PriorityQueue = function(criteria,heapType) {
 	this.length = 0; //The current length of heap.
 	var queue = [];
 	var isMax = false;
 
 	//Constructor
-	if (heapType==EasyStar.PriorityQueue.MAX_HEAP) ***REMOVED***
+	if (heapType==EasyStar.PriorityQueue.MAX_HEAP) {
 		isMax = true;
-	***REMOVED*** else if (heapType==EasyStar.PriorityQueue.MIN_HEAP) ***REMOVED***
+	} else if (heapType==EasyStar.PriorityQueue.MIN_HEAP) {
 		isMax = false;
-	***REMOVED*** else ***REMOVED***
+	} else {
 		throw heapType + " not supported.";
-	***REMOVED***
+	}
 
 	/**
 	* Inserts the value into the heap and sorts it.
 	*
 	* @param value The object to insert into the heap.
 	**/
-	this.insert = function(value) ***REMOVED***
-		if (!value.hasOwnProperty(criteria)) ***REMOVED***
+	this.insert = function(value) {
+		if (!value.hasOwnProperty(criteria)) {
 			throw "Cannot insert " + value + " because it does not have a property by the name of " + criteria + ".";
-		***REMOVED***
+		}
 		queue.push(value);
 		this.length++;
 		bubbleUp(this.length-1);
-	***REMOVED***
+	}
 
 	/**
 	* Peeks at the highest priority element.
 	*
 	* @return the highest priority element
 	**/
-	this.getHighestPriorityElement = function() ***REMOVED***
+	this.getHighestPriorityElement = function() {
 		return queue[0];
-	***REMOVED***
+	}
 
 	/**
 	* Removes and returns the highest priority element from the queue.
 	*
 	* @return the highest priority element
 	**/
-	this.shiftHighestPriorityElement = function() ***REMOVED***
-		if (this.length === 0) ***REMOVED***
+	this.shiftHighestPriorityElement = function() {
+		if (this.length === 0) {
 			throw ("There are no more elements in your priority queue.");
-		***REMOVED*** else if (this.length === 1) ***REMOVED***
+		} else if (this.length === 1) {
 			var onlyValue = queue[0];
 			queue = [];
                         this.length = 0;
 			return onlyValue;
-		***REMOVED***
+		}
 		var oldRoot = queue[0];
 		var newRoot = queue.pop();
 		this.length--;
 		queue[0] = newRoot;
 		swapUntilQueueIsCorrect(0);
 		return oldRoot;
-	***REMOVED***
+	}
 
-	var bubbleUp = function(index) ***REMOVED***
-		if (index===0) ***REMOVED***
+	var bubbleUp = function(index) {
+		if (index===0) {
 			return;
-		***REMOVED***
+		}
 		var parent = getParentOf(index);
-		if (evaluate(index,parent)) ***REMOVED***
+		if (evaluate(index,parent)) {
 			swap(index,parent);
 			bubbleUp(parent);
-		***REMOVED*** else ***REMOVED***
+		} else {
 			return;
-		***REMOVED***
-	***REMOVED***
+		}
+	}
 
-	var swapUntilQueueIsCorrect = function(value) ***REMOVED***
+	var swapUntilQueueIsCorrect = function(value) {
 		var left = getLeftOf(value);
 		var right = getRightOf(value);
-		if (evaluate(left,value)) ***REMOVED***
+		if (evaluate(left,value)) {
 			swap(value,left);
 			swapUntilQueueIsCorrect(left);
-		***REMOVED*** else if (evaluate(right,value)) ***REMOVED***
+		} else if (evaluate(right,value)) {
 			swap(value,right);
 			swapUntilQueueIsCorrect(right);
-		***REMOVED*** else if (value==0) ***REMOVED***
+		} else if (value==0) {
 			return;
-		***REMOVED*** else ***REMOVED***
+		} else {
 			swapUntilQueueIsCorrect(0);
-		***REMOVED***
-	***REMOVED***
+		}
+	}
 
-	var swap = function(self,target) ***REMOVED***
+	var swap = function(self,target) {
 		var placeHolder = queue[self];
 		queue[self] = queue[target];
 		queue[target] = placeHolder;
-	***REMOVED***
+	}
 
-	var evaluate = function(self,target) ***REMOVED***
-		if (queue[target]===undefined||queue[self]===undefined) ***REMOVED***
+	var evaluate = function(self,target) {
+		if (queue[target]===undefined||queue[self]===undefined) {
 			return false;
-		***REMOVED***
+		}
 
 		var selfValue;
 		var targetValue;
 
 		// Check if the criteria should be the result of a function call.
-		if (typeof queue[self][criteria] === 'function') ***REMOVED***
+		if (typeof queue[self][criteria] === 'function') {
 			selfValue = queue[self][criteria]();
 			targetValue = queue[target][criteria]();
-		***REMOVED*** else ***REMOVED***
+		} else {
 			selfValue = queue[self][criteria];
 			targetValue = queue[target][criteria];
-		***REMOVED***
+		}
 
-		if (isMax) ***REMOVED***
-			if (selfValue > targetValue) ***REMOVED***
+		if (isMax) {
+			if (selfValue > targetValue) {
 				return true;
-			***REMOVED*** else ***REMOVED***
+			} else {
 				return false;
-			***REMOVED***
-		***REMOVED*** else ***REMOVED***
-			if (selfValue < targetValue) ***REMOVED***
+			}
+		} else {
+			if (selfValue < targetValue) {
 				return true;
-			***REMOVED*** else ***REMOVED***
+			} else {
 				return false;
-			***REMOVED***
-		***REMOVED***
-	***REMOVED***
+			}
+		}
+	}
 
-	var getParentOf = function(index) ***REMOVED***
+	var getParentOf = function(index) {
 		return Math.floor((index-1) / 2);
-	***REMOVED***
+	}
 
-	var getLeftOf = function(index) ***REMOVED***
+	var getLeftOf = function(index) {
 		return index*2 + 1;
-	***REMOVED***
+	}
 
-	var getRightOf = function(index) ***REMOVED***
+	var getRightOf = function(index) {
 		return index*2 + 2;
-	***REMOVED***
-***REMOVED***;
+	}
+};
 
 // Constants
 EasyStar.PriorityQueue.MAX_HEAP = 0;
@@ -196,17 +196,17 @@ EasyStar.PriorityQueue.MIN_HEAP = 1;
  * Represents a single instance of EasyStar.
  * A path that is in the queue to eventually be found.
  */
-EasyStar.instance = function() ***REMOVED***
+EasyStar.instance = function() {
 	this.isDoneCalculating = true;
-	this.pointsToAvoid = ***REMOVED******REMOVED***;
+	this.pointsToAvoid = {};
 	this.startX;
 	this.callback;
 	this.startY;
 	this.endX;
 	this.endY;
-	this.nodeHash = ***REMOVED******REMOVED***;
+	this.nodeHash = {};
 	this.openList;
-***REMOVED***;
+};
 /**
 *	EasyStar.js
 *	github.com/prettymuchbryce/EasyStarJS
@@ -214,14 +214,14 @@ EasyStar.instance = function() ***REMOVED***
 *
 *	Implementation By Bryce Neal (@prettymuchbryce)
 **/
-EasyStar.js = function() ***REMOVED***
+EasyStar.js = function() {
 	var STRAIGHT_COST = 1.0;
 	var DIAGONAL_COST = 1.4;
 	var syncEnabled = false;
-	var pointsToAvoid = ***REMOVED******REMOVED***;
+	var pointsToAvoid = {};
 	var collisionGrid;
-	var costMap = ***REMOVED******REMOVED***;
-	var pointsToCost = ***REMOVED******REMOVED***;
+	var costMap = {};
+	var pointsToCost = {};
 	var allowCornerCutting = true;
 	var iterationsSoFar;
 	var instances = [];
@@ -232,106 +232,106 @@ EasyStar.js = function() ***REMOVED***
 	/**
 	* Sets the collision grid that EasyStar uses.
 	*
-	* @param ***REMOVED***Array|Number***REMOVED*** tiles An array of numbers that represent
+	* @param {Array|Number} tiles An array of numbers that represent
 	* which tiles in your grid should be considered
 	* acceptable, or "walkable".
 	**/
-	this.setAcceptableTiles = function(tiles) ***REMOVED***
-		if (tiles instanceof Array) ***REMOVED***
+	this.setAcceptableTiles = function(tiles) {
+		if (tiles instanceof Array) {
 			// Array
 			acceptableTiles = tiles;
-		***REMOVED*** else if (!isNaN(parseFloat(tiles)) && isFinite(tiles)) ***REMOVED***
+		} else if (!isNaN(parseFloat(tiles)) && isFinite(tiles)) {
 			// Number
 			acceptableTiles = [tiles];
-		***REMOVED***
-	***REMOVED***;
+		}
+	};
 
 	/**
 	* Enables sync mode for this EasyStar instance..
 	* if you're into that sort of thing.
 	**/
-	this.enableSync = function() ***REMOVED***
+	this.enableSync = function() {
 		syncEnabled = true;
-	***REMOVED***;
+	};
 
 	/**
 	* Disables sync mode for this EasyStar instance.
 	**/
-	this.disableSync = function() ***REMOVED***
+	this.disableSync = function() {
 		syncEnabled = false;
-	***REMOVED***;
+	};
 
 	/**
 	 * Enable diagonal pathfinding.
 	 */
-	this.enableDiagonals = function() ***REMOVED***
+	this.enableDiagonals = function() {
 		diagonalsEnabled = true;
-	***REMOVED***
+	}
 
 	/**
 	 * Disable diagonal pathfinding.
 	 */
-	this.disableDiagonals = function() ***REMOVED***
+	this.disableDiagonals = function() {
 		diagonalsEnabled = false;
-	***REMOVED***
+	}
 
 	/**
 	* Sets the collision grid that EasyStar uses.
 	*
-	* @param ***REMOVED***Array***REMOVED*** grid The collision grid that this EasyStar instance will read from.
+	* @param {Array} grid The collision grid that this EasyStar instance will read from.
 	* This should be a 2D Array of Numbers.
 	**/
-	this.setGrid = function(grid) ***REMOVED***
+	this.setGrid = function(grid) {
 		collisionGrid = grid;
 
 		//Setup cost map
-		for (var y = 0; y < collisionGrid.length; y++) ***REMOVED***
-			for (var x = 0; x < collisionGrid[0].length; x++) ***REMOVED***
-				if (!costMap[collisionGrid[y][x]]) ***REMOVED***
+		for (var y = 0; y < collisionGrid.length; y++) {
+			for (var x = 0; x < collisionGrid[0].length; x++) {
+				if (!costMap[collisionGrid[y][x]]) {
 					costMap[collisionGrid[y][x]] = 1
-				***REMOVED***
-			***REMOVED***
-		***REMOVED***
-	***REMOVED***;
+				}
+			}
+		}
+	};
 
 	/**
 	* Sets the tile cost for a particular tile type.
 	*
-	* @param ***REMOVED***Number***REMOVED*** The tile type to set the cost for.
-	* @param ***REMOVED***Number***REMOVED*** The multiplicative cost associated with the given tile.
+	* @param {Number} The tile type to set the cost for.
+	* @param {Number} The multiplicative cost associated with the given tile.
 	**/
-	this.setTileCost = function(tileType, cost) ***REMOVED***
+	this.setTileCost = function(tileType, cost) {
 		costMap[tileType] = cost;
-	***REMOVED***;
+	};
 
 	/**
 	* Sets the an additional cost for a particular point.
 	* Overrides the cost from setTileCost.
 	*
-	* @param ***REMOVED***Number***REMOVED*** x The x value of the point to cost.
-	* @param ***REMOVED***Number***REMOVED*** y The y value of the point to cost.
-	* @param ***REMOVED***Number***REMOVED*** The multiplicative cost associated with the given point.
+	* @param {Number} x The x value of the point to cost.
+	* @param {Number} y The y value of the point to cost.
+	* @param {Number} The multiplicative cost associated with the given point.
 	**/
-	this.setAdditionalPointCost = function(x, y, cost) ***REMOVED***
+	this.setAdditionalPointCost = function(x, y, cost) {
 		pointsToCost[x + '_' + y] = cost;
-	***REMOVED***;
+	};
 
 	/**
 	* Remove the additional cost for a particular point.
 	*
-	* @param ***REMOVED***Number***REMOVED*** x The x value of the point to stop costing.
-	* @param ***REMOVED***Number***REMOVED*** y The y value of the point to stop costing.
+	* @param {Number} x The x value of the point to stop costing.
+	* @param {Number} y The y value of the point to stop costing.
 	**/
-	this.removeAdditionalPointCost = function(x, y) ***REMOVED***
+	this.removeAdditionalPointCost = function(x, y) {
 		delete pointsToCost[x + '_' + y];
-	***REMOVED***
+	}
 
 	/**
 	* Remove all additional point costs.
 	**/
-	this.removeAllAdditionalPointCosts = function() ***REMOVED***
-		pointsToCost = ***REMOVED******REMOVED***;
-	***REMOVED***
+	this.removeAllAdditionalPointCosts = function() {
+		pointsToCost = {};
+	}
 
 	/**
 	* Sets the number of search iterations per calculation.
@@ -339,119 +339,119 @@ EasyStar.js = function() ***REMOVED***
 	* have a large tile-map and don't want to block your thread while
 	* finding a path.
 	*
-	* @param ***REMOVED***Number***REMOVED*** iterations The number of searches to prefrom per calculate() call.
+	* @param {Number} iterations The number of searches to prefrom per calculate() call.
 	**/
-	this.setIterationsPerCalculation = function(iterations) ***REMOVED***
+	this.setIterationsPerCalculation = function(iterations) {
 		iterationsPerCalculation = iterations;
-	***REMOVED***;
+	};
 
 	/**
 	* Avoid a particular point on the grid,
 	* regardless of whether or not it is an acceptable tile.
 	*
-	* @param ***REMOVED***Number***REMOVED*** x The x value of the point to avoid.
-	* @param ***REMOVED***Number***REMOVED*** y The y value of the point to avoid.
+	* @param {Number} x The x value of the point to avoid.
+	* @param {Number} y The y value of the point to avoid.
 	**/
-	this.avoidAdditionalPoint = function(x, y) ***REMOVED***
+	this.avoidAdditionalPoint = function(x, y) {
 		pointsToAvoid[x + "_" + y] = 1;
-	***REMOVED***;
+	};
 
 	/**
 	* Stop avoiding a particular point on the grid.
 	*
-	* @param ***REMOVED***Number***REMOVED*** x The x value of the point to stop avoiding.
-	* @param ***REMOVED***Number***REMOVED*** y The y value of the point to stop avoiding.
+	* @param {Number} x The x value of the point to stop avoiding.
+	* @param {Number} y The y value of the point to stop avoiding.
 	**/
-	this.stopAvoidingAdditionalPoint = function(x, y) ***REMOVED***
+	this.stopAvoidingAdditionalPoint = function(x, y) {
 		delete pointsToAvoid[x + "_" + y];
-	***REMOVED***;
+	};
 
 	/**
 	* Enables corner cutting in diagonal movement.
 	**/
-	this.enableCornerCutting = function() ***REMOVED***
+	this.enableCornerCutting = function() {
 		allowCornerCutting = true;
-	***REMOVED***;
+	};
 
 	/**
 	* Disables corner cutting in diagonal movement.
 	**/
-	this.disableCornerCutting = function() ***REMOVED***
+	this.disableCornerCutting = function() {
 		allowCornerCutting = false;
-	***REMOVED***;
+	};
 
 	/**
 	* Stop avoiding all additional points on the grid.
 	**/
-	this.stopAvoidingAllAdditionalPoints = function() ***REMOVED***
-		pointsToAvoid = ***REMOVED******REMOVED***;
-	***REMOVED***;
+	this.stopAvoidingAllAdditionalPoints = function() {
+		pointsToAvoid = {};
+	};
 
 	/**
 	* Find a path.
 	*
-	* @param ***REMOVED***Number***REMOVED*** startX The X position of the starting point.
-	* @param ***REMOVED***Number***REMOVED*** startY The Y position of the starting point.
-	* @param ***REMOVED***Number***REMOVED*** endX The X position of the ending point.
-	* @param ***REMOVED***Number***REMOVED*** endY The Y position of the ending point.
-	* @param ***REMOVED***Function***REMOVED*** callback A function that is called when your path
+	* @param {Number} startX The X position of the starting point.
+	* @param {Number} startY The Y position of the starting point.
+	* @param {Number} endX The X position of the ending point.
+	* @param {Number} endY The Y position of the ending point.
+	* @param {Function} callback A function that is called when your path
 	* is found, or no path is found.
 	*
 	**/
-	this.findPath = function(startX, startY, endX, endY, callback) ***REMOVED***
+	this.findPath = function(startX, startY, endX, endY, callback) {
 		// Wraps the callback for sync vs async logic
-		var callbackWrapper = function(result) ***REMOVED***
-			if (syncEnabled) ***REMOVED***
+		var callbackWrapper = function(result) {
+			if (syncEnabled) {
 				callback(result);
-			***REMOVED*** else ***REMOVED***
-				setTimeout(function() ***REMOVED***
+			} else {
+				setTimeout(function() {
 					callback(result);
-				***REMOVED***);
-			***REMOVED***
-		***REMOVED***
+				});
+			}
+		}
 
 		// No acceptable tiles were set
-		if (acceptableTiles === undefined) ***REMOVED***
+		if (acceptableTiles === undefined) {
 			throw new Error("You can't set a path without first calling setAcceptableTiles() on EasyStar.");
-		***REMOVED***
+		}
 		// No grid was set
-		if (collisionGrid === undefined) ***REMOVED***
+		if (collisionGrid === undefined) {
 			throw new Error("You can't set a path without first calling setGrid() on EasyStar.");
-		***REMOVED***
+		}
 
 		// Start or endpoint outside of scope.
 		if (startX < 0 || startY < 0 || endX < 0 || endX < 0 ||
 		startX > collisionGrid[0].length-1 || startY > collisionGrid.length-1 ||
-		endX > collisionGrid[0].length-1 || endY > collisionGrid.length-1) ***REMOVED***
+		endX > collisionGrid[0].length-1 || endY > collisionGrid.length-1) {
 			throw new Error("Your start or end point is outside the scope of your grid.");
-		***REMOVED***
+		}
 
 		// Start and end are the same tile.
-		if (startX===endX && startY===endY) ***REMOVED***
+		if (startX===endX && startY===endY) {
 			callbackWrapper([]);
 			return;
-		***REMOVED***
+		}
 
 		// End point is not an acceptable tile.
 		var endTile = collisionGrid[endY][endX];
 		var isAcceptable = false;
-		for (var i = 0; i < acceptableTiles.length; i++) ***REMOVED***
-			if (endTile === acceptableTiles[i]) ***REMOVED***
+		for (var i = 0; i < acceptableTiles.length; i++) {
+			if (endTile === acceptableTiles[i]) {
 				isAcceptable = true;
 				break;
-			***REMOVED***
-		***REMOVED***
+			}
+		}
 
-		if (isAcceptable === false) ***REMOVED***
+		if (isAcceptable === false) {
 			callbackWrapper(null);
 			return;
-		***REMOVED***
+		}
 
 		// Create the instance
 		var instance = new EasyStar.instance();
 		instance.openList = new EasyStar.PriorityQueue("bestGuessDistance",EasyStar.PriorityQueue.MIN_HEAP);
 		instance.isDoneCalculating = false;
-		instance.nodeHash = ***REMOVED******REMOVED***;
+		instance.nodeHash = {};
 		instance.startX = startX;
 		instance.startY = startY;
 		instance.endX = endX;
@@ -462,7 +462,7 @@ EasyStar.js = function() ***REMOVED***
 			instance.startY, null, STRAIGHT_COST));
 
 		instances.push(instance);
-	***REMOVED***;
+	};
 
 	/**
 	* This method steps through the A* Algorithm in an attempt to
@@ -470,203 +470,203 @@ EasyStar.js = function() ***REMOVED***
 	* You can change the number of calculations done in a call by using
 	* easystar.setIteratonsPerCalculation().
 	**/
-	this.calculate = function() ***REMOVED***
-		if (instances.length === 0 || collisionGrid === undefined || acceptableTiles === undefined) ***REMOVED***
+	this.calculate = function() {
+		if (instances.length === 0 || collisionGrid === undefined || acceptableTiles === undefined) {
 			return;
-		***REMOVED***
-		for (iterationsSoFar = 0; iterationsSoFar < iterationsPerCalculation; iterationsSoFar++) ***REMOVED***
-			if (instances.length === 0) ***REMOVED***
+		}
+		for (iterationsSoFar = 0; iterationsSoFar < iterationsPerCalculation; iterationsSoFar++) {
+			if (instances.length === 0) {
 				return;
-			***REMOVED***
+			}
 
-			if (syncEnabled) ***REMOVED***
+			if (syncEnabled) {
 				// If this is a sync instance, we want to make sure that it calculates synchronously.
 				iterationsSoFar = 0;
-			***REMOVED***
+			}
 
 			// Couldn't find a path.
-			if (instances[0].openList.length === 0) ***REMOVED***
+			if (instances[0].openList.length === 0) {
 				var ic = instances[0];
 				ic.callback(null);
 				instances.shift();
 				continue;
-			***REMOVED***
+			}
 
 			var searchNode = instances[0].openList.shiftHighestPriorityElement();
 
 			var tilesToSearch = [];
 			searchNode.list = EasyStar.Node.CLOSED_LIST;
 
-			if (searchNode.y > 0) ***REMOVED***
-				tilesToSearch.push(***REMOVED*** instance: instances[0], searchNode: searchNode,
-					x: 0, y: -1, cost: STRAIGHT_COST * getTileCost(searchNode.x, searchNode.y-1)***REMOVED***);
-			***REMOVED***
-			if (searchNode.x < collisionGrid[0].length-1) ***REMOVED***
-				tilesToSearch.push(***REMOVED*** instance: instances[0], searchNode: searchNode,
-					x: 1, y: 0, cost: STRAIGHT_COST * getTileCost(searchNode.x+1, searchNode.y)***REMOVED***);
-			***REMOVED***
-			if (searchNode.y < collisionGrid.length-1) ***REMOVED***
-				tilesToSearch.push(***REMOVED*** instance: instances[0], searchNode: searchNode,
-					x: 0, y: 1, cost: STRAIGHT_COST * getTileCost(searchNode.x, searchNode.y+1)***REMOVED***);
-			***REMOVED***
-			if (searchNode.x > 0) ***REMOVED***
-				tilesToSearch.push(***REMOVED*** instance: instances[0], searchNode: searchNode,
-					x: -1, y: 0, cost: STRAIGHT_COST * getTileCost(searchNode.x-1, searchNode.y)***REMOVED***);
-			***REMOVED***
-			if (diagonalsEnabled) ***REMOVED***
-				if (searchNode.x > 0 && searchNode.y > 0) ***REMOVED***
+			if (searchNode.y > 0) {
+				tilesToSearch.push({ instance: instances[0], searchNode: searchNode,
+					x: 0, y: -1, cost: STRAIGHT_COST * getTileCost(searchNode.x, searchNode.y-1)});
+			}
+			if (searchNode.x < collisionGrid[0].length-1) {
+				tilesToSearch.push({ instance: instances[0], searchNode: searchNode,
+					x: 1, y: 0, cost: STRAIGHT_COST * getTileCost(searchNode.x+1, searchNode.y)});
+			}
+			if (searchNode.y < collisionGrid.length-1) {
+				tilesToSearch.push({ instance: instances[0], searchNode: searchNode,
+					x: 0, y: 1, cost: STRAIGHT_COST * getTileCost(searchNode.x, searchNode.y+1)});
+			}
+			if (searchNode.x > 0) {
+				tilesToSearch.push({ instance: instances[0], searchNode: searchNode,
+					x: -1, y: 0, cost: STRAIGHT_COST * getTileCost(searchNode.x-1, searchNode.y)});
+			}
+			if (diagonalsEnabled) {
+				if (searchNode.x > 0 && searchNode.y > 0) {
 
 					if (allowCornerCutting ||
 						(isTileWalkable(collisionGrid, acceptableTiles, searchNode.x, searchNode.y-1) &&
-						isTileWalkable(collisionGrid, acceptableTiles, searchNode.x-1, searchNode.y))) ***REMOVED***
+						isTileWalkable(collisionGrid, acceptableTiles, searchNode.x-1, searchNode.y))) {
 
-						tilesToSearch.push(***REMOVED*** instance: instances[0], searchNode: searchNode,
-							x: -1, y: -1, cost: DIAGONAL_COST * getTileCost(searchNode.x-1, searchNode.y-1)***REMOVED***);
-					***REMOVED***
-				***REMOVED***
-				if (searchNode.x < collisionGrid[0].length-1 && searchNode.y < collisionGrid.length-1) ***REMOVED***
+						tilesToSearch.push({ instance: instances[0], searchNode: searchNode,
+							x: -1, y: -1, cost: DIAGONAL_COST * getTileCost(searchNode.x-1, searchNode.y-1)});
+					}
+				}
+				if (searchNode.x < collisionGrid[0].length-1 && searchNode.y < collisionGrid.length-1) {
 
 					if (allowCornerCutting ||
 						(isTileWalkable(collisionGrid, acceptableTiles, searchNode.x, searchNode.y+1) &&
-						isTileWalkable(collisionGrid, acceptableTiles, searchNode.x+1, searchNode.y))) ***REMOVED***
+						isTileWalkable(collisionGrid, acceptableTiles, searchNode.x+1, searchNode.y))) {
 
-						tilesToSearch.push(***REMOVED*** instance: instances[0], searchNode: searchNode,
-							x: 1, y: 1, cost: DIAGONAL_COST * getTileCost(searchNode.x+1, searchNode.y+1)***REMOVED***);
-					***REMOVED***
-				***REMOVED***
-				if (searchNode.x < collisionGrid[0].length-1 && searchNode.y > 0) ***REMOVED***
+						tilesToSearch.push({ instance: instances[0], searchNode: searchNode,
+							x: 1, y: 1, cost: DIAGONAL_COST * getTileCost(searchNode.x+1, searchNode.y+1)});
+					}
+				}
+				if (searchNode.x < collisionGrid[0].length-1 && searchNode.y > 0) {
 
 					if (allowCornerCutting ||
 						(isTileWalkable(collisionGrid, acceptableTiles, searchNode.x, searchNode.y-1) &&
-						isTileWalkable(collisionGrid, acceptableTiles, searchNode.x+1, searchNode.y))) ***REMOVED***
+						isTileWalkable(collisionGrid, acceptableTiles, searchNode.x+1, searchNode.y))) {
 
 
-						tilesToSearch.push(***REMOVED*** instance: instances[0], searchNode: searchNode,
-							x: 1, y: -1, cost: DIAGONAL_COST * getTileCost(searchNode.x+1, searchNode.y-1)***REMOVED***);
-					***REMOVED***
-				***REMOVED***
-				if (searchNode.x > 0 && searchNode.y < collisionGrid.length-1) ***REMOVED***
+						tilesToSearch.push({ instance: instances[0], searchNode: searchNode,
+							x: 1, y: -1, cost: DIAGONAL_COST * getTileCost(searchNode.x+1, searchNode.y-1)});
+					}
+				}
+				if (searchNode.x > 0 && searchNode.y < collisionGrid.length-1) {
 
 					if (allowCornerCutting ||
 						(isTileWalkable(collisionGrid, acceptableTiles, searchNode.x, searchNode.y+1) &&
-						isTileWalkable(collisionGrid, acceptableTiles, searchNode.x-1, searchNode.y))) ***REMOVED***
+						isTileWalkable(collisionGrid, acceptableTiles, searchNode.x-1, searchNode.y))) {
 
 
-						tilesToSearch.push(***REMOVED*** instance: instances[0], searchNode: searchNode,
-							x: -1, y: 1, cost: DIAGONAL_COST * getTileCost(searchNode.x-1, searchNode.y+1)***REMOVED***);
-					***REMOVED***
-				***REMOVED***
-			***REMOVED***
+						tilesToSearch.push({ instance: instances[0], searchNode: searchNode,
+							x: -1, y: 1, cost: DIAGONAL_COST * getTileCost(searchNode.x-1, searchNode.y+1)});
+					}
+				}
+			}
 
 			// First sort all of the potential nodes we could search by their cost + heuristic distance.
-			tilesToSearch.sort(function(a, b) ***REMOVED***
+			tilesToSearch.sort(function(a, b) {
 				var aCost = a.cost + getDistance(searchNode.x + a.x, searchNode.y + a.y, instances[0].endX, instances[0].endY)
 				var bCost = b.cost + getDistance(searchNode.x + b.x, searchNode.y + b.y, instances[0].endX, instances[0].endY)
-				if (aCost < bCost) ***REMOVED***
+				if (aCost < bCost) {
 					return -1;
-				***REMOVED*** else if (aCost === bCost) ***REMOVED***
+				} else if (aCost === bCost) {
 					return 0;
-				***REMOVED*** else ***REMOVED***
+				} else {
 					return 1;
-				***REMOVED***
-			***REMOVED***);
+				}
+			});
 
 			var isDoneCalculating = false;
 
 			// Search all of the surrounding nodes
-			for (var i = 0; i < tilesToSearch.length; i++) ***REMOVED***
+			for (var i = 0; i < tilesToSearch.length; i++) {
 				checkAdjacentNode(tilesToSearch[i].instance, tilesToSearch[i].searchNode,
 					tilesToSearch[i].x, tilesToSearch[i].y, tilesToSearch[i].cost);
-				if (tilesToSearch[i].instance.isDoneCalculating === true) ***REMOVED***
+				if (tilesToSearch[i].instance.isDoneCalculating === true) {
 					isDoneCalculating = true;
 					break;
-				***REMOVED***
-			***REMOVED***
+				}
+			}
 
-			if (isDoneCalculating) ***REMOVED***
+			if (isDoneCalculating) {
 				instances.shift();
 				continue;
-			***REMOVED***
+			}
 
-		***REMOVED***
-	***REMOVED***;
+		}
+	};
 
 	// Private methods follow
-	var checkAdjacentNode = function(instance, searchNode, x, y, cost) ***REMOVED***
+	var checkAdjacentNode = function(instance, searchNode, x, y, cost) {
 		var adjacentCoordinateX = searchNode.x+x;
 		var adjacentCoordinateY = searchNode.y+y;
 
-		if (pointsToAvoid[adjacentCoordinateX + "_" + adjacentCoordinateY] === undefined) ***REMOVED***
+		if (pointsToAvoid[adjacentCoordinateX + "_" + adjacentCoordinateY] === undefined) {
 			// Handles the case where we have found the destination
-			if (instance.endX === adjacentCoordinateX && instance.endY === adjacentCoordinateY) ***REMOVED***
+			if (instance.endX === adjacentCoordinateX && instance.endY === adjacentCoordinateY) {
 				instance.isDoneCalculating = true;
 				var path = [];
 				var pathLen = 0;
-				path[pathLen] = ***REMOVED***x: adjacentCoordinateX, y: adjacentCoordinateY***REMOVED***;
+				path[pathLen] = {x: adjacentCoordinateX, y: adjacentCoordinateY};
 				pathLen++;
-				path[pathLen] = ***REMOVED***x: searchNode.x, y:searchNode.y***REMOVED***;
+				path[pathLen] = {x: searchNode.x, y:searchNode.y};
 				pathLen++;
 				var parent = searchNode.parent;
-				while (parent!=null) ***REMOVED***
-					path[pathLen] = ***REMOVED***x: parent.x, y:parent.y***REMOVED***;
+				while (parent!=null) {
+					path[pathLen] = {x: parent.x, y:parent.y};
 					pathLen++;
 					parent = parent.parent;
-				***REMOVED***
+				}
 				path.reverse();
 				var ic = instance;
 				var ip = path;
 				ic.callback(ip);
 				return
-			***REMOVED***
+			}
 
-			if (isTileWalkable(collisionGrid, acceptableTiles, adjacentCoordinateX, adjacentCoordinateY)) ***REMOVED***
+			if (isTileWalkable(collisionGrid, acceptableTiles, adjacentCoordinateX, adjacentCoordinateY)) {
 				var node = coordinateToNode(instance, adjacentCoordinateX,
 					adjacentCoordinateY, searchNode, cost);
 
-				if (node.list === undefined) ***REMOVED***
+				if (node.list === undefined) {
 					node.list = EasyStar.Node.OPEN_LIST;
 					instance.openList.insert(node);
-				***REMOVED*** else if (node.list === EasyStar.Node.OPEN_LIST) ***REMOVED***
-					if (searchNode.costSoFar + cost < node.costSoFar) ***REMOVED***
+				} else if (node.list === EasyStar.Node.OPEN_LIST) {
+					if (searchNode.costSoFar + cost < node.costSoFar) {
 						node.costSoFar = searchNode.costSoFar + cost;
 						node.parent = searchNode;
-					***REMOVED***
-				***REMOVED***
-			***REMOVED***
-		***REMOVED***
-	***REMOVED***;
+					}
+				}
+			}
+		}
+	};
 
 	// Helpers
-	var isTileWalkable = function(collisionGrid, acceptableTiles, x, y) ***REMOVED***
-		for (var i = 0; i < acceptableTiles.length; i++) ***REMOVED***
-			if (collisionGrid[y][x] === acceptableTiles[i]) ***REMOVED***
+	var isTileWalkable = function(collisionGrid, acceptableTiles, x, y) {
+		for (var i = 0; i < acceptableTiles.length; i++) {
+			if (collisionGrid[y][x] === acceptableTiles[i]) {
 				return true;
-			***REMOVED***
-		***REMOVED***
+			}
+		}
 
 		return false;
-	***REMOVED***;
+	};
 
-	var getTileCost = function(x, y) ***REMOVED***
+	var getTileCost = function(x, y) {
 		return pointsToCost[x + '_' + y] || costMap[collisionGrid[y][x]]
-	***REMOVED***;
+	};
 
-	var coordinateToNode = function(instance, x, y, parent, cost) ***REMOVED***
-		if (instance.nodeHash[x + "_" + y]!==undefined) ***REMOVED***
+	var coordinateToNode = function(instance, x, y, parent, cost) {
+		if (instance.nodeHash[x + "_" + y]!==undefined) {
 			return instance.nodeHash[x + "_" + y];
-		***REMOVED***
+		}
 		var simpleDistanceToTarget = getDistance(x, y, instance.endX, instance.endY);
-		if (parent!==null) ***REMOVED***
+		if (parent!==null) {
 			var costSoFar = parent.costSoFar + cost;
-		***REMOVED*** else ***REMOVED***
+		} else {
 			costSoFar = simpleDistanceToTarget;
-		***REMOVED***
+		}
 		var node = new EasyStar.Node(parent,x,y,costSoFar,simpleDistanceToTarget);
 		instance.nodeHash[x + "_" + y] = node;
 		return node;
-	***REMOVED***;
+	};
 
-	var getDistance = function(x1,y1,x2,y2) ***REMOVED***
+	var getDistance = function(x1,y1,x2,y2) {
 		return Math.sqrt( (x2-=x1)*x2 + (y2-=y1)*y2 );
-	***REMOVED***;
-***REMOVED***
+	};
+}

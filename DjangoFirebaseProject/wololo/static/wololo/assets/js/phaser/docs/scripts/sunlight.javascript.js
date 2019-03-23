@@ -1,10 +1,10 @@
-(function(sunlight, undefined)***REMOVED***
+(function(sunlight, undefined){
 
-	if (sunlight === undefined || sunlight["registerLanguage"] === undefined) ***REMOVED***
+	if (sunlight === undefined || sunlight["registerLanguage"] === undefined) {
 		throw "Include sunlight.js before including language files";
-	***REMOVED***
+	}
 	
-	sunlight.registerLanguage("javascript", ***REMOVED***
+	sunlight.registerLanguage("javascript", {
 		keywords: [
 			//keywords
 			"break", "case", "catch", "continue", "default", "delete", "do", 
@@ -16,8 +16,8 @@
 			"true", "false", "null"
 		],
 		
-		customTokens: ***REMOVED***
-			reservedWord: ***REMOVED***
+		customTokens: {
+			reservedWord: {
 				values: [
 					"abstract", "boolean", "byte", "char", "class", "const", "debugger", "double",
 					"enum", "export", "extends", "final", "float", "goto", "implements", "import",
@@ -25,36 +25,36 @@
 					"short", "static", "super", "synchronized", "throws", "transient", "volatile"
 				],
 				boundary: "\\b"
-			***REMOVED***,
+			},
 			
-			globalVariable: ***REMOVED***
+			globalVariable: {
 				values: ["NaN", "Infinity", "undefined"],
 				boundary: "\\b"
-			***REMOVED***,
+			},
 			
-			globalFunction: ***REMOVED***
+			globalFunction: {
 				values: ["encodeURI", "encodeURIComponent", "decodeURI", "decodeURIComponent", "parseInt", "parseFloat", "isNaN", "isFinite", "eval"],
 				boundary: "\\b"
-			***REMOVED***,
+			},
 			
-			globalObject: ***REMOVED***
+			globalObject: {
 				values: [
 					"Math", "JSON",
 					"XMLHttpRequest", "XDomainRequest", "ActiveXObject",
 					"Boolean", "Date", "Array", "Image", "Function", "Object", "Number", "RegExp", "String"
 				],
 				boundary: "\\b"
-			***REMOVED***
-		***REMOVED***,
+			}
+		},
 
-		scopes: ***REMOVED***
+		scopes: {
 			string: [ ["\"", "\"", sunlight.util.escapeSequences.concat(["\\\""])], ["'", "'", sunlight.util.escapeSequences.concat(["\\\'", "\\\\"])] ],
 			comment: [ ["//", "\n", null, true], ["/*", "*/"] ]
-		***REMOVED***,
+		},
 		
 		customParseRules: [
 			//regex literal
-			function(context) ***REMOVED***
+			function(context) {
 				var peek = context.reader.peek(),
 					isValid,
 					regexLiteral = "/",
@@ -64,91 +64,91 @@
 					peek2,
 					next;
 					
-				if (context.reader.current() !== "/" || peek === "/" || peek === "*") ***REMOVED***
+				if (context.reader.current() !== "/" || peek === "/" || peek === "*") {
 					//doesn't start with a / or starts with // (comment) or /* (multi line comment)
 					return null;
-				***REMOVED***
+				}
 				
-				isValid = function() ***REMOVED***
+				isValid = function() {
 					var previousNonWsToken = context.token(context.count() - 1),
 						previousToken = null;
-					if (context.defaultData.text !== "") ***REMOVED***
+					if (context.defaultData.text !== "") {
 						previousToken = context.createToken("default", context.defaultData.text); 
-					***REMOVED***
+					}
 					
-					if (!previousToken) ***REMOVED***
+					if (!previousToken) {
 						previousToken = previousNonWsToken;
-					***REMOVED***
+					}
 					
 					//first token of the string
-					if (previousToken === undefined) ***REMOVED***
+					if (previousToken === undefined) {
 						return true;
-					***REMOVED***
+					}
 					
 					//since JavaScript doesn't require statement terminators, if the previous token was whitespace and contained a newline, then we're good
-					if (previousToken.name === "default" && previousToken.value.indexOf("\n") > -1) ***REMOVED***
+					if (previousToken.name === "default" && previousToken.value.indexOf("\n") > -1) {
 						return true;
-					***REMOVED***
+					}
 					
-					if (sunlight.util.contains(["keyword", "ident", "number"], previousNonWsToken.name)) ***REMOVED***
+					if (sunlight.util.contains(["keyword", "ident", "number"], previousNonWsToken.name)) {
 						return false;
-					***REMOVED***
-					if (previousNonWsToken.name === "punctuation" && !sunlight.util.contains(["(", "***REMOVED***", "[", ",", ";"], previousNonWsToken.value)) ***REMOVED***
+					}
+					if (previousNonWsToken.name === "punctuation" && !sunlight.util.contains(["(", "{", "[", ",", ";"], previousNonWsToken.value)) {
 						return false;
-					***REMOVED***
+					}
 					
 					return true;
-				***REMOVED***();
+				}();
 				
-				if (!isValid) ***REMOVED***
+				if (!isValid) {
 					return null;
-				***REMOVED***
+				}
 				
 				//read the regex literal
-				while (context.reader.peek() !== context.reader.EOF) ***REMOVED***
+				while (context.reader.peek() !== context.reader.EOF) {
 					peek2 = context.reader.peek(2);
-					if (peek2 === "\\/" || peek2 === "\\\\") ***REMOVED***
+					if (peek2 === "\\/" || peek2 === "\\\\") {
 						//escaped backslash or escaped forward slash
 						regexLiteral += context.reader.read(2);
 						continue;
-					***REMOVED***
-					if (peek2 === "\\[" || peek2 === "\\]") ***REMOVED***
+					}
+					if (peek2 === "\\[" || peek2 === "\\]") {
 						regexLiteral += context.reader.read(2);
 						continue;
-					***REMOVED*** else if (next === "[") ***REMOVED***
+					} else if (next === "[") {
 						charClass = true;
-					***REMOVED*** else if (next === "]") ***REMOVED***
+					} else if (next === "]") {
 						charClass = false;
-					***REMOVED***
+					}
 					
 					regexLiteral += (next = context.reader.read());
-					if (next === "/" && !charClass) ***REMOVED***
+					if (next === "/" && !charClass) {
 						break;
-					***REMOVED***
-				***REMOVED***
+					}
+				}
 				
 				//read the regex modifiers
 				//only "g", "i" and "m" are allowed, but for the sake of simplicity we'll just say any alphabetical character is valid
-				while (context.reader.peek() !== context.reader.EOF) ***REMOVED***
-					if (!/[A-Za-z]/.test(context.reader.peek())) ***REMOVED***
+				while (context.reader.peek() !== context.reader.EOF) {
+					if (!/[A-Za-z]/.test(context.reader.peek())) {
 						break;
-					***REMOVED***
+					}
 					
 					regexLiteral += context.reader.read();
-				***REMOVED***
+				}
 				
 				return context.createToken("regexLiteral", regexLiteral, line, column);
-			***REMOVED***
+			}
 		],
 		
 		identFirstLetter: /[$A-Za-z_]/,
 		identAfterFirstLetter: /[\w\$]/,
 		
-		namedIdentRules: ***REMOVED***
+		namedIdentRules: {
 			follows: [
-				[***REMOVED*** token: "keyword", values: ["function"] ***REMOVED***, sunlight.util.whitespace]
+				[{ token: "keyword", values: ["function"] }, sunlight.util.whitespace]
 			]
-		***REMOVED***,
+		},
 
 		operators: [
 			//arithmetic
@@ -179,5 +179,5 @@
 			//other
 			"?", ":", ".", "="
 		]
-	***REMOVED***);
-***REMOVED***(this["Sunlight"]));
+	});
+}(this["Sunlight"]));

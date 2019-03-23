@@ -1,22 +1,22 @@
-***REMOVED***% extends "partials/layout.html" %***REMOVED*** 
-***REMOVED***% load static %***REMOVED*** 
+{% extends "partials/layout.html" %} 
+{% load static %} 
 
-***REMOVED***% block headcdn %***REMOVED*** 
-***REMOVED***% endblock %***REMOVED***
+{% block headcdn %} 
+{% endblock %}
 
-***REMOVED***% block content %***REMOVED***
-<div id="villageDataJSON" data='***REMOVED******REMOVED***data.selectedVillage***REMOVED******REMOVED***'></div>
-<div id="gameConfigData" data='***REMOVED******REMOVED***data.gameConfig***REMOVED******REMOVED***'></div>
-***REMOVED***% include "partials/villageResources.html" %***REMOVED***
+{% block content %}
+<div id="villageDataJSON" data='{{data.selectedVillage}}'></div>
+<div id="gameConfigData" data='{{data.gameConfig}}'></div>
+{% include "partials/villageResources.html" %}
 
 <div class="village-content">
-    <!-- ***REMOVED******REMOVED***data.selectedVillage***REMOVED******REMOVED*** -->
+    <!-- {{data.selectedVillage}} -->
     <ul class="list-group">
-        <!-- ***REMOVED******REMOVED***data.selectedVillage.villageName***REMOVED******REMOVED***  -->
+        <!-- {{data.selectedVillage.villageName}}  -->
         <li class="list-group-item">
             <div class="row">
                 <div class="col">
-                    Town center level ***REMOVED******REMOVED***data.selectedVillage.townCenter.level***REMOVED******REMOVED***
+                    Town center level {{data.selectedVillage.townCenter.level}}
                 </div>
                 <div class="col">
                     <div buildingName="townCenter" class="upgradeBuildings">
@@ -47,7 +47,7 @@
         <li class="list-group-item">
             <div class="row">
                 <div class="col">
-                        Wood Camp level ***REMOVED******REMOVED***data.selectedVillage.resources.woodCamp.level***REMOVED******REMOVED***
+                        Wood Camp level {{data.selectedVillage.resources.woodCamp.level}}
                 </div>
                 <div class="col">
                     <div buildingName="woodCamp" class="upgradeResources" resourceType="wood">
@@ -77,7 +77,7 @@
         <li class="list-group-item">
             <div class="row">
                 <div class="col">
-                    Iron Mine level ***REMOVED******REMOVED***data.selectedVillage.resources.ironMine.level***REMOVED******REMOVED***
+                    Iron Mine level {{data.selectedVillage.resources.ironMine.level}}
                 </div>
                 <div class="col">
                     <div buildingName="ironMine" class="upgradeResources" resourceType="iron">
@@ -107,7 +107,7 @@
         <li class="list-group-item">
             <div class="row">
                 <div class="col">
-                    Clay Pit level ***REMOVED******REMOVED***data.selectedVillage.resources.clayPit.level***REMOVED******REMOVED***
+                    Clay Pit level {{data.selectedVillage.resources.clayPit.level}}
                 </div>
                 <div class="col">
                     <div buildingName="clayPit" class="upgradeResources" resourceType="clay">
@@ -137,7 +137,7 @@
         <li class="list-group-item">
             <div class="row">
                 <div class="col">
-                    Storage level ***REMOVED******REMOVED***data.selectedVillage.storage.level***REMOVED******REMOVED***
+                    Storage level {{data.selectedVillage.storage.level}}
                 </div>
                 <div class="col">
                     <div buildingName="storage" class="upgradeBuildings">
@@ -167,7 +167,7 @@
         <li class="list-group-item">
             <div class="row">
                 <div class="col">
-                    <a href="/game/barracks" >Barracks</a> level ***REMOVED******REMOVED***data.selectedVillage.barracks.level***REMOVED******REMOVED***
+                    <a href="/game/barracks" >Barracks</a> level {{data.selectedVillage.barracks.level}}
                 </div>
                 <div class="col">
                     <div buildingName="barracks" class="upgradeBuildings">
@@ -197,7 +197,7 @@
         <li class="list-group-item">
             <div class="row">
                 <div class="col">
-                    Farm level ***REMOVED******REMOVED***data.selectedVillage.farm.level***REMOVED******REMOVED***
+                    Farm level {{data.selectedVillage.farm.level}}
                 </div>
                 <div class="col">
                     <div buildingName="farm" class="upgradeBuildings">
@@ -242,13 +242,13 @@
         </div>
     </div>
 </div>
-***REMOVED***% endblock %***REMOVED*** 
-***REMOVED***% block footerjs %***REMOVED***
+{% endblock %} 
+{% block footerjs %}
 
-<div id="wholeData" data='***REMOVED******REMOVED***data***REMOVED******REMOVED***'></div>
+<div id="wholeData" data='{{data}}'></div>
 
-<script type="text/javascript" src="***REMOVED***% static 'wololo/assets/js/phaser/build/phaser.min.js' %***REMOVED***"></script>
-<script type="text/javascript" src="***REMOVED***% static 'wololo/js/villages.js' %***REMOVED***"></script>
-<script type="text/javascript" src="***REMOVED***% static 'wololo/js/villageResources.js' %***REMOVED***"></script>
+<script type="text/javascript" src="{% static 'wololo/assets/js/phaser/build/phaser.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'wololo/js/villages.js' %}"></script>
+<script type="text/javascript" src="{% static 'wololo/js/villageResources.js' %}"></script>
 
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}

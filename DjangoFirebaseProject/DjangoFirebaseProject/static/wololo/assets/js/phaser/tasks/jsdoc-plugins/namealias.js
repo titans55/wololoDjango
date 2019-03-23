@@ -15,10 +15,10 @@
 // Regular expression to match a line starting with what appears to be a doclet tag.
 // This only works for solo single-line doclet tags. The line start is captured in $1,
 // the doclet tag in $2 and everything else in $3.
-var extract = /^(\s*(?:\/\****REMOVED***2,***REMOVED***|\****REMOVED***1,***REMOVED***)\s*)(@\w+)\s*?([^\r\n]*)/mg;
+var extract = /^(\s*(?:\/\*{2,}|\*{1,})\s*)(@\w+)\s*?([^\r\n]*)/mg;
 
-exports.handlers = ***REMOVED******REMOVED***;
-exports.handlers.jsdocCommentFound = function (e) ***REMOVED***
+exports.handlers = {};
+exports.handlers.jsdocCommentFound = function (e) {
 
     var raw = e.comment;
 
@@ -27,18 +27,18 @@ exports.handlers.jsdocCommentFound = function (e) ***REMOVED***
 
     // PIXI docs generated from YUIDocs have @sourcefile (but no code) and need to be excluded
     if (classdoc && !sourcefile)
-    ***REMOVED***
-        raw = raw.replace(extract, function (m, pre, doclet, extra) ***REMOVED***
-            if (doclet === '@class' && extra.trim()) ***REMOVED***
+    {
+        raw = raw.replace(extract, function (m, pre, doclet, extra) {
+            if (doclet === '@class' && extra.trim()) {
                 return pre + '@alias ' + extra.trim() + '\n' + pre + '@class';
-            ***REMOVED*** else if (doclet === '@constructor') ***REMOVED***
+            } else if (doclet === '@constructor') {
                 return '';
-            ***REMOVED*** else ***REMOVED***
+            } else {
                 return m;
-            ***REMOVED***
-        ***REMOVED***);
+            }
+        });
 
         e.comment = raw;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};

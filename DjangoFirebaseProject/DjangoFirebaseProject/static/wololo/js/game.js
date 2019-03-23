@@ -5,23 +5,23 @@ var selectedVillage = JSON.parse(($('.selected-village').attr('data')).replace(/
 var winW = document.body.offsetWidth;
 var winH = document.body.offsetHeight;
 
-game = new Phaser.Game(winW / 2, winH / 3 * 2, Phaser.AUTO, 'game-container', ***REMOVED*** preload: preload, create: create, update: update ***REMOVED***);
+game = new Phaser.Game(winW / 2, winH / 3 * 2, Phaser.AUTO, 'game-container', { preload: preload, create: create, update: update });
 
-function preload() ***REMOVED***
+function preload() {
     game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
     // game.load.image("tiles", "../static/wololo/mapAssets/tilesets/overworld_tileset_grass.png");
     // game.load.tilemap('map', '../static/wololo/mapAssets/tilemaps/mapv3.json', null, Phaser.Tilemap.TILED_JSON);
-    // game.load.spritesheet('castle', '../static/wololo/mapAssets/sprites/castle.png', ***REMOVED*** frameWidth: 48, frameHeight: 48 ***REMOVED***);
-    // game.load.spritesheet('pathDot', '../static/wololo/mapAssets/sprites/pathDot.png', ***REMOVED*** frameWidth: 16, frameHeight: 16 ***REMOVED***);
-    // game.load.spritesheet('selected', '../static/wololo/mapAssets/sprites/selection-circle_1_64x64.png', ***REMOVED*** frameWidth: 64, frameHeight: 64 ***REMOVED***);
+    // game.load.spritesheet('castle', '../static/wololo/mapAssets/sprites/castle.png', { frameWidth: 48, frameHeight: 48 });
+    // game.load.spritesheet('pathDot', '../static/wololo/mapAssets/sprites/pathDot.png', { frameWidth: 16, frameHeight: 16 });
+    // game.load.spritesheet('selected', '../static/wololo/mapAssets/sprites/selection-circle_1_64x64.png', { frameWidth: 64, frameHeight: 64 });
     game.load.image("tiles", " http://titans55.pythonanywhere.com/static/wololo/mapAssets/tilesets/overworld_tileset_grass.png");
     game.load.tilemap('map', ' http://titans55.pythonanywhere.com/static/wololo/mapAssets/tilemaps/mapv3.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.spritesheet('castle', ' http://titans55.pythonanywhere.com/static/wololo/mapAssets/sprites/castle.png', ***REMOVED*** frameWidth: 48, frameHeight: 48 ***REMOVED***);
-    game.load.spritesheet('pathDot', ' http://titans55.pythonanywhere.com/static/wololo/mapAssets/sprites/pathDot.png', ***REMOVED*** frameWidth: 16, frameHeight: 16 ***REMOVED***);
-    game.load.spritesheet('selected', ' http://titans55.pythonanywhere.com/static/wololo/mapAssets/sprites/selection-circle_1_64x64.png', ***REMOVED*** frameWidth: 64, frameHeight: 64 ***REMOVED***);
-***REMOVED***
+    game.load.spritesheet('castle', ' http://titans55.pythonanywhere.com/static/wololo/mapAssets/sprites/castle.png', { frameWidth: 48, frameHeight: 48 });
+    game.load.spritesheet('pathDot', ' http://titans55.pythonanywhere.com/static/wololo/mapAssets/sprites/pathDot.png', { frameWidth: 16, frameHeight: 16 });
+    game.load.spritesheet('selected', ' http://titans55.pythonanywhere.com/static/wololo/mapAssets/sprites/selection-circle_1_64x64.png', { frameWidth: 64, frameHeight: 64 });
+}
 
-function create() ***REMOVED***
+function create() {
     createMap();
     loadVillages(infos);
     initSwitchVillage()
@@ -38,13 +38,13 @@ function create() ***REMOVED***
     
     // this.pathfinding.find_path(from, target_position, this.move_through_path, this)
   
-***REMOVED***
+}
 
-function update(time, delta) ***REMOVED***
+function update(time, delta) {
     drag();
-***REMOVED***
+}
 
-function createMap() ***REMOVED***
+function createMap() {
     map = game.add.tilemap('map');
     const tileset = map.addTilesetImage("Tile", "tiles");
     groundLayer = map.createLayer('groundLayer');
@@ -52,24 +52,24 @@ function createMap() ***REMOVED***
     seaLayer = map.createLayer('seaLayer');
     // collision layer
     collision_tiles = [];
-    seaLayer.layer.data.forEach(function (data_row) ***REMOVED*** // find tiles used in the layer
-        data_row.forEach(function (tile) ***REMOVED***
+    seaLayer.layer.data.forEach(function (data_row) { // find tiles used in the layer
+        data_row.forEach(function (tile) {
             // check if it's a valid tile index and isn't already in the list
-            if (tile.index > 0 && collision_tiles.indexOf(tile.index) === -1) ***REMOVED***
+            if (tile.index > 0 && collision_tiles.indexOf(tile.index) === -1) {
                 collision_tiles.push(tile.index);
-            ***REMOVED***
-        ***REMOVED***, this);
-    ***REMOVED***, this);
+            }
+        }, this);
+    }, this);
     map.setCollision(collision_tiles, true, seaLayer.layer.name);
     // console.log(collision_tiles, "bababa")    
     seaLayer.resizeWorld();
-***REMOVED***
+}
 
-function loadVillages(infos) ***REMOVED***
+function loadVillages(infos) {
     var sprite
     tile_dimensions = new Phaser.Point(map.tileWidth, map.tileHeight);
     pathfinding = this.game.plugins.add(PathfindingExample.Pathfinding, map.layers[1].data, [-1], tile_dimensions);
-    infos.forEach(function(element) ***REMOVED***
+    infos.forEach(function(element) {
         sprite = game.add.sprite(element.coords.x, element.coords.y, 'castle');
         sprite.village_id = element.village_id;
         sprite.user_id = element.user_id;
@@ -82,12 +82,12 @@ function loadVillages(infos) ***REMOVED***
         sprite.events.onInputDown.add(onClickListener, sprite);
         sprite.events.onInputOver.add(onHoverListener, sprite);
         sprite.events.onInputOut.add(onOutListener, sprite);
-    ***REMOVED***)
-***REMOVED***
+    })
+}
 
-function onClickListener(sprite) ***REMOVED***
+function onClickListener(sprite) {
     console.log(selectedVillage)
-    if (isVillageSelected) ***REMOVED***
+    if (isVillageSelected) {
         console.log(selectedIndicator)
         selectedIndicator.kill();
         isVillageSelected = false;
@@ -96,92 +96,92 @@ function onClickListener(sprite) ***REMOVED***
         initSideBar(sprite)
 
         removePathSprites()
-        if(!sprite.owner)***REMOVED***
+        if(!sprite.owner){
             let target_position = new Phaser.Point(sprite.x, sprite.y)
             let from = new Phaser.Point(selectedVillage.coords.x, selectedVillage.coords.y)
             pathfinding.find_path(from, target_position, this.move_through_path, this)
-        ***REMOVED***
-    ***REMOVED***else***REMOVED***
+        }
+    }else{
         selectedIndicator = game.add.sprite(sprite.x - 10, sprite.y - 8, 'selected');
         isVillageSelected = true;
         initSideBar(sprite)
 
-        if(!sprite.owner)***REMOVED***
+        if(!sprite.owner){
             let target_position = new Phaser.Point(sprite.x, sprite.y)
             let from = new Phaser.Point(selectedVillage.coords.x, selectedVillage.coords.y)
             pathfinding.find_path(from, target_position, this.move_through_path, this)
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     
-***REMOVED***
+}
 
-function onHoverListener(sprite, event) ***REMOVED***
+function onHoverListener(sprite, event) {
     document.body.style.cursor = "pointer";
 
     let mousePositionX = event.pageX;
     let mousePositionY = event.pageY;
     $('#tooltip span').html(sprite.playerName + "<br>" + sprite.villageName + "<br>" + sprite.owner);
     $('#tooltip').stop(false, true).fadeIn(1000);
-    $('#tooltip').css(***REMOVED*** 'top': mousePositionY - winH / 18, 'left': mousePositionX - winW / 40 + 40 ***REMOVED***);
+    $('#tooltip').css({ 'top': mousePositionY - winH / 18, 'left': mousePositionX - winW / 40 + 40 });
 
 
     var tooltip = document.querySelectorAll('#tooltip');
 
-    function fn(e) ***REMOVED***
-        for (var i=tooltip.length; i--;) ***REMOVED***
+    function fn(e) {
+        for (var i=tooltip.length; i--;) {
             tooltip[i].style.left = e.pageX + 'px';
             tooltip[i].style.top = e.pageY + 'px';
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     document.addEventListener('mousemove', fn, false);
 
-***REMOVED***
+}
 
-function onOutListener(sprite) ***REMOVED***
+function onOutListener(sprite) {
     $('#tooltip').stop(false, true).fadeOut(0);
 
     document.body.style.cursor = "default";
 
-***REMOVED***
+}
 
-function drag() ***REMOVED***
-    if (game.input.activePointer.isDown) ***REMOVED***
-        if (game.origDragPoint) ***REMOVED*** // move the camera by the amount the mouse has moved since last update
+function drag() {
+    if (game.input.activePointer.isDown) {
+        if (game.origDragPoint) { // move the camera by the amount the mouse has moved since last update
             game.camera.x += game.origDragPoint.x - game.input.activePointer.position.x;
             game.camera.y += game.origDragPoint.y - game.input.activePointer.position.y;
-        ***REMOVED*** // set new drag origin to current position
+        } // set new drag origin to current position
         game.origDragPoint = game.input.activePointer.position.clone();
-    ***REMOVED*** else ***REMOVED***
+    } else {
         game.origDragPoint = null;
-    ***REMOVED***
-***REMOVED***
+    }
+}
 
 //--//
 
-function initSideBar(sprite)***REMOVED***
+function initSideBar(sprite){
     // $("#villageOverview").show()
     $("#villageOverview").removeClass("d-none")
     $("#villageOverview").addClass("animated")
     $("#villageOverview").find(".card-title").html(sprite.villageName)
     $("#villageOverview").find(".card-text").html("Belongs to "+ sprite.playerName)
-***REMOVED***
+}
 
-function initSwitchVillage()***REMOVED***
-    $(".switchVillage").on('click', function()***REMOVED***
+function initSwitchVillage(){
+    $(".switchVillage").on('click', function(){
         removePathSprites()
         let switchedVillageCoords = JSON.parse($(this).attr('coords').replace(/'/g, '"'))
         console.log(switchedVillageCoords)
         selectedVillage.coords.x = switchedVillageCoords.x
         selectedVillage.coords.y = switchedVillageCoords.y
-    ***REMOVED***)
-***REMOVED***
+    })
+}
 
-function removePathSprites()***REMOVED***
-    if(pathSprites != undefined)***REMOVED***
-        pathSprites.forEach(sprite => ***REMOVED*** 
+function removePathSprites(){
+    if(pathSprites != undefined){
+        pathSprites.forEach(sprite => { 
             sprite.kill()
             console.log(sprite, "killing")
-        ***REMOVED***);
-    ***REMOVED***
-***REMOVED***
+        });
+    }
+}

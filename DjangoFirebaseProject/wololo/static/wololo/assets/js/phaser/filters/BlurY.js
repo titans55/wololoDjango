@@ -1,11 +1,11 @@
 /**
 * A vertical blur filter by Mat Groves http://matgroves.com/ @Doormat23
 */
-Phaser.Filter.BlurY = function (game) ***REMOVED***
+Phaser.Filter.BlurY = function (game) {
 
     Phaser.Filter.call(this, game);
 
-    this.uniforms.blur = ***REMOVED*** type: '1f', value: 1 / 512 ***REMOVED***;
+    this.uniforms.blur = { type: '1f', value: 1 / 512 };
 
     this.fragmentSrc = [
 
@@ -15,7 +15,7 @@ Phaser.Filter.BlurY = function (game) ***REMOVED***
       "uniform float blur;",
       "uniform sampler2D uSampler;",
 
-        "void main(void) ***REMOVED***",
+        "void main(void) {",
 
           "vec4 sum = vec4(0.0);",
 
@@ -31,24 +31,24 @@ Phaser.Filter.BlurY = function (game) ***REMOVED***
 
           "gl_FragColor = sum;",
 
-        "***REMOVED***"
+        "}"
 
     ];
 
-***REMOVED***;
+};
 
 Phaser.Filter.BlurY.prototype = Object.create(Phaser.Filter.prototype);
 Phaser.Filter.BlurY.prototype.constructor = Phaser.Filter.BlurY;
 
-Object.defineProperty(Phaser.Filter.BlurY.prototype, 'blur', ***REMOVED***
+Object.defineProperty(Phaser.Filter.BlurY.prototype, 'blur', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.blur.value / (1/7000);
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.dirty = true;
         this.uniforms.blur.value = (1/7000) * value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});

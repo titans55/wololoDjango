@@ -32,10 +32,10 @@ def getCurrentResource(village, resourceBuilding, now):
 def updateSumAndLastInteractionDateOfResource(request, village_id, resourceBuilding, newSum, now):
     user_id = request.session['user_id']
     village = db.collection('players').document(user_id).collection('villages').document(village_id)
-    village.update(***REMOVED***
+    village.update({
         'resources.'+resourceBuilding+'.sum' : newSum,
         'resources.'+resourceBuilding+'.lastInteractionDate' : now,
-    ***REMOVED***)
+    })
 
 
     return True

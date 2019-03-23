@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -9,14 +9,14 @@
 *
 * @class
 */
-Phaser.Component.Destroy = function () ***REMOVED******REMOVED***;
+Phaser.Component.Destroy = function () {};
 
-Phaser.Component.Destroy.prototype = ***REMOVED***
+Phaser.Component.Destroy.prototype = {
 
     /**
     * As a Game Object runs through its destroy method this flag is set to true, 
     * and can be checked in any sub-systems or plugins it is being destroyed from.
-    * @property ***REMOVED***boolean***REMOVED*** destroyPhase
+    * @property {boolean} destroyPhase
     * @readOnly
     */
     destroyPhase: false,
@@ -31,94 +31,94 @@ Phaser.Component.Destroy.prototype = ***REMOVED***
     * more than one Game Object sharing the same BaseTexture.
     *
     * @method
-    * @param ***REMOVED***boolean***REMOVED*** [destroyChildren=true] - Should every child of this object have its destroy method called as well?
-    * @param ***REMOVED***boolean***REMOVED*** [destroyTexture=false] - Destroy the BaseTexture this Game Object is using? Note that if another Game Object is sharing the same BaseTexture it will invalidate it.
+    * @param {boolean} [destroyChildren=true] - Should every child of this object have its destroy method called as well?
+    * @param {boolean} [destroyTexture=false] - Destroy the BaseTexture this Game Object is using? Note that if another Game Object is sharing the same BaseTexture it will invalidate it.
     */
-    destroy: function (destroyChildren, destroyTexture) ***REMOVED***
+    destroy: function (destroyChildren, destroyTexture) {
 
-        if (this.game === null || this.destroyPhase) ***REMOVED*** return; ***REMOVED***
+        if (this.game === null || this.destroyPhase) { return; }
 
-        if (destroyChildren === undefined) ***REMOVED*** destroyChildren = true; ***REMOVED***
-        if (destroyTexture === undefined) ***REMOVED*** destroyTexture = false; ***REMOVED***
+        if (destroyChildren === undefined) { destroyChildren = true; }
+        if (destroyTexture === undefined) { destroyTexture = false; }
 
         this.destroyPhase = true;
 
         if (this.events)
-        ***REMOVED***
+        {
             this.events.onDestroy$dispatch(this);
-        ***REMOVED***
+        }
 
         if (this.parent)
-        ***REMOVED***
+        {
             if (this.parent instanceof Phaser.Group)
-            ***REMOVED***
+            {
                 this.parent.remove(this);
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this.parent.removeChild(this);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         if (this.input)
-        ***REMOVED***
+        {
             this.input.destroy();
-        ***REMOVED***
+        }
 
         if (this.animations)
-        ***REMOVED***
+        {
             this.animations.destroy();
-        ***REMOVED***
+        }
 
         if (this.body)
-        ***REMOVED***
+        {
             this.body.destroy();
-        ***REMOVED***
+        }
 
         if (this.events)
-        ***REMOVED***
+        {
             this.events.destroy();
-        ***REMOVED***
+        }
 
         this.game.tweens.removeFrom(this);
 
         var i = this.children.length;
 
         if (destroyChildren)
-        ***REMOVED***
+        {
             while (i--)
-            ***REMOVED***
+            {
                 this.children[i].destroy(destroyChildren);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             while (i--)
-            ***REMOVED***
+            {
                 this.removeChild(this.children[i]);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         if (this._crop)
-        ***REMOVED***
+        {
             this._crop = null;
             this.cropRect = null;
-        ***REMOVED***
+        }
 
         if (this._frame)
-        ***REMOVED***
+        {
             this._frame = null;
-        ***REMOVED***
+        }
 
         if (Phaser.Video && this.key instanceof Phaser.Video)
-        ***REMOVED***
+        {
             this.key.onChangeSource.remove(this.resizeFrame, this);
-        ***REMOVED***
+        }
 
         if (Phaser.BitmapText && this._glyphs)
-        ***REMOVED***
+        {
             this._glyphs = [];
-        ***REMOVED***
+        }
 
         this.alive = false;
         this.exists = false;
@@ -128,16 +128,16 @@ Phaser.Component.Destroy.prototype = ***REMOVED***
         this.mask = null;
         this.game = null;
 
-        this.data = ***REMOVED******REMOVED***;
+        this.data = {};
 
         //  In case Pixi is still going to try and render it even though destroyed
         this.renderable = false;
 
         if (this.transformCallback)
-        ***REMOVED***
+        {
             this.transformCallback = null;
             this.transformCallbackContext = null;
-        ***REMOVED***
+        }
 
         //  Pixi level DisplayObject destroy
         this.hitArea = null;
@@ -153,13 +153,13 @@ Phaser.Component.Destroy.prototype = ***REMOVED***
 
         //  Texture?
         if (destroyTexture)
-        ***REMOVED***
+        {
             this.texture.destroy(true);
-        ***REMOVED***
+        }
 
         this.destroyPhase = false;
         this.pendingDestroy = false;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};

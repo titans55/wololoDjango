@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -9,9 +9,9 @@
 *
 * @class
 */
-Phaser.Component.InCamera = function () ***REMOVED******REMOVED***;
+Phaser.Component.InCamera = function () {};
 
-Phaser.Component.InCamera.prototype = ***REMOVED***
+Phaser.Component.InCamera.prototype = {
 
     /**
     * Checks if this Game Objects bounds intersects with the Game Cameras bounds.
@@ -20,17 +20,17 @@ Phaser.Component.InCamera.prototype = ***REMOVED***
     * 
     * An object outside the bounds can be considered for camera culling if it has the AutoCull component.
     *
-    * @property ***REMOVED***boolean***REMOVED*** inCamera
+    * @property {boolean} inCamera
     * @readonly
     */
-    inCamera: ***REMOVED***
+    inCamera: {
 
-        get: function() ***REMOVED***
+        get: function() {
 
             return this.game.world.camera.view.intersects(this._bounds);
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};

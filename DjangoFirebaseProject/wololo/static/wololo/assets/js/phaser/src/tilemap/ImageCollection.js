@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -11,44 +11,44 @@
 *
 * @class Phaser.ImageCollection
 * @constructor
-* @param ***REMOVED***string***REMOVED*** name - The name of the image collection in the map data.
-* @param ***REMOVED***integer***REMOVED*** firstgid - The first image index this image collection contains.
-* @param ***REMOVED***integer***REMOVED*** [width=32] - Width of widest image (in pixels).
-* @param ***REMOVED***integer***REMOVED*** [height=32] - Height of tallest image (in pixels).
-* @param ***REMOVED***integer***REMOVED*** [margin=0] - The margin around all images in the collection (in pixels).
-* @param ***REMOVED***integer***REMOVED*** [spacing=0] - The spacing between each image in the collection (in pixels).
-* @param ***REMOVED***object***REMOVED*** [properties=***REMOVED******REMOVED***] - Custom Image Collection properties.
+* @param {string} name - The name of the image collection in the map data.
+* @param {integer} firstgid - The first image index this image collection contains.
+* @param {integer} [width=32] - Width of widest image (in pixels).
+* @param {integer} [height=32] - Height of tallest image (in pixels).
+* @param {integer} [margin=0] - The margin around all images in the collection (in pixels).
+* @param {integer} [spacing=0] - The spacing between each image in the collection (in pixels).
+* @param {object} [properties={}] - Custom Image Collection properties.
 */
-Phaser.ImageCollection = function (name, firstgid, width, height, margin, spacing, properties) ***REMOVED***
+Phaser.ImageCollection = function (name, firstgid, width, height, margin, spacing, properties) {
 
-    if (width === undefined || width <= 0) ***REMOVED*** width = 32; ***REMOVED***
-    if (height === undefined || height <= 0) ***REMOVED*** height = 32; ***REMOVED***
-    if (margin === undefined) ***REMOVED*** margin = 0; ***REMOVED***
-    if (spacing === undefined) ***REMOVED*** spacing = 0; ***REMOVED***
+    if (width === undefined || width <= 0) { width = 32; }
+    if (height === undefined || height <= 0) { height = 32; }
+    if (margin === undefined) { margin = 0; }
+    if (spacing === undefined) { spacing = 0; }
 
     /**
     * The name of the Image Collection.
-    * @property ***REMOVED***string***REMOVED*** name
+    * @property {string} name
     */
     this.name = name;
 
     /**
     * The Tiled firstgid value.
     * This is the starting index of the first image index this Image Collection contains.
-    * @property ***REMOVED***integer***REMOVED*** firstgid
+    * @property {integer} firstgid
     */
     this.firstgid = firstgid | 0;
 
     /**
     * The width of the widest image (in pixels).
-    * @property ***REMOVED***integer***REMOVED*** imageWidth
+    * @property {integer} imageWidth
     * @readonly
     */
     this.imageWidth = width | 0;
 
     /**
     * The height of the tallest image (in pixels).
-    * @property ***REMOVED***integer***REMOVED*** imageHeight
+    * @property {integer} imageHeight
     * @readonly
     */
     this.imageHeight = height | 0;
@@ -56,7 +56,7 @@ Phaser.ImageCollection = function (name, firstgid, width, height, margin, spacin
     /**
     * The margin around the images in the collection (in pixels).
     * Use `setSpacing` to change.
-    * @property ***REMOVED***integer***REMOVED*** imageMarge
+    * @property {integer} imageMarge
     * @readonly
     */
     // Modified internally
@@ -65,20 +65,20 @@ Phaser.ImageCollection = function (name, firstgid, width, height, margin, spacin
     /**
     * The spacing between each image in the collection (in pixels).
     * Use `setSpacing` to change.
-    * @property ***REMOVED***integer***REMOVED*** imageSpacing
+    * @property {integer} imageSpacing
     * @readonly
     */
     this.imageSpacing = spacing | 0;
 
     /**
     * Image Collection-specific properties that are typically defined in the Tiled editor.
-    * @property ***REMOVED***object***REMOVED*** properties
+    * @property {object} properties
     */
-    this.properties = properties || ***REMOVED******REMOVED***;
+    this.properties = properties || {};
 
     /**
     * The cached images that are a part of this collection.
-    * @property ***REMOVED***array***REMOVED*** images
+    * @property {array} images
     * @readonly
     */
     // Modified internally
@@ -86,45 +86,45 @@ Phaser.ImageCollection = function (name, firstgid, width, height, margin, spacin
 
     /**
     * The total number of images in the image collection.
-    * @property ***REMOVED***integer***REMOVED*** total
+    * @property {integer} total
     * @readonly
     */
     // Modified internally
     this.total = 0;
-***REMOVED***;
+};
 
-Phaser.ImageCollection.prototype = ***REMOVED***
+Phaser.ImageCollection.prototype = {
 
     /**
     * Returns true if and only if this image collection contains the given image index.
     *
     * @method Phaser.ImageCollection#containsImageIndex
-    * @param ***REMOVED***integer***REMOVED*** imageIndex - The image index to search for.
-    * @return ***REMOVED***boolean***REMOVED*** True if this Image Collection contains the given index.
+    * @param {integer} imageIndex - The image index to search for.
+    * @return {boolean} True if this Image Collection contains the given index.
     */
-    containsImageIndex: function (imageIndex) ***REMOVED***
+    containsImageIndex: function (imageIndex) {
 
         return (
             imageIndex >= this.firstgid &&
             imageIndex < (this.firstgid + this.total)
         );
 
-    ***REMOVED***,
+    },
 
     /**
     * Add an image to this Image Collection.
     *
     * @method Phaser.ImageCollection#addImage
-    * @param ***REMOVED***integer***REMOVED*** gid - The gid of the image in the Image Collection.
-    * @param ***REMOVED***string***REMOVED*** image - The the key of the image in the Image Collection and in the cache.
+    * @param {integer} gid - The gid of the image in the Image Collection.
+    * @param {string} image - The the key of the image in the Image Collection and in the cache.
     */
-    addImage: function (gid, image) ***REMOVED***
+    addImage: function (gid, image) {
 
-        this.images.push(***REMOVED*** gid: gid, image: image ***REMOVED***);
+        this.images.push({ gid: gid, image: image });
         this.total++;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.ImageCollection.prototype.constructor = Phaser.ImageCollection;

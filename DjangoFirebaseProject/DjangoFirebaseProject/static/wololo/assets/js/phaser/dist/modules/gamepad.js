@@ -1,7 +1,7 @@
 /**
 * @author       @karlmacklin <tacklemcclean@gmail.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -16,29 +16,29 @@
 *
 * @class Phaser.Gamepad
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
+* @param {Phaser.Game} game - A reference to the currently running game.
 */
-Phaser.Gamepad = function (game) ***REMOVED***
+Phaser.Gamepad = function (game) {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - Local reference to game.
+    * @property {Phaser.Game} game - Local reference to game.
     */
     this.game = game;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** _gamepadIndexMap - Maps the browsers gamepad indices to our Phaser Gamepads
+    * @property {object} _gamepadIndexMap - Maps the browsers gamepad indices to our Phaser Gamepads
     * @private
     */
-    this._gamepadIndexMap = ***REMOVED******REMOVED***;
+    this._gamepadIndexMap = {};
 
     /**
-    * @property ***REMOVED***Array***REMOVED*** _rawPads - The raw state of the gamepads from the browser
+    * @property {Array} _rawPads - The raw state of the gamepads from the browser
     * @private
     */
     this._rawPads = [];
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _active - Private flag for whether or not the API is polled
+    * @property {boolean} _active - Private flag for whether or not the API is polled
     * @private
     * @default
     */
@@ -46,21 +46,21 @@ Phaser.Gamepad = function (game) ***REMOVED***
 
     /**
     * Gamepad input will only be processed if enabled.
-    * @property ***REMOVED***boolean***REMOVED*** enabled
+    * @property {boolean} enabled
     * @default
     */
     this.enabled = true;
 
     /**
     * Whether or not gamepads are supported in the current browser. Note that as of Dec. 2013 this check is actually not accurate at all due to poor implementation.
-    * @property ***REMOVED***boolean***REMOVED*** _gamepadSupportAvailable - Are gamepads supported in this browser or not?
+    * @property {boolean} _gamepadSupportAvailable - Are gamepads supported in this browser or not?
     * @private
     */
     this._gamepadSupportAvailable = !!navigator.webkitGetGamepads || !!navigator.webkitGamepads || (navigator.userAgent.indexOf('Firefox/') !== -1) || !!navigator.getGamepads;
 
     /**
     * Used to check for differences between earlier polls and current state of gamepads.
-    * @property ***REMOVED***Array***REMOVED*** _prevRawGamepadTypes
+    * @property {Array} _prevRawGamepadTypes
     * @private
     * @default
     */
@@ -68,61 +68,61 @@ Phaser.Gamepad = function (game) ***REMOVED***
 
     /**
     * Used to check for differences between earlier polls and current state of gamepads.
-    * @property ***REMOVED***Array***REMOVED*** _prevTimestamps
+    * @property {Array} _prevTimestamps
     * @private
     * @default
     */
     this._prevTimestamps = [];
 
     /**
-    * @property ***REMOVED***object***REMOVED*** callbackContext - The context under which the callbacks are run.
+    * @property {object} callbackContext - The context under which the callbacks are run.
     */
     this.callbackContext = this;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onConnectCallback - This callback is invoked every time any gamepad is connected
+    * @property {function} onConnectCallback - This callback is invoked every time any gamepad is connected
     */
     this.onConnectCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onDisconnectCallback - This callback is invoked every time any gamepad is disconnected
+    * @property {function} onDisconnectCallback - This callback is invoked every time any gamepad is disconnected
     */
     this.onDisconnectCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onDownCallback - This callback is invoked every time any gamepad button is pressed down.
+    * @property {function} onDownCallback - This callback is invoked every time any gamepad button is pressed down.
     */
     this.onDownCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onUpCallback - This callback is invoked every time any gamepad button is released.
+    * @property {function} onUpCallback - This callback is invoked every time any gamepad button is released.
     */
     this.onUpCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onAxisCallback - This callback is invoked every time any gamepad axis is changed.
+    * @property {function} onAxisCallback - This callback is invoked every time any gamepad axis is changed.
     */
     this.onAxisCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onFloatCallback - This callback is invoked every time any gamepad button is changed to a value where value > 0 and value < 1.
+    * @property {function} onFloatCallback - This callback is invoked every time any gamepad button is changed to a value where value > 0 and value < 1.
     */
     this.onFloatCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** _ongamepadconnected - Private callback for Firefox gamepad connection handling
+    * @property {function} _ongamepadconnected - Private callback for Firefox gamepad connection handling
     * @private
     */
     this._ongamepadconnected = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** _gamepaddisconnected - Private callback for Firefox gamepad connection handling
+    * @property {function} _gamepaddisconnected - Private callback for Firefox gamepad connection handling
     * @private
     */
     this._gamepaddisconnected = null;
 
     /**
-    * @property ***REMOVED***Array<Phaser.SinglePad>***REMOVED*** _gamepads - The four Phaser Gamepads.
+    * @property {Array<Phaser.SinglePad>} _gamepads - The four Phaser Gamepads.
     * @private
     */
     this._gamepads = [
@@ -132,22 +132,22 @@ Phaser.Gamepad = function (game) ***REMOVED***
         new Phaser.SinglePad(game, this)
     ];
 
-***REMOVED***;
+};
 
-Phaser.Gamepad.prototype = ***REMOVED***
+Phaser.Gamepad.prototype = {
 
     /**
     * Add callbacks to the main Gamepad handler to handle connect/disconnect/button down/button up/axis change/float value buttons.
     * 
     * @method Phaser.Gamepad#addCallbacks
-    * @param ***REMOVED***object***REMOVED*** context - The context under which the callbacks are run.
-    * @param ***REMOVED***object***REMOVED*** callbacks - Object that takes six different callback methods:
+    * @param {object} context - The context under which the callbacks are run.
+    * @param {object} callbacks - Object that takes six different callback methods:
     * onConnectCallback, onDisconnectCallback, onDownCallback, onUpCallback, onAxisCallback, onFloatCallback
     */
-    addCallbacks: function (context, callbacks) ***REMOVED***
+    addCallbacks: function (context, callbacks) {
 
         if (typeof callbacks !== 'undefined')
-        ***REMOVED***
+        {
             this.onConnectCallback = (typeof callbacks.onConnect === 'function') ? callbacks.onConnect : this.onConnectCallback;
             this.onDisconnectCallback = (typeof callbacks.onDisconnect === 'function') ? callbacks.onDisconnect : this.onDisconnectCallback;
             this.onDownCallback = (typeof callbacks.onDown === 'function') ? callbacks.onDown : this.onDownCallback;
@@ -155,9 +155,9 @@ Phaser.Gamepad.prototype = ***REMOVED***
             this.onAxisCallback = (typeof callbacks.onAxis === 'function') ? callbacks.onAxis : this.onAxisCallback;
             this.onFloatCallback = (typeof callbacks.onFloat === 'function') ? callbacks.onFloat : this.onFloatCallback;
             this.callbackContext = context;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Starts the Gamepad event handling.
@@ -165,75 +165,75 @@ Phaser.Gamepad.prototype = ***REMOVED***
     *
     * @method Phaser.Gamepad#start
     */
-    start: function () ***REMOVED***
+    start: function () {
 
         if (this._active)
-        ***REMOVED***
+        {
             //  Avoid setting multiple listeners
             return;
-        ***REMOVED***
+        }
 
         this._active = true;
 
         var _this = this;
 
-        this._onGamepadConnected = function (event) ***REMOVED***
+        this._onGamepadConnected = function (event) {
             return _this.onGamepadConnected(event);
-        ***REMOVED***;
+        };
 
-        this._onGamepadDisconnected = function (event) ***REMOVED***
+        this._onGamepadDisconnected = function (event) {
             return _this.onGamepadDisconnected(event);
-        ***REMOVED***;
+        };
 
         window.addEventListener('gamepadconnected', this._onGamepadConnected, false);
         window.addEventListener('gamepaddisconnected', this._onGamepadDisconnected, false);
 
-    ***REMOVED***,
+    },
 
     /**
      * Handles the connection of a Gamepad.
      *
      * @method onGamepadConnected
      * @private
-     * @param ***REMOVED***object***REMOVED*** event - The DOM event.
+     * @param {object} event - The DOM event.
      */
-    onGamepadConnected: function (event) ***REMOVED***
+    onGamepadConnected: function (event) {
 
         var newPad = event.gamepad;
         this._rawPads.push(newPad);
         this._gamepads[newPad.index].connect(newPad);
 
-    ***REMOVED***,
+    },
 
     /**
      * Handles the disconnection of a Gamepad.
      *
      * @method onGamepadDisconnected
      * @private
-     * @param ***REMOVED***object***REMOVED*** event - The DOM event.
+     * @param {object} event - The DOM event.
      */
-    onGamepadDisconnected: function (event) ***REMOVED***
+    onGamepadDisconnected: function (event) {
 
         var removedPad = event.gamepad;
 
         for (var i in this._rawPads)
-        ***REMOVED***
+        {
             if (this._rawPads[i].index === removedPad.index)
-            ***REMOVED***
+            {
                 this._rawPads.splice(i,1);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         this._gamepads[removedPad.index].disconnect();
 
-    ***REMOVED***,
+    },
 
     /**
     * Main gamepad update loop. Should not be called manually.
     * @method Phaser.Gamepad#update
     * @protected
     */
-    update: function () ***REMOVED***
+    update: function () {
 
         this._pollGamepads();
 
@@ -242,7 +242,7 @@ Phaser.Gamepad.prototype = ***REMOVED***
         this.pad3.pollStatus();
         this.pad4.pollStatus();
 
-    ***REMOVED***,
+    },
 
     /**
     * Updating connected gamepads (for Google Chrome). Should not be called manually.
@@ -250,346 +250,346 @@ Phaser.Gamepad.prototype = ***REMOVED***
     * @method Phaser.Gamepad#_pollGamepads
     * @private
     */
-    _pollGamepads: function () ***REMOVED***
+    _pollGamepads: function () {
 
         if (!this._active)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         if (navigator['getGamepads'])
-        ***REMOVED***
+        {
             var rawGamepads = navigator.getGamepads();
-        ***REMOVED***
+        }
         else if (navigator['webkitGetGamepads'])
-        ***REMOVED***
+        {
             var rawGamepads = navigator.webkitGetGamepads();
-        ***REMOVED***
+        }
         else if (navigator['webkitGamepads'])
-        ***REMOVED***
+        {
             var rawGamepads = navigator.webkitGamepads();
-        ***REMOVED***
+        }
 
         if (rawGamepads)
-        ***REMOVED***
+        {
             this._rawPads = [];
 
             var gamepadsChanged = false;
 
             for (var i = 0; i < rawGamepads.length; i++)
-            ***REMOVED***
+            {
                 if (typeof rawGamepads[i] !== this._prevRawGamepadTypes[i])
-                ***REMOVED***
+                {
                     gamepadsChanged = true;
                     this._prevRawGamepadTypes[i] = typeof rawGamepads[i];
-                ***REMOVED***
+                }
 
                 if (rawGamepads[i])
-                ***REMOVED***
+                {
                     this._rawPads.push(rawGamepads[i]);
-                ***REMOVED***
+                }
 
                 // Support max 4 pads at the moment
                 if (i === 3)
-                ***REMOVED***
+                {
                     break;
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
 
             for (var g = 0; g < this._gamepads.length; g++)
-            ***REMOVED***
+            {
                 this._gamepads[g]._rawPad = this._rawPads[g];
-            ***REMOVED***
+            }
 
             if (gamepadsChanged)
-            ***REMOVED***
-                var validConnections = ***REMOVED*** rawIndices: ***REMOVED******REMOVED***, padIndices: ***REMOVED******REMOVED*** ***REMOVED***;
+            {
+                var validConnections = { rawIndices: {}, padIndices: {} };
                 var singlePad;
 
                 for (var j = 0; j < this._gamepads.length; j++)
-                ***REMOVED***
+                {
                     singlePad = this._gamepads[j];
 
                     if (singlePad.connected)
-                    ***REMOVED***
+                    {
                         for (var k = 0; k < this._rawPads.length; k++)
-                        ***REMOVED***
+                        {
                             if (this._rawPads[k].index === singlePad.index)
-                            ***REMOVED***
+                            {
                                 validConnections.rawIndices[singlePad.index] = true;
                                 validConnections.padIndices[j] = true;
-                            ***REMOVED***
-                        ***REMOVED***
-                    ***REMOVED***
-                ***REMOVED***
+                            }
+                        }
+                    }
+                }
 
                 for (var l = 0; l < this._gamepads.length; l++)
-                ***REMOVED***
+                {
                     singlePad = this._gamepads[l];
 
                     if (validConnections.padIndices[l])
-                    ***REMOVED***
+                    {
                         continue;
-                    ***REMOVED***
+                    }
 
                     if (this._rawPads.length < 1)
-                    ***REMOVED***
+                    {
                         singlePad.disconnect();
-                    ***REMOVED***
+                    }
 
                     for (var m = 0; m < this._rawPads.length; m++)
-                    ***REMOVED***
+                    {
                         if (validConnections.padIndices[l])
-                        ***REMOVED***
+                        {
                             break;
-                        ***REMOVED***
+                        }
 
                         var rawPad = this._rawPads[m];
 
                         if (rawPad)
-                        ***REMOVED***
+                        {
                             if (validConnections.rawIndices[rawPad.index])
-                            ***REMOVED***
+                            {
                                 singlePad.disconnect();
                                 continue;
-                            ***REMOVED***
+                            }
                             else
-                            ***REMOVED***
+                            {
                                 singlePad.connect(rawPad);
                                 validConnections.rawIndices[rawPad.index] = true;
                                 validConnections.padIndices[l] = true;
-                            ***REMOVED***
-                        ***REMOVED***
+                            }
+                        }
                         else
-                        ***REMOVED***
+                        {
                             singlePad.disconnect();
-                        ***REMOVED***
-                    ***REMOVED***
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***,
+                        }
+                    }
+                }
+            }
+        }
+    },
 
     /**
     * Sets the deadZone variable for all four gamepads
     * @method Phaser.Gamepad#setDeadZones
     */
-    setDeadZones: function (value) ***REMOVED***
+    setDeadZones: function (value) {
 
         for (var i = 0; i < this._gamepads.length; i++)
-        ***REMOVED***
+        {
             this._gamepads[i].deadZone = value;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Stops the Gamepad event handling.
     *
     * @method Phaser.Gamepad#stop
     */
-    stop: function () ***REMOVED***
+    stop: function () {
 
         this._active = false;
 
         window.removeEventListener('gamepadconnected', this._onGamepadConnected);
         window.removeEventListener('gamepaddisconnected', this._onGamepadDisconnected);
 
-    ***REMOVED***,
+    },
 
     /**
     * Reset all buttons/axes of all gamepads
     * @method Phaser.Gamepad#reset
     */
-    reset: function () ***REMOVED***
+    reset: function () {
 
         this.update();
 
         for (var i = 0; i < this._gamepads.length; i++)
-        ***REMOVED***
+        {
             this._gamepads[i].reset();
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns the "just pressed" state of a button from ANY gamepad connected. Just pressed is considered true if the button was pressed down within the duration given (default 250ms).
     * @method Phaser.Gamepad#justPressed
-    * @param ***REMOVED***number***REMOVED*** buttonCode - The buttonCode of the button to check for.
-    * @param ***REMOVED***number***REMOVED*** [duration=250] - The duration below which the button is considered as being just pressed.
-    * @return ***REMOVED***boolean***REMOVED*** True if the button is just pressed otherwise false.
+    * @param {number} buttonCode - The buttonCode of the button to check for.
+    * @param {number} [duration=250] - The duration below which the button is considered as being just pressed.
+    * @return {boolean} True if the button is just pressed otherwise false.
     */
-    justPressed: function (buttonCode, duration) ***REMOVED***
+    justPressed: function (buttonCode, duration) {
 
         for (var i = 0; i < this._gamepads.length; i++)
-        ***REMOVED***
+        {
             if (this._gamepads[i].justPressed(buttonCode, duration) === true)
-            ***REMOVED***
+            {
                 return true;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return false;
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns the "just released" state of a button from ANY gamepad connected. Just released is considered as being true if the button was released within the duration given (default 250ms).
     * @method Phaser.Gamepad#justPressed
-    * @param ***REMOVED***number***REMOVED*** buttonCode - The buttonCode of the button to check for.
-    * @param ***REMOVED***number***REMOVED*** [duration=250] - The duration below which the button is considered as being just released.
-    * @return ***REMOVED***boolean***REMOVED*** True if the button is just released otherwise false.
+    * @param {number} buttonCode - The buttonCode of the button to check for.
+    * @param {number} [duration=250] - The duration below which the button is considered as being just released.
+    * @return {boolean} True if the button is just released otherwise false.
     */
-    justReleased: function (buttonCode, duration) ***REMOVED***
+    justReleased: function (buttonCode, duration) {
 
         for (var i = 0; i < this._gamepads.length; i++)
-        ***REMOVED***
+        {
             if (this._gamepads[i].justReleased(buttonCode, duration) === true)
-            ***REMOVED***
+            {
                 return true;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return false;
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns true if the button is currently pressed down, on ANY gamepad.
     * @method Phaser.Gamepad#isDown
-    * @param ***REMOVED***number***REMOVED*** buttonCode - The buttonCode of the button to check for.
-    * @return ***REMOVED***boolean***REMOVED*** True if a button is currently down.
+    * @param {number} buttonCode - The buttonCode of the button to check for.
+    * @return {boolean} True if a button is currently down.
     */
-    isDown: function (buttonCode) ***REMOVED***
+    isDown: function (buttonCode) {
 
         for (var i = 0; i < this._gamepads.length; i++)
-        ***REMOVED***
+        {
             if (this._gamepads[i].isDown(buttonCode) === true)
-            ***REMOVED***
+            {
                 return true;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return false;
-    ***REMOVED***,
+    },
 
     /**
      * Destroys this object and the associated event listeners.
      *
      * @method Phaser.Gamepad#destroy
      */
-    destroy: function () ***REMOVED***
+    destroy: function () {
 
         this.stop();
 
         for (var i = 0; i < this._gamepads.length; i++)
-        ***REMOVED***
+        {
             this._gamepads[i].destroy();
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.Gamepad.prototype.constructor = Phaser.Gamepad;
 
 /**
 * If the gamepad input is active or not - if not active it should not be updated from Input.js
 * @name Phaser.Gamepad#active
-* @property ***REMOVED***boolean***REMOVED*** active - If the gamepad input is active or not.
+* @property {boolean} active - If the gamepad input is active or not.
 * @readonly
 */
-Object.defineProperty(Phaser.Gamepad.prototype, "active", ***REMOVED***
+Object.defineProperty(Phaser.Gamepad.prototype, "active", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this._active;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * Whether or not gamepads are supported in current browser.
 * @name Phaser.Gamepad#supported
-* @property ***REMOVED***boolean***REMOVED*** supported - Whether or not gamepads are supported in current browser.
+* @property {boolean} supported - Whether or not gamepads are supported in current browser.
 * @readonly
 */
-Object.defineProperty(Phaser.Gamepad.prototype, "supported", ***REMOVED***
+Object.defineProperty(Phaser.Gamepad.prototype, "supported", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this._gamepadSupportAvailable;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * How many live gamepads are currently connected.
 * @name Phaser.Gamepad#padsConnected
-* @property ***REMOVED***number***REMOVED*** padsConnected - How many live gamepads are currently connected.
+* @property {number} padsConnected - How many live gamepads are currently connected.
 * @readonly
 */
-Object.defineProperty(Phaser.Gamepad.prototype, "padsConnected", ***REMOVED***
+Object.defineProperty(Phaser.Gamepad.prototype, "padsConnected", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this._rawPads.length;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * Gamepad #1
 * @name Phaser.Gamepad#pad1
-* @property ***REMOVED***Phaser.SinglePad***REMOVED*** pad1 - Gamepad #1;
+* @property {Phaser.SinglePad} pad1 - Gamepad #1;
 * @readonly
 */
-Object.defineProperty(Phaser.Gamepad.prototype, "pad1", ***REMOVED***
+Object.defineProperty(Phaser.Gamepad.prototype, "pad1", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this._gamepads[0];
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * Gamepad #2
 * @name Phaser.Gamepad#pad2
-* @property ***REMOVED***Phaser.SinglePad***REMOVED*** pad2 - Gamepad #2
+* @property {Phaser.SinglePad} pad2 - Gamepad #2
 * @readonly
 */
-Object.defineProperty(Phaser.Gamepad.prototype, "pad2", ***REMOVED***
+Object.defineProperty(Phaser.Gamepad.prototype, "pad2", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this._gamepads[1];
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * Gamepad #3
 * @name Phaser.Gamepad#pad3
-* @property ***REMOVED***Phaser.SinglePad***REMOVED*** pad3 - Gamepad #3
+* @property {Phaser.SinglePad} pad3 - Gamepad #3
 * @readonly
 */
-Object.defineProperty(Phaser.Gamepad.prototype, "pad3", ***REMOVED***
+Object.defineProperty(Phaser.Gamepad.prototype, "pad3", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this._gamepads[2];
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * Gamepad #4
 * @name Phaser.Gamepad#pad4
-* @property ***REMOVED***Phaser.SinglePad***REMOVED*** pad4 - Gamepad #4
+* @property {Phaser.SinglePad} pad4 - Gamepad #4
 * @readonly
 */
-Object.defineProperty(Phaser.Gamepad.prototype, "pad4", ***REMOVED***
+Object.defineProperty(Phaser.Gamepad.prototype, "pad4", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this._gamepads[3];
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 Phaser.Gamepad.BUTTON_0 = 0;
 Phaser.Gamepad.BUTTON_1 = 1;
@@ -674,7 +674,7 @@ Phaser.Gamepad.PS3XC_STICK_RIGHT_Y = 3; // analog stick, range -1..1
 * @author       @karlmacklin <tacklemcclean@gmail.com>
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -682,126 +682,126 @@ Phaser.Gamepad.PS3XC_STICK_RIGHT_Y = 3; // analog stick, range -1..1
 * 
 * @class Phaser.SinglePad
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - Current game instance.
-* @param ***REMOVED***object***REMOVED*** padParent - The parent Phaser.Gamepad object (all gamepads reside under this)
+* @param {Phaser.Game} game - Current game instance.
+* @param {object} padParent - The parent Phaser.Gamepad object (all gamepads reside under this)
 */
-Phaser.SinglePad = function (game, padParent) ***REMOVED***
+Phaser.SinglePad = function (game, padParent) {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - Local reference to game.
+    * @property {Phaser.Game} game - Local reference to game.
     */
     this.game = game;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** index - The gamepad index as per browsers data
+    * @property {number} index - The gamepad index as per browsers data
     * @readonly
     */
     this.index = null;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** connected - Whether or not this particular gamepad is connected or not.
+    * @property {boolean} connected - Whether or not this particular gamepad is connected or not.
     * @readonly
     */
     this.connected = false;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** callbackContext - The context under which the callbacks are run.
+    * @property {object} callbackContext - The context under which the callbacks are run.
     */
     this.callbackContext = this;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onConnectCallback - This callback is invoked every time this gamepad is connected
+    * @property {function} onConnectCallback - This callback is invoked every time this gamepad is connected
     */
     this.onConnectCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onDisconnectCallback - This callback is invoked every time this gamepad is disconnected
+    * @property {function} onDisconnectCallback - This callback is invoked every time this gamepad is disconnected
     */
     this.onDisconnectCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onDownCallback - This callback is invoked every time a button is pressed down.
+    * @property {function} onDownCallback - This callback is invoked every time a button is pressed down.
     */
     this.onDownCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onUpCallback - This callback is invoked every time a gamepad button is released.
+    * @property {function} onUpCallback - This callback is invoked every time a gamepad button is released.
     */
     this.onUpCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onAxisCallback - This callback is invoked every time an axis is changed.
+    * @property {function} onAxisCallback - This callback is invoked every time an axis is changed.
     */
     this.onAxisCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onFloatCallback - This callback is invoked every time a button is changed to a value where value > 0 and value < 1.
+    * @property {function} onFloatCallback - This callback is invoked every time a button is changed to a value where value > 0 and value < 1.
     */
     this.onFloatCallback = null;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** deadZone - Dead zone for axis feedback - within this value you won't trigger updates.
+    * @property {number} deadZone - Dead zone for axis feedback - within this value you won't trigger updates.
     */
     this.deadZone = 0.26;
 
     /**
-    * @property ***REMOVED***Phaser.Gamepad***REMOVED*** padParent - Main Phaser Gamepad object
+    * @property {Phaser.Gamepad} padParent - Main Phaser Gamepad object
     * @private
     */
     this._padParent = padParent;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** _rawPad - The 'raw' gamepad data.
+    * @property {object} _rawPad - The 'raw' gamepad data.
     * @private
     */
     this._rawPad = null;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _prevTimestamp - Used to check for differences between earlier polls and current state of gamepads.
+    * @property {number} _prevTimestamp - Used to check for differences between earlier polls and current state of gamepads.
     * @private
     */
     this._prevTimestamp = null;
 
     /**
-    * @property ***REMOVED***Array***REMOVED*** _buttons - Array of Phaser.DeviceButton objects. This array is populated when the gamepad is connected.
+    * @property {Array} _buttons - Array of Phaser.DeviceButton objects. This array is populated when the gamepad is connected.
     * @private
     */
     this._buttons = [];
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _buttonsLen - Length of the _buttons array.
+    * @property {number} _buttonsLen - Length of the _buttons array.
     * @private
     */
     this._buttonsLen = 0;
 
     /**
-    * @property ***REMOVED***Array***REMOVED*** _axes - Current axes state.
+    * @property {Array} _axes - Current axes state.
     * @private
     */
     this._axes = [];
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _axesLen - Length of the _axes array.
+    * @property {number} _axesLen - Length of the _axes array.
     * @private
     */
     this._axesLen = 0;
 
-***REMOVED***;
+};
 
-Phaser.SinglePad.prototype = ***REMOVED***
+Phaser.SinglePad.prototype = {
 
     /**
     * Add callbacks to this Gamepad to handle connect / disconnect / button down / button up / axis change / float value buttons.
     * 
     * @method Phaser.SinglePad#addCallbacks
-    * @param ***REMOVED***object***REMOVED*** context - The context under which the callbacks are run.
-    * @param ***REMOVED***object***REMOVED*** callbacks - Object that takes six different callbak methods:
+    * @param {object} context - The context under which the callbacks are run.
+    * @param {object} callbacks - Object that takes six different callbak methods:
     * onConnectCallback, onDisconnectCallback, onDownCallback, onUpCallback, onAxisCallback, onFloatCallback
     */
-    addCallbacks: function (context, callbacks) ***REMOVED***
+    addCallbacks: function (context, callbacks) {
 
         if (typeof callbacks !== 'undefined')
-        ***REMOVED***
+        {
             this.onConnectCallback = (typeof callbacks.onConnect === 'function') ? callbacks.onConnect : this.onConnectCallback;
             this.onDisconnectCallback = (typeof callbacks.onDisconnect === 'function') ? callbacks.onDisconnect : this.onDisconnectCallback;
             this.onDownCallback = (typeof callbacks.onDown === 'function') ? callbacks.onDown : this.onDownCallback;
@@ -810,88 +810,88 @@ Phaser.SinglePad.prototype = ***REMOVED***
             this.onFloatCallback = (typeof callbacks.onFloat === 'function') ? callbacks.onFloat : this.onFloatCallback;
 
             this.callbackContext = context;
-        ***REMOVED***
-    ***REMOVED***,
+        }
+    },
 
     /**
     * Gets a DeviceButton object from this controller to be stored and referenced locally.
     * The DeviceButton object can then be polled, have events attached to it, etc.
     *
     * @method Phaser.SinglePad#getButton
-    * @param ***REMOVED***number***REMOVED*** buttonCode - The buttonCode of the button, i.e. Phaser.Gamepad.BUTTON_0, Phaser.Gamepad.XBOX360_A, etc.
-    * @return ***REMOVED***Phaser.DeviceButton***REMOVED*** The DeviceButton object which you can store locally and reference directly.
+    * @param {number} buttonCode - The buttonCode of the button, i.e. Phaser.Gamepad.BUTTON_0, Phaser.Gamepad.XBOX360_A, etc.
+    * @return {Phaser.DeviceButton} The DeviceButton object which you can store locally and reference directly.
     */
-    getButton: function (buttonCode) ***REMOVED***
+    getButton: function (buttonCode) {
 
         if (this._buttons[buttonCode])
-        ***REMOVED***
+        {
             return this._buttons[buttonCode];
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return null;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Main update function called by Phaser.Gamepad.
     * 
     * @method Phaser.SinglePad#pollStatus
     */
-    pollStatus: function () ***REMOVED***
+    pollStatus: function () {
 
         if (!this.connected || !this.game.input.enabled || !this.game.input.gamepad.enabled || (this._rawPad.timestamp && (this._rawPad.timestamp === this._prevTimestamp)))
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         for (var i = 0; i < this._buttonsLen; i++)
-        ***REMOVED***
+        {
             var rawButtonVal = isNaN(this._rawPad.buttons[i]) ? this._rawPad.buttons[i].value : this._rawPad.buttons[i];
 
             if (rawButtonVal !== this._buttons[i].value)
-            ***REMOVED***
+            {
                 if (rawButtonVal === 1)
-                ***REMOVED***
+                {
                     this.processButtonDown(i, rawButtonVal);
-                ***REMOVED***
+                }
                 else if (rawButtonVal === 0)
-                ***REMOVED***
+                {
                     this.processButtonUp(i, rawButtonVal);
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     this.processButtonFloat(i, rawButtonVal);
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
         
         for (var index = 0; index < this._axesLen; index++)
-        ***REMOVED***
+        {
             var value = this._rawPad.axes[index];
 
             if ((value > 0 && value > this.deadZone) || (value < 0 && value < -this.deadZone))
-            ***REMOVED***
+            {
                 this.processAxisChange(index, value);
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this.processAxisChange(index, 0);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         this._prevTimestamp = this._rawPad.timestamp;
 
-    ***REMOVED***,
+    },
 
     /**
     * Gamepad connect function, should be called by Phaser.Gamepad.
     * 
     * @method Phaser.SinglePad#connect
-    * @param ***REMOVED***object***REMOVED*** rawPad - The raw gamepad object
+    * @param {object} rawPad - The raw gamepad object
     */
-    connect: function (rawPad) ***REMOVED***
+    connect: function (rawPad) {
 
         var triggerCallback = !this.connected;
 
@@ -907,34 +907,34 @@ Phaser.SinglePad.prototype = ***REMOVED***
         this._axesLen = rawPad.axes.length;
 
         for (var a = 0; a < this._axesLen; a++)
-        ***REMOVED***
+        {
             this._axes[a] = rawPad.axes[a];
-        ***REMOVED***
+        }
 
         for (var buttonCode in rawPad.buttons)
-        ***REMOVED***
+        {
             buttonCode = parseInt(buttonCode, 10);
             this._buttons[buttonCode] = new Phaser.DeviceButton(this, buttonCode);
-        ***REMOVED***
+        }
 
         if (triggerCallback && this._padParent.onConnectCallback)
-        ***REMOVED***
+        {
             this._padParent.onConnectCallback.call(this._padParent.callbackContext, this.index);
-        ***REMOVED***
+        }
 
         if (triggerCallback && this.onConnectCallback)
-        ***REMOVED***
+        {
             this.onConnectCallback.call(this.callbackContext);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Gamepad disconnect function, should be called by Phaser.Gamepad.
     * 
     * @method Phaser.SinglePad#disconnect
     */
-    disconnect: function () ***REMOVED***
+    disconnect: function () {
 
         var triggerCallback = this.connected;
         var disconnectingIndex = this.index;
@@ -945,9 +945,9 @@ Phaser.SinglePad.prototype = ***REMOVED***
         this._rawPad = undefined;
 
         for (var i = 0; i < this._buttonsLen; i++)
-        ***REMOVED***
+        {
             this._buttons[i].destroy();
-        ***REMOVED***
+        }
 
         this._buttons = [];
         this._buttonsLen = 0;
@@ -956,30 +956,30 @@ Phaser.SinglePad.prototype = ***REMOVED***
         this._axesLen = 0;
 
         if (triggerCallback && this._padParent.onDisconnectCallback)
-        ***REMOVED***
+        {
             this._padParent.onDisconnectCallback.call(this._padParent.callbackContext, disconnectingIndex);
-        ***REMOVED***
+        }
 
         if (triggerCallback && this.onDisconnectCallback)
-        ***REMOVED***
+        {
             this.onDisconnectCallback.call(this.callbackContext);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
      * Destroys this object and associated callback references.
      *
      * @method Phaser.SinglePad#destroy
      */
-    destroy: function () ***REMOVED***
+    destroy: function () {
 
         this._rawPad = undefined;
 
         for (var i = 0; i < this._buttonsLen; i++)
-        ***REMOVED***
+        {
             this._buttons[i].destroy();
-        ***REMOVED***
+        }
 
         this._buttons = [];
         this._buttonsLen = 0;
@@ -994,234 +994,234 @@ Phaser.SinglePad.prototype = ***REMOVED***
         this.onAxisCallback = null;
         this.onFloatCallback = null;
 
-    ***REMOVED***,
+    },
 
     /**
     * Handles changes in axis.
     * 
     * @method Phaser.SinglePad#processAxisChange
-    * @param ***REMOVED***object***REMOVED*** axisState - State of the relevant axis
+    * @param {object} axisState - State of the relevant axis
     */
-    processAxisChange: function (index, value) ***REMOVED***
+    processAxisChange: function (index, value) {
 
         if (this._axes[index] === value)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         this._axes[index] = value;
 
         if (this._padParent.onAxisCallback)
-        ***REMOVED***
+        {
             this._padParent.onAxisCallback.call(this._padParent.callbackContext, this, index, value);
-        ***REMOVED***
+        }
 
         if (this.onAxisCallback)
-        ***REMOVED***
+        {
             this.onAxisCallback.call(this.callbackContext, this, index, value);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Handles button down press.
     * 
     * @method Phaser.SinglePad#processButtonDown
-    * @param ***REMOVED***number***REMOVED*** buttonCode - Which buttonCode of this button
-    * @param ***REMOVED***object***REMOVED*** value - Button value
+    * @param {number} buttonCode - Which buttonCode of this button
+    * @param {object} value - Button value
     */
-    processButtonDown: function (buttonCode, value) ***REMOVED***
+    processButtonDown: function (buttonCode, value) {
 
         if (this._buttons[buttonCode])
-        ***REMOVED***
+        {
             this._buttons[buttonCode].start(null, value);
-        ***REMOVED***
+        }
 
         if (this._padParent.onDownCallback)
-        ***REMOVED***
+        {
             this._padParent.onDownCallback.call(this._padParent.callbackContext, buttonCode, value, this.index);
-        ***REMOVED***
+        }
 
         if (this.onDownCallback)
-        ***REMOVED***
+        {
             this.onDownCallback.call(this.callbackContext, buttonCode, value);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Handles button release.
     * 
     * @method Phaser.SinglePad#processButtonUp
-    * @param ***REMOVED***number***REMOVED*** buttonCode - Which buttonCode of this button
-    * @param ***REMOVED***object***REMOVED*** value - Button value
+    * @param {number} buttonCode - Which buttonCode of this button
+    * @param {object} value - Button value
     */
-    processButtonUp: function (buttonCode, value) ***REMOVED***
+    processButtonUp: function (buttonCode, value) {
 
         if (this._padParent.onUpCallback)
-        ***REMOVED***
+        {
             this._padParent.onUpCallback.call(this._padParent.callbackContext, buttonCode, value, this.index);
-        ***REMOVED***
+        }
 
         if (this.onUpCallback)
-        ***REMOVED***
+        {
             this.onUpCallback.call(this.callbackContext, buttonCode, value);
-        ***REMOVED***
+        }
 
         if (this._buttons[buttonCode])
-        ***REMOVED***
+        {
             this._buttons[buttonCode].stop(null, value);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Handles buttons with floating values (like analog buttons that acts almost like an axis but still registers like a button)
     * 
     * @method Phaser.SinglePad#processButtonFloat
-    * @param ***REMOVED***number***REMOVED*** buttonCode - Which buttonCode of this button
-    * @param ***REMOVED***object***REMOVED*** value - Button value (will range somewhere between 0 and 1, but not specifically 0 or 1.
+    * @param {number} buttonCode - Which buttonCode of this button
+    * @param {object} value - Button value (will range somewhere between 0 and 1, but not specifically 0 or 1.
     */
-    processButtonFloat: function (buttonCode, value) ***REMOVED***
+    processButtonFloat: function (buttonCode, value) {
 
         if (this._padParent.onFloatCallback)
-        ***REMOVED***
+        {
             this._padParent.onFloatCallback.call(this._padParent.callbackContext, buttonCode, value, this.index);
-        ***REMOVED***
+        }
 
         if (this.onFloatCallback)
-        ***REMOVED***
+        {
             this.onFloatCallback.call(this.callbackContext, buttonCode, value);
-        ***REMOVED***
+        }
 
         if (this._buttons[buttonCode])
-        ***REMOVED***
+        {
             this._buttons[buttonCode].padFloat(value);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns value of requested axis.
     * 
     * @method Phaser.SinglePad#axis
-    * @param ***REMOVED***number***REMOVED*** axisCode - The index of the axis to check
-    * @return ***REMOVED***number***REMOVED*** Axis value if available otherwise false
+    * @param {number} axisCode - The index of the axis to check
+    * @return {number} Axis value if available otherwise false
     */
-    axis: function (axisCode) ***REMOVED***
+    axis: function (axisCode) {
 
         if (this._axes[axisCode])
-        ***REMOVED***
+        {
             return this._axes[axisCode];
-        ***REMOVED***
+        }
 
         return false;
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns true if the button is pressed down.
     * 
     * @method Phaser.SinglePad#isDown
-    * @param ***REMOVED***number***REMOVED*** buttonCode - The buttonCode of the button to check.
-    * @return ***REMOVED***boolean***REMOVED*** True if the button is pressed down.
+    * @param {number} buttonCode - The buttonCode of the button to check.
+    * @return {boolean} True if the button is pressed down.
     */
-    isDown: function (buttonCode) ***REMOVED***
+    isDown: function (buttonCode) {
 
         if (this._buttons[buttonCode])
-        ***REMOVED***
+        {
             return this._buttons[buttonCode].isDown;
-        ***REMOVED***
+        }
 
         return false;
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns true if the button is not currently pressed.
     * 
     * @method Phaser.SinglePad#isUp
-    * @param ***REMOVED***number***REMOVED*** buttonCode - The buttonCode of the button to check.
-    * @return ***REMOVED***boolean***REMOVED*** True if the button is not currently pressed down.
+    * @param {number} buttonCode - The buttonCode of the button to check.
+    * @return {boolean} True if the button is not currently pressed down.
     */
-    isUp: function (buttonCode) ***REMOVED***
+    isUp: function (buttonCode) {
 
         if (this._buttons[buttonCode])
-        ***REMOVED***
+        {
             return this._buttons[buttonCode].isUp;
-        ***REMOVED***
+        }
 
         return false;
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns the "just released" state of a button from this gamepad. Just released is considered as being true if the button was released within the duration given (default 250ms).
     * 
     * @method Phaser.SinglePad#justReleased
-    * @param ***REMOVED***number***REMOVED*** buttonCode - The buttonCode of the button to check for.
-    * @param ***REMOVED***number***REMOVED*** [duration=250] - The duration below which the button is considered as being just released.
-    * @return ***REMOVED***boolean***REMOVED*** True if the button is just released otherwise false.
+    * @param {number} buttonCode - The buttonCode of the button to check for.
+    * @param {number} [duration=250] - The duration below which the button is considered as being just released.
+    * @return {boolean} True if the button is just released otherwise false.
     */
-    justReleased: function (buttonCode, duration) ***REMOVED***
+    justReleased: function (buttonCode, duration) {
 
         if (this._buttons[buttonCode])
-        ***REMOVED***
+        {
             return this._buttons[buttonCode].justReleased(duration);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns the "just pressed" state of a button from this gamepad. Just pressed is considered true if the button was pressed down within the duration given (default 250ms).
     * 
     * @method Phaser.SinglePad#justPressed
-    * @param ***REMOVED***number***REMOVED*** buttonCode - The buttonCode of the button to check for.
-    * @param ***REMOVED***number***REMOVED*** [duration=250] - The duration below which the button is considered as being just pressed.
-    * @return ***REMOVED***boolean***REMOVED*** True if the button is just pressed otherwise false.
+    * @param {number} buttonCode - The buttonCode of the button to check for.
+    * @param {number} [duration=250] - The duration below which the button is considered as being just pressed.
+    * @return {boolean} True if the button is just pressed otherwise false.
     */
-    justPressed: function (buttonCode, duration) ***REMOVED***
+    justPressed: function (buttonCode, duration) {
 
         if (this._buttons[buttonCode])
-        ***REMOVED***
+        {
             return this._buttons[buttonCode].justPressed(duration);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns the value of a gamepad button. Intended mainly for cases when you have floating button values, for example
     * analog trigger buttons on the XBOX 360 controller.
     * 
     * @method Phaser.SinglePad#buttonValue
-    * @param ***REMOVED***number***REMOVED*** buttonCode - The buttonCode of the button to check.
-    * @return ***REMOVED***number***REMOVED*** Button value if available otherwise null. Be careful as this can incorrectly evaluate to 0.
+    * @param {number} buttonCode - The buttonCode of the button to check.
+    * @return {number} Button value if available otherwise null. Be careful as this can incorrectly evaluate to 0.
     */
-    buttonValue: function (buttonCode) ***REMOVED***
+    buttonValue: function (buttonCode) {
 
         if (this._buttons[buttonCode])
-        ***REMOVED***
+        {
             return this._buttons[buttonCode].value;
-        ***REMOVED***
+        }
 
         return null;
 
-    ***REMOVED***,
+    },
 
     /**
     * Reset all buttons/axes of this gamepad.
     * 
     * @method Phaser.SinglePad#reset
     */
-    reset: function () ***REMOVED***
+    reset: function () {
 
         for (var j = 0; j < this._axes.length; j++)
-        ***REMOVED***
+        {
             this._axes[j] = 0;
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.SinglePad.prototype.constructor = Phaser.SinglePad;

@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1289,7 +1289,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
             <pre class="sunlight-highlight-javascript linenums">/**
 * @author       Richard Davey &lt;rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1298,9 +1298,9 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 *
 * @class
 */
-Phaser.Component.AutoCull = function () ***REMOVED******REMOVED***;
+Phaser.Component.AutoCull = function () {};
 
-Phaser.Component.AutoCull.prototype = ***REMOVED***
+Phaser.Component.AutoCull.prototype = {
 
     /**
     * A Game Object with `autoCull` set to true will check its bounds against the World Camera every frame.
@@ -1310,7 +1310,7 @@ Phaser.Component.AutoCull.prototype = ***REMOVED***
     * This is a relatively expensive operation, especially if enabled on hundreds of Game Objects. So enable it only if you know it's required,
     * or you have tested performance and find it acceptable.
     *
-    * @property ***REMOVED***boolean***REMOVED*** autoCull
+    * @property {boolean} autoCull
     * @default
     */
     autoCull: false,
@@ -1319,27 +1319,27 @@ Phaser.Component.AutoCull.prototype = ***REMOVED***
     * Checks if the Game Objects bounds intersect with the Game Camera bounds.
     * Returns `true` if they do, otherwise `false` if fully outside of the Cameras bounds.
     *
-    * @property ***REMOVED***boolean***REMOVED*** inCamera
+    * @property {boolean} inCamera
     * @readonly
     */
-    inCamera: ***REMOVED***
+    inCamera: {
 
-        get: function() ***REMOVED***
+        get: function() {
 
             if (!this.autoCull &amp;&amp; !this.checkWorldBounds)
-            ***REMOVED***
+            {
                 this._bounds.copyFrom(this.getBounds());
                 this._bounds.x += this.game.camera.view.x;
                 this._bounds.y += this.game.camera.view.y;
-            ***REMOVED***
+            }
 
             return this.game.world.camera.view.intersects(this._bounds);
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 </pre>
         </article>
     </section>
@@ -1382,22 +1382,22 @@ Phaser.Component.AutoCull.prototype = ***REMOVED***
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

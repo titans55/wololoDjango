@@ -2,7 +2,7 @@
 * @author       Richard Davey <rich@photonstorm.com>
 * @author       Pete Baron <pete@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -15,19 +15,19 @@
 *
 * @class Phaser.PathFollower
 * @constructor
-* @param ***REMOVED***Phaser.Path***REMOVED*** path - The Path object which this follower is created on.
-* @param ***REMOVED***Phaser.Sprite|object***REMOVED*** follower - The game object which this follower controls. Requires public properties: `x`, `y` for position and `rotation` for angle control (if specified).
-* @param ***REMOVED***number***REMOVED*** [speed=1] - The current speed of this follower in pixels per frame. This value is multiplied with the Path segment speed to give the final value used.
-* @param ***REMOVED***number***REMOVED*** [angleOffset=null] - If `null` then the PathFollower won't rotate. Otherwise it will face in the paths direction plus this offset which is given in radians.
-* @param ***REMOVED***function***REMOVED*** [callbackAtEnd] - A callback to be invoked when the follower reaches the end of a path.
-* @param ***REMOVED***number***REMOVED*** [physicsAdjustTime=0] - If non-zero then the follower expects to control a physics object using "arcade.moveToObject" to control velocity.
+* @param {Phaser.Path} path - The Path object which this follower is created on.
+* @param {Phaser.Sprite|object} follower - The game object which this follower controls. Requires public properties: `x`, `y` for position and `rotation` for angle control (if specified).
+* @param {number} [speed=1] - The current speed of this follower in pixels per frame. This value is multiplied with the Path segment speed to give the final value used.
+* @param {number} [angleOffset=null] - If `null` then the PathFollower won't rotate. Otherwise it will face in the paths direction plus this offset which is given in radians.
+* @param {function} [callbackAtEnd] - A callback to be invoked when the follower reaches the end of a path.
+* @param {number} [physicsAdjustTime=0] - If non-zero then the follower expects to control a physics object using "arcade.moveToObject" to control velocity.
 */
-Phaser.PathFollower = function (path, follower, speed, rotationOffset, angularOffset, callbackAtEnd, physicsAdjustTime) ***REMOVED***
+Phaser.PathFollower = function (path, follower, speed, rotationOffset, angularOffset, callbackAtEnd, physicsAdjustTime) {
 
-    if (speed === undefined) ***REMOVED*** speed = 1; ***REMOVED***
-    if (rotationOffset === undefined) ***REMOVED*** rotationOffset = 0; ***REMOVED***
-    if (angularOffset === undefined) ***REMOVED*** angularOffset = ***REMOVED*** angle: 0, distance: 0 ***REMOVED***; ***REMOVED***
-    if (physicsAdjustTime === undefined) ***REMOVED*** physicsAdjustTime = 0; ***REMOVED***
+    if (speed === undefined) { speed = 1; }
+    if (rotationOffset === undefined) { rotationOffset = 0; }
+    if (angularOffset === undefined) { angularOffset = { angle: 0, distance: 0 }; }
+    if (physicsAdjustTime === undefined) { physicsAdjustTime = 0; }
 
     Phaser.EventTarget.call(this);
 
@@ -45,19 +45,19 @@ Phaser.PathFollower = function (path, follower, speed, rotationOffset, angularOf
     this.offset = new Phaser.Point(0, 0);
 
     if (typeof speed === 'object')
-    ***REMOVED***
+    {
         this.speed = Phaser.Utils.extend(true, Object.create(Phaser.PathFollower.Defaults.speed), speed);
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         this.speed = Object.create(Phaser.PathFollower.Defaults.speed);
 
         this.speed.min = speed;
         this.speed.max = speed;
-    ***REMOVED***
+    }
 
     // _angularOffset is an angular offset from the Path's tangent direction, using angle (radians) and distance (pixels)
-    this._angularOffset = ***REMOVED*** angle: 0, distance: 0 ***REMOVED***;
+    this._angularOffset = { angle: 0, distance: 0 };
 
     this.setAngularOffset(angularOffset.angle, angularOffset.distance);
 
@@ -83,19 +83,19 @@ Phaser.PathFollower = function (path, follower, speed, rotationOffset, angularOf
     var pp = new Phaser.PathPoint();
 
     if (this.path.getPathPoint(0, pp))
-    ***REMOVED***
+    {
         this._pathSpeed = pp.speed;
-    ***REMOVED***
+    }
 
     // set up a virtualParticle if this is controlling a Physics body instead of a simple graphic object
     if (this.physicsAdjustTime !== 0)
-    ***REMOVED***
+    {
         this.virtualParticle = new Phaser.Point(pp.x, pp.y);
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         this.virtualParticle = null;
-    ***REMOVED***
+    }
 
     // default maximum gap permitted between a physics based follower and its virtual particle, in pixels
     this.maximumGap = 1000;
@@ -111,9 +111,9 @@ Phaser.PathFollower = function (path, follower, speed, rotationOffset, angularOf
     this.yoyo = false;
 
     if (!follower.events)
-    ***REMOVED***
-        follower.events = ***REMOVED******REMOVED***;
-    ***REMOVED***
+    {
+        follower.events = {};
+    }
 
     follower.events.onPathPointReached = new Phaser.Signal(); // "follower has reached a PathPoint on the path"
     follower.events.onPathBranchReached = new Phaser.Signal(); // "follower has reached a branch and must choose a direction" (stay on this path or changePath to the branch)
@@ -127,13 +127,13 @@ Phaser.PathFollower = function (path, follower, speed, rotationOffset, angularOf
 
     follower.followerPathName = this.path.name;
 
-    Object.defineProperty(this.speed, 'avg', ***REMOVED***
-        get: function() ***REMOVED***
+    Object.defineProperty(this.speed, 'avg', {
+        get: function() {
             return (this.min + this.max) / 2;
-        ***REMOVED***
-    ***REMOVED***);
+        }
+    });
 
-***REMOVED***;
+};
 
 // events for PathFollower
 Phaser.PathFollower.EVENT_REACHED_POINT = "event_reached_point";   // "follower has reached a PathPoint on the path"
@@ -146,8 +146,8 @@ Phaser.PathFollower.EVENT_PATH_LOOPED = "event_path_looped";       // "follower 
 // reduce dynamic object allocations by using this temporary Point wherever possible
 Phaser.PathFollower.tempPoint = new Phaser.Point();
 
-Phaser.PathFollower.Defaults = ***REMOVED***
-    speed: ***REMOVED***
+Phaser.PathFollower.Defaults = {
+    speed: {
         min: 1,
         max: 1,
         theta: null,
@@ -156,11 +156,11 @@ Phaser.PathFollower.Defaults = ***REMOVED***
         _elapsed: 0,
         _current: null,
         _previous: null
-    ***REMOVED***
-***REMOVED***;
+    }
+};
 
 // remove all event listeners when this PathFollower is destroyed
-Phaser.PathFollower.prototype.destroy = function () ***REMOVED***
+Phaser.PathFollower.prototype.destroy = function () {
 
     this.follower.events.onPathPointReached.removeAll();
     this.follower.events.onPathBranchReached.removeAll();
@@ -169,61 +169,61 @@ Phaser.PathFollower.prototype.destroy = function () ***REMOVED***
     this.follower.events.onPathEnd.removeAll();
     this.follower.events.onPathLoop.removeAll();
 
-***REMOVED***;
+};
 
 // update this PathFollower and move the attached graphic or physics object
 // @return: false if this PathFollower should be removed from the Path's list of followers
-Phaser.PathFollower.prototype.update = function () ***REMOVED***
+Phaser.PathFollower.prototype.update = function () {
 
     // exit immediately if _pauseTime is non-zero and it's not that time yet
     if (this._pauseTime != 0)
-    ***REMOVED***
+    {
         if (game.time.now < this._pauseTime)
-        ***REMOVED***
+        {
             return true;
-        ***REMOVED***
+        }
 
         this._pauseTime = 0;
 
         if (this.follower.animations !== undefined)
-        ***REMOVED***
+        {
             // Phaser.AnimationManager doesn't check for a currentAnim before trying to set it's paused value, so I have to do it here
             if (this.follower.animations.currentAnim)
-            ***REMOVED***
+            {
                 this.follower.animations.paused = false;
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
     // if the follower is a physics object following a virtual particle
     var waitForFollower = false;
 
     if (this.physicsAdjustTime && this.virtualParticle)
-    ***REMOVED***
+    {
         // if the distance is too great, make the virtual particle wait for the follower to catch up
         if (game.physics.arcade.distanceBetween(this.follower, this.virtualParticle) >= this.maximumGap)
-        ***REMOVED***
+        {
             waitForFollower = true;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     // advance along the path unless we're waiting for the follower to catch up
     if (!waitForFollower)
-    ***REMOVED***
+    {
         this._currentDistance += this._calculateDistance();
-    ***REMOVED***
+    }
 
     // are we moving forwards or backwards?
     var direction = (this.speed.avg * this._pathSpeed) >= 0 ? 1 : -1;
 
     // while we're past either end of the current curve
     while ((direction == 1 && this._currentDistance >= this._currentCurve.length) || (direction == -1 && this._currentDistance < 0))
-    ***REMOVED***
+    {
         var memCurveLength = this._currentCurve.length;
 
         // backwards...
         if (direction == -1)
-        ***REMOVED***
+        {
             var branchTaken = false;
 
             // passed a point going backwards, process the data for it
@@ -234,83 +234,83 @@ Phaser.PathFollower.prototype.update = function () ***REMOVED***
 
             // reached the start of the path moving backwards
             if (this._currentPoint < 0)
-            ***REMOVED***
+            {
                 if (this.path.loops)
-                ***REMOVED***
+                {
                     this.follower.events.onPathLoop.dispatch(point);
                     this._currentPoint = this.path.numPoints() - 1;
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     if (!this.yoyo)
-                    ***REMOVED***
+                    {
                         this.follower.events.onPathEnd.dispatch();        
-                    ***REMOVED***
+                    }
                     else
-                    ***REMOVED***
+                    {
                         this.follower.events.onPathYoyo.dispatch();
-                        var speed = ***REMOVED***min: this.speed.min, max: this.speed.max***REMOVED***;
+                        var speed = {min: this.speed.min, max: this.speed.max};
                         this.speed.min = -speed.max;
                         this.speed.max = -speed.min;
                         this._currentPoint = 0;
                         this._currentCurve = this.path.getCurve(this._currentPoint);
                         this._currentDistance = 0;
                         return true;
-                    ***REMOVED***
-                ***REMOVED***
-            ***REMOVED***
+                    }
+                }
+            }
 
             if (!branchTaken)
-            ***REMOVED***
+            {
                 // get the curve for this new point
                 this._currentCurve = this.path.getCurve(this._currentPoint);
 
                 // there isn't one, take a branch if there's one attached here
                 if (!this._currentCurve)
-                ***REMOVED***
+                {
                     return this.takeBranchIfAvailable();
-                ***REMOVED***
+                }
 
                 // move backwards to the end of the previous curve in the path
                 this._currentDistance += this._currentCurve.length;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else        // forwards...
-        ***REMOVED***
+        {
             this._currentPoint++;
             
             // reached the end of the path moving forwards
             if (this.path.atEnd(this._currentPoint))
-            ***REMOVED***
+            {
                 if (this.path.loops)
-                ***REMOVED***
+                {
                     // the path loops
                     this.follower.events.onPathLoop.dispatch();
                     this._currentPoint = 0;
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     // if the path doesn't loop
                     if (!this.takeBranchIfAvailable())
-                    ***REMOVED***
+                    {
                         if (!this.yoyo)
-                        ***REMOVED***
+                        {
                             this.follower.events.onPathEnd.dispatch();        
-                        ***REMOVED***
+                        }
                         else
-                        ***REMOVED***
+                        {
                             this.follower.events.onPathYoyo.dispatch();
-                            var speed = ***REMOVED***min: this.speed.min, max: this.speed.max***REMOVED***;
+                            var speed = {min: this.speed.min, max: this.speed.max};
                             this.speed.min = -speed.max;
                             this.speed.max = -speed.min;
                             this._currentPoint = this.path.length - 2;
                             this._currentCurve = this.path.getCurve(this._currentPoint);
                             this._currentDistance = this._currentCurve.length;
                             return true;
-                        ***REMOVED***
-                    ***REMOVED***
-                ***REMOVED***
-            ***REMOVED***
+                        }
+                    }
+                }
+            }
 
             // passed a point going forwards, process the data for the next one
             point = this.path.processData(this, this._currentPoint, false);
@@ -327,61 +327,61 @@ Phaser.PathFollower.prototype.update = function () ***REMOVED***
 
             // there isn't one, take a branch if there's one attached here
             if (!this._currentCurve)
-            ***REMOVED***
+            {
                 return this.takeBranchIfAvailable();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         // update the path speed while we have a reference to the PathPoint handy
         this._pathSpeed = point.speed;
-    ***REMOVED***
+    }
 
     return this.setPosition();
 
-***REMOVED***;
+};
 
-Phaser.PathFollower.prototype._calculateDistance = function () ***REMOVED***
+Phaser.PathFollower.prototype._calculateDistance = function () {
 
     if (this.speed.min === this.speed.max)
-    ***REMOVED***
+    {
         return game.time.elapsed * this.speed.avg * this._pathSpeed;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         this.speed._elapsed += game.time.elapsed;
         this.speed._current = this.speed.current || this.speed.avg;
 
         if (this.speed._elapsed >= this.speed.theta)
-        ***REMOVED***
+        {
             this.speed._current = this.speed._target;
             this.speed._target = null;
             this.speed._elapsed = 0;
-        ***REMOVED***
+        }
 
         if (!this.speed._target )
-        ***REMOVED***
+        {
             var min = Phaser.Math.clamp(this.speed._current - (this.speed._current * this.speed.lambda), this.speed.min, this.speed.max);
             var max = Phaser.Math.clamp(this.speed._current + (this.speed._current * this.speed.lambda), this.speed.min, this.speed.max);
 
             this.speed._target = game.rnd.realInRange(min, max);
-        ***REMOVED***
+        }
 
         var step = Phaser.Math.smoothstep(this.speed._elapsed,0,this.speed.theta);
         
         return Phaser.Math.linear(this.speed._current, this.speed._target, step) * this._pathSpeed;;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 // move the attached graphic or physics object to match this PathFollower
 // @return: false if this PathFollower should be removed from the Path's list of followers
-Phaser.PathFollower.prototype.setPosition = function () ***REMOVED***
+Phaser.PathFollower.prototype.setPosition = function () {
 
     // if the follower object has been destroyed, kill this too
     if (!this.follower)
-    ***REMOVED***
+    {
         return false;
-    ***REMOVED***
+    }
 
     this._currentCurve.getPointWithDistance(this._currentDistance, Phaser.PathFollower.tempPoint);
 
@@ -389,69 +389,69 @@ Phaser.PathFollower.prototype.setPosition = function () ***REMOVED***
     var oy = this.offset.y;
 
     if (this._angularOffset.distance != 0)
-    ***REMOVED***
+    {
         var angle = (this.follower.rotation + this._angularOffset.angle);
         ox += Math.cos(angle) * this._angularOffset.distance;
         oy += Math.sin(angle) * this._angularOffset.distance;
-    ***REMOVED***
+    }
 
     if (this.physicsAdjustTime)
-    ***REMOVED***
+    {
         // move the virtual particle along the path
         this.virtualParticle.x = Phaser.PathFollower.tempPoint.x + ox;
         this.virtualParticle.y = Phaser.PathFollower.tempPoint.y + oy;
 
         // move the physics body towards the virtual particle
         if (this.follower.body)
-        ***REMOVED***
+        {
             game.physics.arcade.moveToObject(this.follower, this.virtualParticle, 100, this.physicsAdjustTime);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     else
-    ***REMOVED***
+    {
         // move the follower along the path by directly adjusting it's x,y coordinates
         this.follower.x = Phaser.PathFollower.tempPoint.x + ox;
         this.follower.y = Phaser.PathFollower.tempPoint.y + oy;
-    ***REMOVED***
+    }
 
     // if this follower should turn to follow the path, and it has a rotation member
     if (this._turnOffset !== undefined && this.follower.rotation !== undefined)
-    ***REMOVED***
+    {
         // turn to follow the path with a fixed offset of _turnOffset
         this.follower.rotation = this._currentCurve.getAngleWithDistance(this._currentDistance) + this._turnOffset;
-    ***REMOVED***
+    }
 
     return true;
 
-***REMOVED***;
+};
 
 // if we've reached the end of a path or a branch, take any branch that is available rather than die
 // @return: true if successful, false if no branch is available
-Phaser.PathFollower.prototype.takeBranchIfAvailable = function () ***REMOVED***
+Phaser.PathFollower.prototype.takeBranchIfAvailable = function () {
 
     var p = new Phaser.PathPoint();
 
     if (this.path.getPathPoint(this._currentPoint, p))
-    ***REMOVED***
+    {
         // kill this follower if there isn't a branch for us to take
         if (!p.branchPath || !this.branchPredicate || !this.branchPredicate(p, this.path))
-        ***REMOVED***
+        {
             return false;
-        ***REMOVED***
+        }
 
         // changePath calls back to redo this function, exit after calling it
         
         this.changePath(p.branchPath, p.branchPointIndex);
 
         return true;    
-    ***REMOVED***
+    }
 
     return false;
 
-***REMOVED***;
+};
 
 // follow a different path
-Phaser.PathFollower.prototype.changePath = function (branchPath, branchPointIndex) ***REMOVED***
+Phaser.PathFollower.prototype.changePath = function (branchPath, branchPointIndex) {
 
     // change to the new path
     this.path = branchPath;
@@ -467,17 +467,17 @@ Phaser.PathFollower.prototype.changePath = function (branchPath, branchPointInde
 
     // we've finished the path
     if (!this._currentCurve)
-    ***REMOVED***
+    {
         return this.takeBranchIfAvailable();
-    ***REMOVED***
+    }
 
     // move me to the correct position on the new curve
     this.setPosition();
 
-***REMOVED***;
+};
 
 // change this follower's x,y offset values
-Phaser.PathFollower.prototype.setOffset = function (x, y) ***REMOVED***
+Phaser.PathFollower.prototype.setOffset = function (x, y) {
 
     // remove any prior offset from the follower's position
     this.follower.x -= this.offset.x;
@@ -491,46 +491,46 @@ Phaser.PathFollower.prototype.setOffset = function (x, y) ***REMOVED***
     this.follower.x += this.offset.x;
     this.follower.y += this.offset.y;
 
-***REMOVED***;
+};
 
 // set this follower's angular offset values
-Phaser.PathFollower.prototype.setAngularOffset = function (angle, distance) ***REMOVED***
+Phaser.PathFollower.prototype.setAngularOffset = function (angle, distance) {
 
     this._angularOffset.angle = angle;
     this._angularOffset.distance = distance;
 
-***REMOVED***;
+};
 
 // cause this follower to pause for 'delay' milliseconds
-Phaser.PathFollower.prototype.pause = function (delay) ***REMOVED***
+Phaser.PathFollower.prototype.pause = function (delay) {
 
     this._pauseTime = game.time.now + delay;
 
     if (this.follower.animations !== undefined)
-    ***REMOVED***
+    {
         if (this.follower.animations.currentAnim)
-        ***REMOVED***
+        {
             this.follower.animations.paused = true;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
-***REMOVED***;
+};
 
-Object.defineProperty(Phaser.PathFollower.prototype, 'paused', ***REMOVED***
+Object.defineProperty(Phaser.PathFollower.prototype, 'paused', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return !!this._pauseTime;
-    ***REMOVED***,
+    },
 
-    set: function(val) ***REMOVED***
-        if(!!val) ***REMOVED***
+    set: function(val) {
+        if(!!val) {
             this.pause(Number.MAX_VALUE);
-        ***REMOVED*** else ***REMOVED***
+        } else {
             this._pauseTime = game.time.now - 1;
-        ***REMOVED***
-    ***REMOVED***,
+        }
+    },
 
     enumerable: true,
     configurable: true
 
-***REMOVED***);
+});

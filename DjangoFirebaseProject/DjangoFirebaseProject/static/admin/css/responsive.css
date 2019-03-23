@@ -1,186 +1,186 @@
 /* Tablets */
 
-input[type="submit"], button ***REMOVED***
+input[type="submit"], button {
     -webkit-appearance: none;
     appearance: none;
-***REMOVED***
+}
 
-@media (max-width: 1024px) ***REMOVED***
+@media (max-width: 1024px) {
     /* Basic */
 
-    html ***REMOVED***
+    html {
         -webkit-text-size-adjust: 100%;
-    ***REMOVED***
+    }
 
-    td, th ***REMOVED***
+    td, th {
         padding: 10px;
         font-size: 14px;
-    ***REMOVED***
+    }
 
-    .small ***REMOVED***
+    .small {
         font-size: 12px;
-    ***REMOVED***
+    }
 
     /* Layout */
 
-    #container ***REMOVED***
+    #container {
         min-width: 0;
-    ***REMOVED***
+    }
 
-    #content ***REMOVED***
+    #content {
         padding: 20px 30px 30px;
-    ***REMOVED***
+    }
 
-    div.breadcrumbs ***REMOVED***
+    div.breadcrumbs {
         padding: 10px 30px;
-    ***REMOVED***
+    }
 
     /* Header */
 
-    #header ***REMOVED***
+    #header {
         display: flex;
         flex-direction: column;
         padding: 15px 30px;
         height: auto;
         line-height: 1;
-    ***REMOVED***
+    }
 
-    #branding h1 ***REMOVED***
+    #branding h1 {
         margin: 0 0 8px;
         font-size: 20px;
         line-height: 1.2;
-    ***REMOVED***
+    }
 
-    #user-tools ***REMOVED***
+    #user-tools {
         margin: 0;
         font-weight: 400;
         line-height: 1.85;
         text-align: left;
-    ***REMOVED***
+    }
 
-    #user-tools a ***REMOVED***
+    #user-tools a {
         display: inline-block;
         line-height: 1.4;
-    ***REMOVED***
+    }
 
     /* Dashboard */
 
-    .dashboard #content ***REMOVED***
+    .dashboard #content {
         width: auto;
-    ***REMOVED***
+    }
 
-    #content-related ***REMOVED***
+    #content-related {
         margin-right: -290px;
-    ***REMOVED***
+    }
 
-    .colSM #content-related ***REMOVED***
+    .colSM #content-related {
         margin-left: -290px;
-    ***REMOVED***
+    }
 
-    .colMS ***REMOVED***
+    .colMS {
         margin-right: 290px;
-    ***REMOVED***
+    }
 
-    .colSM ***REMOVED***
+    .colSM {
         margin-left: 290px;
-    ***REMOVED***
+    }
 
-    .dashboard .module table td a ***REMOVED***
+    .dashboard .module table td a {
         padding-right: 0;
-    ***REMOVED***
+    }
 
-    td .changelink, td .addlink ***REMOVED***
+    td .changelink, td .addlink {
         font-size: 13px;
-    ***REMOVED***
+    }
 
     /* Changelist */
 
-    #changelist #toolbar ***REMOVED***
+    #changelist #toolbar {
         border: none;
         padding: 15px;
-    ***REMOVED***
+    }
 
-    #changelist-search > div ***REMOVED***
+    #changelist-search > div {
         display: -webkit-flex;
         display: flex;
         -webkit-flex-wrap: wrap;
         flex-wrap: wrap;
         max-width: 480px;
-    ***REMOVED***
+    }
 
-    #changelist-search label ***REMOVED***
+    #changelist-search label {
         line-height: 22px;
-    ***REMOVED***
+    }
 
-    #changelist #toolbar form #searchbar ***REMOVED***
+    #changelist #toolbar form #searchbar {
         -webkit-flex: 1 0 auto;
         flex: 1 0 auto;
         width: 0;
         height: 22px;
         margin: 0 10px 0 6px;
-    ***REMOVED***
+    }
 
-    #changelist-search .quiet ***REMOVED***
+    #changelist-search .quiet {
         width: 100%;
         margin: 5px 0 0 25px;
-    ***REMOVED***
+    }
 
-    #changelist .actions ***REMOVED***
+    #changelist .actions {
         display: flex;
         flex-wrap: wrap;
         padding: 15px 0;
-    ***REMOVED***
+    }
 
-    #changelist .actions.selected ***REMOVED***
+    #changelist .actions.selected {
         border: none;
-    ***REMOVED***
+    }
 
-    #changelist .actions label ***REMOVED***
+    #changelist .actions label {
         display: flex;
-    ***REMOVED***
+    }
 
-    #changelist .actions select ***REMOVED***
+    #changelist .actions select {
         background: #fff;
-    ***REMOVED***
+    }
 
-    #changelist .actions .button ***REMOVED***
+    #changelist .actions .button {
         min-width: 48px;
         margin: 0 10px;
-    ***REMOVED***
+    }
 
     #changelist .actions span.all,
     #changelist .actions span.clear,
     #changelist .actions span.question,
-    #changelist .actions span.action-counter ***REMOVED***
+    #changelist .actions span.action-counter {
         font-size: 11px;
         margin: 0 10px 0 0;
-    ***REMOVED***
+    }
 
-    #changelist-filter ***REMOVED***
+    #changelist-filter {
         width: 200px;
-    ***REMOVED***
+    }
 
     .change-list .filtered .results,
     .change-list .filtered .paginator,
     .filtered #toolbar,
     .filtered .actions,
-    .filtered div.xfull ***REMOVED***
+    .filtered div.xfull {
         margin-right: 230px;
-    ***REMOVED***
+    }
 
-    #changelist .paginator ***REMOVED***
+    #changelist .paginator {
         border-top-color: #eee;
-    ***REMOVED***
+    }
 
-    #changelist .results + .paginator ***REMOVED***
+    #changelist .results + .paginator {
         border-top: none;
-    ***REMOVED***
+    }
 
     /* Forms */
 
-    label ***REMOVED***
+    label {
         font-size: 14px;
-    ***REMOVED***
+    }
 
     .form-row input[type=text],
     .form-row input[type=password],
@@ -190,522 +190,522 @@ input[type="submit"], button ***REMOVED***
     .form-row input[type=number],
     .form-row textarea,
     .form-row select,
-    .form-row .vTextField ***REMOVED***
+    .form-row .vTextField {
         box-sizing: border-box;
         margin: 0;
         padding: 6px 8px;
         min-height: 36px;
         font-size: 14px;
-    ***REMOVED***
+    }
 
-    .form-row select ***REMOVED***
+    .form-row select {
         height: 36px;
-    ***REMOVED***
+    }
 
-    .form-row select[multiple] ***REMOVED***
+    .form-row select[multiple] {
         height: auto;
         min-height: 0;
-    ***REMOVED***
+    }
 
-    fieldset .fieldBox ***REMOVED***
+    fieldset .fieldBox {
         float: none;
         margin: 0 -10px;
         padding: 0 10px;
-    ***REMOVED***
+    }
 
-    fieldset .fieldBox + .fieldBox ***REMOVED***
+    fieldset .fieldBox + .fieldBox {
         margin-top: 10px;
         padding-top: 10px;
         border-top: 1px solid #eee;
-    ***REMOVED***
+    }
 
-    textarea ***REMOVED***
+    textarea {
         max-width: 518px;
         max-height: 120px;
-    ***REMOVED***
+    }
 
-    .aligned label ***REMOVED***
+    .aligned label {
         padding-top: 6px;
-    ***REMOVED***
+    }
 
     .aligned .add-another,
     .aligned .related-lookup,
     .aligned .datetimeshortcuts,
-    .aligned .related-lookup + strong ***REMOVED***
+    .aligned .related-lookup + strong {
         align-self: center;
         margin-left: 15px;
-    ***REMOVED***
+    }
 
-    form .aligned ul.radiolist ***REMOVED***
+    form .aligned ul.radiolist {
         margin-left: 2px;
-    ***REMOVED***
+    }
 
     /* Related widget */
 
-    .related-widget-wrapper ***REMOVED***
+    .related-widget-wrapper {
         float: none;
-    ***REMOVED***
+    }
 
-    .related-widget-wrapper-link + .selector ***REMOVED***
+    .related-widget-wrapper-link + .selector {
         max-width: calc(100% - 30px);
         margin-right: 15px;
-    ***REMOVED***
+    }
 
     select + .related-widget-wrapper-link,
-    .related-widget-wrapper-link + .related-widget-wrapper-link ***REMOVED***
+    .related-widget-wrapper-link + .related-widget-wrapper-link {
         margin-left: 10px;
-    ***REMOVED***
+    }
 
     /* Selector */
 
-    .selector ***REMOVED***
+    .selector {
         display: flex;
         width: 100%;
-    ***REMOVED***
+    }
 
-    .selector .selector-filter ***REMOVED***
+    .selector .selector-filter {
         display: flex;
         align-items: center;
-    ***REMOVED***
+    }
 
-    .selector .selector-filter label ***REMOVED***
+    .selector .selector-filter label {
         margin: 0 8px 0 0;
-    ***REMOVED***
+    }
 
-    .selector .selector-filter input ***REMOVED***
+    .selector .selector-filter input {
         width: auto;
         min-height: 0;
         flex: 1 1;
-    ***REMOVED***
+    }
 
-    .selector-available, .selector-chosen ***REMOVED***
+    .selector-available, .selector-chosen {
         width: auto;
         flex: 1 1;
         display: flex;
         flex-direction: column;
-    ***REMOVED***
+    }
 
-    .selector select ***REMOVED***
+    .selector select {
         width: 100%;
         flex: 1 0 auto;
         margin-bottom: 5px;
-    ***REMOVED***
+    }
 
-    .selector ul.selector-chooser ***REMOVED***
+    .selector ul.selector-chooser {
         width: 26px;
         height: 52px;
         padding: 2px 0;
         margin: auto 15px;
         border-radius: 20px;
         transform: translateY(-10px);
-    ***REMOVED***
+    }
 
-    .selector-add, .selector-remove ***REMOVED***
+    .selector-add, .selector-remove {
         width: 20px;
         height: 20px;
         background-size: 20px auto;
-    ***REMOVED***
+    }
 
-    .selector-add ***REMOVED***
+    .selector-add {
         background-position: 0 -120px;
-    ***REMOVED***
+    }
 
-    .selector-remove ***REMOVED***
+    .selector-remove {
         background-position: 0 -80px;
-    ***REMOVED***
+    }
 
-    a.selector-chooseall, a.selector-clearall ***REMOVED***
+    a.selector-chooseall, a.selector-clearall {
         align-self: center;
-    ***REMOVED***
+    }
 
-    .stacked ***REMOVED***
+    .stacked {
         flex-direction: column;
         max-width: 480px;
-    ***REMOVED***
+    }
 
-    .stacked > * ***REMOVED***
+    .stacked > * {
         flex: 0 1 auto;
-    ***REMOVED***
+    }
 
-    .stacked select ***REMOVED***
+    .stacked select {
         margin-bottom: 0;
-    ***REMOVED***
+    }
 
-    .stacked .selector-available, .stacked .selector-chosen ***REMOVED***
+    .stacked .selector-available, .stacked .selector-chosen {
         width: auto;
-    ***REMOVED***
+    }
 
-    .stacked ul.selector-chooser ***REMOVED***
+    .stacked ul.selector-chooser {
         width: 52px;
         height: 26px;
         padding: 0 2px;
         margin: 15px auto;
         transform: none;
-    ***REMOVED***
+    }
 
-    .stacked .selector-chooser li ***REMOVED***
+    .stacked .selector-chooser li {
         padding: 3px;
-    ***REMOVED***
+    }
 
-    .stacked .selector-add, .stacked .selector-remove ***REMOVED***
+    .stacked .selector-add, .stacked .selector-remove {
         background-size: 20px auto;
-    ***REMOVED***
+    }
 
-    .stacked .selector-add ***REMOVED***
+    .stacked .selector-add {
         background-position: 0 -40px;
-    ***REMOVED***
+    }
 
-    .stacked .active.selector-add ***REMOVED***
+    .stacked .active.selector-add {
         background-position: 0 -60px;
-    ***REMOVED***
+    }
 
-    .stacked .selector-remove ***REMOVED***
+    .stacked .selector-remove {
         background-position: 0 0;
-    ***REMOVED***
+    }
 
-    .stacked .active.selector-remove ***REMOVED***
+    .stacked .active.selector-remove {
         background-position: 0 -20px;
-    ***REMOVED***
+    }
 
-    .help-tooltip, .selector .help-icon ***REMOVED***
+    .help-tooltip, .selector .help-icon {
         display: none;
-    ***REMOVED***
+    }
 
-    form .form-row p.datetime ***REMOVED***
+    form .form-row p.datetime {
         width: 100%;
-    ***REMOVED***
+    }
 
-    .datetime input ***REMOVED***
+    .datetime input {
         width: 50%;
         max-width: 120px;
-    ***REMOVED***
+    }
 
-    .datetime span ***REMOVED***
+    .datetime span {
         font-size: 13px;
-    ***REMOVED***
+    }
 
-    .datetime .timezonewarning ***REMOVED***
+    .datetime .timezonewarning {
         display: block;
         font-size: 11px;
         color: #999;
-    ***REMOVED***
+    }
 
-    .datetimeshortcuts ***REMOVED***
+    .datetimeshortcuts {
         color: #ccc;
-    ***REMOVED***
+    }
 
-    .inline-group ***REMOVED***
+    .inline-group {
         overflow: auto;
-    ***REMOVED***
+    }
 
     /* Messages */
 
-    ul.messagelist li ***REMOVED***
+    ul.messagelist li {
         padding-left: 55px;
         background-position: 30px 12px;
-    ***REMOVED***
+    }
 
-    ul.messagelist li.error ***REMOVED***
+    ul.messagelist li.error {
         background-position: 30px 12px;
-    ***REMOVED***
+    }
 
-    ul.messagelist li.warning ***REMOVED***
+    ul.messagelist li.warning {
         background-position: 30px 14px;
-    ***REMOVED***
+    }
 
     /* Login */
 
-    .login #header ***REMOVED***
+    .login #header {
         padding: 15px 20px;
-    ***REMOVED***
+    }
 
-    .login #branding h1 ***REMOVED***
+    .login #branding h1 {
         margin: 0;
-    ***REMOVED***
+    }
 
     /* GIS */
 
-    div.olMap ***REMOVED***
+    div.olMap {
         max-width: calc(100vw - 30px);
         max-height: 300px;
-    ***REMOVED***
+    }
 
-    .olMap + .clear_features ***REMOVED***
+    .olMap + .clear_features {
         display: block;
         margin-top: 10px;
-    ***REMOVED***
+    }
 
     /* Docs */
 
-    .module table.xfull ***REMOVED***
+    .module table.xfull {
         width: 100%;
-    ***REMOVED***
+    }
 
-    pre.literal-block ***REMOVED***
+    pre.literal-block {
         overflow: auto;
-    ***REMOVED***
-***REMOVED***
+    }
+}
 
 /* Mobile */
 
-@media (max-width: 767px) ***REMOVED***
+@media (max-width: 767px) {
     /* Layout */
 
-    #header, #content, #footer ***REMOVED***
+    #header, #content, #footer {
         padding: 15px;
-    ***REMOVED***
+    }
 
-    #footer:empty ***REMOVED***
+    #footer:empty {
         padding: 0;
-    ***REMOVED***
+    }
 
-    div.breadcrumbs ***REMOVED***
+    div.breadcrumbs {
         padding: 10px 15px;
-    ***REMOVED***
+    }
 
     /* Dashboard */
 
-    .colMS, .colSM ***REMOVED***
+    .colMS, .colSM {
         margin: 0;
-    ***REMOVED***
+    }
 
-    #content-related, .colSM #content-related ***REMOVED***
+    #content-related, .colSM #content-related {
         width: 100%;
         margin: 0;
-    ***REMOVED***
+    }
 
-    #content-related .module ***REMOVED***
+    #content-related .module {
         margin-bottom: 0;
-    ***REMOVED***
+    }
 
-    #content-related .module h2 ***REMOVED***
+    #content-related .module h2 {
         padding: 10px 15px;
         font-size: 16px;
-    ***REMOVED***
+    }
 
     /* Changelist */
 
-    #changelist ***REMOVED***
+    #changelist {
         display: flex;
         flex-direction: column;
-    ***REMOVED***
+    }
 
-    #changelist #toolbar ***REMOVED***
+    #changelist #toolbar {
         order: 1;
         padding: 10px;
-    ***REMOVED***
+    }
 
-    #changelist .xfull ***REMOVED***
+    #changelist .xfull {
         order: 2;
-    ***REMOVED***
+    }
 
-    #changelist-form ***REMOVED***
+    #changelist-form {
         order: 3;
-    ***REMOVED***
+    }
 
-    #changelist-filter ***REMOVED***
+    #changelist-filter {
         order: 4;
-    ***REMOVED***
+    }
 
-    #changelist .actions label ***REMOVED***
+    #changelist .actions label {
         flex: 1 1;
-    ***REMOVED***
+    }
 
-    #changelist .actions select ***REMOVED***
+    #changelist .actions select {
         flex: 1 0;
         width: 100%;
-    ***REMOVED***
+    }
 
-    #changelist .actions span ***REMOVED***
+    #changelist .actions span {
         flex: 1 0 100%;
-    ***REMOVED***
+    }
 
     .change-list .filtered .results, .change-list .filtered .paginator,
-    .filtered #toolbar, .filtered .actions, .filtered div.xfull ***REMOVED***
+    .filtered #toolbar, .filtered .actions, .filtered div.xfull {
         margin-right: 0;
-    ***REMOVED***
+    }
 
-    #changelist-filter ***REMOVED***
+    #changelist-filter {
         position: static;
         width: auto;
         margin-top: 30px;
-    ***REMOVED***
+    }
 
-    .object-tools ***REMOVED***
+    .object-tools {
         float: none;
         margin: 0 0 15px;
         padding: 0;
         overflow: hidden;
-    ***REMOVED***
+    }
 
-    .object-tools li ***REMOVED***
+    .object-tools li {
         height: auto;
         margin-left: 0;
-    ***REMOVED***
+    }
 
-    .object-tools li + li ***REMOVED***
+    .object-tools li + li {
         margin-left: 15px;
-    ***REMOVED***
+    }
 
     /* Forms */
 
-    .form-row ***REMOVED***
+    .form-row {
         padding: 15px 0;
-    ***REMOVED***
+    }
 
     .aligned .form-row,
-    .aligned .form-row > div ***REMOVED***
+    .aligned .form-row > div {
         display: flex;
         flex-wrap: wrap;
         max-width: 100vw;
-    ***REMOVED***
+    }
 
-    .aligned .form-row > div ***REMOVED***
+    .aligned .form-row > div {
         width: calc(100vw - 30px);
-    ***REMOVED***
+    }
 
-    textarea ***REMOVED***
+    textarea {
         max-width: none;
-    ***REMOVED***
+    }
 
-    .vURLField ***REMOVED***
+    .vURLField {
         width: auto;
-    ***REMOVED***
+    }
 
-    fieldset .fieldBox + .fieldBox ***REMOVED***
+    fieldset .fieldBox + .fieldBox {
         margin-top: 15px;
         padding-top: 15px;
-    ***REMOVED***
+    }
 
-    fieldset.collapsed .form-row ***REMOVED***
+    fieldset.collapsed .form-row {
         display: none;
-    ***REMOVED***
+    }
 
-    .aligned label ***REMOVED***
+    .aligned label {
         width: 100%;
         padding: 0 0 10px;
-    ***REMOVED***
+    }
 
-    .aligned label:after ***REMOVED***
+    .aligned label:after {
         max-height: 0;
-    ***REMOVED***
+    }
 
     .aligned .form-row input,
     .aligned .form-row select,
-    .aligned .form-row textarea ***REMOVED***
+    .aligned .form-row textarea {
         flex: 1 1 auto;
         max-width: 100%;
-    ***REMOVED***
+    }
 
-    .aligned .checkbox-row ***REMOVED***
+    .aligned .checkbox-row {
         align-items: center;
-    ***REMOVED***
+    }
 
-    .aligned .checkbox-row input ***REMOVED***
+    .aligned .checkbox-row input {
         flex: 0 1 auto;
         margin: 0;
-    ***REMOVED***
+    }
 
-    .aligned .vCheckboxLabel ***REMOVED***
+    .aligned .vCheckboxLabel {
         flex: 1 0;
         padding: 1px 0 0 5px;
-    ***REMOVED***
+    }
 
     .aligned label + p,
     .aligned label + div.help,
-    .aligned label + div.readonly ***REMOVED***
+    .aligned label + div.readonly {
         padding: 0;
         margin-left: 0;
-    ***REMOVED***
+    }
 
-    .aligned p.file-upload ***REMOVED***
+    .aligned p.file-upload {
         margin-left: 0;
         font-size: 13px;
-    ***REMOVED***
+    }
 
-    span.clearable-file-input ***REMOVED***
+    span.clearable-file-input {
         margin-left: 15px;
-    ***REMOVED***
+    }
 
-    span.clearable-file-input label ***REMOVED***
+    span.clearable-file-input label {
         font-size: 13px;
         padding-bottom: 0;
-    ***REMOVED***
+    }
 
-    .aligned .timezonewarning ***REMOVED***
+    .aligned .timezonewarning {
         flex: 1 0 100%;
         margin-top: 5px;
-    ***REMOVED***
+    }
 
-    form .aligned .form-row div.help ***REMOVED***
+    form .aligned .form-row div.help {
         width: 100%;
         margin: 5px 0 0;
         padding: 0;
-    ***REMOVED***
+    }
 
-    form .aligned ul ***REMOVED***
+    form .aligned ul {
         margin-left: 0;
         padding-left: 0;
-    ***REMOVED***
+    }
 
-    form .aligned ul.radiolist ***REMOVED***
+    form .aligned ul.radiolist {
         margin-right: 15px;
         margin-bottom: -3px;
-    ***REMOVED***
+    }
 
-    form .aligned ul.radiolist li + li ***REMOVED***
+    form .aligned ul.radiolist li + li {
         margin-top: 5px;
-    ***REMOVED***
+    }
 
     /* Related widget */
 
-    .related-widget-wrapper ***REMOVED***
+    .related-widget-wrapper {
         width: 100%;
         display: flex;
         align-items: flex-start;
-    ***REMOVED***
+    }
 
-    .related-widget-wrapper .selector ***REMOVED***
+    .related-widget-wrapper .selector {
         order: 1;
-    ***REMOVED***
+    }
 
-    .related-widget-wrapper > a ***REMOVED***
+    .related-widget-wrapper > a {
         order: 2;
-    ***REMOVED***
+    }
 
-    .related-widget-wrapper .radiolist ~ a ***REMOVED***
+    .related-widget-wrapper .radiolist ~ a {
         align-self: flex-end;
-    ***REMOVED***
+    }
 
-    .related-widget-wrapper > select ~ a ***REMOVED***
+    .related-widget-wrapper > select ~ a {
         align-self: center;
-    ***REMOVED***
+    }
 
     select + .related-widget-wrapper-link,
-    .related-widget-wrapper-link + .related-widget-wrapper-link ***REMOVED***
+    .related-widget-wrapper-link + .related-widget-wrapper-link {
         margin-left: 15px;
-    ***REMOVED***
+    }
 
     /* Selector */
 
-    .selector ***REMOVED***
+    .selector {
         flex-direction: column;
-    ***REMOVED***
+    }
 
-    .selector > * ***REMOVED***
+    .selector > * {
         float: none;
-    ***REMOVED***
+    }
 
-    .selector-available, .selector-chosen ***REMOVED***
+    .selector-available, .selector-chosen {
         margin-bottom: 0;
         flex: 1 1 auto;
-    ***REMOVED***
+    }
 
-    .selector select ***REMOVED***
+    .selector select {
         max-height: 96px;
-    ***REMOVED***
+    }
 
-    .selector ul.selector-chooser ***REMOVED***
+    .selector ul.selector-chooser {
         display: block;
         float: none;
         width: 52px;
@@ -713,196 +713,196 @@ input[type="submit"], button ***REMOVED***
         padding: 0 2px;
         margin: 15px auto 20px;
         transform: none;
-    ***REMOVED***
+    }
 
-    .selector ul.selector-chooser li ***REMOVED***
+    .selector ul.selector-chooser li {
         float: left;
-    ***REMOVED***
+    }
 
-    .selector-remove ***REMOVED***
+    .selector-remove {
         background-position: 0 0;
-    ***REMOVED***
+    }
 
-    .selector-add  ***REMOVED***
+    .selector-add  {
         background-position: 0 -40px;
-    ***REMOVED***
+    }
 
     /* Inlines */
 
-    .inline-group[data-inline-type="stacked"] .inline-related ***REMOVED***
+    .inline-group[data-inline-type="stacked"] .inline-related {
         border: 2px solid #eee;
         border-radius: 4px;
         margin-top: 15px;
         overflow: auto;
-    ***REMOVED***
+    }
 
-    .inline-group[data-inline-type="stacked"] .inline-related > * ***REMOVED***
+    .inline-group[data-inline-type="stacked"] .inline-related > * {
         box-sizing: border-box;
-    ***REMOVED***
+    }
 
-    .inline-group[data-inline-type="stacked"] .inline-related + .inline-related ***REMOVED***
+    .inline-group[data-inline-type="stacked"] .inline-related + .inline-related {
         margin-top: 30px;
-    ***REMOVED***
+    }
 
-    .inline-group[data-inline-type="stacked"] .inline-related .module ***REMOVED***
+    .inline-group[data-inline-type="stacked"] .inline-related .module {
         padding: 0 10px;
-    ***REMOVED***
+    }
 
-    .inline-group[data-inline-type="stacked"] .inline-related .module .form-row:last-child ***REMOVED***
+    .inline-group[data-inline-type="stacked"] .inline-related .module .form-row:last-child {
         border-bottom: none;
-    ***REMOVED***
+    }
 
-    .inline-group[data-inline-type="stacked"] .inline-related h3 ***REMOVED***
+    .inline-group[data-inline-type="stacked"] .inline-related h3 {
         padding: 10px;
         border-top-width: 0;
         border-bottom-width: 2px;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-    ***REMOVED***
+    }
 
-    .inline-group[data-inline-type="stacked"] .inline-related h3 .inline_label ***REMOVED***
+    .inline-group[data-inline-type="stacked"] .inline-related h3 .inline_label {
         margin-right: auto;
-    ***REMOVED***
+    }
 
-    .inline-group[data-inline-type="stacked"] .inline-related h3 span.delete ***REMOVED***
+    .inline-group[data-inline-type="stacked"] .inline-related h3 span.delete {
         float: none;
         flex: 1 1 100%;
         margin-top: 5px;
-    ***REMOVED***
+    }
 
-    .inline-group[data-inline-type="stacked"] .aligned .form-row > div:not([class]) ***REMOVED***
+    .inline-group[data-inline-type="stacked"] .aligned .form-row > div:not([class]) {
         width: 100%;
-    ***REMOVED***
+    }
 
-    .inline-group[data-inline-type="stacked"] .aligned label ***REMOVED***
+    .inline-group[data-inline-type="stacked"] .aligned label {
         width: 100%;
-    ***REMOVED***
+    }
 
-    .inline-group[data-inline-type="stacked"] div.add-row ***REMOVED***
+    .inline-group[data-inline-type="stacked"] div.add-row {
         margin-top: 15px;
         border: 1px solid #eee;
         border-radius: 4px;
-    ***REMOVED***
+    }
 
     .inline-group div.add-row,
-    .inline-group .tabular tr.add-row td ***REMOVED***
+    .inline-group .tabular tr.add-row td {
         padding: 0;
-    ***REMOVED***
+    }
 
     .inline-group div.add-row a,
-    .inline-group .tabular tr.add-row td a ***REMOVED***
+    .inline-group .tabular tr.add-row td a {
         display: block;
         padding: 8px 10px 8px 26px;
         background-position: 8px 9px;
-    ***REMOVED***
+    }
 
     /* Submit row */
 
-    .submit-row ***REMOVED***
+    .submit-row {
         padding: 10px 10px 0;
         margin: 0 0 15px;
         display: flex;
         flex-direction: column;
-    ***REMOVED***
+    }
 
-    .submit-row > * ***REMOVED***
+    .submit-row > * {
         width: 100%;
-    ***REMOVED***
+    }
 
-    .submit-row input, .submit-row input.default, .submit-row a, .submit-row a.closelink ***REMOVED***
+    .submit-row input, .submit-row input.default, .submit-row a, .submit-row a.closelink {
         float: none;
         margin: 0 0 10px;
         text-align: center;
-    ***REMOVED***
+    }
 
-    .submit-row a.closelink ***REMOVED***
+    .submit-row a.closelink {
         padding: 10px 0;
-    ***REMOVED***
+    }
 
-    .submit-row p.deletelink-box ***REMOVED***
+    .submit-row p.deletelink-box {
         order: 4;
-    ***REMOVED***
+    }
 
     /* Messages */
 
-    ul.messagelist li ***REMOVED***
+    ul.messagelist li {
         padding-left: 40px;
         background-position: 15px 12px;
-    ***REMOVED***
+    }
 
-    ul.messagelist li.error ***REMOVED***
+    ul.messagelist li.error {
         background-position: 15px 12px;
-    ***REMOVED***
+    }
 
-    ul.messagelist li.warning ***REMOVED***
+    ul.messagelist li.warning {
         background-position: 15px 14px;
-    ***REMOVED***
+    }
 
     /* Paginator */
 
-    .paginator .this-page, .paginator a:link, .paginator a:visited ***REMOVED***
+    .paginator .this-page, .paginator a:link, .paginator a:visited {
         padding: 4px 10px;
-    ***REMOVED***
+    }
 
     /* Login */
 
-    body.login ***REMOVED***
+    body.login {
         padding: 0 15px;
-    ***REMOVED***
+    }
 
-    .login #container ***REMOVED***
+    .login #container {
         width: auto;
         max-width: 480px;
         margin: 50px auto;
-    ***REMOVED***
+    }
 
     .login #header,
-    .login #content ***REMOVED***
+    .login #content {
         padding: 15px;
-    ***REMOVED***
+    }
 
-    .login #content-main ***REMOVED***
+    .login #content-main {
         float: none;
-    ***REMOVED***
+    }
 
-    .login .form-row ***REMOVED***
+    .login .form-row {
         padding: 0;
-    ***REMOVED***
+    }
 
-    .login .form-row + .form-row ***REMOVED***
+    .login .form-row + .form-row {
         margin-top: 15px;
-    ***REMOVED***
+    }
 
-    .login .form-row label ***REMOVED***
+    .login .form-row label {
         display: block;
         margin: 0 0 5px;
         padding: 0;
         line-height: 1.2;
-    ***REMOVED***
+    }
 
-    .login .submit-row ***REMOVED***
+    .login .submit-row {
         padding: 15px 0 0;
-    ***REMOVED***
+    }
 
-    .login br, .login .submit-row label ***REMOVED***
+    .login br, .login .submit-row label {
         display: none;
-    ***REMOVED***
+    }
 
-    .login .submit-row input ***REMOVED***
+    .login .submit-row input {
         margin: 0;
         text-transform: uppercase;
-    ***REMOVED***
+    }
 
-    .errornote ***REMOVED***
+    .errornote {
         margin: 0 0 20px;
         padding: 8px 12px;
         font-size: 13px;
-    ***REMOVED***
+    }
 
     /* Calendar and clock */
 
-    .calendarbox, .clockbox ***REMOVED***
+    .calendarbox, .clockbox {
         position: fixed !important;
         top: 50% !important;
         left: 50% !important;
@@ -910,9 +910,9 @@ input[type="submit"], button ***REMOVED***
         margin: 0;
         border: none;
         overflow: visible;
-    ***REMOVED***
+    }
 
-    .calendarbox:before, .clockbox:before ***REMOVED***
+    .calendarbox:before, .clockbox:before {
         content: '';
         position: fixed;
         top: 50%;
@@ -921,74 +921,74 @@ input[type="submit"], button ***REMOVED***
         height: 100vh;
         background: rgba(0, 0, 0, 0.75);
         transform: translate(-50%, -50%);
-    ***REMOVED***
+    }
 
-    .calendarbox > *, .clockbox > * ***REMOVED***
+    .calendarbox > *, .clockbox > * {
         position: relative;
         z-index: 1;
-    ***REMOVED***
+    }
 
-    .calendarbox > div:first-child ***REMOVED***
+    .calendarbox > div:first-child {
         z-index: 2;
-    ***REMOVED***
+    }
 
-    .calendarbox .calendar, .clockbox h2 ***REMOVED***
+    .calendarbox .calendar, .clockbox h2 {
         border-radius: 4px 4px 0 0;
         overflow: hidden;
-    ***REMOVED***
+    }
 
-    .calendarbox .calendar-cancel, .clockbox .calendar-cancel ***REMOVED***
+    .calendarbox .calendar-cancel, .clockbox .calendar-cancel {
         border-radius: 0 0 4px 4px;
         overflow: hidden;
-    ***REMOVED***
+    }
 
-    .calendar-shortcuts ***REMOVED***
+    .calendar-shortcuts {
         padding: 10px 0;
         font-size: 12px;
         line-height: 12px;
-    ***REMOVED***
+    }
 
-    .calendar-shortcuts a ***REMOVED***
+    .calendar-shortcuts a {
         margin: 0 4px;
-    ***REMOVED***
+    }
 
-    .timelist a ***REMOVED***
+    .timelist a {
         background: #fff;
         padding: 4px;
-    ***REMOVED***
+    }
 
-    .calendar-cancel ***REMOVED***
+    .calendar-cancel {
         padding: 8px 10px;
-    ***REMOVED***
+    }
 
-    .clockbox h2 ***REMOVED***
+    .clockbox h2 {
         padding: 8px 15px;
-    ***REMOVED***
+    }
 
-    .calendar caption ***REMOVED***
+    .calendar caption {
         padding: 10px;
-    ***REMOVED***
+    }
 
-    .calendarbox .calendarnav-previous, .calendarbox .calendarnav-next ***REMOVED***
+    .calendarbox .calendarnav-previous, .calendarbox .calendarnav-next {
         z-index: 1;
         top: 10px;
-    ***REMOVED***
+    }
 
     /* History */
 
-    table#change-history tbody th, table#change-history tbody td ***REMOVED***
+    table#change-history tbody th, table#change-history tbody td {
         font-size: 13px;
         word-break: break-word;
-    ***REMOVED***
+    }
 
-    table#change-history tbody th ***REMOVED***
+    table#change-history tbody th {
         width: auto;
-    ***REMOVED***
+    }
 
     /* Docs */
 
-    table.model tbody th, table.model tbody td ***REMOVED***
+    table.model tbody th, table.model tbody td {
         font-size: 13px;
         word-break: break-word;
-    ***REMOVED***
-***REMOVED***
+    }
+}

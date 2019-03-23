@@ -1,8 +1,8 @@
-***REMOVED***
-    "tags": ***REMOVED***
+{
+    "tags": {
         "allowUnknownTags": true
-    ***REMOVED***,
-    "source": ***REMOVED***
+    },
+    "source": {
         "include": [ 
             "./docs/pixi-jsdoc.js",
             "./src/Phaser.js", 
@@ -29,7 +29,7 @@
         ],
         "includePattern": ".+\\.js(doc)?$",
         "excludePattern": "(^|\\/|\\\\)_"
-    ***REMOVED***,
+    },
     "plugins": [
         "./tasks/jsdoc-plugins/namealias",
         "./tasks/jsdoc-plugins/filterpixi",
@@ -38,12 +38,12 @@
         "./tasks/jsdoc-plugins/shortlinks",
         "plugins/markdown"
     ],
-    "templates": ***REMOVED***
+    "templates": {
         "cleverLinks"     : false,
         "monospaceLinks"  : false,
-        "default"         : ***REMOVED***
+        "default"         : {
             "outputSourceFiles" : true
-        ***REMOVED***,
+        },
         "systemName"      : "Phaser",
         "footer"          : "",
         "copyright"       : "Phaser Copyright © 2012-2016 Photon Storm Ltd.",
@@ -52,12 +52,12 @@
         "linenums"        : true,
         "collapseSymbols" : false,
         "inverseNav"      : true
-    ***REMOVED***,
-    "markdown"  : ***REMOVED***
+    },
+    "markdown"  : {
         "parser"   : "gfm",
         "hardwrap" : true
-    ***REMOVED***,
-    "opts": ***REMOVED***
+    },
+    "opts": {
         "encoding": "utf8",
         "recurse": true,
         "private": false,
@@ -65,5 +65,5 @@
         "destination": "./docs",
         "template": "./resources/docstrap-master/template"
 
-    ***REMOVED***
-***REMOVED***
+    }
+}

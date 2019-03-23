@@ -1,11 +1,11 @@
-module.exports = ***REMOVED***
+module.exports = {
 
-    custom: ***REMOVED***
+    custom: {
         expand: true,
         flatten: true,
         cwd: '<%= compile_dir %>/',
         src: ['*.js', '*.map'],
         dest: '<%= target_dir %>/'
-    ***REMOVED***
+    }
    
-***REMOVED***;
+};

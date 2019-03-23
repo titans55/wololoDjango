@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1289,7 +1289,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
             <pre class="sunlight-highlight-javascript linenums">/**
 * @author       Richard Davey &lt;rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1302,13 +1302,13 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 * @class Phaser.TilemapLayer
 * @extends Phaser.Sprite
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - Game reference to the currently running game.
-* @param ***REMOVED***Phaser.Tilemap***REMOVED*** tilemap - The tilemap to which this layer belongs.
-* @param ***REMOVED***integer***REMOVED*** index - The index of the TileLayer to render within the Tilemap.
-* @param ***REMOVED***integer***REMOVED*** width - Width of the renderable area of the layer (in pixels).
-* @param ***REMOVED***integer***REMOVED*** height - Height of the renderable area of the layer (in pixels).
+* @param {Phaser.Game} game - Game reference to the currently running game.
+* @param {Phaser.Tilemap} tilemap - The tilemap to which this layer belongs.
+* @param {integer} index - The index of the TileLayer to render within the Tilemap.
+* @param {integer} width - Width of the renderable area of the layer (in pixels).
+* @param {integer} height - Height of the renderable area of the layer (in pixels).
 */
-Phaser.TilemapLayer = function (game, tilemap, index, width, height) ***REMOVED***
+Phaser.TilemapLayer = function (game, tilemap, index, width, height) {
 
     width |= 0;
     height |= 0;
@@ -1317,7 +1317,7 @@ Phaser.TilemapLayer = function (game, tilemap, index, width, height) ***REMOVED*
 
     /**
     * The Tilemap to which this layer is bound.
-    * @property ***REMOVED***Phaser.Tilemap***REMOVED*** map
+    * @property {Phaser.Tilemap} map
     * @protected
     * @readonly
     */
@@ -1325,7 +1325,7 @@ Phaser.TilemapLayer = function (game, tilemap, index, width, height) ***REMOVED*
 
     /**
     * The index of this layer within the Tilemap.
-    * @property ***REMOVED***number***REMOVED*** index
+    * @property {number} index
     * @protected
     * @readonly
     */
@@ -1333,7 +1333,7 @@ Phaser.TilemapLayer = function (game, tilemap, index, width, height) ***REMOVED*
 
     /**
     * The layer object within the Tilemap that this layer represents.
-    * @property ***REMOVED***object***REMOVED*** layer
+    * @property {object} layer
     * @protected
     * @readonly
     */
@@ -1341,14 +1341,14 @@ Phaser.TilemapLayer = function (game, tilemap, index, width, height) ***REMOVED*
 
     /**
     * The canvas to which this TilemapLayer draws.
-    * @property ***REMOVED***HTMLCanvasElement***REMOVED*** canvas
+    * @property {HTMLCanvasElement} canvas
     * @protected
     */
     this.canvas = PIXI.CanvasPool.create(this, width, height);
 
     /**
     * The 2d context of the canvas.
-    * @property ***REMOVED***CanvasRenderingContext2D***REMOVED*** context
+    * @property {CanvasRenderingContext2D} context
     * @private
     */
     this.context = this.canvas.getContext('2d');
@@ -1357,7 +1357,7 @@ Phaser.TilemapLayer = function (game, tilemap, index, width, height) ***REMOVED*
 
     /**
     * The const type of this object.
-    * @property ***REMOVED***number***REMOVED*** type
+    * @property {number} type
     * @readonly
     * @protected
     * @default Phaser.TILEMAPLAYER
@@ -1365,7 +1365,7 @@ Phaser.TilemapLayer = function (game, tilemap, index, width, height) ***REMOVED*
     this.type = Phaser.TILEMAPLAYER;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** physicsType - The const physics body type of this object.
+    * @property {number} physicsType - The const physics body type of this object.
     * @readonly
     */
     this.physicsType = Phaser.TILEMAPLAYER;
@@ -1373,52 +1373,52 @@ Phaser.TilemapLayer = function (game, tilemap, index, width, height) ***REMOVED*
     /**
     * Settings that control standard (non-diagnostic) rendering.
     *
-    * @property ***REMOVED***boolean***REMOVED*** [enableScrollDelta=true] - Delta scroll rendering only draws tiles/edges as they come into view.
+    * @property {boolean} [enableScrollDelta=true] - Delta scroll rendering only draws tiles/edges as they come into view.
     *     This can greatly improve scrolling rendering performance, especially when there are many small tiles.
     *     It should only be disabled in rare cases.
     *
-    * @property ***REMOVED***?DOMCanvasElement***REMOVED*** [copyCanvas=(auto)] - [Internal] If set, force using a separate (shared) copy canvas.
+    * @property {?DOMCanvasElement} [copyCanvas=(auto)] - [Internal] If set, force using a separate (shared) copy canvas.
     *     Using a canvas bitblt/copy when the source and destinations region overlap produces unexpected behavior
     *     in some browsers, notably Safari. 
     *
     * @default
     */
-    this.renderSettings = ***REMOVED***
+    this.renderSettings = {
         enableScrollDelta: false,
         overdrawRatio: 0.20,
         copyCanvas: null
-    ***REMOVED***;
+    };
 
     /**
     * Enable an additional "debug rendering" pass to display collision information.
     *
-    * @property ***REMOVED***boolean***REMOVED*** debug
+    * @property {boolean} debug
     * @default
     */
     this.debug = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** exists - Controls if the core game loop and physics update this game object or not.
+    * @property {boolean} exists - Controls if the core game loop and physics update this game object or not.
     */
     this.exists = true;
 
     /**
     * Settings used for debugging and diagnostics.
     *
-    * @property ***REMOVED***?string***REMOVED*** missingImageFill - A tile is rendered as a rectangle using the following fill if a valid tileset/image cannot be found. A value of `null` prevents additional rendering for tiles without a valid tileset image. _This takes effect even when debug rendering for the layer is not enabled._
+    * @property {?string} missingImageFill - A tile is rendered as a rectangle using the following fill if a valid tileset/image cannot be found. A value of `null` prevents additional rendering for tiles without a valid tileset image. _This takes effect even when debug rendering for the layer is not enabled._
     *
-    * @property ***REMOVED***?string***REMOVED*** debuggedTileOverfill - If a Tile has `Tile#debug` true then, after normal tile image rendering, a rectangle with the following fill is drawn above/over it. _This takes effect even when debug rendering for the layer is not enabled._
+    * @property {?string} debuggedTileOverfill - If a Tile has `Tile#debug` true then, after normal tile image rendering, a rectangle with the following fill is drawn above/over it. _This takes effect even when debug rendering for the layer is not enabled._
     *
-    * @property ***REMOVED***boolean***REMOVED*** forceFullRedraw - When debug rendering (`debug` is true), and this option is enabled, the a full redraw is forced and rendering optimization is suppressed.
+    * @property {boolean} forceFullRedraw - When debug rendering (`debug` is true), and this option is enabled, the a full redraw is forced and rendering optimization is suppressed.
     *
-    * @property ***REMOVED***number***REMOVED*** debugAlpha - When debug rendering (`debug` is true), the tileset is initially rendered with this alpha level. This can make the tile edges clearer.
+    * @property {number} debugAlpha - When debug rendering (`debug` is true), the tileset is initially rendered with this alpha level. This can make the tile edges clearer.
     *
-    * @property ***REMOVED***?string***REMOVED*** facingEdgeStroke - When debug rendering (`debug` is true), this color/stroke is used to draw "face" edges. A value of `null` disables coloring facing edges.
+    * @property {?string} facingEdgeStroke - When debug rendering (`debug` is true), this color/stroke is used to draw "face" edges. A value of `null` disables coloring facing edges.
     *
-    * @property ***REMOVED***?string***REMOVED*** collidingTileOverfill - When debug rendering (`debug` is true), this fill is used for tiles that are collidable. A value of `null` disables applying the additional overfill.
+    * @property {?string} collidingTileOverfill - When debug rendering (`debug` is true), this fill is used for tiles that are collidable. A value of `null` disables applying the additional overfill.
     *
     */
-    this.debugSettings = ***REMOVED***
+    this.debugSettings = {
 
         missingImageFill: 'rgb(255,255,255)',
         debuggedTileOverfill: 'rgba(0,255,0,0.4)',
@@ -1429,11 +1429,11 @@ Phaser.TilemapLayer = function (game, tilemap, index, width, height) ***REMOVED*
         facingEdgeStroke: 'rgba(0,255,0,1)',
         collidingTileOverfill: 'rgba(0,255,0,0.2)'
 
-    ***REMOVED***;
+    };
 
     /**
     * Speed at which this layer scrolls horizontally, relative to the camera (e.g. scrollFactorX of 0.5 scrolls half as quickly as the 'normal' camera-locked layers do).
-    * @property ***REMOVED***number***REMOVED*** scrollFactorX
+    * @property {number} scrollFactorX
     * @public
     * @default
     */
@@ -1441,7 +1441,7 @@ Phaser.TilemapLayer = function (game, tilemap, index, width, height) ***REMOVED*
 
     /**
     * Speed at which this layer scrolls vertically, relative to the camera (e.g. scrollFactorY of 0.5 scrolls half as quickly as the 'normal' camera-locked layers do)
-    * @property ***REMOVED***number***REMOVED*** scrollFactorY
+    * @property {number} scrollFactorY
     * @public
     * @default
     */
@@ -1449,31 +1449,31 @@ Phaser.TilemapLayer = function (game, tilemap, index, width, height) ***REMOVED*
 
     /**
     * If true tiles will be force rendered, even if such is not believed to be required.
-    * @property ***REMOVED***boolean***REMOVED*** dirty
+    * @property {boolean} dirty
     * @protected
     */
     this.dirty = true;
 
     /**
     * When ray-casting against tiles this is the number of steps it will jump. For larger tile sizes you can increase this to improve performance.
-    * @property ***REMOVED***integer***REMOVED*** rayStepRate
+    * @property {integer} rayStepRate
     * @default
     */
     this.rayStepRate = 4;
 
     /**
     * Flag controlling if the layer tiles wrap at the edges.
-    * @property ***REMOVED***boolean***REMOVED*** _wrap
+    * @property {boolean} _wrap
     * @private
     */
     this._wrap = false;
 
     /**
     * Local map data and calculation cache.
-    * @property ***REMOVED***object***REMOVED*** _mc
+    * @property {object} _mc
     * @private
     */
-    this._mc = ***REMOVED***
+    this._mc = {
 
         // Used to bypass rendering without reliance on `dirty` and detect changes.
         scrollX: 0,
@@ -1493,37 +1493,37 @@ Phaser.TilemapLayer = function (game, tilemap, index, width, height) ***REMOVED*
         // Cached tilesets from index -> Tileset
         tilesets: []
 
-    ***REMOVED***;
+    };
 
     /**
     * The current canvas left after scroll is applied.
-    * @property ***REMOVED***number***REMOVED*** _scrollX
+    * @property {number} _scrollX
     * @private
     */
     this._scrollX = 0;
 
     /**
     * The current canvas top after scroll is applied.
-    * @propety ***REMOVED***number***REMOVED*** _scrollY
+    * @propety {number} _scrollY
     * @private
     */
     this._scrollY = 0;
 
     /**
     * Used for caching the tiles / array of tiles.
-    * @property ***REMOVED***Phaser.Tile[]***REMOVED*** _results
+    * @property {Phaser.Tile[]} _results
     * @private
     */
     this._results = [];
 
     if (!game.device.canvasBitBltShift)
-    ***REMOVED***
+    {
         this.renderSettings.copyCanvas = Phaser.TilemapLayer.ensureSharedCopyCanvas();
-    ***REMOVED***
+    }
 
     this.fixedToCamera = true;
 
-***REMOVED***;
+};
 
 Phaser.TilemapLayer.prototype = Object.create(Phaser.Sprite.prototype);
 Phaser.TilemapLayer.prototype.constructor = Phaser.TilemapLayer;
@@ -1547,27 +1547,27 @@ Phaser.TilemapLayer.sharedCopyCanvas = null;
 * @protected
 * @static
 */
-Phaser.TilemapLayer.ensureSharedCopyCanvas = function () ***REMOVED***
+Phaser.TilemapLayer.ensureSharedCopyCanvas = function () {
 
     if (!this.sharedCopyCanvas)
-    ***REMOVED***
+    {
         this.sharedCopyCanvas = PIXI.CanvasPool.create(this, 2, 2);
-    ***REMOVED***
+    }
 
     return this.sharedCopyCanvas;
 
-***REMOVED***;
+};
 
 /**
 * Automatically called by World.preUpdate.
 *
 * @method Phaser.TilemapLayer#preUpdate
 */
-Phaser.TilemapLayer.prototype.preUpdate = function() ***REMOVED***
+Phaser.TilemapLayer.prototype.preUpdate = function() {
 
     return this.preUpdateCore();
 
-***REMOVED***;
+};
 
 /**
 * Automatically called by World.postUpdate. Handles cache updates.
@@ -1575,18 +1575,18 @@ Phaser.TilemapLayer.prototype.preUpdate = function() ***REMOVED***
 * @method Phaser.TilemapLayer#postUpdate
 * @protected
 */
-Phaser.TilemapLayer.prototype.postUpdate = function () ***REMOVED***
+Phaser.TilemapLayer.prototype.postUpdate = function () {
 
     if (this.fixedToCamera)
-    ***REMOVED***
+    {
         this.position.x = (this.game.camera.view.x + this.cameraOffset.x) / this.game.camera.scale.x;
         this.position.y = (this.game.camera.view.y + this.cameraOffset.y) / this.game.camera.scale.y;
-    ***REMOVED***
+    }
 
     this._scrollX = this.game.camera.view.x * this.scrollFactorX / this.scale.x;
     this._scrollY = this.game.camera.view.y * this.scrollFactorY / this.scale.y;
 
-***REMOVED***;
+};
 
 /**
 * Automatically called by the Canvas Renderer.
@@ -1595,13 +1595,13 @@ Phaser.TilemapLayer.prototype.postUpdate = function () ***REMOVED***
 * @method Phaser.TilemapLayer#_renderCanvas
 * @private
 */
-Phaser.TilemapLayer.prototype._renderCanvas = function (renderSession) ***REMOVED***
+Phaser.TilemapLayer.prototype._renderCanvas = function (renderSession) {
 
     if (this.fixedToCamera)
-    ***REMOVED***
+    {
         this.position.x = (this.game.camera.view.x + this.cameraOffset.x) / this.game.camera.scale.x;
         this.position.y = (this.game.camera.view.y + this.cameraOffset.y) / this.game.camera.scale.y;
-    ***REMOVED***
+    }
 
     this._scrollX = this.game.camera.view.x * this.scrollFactorX / this.scale.x;
     this._scrollY = this.game.camera.view.y * this.scrollFactorY / this.scale.y;
@@ -1610,7 +1610,7 @@ Phaser.TilemapLayer.prototype._renderCanvas = function (renderSession) ***REMOVE
 
     PIXI.Sprite.prototype._renderCanvas.call(this, renderSession);
 
-***REMOVED***;
+};
 
 /**
 * Automatically called by the Canvas Renderer.
@@ -1619,13 +1619,13 @@ Phaser.TilemapLayer.prototype._renderCanvas = function (renderSession) ***REMOVE
 * @method Phaser.TilemapLayer#_renderWebGL
 * @private
 */
-Phaser.TilemapLayer.prototype._renderWebGL = function (renderSession) ***REMOVED***
+Phaser.TilemapLayer.prototype._renderWebGL = function (renderSession) {
 
     if (this.fixedToCamera)
-    ***REMOVED***
+    {
         this.position.x = (this.game.camera.view.x + this.cameraOffset.x) / this.game.camera.scale.x;
         this.position.y = (this.game.camera.view.y + this.cameraOffset.y) / this.game.camera.scale.y;
-    ***REMOVED***
+    }
     
     this._scrollX = this.game.camera.view.x * this.scrollFactorX / this.scale.x;
     this._scrollY = this.game.camera.view.y * this.scrollFactorY / this.scale.y;
@@ -1634,20 +1634,20 @@ Phaser.TilemapLayer.prototype._renderWebGL = function (renderSession) ***REMOVED
 
     PIXI.Sprite.prototype._renderWebGL.call(this, renderSession);
 
-***REMOVED***;
+};
 
 /**
 * Destroys this TilemapLayer.
 *
 * @method Phaser.TilemapLayer#destroy
 */
-Phaser.TilemapLayer.prototype.destroy = function() ***REMOVED***
+Phaser.TilemapLayer.prototype.destroy = function() {
 
     PIXI.CanvasPool.remove(this);
 
     Phaser.Component.Destroy.prototype.destroy.call(this);
 
-***REMOVED***;
+};
 
 /**
 * Resizes the internal canvas and texture frame used by this TilemapLayer.
@@ -1659,10 +1659,10 @@ Phaser.TilemapLayer.prototype.destroy = function() ***REMOVED***
 * modified either. You will have to handle both of these things from your game code if required.
 * 
 * @method Phaser.TilemapLayer#resize
-* @param ***REMOVED***number***REMOVED*** width - The new width of the TilemapLayer
-* @param ***REMOVED***number***REMOVED*** height - The new height of the TilemapLayer
+* @param {number} width - The new width of the TilemapLayer
+* @param {number} height - The new height of the TilemapLayer
 */
-Phaser.TilemapLayer.prototype.resize = function (width, height) ***REMOVED***
+Phaser.TilemapLayer.prototype.resize = function (width, height) {
 
     this.canvas.width = width;
     this.canvas.height = height;
@@ -1685,7 +1685,7 @@ Phaser.TilemapLayer.prototype.resize = function (width, height) ***REMOVED***
 
     this.dirty = true;
 
-***REMOVED***;
+};
 
 /**
 * Sets the world size to match the size of this layer.
@@ -1693,214 +1693,214 @@ Phaser.TilemapLayer.prototype.resize = function (width, height) ***REMOVED***
 * @method Phaser.TilemapLayer#resizeWorld
 * @public
 */
-Phaser.TilemapLayer.prototype.resizeWorld = function () ***REMOVED***
+Phaser.TilemapLayer.prototype.resizeWorld = function () {
 
     this.game.world.setBounds(0, 0, this.layer.widthInPixels * this.scale.x, this.layer.heightInPixels * this.scale.y);
 
-***REMOVED***;
+};
 
 /**
 * Take an x coordinate that doesn't account for scrollFactorX and 'fix' it into a scrolled local space.
 *
 * @method Phaser.TilemapLayer#_fixX
 * @private
-* @param ***REMOVED***number***REMOVED*** x - x coordinate in camera space
-* @return ***REMOVED***number***REMOVED*** x coordinate in scrollFactor-adjusted dimensions
+* @param {number} x - x coordinate in camera space
+* @return {number} x coordinate in scrollFactor-adjusted dimensions
 */
-Phaser.TilemapLayer.prototype._fixX = function (x) ***REMOVED***
+Phaser.TilemapLayer.prototype._fixX = function (x) {
 
     if (this.scrollFactorX === 1 || (this.scrollFactorX === 0 &amp;&amp; this.position.x === 0))
-    ***REMOVED***
+    {
         return x;
-    ***REMOVED***
+    }
     
     //  This executes if the scrollFactorX is 0 and the x position of the tilemap is off from standard.
     if (this.scrollFactorX === 0 &amp;&amp; this.position.x !== 0)
-    ***REMOVED***
+    {
         return x - this.position.x;
-    ***REMOVED***
+    }
 
     return this._scrollX + (x - (this._scrollX / this.scrollFactorX));
 
-***REMOVED***;
+};
 
 /**
 * Take an x coordinate that _does_ account for scrollFactorX and 'unfix' it back to camera space.
 *
 * @method Phaser.TilemapLayer#_unfixX
 * @private
-* @param ***REMOVED***number***REMOVED*** x - x coordinate in scrollFactor-adjusted dimensions
-* @return ***REMOVED***number***REMOVED*** x coordinate in camera space
+* @param {number} x - x coordinate in scrollFactor-adjusted dimensions
+* @return {number} x coordinate in camera space
 */
-Phaser.TilemapLayer.prototype._unfixX = function (x) ***REMOVED***
+Phaser.TilemapLayer.prototype._unfixX = function (x) {
 
     if (this.scrollFactorX === 1)
-    ***REMOVED***
+    {
         return x;
-    ***REMOVED***
+    }
 
     return (this._scrollX / this.scrollFactorX) + (x - this._scrollX);
 
-***REMOVED***;
+};
 
 /**
 * Take a y coordinate that doesn't account for scrollFactorY and 'fix' it into a scrolled local space.
 *
 * @method Phaser.TilemapLayer#_fixY
 * @private
-* @param ***REMOVED***number***REMOVED*** y - y coordinate in camera space
-* @return ***REMOVED***number***REMOVED*** y coordinate in scrollFactor-adjusted dimensions
+* @param {number} y - y coordinate in camera space
+* @return {number} y coordinate in scrollFactor-adjusted dimensions
 */
-Phaser.TilemapLayer.prototype._fixY = function (y) ***REMOVED***
+Phaser.TilemapLayer.prototype._fixY = function (y) {
 
     if (this.scrollFactorY === 1 || (this.scrollFactorY === 0 &amp;&amp; this.position.y === 0))
-    ***REMOVED***
+    {
         return y;
-    ***REMOVED***
+    }
     
     //  This executes if the scrollFactorY is 0 and the y position of the tilemap is off from standard.
     if (this.scrollFactorY === 0 &amp;&amp; this.position.y !== 0)
-    ***REMOVED***
+    {
         return y - this.position.y;
-    ***REMOVED***
+    }
     
     return this._scrollY + (y - (this._scrollY / this.scrollFactorY));
 
-***REMOVED***;
+};
 
 /**
 * Take a y coordinate that _does_ account for scrollFactorY and 'unfix' it back to camera space.
 *
 * @method Phaser.TilemapLayer#_unfixY
 * @private
-* @param ***REMOVED***number***REMOVED*** y - y coordinate in scrollFactor-adjusted dimensions
-* @return ***REMOVED***number***REMOVED*** y coordinate in camera space
+* @param {number} y - y coordinate in scrollFactor-adjusted dimensions
+* @return {number} y coordinate in camera space
 */
-Phaser.TilemapLayer.prototype._unfixY = function (y) ***REMOVED***
+Phaser.TilemapLayer.prototype._unfixY = function (y) {
 
     if (this.scrollFactorY === 1)
-    ***REMOVED***
+    {
         return y;
-    ***REMOVED***
+    }
 
     return (this._scrollY / this.scrollFactorY) + (y - this._scrollY);
 
-***REMOVED***;
+};
 
 /**
 * Convert a pixel value to a tile coordinate.
 *
 * @method Phaser.TilemapLayer#getTileX
 * @public
-* @param ***REMOVED***number***REMOVED*** x - X position of the point in target tile (in pixels).
-* @return ***REMOVED***integer***REMOVED*** The X map location of the tile.
+* @param {number} x - X position of the point in target tile (in pixels).
+* @return {integer} The X map location of the tile.
 */
-Phaser.TilemapLayer.prototype.getTileX = function (x) ***REMOVED***
+Phaser.TilemapLayer.prototype.getTileX = function (x) {
 
     // var tileWidth = this.tileWidth * this.scale.x;
     return Math.floor(this._fixX(x) / this._mc.tileWidth);
 
-***REMOVED***;
+};
 
 /**
 * Convert a pixel value to a tile coordinate.
 *
 * @method Phaser.TilemapLayer#getTileY
 * @public
-* @param ***REMOVED***number***REMOVED*** y - Y position of the point in target tile (in pixels).
-* @return ***REMOVED***integer***REMOVED*** The Y map location of the tile.
+* @param {number} y - Y position of the point in target tile (in pixels).
+* @return {integer} The Y map location of the tile.
 */
-Phaser.TilemapLayer.prototype.getTileY = function (y) ***REMOVED***
+Phaser.TilemapLayer.prototype.getTileY = function (y) {
 
     // var tileHeight = this.tileHeight * this.scale.y;
     return Math.floor(this._fixY(y) / this._mc.tileHeight);
 
-***REMOVED***;
+};
 
 /**
 * Convert a pixel coordinate to a tile coordinate.
 *
 * @method Phaser.TilemapLayer#getTileXY
 * @public
-* @param ***REMOVED***number***REMOVED*** x - X position of the point in target tile (in pixels).
-* @param ***REMOVED***number***REMOVED*** y - Y position of the point in target tile (in pixels).
-* @param ***REMOVED***(Phaser.Point|object)***REMOVED*** point - The Point/object to update.
-* @return ***REMOVED***(Phaser.Point|object)***REMOVED*** A Point/object with its `x` and `y` properties set.
+* @param {number} x - X position of the point in target tile (in pixels).
+* @param {number} y - Y position of the point in target tile (in pixels).
+* @param {(Phaser.Point|object)} point - The Point/object to update.
+* @return {(Phaser.Point|object)} A Point/object with its `x` and `y` properties set.
 */
-Phaser.TilemapLayer.prototype.getTileXY = function (x, y, point) ***REMOVED***
+Phaser.TilemapLayer.prototype.getTileXY = function (x, y, point) {
 
     point.x = this.getTileX(x);
     point.y = this.getTileY(y);
 
     return point;
 
-***REMOVED***;
+};
 
 /**
 * Gets all tiles that intersect with the given line.
 *
 * @method Phaser.TilemapLayer#getRayCastTiles
 * @public
-* @param ***REMOVED***Phaser.Line***REMOVED*** line - The line used to determine which tiles to return.
-* @param ***REMOVED***integer***REMOVED*** [stepRate=(rayStepRate)] - How many steps through the ray will we check? Defaults to `rayStepRate`.
-* @param ***REMOVED***boolean***REMOVED*** [collides=false] - If true, _only_ return tiles that collide on one or more faces.
-* @param ***REMOVED***boolean***REMOVED*** [interestingFace=false] - If true, _only_ return tiles that have interesting faces.
-* @return ***REMOVED***Phaser.Tile[]***REMOVED*** An array of Phaser.Tiles.
+* @param {Phaser.Line} line - The line used to determine which tiles to return.
+* @param {integer} [stepRate=(rayStepRate)] - How many steps through the ray will we check? Defaults to `rayStepRate`.
+* @param {boolean} [collides=false] - If true, _only_ return tiles that collide on one or more faces.
+* @param {boolean} [interestingFace=false] - If true, _only_ return tiles that have interesting faces.
+* @return {Phaser.Tile[]} An array of Phaser.Tiles.
 */
-Phaser.TilemapLayer.prototype.getRayCastTiles = function (line, stepRate, collides, interestingFace) ***REMOVED***
+Phaser.TilemapLayer.prototype.getRayCastTiles = function (line, stepRate, collides, interestingFace) {
 
-    if (!stepRate) ***REMOVED*** stepRate = this.rayStepRate; ***REMOVED***
-    if (collides === undefined) ***REMOVED*** collides = false; ***REMOVED***
-    if (interestingFace === undefined) ***REMOVED*** interestingFace = false; ***REMOVED***
+    if (!stepRate) { stepRate = this.rayStepRate; }
+    if (collides === undefined) { collides = false; }
+    if (interestingFace === undefined) { interestingFace = false; }
 
     //  First get all tiles that touch the bounds of the line
     var tiles = this.getTiles(line.x, line.y, line.width, line.height, collides, interestingFace);
 
     if (tiles.length === 0)
-    ***REMOVED***
+    {
         return [];
-    ***REMOVED***
+    }
 
     //  Now we only want the tiles that intersect with the points on this line
     var coords = line.coordinatesOnLine(stepRate);
     var results = [];
 
     for (var i = 0; i &lt; tiles.length; i++)
-    ***REMOVED***
+    {
         for (var t = 0; t &lt; coords.length; t++)
-        ***REMOVED***
+        {
             var tile = tiles[i];
             var coord = coords[t];
             if (tile.containsPoint(coord[0], coord[1]))
-            ***REMOVED***
+            {
                 results.push(tile);
                 break;
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
     return results;
 
-***REMOVED***;
+};
 
 /**
 * Get all tiles that exist within the given area, defined by the top-left corner, width and height. Values given are in pixels, not tiles.
 *
 * @method Phaser.TilemapLayer#getTiles
 * @public
-* @param ***REMOVED***number***REMOVED*** x - X position of the top left corner (in pixels).
-* @param ***REMOVED***number***REMOVED*** y - Y position of the top left corner (in pixels).
-* @param ***REMOVED***number***REMOVED*** width - Width of the area to get (in pixels).
-* @param ***REMOVED***number***REMOVED*** height - Height of the area to get (in pixels).
-* @param ***REMOVED***boolean***REMOVED*** [collides=false] - If true, _only_ return tiles that collide on one or more faces.
-* @param ***REMOVED***boolean***REMOVED*** [interestingFace=false] - If true, _only_ return tiles that have interesting faces.
-* @return ***REMOVED***array&lt;Phaser.Tile>***REMOVED*** An array of Tiles.
+* @param {number} x - X position of the top left corner (in pixels).
+* @param {number} y - Y position of the top left corner (in pixels).
+* @param {number} width - Width of the area to get (in pixels).
+* @param {number} height - Height of the area to get (in pixels).
+* @param {boolean} [collides=false] - If true, _only_ return tiles that collide on one or more faces.
+* @param {boolean} [interestingFace=false] - If true, _only_ return tiles that have interesting faces.
+* @return {array&lt;Phaser.Tile>} An array of Tiles.
 */
-Phaser.TilemapLayer.prototype.getTiles = function (x, y, width, height, collides, interestingFace) ***REMOVED***
+Phaser.TilemapLayer.prototype.getTiles = function (x, y, width, height, collides, interestingFace) {
 
     //  Should we only get tiles that have at least one of their collision flags set? (true = yes, false = no just get them all)
-    if (collides === undefined) ***REMOVED*** collides = false; ***REMOVED***
-    if (interestingFace === undefined) ***REMOVED*** interestingFace = false; ***REMOVED***
+    if (collides === undefined) { collides = false; }
+    if (interestingFace === undefined) { interestingFace = false; }
 
     var fetchAll = !(collides || interestingFace);
 
@@ -1916,29 +1916,29 @@ Phaser.TilemapLayer.prototype.getTiles = function (x, y, width, height, collides
     var th = Math.ceil((y + height) / (this._mc.ch * this.scale.y)) - ty;
 
     while (this._results.length)
-    ***REMOVED***
+    {
         this._results.pop();
-    ***REMOVED***
+    }
 
     for (var wy = ty; wy &lt; ty + th; wy++)
-    ***REMOVED***
+    {
         for (var wx = tx; wx &lt; tx + tw; wx++)
-        ***REMOVED***
+        {
             var row = this.layer.data[wy];
 
             if (row &amp;&amp; row[wx])
-            ***REMOVED***
+            {
                 if (fetchAll || row[wx].isInteresting(collides, interestingFace))
-                ***REMOVED***
+                {
                     this._results.push(row[wx]);
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+                }
+            }
+        }
+    }
 
     return this._results.slice();
 
-***REMOVED***;
+};
 
 /**
 * Returns the appropriate tileset for the index, updating the internal cache as required.
@@ -1946,37 +1946,37 @@ Phaser.TilemapLayer.prototype.getTiles = function (x, y, width, height, collides
 *
 * @method Phaser.TilemapLayer#resolveTileset
 * @private
-* @param ***REMOVED***integer***REMOVED*** Tile index
-* @return ***REMOVED***Phaser.Tileset|null***REMOVED*** Returns the associated tileset or null if there is no such mapping.
+* @param {integer} Tile index
+* @return {Phaser.Tileset|null} Returns the associated tileset or null if there is no such mapping.
 */
-Phaser.TilemapLayer.prototype.resolveTileset = function (tileIndex) ***REMOVED***
+Phaser.TilemapLayer.prototype.resolveTileset = function (tileIndex) {
 
     var tilesets = this._mc.tilesets;
 
     //  Try for dense array if reasonable
     if (tileIndex &lt; 2000)
-    ***REMOVED***
+    {
         while (tilesets.length &lt; tileIndex)
-        ***REMOVED***
+        {
             tilesets.push(undefined);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     var setIndex = this.map.tiles[tileIndex] &amp;&amp; this.map.tiles[tileIndex][2];
 
     if (setIndex !== null)
-    ***REMOVED***
+    {
         var tileset = this.map.tilesets[setIndex];
 
         if (tileset &amp;&amp; tileset.containsTileIndex(tileIndex))
-        ***REMOVED***
+        {
             return (tilesets[tileIndex] = tileset);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return (tilesets[tileIndex] = null);
 
-***REMOVED***;
+};
 
 /**
 * The TilemapLayer caches tileset look-ups.
@@ -1986,35 +1986,35 @@ Phaser.TilemapLayer.prototype.resolveTileset = function (tileIndex) ***REMOVED**
 * @method Phaser.TilemapLayer#resetTilesetCache
 * @public
 */
-Phaser.TilemapLayer.prototype.resetTilesetCache = function () ***REMOVED***
+Phaser.TilemapLayer.prototype.resetTilesetCache = function () {
 
     var tilesets = this._mc.tilesets;
 
     while (tilesets.length)
-    ***REMOVED***
+    {
         tilesets.pop();
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
  * This method will set the scale of the tilemap as well as update the underlying block data of this layer.
  * 
  * @method Phaser.TilemapLayer#setScale
- * @param ***REMOVED***number***REMOVED*** [xScale=1] - The scale factor along the X-plane 
- * @param ***REMOVED***number***REMOVED*** [yScale] - The scale factor along the Y-plane
+ * @param {number} [xScale=1] - The scale factor along the X-plane 
+ * @param {number} [yScale] - The scale factor along the Y-plane
  */
-Phaser.TilemapLayer.prototype.setScale = function (xScale, yScale) ***REMOVED***
+Phaser.TilemapLayer.prototype.setScale = function (xScale, yScale) {
 
     xScale = xScale || 1;
     yScale = yScale || xScale;
 
     for (var y = 0; y &lt; this.layer.data.length; y++)
-    ***REMOVED***
+    {
         var row = this.layer.data[y];
 
         for (var x = 0; x &lt; row.length; x++)
-        ***REMOVED***
+        {
             var tile = row[x];
 
             tile.width = this.map.tileWidth * xScale;
@@ -2022,12 +2022,12 @@ Phaser.TilemapLayer.prototype.setScale = function (xScale, yScale) ***REMOVED***
 
             tile.worldX = tile.x * tile.width;
             tile.worldY = tile.y * tile.height;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     this.scale.setTo(xScale, yScale);
 
-***REMOVED***;
+};
 
 /**
 * Shifts the contents of the canvas - does extra math so that different browsers agree on the result.
@@ -2036,11 +2036,11 @@ Phaser.TilemapLayer.prototype.setScale = function (xScale, yScale) ***REMOVED***
 *
 * @method Phaser.TilemapLayer#shiftCanvas
 * @private
-* @param ***REMOVED***CanvasRenderingContext2D***REMOVED*** context - The context to shift
-* @param ***REMOVED***integer***REMOVED*** x
-* @param ***REMOVED***integer***REMOVED*** y
+* @param {CanvasRenderingContext2D} context - The context to shift
+* @param {integer} x
+* @param {integer} y
 */
-Phaser.TilemapLayer.prototype.shiftCanvas = function (context, x, y) ***REMOVED***
+Phaser.TilemapLayer.prototype.shiftCanvas = function (context, x, y) {
 
     var canvas = context.canvas;
     var copyW = canvas.width - Math.abs(x);
@@ -2053,28 +2053,28 @@ Phaser.TilemapLayer.prototype.shiftCanvas = function (context, x, y) ***REMOVED*
     var sy = y;
 
     if (x &lt; 0)
-    ***REMOVED***
+    {
         dx = -x;
         sx = 0;
-    ***REMOVED***
+    }
 
     if (y &lt; 0)
-    ***REMOVED***
+    {
         dy = -y;
         sy = 0;
-    ***REMOVED***
+    }
 
     var copyCanvas = this.renderSettings.copyCanvas;
 
     if (copyCanvas)
-    ***REMOVED***
+    {
         // Use a second copy buffer, without slice support, for Safari .. again.
         // Ensure copy canvas is large enough
         if (copyCanvas.width &lt; copyW || copyCanvas.height &lt; copyH)
-        ***REMOVED***
+        {
             copyCanvas.width = copyW;
             copyCanvas.height = copyH;
-        ***REMOVED***
+        }
 
         var copyContext = copyCanvas.getContext('2d');
         copyContext.clearRect(0, 0, copyW, copyH);
@@ -2082,18 +2082,18 @@ Phaser.TilemapLayer.prototype.shiftCanvas = function (context, x, y) ***REMOVED*
         // clear allows default 'source-over' semantics
         context.clearRect(sx, sy, copyW, copyH);
         context.drawImage(copyCanvas, 0, 0, copyW, copyH, sx, sy, copyW, copyH);
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         // Avoids a second copy but flickers in Safari / Safari Mobile
         // Ref. https://github.com/photonstorm/phaser/issues/1439
         context.save();
         context.globalCompositeOperation = 'copy';
         context.drawImage(canvas, dx, dy, copyW, copyH, sx, sy, copyW, copyH);
         context.restore();
-    ***REMOVED***
+    }
     
-***REMOVED***;
+};
 
 /**
 * Render tiles in the given area given by the virtual tile coordinates biased by the given scroll factor.
@@ -2101,14 +2101,14 @@ Phaser.TilemapLayer.prototype.shiftCanvas = function (context, x, y) ***REMOVED*
 *
 * @method Phaser.TilemapLayer#renderRegion
 * @private
-* @param ***REMOVED***integer***REMOVED*** scrollX - Render x offset/scroll.
-* @param ***REMOVED***integer***REMOVED*** scrollY - Render y offset/scroll.
-* @param ***REMOVED***integer***REMOVED*** left - Leftmost column to render.
-* @param ***REMOVED***integer***REMOVED*** top - Topmost row to render.
-* @param ***REMOVED***integer***REMOVED*** right - Rightmost column to render.
-* @param ***REMOVED***integer***REMOVED*** bottom - Bottommost row to render.
+* @param {integer} scrollX - Render x offset/scroll.
+* @param {integer} scrollY - Render y offset/scroll.
+* @param {integer} left - Leftmost column to render.
+* @param {integer} top - Topmost row to render.
+* @param {integer} right - Rightmost column to render.
+* @param {integer} bottom - Bottommost row to render.
 */
-Phaser.TilemapLayer.prototype.renderRegion = function (scrollX, scrollY, left, top, right, bottom) ***REMOVED***
+Phaser.TilemapLayer.prototype.renderRegion = function (scrollX, scrollY, left, top, right, bottom) {
 
     var context = this.context;
 
@@ -2121,18 +2121,18 @@ Phaser.TilemapLayer.prototype.renderRegion = function (scrollX, scrollY, left, t
     var lastAlpha = NaN;
 
     if (!this._wrap)
-    ***REMOVED***
+    {
         if (left &lt;= right) // Only adjust if going to render
-        ***REMOVED***
+        {
             left = Math.max(0, left);
             right = Math.min(width - 1, right);
-        ***REMOVED***
+        }
         if (top &lt;= bottom)
-        ***REMOVED***
+        {
             top = Math.max(0, top);
             bottom = Math.min(height - 1, bottom);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
    
     // top-left pixel of top-left cell
     var baseX = (left * tw) - scrollX;
@@ -2148,82 +2148,82 @@ Phaser.TilemapLayer.prototype.renderRegion = function (scrollX, scrollY, left, t
     var tx, ty, x, y, xmax, ymax;
 
     for (y = normStartY, ymax = bottom - top, ty = baseY; ymax >= 0; y++, ymax--, ty += th)
-    ***REMOVED***
+    {
         if (y >= height)
-        ***REMOVED***
+        {
             y -= height;
-        ***REMOVED***
+        }
 
         var row = this.layer.data[y];
 
         for (x = normStartX, xmax = right - left, tx = baseX; xmax >= 0; x++, xmax--, tx += tw)
-        ***REMOVED***
+        {
             if (x >= width)
-            ***REMOVED***
+            {
                 x -= width;
-            ***REMOVED***
+            }
 
             var tile = row[x];
 
             if (!tile || tile.index &lt; 0)
-            ***REMOVED***
+            {
                 continue;
-            ***REMOVED***
+            }
 
             var index = tile.index;
 
             var set = tilesets[index];
 
             if (set === undefined)
-            ***REMOVED***
+            {
                 set = this.resolveTileset(index);
-            ***REMOVED***
+            }
 
             //  Setting the globalAlpha is "surprisingly expensive" in Chrome (38)
             if (tile.alpha !== lastAlpha &amp;&amp; !this.debug)
-            ***REMOVED***
+            {
                 context.globalAlpha = tile.alpha;
                 lastAlpha = tile.alpha;
-            ***REMOVED***
+            }
 
             if (set)
-            ***REMOVED***
+            {
                 if (tile.rotation || tile.flipped)
-                ***REMOVED***
+                {
                     context.save();
                     context.translate(tx + tile.centerX, ty + tile.centerY);
                     context.rotate(tile.rotation);
 
                     if (tile.flipped)
-                    ***REMOVED***
+                    {
                         context.scale(-1, 1);
-                    ***REMOVED***
+                    }
 
                     set.draw(context, -tile.centerX, -tile.centerY, index);
                     context.restore();
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     set.draw(context, tx, ty, index);
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
             else if (this.debugSettings.missingImageFill)
-            ***REMOVED***
+            {
                 context.fillStyle = this.debugSettings.missingImageFill;
                 context.fillRect(tx, ty, tw, th);
-            ***REMOVED***
+            }
 
             if (tile.debug &amp;&amp; this.debugSettings.debuggedTileOverfill)
-            ***REMOVED***
+            {
                 context.fillStyle = this.debugSettings.debuggedTileOverfill;
                 context.fillRect(tx, ty, tw, th);
-            ***REMOVED***
+            }
            
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Shifts the canvas and render damaged edge tiles.
@@ -2231,7 +2231,7 @@ Phaser.TilemapLayer.prototype.renderRegion = function (scrollX, scrollY, left, t
 * @method Phaser.TilemapLayer#renderDeltaScroll
 * @private
 */
-Phaser.TilemapLayer.prototype.renderDeltaScroll = function (shiftX, shiftY) ***REMOVED***
+Phaser.TilemapLayer.prototype.renderDeltaScroll = function (shiftX, shiftY) {
 
     var scrollX = this._mc.scrollX;
     var scrollY = this._mc.scrollY;
@@ -2251,26 +2251,26 @@ Phaser.TilemapLayer.prototype.renderDeltaScroll = function (shiftX, shiftY) ***R
     var bottom = -th;
 
     if (shiftX &lt; 0) // layer moving left, damage right
-    ***REMOVED***
+    {
         left = renderW + shiftX; // shiftX neg.
         right = renderW - 1;
-    ***REMOVED***
+    }
     else if (shiftX > 0)
-    ***REMOVED***
+    {
         // left -> 0
         right = shiftX;
-    ***REMOVED***
+    }
 
     if (shiftY &lt; 0) // layer moving down, damage top
-    ***REMOVED***
+    {
         top = renderH + shiftY; // shiftY neg.
         bottom = renderH - 1;
-    ***REMOVED***
+    }
     else if (shiftY > 0)
-    ***REMOVED***
+    {
         // top -> 0
         bottom = shiftY;
-    ***REMOVED***
+    }
 
     this.shiftCanvas(this.context, shiftX, shiftY);
 
@@ -2281,26 +2281,26 @@ Phaser.TilemapLayer.prototype.renderDeltaScroll = function (shiftX, shiftY) ***R
     bottom = Math.floor((bottom + scrollY) / th);
 
     if (left &lt;= right)
-    ***REMOVED***
+    {
         // Clear left or right edge
         this.context.clearRect(((left * tw) - scrollX), 0, (right - left + 1) * tw, renderH);
 
         var trueTop = Math.floor((0 + scrollY) / th);
         var trueBottom = Math.floor((renderH - 1 + scrollY) / th);
         this.renderRegion(scrollX, scrollY, left, trueTop, right, trueBottom);
-    ***REMOVED***
+    }
 
     if (top &lt;= bottom)
-    ***REMOVED***
+    {
         // Clear top or bottom edge
         this.context.clearRect(0, ((top * th) - scrollY), renderW, (bottom - top + 1) * th);
 
         var trueLeft = Math.floor((0 + scrollX) / tw);
         var trueRight = Math.floor((renderW - 1 + scrollX) / tw);
         this.renderRegion(scrollX, scrollY, trueLeft, top, trueRight, bottom);
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Clear and render the entire canvas.
@@ -2308,7 +2308,7 @@ Phaser.TilemapLayer.prototype.renderDeltaScroll = function (shiftX, shiftY) ***R
 * @method Phaser.TilemapLayer#renderFull
 * @private
 */
-Phaser.TilemapLayer.prototype.renderFull = function () ***REMOVED***
+Phaser.TilemapLayer.prototype.renderFull = function () {
     
     var scrollX = this._mc.scrollX;
     var scrollY = this._mc.scrollY;
@@ -2328,7 +2328,7 @@ Phaser.TilemapLayer.prototype.renderFull = function () ***REMOVED***
 
     this.renderRegion(scrollX, scrollY, left, top, right, bottom);
 
-***REMOVED***;
+};
 
 /**
 * Renders the tiles to the layer canvas and pushes to the display.
@@ -2336,20 +2336,20 @@ Phaser.TilemapLayer.prototype.renderFull = function () ***REMOVED***
 * @method Phaser.TilemapLayer#render
 * @protected
 */
-Phaser.TilemapLayer.prototype.render = function () ***REMOVED***
+Phaser.TilemapLayer.prototype.render = function () {
 
     var redrawAll = false;
 
     if (!this.visible)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     if (this.dirty || this.layer.dirty)
-    ***REMOVED***
+    {
         this.layer.dirty = false;
         redrawAll = true;
-    ***REMOVED***
+    }
 
     var renderWidth = this.canvas.width; // Use Sprite.width/height?
     var renderHeight = this.canvas.height;
@@ -2365,10 +2365,10 @@ Phaser.TilemapLayer.prototype.render = function () ***REMOVED***
     if (!redrawAll &amp;&amp;
         shiftX === 0 &amp;&amp; shiftY === 0 &amp;&amp;
         mc.renderWidth === renderWidth &amp;&amp; mc.renderHeight === renderHeight)
-    ***REMOVED***
+    {
         //  No reason to redraw map, looking at same thing and not invalidated.
         return;
-    ***REMOVED***
+    }
 
     this.context.save();
     
@@ -2376,39 +2376,39 @@ Phaser.TilemapLayer.prototype.render = function () ***REMOVED***
     mc.scrollY = scrollY;
 
     if (mc.renderWidth !== renderWidth || mc.renderHeight !== renderHeight)
-    ***REMOVED***
+    {
         //  Could support automatic canvas resizing
         mc.renderWidth = renderWidth;
         mc.renderHeight = renderHeight;
-    ***REMOVED***
+    }
 
     if (this.debug)
-    ***REMOVED***
+    {
         this.context.globalAlpha = this.debugSettings.debugAlpha;
 
         if (this.debugSettings.forceFullRedraw)
-        ***REMOVED***
+        {
             redrawAll = true;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     if (!redrawAll &amp;&amp;
         this.renderSettings.enableScrollDelta &amp;&amp;
         (Math.abs(shiftX) + Math.abs(shiftY)) &lt; Math.min(renderWidth, renderHeight))
-    ***REMOVED***
+    {
         this.renderDeltaScroll(shiftX, shiftY);
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         // Too much change or otherwise requires full render
         this.renderFull();
-    ***REMOVED***
+    }
 
     if (this.debug)
-    ***REMOVED***
+    {
         this.context.globalAlpha = 1;
         this.renderDebug();
-    ***REMOVED***
+    }
 
     this.texture.baseTexture.dirty();
 
@@ -2418,7 +2418,7 @@ Phaser.TilemapLayer.prototype.render = function () ***REMOVED***
 
     return true;
 
-***REMOVED***;
+};
 
 /**
 * Renders a debug overlay on-top of the canvas. Called automatically by render when `debug` is true.
@@ -2428,7 +2428,7 @@ Phaser.TilemapLayer.prototype.render = function () ***REMOVED***
 * @method Phaser.TilemapLayer#renderDebug
 * @private
 */
-Phaser.TilemapLayer.prototype.renderDebug = function () ***REMOVED***
+Phaser.TilemapLayer.prototype.renderDebug = function () {
 
     var scrollX = this._mc.scrollX;
     var scrollY = this._mc.scrollY;
@@ -2458,170 +2458,170 @@ Phaser.TilemapLayer.prototype.renderDebug = function () ***REMOVED***
     context.strokeStyle = this.debugSettings.facingEdgeStroke;
 
     for (y = normStartY, ymax = bottom - top, ty = baseY; ymax >= 0; y++, ymax--, ty += th)
-    ***REMOVED***
+    {
         if (y >= height)
-        ***REMOVED***
+        {
             y -= height;
-        ***REMOVED***
+        }
 
         var row = this.layer.data[y];
 
         for (x = normStartX, xmax = right - left, tx = baseX; xmax >= 0; x++, xmax--, tx += tw)
-        ***REMOVED***
+        {
             if (x >= width)
-            ***REMOVED***
+            {
                 x -= width;
-            ***REMOVED***
+            }
 
             var tile = row[x];
             if (!tile || tile.index &lt; 0 || !tile.collides)
-            ***REMOVED***
+            {
                 continue;
-            ***REMOVED***
+            }
 
             if (this.debugSettings.collidingTileOverfill)
-            ***REMOVED***
+            {
                 context.fillStyle = this.debugSettings.collidingTileOverfill;
                 context.fillRect(tx, ty, this._mc.cw, this._mc.ch);
-            ***REMOVED***
+            }
 
             if (this.debugSettings.facingEdgeStroke)
-            ***REMOVED***
+            {
                 context.beginPath();
 
                 if (tile.faceTop)
-                ***REMOVED***
+                {
                     context.moveTo(tx, ty);
                     context.lineTo(tx + this._mc.cw, ty);
-                ***REMOVED***
+                }
 
                 if (tile.faceBottom)
-                ***REMOVED***
+                {
                     context.moveTo(tx, ty + this._mc.ch);
                     context.lineTo(tx + this._mc.cw, ty + this._mc.ch);
-                ***REMOVED***
+                }
 
                 if (tile.faceLeft)
-                ***REMOVED***
+                {
                     context.moveTo(tx, ty);
                     context.lineTo(tx, ty + this._mc.ch);
-                ***REMOVED***
+                }
 
                 if (tile.faceRight)
-                ***REMOVED***
+                {
                     context.moveTo(tx + this._mc.cw, ty);
                     context.lineTo(tx + this._mc.cw, ty + this._mc.ch);
-                ***REMOVED***
+                }
 
                 context.closePath();
 
                 context.stroke();
-            ***REMOVED***
+            }
            
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Flag controlling if the layer tiles wrap at the edges. Only works if the World size matches the Map size.
 *
-* @property ***REMOVED***boolean***REMOVED*** wrap
+* @property {boolean} wrap
 * @memberof Phaser.TilemapLayer
 * @public
 * @default false
 */
-Object.defineProperty(Phaser.TilemapLayer.prototype, "wrap", ***REMOVED***
+Object.defineProperty(Phaser.TilemapLayer.prototype, "wrap", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this._wrap;
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
         this._wrap = value;
         this.dirty = true;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * Scrolls the map horizontally or returns the current x position.
 *
-* @property ***REMOVED***number***REMOVED*** scrollX
+* @property {number} scrollX
 * @memberof Phaser.TilemapLayer
 * @public
 */
-Object.defineProperty(Phaser.TilemapLayer.prototype, "scrollX", ***REMOVED***
+Object.defineProperty(Phaser.TilemapLayer.prototype, "scrollX", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this._scrollX;
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
         this._scrollX = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * Scrolls the map vertically or returns the current y position.
 *
-* @property ***REMOVED***number***REMOVED*** scrollY
+* @property {number} scrollY
 * @memberof Phaser.TilemapLayer
 * @public
 */
-Object.defineProperty(Phaser.TilemapLayer.prototype, "scrollY", ***REMOVED***
+Object.defineProperty(Phaser.TilemapLayer.prototype, "scrollY", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this._scrollY;
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
         this._scrollY = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * The width of the collision tiles (in pixels).
 *
-* @property ***REMOVED***integer***REMOVED*** collisionWidth
+* @property {integer} collisionWidth
 * @memberof Phaser.TilemapLayer
 * @public
 */
-Object.defineProperty(Phaser.TilemapLayer.prototype, "collisionWidth", ***REMOVED***
+Object.defineProperty(Phaser.TilemapLayer.prototype, "collisionWidth", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this._mc.cw;
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
         this._mc.cw = value | 0;
         this.dirty = true;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * The height of the collision tiles (in pixels).
 *
-* @property ***REMOVED***integer***REMOVED*** collisionHeight
+* @property {integer} collisionHeight
 * @memberof Phaser.TilemapLayer
 * @public
 */
-Object.defineProperty(Phaser.TilemapLayer.prototype, "collisionHeight", ***REMOVED***
+Object.defineProperty(Phaser.TilemapLayer.prototype, "collisionHeight", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this._mc.ch;
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
         this._mc.ch = value | 0;
         this.dirty = true;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 </pre>
         </article>
     </section>
@@ -2664,22 +2664,22 @@ Object.defineProperty(Phaser.TilemapLayer.prototype, "collisionHeight", ***REMOV
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

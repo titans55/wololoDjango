@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -10,9 +10,9 @@
 *
 * @class
 */
-Phaser.Component.AutoCull = function () ***REMOVED******REMOVED***;
+Phaser.Component.AutoCull = function () {};
 
-Phaser.Component.AutoCull.prototype = ***REMOVED***
+Phaser.Component.AutoCull.prototype = {
 
     /**
     * A Game Object with `autoCull` set to true will check its bounds against the World Camera every frame.
@@ -22,7 +22,7 @@ Phaser.Component.AutoCull.prototype = ***REMOVED***
     * This is a relatively expensive operation, especially if enabled on hundreds of Game Objects. So enable it only if you know it's required,
     * or you have tested performance and find it acceptable.
     *
-    * @property ***REMOVED***boolean***REMOVED*** autoCull
+    * @property {boolean} autoCull
     * @default
     */
     autoCull: false,
@@ -31,24 +31,24 @@ Phaser.Component.AutoCull.prototype = ***REMOVED***
     * Checks if the Game Objects bounds intersect with the Game Camera bounds.
     * Returns `true` if they do, otherwise `false` if fully outside of the Cameras bounds.
     *
-    * @property ***REMOVED***boolean***REMOVED*** inCamera
+    * @property {boolean} inCamera
     * @readonly
     */
-    inCamera: ***REMOVED***
+    inCamera: {
 
-        get: function() ***REMOVED***
+        get: function() {
 
             if (!this.autoCull && !this.checkWorldBounds)
-            ***REMOVED***
+            {
                 this._bounds.copyFrom(this.getBounds());
                 this._bounds.x += this.game.camera.view.x;
                 this._bounds.y += this.game.camera.view.y;
-            ***REMOVED***
+            }
 
             return this.game.world.camera.view.intersects(this._bounds);
 
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};

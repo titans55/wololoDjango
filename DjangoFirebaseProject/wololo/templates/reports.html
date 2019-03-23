@@ -1,18 +1,18 @@
-***REMOVED***% extends "partials/layout.html" %***REMOVED***
-***REMOVED***% load static %***REMOVED***
+{% extends "partials/layout.html" %}
+{% load static %}
 
-***REMOVED***% block headcdn %***REMOVED***
+{% block headcdn %}
 
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block content %***REMOVED***
+{% block content %}
     REPORTS
 
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
 
-***REMOVED***% block footerjs %***REMOVED***
-    <script type="text/javascript" src="***REMOVED***% static 'wololo/assets/js/phaser/build/phaser.min.js' %***REMOVED***"></script>
-    <!-- <script type="text/javascript" src="***REMOVED***% static 'wololo/js/game.js' %***REMOVED***"></script> -->
+{% block footerjs %}
+    <script type="text/javascript" src="{% static 'wololo/assets/js/phaser/build/phaser.min.js' %}"></script>
+    <!-- <script type="text/javascript" src="{% static 'wololo/js/game.js' %}"></script> -->
 
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}

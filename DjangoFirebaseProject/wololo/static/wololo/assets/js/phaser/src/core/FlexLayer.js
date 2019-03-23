@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -14,78 +14,78 @@
 * @class Phaser.FlexLayer
 * @extends Phaser.Group
 * @constructor
-* @param ***REMOVED***Phaser.FlexGrid***REMOVED*** manager - The FlexGrid that owns this FlexLayer.
-* @param ***REMOVED***Phaser.Point***REMOVED*** position - A reference to the Point object used for positioning.
-* @param ***REMOVED***Phaser.Rectangle***REMOVED*** bounds - A reference to the Rectangle used for the layer bounds.
-* @param ***REMOVED***Phaser.Point***REMOVED*** scale - A reference to the Point object used for layer scaling.
+* @param {Phaser.FlexGrid} manager - The FlexGrid that owns this FlexLayer.
+* @param {Phaser.Point} position - A reference to the Point object used for positioning.
+* @param {Phaser.Rectangle} bounds - A reference to the Rectangle used for the layer bounds.
+* @param {Phaser.Point} scale - A reference to the Point object used for layer scaling.
 */
-Phaser.FlexLayer = function (manager, position, bounds, scale) ***REMOVED***
+Phaser.FlexLayer = function (manager, position, bounds, scale) {
 
     Phaser.Group.call(this, manager.game, null, '__flexLayer' + manager.game.rnd.uuid(), false);
 
     /**
-    * @property ***REMOVED***Phaser.ScaleManager***REMOVED*** scale - A reference to the ScaleManager.
+    * @property {Phaser.ScaleManager} scale - A reference to the ScaleManager.
     */
     this.manager = manager.manager;
 
     /**
-    * @property ***REMOVED***Phaser.FlexGrid***REMOVED*** grid - A reference to the FlexGrid that owns this layer.
+    * @property {Phaser.FlexGrid} grid - A reference to the FlexGrid that owns this layer.
     */
     this.grid = manager;
 
     /**
      * Should the FlexLayer remain through a State swap?
      *
-     * @type ***REMOVED***boolean***REMOVED***
+     * @type {boolean}
      */
     this.persist = false;
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** position
+    * @property {Phaser.Point} position
     */
     this.position = position;
 
     /**
-    * @property ***REMOVED***Phaser.Rectangle***REMOVED*** bounds
+    * @property {Phaser.Rectangle} bounds
     */
     this.bounds = bounds;
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** scale
+    * @property {Phaser.Point} scale
     */
     this.scale = scale;
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** topLeft
+    * @property {Phaser.Point} topLeft
     */
     this.topLeft = bounds.topLeft;
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** topMiddle
+    * @property {Phaser.Point} topMiddle
     */
     this.topMiddle = new Phaser.Point(bounds.halfWidth, 0);
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** topRight
+    * @property {Phaser.Point} topRight
     */
     this.topRight = bounds.topRight;
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** bottomLeft
+    * @property {Phaser.Point} bottomLeft
     */
     this.bottomLeft = bounds.bottomLeft;
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** bottomMiddle
+    * @property {Phaser.Point} bottomMiddle
     */
     this.bottomMiddle = new Phaser.Point(bounds.halfWidth, bounds.bottom);
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** bottomRight
+    * @property {Phaser.Point} bottomRight
     */
     this.bottomRight = bounds.bottomRight;
 
-***REMOVED***;
+};
 
 Phaser.FlexLayer.prototype = Object.create(Phaser.Group.prototype);
 Phaser.FlexLayer.prototype.constructor = Phaser.FlexLayer;
@@ -95,15 +95,15 @@ Phaser.FlexLayer.prototype.constructor = Phaser.FlexLayer;
  *
  * @method Phaser.FlexLayer#resize
  */
-Phaser.FlexLayer.prototype.resize = function () ***REMOVED***
-***REMOVED***;
+Phaser.FlexLayer.prototype.resize = function () {
+};
 
 /**
  * Debug.
  *
  * @method Phaser.FlexLayer#debug
  */
-Phaser.FlexLayer.prototype.debug = function () ***REMOVED***
+Phaser.FlexLayer.prototype.debug = function () {
 
     this.game.debug.text(this.bounds.width + ' x ' + this.bounds.height, this.bounds.x + 4, this.bounds.y + 16);
     this.game.debug.geom(this.bounds, 'rgba(0,0,255,0.9', false);
@@ -112,4 +112,4 @@ Phaser.FlexLayer.prototype.debug = function () ***REMOVED***
     this.game.debug.geom(this.topMiddle, 'rgba(255,255,255,0.9');
     this.game.debug.geom(this.topRight, 'rgba(255,255,255,0.9');
 
-***REMOVED***;
+};

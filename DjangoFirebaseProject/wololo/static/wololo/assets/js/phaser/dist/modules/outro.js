@@ -1,22 +1,22 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
-    if (typeof exports !== 'undefined') ***REMOVED***
-        if (typeof module !== 'undefined' && module.exports) ***REMOVED***
+    if (typeof exports !== 'undefined') {
+        if (typeof module !== 'undefined' && module.exports) {
             exports = module.exports = Phaser;
-        ***REMOVED***
+        }
         exports.Phaser = Phaser;
-    ***REMOVED*** else if (typeof define !== 'undefined' && define.amd) ***REMOVED***
-        define('Phaser', (function() ***REMOVED*** return root.Phaser = Phaser; ***REMOVED***)() );
-    ***REMOVED*** else ***REMOVED***
+    } else if (typeof define !== 'undefined' && define.amd) {
+        define('Phaser', (function() { return root.Phaser = Phaser; })() );
+    } else {
         root.Phaser = Phaser;
-    ***REMOVED***
+    }
 
     return Phaser;
-***REMOVED***).call(this);
+}).call(this);
 
 /*
 * "What matters in this life is not what we do but what we do for others, the legacy we leave and the imprint we make." - Eric Meyer

@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1289,7 +1289,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
             <pre class="sunlight-highlight-javascript linenums">/**
 * @author       Richard Davey &lt;rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1297,73 +1297,73 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 *
 * @class Phaser.Particles
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
+* @param {Phaser.Game} game - A reference to the currently running game.
 */
-Phaser.Particles = function (game) ***REMOVED***
+Phaser.Particles = function (game) {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running Game.
+    * @property {Phaser.Game} game - A reference to the currently running Game.
     */
     this.game = game;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** emitters - Internal emitters store.
+    * @property {object} emitters - Internal emitters store.
     */
-    this.emitters = ***REMOVED******REMOVED***;
+    this.emitters = {};
 
     /**
-    * @property ***REMOVED***number***REMOVED*** ID -
+    * @property {number} ID -
     * @default
     */
     this.ID = 0;
 
-***REMOVED***;
+};
 
-Phaser.Particles.prototype = ***REMOVED***
+Phaser.Particles.prototype = {
 
     /**
     * Adds a new Particle Emitter to the Particle Manager.
     * @method Phaser.Particles#add
-    * @param ***REMOVED***Phaser.Emitter***REMOVED*** emitter - The emitter to be added to the particle manager.
-    * @return ***REMOVED***Phaser.Emitter***REMOVED*** The emitter that was added.
+    * @param {Phaser.Emitter} emitter - The emitter to be added to the particle manager.
+    * @return {Phaser.Emitter} The emitter that was added.
     */
-    add: function (emitter) ***REMOVED***
+    add: function (emitter) {
 
         this.emitters[emitter.name] = emitter;
 
         return emitter;
 
-    ***REMOVED***,
+    },
 
     /**
     * Removes an existing Particle Emitter from the Particle Manager.
     * @method Phaser.Particles#remove
-    * @param ***REMOVED***Phaser.Emitter***REMOVED*** emitter - The emitter to remove.
+    * @param {Phaser.Emitter} emitter - The emitter to remove.
     */
-    remove: function (emitter) ***REMOVED***
+    remove: function (emitter) {
 
         delete this.emitters[emitter.name];
 
-    ***REMOVED***,
+    },
 
     /**
     * Called by the core game loop. Updates all Emitters who have their exists value set to true.
     * @method Phaser.Particles#update
     * @protected
     */
-    update: function () ***REMOVED***
+    update: function () {
 
         for (var key in this.emitters)
-        ***REMOVED***
+        {
             if (this.emitters[key].exists)
-            ***REMOVED***
+            {
                 this.emitters[key].update();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.Particles.prototype.constructor = Phaser.Particles;
 </pre>
@@ -1408,22 +1408,22 @@ Phaser.Particles.prototype.constructor = Phaser.Particles;
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

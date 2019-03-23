@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -16,206 +16,206 @@
 *
 * @class Phaser.Keyboard
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
+* @param {Phaser.Game} game - A reference to the currently running game.
 */
-Phaser.Keyboard = function (game) ***REMOVED***
+Phaser.Keyboard = function (game) {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - Local reference to game.
+    * @property {Phaser.Game} game - Local reference to game.
     */
     this.game = game;
 
     /**
     * Keyboard input will only be processed if enabled.
-    * @property ***REMOVED***boolean***REMOVED*** enabled
+    * @property {boolean} enabled
     * @default
     */
     this.enabled = true;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** event - The most recent DOM event from keydown or keyup. This is updated every time a new key is pressed or released.
+    * @property {object} event - The most recent DOM event from keydown or keyup. This is updated every time a new key is pressed or released.
     */
     this.event = null;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** pressEvent - The most recent DOM event from keypress.
+    * @property {object} pressEvent - The most recent DOM event from keypress.
     */
     this.pressEvent = null;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** callbackContext - The context under which the callbacks are run.
+    * @property {object} callbackContext - The context under which the callbacks are run.
     */
     this.callbackContext = this;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onDownCallback - This callback is invoked every time a key is pressed down, including key repeats when a key is held down.
+    * @property {function} onDownCallback - This callback is invoked every time a key is pressed down, including key repeats when a key is held down.
     */
     this.onDownCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onPressCallback - This callback is invoked every time a DOM onkeypress event is raised, which is only for printable keys.
+    * @property {function} onPressCallback - This callback is invoked every time a DOM onkeypress event is raised, which is only for printable keys.
     */
     this.onPressCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onUpCallback - This callback is invoked every time a key is released.
+    * @property {function} onUpCallback - This callback is invoked every time a key is released.
     */
     this.onUpCallback = null;
 
     /**
-    * @property ***REMOVED***array<Phaser.Key>***REMOVED*** _keys - The array the Phaser.Key objects are stored in.
+    * @property {array<Phaser.Key>} _keys - The array the Phaser.Key objects are stored in.
     * @private
     */
     this._keys = [];
 
     /**
-    * @property ***REMOVED***array***REMOVED*** _capture - The array the key capture values are stored in.
+    * @property {array} _capture - The array the key capture values are stored in.
     * @private
     */
     this._capture = [];
 
     /**
-    * @property ***REMOVED***function***REMOVED*** _onKeyDown
+    * @property {function} _onKeyDown
     * @private
     * @default
     */
     this._onKeyDown = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** _onKeyPress
+    * @property {function} _onKeyPress
     * @private
     * @default
     */
     this._onKeyPress = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** _onKeyUp
+    * @property {function} _onKeyUp
     * @private
     * @default
     */
     this._onKeyUp = null;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _i - Internal cache var
+    * @property {number} _i - Internal cache var
     * @private
     */
     this._i = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _k - Internal cache var
+    * @property {number} _k - Internal cache var
     * @private
     */
     this._k = 0;
 
-***REMOVED***;
+};
 
-Phaser.Keyboard.prototype = ***REMOVED***
+Phaser.Keyboard.prototype = {
 
     /**
     * Add callbacks to the Keyboard handler so that each time a key is pressed down or released the callbacks are activated.
     *
     * @method Phaser.Keyboard#addCallbacks
-    * @param ***REMOVED***object***REMOVED*** context - The context under which the callbacks are run.
-    * @param ***REMOVED***function***REMOVED*** [onDown=null] - This callback is invoked every time a key is pressed down.
-    * @param ***REMOVED***function***REMOVED*** [onUp=null] - This callback is invoked every time a key is released.
-    * @param ***REMOVED***function***REMOVED*** [onPress=null] - This callback is invoked every time the onkeypress event is raised.
+    * @param {object} context - The context under which the callbacks are run.
+    * @param {function} [onDown=null] - This callback is invoked every time a key is pressed down.
+    * @param {function} [onUp=null] - This callback is invoked every time a key is released.
+    * @param {function} [onPress=null] - This callback is invoked every time the onkeypress event is raised.
     */
-    addCallbacks: function (context, onDown, onUp, onPress) ***REMOVED***
+    addCallbacks: function (context, onDown, onUp, onPress) {
 
         this.callbackContext = context;
 
         if (onDown !== undefined && onDown !== null)
-        ***REMOVED***
+        {
             this.onDownCallback = onDown;
-        ***REMOVED***
+        }
 
         if (onUp !== undefined && onUp !== null)
-        ***REMOVED***
+        {
             this.onUpCallback = onUp;
-        ***REMOVED***
+        }
 
         if (onPress !== undefined && onPress !== null)
-        ***REMOVED***
+        {
             this.onPressCallback = onPress;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * If you need more fine-grained control over a Key you can create a new Phaser.Key object via this method.
     * The Key object can then be polled, have events attached to it, etc.
     *
     * @method Phaser.Keyboard#addKey
-    * @param ***REMOVED***integer***REMOVED*** keycode - The ***REMOVED***@link Phaser.KeyCode keycode***REMOVED*** of the key.
-    * @return ***REMOVED***Phaser.Key***REMOVED*** The Key object which you can store locally and reference directly.
+    * @param {integer} keycode - The {@link Phaser.KeyCode keycode} of the key.
+    * @return {Phaser.Key} The Key object which you can store locally and reference directly.
     */
-    addKey: function (keycode) ***REMOVED***
+    addKey: function (keycode) {
 
         if (!this._keys[keycode])
-        ***REMOVED***
+        {
             this._keys[keycode] = new Phaser.Key(this.game, keycode);
 
             this.addKeyCapture(keycode);
-        ***REMOVED***
+        }
 
         return this._keys[keycode];
 
-    ***REMOVED***,
+    },
 
     /**
     * A practical way to create an object containing user selected hotkeys.
     *
     * For example,
     *
-    *     addKeys( ***REMOVED*** 'up': Phaser.KeyCode.W, 'down': Phaser.KeyCode.S, 'left': Phaser.KeyCode.A, 'right': Phaser.KeyCode.D ***REMOVED*** );
+    *     addKeys( { 'up': Phaser.KeyCode.W, 'down': Phaser.KeyCode.S, 'left': Phaser.KeyCode.A, 'right': Phaser.KeyCode.D } );
     *
-    * would return an object containing properties (`up`, `down`, `left` and `right`) referring to ***REMOVED***@link Phaser.Key***REMOVED*** object.
+    * would return an object containing properties (`up`, `down`, `left` and `right`) referring to {@link Phaser.Key} object.
     *
     * @method Phaser.Keyboard#addKeys
-    * @param ***REMOVED***object***REMOVED*** keys - A key mapping object, i.e. `***REMOVED*** 'up': Phaser.KeyCode.W, 'down': Phaser.KeyCode.S ***REMOVED***` or `***REMOVED*** 'up': 52, 'down': 53 ***REMOVED***`.
-    * @return ***REMOVED***object***REMOVED*** An object containing the properties mapped to ***REMOVED***@link Phaser.Key***REMOVED*** values.
+    * @param {object} keys - A key mapping object, i.e. `{ 'up': Phaser.KeyCode.W, 'down': Phaser.KeyCode.S }` or `{ 'up': 52, 'down': 53 }`.
+    * @return {object} An object containing the properties mapped to {@link Phaser.Key} values.
     */
-    addKeys: function (keys) ***REMOVED***
+    addKeys: function (keys) {
 
-        var output = ***REMOVED******REMOVED***;
+        var output = {};
 
         for (var key in keys)
-        ***REMOVED***
+        {
             output[key] = this.addKey(keys[key]);
-        ***REMOVED***
+        }
 
         return output;
 
-    ***REMOVED***,
+    },
 
     /**
     * Removes a Key object from the Keyboard manager.
     *
     * @method Phaser.Keyboard#removeKey
-    * @param ***REMOVED***integer***REMOVED*** keycode - The ***REMOVED***@link Phaser.KeyCode keycode***REMOVED*** of the key to remove.
+    * @param {integer} keycode - The {@link Phaser.KeyCode keycode} of the key to remove.
     */
-    removeKey: function (keycode) ***REMOVED***
+    removeKey: function (keycode) {
 
         if (this._keys[keycode])
-        ***REMOVED***
+        {
             this._keys[keycode] = null;
 
             this.removeKeyCapture(keycode);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates and returns an object containing 4 hotkeys for Up, Down, Left and Right.
     *
     * @method Phaser.Keyboard#createCursorKeys
-    * @return ***REMOVED***object***REMOVED*** An object containing properties: `up`, `down`, `left` and `right` of ***REMOVED***@link Phaser.Key***REMOVED*** objects.
+    * @return {object} An object containing properties: `up`, `down`, `left` and `right` of {@link Phaser.Key} objects.
     */
-    createCursorKeys: function () ***REMOVED***
+    createCursorKeys: function () {
 
-        return this.addKeys(***REMOVED*** 'up': Phaser.KeyCode.UP, 'down': Phaser.KeyCode.DOWN, 'left': Phaser.KeyCode.LEFT, 'right': Phaser.KeyCode.RIGHT ***REMOVED***);
+        return this.addKeys({ 'up': Phaser.KeyCode.UP, 'down': Phaser.KeyCode.DOWN, 'left': Phaser.KeyCode.LEFT, 'right': Phaser.KeyCode.RIGHT });
 
-    ***REMOVED***,
+    },
 
     /**
     * Starts the Keyboard event listeners running (keydown and keyup). They are attached to the window.
@@ -224,45 +224,45 @@ Phaser.Keyboard.prototype = ***REMOVED***
     * @method Phaser.Keyboard#start
     * @protected
     */
-    start: function () ***REMOVED***
+    start: function () {
 
         if (this.game.device.cocoonJS)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         if (this._onKeyDown !== null)
-        ***REMOVED***
+        {
             //  Avoid setting multiple listeners
             return;
-        ***REMOVED***
+        }
 
         var _this = this;
 
-        this._onKeyDown = function (event) ***REMOVED***
+        this._onKeyDown = function (event) {
             return _this.processKeyDown(event);
-        ***REMOVED***;
+        };
 
-        this._onKeyUp = function (event) ***REMOVED***
+        this._onKeyUp = function (event) {
             return _this.processKeyUp(event);
-        ***REMOVED***;
+        };
 
-        this._onKeyPress = function (event) ***REMOVED***
+        this._onKeyPress = function (event) {
             return _this.processKeyPress(event);
-        ***REMOVED***;
+        };
 
         window.addEventListener('keydown', this._onKeyDown, false);
         window.addEventListener('keyup', this._onKeyUp, false);
         window.addEventListener('keypress', this._onKeyPress, false);
 
-    ***REMOVED***,
+    },
 
     /**
     * Stops the Keyboard event listeners from running (keydown, keyup and keypress). They are removed from the window.
     *
     * @method Phaser.Keyboard#stop
     */
-    stop: function () ***REMOVED***
+    stop: function () {
 
         window.removeEventListener('keydown', this._onKeyDown);
         window.removeEventListener('keyup', this._onKeyUp);
@@ -272,7 +272,7 @@ Phaser.Keyboard.prototype = ***REMOVED***
         this._onKeyUp = null;
         this._onKeyPress = null;
 
-    ***REMOVED***,
+    },
 
     /**
     * Stops the Keyboard event listeners from running (keydown and keyup). They are removed from the window.
@@ -280,7 +280,7 @@ Phaser.Keyboard.prototype = ***REMOVED***
     *
     * @method Phaser.Keyboard#destroy
     */
-    destroy: function () ***REMOVED***
+    destroy: function () {
 
         this.stop();
 
@@ -289,7 +289,7 @@ Phaser.Keyboard.prototype = ***REMOVED***
         this._keys.length = 0;
         this._i = 0;
 
-    ***REMOVED***,
+    },
 
     /**
     * By default when a key is pressed Phaser will not stop the event from propagating up to the browser.
@@ -301,293 +301,293 @@ Phaser.Keyboard.prototype = ***REMOVED***
     * Pass in either a single keycode or an array/hash of keycodes.
     *
     * @method Phaser.Keyboard#addKeyCapture
-    * @param ***REMOVED***integer|integer[]|object***REMOVED*** keycode - Either a single ***REMOVED***@link Phaser.KeyCode keycode***REMOVED*** or an array/hash of keycodes such as `[65, 67, 68]`.
+    * @param {integer|integer[]|object} keycode - Either a single {@link Phaser.KeyCode keycode} or an array/hash of keycodes such as `[65, 67, 68]`.
     */
-    addKeyCapture: function (keycode) ***REMOVED***
+    addKeyCapture: function (keycode) {
 
         if (typeof keycode === 'object')
-        ***REMOVED***
+        {
             for (var key in keycode)
-            ***REMOVED***
+            {
                 this._capture[keycode[key]] = true;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             this._capture[keycode] = true;
-        ***REMOVED***
-    ***REMOVED***,
+        }
+    },
 
     /**
     * Removes an existing key capture.
     *
     * @method Phaser.Keyboard#removeKeyCapture
-    * @param ***REMOVED***integer***REMOVED*** keycode - The ***REMOVED***@link Phaser.KeyCode keycode***REMOVED*** to remove capturing of.
+    * @param {integer} keycode - The {@link Phaser.KeyCode keycode} to remove capturing of.
     */
-    removeKeyCapture: function (keycode) ***REMOVED***
+    removeKeyCapture: function (keycode) {
 
         delete this._capture[keycode];
 
-    ***REMOVED***,
+    },
 
     /**
     * Clear all set key captures.
     *
     * @method Phaser.Keyboard#clearCaptures
     */
-    clearCaptures: function () ***REMOVED***
+    clearCaptures: function () {
 
-        this._capture = ***REMOVED******REMOVED***;
+        this._capture = {};
 
-    ***REMOVED***,
+    },
 
     /**
     * Updates all currently defined keys.
     *
     * @method Phaser.Keyboard#update
     */
-    update: function () ***REMOVED***
+    update: function () {
 
         this._i = this._keys.length;
 
         while (this._i--)
-        ***REMOVED***
+        {
             if (this._keys[this._i])
-            ***REMOVED***
+            {
                 this._keys[this._i].update();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Process the keydown event.
     *
     * @method Phaser.Keyboard#processKeyDown
-    * @param ***REMOVED***KeyboardEvent***REMOVED*** event
+    * @param {KeyboardEvent} event
     * @protected
     */
-    processKeyDown: function (event) ***REMOVED***
+    processKeyDown: function (event) {
 
         this.event = event;
 
         if (!this.game.input.enabled || !this.enabled)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         var key = event.keyCode;
 
         //   The event is being captured but another hotkey may need it
         if (this._capture[key])
-        ***REMOVED***
+        {
             event.preventDefault();
-        ***REMOVED***
+        }
 
         if (!this._keys[key])
-        ***REMOVED***
+        {
             this._keys[key] = new Phaser.Key(this.game, key);
-        ***REMOVED***
+        }
 
         this._keys[key].processKeyDown(event);
 
         this._k = key;
 
         if (this.onDownCallback)
-        ***REMOVED***
+        {
             this.onDownCallback.call(this.callbackContext, event);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Process the keypress event.
     *
     * @method Phaser.Keyboard#processKeyPress
-    * @param ***REMOVED***KeyboardEvent***REMOVED*** event
+    * @param {KeyboardEvent} event
     * @protected
     */
-    processKeyPress: function (event) ***REMOVED***
+    processKeyPress: function (event) {
 
         this.pressEvent = event;
 
         if (!this.game.input.enabled || !this.enabled)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         if (this.onPressCallback)
-        ***REMOVED***
+        {
             this.onPressCallback.call(this.callbackContext, String.fromCharCode(event.charCode), event);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Process the keyup event.
     *
     * @method Phaser.Keyboard#processKeyUp
-    * @param ***REMOVED***KeyboardEvent***REMOVED*** event
+    * @param {KeyboardEvent} event
     * @protected
     */
-    processKeyUp: function (event) ***REMOVED***
+    processKeyUp: function (event) {
 
         this.event = event;
 
         if (!this.game.input.enabled || !this.enabled)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         var key = event.keyCode;
 
         if (this._capture[key])
-        ***REMOVED***
+        {
             event.preventDefault();
-        ***REMOVED***
+        }
 
         if (!this._keys[key])
-        ***REMOVED***
+        {
             this._keys[key] = new Phaser.Key(this.game, key);
-        ***REMOVED***
+        }
 
         this._keys[key].processKeyUp(event);
 
         if (this.onUpCallback)
-        ***REMOVED***
+        {
             this.onUpCallback.call(this.callbackContext, event);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Resets all Keys.
     *
     * @method Phaser.Keyboard#reset
-    * @param ***REMOVED***boolean***REMOVED*** [hard=true] - A soft reset won't reset any events or callbacks that are bound to the Keys. A hard reset will.
+    * @param {boolean} [hard=true] - A soft reset won't reset any events or callbacks that are bound to the Keys. A hard reset will.
     */
-    reset: function (hard) ***REMOVED***
+    reset: function (hard) {
 
-        if (hard === undefined) ***REMOVED*** hard = true; ***REMOVED***
+        if (hard === undefined) { hard = true; }
 
         this.event = null;
 
         var i = this._keys.length;
 
         while (i--)
-        ***REMOVED***
+        {
             if (this._keys[i])
-            ***REMOVED***
+            {
                 this._keys[i].reset(hard);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns `true` if the Key was pressed down within the `duration` value given, or `false` if it either isn't down,
     * or was pressed down longer ago than then given duration.
     * 
     * @method Phaser.Keyboard#downDuration
-    * @param ***REMOVED***integer***REMOVED*** keycode - The ***REMOVED***@link Phaser.KeyCode keycode***REMOVED*** of the key to check: i.e. Phaser.KeyCode.UP or Phaser.KeyCode.SPACEBAR.
-    * @param ***REMOVED***number***REMOVED*** [duration=50] - The duration within which the key is considered as being just pressed. Given in ms.
-    * @return ***REMOVED***boolean***REMOVED*** True if the key was pressed down within the given duration, false if not or null if the Key wasn't found.
+    * @param {integer} keycode - The {@link Phaser.KeyCode keycode} of the key to check: i.e. Phaser.KeyCode.UP or Phaser.KeyCode.SPACEBAR.
+    * @param {number} [duration=50] - The duration within which the key is considered as being just pressed. Given in ms.
+    * @return {boolean} True if the key was pressed down within the given duration, false if not or null if the Key wasn't found.
     */
-    downDuration: function (keycode, duration) ***REMOVED***
+    downDuration: function (keycode, duration) {
 
         if (this._keys[keycode])
-        ***REMOVED***
+        {
             return this._keys[keycode].downDuration(duration);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return null;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns `true` if the Key was pressed down within the `duration` value given, or `false` if it either isn't down,
     * or was pressed down longer ago than then given duration.
     * 
     * @method Phaser.Keyboard#upDuration
-    * @param ***REMOVED***Phaser.KeyCode|integer***REMOVED*** keycode - The keycode of the key to check, i.e. Phaser.KeyCode.UP or Phaser.KeyCode.SPACEBAR.
-    * @param ***REMOVED***number***REMOVED*** [duration=50] - The duration within which the key is considered as being just released. Given in ms.
-    * @return ***REMOVED***boolean***REMOVED*** True if the key was released within the given duration, false if not or null if the Key wasn't found.
+    * @param {Phaser.KeyCode|integer} keycode - The keycode of the key to check, i.e. Phaser.KeyCode.UP or Phaser.KeyCode.SPACEBAR.
+    * @param {number} [duration=50] - The duration within which the key is considered as being just released. Given in ms.
+    * @return {boolean} True if the key was released within the given duration, false if not or null if the Key wasn't found.
     */
-    upDuration: function (keycode, duration) ***REMOVED***
+    upDuration: function (keycode, duration) {
 
         if (this._keys[keycode])
-        ***REMOVED***
+        {
             return this._keys[keycode].upDuration(duration);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return null;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns true of the key is currently pressed down. Note that it can only detect key presses on the web browser.
     *
     * @method Phaser.Keyboard#isDown
-    * @param ***REMOVED***integer***REMOVED*** keycode - The ***REMOVED***@link Phaser.KeyCode keycode***REMOVED*** of the key to check: i.e. Phaser.KeyCode.UP or Phaser.KeyCode.SPACEBAR.
-    * @return ***REMOVED***boolean***REMOVED*** True if the key is currently down, false if not or null if the Key wasn't found.
+    * @param {integer} keycode - The {@link Phaser.KeyCode keycode} of the key to check: i.e. Phaser.KeyCode.UP or Phaser.KeyCode.SPACEBAR.
+    * @return {boolean} True if the key is currently down, false if not or null if the Key wasn't found.
     */
-    isDown: function (keycode) ***REMOVED***
+    isDown: function (keycode) {
 
         if (this._keys[keycode])
-        ***REMOVED***
+        {
             return this._keys[keycode].isDown;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return null;
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Returns the string value of the most recently pressed key.
 * @name Phaser.Keyboard#lastChar
-* @property ***REMOVED***string***REMOVED*** lastChar - The string value of the most recently pressed key.
+* @property {string} lastChar - The string value of the most recently pressed key.
 * @readonly
 */
-Object.defineProperty(Phaser.Keyboard.prototype, "lastChar", ***REMOVED***
+Object.defineProperty(Phaser.Keyboard.prototype, "lastChar", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         if (this.event.charCode === 32)
-        ***REMOVED***
+        {
             return '';
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return String.fromCharCode(this.pressEvent.charCode);
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * Returns the most recently pressed Key. This is a Phaser.Key object and it changes every time a key is pressed.
 * @name Phaser.Keyboard#lastKey
-* @property ***REMOVED***Phaser.Key***REMOVED*** lastKey - The most recently pressed Key.
+* @property {Phaser.Key} lastKey - The most recently pressed Key.
 * @readonly
 */
-Object.defineProperty(Phaser.Keyboard.prototype, "lastKey", ***REMOVED***
+Object.defineProperty(Phaser.Keyboard.prototype, "lastKey", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this._keys[this._k];
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 Phaser.Keyboard.prototype.constructor = Phaser.Keyboard;
 
@@ -595,18 +595,18 @@ Phaser.Keyboard.prototype.constructor = Phaser.Keyboard;
 * A key code represents a physical key on a keyboard.
 *
 * The KeyCode class contains commonly supported keyboard key codes which can be used
-* as keycode`-parameters in several ***REMOVED***@link Phaser.Keyboard***REMOVED*** and ***REMOVED***@link Phaser.Key***REMOVED*** methods.
+* as keycode`-parameters in several {@link Phaser.Keyboard} and {@link Phaser.Key} methods.
 *
 * _Note_: These values should only be used indirectly, eg. as `Phaser.KeyCode.KEY`.
 * Future versions may replace the actual values, such that they remain compatible with `keycode`-parameters.
-* The current implementation maps to the ***REMOVED***@link https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode KeyboardEvent.keyCode***REMOVED*** property.
+* The current implementation maps to the {@link https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode KeyboardEvent.keyCode} property.
 *
 * _Note_: Use `Phaser.KeyCode.KEY` instead of `Phaser.Keyboard.KEY` to refer to a key code;
 * the latter approach is supported for compatibility.
 *
 * @class Phaser.KeyCode
 */
-Phaser.KeyCode = ***REMOVED***
+Phaser.KeyCode = {
     /** @static */
     A: "A".charCodeAt(0),
     /** @static */
@@ -811,13 +811,13 @@ Phaser.KeyCode = ***REMOVED***
     HELP: 47,
     /** @static */
     NUM_LOCK: 144
-***REMOVED***;
+};
 
 // Duplicate Phaser.KeyCode values in Phaser.Keyboard for compatibility
 for (var key in Phaser.KeyCode)
-***REMOVED***
+{
     if (Phaser.KeyCode.hasOwnProperty(key) && !key.match(/[a-z]/))
-    ***REMOVED***
+    {
         Phaser.Keyboard[key] = Phaser.KeyCode[key];
-    ***REMOVED***
-***REMOVED***
+    }
+}

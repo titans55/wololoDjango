@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1297,8 +1297,8 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
  * @constructor
  */
 PIXI.CanvasMaskManager = function()
-***REMOVED***
-***REMOVED***;
+{
+};
 
 PIXI.CanvasMaskManager.prototype.constructor = PIXI.CanvasMaskManager;
 
@@ -1306,10 +1306,10 @@ PIXI.CanvasMaskManager.prototype.constructor = PIXI.CanvasMaskManager;
  * This method adds it to the current stack of masks.
  *
  * @method pushMask
- * @param maskData ***REMOVED***Object***REMOVED*** the maskData that will be pushed
- * @param renderSession ***REMOVED***Object***REMOVED*** The renderSession whose context will be used for this mask manager.
+ * @param maskData {Object} the maskData that will be pushed
+ * @param renderSession {Object} The renderSession whose context will be used for this mask manager.
  */
-PIXI.CanvasMaskManager.prototype.pushMask = function(maskData, renderSession) ***REMOVED***
+PIXI.CanvasMaskManager.prototype.pushMask = function(maskData, renderSession) {
 
 	var context = renderSession.context;
 
@@ -1332,18 +1332,18 @@ PIXI.CanvasMaskManager.prototype.pushMask = function(maskData, renderSession) **
     context.clip();
 
     maskData.worldAlpha = cacheAlpha;
-***REMOVED***;
+};
 
 /**
  * Restores the current drawing context to the state it was before the mask was applied.
  *
  * @method popMask
- * @param renderSession ***REMOVED***Object***REMOVED*** The renderSession whose context will be used for this mask manager.
+ * @param renderSession {Object} The renderSession whose context will be used for this mask manager.
  */
 PIXI.CanvasMaskManager.prototype.popMask = function(renderSession)
-***REMOVED***
+{
     renderSession.context.restore();
-***REMOVED***;
+};
 </pre>
         </article>
     </section>
@@ -1386,22 +1386,22 @@ PIXI.CanvasMaskManager.prototype.popMask = function(renderSession)
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

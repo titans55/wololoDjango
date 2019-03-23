@@ -1,8 +1,8 @@
 <?php
-    if (!isset($path)) ***REMOVED*** $path = '..'; ***REMOVED***
+    if (!isset($path)) { $path = '..'; }
 
     if (!isset($modules))
-    ***REMOVED***
+    {
         $modules = array(
             'keyboard' => true,
             'gamepad' => true,
@@ -26,23 +26,23 @@
             'rope' => true,
             'tilesprite' => true
         );
-    ***REMOVED***
+    }
 
     if ($modules['creature'])
-    ***REMOVED***
+    {
         echo "    <script src=\"$path/src/animation/creature/gl-matrix.js\"></script>";
         echo "    <script src=\"$path/src/animation/creature/CreatureMeshBone.js\"></script>";
-    ***REMOVED***
+    }
 
     if ($modules['p2'])
-    ***REMOVED***
+    {
         echo "    <script src=\"$path/src/physics/p2/p2.js\"></script>";
-    ***REMOVED***
+    }
 
     if ($modules['box2d'] && isset($box2dpath))
-    ***REMOVED***
+    {
         echo "    <script src=\"$box2dpath/box2d-html5.js\"></script>";
-    ***REMOVED***
+    }
 
     //  PIXI Intro
     echo <<<EOL
@@ -86,15 +86,15 @@
 EOL;
 
     if ($modules['rope'])
-    ***REMOVED***
+    {
         echo "    <script src=\"$path/src/pixi/extras/Strip.js\"></script>";
         echo "    <script src=\"$path/src/pixi/extras/Rope.js\"></script>";
-    ***REMOVED***
+    }
 
     if ($modules['tilesprite'])
-    ***REMOVED***
+    {
         echo "    <script src=\"$path/src/pixi/extras/TilingSprite.js\"></script>";
-    ***REMOVED***
+    }
 
     //  PIXI Outro + Phaser Global
     echo <<<EOL
@@ -148,24 +148,24 @@ EOL;
 EOL;
 
     if ($modules['keyboard'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/input/Key.js"></script>
     <script src="$path/src/input/Keyboard.js"></script>
 
 
 EOL;
-    ***REMOVED***
+    }
 
     if ($modules['gamepad'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/input/Gamepad.js"></script>
     <script src="$path/src/input/SinglePad.js"></script>
 
 
 EOL;
-    ***REMOVED***
+    }
 
     echo <<<EOL
     <script src="$path/src/gameobjects/components/Component.js"></script>
@@ -212,94 +212,94 @@ EOL;
 EOL;
 
     if ($modules['rope'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/gameobjects/Rope.js"></script>
 
 
 EOL;
-    ***REMOVED***
+    }
 
     if ($modules['tilesprite'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/gameobjects/TileSprite.js"></script>
 
 
 EOL;
-    ***REMOVED***
+    }
 
     if ($modules['creature'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/gameobjects/Creature.js"></script>
 
 
 EOL;
-    ***REMOVED***
+    }
 
     if ($modules['bitmapdata'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/gameobjects/BitmapData.js"></script>
 
 
 EOL;
-    ***REMOVED***
+    }
 
     if ($modules['graphics'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/gameobjects/Graphics.js"></script>
 
 
 EOL;
-    ***REMOVED***
+    }
 
     if ($modules['rendertexture'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/gameobjects/RenderTexture.js"></script>
 
 
 EOL;
-    ***REMOVED***
+    }
 
     if ($modules['text'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/gameobjects/Text.js"></script>
 
 
 EOL;
-    ***REMOVED***
+    }
 
     if ($modules['bitmaptext'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/gameobjects/BitmapText.js"></script>
 
 
 EOL;
-    ***REMOVED***
+    }
 
     if ($modules['retrofont'] && $modules['rendertexture'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/gameobjects/RetroFont.js"></script>
 
 
 EOL;
-    ***REMOVED***
+    }
 
     if ($modules['video'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/gameobjects/Video.js"></script>
 
 
 EOL;
-    ***REMOVED***
+    }
 
     echo <<<EOL
     <script src="$path/src/utils/Device.js"></script>
@@ -317,7 +317,7 @@ EOL;
 EOL;
 
     if ($modules['tweens'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/tween/TweenManager.js"></script>
     <script src="$path/src/tween/Tween.js"></script>
@@ -326,15 +326,15 @@ EOL;
 
 
 EOL;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/stubs/TweenManager.js"></script>
 
 
 EOL;
-    ***REMOVED***
+    }
 
     echo <<<EOL
     <script src="$path/src/time/Time.js"></script>
@@ -356,7 +356,7 @@ EOL;
 
 
     if ($modules['sound'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/sound/AudioSprite.js"></script>
     <script src="$path/src/sound/Sound.js"></script>
@@ -364,24 +364,24 @@ EOL;
 
 
 EOL;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/stubs/SoundManager.js"></script>
 
 
 EOL;
-    ***REMOVED***
+    }
 
     if ($modules['debug'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/utils/Debug.js"></script>
 
 
 EOL;
-    ***REMOVED***
+    }
 
     echo <<<EOL
     <script src="$path/src/utils/ArraySet.js"></script>
@@ -396,17 +396,17 @@ EOL;
 EOL;
 
     if ($modules['particles'] && $modules['arcade'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/particles/arcade/ArcadeParticles.js"></script>
     <script src="$path/src/particles/arcade/Emitter.js"></script>
 
 
 EOL;
-    ***REMOVED***
+    }
 
     if ($modules['tilemap'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/tilemap/ImageCollection.js"></script>
     <script src="$path/src/tilemap/Tile.js"></script>
@@ -417,29 +417,29 @@ EOL;
 
 
 EOL;
-    ***REMOVED***
+    }
 
     if ($modules['arcade'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/physics/arcade/World.js"></script>
     <script src="$path/src/physics/arcade/Body.js"></script>
 
 
 EOL;
-    ***REMOVED***
+    }
 
     if ($modules['tilemap'] && $modules['arcade'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/physics/arcade/TilemapCollision.js"></script>
 
 
 EOL;
-    ***REMOVED***
+    }
 
     if ($modules['p2'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/physics/p2/World.js"></script>
     <script src="$path/src/physics/p2/FixtureList.js"></script>
@@ -460,10 +460,10 @@ EOL;
 
 
 EOL;
-    ***REMOVED***
+    }
 
     if ($modules['ninja'])
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$path/src/physics/ninja/World.js"></script>
     <script src="$path/src/physics/ninja/Body.js"></script>
@@ -473,10 +473,10 @@ EOL;
 
 
 EOL;
-    ***REMOVED***
+    }
 
     if ($modules['box2d'] && isset($box2dpath))
-    ***REMOVED***
+    {
         echo <<<EOL
     <script src="$box2dpath/World.js"></script>
     <script src="$box2dpath/Body.js"></script>
@@ -487,7 +487,7 @@ EOL;
 
 
 EOL;
-    ***REMOVED***
+    }
 
     echo <<<EOL
     <script src="$path/src/PixiDefaults.js"></script>
@@ -496,10 +496,10 @@ EOL;
 EOL;
 
     if (isset($custom))
-    ***REMOVED***
+    {
         for ($i = 0; $i < count($custom); $i++)
-        ***REMOVED***
+        {
             echo '    <script src="' . $custom[$i] . '"></script>' . "\n";
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 ?>

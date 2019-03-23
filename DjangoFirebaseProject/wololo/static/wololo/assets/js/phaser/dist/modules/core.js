@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -10,27 +10,27 @@
 *
 * @class Phaser.Camera
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - Game reference to the currently running game.
-* @param ***REMOVED***number***REMOVED*** id - Not being used at the moment, will be when Phaser supports multiple camera
-* @param ***REMOVED***number***REMOVED*** x - Position of the camera on the X axis
-* @param ***REMOVED***number***REMOVED*** y - Position of the camera on the Y axis
-* @param ***REMOVED***number***REMOVED*** width - The width of the view rectangle
-* @param ***REMOVED***number***REMOVED*** height - The height of the view rectangle
+* @param {Phaser.Game} game - Game reference to the currently running game.
+* @param {number} id - Not being used at the moment, will be when Phaser supports multiple camera
+* @param {number} x - Position of the camera on the X axis
+* @param {number} y - Position of the camera on the Y axis
+* @param {number} width - The width of the view rectangle
+* @param {number} height - The height of the view rectangle
 */
-Phaser.Camera = function (game, id, x, y, width, height) ***REMOVED***
+Phaser.Camera = function (game, id, x, y, width, height) {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running Game.
+    * @property {Phaser.Game} game - A reference to the currently running Game.
     */
     this.game = game;
 
     /**
-    * @property ***REMOVED***Phaser.World***REMOVED*** world - A reference to the game world.
+    * @property {Phaser.World} world - A reference to the game world.
     */
     this.world = game.world;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** id - Reserved for future multiple camera set-ups.
+    * @property {number} id - Reserved for future multiple camera set-ups.
     * @default
     */
     this.id = 0;
@@ -40,7 +40,7 @@ Phaser.Camera = function (game, id, x, y, width, height) ***REMOVED***
     * The view into the world we wish to render (by default the game dimensions).
     * The x/y values are in world coordinates, not screen coordinates, the width/height is how many pixels to render.
     * Sprites outside of this view are not rendered if Sprite.autoCull is set to `true`. Otherwise they are always rendered.
-    * @property ***REMOVED***Phaser.Rectangle***REMOVED*** view
+    * @property {Phaser.Rectangle} view
     */
     this.view = new Phaser.Rectangle(x, y, width, height);
 
@@ -49,50 +49,50 @@ Phaser.Camera = function (game, id, x, y, width, height) ***REMOVED***
     * The Rectangle can be located anywhere in the world and updated as often as you like. If you don't wish the Camera to be bound
     * at all then set this to null. The values can be anything and are in World coordinates, with 0,0 being the top-left of the world.
     *
-    * @property ***REMOVED***Phaser.Rectangle***REMOVED*** bounds - The Rectangle in which the Camera is bounded. Set to null to allow for movement anywhere.
+    * @property {Phaser.Rectangle} bounds - The Rectangle in which the Camera is bounded. Set to null to allow for movement anywhere.
     */
     this.bounds = new Phaser.Rectangle(x, y, width, height);
 
     /**
-    * @property ***REMOVED***Phaser.Rectangle***REMOVED*** deadzone - Moving inside this Rectangle will not cause the camera to move.
+    * @property {Phaser.Rectangle} deadzone - Moving inside this Rectangle will not cause the camera to move.
     */
     this.deadzone = null;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** visible - Whether this camera is visible or not.
+    * @property {boolean} visible - Whether this camera is visible or not.
     * @default
     */
     this.visible = true;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** roundPx - If a Camera has roundPx set to `true` it will call `view.floor` as part of its update loop, keeping its boundary to integer values. Set this to `false` to disable this from happening.
+    * @property {boolean} roundPx - If a Camera has roundPx set to `true` it will call `view.floor` as part of its update loop, keeping its boundary to integer values. Set this to `false` to disable this from happening.
     * @default
     */
     this.roundPx = true;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** atLimit - Whether this camera is flush with the World Bounds or not.
+    * @property {boolean} atLimit - Whether this camera is flush with the World Bounds or not.
     */
-    this.atLimit = ***REMOVED*** x: false, y: false ***REMOVED***;
+    this.atLimit = { x: false, y: false };
 
     /**
-    * @property ***REMOVED***Phaser.Sprite***REMOVED*** target - If the camera is tracking a Sprite, this is a reference to it, otherwise null.
+    * @property {Phaser.Sprite} target - If the camera is tracking a Sprite, this is a reference to it, otherwise null.
     * @default
     */
     this.target = null;
 
     /**
-    * @property ***REMOVED***PIXI.DisplayObject***REMOVED*** displayObject - The display object to which all game objects are added. Set by World.boot.
+    * @property {PIXI.DisplayObject} displayObject - The display object to which all game objects are added. Set by World.boot.
     */
     this.displayObject = null;
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** scale - The scale of the display object to which all game objects are added. Set by World.boot.
+    * @property {Phaser.Point} scale - The scale of the display object to which all game objects are added. Set by World.boot.
     */
     this.scale = null;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** totalInView - The total number of Sprites with `autoCull` set to `true` that are visible by this Camera.
+    * @property {number} totalInView - The total number of Sprites with `autoCull` set to `true` that are visible by this Camera.
     * @readonly
     */
     this.totalInView = 0;
@@ -103,18 +103,18 @@ Phaser.Camera = function (game, id, x, y, width, height) ***REMOVED***
     * A lower value, such as 0.1 means the camera will more slowly track the target, giving
     * a smooth transition. You can set the horizontal and vertical values independently, and also
     * adjust this value in real-time during your game.
-    * @property ***REMOVED***Phaser.Point***REMOVED*** lerp
+    * @property {Phaser.Point} lerp
     * @default
     */
     this.lerp = new Phaser.Point(1, 1);
 
     /**
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onShakeComplete - This signal is dispatched when the camera shake effect completes.
+    * @property {Phaser.Signal} onShakeComplete - This signal is dispatched when the camera shake effect completes.
     */
     this.onShakeComplete = new Phaser.Signal();
 
     /**
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onFlashComplete - This signal is dispatched when the camera flash effect completes.
+    * @property {Phaser.Signal} onFlashComplete - This signal is dispatched when the camera flash effect completes.
     */
     this.onFlashComplete = new Phaser.Signal();
 
@@ -123,42 +123,42 @@ Phaser.Camera = function (game, id, x, y, width, height) ***REMOVED***
     * When the fade effect completes you will be left with the screen black (or whatever
     * color you faded to). In order to reset this call `Camera.resetFX`. This is called
     * automatically when you change State.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onFadeComplete
+    * @property {Phaser.Signal} onFadeComplete
     */
     this.onFadeComplete = new Phaser.Signal();
 
     /**
     * The Graphics object used to handle camera fx such as fade and flash.
-    * @property ***REMOVED***Phaser.Graphics***REMOVED*** fx
+    * @property {Phaser.Graphics} fx
     * @protected
     */
     this.fx = null;
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** _targetPosition - Internal point used to calculate target position.
+    * @property {Phaser.Point} _targetPosition - Internal point used to calculate target position.
     * @private
     */
     this._targetPosition = new Phaser.Point();
 
     /**
-    * @property ***REMOVED***number***REMOVED*** edge - Edge property.
+    * @property {number} edge - Edge property.
     * @private
     * @default
     */
     this._edge = 0;
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** position - Current position of the camera in world.
+    * @property {Phaser.Point} position - Current position of the camera in world.
     * @private
     * @default
     */
     this._position = new Phaser.Point();
 
     /**
-    * @property ***REMOVED***Object***REMOVED*** _shake - The shake effect container.
+    * @property {Object} _shake - The shake effect container.
     * @private
     */
-    this._shake = ***REMOVED***
+    this._shake = {
         intensity: 0,
         duration: 0,
         horizontal: false,
@@ -166,71 +166,71 @@ Phaser.Camera = function (game, id, x, y, width, height) ***REMOVED***
         shakeBounds: true,
         x: 0,
         y: 0
-    ***REMOVED***;
+    };
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _fxDuration - FX duration timer.
+    * @property {number} _fxDuration - FX duration timer.
     * @private
     */
     this._fxDuration = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _fxType - The FX type running.
+    * @property {number} _fxType - The FX type running.
     * @private
     */
     this._fxType = 0;
 
-***REMOVED***;
+};
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.Camera.FOLLOW_LOCKON = 0;
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.Camera.FOLLOW_PLATFORMER = 1;
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.Camera.FOLLOW_TOPDOWN = 2;
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.Camera.FOLLOW_TOPDOWN_TIGHT = 3;
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.Camera.SHAKE_BOTH = 4;
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.Camera.SHAKE_HORIZONTAL = 5;
 
 /**
 * @constant
-* @type ***REMOVED***number***REMOVED***
+* @type {number}
 */
 Phaser.Camera.SHAKE_VERTICAL = 6;
 
 /**
 * @constant
-* @type ***REMOVED***boolean***REMOVED***
+* @type {boolean}
 */
 Phaser.Camera.ENABLE_FX = true;
 
-Phaser.Camera.prototype = ***REMOVED***
+Phaser.Camera.prototype = {
 
     /**
     * Called automatically by Phaser.World.
@@ -238,7 +238,7 @@ Phaser.Camera.prototype = ***REMOVED***
     * @method Phaser.Camera#boot
     * @private
     */
-    boot: function () ***REMOVED***
+    boot: function () {
 
         this.displayObject = this.game.world;
 
@@ -247,24 +247,24 @@ Phaser.Camera.prototype = ***REMOVED***
         this.game.camera = this;
 
         if (Phaser.Graphics && Phaser.Camera.ENABLE_FX)
-        ***REMOVED***
+        {
             this.fx = new Phaser.Graphics(this.game);
 
             this.game.stage.addChild(this.fx);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Camera preUpdate. Sets the total view counter to zero.
     *
     * @method Phaser.Camera#preUpdate
     */
-    preUpdate: function () ***REMOVED***
+    preUpdate: function () {
 
         this.totalInView = 0;
 
-    ***REMOVED***,
+    },
 
     /**
     * Tell the camera which sprite to follow.
@@ -276,23 +276,23 @@ Phaser.Camera.prototype = ***REMOVED***
     * This can be disabled by setting `game.renderer.renderSession.roundPixels = true` to force full pixel rendering.
     *
     * @method Phaser.Camera#follow
-    * @param ***REMOVED***Phaser.Sprite|Phaser.Image|Phaser.Text***REMOVED*** target - The object you want the camera to track. Set to null to not follow anything.
-    * @param ***REMOVED***number***REMOVED*** [style] - Leverage one of the existing "deadzone" presets. If you use a custom deadzone, ignore this parameter and manually specify the deadzone after calling follow().
-    * @param ***REMOVED***float***REMOVED*** [lerpX=1] - A value between 0 and 1. This value specifies the amount of linear interpolation to use when horizontally tracking the target. The closer the value to 1, the faster the camera will track.
-    * @param ***REMOVED***float***REMOVED*** [lerpY=1] - A value between 0 and 1. This value specifies the amount of linear interpolation to use when vertically tracking the target. The closer the value to 1, the faster the camera will track.
+    * @param {Phaser.Sprite|Phaser.Image|Phaser.Text} target - The object you want the camera to track. Set to null to not follow anything.
+    * @param {number} [style] - Leverage one of the existing "deadzone" presets. If you use a custom deadzone, ignore this parameter and manually specify the deadzone after calling follow().
+    * @param {float} [lerpX=1] - A value between 0 and 1. This value specifies the amount of linear interpolation to use when horizontally tracking the target. The closer the value to 1, the faster the camera will track.
+    * @param {float} [lerpY=1] - A value between 0 and 1. This value specifies the amount of linear interpolation to use when vertically tracking the target. The closer the value to 1, the faster the camera will track.
     */
-    follow: function (target, style, lerpX, lerpY) ***REMOVED***
+    follow: function (target, style, lerpX, lerpY) {
 
-        if (style === undefined) ***REMOVED*** style = Phaser.Camera.FOLLOW_LOCKON; ***REMOVED***
-        if (lerpX === undefined) ***REMOVED*** lerpX = 1; ***REMOVED***
-        if (lerpY === undefined) ***REMOVED*** lerpY = 1; ***REMOVED***
+        if (style === undefined) { style = Phaser.Camera.FOLLOW_LOCKON; }
+        if (lerpX === undefined) { lerpX = 1; }
+        if (lerpY === undefined) { lerpY = 1; }
 
         this.target = target;
         this.lerp.set(lerpX, lerpY);
 
         var helper;
 
-        switch (style) ***REMOVED***
+        switch (style) {
 
             case Phaser.Camera.FOLLOW_PLATFORMER:
                 var w = this.width / 8;
@@ -317,43 +317,43 @@ Phaser.Camera.prototype = ***REMOVED***
             default:
                 this.deadzone = null;
                 break;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the Camera follow target to null, stopping it from following an object if it's doing so.
     *
     * @method Phaser.Camera#unfollow
     */
-    unfollow: function () ***REMOVED***
+    unfollow: function () {
 
         this.target = null;
 
-    ***REMOVED***,
+    },
 
     /**
     * Move the camera focus on a display object instantly.
     * @method Phaser.Camera#focusOn
-    * @param ***REMOVED***any***REMOVED*** displayObject - The display object to focus the camera on. Must have visible x/y properties.
+    * @param {any} displayObject - The display object to focus the camera on. Must have visible x/y properties.
     */
-    focusOn: function (displayObject) ***REMOVED***
+    focusOn: function (displayObject) {
 
         this.setPosition(Math.round(displayObject.x - this.view.halfWidth), Math.round(displayObject.y - this.view.halfHeight));
 
-    ***REMOVED***,
+    },
 
     /**
     * Move the camera focus on a location instantly.
     * @method Phaser.Camera#focusOnXY
-    * @param ***REMOVED***number***REMOVED*** x - X position.
-    * @param ***REMOVED***number***REMOVED*** y - Y position.
+    * @param {number} x - X position.
+    * @param {number} y - Y position.
     */
-    focusOnXY: function (x, y) ***REMOVED***
+    focusOnXY: function (x, y) {
 
         this.setPosition(Math.round(x - this.view.halfWidth), Math.round(y - this.view.halfHeight));
 
-    ***REMOVED***,
+    },
 
     /**
     * This creates a camera shake effect. It works by applying a random amount of additional
@@ -363,26 +363,26 @@ Phaser.Camera.prototype = ***REMOVED***
     * When the shake effect ends the signal Camera.onShakeComplete is dispatched.
     *
     * @method Phaser.Camera#shake
-    * @param ***REMOVED***float***REMOVED*** [intensity=0.05] - The intensity of the camera shake. Given as a percentage of the camera size representing the maximum distance that the camera can move while shaking.
-    * @param ***REMOVED***number***REMOVED*** [duration=500] - The duration of the shake effect in milliseconds.
-    * @param ***REMOVED***boolean***REMOVED*** [force=true] - If a camera shake effect is already running and force is true it will replace the previous effect, resetting the duration.
-    * @param ***REMOVED***number***REMOVED*** [direction=Phaser.Camera.SHAKE_BOTH] - The directions in which the camera can shake. Either Phaser.Camera.SHAKE_BOTH, Phaser.Camera.SHAKE_HORIZONTAL or Phaser.Camera.SHAKE_VERTICAL.
-    * @param ***REMOVED***boolean***REMOVED*** [shakeBounds=true] - Is the effect allowed to shake the camera beyond its bounds (if set?).
-    * @return ***REMOVED***boolean***REMOVED*** True if the shake effect was started, otherwise false.
+    * @param {float} [intensity=0.05] - The intensity of the camera shake. Given as a percentage of the camera size representing the maximum distance that the camera can move while shaking.
+    * @param {number} [duration=500] - The duration of the shake effect in milliseconds.
+    * @param {boolean} [force=true] - If a camera shake effect is already running and force is true it will replace the previous effect, resetting the duration.
+    * @param {number} [direction=Phaser.Camera.SHAKE_BOTH] - The directions in which the camera can shake. Either Phaser.Camera.SHAKE_BOTH, Phaser.Camera.SHAKE_HORIZONTAL or Phaser.Camera.SHAKE_VERTICAL.
+    * @param {boolean} [shakeBounds=true] - Is the effect allowed to shake the camera beyond its bounds (if set?).
+    * @return {boolean} True if the shake effect was started, otherwise false.
     */
-    shake: function (intensity, duration, force, direction, shakeBounds) ***REMOVED***
+    shake: function (intensity, duration, force, direction, shakeBounds) {
 
-        if (intensity === undefined) ***REMOVED*** intensity = 0.05; ***REMOVED***
-        if (duration === undefined) ***REMOVED*** duration = 500; ***REMOVED***
-        if (force === undefined) ***REMOVED*** force = true; ***REMOVED***
-        if (direction === undefined) ***REMOVED*** direction = Phaser.Camera.SHAKE_BOTH; ***REMOVED***
-        if (shakeBounds === undefined) ***REMOVED*** shakeBounds = true; ***REMOVED***
+        if (intensity === undefined) { intensity = 0.05; }
+        if (duration === undefined) { duration = 500; }
+        if (force === undefined) { force = true; }
+        if (direction === undefined) { direction = Phaser.Camera.SHAKE_BOTH; }
+        if (shakeBounds === undefined) { shakeBounds = true; }
 
         if (!force && this._shake.duration > 0)
-        ***REMOVED***
+        {
             //  Can't reset an already running shake
             return false;
-        ***REMOVED***
+        }
 
         this._shake.intensity = intensity;
         this._shake.duration = duration;
@@ -396,7 +396,7 @@ Phaser.Camera.prototype = ***REMOVED***
 
         return true;
 
-    ***REMOVED***,
+    },
 
     /**
     * This creates a camera flash effect. It works by filling the game with the solid fill
@@ -407,21 +407,21 @@ Phaser.Camera.prototype = ***REMOVED***
     * When the effect ends the signal Camera.onFlashComplete is dispatched.
     *
     * @method Phaser.Camera#flash
-    * @param ***REMOVED***numer***REMOVED*** [color=0xffffff] - The color of the flash effect. I.e. 0xffffff for white, 0xff0000 for red, etc.
-    * @param ***REMOVED***number***REMOVED*** [duration=500] - The duration of the flash effect in milliseconds.
-    * @param ***REMOVED***boolean***REMOVED*** [force=false] - If a camera flash or fade effect is already running and force is true it will replace the previous effect, resetting the duration.
-    * @return ***REMOVED***boolean***REMOVED*** True if the effect was started, otherwise false.
+    * @param {numer} [color=0xffffff] - The color of the flash effect. I.e. 0xffffff for white, 0xff0000 for red, etc.
+    * @param {number} [duration=500] - The duration of the flash effect in milliseconds.
+    * @param {boolean} [force=false] - If a camera flash or fade effect is already running and force is true it will replace the previous effect, resetting the duration.
+    * @return {boolean} True if the effect was started, otherwise false.
     */
-    flash: function (color, duration, force) ***REMOVED***
+    flash: function (color, duration, force) {
 
-        if (color === undefined) ***REMOVED*** color = 0xffffff; ***REMOVED***
-        if (duration === undefined) ***REMOVED*** duration = 500; ***REMOVED***
-        if (force === undefined) ***REMOVED*** force = false; ***REMOVED***
+        if (color === undefined) { color = 0xffffff; }
+        if (duration === undefined) { duration = 500; }
+        if (force === undefined) { force = false; }
 
         if (!this.fx || (!force && this._fxDuration > 0))
-        ***REMOVED***
+        {
             return false;
-        ***REMOVED***
+        }
 
         this.fx.clear();
 
@@ -436,7 +436,7 @@ Phaser.Camera.prototype = ***REMOVED***
 
         return true;
 
-    ***REMOVED***,
+    },
 
     /**
     * This creates a camera fade effect. It works by filling the game with the
@@ -452,21 +452,21 @@ Phaser.Camera.prototype = ***REMOVED***
     * When the effect ends the signal Camera.onFadeComplete is dispatched.
     *
     * @method Phaser.Camera#fade
-    * @param ***REMOVED***numer***REMOVED*** [color=0x000000] - The color the game will fade to. I.e. 0x000000 for black, 0xff0000 for red, etc.
-    * @param ***REMOVED***number***REMOVED*** [duration=500] - The duration of the fade in milliseconds.
-    * @param ***REMOVED***boolean***REMOVED*** [force=false] - If a camera flash or fade effect is already running and force is true it will replace the previous effect, resetting the duration.
-    * @return ***REMOVED***boolean***REMOVED*** True if the effect was started, otherwise false.
+    * @param {numer} [color=0x000000] - The color the game will fade to. I.e. 0x000000 for black, 0xff0000 for red, etc.
+    * @param {number} [duration=500] - The duration of the fade in milliseconds.
+    * @param {boolean} [force=false] - If a camera flash or fade effect is already running and force is true it will replace the previous effect, resetting the duration.
+    * @return {boolean} True if the effect was started, otherwise false.
     */
-    fade: function (color, duration, force) ***REMOVED***
+    fade: function (color, duration, force) {
 
-        if (color === undefined) ***REMOVED*** color = 0x000000; ***REMOVED***
-        if (duration === undefined) ***REMOVED*** duration = 500; ***REMOVED***
-        if (force === undefined) ***REMOVED*** force = false; ***REMOVED***
+        if (color === undefined) { color = 0x000000; }
+        if (duration === undefined) { duration = 500; }
+        if (force === undefined) { force = false; }
 
         if (!this.fx || (!force && this._fxDuration > 0))
-        ***REMOVED***
+        {
             return false;
-        ***REMOVED***
+        }
 
         this.fx.clear();
 
@@ -481,7 +481,7 @@ Phaser.Camera.prototype = ***REMOVED***
 
         return true;
 
-    ***REMOVED***,
+    },
 
     /**
     * The camera update loop. This is called automatically by the core game loop.
@@ -489,34 +489,34 @@ Phaser.Camera.prototype = ***REMOVED***
     * @method Phaser.Camera#update
     * @protected
     */
-    update: function () ***REMOVED***
+    update: function () {
 
         if (this._fxDuration > 0)
-        ***REMOVED***
+        {
             this.updateFX();
-        ***REMOVED***
+        }
 
         if (this._shake.duration > 0)
-        ***REMOVED***
+        {
             this.updateShake();
-        ***REMOVED***
+        }
 
         if (this.bounds)
-        ***REMOVED***
+        {
             this.checkBounds();
-        ***REMOVED***
+        }
 
         if (this.roundPx)
-        ***REMOVED***
+        {
             this.view.floor();
             this._shake.x = Math.floor(this._shake.x);
             this._shake.y = Math.floor(this._shake.y);
-        ***REMOVED***
+        }
 
         this.displayObject.position.x = -this.view.x;
         this.displayObject.position.y = -this.view.y;
 
-    ***REMOVED***,
+    },
 
     /**
     * Update the camera flash and fade effects.
@@ -524,34 +524,34 @@ Phaser.Camera.prototype = ***REMOVED***
     * @method Phaser.Camera#updateFX
     * @private
     */
-    updateFX: function () ***REMOVED***
+    updateFX: function () {
 
         if (this._fxType === 0)
-        ***REMOVED***
+        {
             //  flash
             this.fx.alpha -= this.game.time.elapsedMS / this._fxDuration;
 
             if (this.fx.alpha <= 0)
-            ***REMOVED***
+            {
                 this._fxDuration = 0;
                 this.fx.alpha = 0;
                 this.onFlashComplete.dispatch();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             //  fade
             this.fx.alpha += this.game.time.elapsedMS / this._fxDuration;
 
             if (this.fx.alpha >= 1)
-            ***REMOVED***
+            {
                 this._fxDuration = 0;
                 this.fx.alpha = 1;
                 this.onFadeComplete.dispatch();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Update the camera shake effect.
@@ -559,30 +559,30 @@ Phaser.Camera.prototype = ***REMOVED***
     * @method Phaser.Camera#updateShake
     * @private
     */
-    updateShake: function () ***REMOVED***
+    updateShake: function () {
 
         this._shake.duration -= this.game.time.elapsedMS;
 
         if (this._shake.duration <= 0)
-        ***REMOVED***
+        {
             this.onShakeComplete.dispatch();
             this._shake.x = 0;
             this._shake.y = 0;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             if (this._shake.horizontal)
-            ***REMOVED***
+            {
                 this._shake.x = this.game.rnd.frac() * this._shake.intensity * this.view.width * 2 - this._shake.intensity * this.view.width;
-            ***REMOVED***
+            }
 
             if (this._shake.vertical)
-            ***REMOVED***
+            {
                 this._shake.y = this.game.rnd.frac() * this._shake.intensity * this.view.height * 2 - this._shake.intensity * this.view.height;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Internal method that handles tracking a sprite.
@@ -590,69 +590,69 @@ Phaser.Camera.prototype = ***REMOVED***
     * @method Phaser.Camera#updateTarget
     * @private
     */
-    updateTarget: function () ***REMOVED***
+    updateTarget: function () {
 
         this._targetPosition.x = this.view.x + this.target.worldPosition.x;
         this._targetPosition.y = this.view.y + this.target.worldPosition.y;
 
         if (this.deadzone)
-        ***REMOVED***
+        {
             this._edge = this._targetPosition.x - this.view.x;
 
             if (this._edge < this.deadzone.left)
-            ***REMOVED***
+            {
                 this.view.x = this.game.math.linear(this.view.x, this._targetPosition.x - this.deadzone.left, this.lerp.x);
-            ***REMOVED***
+            }
             else if (this._edge > this.deadzone.right)
-            ***REMOVED***
+            {
                 this.view.x = this.game.math.linear(this.view.x, this._targetPosition.x - this.deadzone.right, this.lerp.x);
-            ***REMOVED***
+            }
 
             this._edge = this._targetPosition.y - this.view.y;
 
             if (this._edge < this.deadzone.top)
-            ***REMOVED***
+            {
                 this.view.y = this.game.math.linear(this.view.y, this._targetPosition.y - this.deadzone.top, this.lerp.y);
-            ***REMOVED***
+            }
             else if (this._edge > this.deadzone.bottom)
-            ***REMOVED***
+            {
                 this.view.y = this.game.math.linear(this.view.y, this._targetPosition.y - this.deadzone.bottom, this.lerp.y);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             this.view.x = this.game.math.linear(this.view.x, this._targetPosition.x - this.view.halfWidth, this.lerp.x);
             this.view.y = this.game.math.linear(this.view.y, this._targetPosition.y - this.view.halfHeight, this.lerp.y);
-        ***REMOVED***
+        }
 
         if (this.bounds)
-        ***REMOVED***
+        {
             this.checkBounds();
-        ***REMOVED***
+        }
 
         if (this.roundPx)
-        ***REMOVED***
+        {
             this.view.floor();
-        ***REMOVED***
+        }
 
         this.displayObject.position.x = -this.view.x;
         this.displayObject.position.y = -this.view.y;
 
-    ***REMOVED***,
+    },
 
     /**
     * Update the Camera bounds to match the game world.
     *
     * @method Phaser.Camera#setBoundsToWorld
     */
-    setBoundsToWorld: function () ***REMOVED***
+    setBoundsToWorld: function () {
 
         if (this.bounds)
-        ***REMOVED***
+        {
             this.bounds.copyFrom(this.game.world.bounds);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Method called to ensure the camera doesn't venture outside of the game world.
@@ -661,7 +661,7 @@ Phaser.Camera.prototype = ***REMOVED***
     * @method Phaser.Camera#checkBounds
     * @protected
     */
-    checkBounds: function () ***REMOVED***
+    checkBounds: function () {
 
         this.atLimit.x = false;
         this.atLimit.y = false;
@@ -673,88 +673,88 @@ Phaser.Camera.prototype = ***REMOVED***
 
         //  Make sure we didn't go outside the cameras bounds
         if (vx <= this.bounds.x * this.scale.x)
-        ***REMOVED***
+        {
             this.atLimit.x = true;
             this.view.x = this.bounds.x * this.scale.x;
 
             if (!this._shake.shakeBounds)
-            ***REMOVED***
+            {
                 //  The camera is up against the bounds, so reset the shake
                 this._shake.x = 0;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         if (vw >= this.bounds.right * this.scale.x)
-        ***REMOVED***
+        {
             this.atLimit.x = true;
             this.view.x = (this.bounds.right * this.scale.x) - this.width;
 
             if (!this._shake.shakeBounds)
-            ***REMOVED***
+            {
                 //  The camera is up against the bounds, so reset the shake
                 this._shake.x = 0;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         if (vy <= this.bounds.top * this.scale.y)
-        ***REMOVED***
+        {
             this.atLimit.y = true;
             this.view.y = this.bounds.top * this.scale.y;
 
             if (!this._shake.shakeBounds)
-            ***REMOVED***
+            {
                 //  The camera is up against the bounds, so reset the shake
                 this._shake.y = 0;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         if (vh >= this.bounds.bottom * this.scale.y)
-        ***REMOVED***
+        {
             this.atLimit.y = true;
             this.view.y = (this.bounds.bottom * this.scale.y) - this.height;
 
             if (!this._shake.shakeBounds)
-            ***REMOVED***
+            {
                 //  The camera is up against the bounds, so reset the shake
                 this._shake.y = 0;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * A helper function to set both the X and Y properties of the camera at once
     * without having to use game.camera.x and game.camera.y.
     *
     * @method Phaser.Camera#setPosition
-    * @param ***REMOVED***number***REMOVED*** x - X position.
-    * @param ***REMOVED***number***REMOVED*** y - Y position.
+    * @param {number} x - X position.
+    * @param {number} y - Y position.
     */
-    setPosition: function (x, y) ***REMOVED***
+    setPosition: function (x, y) {
 
         this.view.x = x;
         this.view.y = y;
 
         if (this.bounds)
-        ***REMOVED***
+        {
             this.checkBounds();
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the size of the view rectangle given the width and height in parameters.
     *
     * @method Phaser.Camera#setSize
-    * @param ***REMOVED***number***REMOVED*** width - The desired width.
-    * @param ***REMOVED***number***REMOVED*** height - The desired height.
+    * @param {number} width - The desired width.
+    * @param {number} height - The desired height.
     */
-    setSize: function (width, height) ***REMOVED***
+    setSize: function (width, height) {
 
         this.view.width = width;
         this.view.height = height;
 
-    ***REMOVED***,
+    },
 
     /**
     * Resets the camera back to 0,0 and un-follows any object it may have been tracking.
@@ -763,7 +763,7 @@ Phaser.Camera.prototype = ***REMOVED***
     *
     * @method Phaser.Camera#reset
     */
-    reset: function () ***REMOVED***
+    reset: function () {
 
         this.target = null;
 
@@ -774,7 +774,7 @@ Phaser.Camera.prototype = ***REMOVED***
 
         this.resetFX();
 
-    ***REMOVED***,
+    },
 
     /**
     * Resets any active FX, such as a fade or flash and immediately clears it.
@@ -782,7 +782,7 @@ Phaser.Camera.prototype = ***REMOVED***
     *
     * @method Phaser.Camera#resetFX
     */
-    resetFX: function () ***REMOVED***
+    resetFX: function () {
 
         this.fx.clear();
 
@@ -790,158 +790,158 @@ Phaser.Camera.prototype = ***REMOVED***
 
         this._fxDuration = 0;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.Camera.prototype.constructor = Phaser.Camera;
 
 /**
 * The Cameras x coordinate. This value is automatically clamped if it falls outside of the World bounds.
 * @name Phaser.Camera#x
-* @property ***REMOVED***number***REMOVED*** x - Gets or sets the cameras x position.
+* @property {number} x - Gets or sets the cameras x position.
 */
-Object.defineProperty(Phaser.Camera.prototype, "x", ***REMOVED***
+Object.defineProperty(Phaser.Camera.prototype, "x", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.view.x;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.view.x = value;
 
         if (this.bounds)
-        ***REMOVED***
+        {
             this.checkBounds();
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
-***REMOVED***);
+});
 
 /**
 * The Cameras y coordinate. This value is automatically clamped if it falls outside of the World bounds.
 * @name Phaser.Camera#y
-* @property ***REMOVED***number***REMOVED*** y - Gets or sets the cameras y position.
+* @property {number} y - Gets or sets the cameras y position.
 */
-Object.defineProperty(Phaser.Camera.prototype, "y", ***REMOVED***
+Object.defineProperty(Phaser.Camera.prototype, "y", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.view.y;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.view.y = value;
 
         if (this.bounds)
-        ***REMOVED***
+        {
             this.checkBounds();
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
-***REMOVED***);
+});
 
 /**
 * The Cameras position. This value is automatically clamped if it falls outside of the World bounds.
 * @name Phaser.Camera#position
-* @property ***REMOVED***Phaser.Point***REMOVED*** position - Gets or sets the cameras xy position using Phaser.Point object.
+* @property {Phaser.Point} position - Gets or sets the cameras xy position using Phaser.Point object.
 */
-Object.defineProperty(Phaser.Camera.prototype, "position", ***REMOVED***
+Object.defineProperty(Phaser.Camera.prototype, "position", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         this._position.set(this.view.x, this.view.y);
 
         return this._position;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
-        if (typeof value.x !== "undefined") ***REMOVED*** this.view.x = value.x; ***REMOVED***
-        if (typeof value.y !== "undefined") ***REMOVED*** this.view.y = value.y; ***REMOVED***
+        if (typeof value.x !== "undefined") { this.view.x = value.x; }
+        if (typeof value.y !== "undefined") { this.view.y = value.y; }
 
         if (this.bounds)
-        ***REMOVED***
+        {
             this.checkBounds();
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
-***REMOVED***);
+});
 
 /**
 * The Cameras width. By default this is the same as the Game size and should not be adjusted for now.
 * @name Phaser.Camera#width
-* @property ***REMOVED***number***REMOVED*** width - Gets or sets the cameras width.
+* @property {number} width - Gets or sets the cameras width.
 */
-Object.defineProperty(Phaser.Camera.prototype, "width", ***REMOVED***
+Object.defineProperty(Phaser.Camera.prototype, "width", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.view.width;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.view.width = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * The Cameras height. By default this is the same as the Game size and should not be adjusted for now.
 * @name Phaser.Camera#height
-* @property ***REMOVED***number***REMOVED*** height - Gets or sets the cameras height.
+* @property {number} height - Gets or sets the cameras height.
 */
-Object.defineProperty(Phaser.Camera.prototype, "height", ***REMOVED***
+Object.defineProperty(Phaser.Camera.prototype, "height", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.view.height;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this.view.height = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 
 /**
 * The Cameras shake intensity.
 * @name Phaser.Camera#shakeIntensity
-* @property ***REMOVED***number***REMOVED*** shakeIntensity - Gets or sets the cameras shake intensity.
+* @property {number} shakeIntensity - Gets or sets the cameras shake intensity.
 */
-Object.defineProperty(Phaser.Camera.prototype, "shakeIntensity", ***REMOVED***
+Object.defineProperty(Phaser.Camera.prototype, "shakeIntensity", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this._shake.intensity;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         this._shake.intensity = value;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -951,106 +951,106 @@ Object.defineProperty(Phaser.Camera.prototype, "shakeIntensity", ***REMOVED***
 * @class Phaser.State
 * @constructor
 */
-Phaser.State = function () ***REMOVED***
+Phaser.State = function () {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - This is a reference to the currently running Game.
+    * @property {Phaser.Game} game - This is a reference to the currently running Game.
     */
     this.game = null;
 
     /**
-    * @property ***REMOVED***string***REMOVED*** key - The string based identifier given to the State when added into the State Manager.
+    * @property {string} key - The string based identifier given to the State when added into the State Manager.
     */
     this.key = '';
 
     /**
-    * @property ***REMOVED***Phaser.GameObjectFactory***REMOVED*** add - A reference to the GameObjectFactory which can be used to add new objects to the World.
+    * @property {Phaser.GameObjectFactory} add - A reference to the GameObjectFactory which can be used to add new objects to the World.
     */
     this.add = null;
 
     /**
-    * @property ***REMOVED***Phaser.GameObjectCreator***REMOVED*** make - A reference to the GameObjectCreator which can be used to make new objects.
+    * @property {Phaser.GameObjectCreator} make - A reference to the GameObjectCreator which can be used to make new objects.
     */
     this.make = null;
 
     /**
-    * @property ***REMOVED***Phaser.Camera***REMOVED*** camera - A handy reference to World.camera.
+    * @property {Phaser.Camera} camera - A handy reference to World.camera.
     */
     this.camera = null;
 
     /**
-    * @property ***REMOVED***Phaser.Cache***REMOVED*** cache - A reference to the game cache which contains any loaded or generated assets, such as images, sound and more.
+    * @property {Phaser.Cache} cache - A reference to the game cache which contains any loaded or generated assets, such as images, sound and more.
     */
     this.cache = null;
 
     /**
-    * @property ***REMOVED***Phaser.Input***REMOVED*** input - A reference to the Input Manager.
+    * @property {Phaser.Input} input - A reference to the Input Manager.
     */
     this.input = null;
 
     /**
-    * @property ***REMOVED***Phaser.Loader***REMOVED*** load - A reference to the Loader, which you mostly use in the preload method of your state to load external assets.
+    * @property {Phaser.Loader} load - A reference to the Loader, which you mostly use in the preload method of your state to load external assets.
     */
     this.load = null;
 
     /**
-    * @property ***REMOVED***Phaser.Math***REMOVED*** math - A reference to Math class with lots of helpful functions.
+    * @property {Phaser.Math} math - A reference to Math class with lots of helpful functions.
     */
     this.math = null;
 
     /**
-    * @property ***REMOVED***Phaser.SoundManager***REMOVED*** sound - A reference to the Sound Manager which can create, play and stop sounds, as well as adjust global volume.
+    * @property {Phaser.SoundManager} sound - A reference to the Sound Manager which can create, play and stop sounds, as well as adjust global volume.
     */
     this.sound = null;
 
     /**
-    * @property ***REMOVED***Phaser.ScaleManager***REMOVED*** scale - A reference to the Scale Manager which controls the way the game scales on different displays.
+    * @property {Phaser.ScaleManager} scale - A reference to the Scale Manager which controls the way the game scales on different displays.
     */
     this.scale = null;
 
     /**
-    * @property ***REMOVED***Phaser.Stage***REMOVED*** stage - A reference to the Stage.
+    * @property {Phaser.Stage} stage - A reference to the Stage.
     */
     this.stage = null;
 
     /**
-    * @property ***REMOVED***Phaser.StateManager***REMOVED*** stage - A reference to the State Manager, which controls state changes.
+    * @property {Phaser.StateManager} stage - A reference to the State Manager, which controls state changes.
     */
     this.state = null;
 
     /**
-    * @property ***REMOVED***Phaser.Time***REMOVED*** time - A reference to the game clock and timed events system.
+    * @property {Phaser.Time} time - A reference to the game clock and timed events system.
     */
     this.time = null;
 
     /**
-    * @property ***REMOVED***Phaser.TweenManager***REMOVED*** tweens - A reference to the tween manager.
+    * @property {Phaser.TweenManager} tweens - A reference to the tween manager.
     */
     this.tweens = null;
 
     /**
-    * @property ***REMOVED***Phaser.World***REMOVED*** world - A reference to the game world. All objects live in the Game World and its size is not bound by the display resolution.
+    * @property {Phaser.World} world - A reference to the game world. All objects live in the Game World and its size is not bound by the display resolution.
     */
     this.world = null;
 
     /**
-    * @property ***REMOVED***Phaser.Particles***REMOVED*** particles - The Particle Manager. It is called during the core gameloop and updates any Particle Emitters it has created.
+    * @property {Phaser.Particles} particles - The Particle Manager. It is called during the core gameloop and updates any Particle Emitters it has created.
     */
     this.particles = null;
 
     /**
-    * @property ***REMOVED***Phaser.Physics***REMOVED*** physics - A reference to the physics manager which looks after the different physics systems available within Phaser.
+    * @property {Phaser.Physics} physics - A reference to the physics manager which looks after the different physics systems available within Phaser.
     */
     this.physics = null;
 
     /**
-    * @property ***REMOVED***Phaser.RandomDataGenerator***REMOVED*** rnd - A reference to the seeded and repeatable random data generator.
+    * @property {Phaser.RandomDataGenerator} rnd - A reference to the seeded and repeatable random data generator.
     */
     this.rnd = null;
 
-***REMOVED***;
+};
 
-Phaser.State.prototype = ***REMOVED***
+Phaser.State.prototype = {
 
     /**
     * init is the very first function called when your State starts up. It's called before preload, create or anything else.
@@ -1059,8 +1059,8 @@ Phaser.State.prototype = ***REMOVED***
     *
     * @method Phaser.State#init
     */
-    init: function () ***REMOVED***
-    ***REMOVED***,
+    init: function () {
+    },
 
     /**
     * preload is called first. Normally you'd use this to load your game assets (or those needed for the current State)
@@ -1069,16 +1069,16 @@ Phaser.State.prototype = ***REMOVED***
     *
     * @method Phaser.State#preload
     */
-    preload: function () ***REMOVED***
-    ***REMOVED***,
+    preload: function () {
+    },
 
     /**
     * loadUpdate is called during the Loader process. This only happens if you've set one or more assets to load in the preload method.
     *
     * @method Phaser.State#loadUpdate
     */
-    loadUpdate: function () ***REMOVED***
-    ***REMOVED***,
+    loadUpdate: function () {
+    },
 
     /**
     * loadRender is called during the Loader process. This only happens if you've set one or more assets to load in the preload method.
@@ -1086,8 +1086,8 @@ Phaser.State.prototype = ***REMOVED***
     *
     * @method Phaser.State#loadRender
     */
-    loadRender: function () ***REMOVED***
-    ***REMOVED***,
+    loadRender: function () {
+    },
 
     /**
     * create is called once preload has completed, this includes the loading of any assets from the Loader.
@@ -1095,8 +1095,8 @@ Phaser.State.prototype = ***REMOVED***
     *
     * @method Phaser.State#create
     */
-    create: function () ***REMOVED***
-    ***REMOVED***,
+    create: function () {
+    },
 
     /**
     * The update method is left empty for your own use.
@@ -1105,16 +1105,16 @@ Phaser.State.prototype = ***REMOVED***
     *
     * @method Phaser.State#update
     */
-    update: function () ***REMOVED***
-    ***REMOVED***,
+    update: function () {
+    },
 
     /**
     * The preRender method is called after all Game Objects have been updated, but before any rendering takes place.
     *
     * @method Phaser.State#preRender
     */
-    preRender: function () ***REMOVED***
-    ***REMOVED***,
+    preRender: function () {
+    },
 
     /**
     * Nearly all display objects in Phaser render automatically, you don't need to tell them to render.
@@ -1123,50 +1123,50 @@ Phaser.State.prototype = ***REMOVED***
     *
     * @method Phaser.State#render
     */
-    render: function () ***REMOVED***
-    ***REMOVED***,
+    render: function () {
+    },
 
     /**
     * If your game is set to Scalemode RESIZE then each time the browser resizes it will call this function, passing in the new width and height.
     *
     * @method Phaser.State#resize
     */
-    resize: function () ***REMOVED***
-    ***REMOVED***,
+    resize: function () {
+    },
 
     /**
     * This method will be called if the core game loop is paused.
     *
     * @method Phaser.State#paused
     */
-    paused: function () ***REMOVED***
-    ***REMOVED***,
+    paused: function () {
+    },
 
     /**
     * This method will be called when the core game loop resumes from a paused state.
     *
     * @method Phaser.State#resumed
     */
-    resumed: function () ***REMOVED***
-    ***REMOVED***,
+    resumed: function () {
+    },
 
     /**
     * pauseUpdate is called while the game is paused instead of preUpdate, update and postUpdate.
     *
     * @method Phaser.State#pauseUpdate
     */
-    pauseUpdate: function () ***REMOVED***
-    ***REMOVED***,
+    pauseUpdate: function () {
+    },
 
     /**
     * This method will be called when the State is shutdown (i.e. you switch to another state from this one).
     *
     * @method Phaser.State#shutdown
     */
-    shutdown: function () ***REMOVED***
-    ***REMOVED***
+    shutdown: function () {
+    }
 
-***REMOVED***;
+};
 
 Phaser.State.prototype.constructor = Phaser.State;
 
@@ -1175,7 +1175,7 @@ Phaser.State.prototype.constructor = Phaser.State;
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1183,58 +1183,58 @@ Phaser.State.prototype.constructor = Phaser.State;
 *
 * @class Phaser.StateManager
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
-* @param ***REMOVED***Phaser.State|Object***REMOVED*** [pendingState=null] - A State object to seed the manager with.
+* @param {Phaser.Game} game - A reference to the currently running game.
+* @param {Phaser.State|Object} [pendingState=null] - A State object to seed the manager with.
 */
-Phaser.StateManager = function (game, pendingState) ***REMOVED***
+Phaser.StateManager = function (game, pendingState) {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
+    * @property {Phaser.Game} game - A reference to the currently running game.
     */
     this.game = game;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** states - The object containing Phaser.States.
+    * @property {object} states - The object containing Phaser.States.
     */
-    this.states = ***REMOVED******REMOVED***;
+    this.states = {};
 
     /**
-    * @property ***REMOVED***Phaser.State***REMOVED*** _pendingState - The state to be switched to in the next frame.
+    * @property {Phaser.State} _pendingState - The state to be switched to in the next frame.
     * @private
     */
     this._pendingState = null;
 
     if (typeof pendingState !== 'undefined' && pendingState !== null)
-    ***REMOVED***
+    {
         this._pendingState = pendingState;
-    ***REMOVED***
+    }
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _clearWorld - Clear the world when we switch state?
+    * @property {boolean} _clearWorld - Clear the world when we switch state?
     * @private
     */
     this._clearWorld = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _clearCache - Clear the cache when we switch state?
+    * @property {boolean} _clearCache - Clear the cache when we switch state?
     * @private
     */
     this._clearCache = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _created - Flag that sets if the State has been created or not.
+    * @property {boolean} _created - Flag that sets if the State has been created or not.
     * @private
     */
     this._created = false;
 
     /**
-    * @property ***REMOVED***any[]***REMOVED*** _args - Temporary container when you pass vars from one State to another.
+    * @property {any[]} _args - Temporary container when you pass vars from one State to another.
     * @private
     */
     this._args = [];
 
     /**
-    * @property ***REMOVED***string***REMOVED*** current - The current active State object.
+    * @property {string} current - The current active State object.
     * @default
     */
     this.current = '';
@@ -1249,108 +1249,108 @@ Phaser.StateManager = function (game, pendingState) ***REMOVED***
     * The callback you specify is sent two parameters: the string based key of the new state, 
     * and the second parameter is the string based key of the old / previous state.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onStateChange
+    * @property {Phaser.Signal} onStateChange
     */
     this.onStateChange = new Phaser.Signal();
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onInitCallback - This is called when the state is set as the active state.
+    * @property {function} onInitCallback - This is called when the state is set as the active state.
     * @default
     */
     this.onInitCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onPreloadCallback - This is called when the state starts to load assets.
+    * @property {function} onPreloadCallback - This is called when the state starts to load assets.
     * @default
     */
     this.onPreloadCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onCreateCallback - This is called when the state preload has finished and creation begins.
+    * @property {function} onCreateCallback - This is called when the state preload has finished and creation begins.
     * @default
     */
     this.onCreateCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onUpdateCallback - This is called when the state is updated, every game loop. It doesn't happen during preload (@see onLoadUpdateCallback).
+    * @property {function} onUpdateCallback - This is called when the state is updated, every game loop. It doesn't happen during preload (@see onLoadUpdateCallback).
     * @default
     */
     this.onUpdateCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onRenderCallback - This is called post-render. It doesn't happen during preload (see onLoadRenderCallback).
+    * @property {function} onRenderCallback - This is called post-render. It doesn't happen during preload (see onLoadRenderCallback).
     * @default
     */
     this.onRenderCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onResizeCallback - This is called if ScaleManager.scalemode is RESIZE and a resize event occurs. It's passed the new width and height.
+    * @property {function} onResizeCallback - This is called if ScaleManager.scalemode is RESIZE and a resize event occurs. It's passed the new width and height.
     * @default
     */
     this.onResizeCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onPreRenderCallback - This is called before the state is rendered and before the stage is cleared but after all game objects have had their final properties adjusted.
+    * @property {function} onPreRenderCallback - This is called before the state is rendered and before the stage is cleared but after all game objects have had their final properties adjusted.
     * @default
     */
     this.onPreRenderCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onLoadUpdateCallback - This is called when the State is updated during the preload phase.
+    * @property {function} onLoadUpdateCallback - This is called when the State is updated during the preload phase.
     * @default
     */
     this.onLoadUpdateCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onLoadRenderCallback - This is called when the State is rendered during the preload phase.
+    * @property {function} onLoadRenderCallback - This is called when the State is rendered during the preload phase.
     * @default
     */
     this.onLoadRenderCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onPausedCallback - This is called when the game is paused.
+    * @property {function} onPausedCallback - This is called when the game is paused.
     * @default
     */
     this.onPausedCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onResumedCallback - This is called when the game is resumed from a paused state.
+    * @property {function} onResumedCallback - This is called when the game is resumed from a paused state.
     * @default
     */
     this.onResumedCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onPauseUpdateCallback - This is called every frame while the game is paused.
+    * @property {function} onPauseUpdateCallback - This is called every frame while the game is paused.
     * @default
     */
     this.onPauseUpdateCallback = null;
 
     /**
-    * @property ***REMOVED***function***REMOVED*** onShutDownCallback - This is called when the state is shut down (i.e. swapped to another state).
+    * @property {function} onShutDownCallback - This is called when the state is shut down (i.e. swapped to another state).
     * @default
     */
     this.onShutDownCallback = null;
 
-***REMOVED***;
+};
 
-Phaser.StateManager.prototype = ***REMOVED***
+Phaser.StateManager.prototype = {
 
     /**
     * The Boot handler is called by Phaser.Game when it first starts up.
     * @method Phaser.StateManager#boot
     * @private
     */
-    boot: function () ***REMOVED***
+    boot: function () {
 
         this.game.onPause.add(this.pause, this);
         this.game.onResume.add(this.resume, this);
 
         if (this._pendingState !== null && typeof this._pendingState !== 'string')
-        ***REMOVED***
+        {
             this.add('default', this._pendingState, true);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds a new State into the StateManager. You must give each State a unique key by which you'll identify it.
@@ -1358,57 +1358,57 @@ Phaser.StateManager.prototype = ***REMOVED***
     * If a function is given a new state object will be created by calling it.
     *
     * @method Phaser.StateManager#add
-    * @param ***REMOVED***string***REMOVED*** key - A unique key you use to reference this state, i.e. "MainMenu", "Level1".
-    * @param ***REMOVED***Phaser.State|object|function***REMOVED*** state  - The state you want to switch to.
-    * @param ***REMOVED***boolean***REMOVED*** [autoStart=false]  - If true the State will be started immediately after adding it.
+    * @param {string} key - A unique key you use to reference this state, i.e. "MainMenu", "Level1".
+    * @param {Phaser.State|object|function} state  - The state you want to switch to.
+    * @param {boolean} [autoStart=false]  - If true the State will be started immediately after adding it.
     */
-    add: function (key, state, autoStart) ***REMOVED***
+    add: function (key, state, autoStart) {
 
-        if (autoStart === undefined) ***REMOVED*** autoStart = false; ***REMOVED***
+        if (autoStart === undefined) { autoStart = false; }
 
         var newState;
 
         if (state instanceof Phaser.State)
-        ***REMOVED***
+        {
             newState = state;
-        ***REMOVED***
+        }
         else if (typeof state === 'object')
-        ***REMOVED***
+        {
             newState = state;
             newState.game = this.game;
-        ***REMOVED***
+        }
         else if (typeof state === 'function')
-        ***REMOVED***
+        {
             newState = new state(this.game);
-        ***REMOVED***
+        }
 
         this.states[key] = newState;
 
         if (autoStart)
-        ***REMOVED***
+        {
             if (this.game.isBooted)
-            ***REMOVED***
+            {
                 this.start(key);
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this._pendingState = key;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return newState;
 
-    ***REMOVED***,
+    },
 
     /**
     * Delete the given state.
     * @method Phaser.StateManager#remove
-    * @param ***REMOVED***string***REMOVED*** key - A unique key you use to reference this state, i.e. "MainMenu", "Level1".
+    * @param {string} key - A unique key you use to reference this state, i.e. "MainMenu", "Level1".
     */
-    remove: function (key) ***REMOVED***
+    remove: function (key) {
 
         if (this.current === key)
-        ***REMOVED***
+        {
             this.callbackContext = null;
 
             this.onInitCallback = null;
@@ -1425,53 +1425,53 @@ Phaser.StateManager.prototype = ***REMOVED***
             this.onPausedCallback = null;
             this.onResumedCallback = null;
             this.onPauseUpdateCallback = null;
-        ***REMOVED***
+        }
 
         delete this.states[key];
 
-    ***REMOVED***,
+    },
 
     /**
     * Start the given State. If a State is already running then State.shutDown will be called (if it exists) before switching to the new State.
     *
     * @method Phaser.StateManager#start
-    * @param ***REMOVED***string***REMOVED*** key - The key of the state you want to start.
-    * @param ***REMOVED***boolean***REMOVED*** [clearWorld=true] - Clear everything in the world? This clears the World display list fully (but not the Stage, so if you've added your own objects to the Stage they will need managing directly)
-    * @param ***REMOVED***boolean***REMOVED*** [clearCache=false] - Clear the Game.Cache? This purges out all loaded assets. The default is false and you must have clearWorld=true if you want to clearCache as well.
-    * @param ***REMOVED***...****REMOVED*** parameter - Additional parameters that will be passed to the State.init function (if it has one).
+    * @param {string} key - The key of the state you want to start.
+    * @param {boolean} [clearWorld=true] - Clear everything in the world? This clears the World display list fully (but not the Stage, so if you've added your own objects to the Stage they will need managing directly)
+    * @param {boolean} [clearCache=false] - Clear the Game.Cache? This purges out all loaded assets. The default is false and you must have clearWorld=true if you want to clearCache as well.
+    * @param {...*} parameter - Additional parameters that will be passed to the State.init function (if it has one).
     */
-    start: function (key, clearWorld, clearCache) ***REMOVED***
+    start: function (key, clearWorld, clearCache) {
 
-        if (clearWorld === undefined) ***REMOVED*** clearWorld = true; ***REMOVED***
-        if (clearCache === undefined) ***REMOVED*** clearCache = false; ***REMOVED***
+        if (clearWorld === undefined) { clearWorld = true; }
+        if (clearCache === undefined) { clearCache = false; }
 
         if (this.checkState(key))
-        ***REMOVED***
+        {
             //  Place the state in the queue. It will be started the next time the game loop begins.
             this._pendingState = key;
             this._clearWorld = clearWorld;
             this._clearCache = clearCache;
 
             if (arguments.length > 3)
-            ***REMOVED***
+            {
                 this._args = Array.prototype.splice.call(arguments, 3);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Restarts the current State. State.shutDown will be called (if it exists) before the State is restarted.
     *
     * @method Phaser.StateManager#restart
-    * @param ***REMOVED***boolean***REMOVED*** [clearWorld=true] - Clear everything in the world? This clears the World display list fully (but not the Stage, so if you've added your own objects to the Stage they will need managing directly)
-    * @param ***REMOVED***boolean***REMOVED*** [clearCache=false] - Clear the Game.Cache? This purges out all loaded assets. The default is false and you must have clearWorld=true if you want to clearCache as well.
-    * @param ***REMOVED***...****REMOVED*** parameter - Additional parameters that will be passed to the State.init function if it has one.
+    * @param {boolean} [clearWorld=true] - Clear everything in the world? This clears the World display list fully (but not the Stage, so if you've added your own objects to the Stage they will need managing directly)
+    * @param {boolean} [clearCache=false] - Clear the Game.Cache? This purges out all loaded assets. The default is false and you must have clearWorld=true if you want to clearCache as well.
+    * @param {...*} parameter - Additional parameters that will be passed to the State.init function if it has one.
     */
-    restart: function (clearWorld, clearCache) ***REMOVED***
+    restart: function (clearWorld, clearCache) {
 
-        if (clearWorld === undefined) ***REMOVED*** clearWorld = true; ***REMOVED***
-        if (clearCache === undefined) ***REMOVED*** clearCache = false; ***REMOVED***
+        if (clearWorld === undefined) { clearWorld = true; }
+        if (clearCache === undefined) { clearCache = false; }
 
         //  Place the state in the queue. It will be started the next time the game loop starts.
         this._pendingState = this.current;
@@ -1479,29 +1479,29 @@ Phaser.StateManager.prototype = ***REMOVED***
         this._clearCache = clearCache;
 
         if (arguments.length > 2)
-        ***REMOVED***
+        {
             this._args = Array.prototype.slice.call(arguments, 2);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Used by onInit and onShutdown when those functions don't exist on the state
     * @method Phaser.StateManager#dummy
     * @private
     */
-    dummy: function () ***REMOVED***
-    ***REMOVED***,
+    dummy: function () {
+    },
 
     /**
     * preUpdate is called right at the start of the game loop. It is responsible for changing to a new state that was requested previously.
     *
     * @method Phaser.StateManager#preUpdate
     */
-    preUpdate: function () ***REMOVED***
+    preUpdate: function () {
 
         if (this._pendingState && this.game.isBooted)
-        ***REMOVED***
+        {
             var previousStateKey = this.current;
 
             //  Already got a state running?
@@ -1512,40 +1512,40 @@ Phaser.StateManager.prototype = ***REMOVED***
             this.onStateChange.dispatch(this.current, previousStateKey);
 
             if (this.current !== this._pendingState)
-            ***REMOVED***
+            {
                 return;
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this._pendingState = null;
-            ***REMOVED***
+            }
 
             //  If StateManager.start has been called from the init of a State that ALSO has a preload, then
             //  onPreloadCallback will be set, but must be ignored
             if (this.onPreloadCallback)
-            ***REMOVED***
+            {
                 this.game.load.reset(true);
                 this.onPreloadCallback.call(this.callbackContext, this.game);
 
                 //  Is the loader empty?
                 if (this.game.load.totalQueuedFiles() === 0 && this.game.load.totalQueuedPacks() === 0)
-                ***REMOVED***
+                {
                     this.loadComplete();
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     //  Start the loader going as we have something in the queue
                     this.game.load.start();
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
             else
-            ***REMOVED***
+            {
                 //  No init? Then there was nothing to load either
                 this.loadComplete();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * This method clears the current State, calling its shutdown callback. The process also removes any active tweens,
@@ -1553,14 +1553,14 @@ Phaser.StateManager.prototype = ***REMOVED***
     *
     * @method Phaser.StateManager#clearCurrentState
     */
-    clearCurrentState: function () ***REMOVED***
+    clearCurrentState: function () {
 
         if (this.current)
-        ***REMOVED***
+        {
             if (this.onShutDownCallback)
-            ***REMOVED***
+            {
                 this.onShutDownCallback.call(this.callbackContext, this.game);
-            ***REMOVED***
+            }
 
             this.game.tweens.removeAll();
 
@@ -1575,60 +1575,60 @@ Phaser.StateManager.prototype = ***REMOVED***
             this.game.scale.reset(this._clearWorld);
 
             if (this.game.debug)
-            ***REMOVED***
+            {
                 this.game.debug.reset();
-            ***REMOVED***
+            }
 
             if (this._clearWorld)
-            ***REMOVED***
+            {
                 this.game.world.shutdown();
 
                 if (this._clearCache)
-                ***REMOVED***
+                {
                     this.game.cache.destroy();
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Checks if a given phaser state is valid. A State is considered valid if it has at least one of the core functions: preload, create, update or render.
     *
     * @method Phaser.StateManager#checkState
-    * @param ***REMOVED***string***REMOVED*** key - The key of the state you want to check.
-    * @return ***REMOVED***boolean***REMOVED*** true if the State has the required functions, otherwise false.
+    * @param {string} key - The key of the state you want to check.
+    * @return {boolean} true if the State has the required functions, otherwise false.
     */
-    checkState: function (key) ***REMOVED***
+    checkState: function (key) {
 
         if (this.states[key])
-        ***REMOVED***
+        {
             if (this.states[key]['preload'] || this.states[key]['create'] || this.states[key]['update'] || this.states[key]['render'])
-            ***REMOVED***
+            {
                 return true;
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 console.warn("Invalid Phaser State object given. Must contain at least a one of the required functions: preload, create, update or render");
                 return false;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             console.warn("Phaser.StateManager - No state found with the key: " + key);
             return false;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Links game properties to the State given by the key.
     *
     * @method Phaser.StateManager#link
-    * @param ***REMOVED***string***REMOVED*** key - State key.
+    * @param {string} key - State key.
     * @protected
     */
-    link: function (key) ***REMOVED***
+    link: function (key) {
 
         this.states[key].game = this.game;
         this.states[key].add = this.game.add;
@@ -1650,19 +1650,19 @@ Phaser.StateManager.prototype = ***REMOVED***
         this.states[key].physics = this.game.physics;
         this.states[key].key = key;
 
-    ***REMOVED***,
+    },
 
     /**
     * Nulls all State level Phaser properties, including a reference to Game.
     *
     * @method Phaser.StateManager#unlink
-    * @param ***REMOVED***string***REMOVED*** key - State key.
+    * @param {string} key - State key.
     * @protected
     */
-    unlink: function (key) ***REMOVED***
+    unlink: function (key) {
 
         if (this.states[key])
-        ***REMOVED***
+        {
             this.states[key].game = null;
             this.states[key].add = null;
             this.states[key].make = null;
@@ -1681,18 +1681,18 @@ Phaser.StateManager.prototype = ***REMOVED***
             this.states[key].particles = null;
             this.states[key].rnd = null;
             this.states[key].physics = null;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the current State. Should not be called directly (use StateManager.start)
     *
     * @method Phaser.StateManager#setCurrentState
-    * @param ***REMOVED***string***REMOVED*** key - State key.
+    * @param {string} key - State key.
     * @private
     */
-    setCurrentState: function (key) ***REMOVED***
+    setCurrentState: function (key) {
 
         this.callbackContext = this.states[key];
 
@@ -1718,9 +1718,9 @@ Phaser.StateManager.prototype = ***REMOVED***
 
         //  Reset the physics system, but not on the first state start
         if (this.current !== '')
-        ***REMOVED***
+        {
             this.game.physics.reset();
-        ***REMOVED***
+        }
 
         this.current = key;
         this._created = false;
@@ -1730,187 +1730,187 @@ Phaser.StateManager.prototype = ***REMOVED***
 
         //  If they no longer do then the init callback hit StateManager.start
         if (key === this._pendingState)
-        ***REMOVED***
+        {
             this._args = [];
-        ***REMOVED***
+        }
 
         this.game._kickstart = true;
 
-    ***REMOVED***,
+    },
 
     /**
      * Gets the current State.
      *
      * @method Phaser.StateManager#getCurrentState
-     * @return ***REMOVED***Phaser.State***REMOVED***
+     * @return {Phaser.State}
      * @public
      */
-    getCurrentState: function() ***REMOVED***
+    getCurrentState: function() {
         return this.states[this.current];
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.StateManager#loadComplete
     * @protected
     */
-    loadComplete: function () ***REMOVED***
+    loadComplete: function () {
 
         //  Make sure to do load-update one last time before state is set to _created
         if (this._created === false && this.onLoadUpdateCallback)
-        ***REMOVED***
+        {
             this.onLoadUpdateCallback.call(this.callbackContext, this.game);
-        ***REMOVED***
+        }
 
         if (this._created === false && this.onCreateCallback)
-        ***REMOVED***
+        {
             this._created = true;
             this.onCreateCallback.call(this.callbackContext, this.game);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this._created = true;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.StateManager#pause
     * @protected
     */
-    pause: function () ***REMOVED***
+    pause: function () {
 
         if (this._created && this.onPausedCallback)
-        ***REMOVED***
+        {
             this.onPausedCallback.call(this.callbackContext, this.game);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.StateManager#resume
     * @protected
     */
-    resume: function () ***REMOVED***
+    resume: function () {
 
         if (this._created && this.onResumedCallback)
-        ***REMOVED***
+        {
             this.onResumedCallback.call(this.callbackContext, this.game);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.StateManager#update
     * @protected
     */
-    update: function () ***REMOVED***
+    update: function () {
 
         if (this._created)
-        ***REMOVED***
+        {
             if (this.onUpdateCallback)
-            ***REMOVED***
+            {
                 this.onUpdateCallback.call(this.callbackContext, this.game);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             if (this.onLoadUpdateCallback)
-            ***REMOVED***
+            {
                 this.onLoadUpdateCallback.call(this.callbackContext, this.game);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.StateManager#pauseUpdate
     * @protected
     */
-    pauseUpdate: function () ***REMOVED***
+    pauseUpdate: function () {
 
         if (this._created)
-        ***REMOVED***
+        {
             if (this.onPauseUpdateCallback)
-            ***REMOVED***
+            {
                 this.onPauseUpdateCallback.call(this.callbackContext, this.game);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             if (this.onLoadUpdateCallback)
-            ***REMOVED***
+            {
                 this.onLoadUpdateCallback.call(this.callbackContext, this.game);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.StateManager#preRender
     * @protected
-    * @param ***REMOVED***number***REMOVED*** elapsedTime - The time elapsed since the last update.
+    * @param {number} elapsedTime - The time elapsed since the last update.
     */
-    preRender: function (elapsedTime) ***REMOVED***
+    preRender: function (elapsedTime) {
 
         if (this._created && this.onPreRenderCallback)
-        ***REMOVED***
+        {
             this.onPreRenderCallback.call(this.callbackContext, this.game, elapsedTime);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.StateManager#resize
     * @protected
     */
-    resize: function (width, height) ***REMOVED***
+    resize: function (width, height) {
 
         if (this.onResizeCallback)
-        ***REMOVED***
+        {
             this.onResizeCallback.call(this.callbackContext, width, height);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.StateManager#render
     * @protected
     */
-    render: function () ***REMOVED***
+    render: function () {
 
         if (this._created)
-        ***REMOVED***
+        {
             if (this.onRenderCallback)
-            ***REMOVED***
+            {
                 if (this.game.renderType === Phaser.CANVAS)
-                ***REMOVED***
+                {
                     this.game.context.save();
                     this.game.context.setTransform(1, 0, 0, 1, 0, 0);
                     this.onRenderCallback.call(this.callbackContext, this.game);
                     this.game.context.restore();
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     this.onRenderCallback.call(this.callbackContext, this.game);
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
         else
-        ***REMOVED***
+        {
             if (this.onLoadRenderCallback)
-            ***REMOVED***
+            {
                 this.onLoadRenderCallback.call(this.callbackContext, this.game);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Removes all StateManager callback references to the State object, nulls the game reference and clears the States object.
     * You don't recover from this without rebuilding the Phaser instance again.
     * @method Phaser.StateManager#destroy
     */
-    destroy: function () ***REMOVED***
+    destroy: function () {
 
         this._clearWorld = true;
         this._clearCache = true;
@@ -1933,30 +1933,30 @@ Phaser.StateManager.prototype = ***REMOVED***
         this.onPauseUpdateCallback = null;
 
         this.game = null;
-        this.states = ***REMOVED******REMOVED***;
+        this.states = {};
         this._pendingState = null;
         this.current = '';
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.StateManager.prototype.constructor = Phaser.StateManager;
 
 /**
 * @name Phaser.StateManager#created
-* @property ***REMOVED***boolean***REMOVED*** created - True if the current state has had its `create` method run (if it has one, if not this is true by default).
+* @property {boolean} created - True if the current state has had its `create` method run (if it has one, if not this is true by default).
 * @readOnly
 */
-Object.defineProperty(Phaser.StateManager.prototype, "created", ***REMOVED***
+Object.defineProperty(Phaser.StateManager.prototype, "created", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this._created;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * "It's like nailing jelly to a kitten" - Gary Penn
@@ -1966,7 +1966,7 @@ Object.defineProperty(Phaser.StateManager.prototype, "created", ***REMOVED***
 * @author       Miller Medeiros http://millermedeiros.github.com/js-signals/
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1977,12 +1977,12 @@ Object.defineProperty(Phaser.StateManager.prototype, "created", ***REMOVED***
 * For example you can listen for a touch or click event from the Input Manager 
 * by using its `onDown` Signal:
 *
-* `game.input.onDown.add(function() ***REMOVED*** ... ***REMOVED***);`
+* `game.input.onDown.add(function() { ... });`
 *
 * Rather than inline your function, you can pass a reference:
 *
 * `game.input.onDown.add(clicked, this);`
-* `function clicked () ***REMOVED*** ... ***REMOVED***`
+* `function clicked () { ... }`
 *
 * In this case the second argument (`this`) is the context in which your function should be called.
 *
@@ -1993,7 +1993,7 @@ Object.defineProperty(Phaser.StateManager.prototype, "created", ***REMOVED***
 * This is specific to the Signal itself.
 * If you're unsure then check the documentation, or failing that simply do:
 *
-* `Signal.add(function() ***REMOVED*** console.log(arguments); ***REMOVED***)`
+* `Signal.add(function() { console.log(arguments); })`
 *
 * and it will log all of the arguments your function received from the Signal.
 *
@@ -2021,18 +2021,18 @@ Object.defineProperty(Phaser.StateManager.prototype, "created", ***REMOVED***
 * @class Phaser.Signal
 * @constructor
 */
-Phaser.Signal = function () ***REMOVED******REMOVED***;
+Phaser.Signal = function () {};
 
-Phaser.Signal.prototype = ***REMOVED***
+Phaser.Signal.prototype = {
 
     /**
-    * @property ***REMOVED***?Array.<Phaser.SignalBinding>***REMOVED*** _bindings - Internal variable.
+    * @property {?Array.<Phaser.SignalBinding>} _bindings - Internal variable.
     * @private
     */
     _bindings: null,
 
     /**
-    * @property ***REMOVED***any***REMOVED*** _prevParams - Internal variable.
+    * @property {any} _prevParams - Internal variable.
     * @private
     */
     _prevParams: null,
@@ -2040,15 +2040,15 @@ Phaser.Signal.prototype = ***REMOVED***
     /**
     * Memorize the previously dispatched event?
     *
-    * If an event has been memorized it is automatically dispatched when a new listener is added with ***REMOVED***@link #add***REMOVED*** or ***REMOVED***@link #addOnce***REMOVED***.
-    * Use ***REMOVED***@link #forget***REMOVED*** to clear any currently memorized event.
+    * If an event has been memorized it is automatically dispatched when a new listener is added with {@link #add} or {@link #addOnce}.
+    * Use {@link #forget} to clear any currently memorized event.
     *
-    * @property ***REMOVED***boolean***REMOVED*** memorize
+    * @property {boolean} memorize
     */
     memorize: false,
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _shouldPropagate
+    * @property {boolean} _shouldPropagate
     * @private
     */
     _shouldPropagate: true,
@@ -2056,142 +2056,142 @@ Phaser.Signal.prototype = ***REMOVED***
     /**
     * Is the Signal active? Only active signals will broadcast dispatched events.
     *
-    * Setting this property during a dispatch will only affect the next dispatch. To stop the propagation of a signal from a listener use ***REMOVED***@link #halt***REMOVED***.
+    * Setting this property during a dispatch will only affect the next dispatch. To stop the propagation of a signal from a listener use {@link #halt}.
     *
-    * @property ***REMOVED***boolean***REMOVED*** active
+    * @property {boolean} active
     * @default
     */
     active: true,
 
     /**
-    * @property ***REMOVED***function***REMOVED*** _boundDispatch - The bound dispatch function, if any.
+    * @property {function} _boundDispatch - The bound dispatch function, if any.
     * @private
     */
     _boundDispatch: false,
 
     /**
     * @method Phaser.Signal#validateListener
-    * @param ***REMOVED***function***REMOVED*** listener - Signal handler function.
-    * @param ***REMOVED***string***REMOVED*** fnName - Function name.
+    * @param {function} listener - Signal handler function.
+    * @param {string} fnName - Function name.
     * @private
     */
-    validateListener: function (listener, fnName) ***REMOVED***
+    validateListener: function (listener, fnName) {
 
         if (typeof listener !== 'function')
-        ***REMOVED***
-            throw new Error('Phaser.Signal: listener is a required param of ***REMOVED***fn***REMOVED***() and should be a Function.'.replace('***REMOVED***fn***REMOVED***', fnName));
-        ***REMOVED***
+        {
+            throw new Error('Phaser.Signal: listener is a required param of {fn}() and should be a Function.'.replace('{fn}', fnName));
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.Signal#_registerListener
     * @private
-    * @param ***REMOVED***function***REMOVED*** listener - Signal handler function.
-    * @param ***REMOVED***boolean***REMOVED*** isOnce - Should the listener only be called once?
-    * @param ***REMOVED***object***REMOVED*** [listenerContext] - The context under which the listener is invoked.
-    * @param ***REMOVED***number***REMOVED*** [priority] - The priority level of the event listener. Listeners with higher priority will be executed before listeners with lower priority. Listeners with same priority level will be executed at the same order as they were added. (default = 0).
-    * @return ***REMOVED***Phaser.SignalBinding***REMOVED*** An Object representing the binding between the Signal and listener.
+    * @param {function} listener - Signal handler function.
+    * @param {boolean} isOnce - Should the listener only be called once?
+    * @param {object} [listenerContext] - The context under which the listener is invoked.
+    * @param {number} [priority] - The priority level of the event listener. Listeners with higher priority will be executed before listeners with lower priority. Listeners with same priority level will be executed at the same order as they were added. (default = 0).
+    * @return {Phaser.SignalBinding} An Object representing the binding between the Signal and listener.
     */
-    _registerListener: function (listener, isOnce, listenerContext, priority, args) ***REMOVED***
+    _registerListener: function (listener, isOnce, listenerContext, priority, args) {
 
         var prevIndex = this._indexOfListener(listener, listenerContext);
         var binding;
 
         if (prevIndex !== -1)
-        ***REMOVED***
+        {
             binding = this._bindings[prevIndex];
 
             if (binding.isOnce() !== isOnce)
-            ***REMOVED***
+            {
                 throw new Error('You cannot add' + (isOnce ? '' : 'Once') + '() then add' + (!isOnce ? '' : 'Once') + '() the same listener without removing the relationship first.');
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             binding = new Phaser.SignalBinding(this, listener, isOnce, listenerContext, priority, args);
             this._addBinding(binding);
-        ***REMOVED***
+        }
 
         if (this.memorize && this._prevParams)
-        ***REMOVED***
+        {
             binding.execute(this._prevParams);
-        ***REMOVED***
+        }
 
         return binding;
 
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.Signal#_addBinding
     * @private
-    * @param ***REMOVED***Phaser.SignalBinding***REMOVED*** binding - An Object representing the binding between the Signal and listener.
+    * @param {Phaser.SignalBinding} binding - An Object representing the binding between the Signal and listener.
     */
-    _addBinding: function (binding) ***REMOVED***
+    _addBinding: function (binding) {
 
         if (!this._bindings)
-        ***REMOVED***
+        {
             this._bindings = [];
-        ***REMOVED***
+        }
 
         //  Simplified insertion sort
         var n = this._bindings.length;
 
-        do ***REMOVED***
+        do {
             n--;
-        ***REMOVED***
+        }
         while (this._bindings[n] && binding._priority <= this._bindings[n]._priority);
 
         this._bindings.splice(n + 1, 0, binding);
 
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.Signal#_indexOfListener
     * @private
-    * @param ***REMOVED***function***REMOVED*** listener - Signal handler function.
-    * @param ***REMOVED***object***REMOVED*** [context=null] - Signal handler function.
-    * @return ***REMOVED***number***REMOVED*** The index of the listener within the private bindings array.
+    * @param {function} listener - Signal handler function.
+    * @param {object} [context=null] - Signal handler function.
+    * @return {number} The index of the listener within the private bindings array.
     */
-    _indexOfListener: function (listener, context) ***REMOVED***
+    _indexOfListener: function (listener, context) {
 
         if (!this._bindings)
-        ***REMOVED***
+        {
             return -1;
-        ***REMOVED***
+        }
 
-        if (context === undefined) ***REMOVED*** context = null; ***REMOVED***
+        if (context === undefined) { context = null; }
 
         var n = this._bindings.length;
         var cur;
 
         while (n--)
-        ***REMOVED***
+        {
             cur = this._bindings[n];
 
             if (cur._listener === listener && cur.context === context)
-            ***REMOVED***
+            {
                 return n;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return -1;
 
-    ***REMOVED***,
+    },
 
     /**
     * Check if a specific listener is attached.
     *
     * @method Phaser.Signal#has
-    * @param ***REMOVED***function***REMOVED*** listener - Signal handler function.
-    * @param ***REMOVED***object***REMOVED*** [context] - Context on which listener will be executed (object that should represent the `this` variable inside listener function).
-    * @return ***REMOVED***boolean***REMOVED*** If Signal has the specified listener.
+    * @param {function} listener - Signal handler function.
+    * @param {object} [context] - Context on which listener will be executed (object that should represent the `this` variable inside listener function).
+    * @return {boolean} If Signal has the specified listener.
     */
-    has: function (listener, context) ***REMOVED***
+    has: function (listener, context) {
 
         return this._indexOfListener(listener, context) !== -1;
 
-    ***REMOVED***,
+    },
 
     /**
     * Add an event listener for this signal.
@@ -2211,206 +2211,206 @@ Phaser.Signal.prototype = ***REMOVED***
     * and the value 100 were the custom arguments given in the call to 'add'.
     *
     * @method Phaser.Signal#add
-    * @param ***REMOVED***function***REMOVED*** listener - The function to call when this Signal is dispatched.
-    * @param ***REMOVED***object***REMOVED*** [listenerContext] - The context under which the listener will be executed (i.e. the object that should represent the `this` variable).
-    * @param ***REMOVED***number***REMOVED*** [priority] - The priority level of the event listener. Listeners with higher priority will be executed before listeners with lower priority. Listeners with same priority level will be executed at the same order as they were added (default = 0)
-    * @param ***REMOVED***...any***REMOVED*** [args=(none)] - Additional arguments to pass to the callback (listener) function. They will be appended after any arguments usually dispatched.
-    * @return ***REMOVED***Phaser.SignalBinding***REMOVED*** An Object representing the binding between the Signal and listener.
+    * @param {function} listener - The function to call when this Signal is dispatched.
+    * @param {object} [listenerContext] - The context under which the listener will be executed (i.e. the object that should represent the `this` variable).
+    * @param {number} [priority] - The priority level of the event listener. Listeners with higher priority will be executed before listeners with lower priority. Listeners with same priority level will be executed at the same order as they were added (default = 0)
+    * @param {...any} [args=(none)] - Additional arguments to pass to the callback (listener) function. They will be appended after any arguments usually dispatched.
+    * @return {Phaser.SignalBinding} An Object representing the binding between the Signal and listener.
     */
-    add: function (listener, listenerContext, priority) ***REMOVED***
+    add: function (listener, listenerContext, priority) {
 
         this.validateListener(listener, 'add');
 
         var args = [];
 
         if (arguments.length > 3)
-        ***REMOVED***
+        {
             for (var i = 3; i < arguments.length; i++)
-            ***REMOVED***
+            {
                 args.push(arguments[i]);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return this._registerListener(listener, false, listenerContext, priority, args);
 
-    ***REMOVED***,
+    },
 
     /**
     * Add a one-time listener - the listener is automatically removed after the first execution.
     *
-    * If there is as ***REMOVED***@link Phaser.Signal#memorize memorized***REMOVED*** event then it will be dispatched and
+    * If there is as {@link Phaser.Signal#memorize memorized} event then it will be dispatched and
     * the listener will be removed immediately.
     *
     * @method Phaser.Signal#addOnce
-    * @param ***REMOVED***function***REMOVED*** listener - The function to call when this Signal is dispatched.
-    * @param ***REMOVED***object***REMOVED*** [listenerContext] - The context under which the listener will be executed (i.e. the object that should represent the `this` variable).
-    * @param ***REMOVED***number***REMOVED*** [priority] - The priority level of the event listener. Listeners with higher priority will be executed before listeners with lower priority. Listeners with same priority level will be executed at the same order as they were added (default = 0)
-    * @param ***REMOVED***...any***REMOVED*** [args=(none)] - Additional arguments to pass to the callback (listener) function. They will be appended after any arguments usually dispatched.
-    * @return ***REMOVED***Phaser.SignalBinding***REMOVED*** An Object representing the binding between the Signal and listener.
+    * @param {function} listener - The function to call when this Signal is dispatched.
+    * @param {object} [listenerContext] - The context under which the listener will be executed (i.e. the object that should represent the `this` variable).
+    * @param {number} [priority] - The priority level of the event listener. Listeners with higher priority will be executed before listeners with lower priority. Listeners with same priority level will be executed at the same order as they were added (default = 0)
+    * @param {...any} [args=(none)] - Additional arguments to pass to the callback (listener) function. They will be appended after any arguments usually dispatched.
+    * @return {Phaser.SignalBinding} An Object representing the binding between the Signal and listener.
     */
-    addOnce: function (listener, listenerContext, priority) ***REMOVED***
+    addOnce: function (listener, listenerContext, priority) {
 
         this.validateListener(listener, 'addOnce');
 
         var args = [];
 
         if (arguments.length > 3)
-        ***REMOVED***
+        {
             for (var i = 3; i < arguments.length; i++)
-            ***REMOVED***
+            {
                 args.push(arguments[i]);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return this._registerListener(listener, true, listenerContext, priority, args);
 
-    ***REMOVED***,
+    },
 
     /**
     * Remove a single event listener.
     *
     * @method Phaser.Signal#remove
-    * @param ***REMOVED***function***REMOVED*** listener - Handler function that should be removed.
-    * @param ***REMOVED***object***REMOVED*** [context=null] - Execution context (since you can add the same handler multiple times if executing in a different context).
-    * @return ***REMOVED***function***REMOVED*** Listener handler function.
+    * @param {function} listener - Handler function that should be removed.
+    * @param {object} [context=null] - Execution context (since you can add the same handler multiple times if executing in a different context).
+    * @return {function} Listener handler function.
     */
-    remove: function (listener, context) ***REMOVED***
+    remove: function (listener, context) {
 
         this.validateListener(listener, 'remove');
 
         var i = this._indexOfListener(listener, context);
 
         if (i !== -1)
-        ***REMOVED***
+        {
             this._bindings[i]._destroy(); //no reason to a Phaser.SignalBinding exist if it isn't attached to a signal
             this._bindings.splice(i, 1);
-        ***REMOVED***
+        }
 
         return listener;
 
-    ***REMOVED***,
+    },
 
     /**
     * Remove all event listeners.
     *
     * @method Phaser.Signal#removeAll
-    * @param ***REMOVED***object***REMOVED*** [context=null] - If specified only listeners for the given context will be removed.
+    * @param {object} [context=null] - If specified only listeners for the given context will be removed.
     */
-    removeAll: function (context) ***REMOVED***
+    removeAll: function (context) {
 
-        if (context === undefined) ***REMOVED*** context = null; ***REMOVED***
+        if (context === undefined) { context = null; }
 
         if (!this._bindings)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         var n = this._bindings.length;
 
         while (n--)
-        ***REMOVED***
+        {
             if (context)
-            ***REMOVED***
+            {
                 if (this._bindings[n].context === context)
-                ***REMOVED***
+                {
                     this._bindings[n]._destroy();
                     this._bindings.splice(n, 1);
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
             else
-            ***REMOVED***
+            {
                 this._bindings[n]._destroy();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         if (!context)
-        ***REMOVED***
+        {
             this._bindings.length = 0;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Gets the total number of listeners attached to this Signal.
     *
     * @method Phaser.Signal#getNumListeners
-    * @return ***REMOVED***integer***REMOVED*** Number of listeners attached to the Signal.
+    * @return {integer} Number of listeners attached to the Signal.
     */
-    getNumListeners: function () ***REMOVED***
+    getNumListeners: function () {
 
         return this._bindings ? this._bindings.length : 0;
 
-    ***REMOVED***,
+    },
 
     /**
     * Stop propagation of the event, blocking the dispatch to next listener on the queue.
     *
     * This should be called only during event dispatch as calling it before/after dispatch won't affect another broadcast.
-    * See ***REMOVED***@link #active***REMOVED*** to enable/disable the signal entirely.
+    * See {@link #active} to enable/disable the signal entirely.
     *
     * @method Phaser.Signal#halt
     */
-    halt: function () ***REMOVED***
+    halt: function () {
 
         this._shouldPropagate = false;
 
-    ***REMOVED***,
+    },
 
     /**
     * Dispatch / broadcast the event to all listeners.
     *
-    * To create an instance-bound dispatch for this Signal, use ***REMOVED***@link #boundDispatch***REMOVED***.
+    * To create an instance-bound dispatch for this Signal, use {@link #boundDispatch}.
     *
     * @method Phaser.Signal#dispatch
-    * @param ***REMOVED***any***REMOVED*** [params] - Parameters that should be passed to each handler.
+    * @param {any} [params] - Parameters that should be passed to each handler.
     */
-    dispatch: function () ***REMOVED***
+    dispatch: function () {
 
         if (!this.active || !this._bindings)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         var paramsArr = Array.prototype.slice.call(arguments);
         var n = this._bindings.length;
         var bindings;
 
         if (this.memorize)
-        ***REMOVED***
+        {
             this._prevParams = paramsArr;
-        ***REMOVED***
+        }
 
         if (!n)
-        ***REMOVED***
+        {
             //  Should come after memorize
             return;
-        ***REMOVED***
+        }
 
         bindings = this._bindings.slice(); //clone array in case add/remove items during dispatch
         this._shouldPropagate = true; //in case `halt` was called before dispatch or during the previous dispatch.
 
         //execute all callbacks until end of the list or until a callback returns `false` or stops propagation
         //reverse loop since listeners with higher priority will be added at the end of the list
-        do ***REMOVED***
+        do {
             n--;
-        ***REMOVED***
+        }
         while (bindings[n] && this._shouldPropagate && bindings[n].execute(paramsArr) !== false);
 
-    ***REMOVED***,
+    },
 
     /**
-    * Forget the currently ***REMOVED***@link Phaser.Signal#memorize memorized***REMOVED*** event, if any.
+    * Forget the currently {@link Phaser.Signal#memorize memorized} event, if any.
     *
     * @method Phaser.Signal#forget
     */
-    forget: function() ***REMOVED***
+    forget: function() {
 
         if (this._prevParams)
-        ***REMOVED***
+        {
             this._prevParams = null;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Dispose the signal - no more events can be dispatched.
@@ -2420,31 +2420,31 @@ Phaser.Signal.prototype = ***REMOVED***
     *
     * @method Phaser.Signal#dispose
     */
-    dispose: function () ***REMOVED***
+    dispose: function () {
 
         this.removeAll();
 
         this._bindings = null;
         if (this._prevParams)
-        ***REMOVED***
+        {
             this._prevParams = null;
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * A string representation of the object.
     *
     * @method Phaser.Signal#toString
-    * @return ***REMOVED***string***REMOVED*** String representation of the object.
+    * @return {string} String representation of the object.
     */
-    toString: function () ***REMOVED***
+    toString: function () {
 
         return '[Phaser.Signal active:'+ this.active +' numListeners:'+ this.getNumListeners() +']';
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Create a `dispatch` function that maintains a binding to the original Signal context.
@@ -2453,18 +2453,18 @@ Phaser.Signal.prototype = ***REMOVED***
 * or called independently of the Signal object.
 *
 * @memberof Phaser.Signal
-* @property ***REMOVED***function***REMOVED*** boundDispatch
+* @property {function} boundDispatch
 */
-Object.defineProperty(Phaser.Signal.prototype, "boundDispatch", ***REMOVED***
+Object.defineProperty(Phaser.Signal.prototype, "boundDispatch", {
 
-    get: function () ***REMOVED***
+    get: function () {
         var _this = this;
-        return this._boundDispatch || (this._boundDispatch = function () ***REMOVED***
+        return this._boundDispatch || (this._boundDispatch = function () {
             return _this.dispatch.apply(_this, arguments);
-        ***REMOVED***);
-    ***REMOVED***
+        });
+    }
 
-***REMOVED***);
+});
 
 Phaser.Signal.prototype.constructor = Phaser.Signal;
 
@@ -2472,7 +2472,7 @@ Phaser.Signal.prototype.constructor = Phaser.Signal;
 * @author       Miller Medeiros http://millermedeiros.github.com/js-signals/
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -2482,89 +2482,89 @@ Phaser.Signal.prototype.constructor = Phaser.Signal;
 * 
 * @class Phaser.SignalBinding
 * @constructor
-* @param ***REMOVED***Phaser.Signal***REMOVED*** signal - Reference to Signal object that listener is currently bound to.
-* @param ***REMOVED***function***REMOVED*** listener - Handler function bound to the signal.
-* @param ***REMOVED***boolean***REMOVED*** isOnce - If binding should be executed just once.
-* @param ***REMOVED***object***REMOVED*** [listenerContext=null] - Context on which listener will be executed (object that should represent the `this` variable inside listener function).
-* @param ***REMOVED***number***REMOVED*** [priority] - The priority level of the event listener. (default = 0).
-* @param ***REMOVED***...any***REMOVED*** [args=(none)] - Additional arguments to pass to the callback (listener) function. They will be appended after any arguments usually dispatched.
+* @param {Phaser.Signal} signal - Reference to Signal object that listener is currently bound to.
+* @param {function} listener - Handler function bound to the signal.
+* @param {boolean} isOnce - If binding should be executed just once.
+* @param {object} [listenerContext=null] - Context on which listener will be executed (object that should represent the `this` variable inside listener function).
+* @param {number} [priority] - The priority level of the event listener. (default = 0).
+* @param {...any} [args=(none)] - Additional arguments to pass to the callback (listener) function. They will be appended after any arguments usually dispatched.
 */
-Phaser.SignalBinding = function (signal, listener, isOnce, listenerContext, priority, args) ***REMOVED***
+Phaser.SignalBinding = function (signal, listener, isOnce, listenerContext, priority, args) {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** _listener - Handler function bound to the signal.
+    * @property {Phaser.Game} _listener - Handler function bound to the signal.
     * @private
     */
     this._listener = listener;
 
     if (isOnce)
-    ***REMOVED***
+    {
         this._isOnce = true;
-    ***REMOVED***
+    }
 
     if (listenerContext != null) /* not null/undefined */
-    ***REMOVED***
+    {
         this.context = listenerContext;
-    ***REMOVED***
+    }
 
     /**
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** _signal - Reference to Signal object that listener is currently bound to.
+    * @property {Phaser.Signal} _signal - Reference to Signal object that listener is currently bound to.
     * @private
     */
     this._signal = signal;
 
     if (priority)
-    ***REMOVED***
+    {
         this._priority = priority;
-    ***REMOVED***
+    }
 
     if (args && args.length)
-    ***REMOVED***
+    {
         this._args = args;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
-Phaser.SignalBinding.prototype = ***REMOVED***
+Phaser.SignalBinding.prototype = {
 
     /**
-    * @property ***REMOVED***?object***REMOVED*** context - Context on which listener will be executed (object that should represent the `this` variable inside listener function).
+    * @property {?object} context - Context on which listener will be executed (object that should represent the `this` variable inside listener function).
     */
     context: null,
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _isOnce - If binding should be executed just once.
+    * @property {boolean} _isOnce - If binding should be executed just once.
     * @private
     */
     _isOnce: false,
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _priority - Listener priority.
+    * @property {number} _priority - Listener priority.
     * @private
     */
     _priority: 0,
 
     /**
-    * @property ***REMOVED***array***REMOVED*** _args - Listener arguments.
+    * @property {array} _args - Listener arguments.
     * @private
     */
     _args: null,
 
     /**
-    * @property ***REMOVED***number***REMOVED*** callCount - The number of times the handler function has been called.
+    * @property {number} callCount - The number of times the handler function has been called.
     */
     callCount: 0,
 
     /**
     * If binding is active and should be executed.
-    * @property ***REMOVED***boolean***REMOVED*** active
+    * @property {boolean} active
     * @default
     */
     active: true,
 
     /**
     * Default parameters passed to listener during `Signal.dispatch` and `SignalBinding.execute` (curried parameters).
-    * @property ***REMOVED***array|null***REMOVED*** params
+    * @property {array|null} params
     * @default
     */
     params: null,
@@ -2573,105 +2573,105 @@ Phaser.SignalBinding.prototype = ***REMOVED***
     * Call listener passing arbitrary parameters.
     * If binding was added using `Signal.addOnce()` it will be automatically removed from signal dispatch queue, this method is used internally for the signal dispatch.
     * @method Phaser.SignalBinding#execute
-    * @param ***REMOVED***any[]***REMOVED*** [paramsArr] - Array of parameters that should be passed to the listener.
-    * @return ***REMOVED***any***REMOVED*** Value returned by the listener.
+    * @param {any[]} [paramsArr] - Array of parameters that should be passed to the listener.
+    * @return {any} Value returned by the listener.
     */
-    execute: function(paramsArr) ***REMOVED***
+    execute: function(paramsArr) {
 
         var handlerReturn, params;
 
         if (this.active && !!this._listener)
-        ***REMOVED***
+        {
             params = this.params ? this.params.concat(paramsArr) : paramsArr;
 
             if (this._args)
-            ***REMOVED***
+            {
                 params = params.concat(this._args);
-            ***REMOVED***
+            }
 
             handlerReturn = this._listener.apply(this.context, params);
 
             this.callCount++;
 
             if (this._isOnce)
-            ***REMOVED***
+            {
                 this.detach();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return handlerReturn;
 
-    ***REMOVED***,
+    },
 
     /**
     * Detach binding from signal.
     * alias to: @see mySignal.remove(myBinding.getListener());
     * @method Phaser.SignalBinding#detach
-    * @return ***REMOVED***function|null***REMOVED*** Handler function bound to the signal or `null` if binding was previously detached.
+    * @return {function|null} Handler function bound to the signal or `null` if binding was previously detached.
     */
-    detach: function () ***REMOVED***
+    detach: function () {
         return this.isBound() ? this._signal.remove(this._listener, this.context) : null;
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.SignalBinding#isBound
-    * @return ***REMOVED***boolean***REMOVED*** True if binding is still bound to the signal and has a listener.
+    * @return {boolean} True if binding is still bound to the signal and has a listener.
     */
-    isBound: function () ***REMOVED***
+    isBound: function () {
         return (!!this._signal && !!this._listener);
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.SignalBinding#isOnce
-    * @return ***REMOVED***boolean***REMOVED*** If SignalBinding will only be executed once.
+    * @return {boolean} If SignalBinding will only be executed once.
     */
-    isOnce: function () ***REMOVED***
+    isOnce: function () {
         return this._isOnce;
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.SignalBinding#getListener
-    * @return ***REMOVED***function***REMOVED*** Handler function bound to the signal.
+    * @return {function} Handler function bound to the signal.
     */
-    getListener: function () ***REMOVED***
+    getListener: function () {
         return this._listener;
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.SignalBinding#getSignal
-    * @return ***REMOVED***Phaser.Signal***REMOVED*** Signal that listener is currently bound to.
+    * @return {Phaser.Signal} Signal that listener is currently bound to.
     */
-    getSignal: function () ***REMOVED***
+    getSignal: function () {
         return this._signal;
-    ***REMOVED***,
+    },
 
     /**
     * Delete instance properties
     * @method Phaser.SignalBinding#_destroy
     * @private
     */
-    _destroy: function () ***REMOVED***
+    _destroy: function () {
         delete this._signal;
         delete this._listener;
         delete this.context;
-    ***REMOVED***,
+    },
 
     /**
     * @method Phaser.SignalBinding#toString
-    * @return ***REMOVED***string***REMOVED*** String representation of the object.
+    * @return {string} String representation of the object.
     */
-    toString: function () ***REMOVED***
+    toString: function () {
         return '[Phaser.SignalBinding isOnce:' + this._isOnce +', isBound:'+ this.isBound() +', active:' + this.active + ']';
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.SignalBinding.prototype.constructor = Phaser.SignalBinding;
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -2682,19 +2682,19 @@ Phaser.SignalBinding.prototype.constructor = Phaser.SignalBinding;
 *
 * @class Phaser.Filter
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
-* @param ***REMOVED***object***REMOVED*** uniforms - Uniform mappings object
-* @param ***REMOVED***Array|string***REMOVED*** fragmentSrc - The fragment shader code. Either an array, one element per line of code, or a string.
+* @param {Phaser.Game} game - A reference to the currently running game.
+* @param {object} uniforms - Uniform mappings object
+* @param {Array|string} fragmentSrc - The fragment shader code. Either an array, one element per line of code, or a string.
 */
-Phaser.Filter = function (game, uniforms, fragmentSrc) ***REMOVED***
+Phaser.Filter = function (game, uniforms, fragmentSrc) {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
+    * @property {Phaser.Game} game - A reference to the currently running game.
     */
     this.game = game;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** type - The const type of this object, either Phaser.WEBGL_FILTER or Phaser.CANVAS_FILTER.
+    * @property {number} type - The const type of this object, either Phaser.WEBGL_FILTER or Phaser.CANVAS_FILTER.
     * @default
     */
     this.type = Phaser.WEBGL_FILTER;
@@ -2702,31 +2702,31 @@ Phaser.Filter = function (game, uniforms, fragmentSrc) ***REMOVED***
     /**
     * An array of passes - some filters contain a few steps this array simply stores the steps in a linear fashion.
     * For example the blur filter has two passes blurX and blurY.
-    * @property ***REMOVED***array***REMOVED*** passes - An array of filter objects.
+    * @property {array} passes - An array of filter objects.
     * @private
     */
     this.passes = [this];
 
     /**
-    * @property ***REMOVED***array***REMOVED*** shaders - Array an array of shaders.
+    * @property {array} shaders - Array an array of shaders.
     * @private
     */
     this.shaders = [];
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** dirty - Internal PIXI var.
+    * @property {boolean} dirty - Internal PIXI var.
     * @default
     */
     this.dirty = true;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** padding - Internal PIXI var.
+    * @property {number} padding - Internal PIXI var.
     * @default
     */
     this.padding = 0;
 
     /**
-    * @property ***REMOVED***Phaser.Point***REMOVED*** prevPoint - The previous position of the pointer (we don't update the uniform if the same)
+    * @property {Phaser.Point} prevPoint - The previous position of the pointer (we don't update the uniform if the same)
     */
     this.prevPoint = new Phaser.Point();
 
@@ -2737,84 +2737,84 @@ Phaser.Filter = function (game, uniforms, fragmentSrc) ***REMOVED***
     var d = new Date();
 
     /**
-    * @property ***REMOVED***object***REMOVED*** uniforms - Default uniform mappings. Compatible with ShaderToy and GLSLSandbox.
+    * @property {object} uniforms - Default uniform mappings. Compatible with ShaderToy and GLSLSandbox.
     */
-    this.uniforms = ***REMOVED***
+    this.uniforms = {
 
-        resolution: ***REMOVED*** type: '2f', value: ***REMOVED*** x: 256, y: 256 ***REMOVED******REMOVED***,
-        time: ***REMOVED*** type: '1f', value: 0 ***REMOVED***,
-        mouse: ***REMOVED*** type: '2f', value: ***REMOVED*** x: 0.0, y: 0.0 ***REMOVED*** ***REMOVED***,
-        date: ***REMOVED*** type: '4fv', value: [ d.getFullYear(),  d.getMonth(),  d.getDate(), d.getHours() *60 * 60 + d.getMinutes() * 60 + d.getSeconds() ] ***REMOVED***,
-        sampleRate: ***REMOVED*** type: '1f', value: 44100.0 ***REMOVED***,
-        iChannel0: ***REMOVED*** type: 'sampler2D', value: null, textureData: ***REMOVED*** repeat: true ***REMOVED*** ***REMOVED***,
-        iChannel1: ***REMOVED*** type: 'sampler2D', value: null, textureData: ***REMOVED*** repeat: true ***REMOVED*** ***REMOVED***,
-        iChannel2: ***REMOVED*** type: 'sampler2D', value: null, textureData: ***REMOVED*** repeat: true ***REMOVED*** ***REMOVED***,
-        iChannel3: ***REMOVED*** type: 'sampler2D', value: null, textureData: ***REMOVED*** repeat: true ***REMOVED*** ***REMOVED***
+        resolution: { type: '2f', value: { x: 256, y: 256 }},
+        time: { type: '1f', value: 0 },
+        mouse: { type: '2f', value: { x: 0.0, y: 0.0 } },
+        date: { type: '4fv', value: [ d.getFullYear(),  d.getMonth(),  d.getDate(), d.getHours() *60 * 60 + d.getMinutes() * 60 + d.getSeconds() ] },
+        sampleRate: { type: '1f', value: 44100.0 },
+        iChannel0: { type: 'sampler2D', value: null, textureData: { repeat: true } },
+        iChannel1: { type: 'sampler2D', value: null, textureData: { repeat: true } },
+        iChannel2: { type: 'sampler2D', value: null, textureData: { repeat: true } },
+        iChannel3: { type: 'sampler2D', value: null, textureData: { repeat: true } }
 
-    ***REMOVED***;
+    };
 
     //  Copy over/replace any passed in the constructor
     if (uniforms)
-    ***REMOVED***
+    {
         for (var key in uniforms)
-        ***REMOVED***
+        {
             this.uniforms[key] = uniforms[key];
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     /**
-    * @property ***REMOVED***array|string***REMOVED*** fragmentSrc - The fragment shader code.
+    * @property {array|string} fragmentSrc - The fragment shader code.
     */
     this.fragmentSrc = fragmentSrc || '';
 
-***REMOVED***;
+};
 
-Phaser.Filter.prototype = ***REMOVED***
+Phaser.Filter.prototype = {
 
     /**
     * Should be over-ridden.
     * @method Phaser.Filter#init
     */
-    init: function () ***REMOVED***
+    init: function () {
         //  This should be over-ridden. Will receive a variable number of arguments.
-    ***REMOVED***,
+    },
 
     /**
     * Set the resolution uniforms on the filter.
     * @method Phaser.Filter#setResolution
-    * @param ***REMOVED***number***REMOVED*** width - The width of the display.
-    * @param ***REMOVED***number***REMOVED*** height - The height of the display.
+    * @param {number} width - The width of the display.
+    * @param {number} height - The height of the display.
     */
-    setResolution: function (width, height) ***REMOVED***
+    setResolution: function (width, height) {
 
         this.uniforms.resolution.value.x = width;
         this.uniforms.resolution.value.y = height;
 
-    ***REMOVED***,
+    },
 
     /**
     * Updates the filter.
     * @method Phaser.Filter#update
-    * @param ***REMOVED***Phaser.Pointer***REMOVED*** [pointer] - A Pointer object to use for the filter. The coordinates are mapped to the mouse uniform.
+    * @param {Phaser.Pointer} [pointer] - A Pointer object to use for the filter. The coordinates are mapped to the mouse uniform.
     */
-    update: function (pointer) ***REMOVED***
+    update: function (pointer) {
 
         if (typeof pointer !== 'undefined')
-        ***REMOVED***
+        {
             var x = pointer.x / this.game.width;
             var y = 1 - pointer.y / this.game.height;
 
             if (x !== this.prevPoint.x || y !== this.prevPoint.y)
-            ***REMOVED***
+            {
                 this.uniforms.mouse.value.x = x.toFixed(2);
                 this.uniforms.mouse.value.y = y.toFixed(2);
                 this.prevPoint.set(x, y);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         this.uniforms.time.value = this.game.time.totalElapsedSeconds();
 
-    ***REMOVED***,
+    },
 
     /**
     * Creates a new Phaser.Image object using a blank texture and assigns 
@@ -2826,36 +2826,36 @@ Phaser.Filter.prototype = ***REMOVED***
     * values.
     *
     * @method Phaser.Filter#addToWorld
-    * @param ***REMOVED***number***REMOVED*** [x=0] - The x coordinate to place the Image at.
-    * @param ***REMOVED***number***REMOVED*** [y=0] - The y coordinate to place the Image at.
-    * @param ***REMOVED***number***REMOVED*** [width] - The width of the Image. If not specified (or null) it will use Filter.width. If specified Filter.width will be set to this value.
-    * @param ***REMOVED***number***REMOVED*** [height] - The height of the Image. If not specified (or null) it will use Filter.height. If specified Filter.height will be set to this value.
-    * @param ***REMOVED***number***REMOVED*** [anchorX=0] - Set the x anchor point of the Image. A value between 0 and 1, where 0 is the top-left and 1 is bottom-right.
-    * @param ***REMOVED***number***REMOVED*** [anchorY=0] - Set the y anchor point of the Image. A value between 0 and 1, where 0 is the top-left and 1 is bottom-right.
-    * @return ***REMOVED***Phaser.Image***REMOVED*** The newly added Image object.
+    * @param {number} [x=0] - The x coordinate to place the Image at.
+    * @param {number} [y=0] - The y coordinate to place the Image at.
+    * @param {number} [width] - The width of the Image. If not specified (or null) it will use Filter.width. If specified Filter.width will be set to this value.
+    * @param {number} [height] - The height of the Image. If not specified (or null) it will use Filter.height. If specified Filter.height will be set to this value.
+    * @param {number} [anchorX=0] - Set the x anchor point of the Image. A value between 0 and 1, where 0 is the top-left and 1 is bottom-right.
+    * @param {number} [anchorY=0] - Set the y anchor point of the Image. A value between 0 and 1, where 0 is the top-left and 1 is bottom-right.
+    * @return {Phaser.Image} The newly added Image object.
     */
-    addToWorld: function (x, y, width, height, anchorX, anchorY) ***REMOVED***
+    addToWorld: function (x, y, width, height, anchorX, anchorY) {
 
-        if (anchorX === undefined) ***REMOVED*** anchorX = 0; ***REMOVED***
-        if (anchorY === undefined) ***REMOVED*** anchorY = 0; ***REMOVED***
+        if (anchorX === undefined) { anchorX = 0; }
+        if (anchorY === undefined) { anchorY = 0; }
 
         if (width !== undefined && width !== null)
-        ***REMOVED***
+        {
             this.width = width;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             width = this.width;
-        ***REMOVED***
+        }
 
         if (height !== undefined && height !== null)
-        ***REMOVED***
+        {
             this.height = height;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             height = this.height;
-        ***REMOVED***
+        }
 
         var image = this.game.add.image(x, y, '__default');
 
@@ -2868,58 +2868,58 @@ Phaser.Filter.prototype = ***REMOVED***
 
         return image;
 
-    ***REMOVED***,
+    },
 
     /**
     * Clear down this Filter and null out references
     * @method Phaser.Filter#destroy
     */
-    destroy: function () ***REMOVED***
+    destroy: function () {
 
         this.game = null;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.Filter.prototype.constructor = Phaser.Filter;
 
 /**
 * @name Phaser.Filter#width
-* @property ***REMOVED***number***REMOVED*** width - The width (resolution uniform)
+* @property {number} width - The width (resolution uniform)
 */
-Object.defineProperty(Phaser.Filter.prototype, 'width', ***REMOVED***
+Object.defineProperty(Phaser.Filter.prototype, 'width', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.resolution.value.x;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.resolution.value.x = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.Filter#height
-* @property ***REMOVED***number***REMOVED*** height - The height (resolution uniform)
+* @property {number} height - The height (resolution uniform)
 */
-Object.defineProperty(Phaser.Filter.prototype, 'height', ***REMOVED***
+Object.defineProperty(Phaser.Filter.prototype, 'height', {
 
-    get: function() ***REMOVED***
+    get: function() {
         return this.uniforms.resolution.value.y;
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.uniforms.resolution.value.y = value;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -2927,115 +2927,115 @@ Object.defineProperty(Phaser.Filter.prototype, 'height', ***REMOVED***
 *
 * @class Phaser.Plugin
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
-* @param ***REMOVED***any***REMOVED*** parent - The object that owns this plugin, usually Phaser.PluginManager.
+* @param {Phaser.Game} game - A reference to the currently running game.
+* @param {any} parent - The object that owns this plugin, usually Phaser.PluginManager.
 */
-Phaser.Plugin = function (game, parent) ***REMOVED***
+Phaser.Plugin = function (game, parent) {
 
-    if (parent === undefined) ***REMOVED*** parent = null; ***REMOVED***
+    if (parent === undefined) { parent = null; }
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
+    * @property {Phaser.Game} game - A reference to the currently running game.
     */
     this.game = game;
 
     /**
-    * @property ***REMOVED***any***REMOVED*** parent - The parent of this plugin. If added to the PluginManager the parent will be set to that, otherwise it will be null.
+    * @property {any} parent - The parent of this plugin. If added to the PluginManager the parent will be set to that, otherwise it will be null.
     */
     this.parent = parent;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** active - A Plugin with active=true has its preUpdate and update methods called by the parent, otherwise they are skipped.
+    * @property {boolean} active - A Plugin with active=true has its preUpdate and update methods called by the parent, otherwise they are skipped.
     * @default
     */
     this.active = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** visible - A Plugin with visible=true has its render and postRender methods called by the parent, otherwise they are skipped.
+    * @property {boolean} visible - A Plugin with visible=true has its render and postRender methods called by the parent, otherwise they are skipped.
     * @default
     */
     this.visible = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** hasPreUpdate - A flag to indicate if this plugin has a preUpdate method.
+    * @property {boolean} hasPreUpdate - A flag to indicate if this plugin has a preUpdate method.
     * @default
     */
     this.hasPreUpdate = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** hasUpdate - A flag to indicate if this plugin has an update method.
+    * @property {boolean} hasUpdate - A flag to indicate if this plugin has an update method.
     * @default
     */
     this.hasUpdate = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** hasPostUpdate - A flag to indicate if this plugin has a postUpdate method.
+    * @property {boolean} hasPostUpdate - A flag to indicate if this plugin has a postUpdate method.
     * @default
     */
     this.hasPostUpdate = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** hasRender - A flag to indicate if this plugin has a render method.
+    * @property {boolean} hasRender - A flag to indicate if this plugin has a render method.
     * @default
     */
     this.hasRender = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** hasPostRender - A flag to indicate if this plugin has a postRender method.
+    * @property {boolean} hasPostRender - A flag to indicate if this plugin has a postRender method.
     * @default
     */
     this.hasPostRender = false;
 
-***REMOVED***;
+};
 
-Phaser.Plugin.prototype = ***REMOVED***
+Phaser.Plugin.prototype = {
 
     /**
     * Pre-update is called at the very start of the update cycle, before any other subsystems have been updated (including Physics).
     * It is only called if active is set to true.
     * @method Phaser.Plugin#preUpdate
     */
-    preUpdate: function () ***REMOVED***
-    ***REMOVED***,
+    preUpdate: function () {
+    },
 
     /**
     * Update is called after all the core subsystems (Input, Tweens, Sound, etc) and the State have updated, but before the render.
     * It is only called if active is set to true.
     * @method Phaser.Plugin#update
     */
-    update: function () ***REMOVED***
-    ***REMOVED***,
+    update: function () {
+    },
 
     /**
     * Render is called right after the Game Renderer completes, but before the State.render.
     * It is only called if visible is set to true.
     * @method Phaser.Plugin#render
     */
-    render: function () ***REMOVED***
-    ***REMOVED***,
+    render: function () {
+    },
 
     /**
     * Post-render is called after the Game Renderer and State.render have run.
     * It is only called if visible is set to true.
     * @method Phaser.Plugin#postRender
     */
-    postRender: function () ***REMOVED***
-    ***REMOVED***,
+    postRender: function () {
+    },
 
     /**
     * Clear down this Plugin and null out references
     * @method Phaser.Plugin#destroy
     */
-    destroy: function () ***REMOVED***
+    destroy: function () {
 
         this.game = null;
         this.parent = null;
         this.active = false;
         this.visible = false;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.Plugin.prototype.constructor = Phaser.Plugin;
 
@@ -3044,7 +3044,7 @@ Phaser.Plugin.prototype.constructor = Phaser.Plugin;
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -3052,169 +3052,169 @@ Phaser.Plugin.prototype.constructor = Phaser.Plugin;
 *
 * @class Phaser.PluginManager
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
+* @param {Phaser.Game} game - A reference to the currently running game.
 */
-Phaser.PluginManager = function(game) ***REMOVED***
+Phaser.PluginManager = function(game) {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
+    * @property {Phaser.Game} game - A reference to the currently running game.
     */
     this.game = game;
 
     /**
-    * @property ***REMOVED***Phaser.Plugin[]***REMOVED*** plugins - An array of all the plugins being managed by this PluginManager.
+    * @property {Phaser.Plugin[]} plugins - An array of all the plugins being managed by this PluginManager.
     */
     this.plugins = [];
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _len - Internal cache var.
+    * @property {number} _len - Internal cache var.
     * @private
     */
     this._len = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _i - Internal cache var.
+    * @property {number} _i - Internal cache var.
     * @private
     */
     this._i = 0;
 
-***REMOVED***;
+};
 
-Phaser.PluginManager.prototype = ***REMOVED***
+Phaser.PluginManager.prototype = {
 
     /**
     * Add a new Plugin into the PluginManager.
     * The Plugin must have 2 properties: game and parent. Plugin.game is set to the game reference the PluginManager uses, and parent is set to the PluginManager.
     *
     * @method Phaser.PluginManager#add
-    * @param ***REMOVED***object|Phaser.Plugin***REMOVED*** plugin - The Plugin to add into the PluginManager. This can be a function or an existing object.
-    * @param ***REMOVED***...****REMOVED*** parameter - Additional arguments that will be passed to the Plugin.init method.
-    * @return ***REMOVED***Phaser.Plugin***REMOVED*** The Plugin that was added to the manager.
+    * @param {object|Phaser.Plugin} plugin - The Plugin to add into the PluginManager. This can be a function or an existing object.
+    * @param {...*} parameter - Additional arguments that will be passed to the Plugin.init method.
+    * @return {Phaser.Plugin} The Plugin that was added to the manager.
     */
-    add: function (plugin) ***REMOVED***
+    add: function (plugin) {
 
         var args = Array.prototype.slice.call(arguments, 1);
         var result = false;
 
         //  Prototype?
         if (typeof plugin === 'function')
-        ***REMOVED***
+        {
             plugin = new plugin(this.game, this);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             plugin.game = this.game;
             plugin.parent = this;
-        ***REMOVED***
+        }
 
         //  Check for methods now to avoid having to do this every loop
         if (typeof plugin['preUpdate'] === 'function')
-        ***REMOVED***
+        {
             plugin.hasPreUpdate = true;
             result = true;
-        ***REMOVED***
+        }
 
         if (typeof plugin['update'] === 'function')
-        ***REMOVED***
+        {
             plugin.hasUpdate = true;
             result = true;
-        ***REMOVED***
+        }
 
         if (typeof plugin['postUpdate'] === 'function')
-        ***REMOVED***
+        {
             plugin.hasPostUpdate = true;
             result = true;
-        ***REMOVED***
+        }
 
         if (typeof plugin['render'] === 'function')
-        ***REMOVED***
+        {
             plugin.hasRender = true;
             result = true;
-        ***REMOVED***
+        }
 
         if (typeof plugin['postRender'] === 'function')
-        ***REMOVED***
+        {
             plugin.hasPostRender = true;
             result = true;
-        ***REMOVED***
+        }
 
         //  The plugin must have at least one of the above functions to be added to the PluginManager.
         if (result)
-        ***REMOVED***
+        {
             if (plugin.hasPreUpdate || plugin.hasUpdate || plugin.hasPostUpdate)
-            ***REMOVED***
+            {
                 plugin.active = true;
-            ***REMOVED***
+            }
 
             if (plugin.hasRender || plugin.hasPostRender)
-            ***REMOVED***
+            {
                 plugin.visible = true;
-            ***REMOVED***
+            }
 
             this._len = this.plugins.push(plugin);
 
             // Allows plugins to run potentially destructive code outside of the constructor, and only if being added to the PluginManager
             if (typeof plugin['init'] === 'function')
-            ***REMOVED***
+            {
                 plugin.init.apply(plugin, args);
-            ***REMOVED***
+            }
 
             return plugin;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return null;
-        ***REMOVED***
-    ***REMOVED***,
+        }
+    },
 
     /**
     * Remove a Plugin from the PluginManager. It calls Plugin.destroy on the plugin before removing it from the manager.
     *
     * @method Phaser.PluginManager#remove
-    * @param ***REMOVED***Phaser.Plugin***REMOVED*** plugin - The plugin to be removed.
-    * @param ***REMOVED***boolean***REMOVED*** [destroy=true] - Call destroy on the plugin that is removed?
+    * @param {Phaser.Plugin} plugin - The plugin to be removed.
+    * @param {boolean} [destroy=true] - Call destroy on the plugin that is removed?
     */
-    remove: function (plugin, destroy) ***REMOVED***
+    remove: function (plugin, destroy) {
 
-        if (destroy === undefined) ***REMOVED*** destroy = true; ***REMOVED***
+        if (destroy === undefined) { destroy = true; }
 
         this._i = this._len;
 
         while (this._i--)
-        ***REMOVED***
+        {
             if (this.plugins[this._i] === plugin)
-            ***REMOVED***
+            {
                 if (destroy)
-                ***REMOVED***
+                {
                     plugin.destroy();
-                ***REMOVED***
+                }
 
                 this.plugins.splice(this._i, 1);
                 this._len--;
                 return;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Remove all Plugins from the PluginManager. It calls Plugin.destroy on every plugin before removing it from the manager.
     *
     * @method Phaser.PluginManager#removeAll
     */
-    removeAll: function() ***REMOVED***
+    removeAll: function() {
 
         this._i = this._len;
 
         while (this._i--)
-        ***REMOVED***
+        {
             this.plugins[this._i].destroy();
-        ***REMOVED***
+        }
 
         this.plugins.length = 0;
         this._len = 0;
 
-    ***REMOVED***,
+    },
 
     /**
     * Pre-update is called at the very start of the update cycle, before any other subsystems have been updated (including Physics).
@@ -3222,19 +3222,19 @@ Phaser.PluginManager.prototype = ***REMOVED***
     *
     * @method Phaser.PluginManager#preUpdate
     */
-    preUpdate: function () ***REMOVED***
+    preUpdate: function () {
 
         this._i = this._len;
 
         while (this._i--)
-        ***REMOVED***
+        {
             if (this.plugins[this._i].active && this.plugins[this._i].hasPreUpdate)
-            ***REMOVED***
+            {
                 this.plugins[this._i].preUpdate();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Update is called after all the core subsystems (Input, Tweens, Sound, etc) and the State have updated, but before the render.
@@ -3242,19 +3242,19 @@ Phaser.PluginManager.prototype = ***REMOVED***
     *
     * @method Phaser.PluginManager#update
     */
-    update: function () ***REMOVED***
+    update: function () {
 
         this._i = this._len;
 
         while (this._i--)
-        ***REMOVED***
+        {
             if (this.plugins[this._i].active && this.plugins[this._i].hasUpdate)
-            ***REMOVED***
+            {
                 this.plugins[this._i].update();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * PostUpdate is the last thing to be called before the world render.
@@ -3263,19 +3263,19 @@ Phaser.PluginManager.prototype = ***REMOVED***
     *
     * @method Phaser.PluginManager#postUpdate
     */
-    postUpdate: function () ***REMOVED***
+    postUpdate: function () {
 
         this._i = this._len;
 
         while (this._i--)
-        ***REMOVED***
+        {
             if (this.plugins[this._i].active && this.plugins[this._i].hasPostUpdate)
-            ***REMOVED***
+            {
                 this.plugins[this._i].postUpdate();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Render is called right after the Game Renderer completes, but before the State.render.
@@ -3283,19 +3283,19 @@ Phaser.PluginManager.prototype = ***REMOVED***
     *
     * @method Phaser.PluginManager#render
     */
-    render: function () ***REMOVED***
+    render: function () {
 
         this._i = this._len;
 
         while (this._i--)
-        ***REMOVED***
+        {
             if (this.plugins[this._i].visible && this.plugins[this._i].hasRender)
-            ***REMOVED***
+            {
                 this.plugins[this._i].render();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Post-render is called after the Game Renderer and State.render have run.
@@ -3303,41 +3303,41 @@ Phaser.PluginManager.prototype = ***REMOVED***
     *
     * @method Phaser.PluginManager#postRender
     */
-    postRender: function () ***REMOVED***
+    postRender: function () {
 
         this._i = this._len;
 
         while (this._i--)
-        ***REMOVED***
+        {
             if (this.plugins[this._i].visible && this.plugins[this._i].hasPostRender)
-            ***REMOVED***
+            {
                 this.plugins[this._i].postRender();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Clear down this PluginManager, calls destroy on every plugin and nulls out references.
     *
     * @method Phaser.PluginManager#destroy
     */
-    destroy: function () ***REMOVED***
+    destroy: function () {
 
         this.removeAll();
 
         this.game = null;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.PluginManager.prototype.constructor = Phaser.PluginManager;
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -3347,19 +3347,19 @@ Phaser.PluginManager.prototype.constructor = Phaser.PluginManager;
 * @class Phaser.Stage
 * @extends PIXI.DisplayObjectContainer
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - Game reference to the currently running game.
+* @param {Phaser.Game} game - Game reference to the currently running game.
  */
-Phaser.Stage = function (game) ***REMOVED***
+Phaser.Stage = function (game) {
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running Game.
+    * @property {Phaser.Game} game - A reference to the currently running Game.
     */
     this.game = game;
 
     PIXI.DisplayObjectContainer.call(this);
 
     /**
-    * @property ***REMOVED***string***REMOVED*** name - The name of this object.
+    * @property {string} name - The name of this object.
     * @default
     */
     this.name = '_stage_root';
@@ -3370,66 +3370,66 @@ Phaser.Stage = function (game) ***REMOVED***
     * Note that the browser can still elect to pause your game if it wishes to do so,
     * for example swapping to another browser tab. This will cause the RAF callback to halt,
     * effectively pausing your game, even though no in-game pause event is triggered if you enable this property.
-    * @property ***REMOVED***boolean***REMOVED*** disableVisibilityChange
+    * @property {boolean} disableVisibilityChange
     * @default
     */
     this.disableVisibilityChange = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** exists - If exists is true the Stage and all children are updated, otherwise it is skipped.
+    * @property {boolean} exists - If exists is true the Stage and all children are updated, otherwise it is skipped.
     * @default
     */
     this.exists = true;
 
     /**
-    * @property ***REMOVED***PIXI.Matrix***REMOVED*** worldTransform - Current transform of the object based on world (parent) factors
+    * @property {PIXI.Matrix} worldTransform - Current transform of the object based on world (parent) factors
     * @private
     * @readOnly
     */
     this.worldTransform = new PIXI.Matrix();
 
     /**
-    * @property ***REMOVED***Phaser.Stage***REMOVED*** stage - The stage reference (the Stage is its own stage)
+    * @property {Phaser.Stage} stage - The stage reference (the Stage is its own stage)
     * @private
     * @readOnly
     */
     this.stage = this;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** currentRenderOrderID - Reset each frame, keeps a count of the total number of objects updated.
+    * @property {number} currentRenderOrderID - Reset each frame, keeps a count of the total number of objects updated.
     */
     this.currentRenderOrderID = 0;
 
     /**
-    * @property ***REMOVED***string***REMOVED*** hiddenVar - The page visibility API event name.
+    * @property {string} hiddenVar - The page visibility API event name.
     * @private
     */
     this._hiddenVar = 'hidden';
 
     /**
-    * @property ***REMOVED***function***REMOVED*** _onChange - The blur/focus event handler.
+    * @property {function} _onChange - The blur/focus event handler.
     * @private
     */
     this._onChange = null;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _bgColor - Stage background color object. Populated by setBackgroundColor.
+    * @property {number} _bgColor - Stage background color object. Populated by setBackgroundColor.
     * @private
     */
-    this._bgColor = ***REMOVED*** r: 0, g: 0, b: 0, a: 0, color: 0, rgba: '#000000' ***REMOVED***;
+    this._bgColor = { r: 0, g: 0, b: 0, a: 0, color: 0, rgba: '#000000' };
 
     if (!this.game.transparent)
-    ***REMOVED***
+    {
         //  transparent = 0,0,0,0 - otherwise r,g,b,1
         this._bgColor.a = 1;
-    ***REMOVED***
+    }
 
     if (game.config)
-    ***REMOVED***
+    {
         this.parseConfig(game.config);
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.Stage.prototype = Object.create(PIXI.DisplayObjectContainer.prototype);
 Phaser.Stage.prototype.constructor = Phaser.Stage;
@@ -3439,28 +3439,28 @@ Phaser.Stage.prototype.constructor = Phaser.Stage;
 *
 * @method Phaser.Stage#parseConfig
 * @protected
-* @param ***REMOVED***object***REMOVED*** config -The configuration object to parse.
+* @param {object} config -The configuration object to parse.
 */
-Phaser.Stage.prototype.parseConfig = function (config) ***REMOVED***
+Phaser.Stage.prototype.parseConfig = function (config) {
 
     if (config['disableVisibilityChange'])
-    ***REMOVED***
+    {
         this.disableVisibilityChange = config['disableVisibilityChange'];
-    ***REMOVED***
+    }
 
     if (config['backgroundColor'])
-    ***REMOVED***
+    {
         this.setBackgroundColor(config['backgroundColor']);
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Initialises the stage and adds the event listeners.
 * @method Phaser.Stage#boot
 * @private
 */
-Phaser.Stage.prototype.boot = function () ***REMOVED***
+Phaser.Stage.prototype.boot = function () {
 
     Phaser.DOM.getOffset(this.game.canvas, this.offset);
 
@@ -3469,7 +3469,7 @@ Phaser.Stage.prototype.boot = function () ***REMOVED***
 
     this.checkVisibility();
 
-***REMOVED***;
+};
 
 /**
 * This is called automatically after the plugins preUpdate and before the State.update.
@@ -3477,34 +3477,34 @@ Phaser.Stage.prototype.boot = function () ***REMOVED***
 *
 * @method Phaser.Stage#preUpdate
 */
-Phaser.Stage.prototype.preUpdate = function () ***REMOVED***
+Phaser.Stage.prototype.preUpdate = function () {
 
     this.currentRenderOrderID = 0;
 
     //  This can't loop in reverse, we need the renderOrderID to be in sequence
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         this.children[i].preUpdate();
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * This is called automatically after the State.update, but before particles or plugins update.
 *
 * @method Phaser.Stage#update
 */
-Phaser.Stage.prototype.update = function () ***REMOVED***
+Phaser.Stage.prototype.update = function () {
 
     //  Goes in reverse, because it's highly likely the child will destroy itself in `update`
     var i = this.children.length;
 
     while (i--)
-    ***REMOVED***
+    {
         this.children[i].update();
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * This is called automatically before the renderer runs and after the plugins have updated.
@@ -3513,29 +3513,29 @@ Phaser.Stage.prototype.update = function () ***REMOVED***
 *
 * @method Phaser.Stage#postUpdate
 */
-Phaser.Stage.prototype.postUpdate = function () ***REMOVED***
+Phaser.Stage.prototype.postUpdate = function () {
 
     //  Apply the camera shake, fade, bounds, etc
     this.game.camera.update();
 
     //  Camera target first?
     if (this.game.camera.target)
-    ***REMOVED***
+    {
         this.game.camera.target.postUpdate();
 
         this.updateTransform();
 
         this.game.camera.updateTarget();
-    ***REMOVED***
+    }
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         this.children[i].postUpdate();
-    ***REMOVED***
+    }
 
     this.updateTransform();
 
-***REMOVED***;
+};
 
 /**
 * Updates the transforms for all objects on the display list.
@@ -3543,16 +3543,16 @@ Phaser.Stage.prototype.postUpdate = function () ***REMOVED***
 * 
 * @method Phaser.Stage#updateTransform
 */
-Phaser.Stage.prototype.updateTransform = function () ***REMOVED***
+Phaser.Stage.prototype.updateTransform = function () {
 
     this.worldAlpha = 1;
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         this.children[i].updateTransform();
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Starts a page visibility event listener running, or window.onpagehide/onpageshow if not supported by the browser.
@@ -3560,40 +3560,40 @@ Phaser.Stage.prototype.updateTransform = function () ***REMOVED***
 * 
 * @method Phaser.Stage#checkVisibility
 */
-Phaser.Stage.prototype.checkVisibility = function () ***REMOVED***
+Phaser.Stage.prototype.checkVisibility = function () {
 
     if (document.hidden !== undefined)
-    ***REMOVED***
+    {
         this._hiddenVar = 'visibilitychange';
-    ***REMOVED***
+    }
     else if (document.webkitHidden !== undefined)
-    ***REMOVED***
+    {
         this._hiddenVar = 'webkitvisibilitychange';
-    ***REMOVED***
+    }
     else if (document.mozHidden !== undefined)
-    ***REMOVED***
+    {
         this._hiddenVar = 'mozvisibilitychange';
-    ***REMOVED***
+    }
     else if (document.msHidden !== undefined)
-    ***REMOVED***
+    {
         this._hiddenVar = 'msvisibilitychange';
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         this._hiddenVar = null;
-    ***REMOVED***
+    }
 
     var _this = this;
 
-    this._onChange = function (event) ***REMOVED***
+    this._onChange = function (event) {
         return _this.visibilityChange(event);
-    ***REMOVED***;
+    };
 
     //  Does browser support it? If not (like in IE9 or old Android) we need to fall back to blur/focus
     if (this._hiddenVar)
-    ***REMOVED***
+    {
         document.addEventListener(this._hiddenVar, this._onChange, false);
-    ***REMOVED***
+    }
 
     window.onblur = this._onChange;
     window.onfocus = this._onChange;
@@ -3602,55 +3602,55 @@ Phaser.Stage.prototype.checkVisibility = function () ***REMOVED***
     window.onpageshow = this._onChange;
     
     if (this.game.device.cocoonJSApp)
-    ***REMOVED***
-        CocoonJS.App.onSuspended.addEventListener(function () ***REMOVED***
-            Phaser.Stage.prototype.visibilityChange.call(_this, ***REMOVED*** type: "pause" ***REMOVED***);
-        ***REMOVED***);
+    {
+        CocoonJS.App.onSuspended.addEventListener(function () {
+            Phaser.Stage.prototype.visibilityChange.call(_this, { type: "pause" });
+        });
 
-        CocoonJS.App.onActivated.addEventListener(function () ***REMOVED***
-            Phaser.Stage.prototype.visibilityChange.call(_this, ***REMOVED*** type: "resume" ***REMOVED***);
-        ***REMOVED***);
-    ***REMOVED***
+        CocoonJS.App.onActivated.addEventListener(function () {
+            Phaser.Stage.prototype.visibilityChange.call(_this, { type: "resume" });
+        });
+    }
 
-***REMOVED***;
+};
 
 /**
 * This method is called when the document visibility is changed.
 * 
 * @method Phaser.Stage#visibilityChange
-* @param ***REMOVED***Event***REMOVED*** event - Its type will be used to decide whether the game should be paused or not.
+* @param {Event} event - Its type will be used to decide whether the game should be paused or not.
 */
-Phaser.Stage.prototype.visibilityChange = function (event) ***REMOVED***
+Phaser.Stage.prototype.visibilityChange = function (event) {
 
     if (event.type === 'pagehide' || event.type === 'blur' || event.type === 'pageshow' || event.type === 'focus')
-    ***REMOVED***
+    {
         if (event.type === 'pagehide' || event.type === 'blur')
-        ***REMOVED***
+        {
             this.game.focusLoss(event);
-        ***REMOVED***
+        }
         else if (event.type === 'pageshow' || event.type === 'focus')
-        ***REMOVED***
+        {
             this.game.focusGain(event);
-        ***REMOVED***
+        }
 
         return;
-    ***REMOVED***
+    }
 
     if (this.disableVisibilityChange)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     if (document.hidden || document.mozHidden || document.msHidden || document.webkitHidden || event.type === "pause")
-    ***REMOVED***
+    {
         this.game.gamePaused(event);
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         this.game.gameResumed(event);
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Sets the background color for the Stage.
@@ -3662,11 +3662,11 @@ Phaser.Stage.prototype.visibilityChange = function (event) ***REMOVED***
 * If you've set your game to be transparent then calls to setBackgroundColor are ignored.
 *
 * @method Phaser.Stage#setBackgroundColor
-* @param ***REMOVED***number|string***REMOVED*** color - The color of the background.
+* @param {number|string} color - The color of the background.
 */
-Phaser.Stage.prototype.setBackgroundColor = function (color) ***REMOVED***
+Phaser.Stage.prototype.setBackgroundColor = function (color) {
 
-    if (this.game.transparent) ***REMOVED*** return; ***REMOVED***
+    if (this.game.transparent) { return; }
 
     Phaser.Color.valueToColor(color, this._bgColor);
     Phaser.Color.updateColor(this._bgColor);
@@ -3677,19 +3677,19 @@ Phaser.Stage.prototype.setBackgroundColor = function (color) ***REMOVED***
     this._bgColor.b /= 255;
     this._bgColor.a = 1;
 
-***REMOVED***;
+};
 
 /**
 * Destroys the Stage and removes event listeners.
 *
 * @method Phaser.Stage#destroy
 */
-Phaser.Stage.prototype.destroy = function () ***REMOVED***
+Phaser.Stage.prototype.destroy = function () {
 
     if (this._hiddenVar)
-    ***REMOVED***
+    {
         document.removeEventListener(this._hiddenVar, this._onChange, false);
-    ***REMOVED***
+    }
 
     window.onpagehide = null;
     window.onpageshow = null;
@@ -3697,64 +3697,64 @@ Phaser.Stage.prototype.destroy = function () ***REMOVED***
     window.onblur = null;
     window.onfocus = null;
 
-***REMOVED***;
+};
 
 /**
 * @name Phaser.Stage#backgroundColor
-* @property ***REMOVED***number|string***REMOVED*** backgroundColor - Gets and sets the background color of the stage. The color can be given as a number: 0xff0000 or a hex string: '#ff0000'
+* @property {number|string} backgroundColor - Gets and sets the background color of the stage. The color can be given as a number: 0xff0000 or a hex string: '#ff0000'
 */
-Object.defineProperty(Phaser.Stage.prototype, "backgroundColor", ***REMOVED***
+Object.defineProperty(Phaser.Stage.prototype, "backgroundColor", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this._bgColor.color;
 
-    ***REMOVED***,
+    },
 
-    set: function (color) ***REMOVED***
+    set: function (color) {
 
         this.setBackgroundColor(color);
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * Enable or disable texture smoothing for all objects on this Stage. Only works for bitmap/image textures. Smoothing is enabled by default.
 *
 * @name Phaser.Stage#smoothed
-* @property ***REMOVED***boolean***REMOVED*** smoothed - Set to true to smooth all sprites rendered on this Stage, or false to disable smoothing (great for pixel art)
+* @property {boolean} smoothed - Set to true to smooth all sprites rendered on this Stage, or false to disable smoothing (great for pixel art)
 */
-Object.defineProperty(Phaser.Stage.prototype, "smoothed", ***REMOVED***
+Object.defineProperty(Phaser.Stage.prototype, "smoothed", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return PIXI.scaleModes.DEFAULT === PIXI.scaleModes.LINEAR;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         if (value)
-        ***REMOVED***
+        {
             PIXI.scaleModes.DEFAULT = PIXI.scaleModes.LINEAR;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             PIXI.scaleModes.DEFAULT = PIXI.scaleModes.NEAREST;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
-***REMOVED***);
+});
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
-* A Group is a container for ***REMOVED***@link DisplayObject display objects***REMOVED*** including ***REMOVED***@link Phaser.Sprite Sprites***REMOVED*** and ***REMOVED***@link Phaser.Image Images***REMOVED***.
+* A Group is a container for {@link DisplayObject display objects} including {@link Phaser.Sprite Sprites} and {@link Phaser.Image Images}.
 *
 * Groups form the logical tree structure of the display/scene graph where local transformations are applied to children.
 * For instance, all children are also moved/rotated/scaled when the group is moved/rotated/scaled.
@@ -3765,42 +3765,42 @@ Object.defineProperty(Phaser.Stage.prototype, "smoothed", ***REMOVED***
 *
 * @class Phaser.Group
 * @extends PIXI.DisplayObjectContainer
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
-* @param ***REMOVED***DisplayObject|null***REMOVED*** [parent=(game world)] - The parent Group (or other ***REMOVED***@link DisplayObject***REMOVED***) that this group will be added to.
-*     If undefined/unspecified the Group will be added to the ***REMOVED***@link Phaser.Game#world Game World***REMOVED***; if null the Group will not be added to any parent.
-* @param ***REMOVED***string***REMOVED*** [name='group'] - A name for this group. Not used internally but useful for debugging.
-* @param ***REMOVED***boolean***REMOVED*** [addToStage=false] - If true this group will be added directly to the Game.Stage instead of Game.World.
-* @param ***REMOVED***boolean***REMOVED*** [enableBody=false] - If true all Sprites created with ***REMOVED***@link #create***REMOVED*** or ***REMOVED***@link #createMulitple***REMOVED*** will have a physics body created on them. Change the body type with ***REMOVED***@link #physicsBodyType***REMOVED***.
-* @param ***REMOVED***integer***REMOVED*** [physicsBodyType=0] - The physics body type to use when physics bodies are automatically added. See ***REMOVED***@link #physicsBodyType***REMOVED*** for values.
+* @param {Phaser.Game} game - A reference to the currently running game.
+* @param {DisplayObject|null} [parent=(game world)] - The parent Group (or other {@link DisplayObject}) that this group will be added to.
+*     If undefined/unspecified the Group will be added to the {@link Phaser.Game#world Game World}; if null the Group will not be added to any parent.
+* @param {string} [name='group'] - A name for this group. Not used internally but useful for debugging.
+* @param {boolean} [addToStage=false] - If true this group will be added directly to the Game.Stage instead of Game.World.
+* @param {boolean} [enableBody=false] - If true all Sprites created with {@link #create} or {@link #createMulitple} will have a physics body created on them. Change the body type with {@link #physicsBodyType}.
+* @param {integer} [physicsBodyType=0] - The physics body type to use when physics bodies are automatically added. See {@link #physicsBodyType} for values.
 */
-Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBodyType) ***REMOVED***
+Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBodyType) {
 
-    if (addToStage === undefined) ***REMOVED*** addToStage = false; ***REMOVED***
-    if (enableBody === undefined) ***REMOVED*** enableBody = false; ***REMOVED***
-    if (physicsBodyType === undefined) ***REMOVED*** physicsBodyType = Phaser.Physics.ARCADE; ***REMOVED***
+    if (addToStage === undefined) { addToStage = false; }
+    if (enableBody === undefined) { enableBody = false; }
+    if (physicsBodyType === undefined) { physicsBodyType = Phaser.Physics.ARCADE; }
 
     /**
     * A reference to the currently running Game.
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game
+    * @property {Phaser.Game} game
     * @protected
     */
     this.game = game;
 
     if (parent === undefined)
-    ***REMOVED***
+    {
         parent = game.world;
-    ***REMOVED***
+    }
 
     /**
     * A name for this group. Not used internally but useful for debugging.
-    * @property ***REMOVED***string***REMOVED*** name
+    * @property {string} name
     */
     this.name = name || 'group';
 
     /**
     * The z-depth value of this object within its parent container/Group - the World is a Group as well.
     * This value must be unique for each child in a Group.
-    * @property ***REMOVED***integer***REMOVED*** z
+    * @property {integer} z
     * @readOnly
     */
     this.z = 0;
@@ -3808,49 +3808,49 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     PIXI.DisplayObjectContainer.call(this);
 
     if (addToStage)
-    ***REMOVED***
+    {
         this.game.stage.addChild(this);
         this.z = this.game.stage.children.length;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         if (parent)
-        ***REMOVED***
+        {
             parent.addChild(this);
             this.z = parent.children.length;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     /**
     * Internal Phaser Type value.
-    * @property ***REMOVED***integer***REMOVED*** type
+    * @property {integer} type
     * @protected
     */
     this.type = Phaser.GROUP;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** physicsType - The const physics body type of this object.
+    * @property {number} physicsType - The const physics body type of this object.
     * @readonly
     */
     this.physicsType = Phaser.GROUP;
 
     /**
     * The alive property is useful for Groups that are children of other Groups and need to be included/excluded in checks like forEachAlive.
-    * @property ***REMOVED***boolean***REMOVED*** alive
+    * @property {boolean} alive
     * @default
     */
     this.alive = true;
 
     /**
     * If exists is true the group is updated, otherwise it is skipped.
-    * @property ***REMOVED***boolean***REMOVED*** exists
+    * @property {boolean} exists
     * @default
     */
     this.exists = true;
 
     /**
     * A group with `ignoreDestroy` set to `true` ignores all calls to its `destroy` method.
-    * @property ***REMOVED***boolean***REMOVED*** ignoreDestroy
+    * @property {boolean} ignoreDestroy
     * @default
     */
     this.ignoreDestroy = false;
@@ -3863,26 +3863,26 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     * This is extremely useful if you wish to destroy a Group from within one of its own callbacks
     * or a callback of one of its children.
     *
-    * @property ***REMOVED***boolean***REMOVED*** pendingDestroy
+    * @property {boolean} pendingDestroy
     */
     this.pendingDestroy = false;
 
     /**
-    * The type of objects that will be created when using ***REMOVED***@link #create***REMOVED*** or ***REMOVED***@link #createMultiple***REMOVED***.
+    * The type of objects that will be created when using {@link #create} or {@link #createMultiple}.
     *
     * Any object may be used but it should extend either Sprite or Image and accept the same constructor arguments:
     * when a new object is created it is passed the following parameters to its constructor: `(game, x, y, key, frame)`.
     *
-    * @property ***REMOVED***object***REMOVED*** classType
-    * @default ***REMOVED***@link Phaser.Sprite***REMOVED***
+    * @property {object} classType
+    * @default {@link Phaser.Sprite}
     */
     this.classType = Phaser.Sprite;
 
     /**
     * The current display object that the group cursor is pointing to, if any. (Can be set manually.)
     *
-    * The cursor is a way to iterate through the children in a Group using ***REMOVED***@link #next***REMOVED*** and ***REMOVED***@link #previous***REMOVED***.
-    * @property ***REMOVED***?DisplayObject***REMOVED*** cursor
+    * The cursor is a way to iterate through the children in a Group using {@link #next} and {@link #previous}.
+    * @property {?DisplayObject} cursor
     */
     this.cursor = null;
 
@@ -3892,7 +3892,7 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     * 
     * If there are children already in the Group at the time you set this property, they are not changed.
     * 
-    * @property ***REMOVED***boolean***REMOVED*** inputEnableChildren
+    * @property {boolean} inputEnableChildren
     * @default
     */
     this.inputEnableChildren = false;
@@ -3905,7 +3905,7 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     * This Signal is sent 2 arguments: A reference to the Sprite that triggered the signal, and
     * a reference to the Pointer that caused it.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onChildInputDown
+    * @property {Phaser.Signal} onChildInputDown
     */
     this.onChildInputDown = new Phaser.Signal();
 
@@ -3918,7 +3918,7 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     * a reference to the Pointer that caused it, and a boolean value `isOver` that tells you if the Pointer
     * is still over the Sprite or not.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onChildInputUp
+    * @property {Phaser.Signal} onChildInputUp
     */
     this.onChildInputUp = new Phaser.Signal();
 
@@ -3930,7 +3930,7 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     * This Signal is sent 2 arguments: A reference to the Sprite that triggered the signal, and
     * a reference to the Pointer that caused it.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onChildInputOver
+    * @property {Phaser.Signal} onChildInputOver
     */
     this.onChildInputOver = new Phaser.Signal();
 
@@ -3942,7 +3942,7 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     * This Signal is sent 2 arguments: A reference to the Sprite that triggered the signal, and
     * a reference to the Pointer that caused it.
     * 
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onChildInputOut
+    * @property {Phaser.Signal} onChildInputOut
     */
     this.onChildInputOut = new Phaser.Signal();
 
@@ -3951,25 +3951,25 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     *
     * If there are children already in the Group at the time you set this property, they are not changed.
     *
-    * The default body type is controlled with ***REMOVED***@link #physicsBodyType***REMOVED***.
-    * @property ***REMOVED***boolean***REMOVED*** enableBody
+    * The default body type is controlled with {@link #physicsBodyType}.
+    * @property {boolean} enableBody
     */
     this.enableBody = enableBody;
 
     /**
-    * If true when a physics body is created (via ***REMOVED***@link #enableBody***REMOVED***) it will create a physics debug object as well.
+    * If true when a physics body is created (via {@link #enableBody}) it will create a physics debug object as well.
     *
     * This only works for P2 bodies.
-    * @property ***REMOVED***boolean***REMOVED*** enableBodyDebug
+    * @property {boolean} enableBodyDebug
     * @default
     */
     this.enableBodyDebug = false;
 
     /**
-    * If ***REMOVED***@link #enableBody***REMOVED*** is true this is the type of physics body that is created on new Sprites.
+    * If {@link #enableBody} is true this is the type of physics body that is created on new Sprites.
     *
-    * The valid values are ***REMOVED***@link Phaser.Physics.ARCADE***REMOVED***, ***REMOVED***@link Phaser.Physics.P2JS***REMOVED***, ***REMOVED***@link Phaser.Physics.NINJA***REMOVED***, etc.
-    * @property ***REMOVED***integer***REMOVED*** physicsBodyType
+    * The valid values are {@link Phaser.Physics.ARCADE}, {@link Phaser.Physics.P2JS}, {@link Phaser.Physics.NINJA}, etc.
+    * @property {integer} physicsBodyType
     */
     this.physicsBodyType = physicsBodyType;
 
@@ -3986,19 +3986,19 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     *
     * If set to `null` the Group will use whatever Phaser.Physics.Arcade.sortDirection is set to. This is the default behavior.
     * 
-    * @property ***REMOVED***integer***REMOVED*** physicsSortDirection
+    * @property {integer} physicsSortDirection
     * @default
     */
     this.physicsSortDirection = null;
 
     /**
     * This signal is dispatched when the group is destroyed.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onDestroy
+    * @property {Phaser.Signal} onDestroy
     */
     this.onDestroy = new Phaser.Signal();
 
     /**
-    * @property ***REMOVED***integer***REMOVED*** cursorIndex - The current index of the Group cursor. Advance it with Group.next.
+    * @property {integer} cursorIndex - The current index of the Group cursor. Advance it with Group.next.
     * @readOnly
     */
     this.cursorIndex = 0;
@@ -4009,14 +4009,14 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     * Note that the cameraOffset values are in addition to any parent in the display list.
     * So if this Group was in a Group that has x: 200, then this will be added to the cameraOffset.x
     * 
-    * @property ***REMOVED***boolean***REMOVED*** fixedToCamera
+    * @property {boolean} fixedToCamera
     */
     this.fixedToCamera = false;
 
     /**
-    * If this object is ***REMOVED***@link #fixedToCamera***REMOVED*** then this stores the x/y position offset relative to the top-left of the camera view.
+    * If this object is {@link #fixedToCamera} then this stores the x/y position offset relative to the top-left of the camera view.
     * If the parent of this Group is also `fixedToCamera` then the offset here is in addition to that and should typically be disabled.
-    * @property ***REMOVED***Phaser.Point***REMOVED*** cameraOffset
+    * @property {Phaser.Point} cameraOffset
     */
     this.cameraOffset = new Phaser.Point();
 
@@ -4029,61 +4029,61 @@ Phaser.Group = function (game, parent, name, addToStage, enableBody, physicsBody
     * However if you don't use Arcade Physics, or this isn't a physics enabled Group, then you can use the hash to perform your own
     * sorting and filtering of Group children without touching their z-index (and therefore display draw order)
     * 
-    * @property ***REMOVED***array***REMOVED*** hash
+    * @property {array} hash
     */
     this.hash = [];
 
     /**
     * The property on which children are sorted.
-    * @property ***REMOVED***string***REMOVED*** _sortProperty
+    * @property {string} _sortProperty
     * @private
     */
     this._sortProperty = 'z';
 
-***REMOVED***;
+};
 
 Phaser.Group.prototype = Object.create(PIXI.DisplayObjectContainer.prototype);
 Phaser.Group.prototype.constructor = Phaser.Group;
 
 /**
-* A returnType value, as specified in ***REMOVED***@link #iterate***REMOVED*** eg.
+* A returnType value, as specified in {@link #iterate} eg.
 * @constant
-* @type ***REMOVED***integer***REMOVED***
+* @type {integer}
 */
 Phaser.Group.RETURN_NONE = 0;
 
 /**
-* A returnType value, as specified in ***REMOVED***@link #iterate***REMOVED*** eg.
+* A returnType value, as specified in {@link #iterate} eg.
 * @constant
-* @type ***REMOVED***integer***REMOVED***
+* @type {integer}
 */
 Phaser.Group.RETURN_TOTAL = 1;
 
 /**
-* A returnType value, as specified in ***REMOVED***@link #iterate***REMOVED*** eg.
+* A returnType value, as specified in {@link #iterate} eg.
 * @constant
-* @type ***REMOVED***integer***REMOVED***
+* @type {integer}
 */
 Phaser.Group.RETURN_CHILD = 2;
 
 /**
-* A returnType value, as specified in ***REMOVED***@link #iterate***REMOVED*** eg.
+* A returnType value, as specified in {@link #iterate} eg.
 * @constant
-* @type ***REMOVED***integer***REMOVED***
+* @type {integer}
 */
 Phaser.Group.RETURN_ALL = 3;
 
 /**
-* A sort ordering value, as specified in ***REMOVED***@link #sort***REMOVED*** eg.
+* A sort ordering value, as specified in {@link #sort} eg.
 * @constant
-* @type ***REMOVED***integer***REMOVED***
+* @type {integer}
 */
 Phaser.Group.SORT_ASCENDING = -1;
 
 /**
-* A sort ordering value, as specified in ***REMOVED***@link #sort***REMOVED*** eg.
+* A sort ordering value, as specified in {@link #sort} eg.
 * @constant
-* @type ***REMOVED***integer***REMOVED***
+* @type {integer}
 */
 Phaser.Group.SORT_DESCENDING = 1;
 
@@ -4101,68 +4101,68 @@ Phaser.Group.SORT_DESCENDING = 1;
 *
 * If `Group.inputEnableChildren` is set, then an Input Handler will be created on the object, so long as one does not already exist.
 *
-* Use ***REMOVED***@link #addAt***REMOVED*** to control where a child is added. Use ***REMOVED***@link #create***REMOVED*** to create and add a new child.
+* Use {@link #addAt} to control where a child is added. Use {@link #create} to create and add a new child.
 *
 * @method Phaser.Group#add
-* @param ***REMOVED***DisplayObject***REMOVED*** child - The display object to add as a child.
-* @param ***REMOVED***boolean***REMOVED*** [silent=false] - If true the child will not dispatch the `onAddedToGroup` event.
-* @param ***REMOVED***integer***REMOVED*** [index] - The index within the group to insert the child to. Where 0 is the bottom of the Group.
-* @return ***REMOVED***DisplayObject***REMOVED*** The child that was added to the group.
+* @param {DisplayObject} child - The display object to add as a child.
+* @param {boolean} [silent=false] - If true the child will not dispatch the `onAddedToGroup` event.
+* @param {integer} [index] - The index within the group to insert the child to. Where 0 is the bottom of the Group.
+* @return {DisplayObject} The child that was added to the group.
 */
-Phaser.Group.prototype.add = function (child, silent, index) ***REMOVED***
+Phaser.Group.prototype.add = function (child, silent, index) {
 
-    if (silent === undefined) ***REMOVED*** silent = false; ***REMOVED***
+    if (silent === undefined) { silent = false; }
 
     if (child.parent === this)
-    ***REMOVED***
+    {
         return child;
-    ***REMOVED***
+    }
 
     if (child.body && child.parent && child.parent.hash)
-    ***REMOVED***
+    {
         child.parent.removeFromHash(child);
-    ***REMOVED***
+    }
 
     if (index === undefined)
-    ***REMOVED***
+    {
         child.z = this.children.length;
 
         this.addChild(child);
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         this.addChildAt(child, index);
 
         this.updateZ();
-    ***REMOVED***
+    }
 
     if (this.enableBody && child.hasOwnProperty('body') && child.body === null)
-    ***REMOVED***
+    {
         this.game.physics.enable(child, this.physicsBodyType);
-    ***REMOVED***
+    }
     else if (child.body)
-    ***REMOVED***
+    {
         this.addToHash(child);
-    ***REMOVED***
+    }
 
     if (this.inputEnableChildren && (!child.input || child.inputEnabled))
-    ***REMOVED***
+    {
         child.inputEnabled = true;
-    ***REMOVED***
+    }
 
     if (!silent && child.events)
-    ***REMOVED***
+    {
         child.events.onAddedToGroup$dispatch(child, this);
-    ***REMOVED***
+    }
 
     if (this.cursor === null)
-    ***REMOVED***
+    {
         this.cursor = child;
-    ***REMOVED***
+    }
 
     return child;
 
-***REMOVED***;
+};
 
 /**
 * Adds an existing object to this group.
@@ -4174,66 +4174,66 @@ Phaser.Group.prototype.add = function (child, silent, index) ***REMOVED***
 * If `Group.inputEnableChildren` is set, then an Input Handler will be created on the object, so long as one does not already exist.
 *
 * @method Phaser.Group#addAt
-* @param ***REMOVED***DisplayObject***REMOVED*** child - The display object to add as a child.
-* @param ***REMOVED***integer***REMOVED*** [index=0] - The index within the group to insert the child to.
-* @param ***REMOVED***boolean***REMOVED*** [silent=false] - If true the child will not dispatch the `onAddedToGroup` event.
-* @return ***REMOVED***DisplayObject***REMOVED*** The child that was added to the group.
+* @param {DisplayObject} child - The display object to add as a child.
+* @param {integer} [index=0] - The index within the group to insert the child to.
+* @param {boolean} [silent=false] - If true the child will not dispatch the `onAddedToGroup` event.
+* @return {DisplayObject} The child that was added to the group.
 */
-Phaser.Group.prototype.addAt = function (child, index, silent) ***REMOVED***
+Phaser.Group.prototype.addAt = function (child, index, silent) {
 
     this.add(child, silent, index);
 
-***REMOVED***;
+};
 
 /**
 * Adds a child of this Group into the hash array.
 * This call will return false if the child is not a child of this Group, or is already in the hash.
 *
 * @method Phaser.Group#addToHash
-* @param ***REMOVED***DisplayObject***REMOVED*** child - The display object to add to this Groups hash. Must be a member of this Group already and not present in the hash.
-* @return ***REMOVED***boolean***REMOVED*** True if the child was successfully added to the hash, otherwise false.
+* @param {DisplayObject} child - The display object to add to this Groups hash. Must be a member of this Group already and not present in the hash.
+* @return {boolean} True if the child was successfully added to the hash, otherwise false.
 */
-Phaser.Group.prototype.addToHash = function (child) ***REMOVED***
+Phaser.Group.prototype.addToHash = function (child) {
 
     if (child.parent === this)
-    ***REMOVED***
+    {
         var index = this.hash.indexOf(child);
 
         if (index === -1)
-        ***REMOVED***
+        {
             this.hash.push(child);
             return true;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return false;
 
-***REMOVED***;
+};
 
 /**
 * Removes a child of this Group from the hash array.
 * This call will return false if the child is not in the hash.
 *
 * @method Phaser.Group#removeFromHash
-* @param ***REMOVED***DisplayObject***REMOVED*** child - The display object to remove from this Groups hash. Must be a member of this Group and in the hash.
-* @return ***REMOVED***boolean***REMOVED*** True if the child was successfully removed from the hash, otherwise false.
+* @param {DisplayObject} child - The display object to remove from this Groups hash. Must be a member of this Group and in the hash.
+* @return {boolean} True if the child was successfully removed from the hash, otherwise false.
 */
-Phaser.Group.prototype.removeFromHash = function (child) ***REMOVED***
+Phaser.Group.prototype.removeFromHash = function (child) {
 
     if (child)
-    ***REMOVED***
+    {
         var index = this.hash.indexOf(child);
 
         if (index !== -1)
-        ***REMOVED***
+        {
             this.hash.splice(index, 1);
             return true;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return false;
 
-***REMOVED***;
+};
 
 /**
 * Adds an array of existing Display Objects to this Group.
@@ -4248,52 +4248,52 @@ Phaser.Group.prototype.removeFromHash = function (child) ***REMOVED***
 * If `Group.inputEnableChildren` is set, then an Input Handler will be created on the objects, so long as one does not already exist.
 *
 * @method Phaser.Group#addMultiple
-* @param ***REMOVED***DisplayObject[]|Phaser.Group***REMOVED*** children - An array of display objects or a Phaser.Group. If a Group is given then *all* children will be moved from it.
-* @param ***REMOVED***boolean***REMOVED*** [silent=false] - If true the children will not dispatch the `onAddedToGroup` event.
-* @return ***REMOVED***DisplayObject[]|Phaser.Group***REMOVED*** The array of children or Group of children that were added to this Group.
+* @param {DisplayObject[]|Phaser.Group} children - An array of display objects or a Phaser.Group. If a Group is given then *all* children will be moved from it.
+* @param {boolean} [silent=false] - If true the children will not dispatch the `onAddedToGroup` event.
+* @return {DisplayObject[]|Phaser.Group} The array of children or Group of children that were added to this Group.
 */
-Phaser.Group.prototype.addMultiple = function (children, silent) ***REMOVED***
+Phaser.Group.prototype.addMultiple = function (children, silent) {
 
     if (children instanceof Phaser.Group)
-    ***REMOVED***
+    {
         children.moveAll(this, silent);
-    ***REMOVED***
+    }
     else if (Array.isArray(children))
-    ***REMOVED***
+    {
         for (var i = 0; i < children.length; i++)
-        ***REMOVED***
+        {
             this.add(children[i], silent);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return children;
 
-***REMOVED***;
+};
 
 /**
 * Returns the child found at the given index within this group.
 *
 * @method Phaser.Group#getAt
-* @param ***REMOVED***integer***REMOVED*** index - The index to return the child from.
-* @return ***REMOVED***DisplayObject|integer***REMOVED*** The child that was found at the given index, or -1 for an invalid index.
+* @param {integer} index - The index to return the child from.
+* @return {DisplayObject|integer} The child that was found at the given index, or -1 for an invalid index.
 */
-Phaser.Group.prototype.getAt = function (index) ***REMOVED***
+Phaser.Group.prototype.getAt = function (index) {
 
     if (index < 0 || index >= this.children.length)
-    ***REMOVED***
+    {
         return -1;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         return this.getChildAt(index);
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Creates a new Phaser.Sprite object and adds it to the top of this group.
 *
-* Use ***REMOVED***@link #classType***REMOVED*** to change the type of object created.
+* Use {@link #classType} to change the type of object created.
 * 
 * The child is automatically added to the top of the group, and is displayed above every previous child.
 *
@@ -4305,17 +4305,17 @@ Phaser.Group.prototype.getAt = function (index) ***REMOVED***
 * If `Group.inputEnableChildren` is set, then an Input Handler will be created on the object, so long as one does not already exist.
 *
 * @method Phaser.Group#create
-* @param ***REMOVED***number***REMOVED*** x - The x coordinate to display the newly created Sprite at. The value is in relation to the group.x point.
-* @param ***REMOVED***number***REMOVED*** y - The y coordinate to display the newly created Sprite at. The value is in relation to the group.y point.
-* @param ***REMOVED***string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture***REMOVED*** [key] - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
-* @param ***REMOVED***string|number***REMOVED*** [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
-* @param ***REMOVED***boolean***REMOVED*** [exists=true] - The default exists state of the Sprite.
-* @param ***REMOVED***integer***REMOVED*** [index] - The index within the group to insert the child to. Where 0 is the bottom of the Group.
-* @return ***REMOVED***DisplayObject***REMOVED*** The child that was created: will be a ***REMOVED***@link Phaser.Sprite***REMOVED*** unless ***REMOVED***@link #classType***REMOVED*** has been changed.
+* @param {number} x - The x coordinate to display the newly created Sprite at. The value is in relation to the group.x point.
+* @param {number} y - The y coordinate to display the newly created Sprite at. The value is in relation to the group.y point.
+* @param {string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture} [key] - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
+* @param {string|number} [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
+* @param {boolean} [exists=true] - The default exists state of the Sprite.
+* @param {integer} [index] - The index within the group to insert the child to. Where 0 is the bottom of the Group.
+* @return {DisplayObject} The child that was created: will be a {@link Phaser.Sprite} unless {@link #classType} has been changed.
 */
-Phaser.Group.prototype.create = function (x, y, key, frame, exists, index) ***REMOVED***
+Phaser.Group.prototype.create = function (x, y, key, frame, exists, index) {
 
-    if (exists === undefined) ***REMOVED*** exists = true; ***REMOVED***
+    if (exists === undefined) { exists = true; }
 
     var child = new this.classType(this.game, x, y, key, frame);
 
@@ -4325,14 +4325,14 @@ Phaser.Group.prototype.create = function (x, y, key, frame, exists, index) ***RE
 
     return this.add(child, false, index);
 
-***REMOVED***;
+};
 
 /**
 * Creates multiple Phaser.Sprite objects and adds them to the top of this Group.
 * 
 * This method is useful if you need to quickly generate a pool of sprites, such as bullets.
 *
-* Use ***REMOVED***@link #classType***REMOVED*** to change the type of object created.
+* Use {@link #classType} to change the type of object created.
 *
 * You can provide an array as the `key` and / or `frame` arguments. When you do this
 * it will create `quantity` Sprites for every key (and frame) in the arrays.
@@ -4368,46 +4368,46 @@ Phaser.Group.prototype.create = function (x, y, key, frame, exists, index) ***RE
 * If `Group.inputEnableChildren` is set, then an Input Handler will be created on the objects, so long as one does not already exist.
 *
 * @method Phaser.Group#createMultiple
-* @param ***REMOVED***integer***REMOVED*** quantity - The number of Sprites to create.
-* @param ***REMOVED***string|array***REMOVED*** key - The Cache key of the image that the Sprites will use. Or an Array of keys. See the description for details on how the quantity applies when arrays are used.
-* @param ***REMOVED***integer|string|array***REMOVED*** [frame=0] - If the Sprite image contains multiple frames you can specify which one to use here. Or an Array of frames. See the description for details on how the quantity applies when arrays are used.
-* @param ***REMOVED***boolean***REMOVED*** [exists=false] - The default exists state of the Sprite.
-* @return ***REMOVED***array***REMOVED*** An array containing all of the Sprites that were created.
+* @param {integer} quantity - The number of Sprites to create.
+* @param {string|array} key - The Cache key of the image that the Sprites will use. Or an Array of keys. See the description for details on how the quantity applies when arrays are used.
+* @param {integer|string|array} [frame=0] - If the Sprite image contains multiple frames you can specify which one to use here. Or an Array of frames. See the description for details on how the quantity applies when arrays are used.
+* @param {boolean} [exists=false] - The default exists state of the Sprite.
+* @return {array} An array containing all of the Sprites that were created.
 */
-Phaser.Group.prototype.createMultiple = function (quantity, key, frame, exists) ***REMOVED***
+Phaser.Group.prototype.createMultiple = function (quantity, key, frame, exists) {
 
-    if (frame === undefined) ***REMOVED*** frame = 0; ***REMOVED***
-    if (exists === undefined) ***REMOVED*** exists = false; ***REMOVED***
+    if (frame === undefined) { frame = 0; }
+    if (exists === undefined) { exists = false; }
 
     if (!Array.isArray(key))
-    ***REMOVED***
+    {
         key = [ key ];
-    ***REMOVED***
+    }
 
     if (!Array.isArray(frame))
-    ***REMOVED***
+    {
         frame = [ frame ];
-    ***REMOVED***
+    }
 
     var _this = this;
     var children = [];
 
-    key.forEach(function(singleKey) ***REMOVED***
+    key.forEach(function(singleKey) {
 
-        frame.forEach(function(singleFrame) ***REMOVED***
+        frame.forEach(function(singleFrame) {
 
             for (var i = 0; i < quantity; i++)
-            ***REMOVED***
+            {
                 children.push(_this.create(0, 0, singleKey, singleFrame, exists));
-            ***REMOVED***
+            }
 
-        ***REMOVED***);
+        });
 
-    ***REMOVED***);
+    });
 
     return children;
 
-***REMOVED***;
+};
 
 /**
 * Internal method that re-applies all of the children's Z values.
@@ -4417,16 +4417,16 @@ Phaser.Group.prototype.createMultiple = function (quantity, key, frame, exists) 
 * @method Phaser.Group#updateZ
 * @protected
 */
-Phaser.Group.prototype.updateZ = function () ***REMOVED***
+Phaser.Group.prototype.updateZ = function () {
 
     var i = this.children.length;
 
     while (i--)
-    ***REMOVED***
+    {
         this.children[i].z = i;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * This method iterates through all children in the Group (regardless if they are visible or exist)
@@ -4472,85 +4472,85 @@ Phaser.Group.prototype.updateZ = function () ***REMOVED***
 * The final argument; `offset` lets you start the alignment from a specific child index.
 *
 * @method Phaser.Group#align
-* @param ***REMOVED***integer***REMOVED*** width - The width of the grid in items (not pixels). Set to -1 for a dynamic width. If -1 then you must set an explicit height value.
-* @param ***REMOVED***integer***REMOVED*** height - The height of the grid in items (not pixels). Set to -1 for a dynamic height. If -1 then you must set an explicit width value.
-* @param ***REMOVED***integer***REMOVED*** cellWidth - The width of each grid cell, in pixels.
-* @param ***REMOVED***integer***REMOVED*** cellHeight - The height of each grid cell, in pixels.
-* @param ***REMOVED***integer***REMOVED*** [position] - The position constant. One of `Phaser.TOP_LEFT` (default), `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_CENTER`, `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-* @param ***REMOVED***integer***REMOVED*** [offset=0] - Optional index to start the alignment from. Defaults to zero, the first child in the Group, but can be set to any valid child index value.
-* @return ***REMOVED***boolean***REMOVED*** True if the Group children were aligned, otherwise false.
+* @param {integer} width - The width of the grid in items (not pixels). Set to -1 for a dynamic width. If -1 then you must set an explicit height value.
+* @param {integer} height - The height of the grid in items (not pixels). Set to -1 for a dynamic height. If -1 then you must set an explicit width value.
+* @param {integer} cellWidth - The width of each grid cell, in pixels.
+* @param {integer} cellHeight - The height of each grid cell, in pixels.
+* @param {integer} [position] - The position constant. One of `Phaser.TOP_LEFT` (default), `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_CENTER`, `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
+* @param {integer} [offset=0] - Optional index to start the alignment from. Defaults to zero, the first child in the Group, but can be set to any valid child index value.
+* @return {boolean} True if the Group children were aligned, otherwise false.
 */
-Phaser.Group.prototype.align = function (width, height, cellWidth, cellHeight, position, offset) ***REMOVED***
+Phaser.Group.prototype.align = function (width, height, cellWidth, cellHeight, position, offset) {
 
-    if (position === undefined) ***REMOVED*** position = Phaser.TOP_LEFT; ***REMOVED***
-    if (offset === undefined) ***REMOVED*** offset = 0; ***REMOVED***
+    if (position === undefined) { position = Phaser.TOP_LEFT; }
+    if (offset === undefined) { offset = 0; }
 
     if (this.children.length === 0 || offset > this.children.length || (width === -1 && height === -1))
-    ***REMOVED***
+    {
         return false;
-    ***REMOVED***
+    }
 
     var r = new Phaser.Rectangle(0, 0, cellWidth, cellHeight);
     var w = (width * cellWidth);
     var h = (height * cellHeight);
 
     for (var i = offset; i < this.children.length; i++)
-    ***REMOVED***
+    {
         var child = this.children[i];
 
         if (child['alignIn'])
-        ***REMOVED***
+        {
             child.alignIn(r, position);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             continue;
-        ***REMOVED***
+        }
 
         if (width === -1)
-        ***REMOVED***
+        {
             //  We keep laying them out horizontally until we've done them all
             r.y += cellHeight;
 
             if (r.y === h)
-            ***REMOVED***
+            {
                 r.x += cellWidth;
                 r.y = 0;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else if (height === -1)
-        ***REMOVED***
+        {
             //  We keep laying them out vertically until we've done them all
             r.x += cellWidth;
 
             if (r.x === w)
-            ***REMOVED***
+            {
                 r.x = 0;
                 r.y += cellHeight;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             //  We keep laying them out until we hit the column limit
             r.x += cellWidth;
 
             if (r.x === w)
-            ***REMOVED***
+            {
                 r.x = 0;
                 r.y += cellHeight;
 
                 if (r.y === h)
-                ***REMOVED***
+                {
                     //  We've hit the column limit, so return, even if there are children left
                     return true;
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+                }
+            }
+        }
+    }
 
     return true;
 
-***REMOVED***;
+};
 
 /**
 * Sets the group cursor to the first child in the group.
@@ -4558,26 +4558,26 @@ Phaser.Group.prototype.align = function (width, height, cellWidth, cellHeight, p
 * If the optional index parameter is given it sets the cursor to the object at that index instead.
 *
 * @method Phaser.Group#resetCursor
-* @param ***REMOVED***integer***REMOVED*** [index=0] - Set the cursor to point to a specific index.
-* @return ***REMOVED***any***REMOVED*** The child the cursor now points to.
+* @param {integer} [index=0] - Set the cursor to point to a specific index.
+* @return {any} The child the cursor now points to.
 */
-Phaser.Group.prototype.resetCursor = function (index) ***REMOVED***
+Phaser.Group.prototype.resetCursor = function (index) {
 
-    if (index === undefined) ***REMOVED*** index = 0; ***REMOVED***
+    if (index === undefined) { index = 0; }
 
     if (index > this.children.length - 1)
-    ***REMOVED***
+    {
         index = 0;
-    ***REMOVED***
+    }
 
     if (this.cursor)
-    ***REMOVED***
+    {
         this.cursorIndex = index;
         this.cursor = this.children[this.cursorIndex];
         return this.cursor;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Advances the group cursor to the next (higher) object in the group.
@@ -4585,28 +4585,28 @@ Phaser.Group.prototype.resetCursor = function (index) ***REMOVED***
 * If the cursor is at the end of the group (top child) it is moved the start of the group (bottom child).
 *
 * @method Phaser.Group#next
-* @return ***REMOVED***any***REMOVED*** The child the cursor now points to.
+* @return {any} The child the cursor now points to.
 */
-Phaser.Group.prototype.next = function () ***REMOVED***
+Phaser.Group.prototype.next = function () {
 
     if (this.cursor)
-    ***REMOVED***
+    {
         //  Wrap the cursor?
         if (this.cursorIndex >= this.children.length - 1)
-        ***REMOVED***
+        {
             this.cursorIndex = 0;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this.cursorIndex++;
-        ***REMOVED***
+        }
 
         this.cursor = this.children[this.cursorIndex];
 
         return this.cursor;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Moves the group cursor to the previous (lower) child in the group.
@@ -4614,28 +4614,28 @@ Phaser.Group.prototype.next = function () ***REMOVED***
 * If the cursor is at the start of the group (bottom child) it is moved to the end (top child).
 *
 * @method Phaser.Group#previous
-* @return ***REMOVED***any***REMOVED*** The child the cursor now points to.
+* @return {any} The child the cursor now points to.
 */
-Phaser.Group.prototype.previous = function () ***REMOVED***
+Phaser.Group.prototype.previous = function () {
 
     if (this.cursor)
-    ***REMOVED***
+    {
         //  Wrap the cursor?
         if (this.cursorIndex === 0)
-        ***REMOVED***
+        {
             this.cursorIndex = this.children.length - 1;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this.cursorIndex--;
-        ***REMOVED***
+        }
 
         this.cursor = this.children[this.cursorIndex];
 
         return this.cursor;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Swaps the position of two children in this group.
@@ -4643,123 +4643,123 @@ Phaser.Group.prototype.previous = function () ***REMOVED***
 * Both children must be in this group, a child cannot be swapped with itself, and unparented children cannot be swapped.
 *
 * @method Phaser.Group#swap
-* @param ***REMOVED***any***REMOVED*** child1 - The first child to swap.
-* @param ***REMOVED***any***REMOVED*** child2 - The second child to swap.
+* @param {any} child1 - The first child to swap.
+* @param {any} child2 - The second child to swap.
 */
-Phaser.Group.prototype.swap = function (child1, child2) ***REMOVED***
+Phaser.Group.prototype.swap = function (child1, child2) {
 
     this.swapChildren(child1, child2);
     this.updateZ();
 
-***REMOVED***;
+};
 
 /**
 * Brings the given child to the top of this group so it renders above all other children.
 *
 * @method Phaser.Group#bringToTop
-* @param ***REMOVED***any***REMOVED*** child - The child to bring to the top of this group.
-* @return ***REMOVED***any***REMOVED*** The child that was moved.
+* @param {any} child - The child to bring to the top of this group.
+* @return {any} The child that was moved.
 */
-Phaser.Group.prototype.bringToTop = function (child) ***REMOVED***
+Phaser.Group.prototype.bringToTop = function (child) {
 
     if (child.parent === this && this.getIndex(child) < this.children.length)
-    ***REMOVED***
+    {
         this.remove(child, false, true);
         this.add(child, true);
-    ***REMOVED***
+    }
 
     return child;
 
-***REMOVED***;
+};
 
 /**
 * Sends the given child to the bottom of this group so it renders below all other children.
 *
 * @method Phaser.Group#sendToBack
-* @param ***REMOVED***any***REMOVED*** child - The child to send to the bottom of this group.
-* @return ***REMOVED***any***REMOVED*** The child that was moved.
+* @param {any} child - The child to send to the bottom of this group.
+* @return {any} The child that was moved.
 */
-Phaser.Group.prototype.sendToBack = function (child) ***REMOVED***
+Phaser.Group.prototype.sendToBack = function (child) {
 
     if (child.parent === this && this.getIndex(child) > 0)
-    ***REMOVED***
+    {
         this.remove(child, false, true);
         this.addAt(child, 0, true);
-    ***REMOVED***
+    }
 
     return child;
 
-***REMOVED***;
+};
 
 /**
 * Moves the given child up one place in this group unless it's already at the top.
 *
 * @method Phaser.Group#moveUp
-* @param ***REMOVED***any***REMOVED*** child - The child to move up in the group.
-* @return ***REMOVED***any***REMOVED*** The child that was moved.
+* @param {any} child - The child to move up in the group.
+* @return {any} The child that was moved.
 */
-Phaser.Group.prototype.moveUp = function (child) ***REMOVED***
+Phaser.Group.prototype.moveUp = function (child) {
 
     if (child.parent === this && this.getIndex(child) < this.children.length - 1)
-    ***REMOVED***
+    {
         var a = this.getIndex(child);
         var b = this.getAt(a + 1);
 
         if (b)
-        ***REMOVED***
+        {
             this.swap(child, b);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return child;
 
-***REMOVED***;
+};
 
 /**
 * Moves the given child down one place in this group unless it's already at the bottom.
 *
 * @method Phaser.Group#moveDown
-* @param ***REMOVED***any***REMOVED*** child - The child to move down in the group.
-* @return ***REMOVED***any***REMOVED*** The child that was moved.
+* @param {any} child - The child to move down in the group.
+* @return {any} The child that was moved.
 */
-Phaser.Group.prototype.moveDown = function (child) ***REMOVED***
+Phaser.Group.prototype.moveDown = function (child) {
 
     if (child.parent === this && this.getIndex(child) > 0)
-    ***REMOVED***
+    {
         var a = this.getIndex(child);
         var b = this.getAt(a - 1);
 
         if (b)
-        ***REMOVED***
+        {
             this.swap(child, b);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return child;
 
-***REMOVED***;
+};
 
 /**
 * Positions the child found at the given index within this group to the given x and y coordinates.
 *
 * @method Phaser.Group#xy
-* @param ***REMOVED***integer***REMOVED*** index - The index of the child in the group to set the position of.
-* @param ***REMOVED***number***REMOVED*** x - The new x position of the child.
-* @param ***REMOVED***number***REMOVED*** y - The new y position of the child.
+* @param {integer} index - The index of the child in the group to set the position of.
+* @param {number} x - The new x position of the child.
+* @param {number} y - The new y position of the child.
 */
-Phaser.Group.prototype.xy = function (index, x, y) ***REMOVED***
+Phaser.Group.prototype.xy = function (index, x, y) {
 
     if (index < 0 || index > this.children.length)
-    ***REMOVED***
+    {
         return -1;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         this.getChildAt(index).x = x;
         this.getChildAt(index).y = y;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Reverses all children in this group.
@@ -4768,25 +4768,25 @@ Phaser.Group.prototype.xy = function (index, x, y) ***REMOVED***
 *
 * @method Phaser.Group#reverse
 */
-Phaser.Group.prototype.reverse = function () ***REMOVED***
+Phaser.Group.prototype.reverse = function () {
 
     this.children.reverse();
     this.updateZ();
 
-***REMOVED***;
+};
 
 /**
 * Get the index position of the given child in this group, which should match the child's `z` property.
 *
 * @method Phaser.Group#getIndex
-* @param ***REMOVED***any***REMOVED*** child - The child to get the index for.
-* @return ***REMOVED***integer***REMOVED*** The index of the child or -1 if it's not a member of this group.
+* @param {any} child - The child to get the index for.
+* @return {integer} The index of the child or -1 if it's not a member of this group.
 */
-Phaser.Group.prototype.getIndex = function (child) ***REMOVED***
+Phaser.Group.prototype.getIndex = function (child) {
 
     return this.children.indexOf(child);
 
-***REMOVED***;
+};
 
 /**
 * Searches the Group for the first instance of a child with the `name`
@@ -4794,22 +4794,22 @@ Phaser.Group.prototype.getIndex = function (child) ***REMOVED***
 * the same name only the first instance is returned.
 *
 * @method Phaser.Group#getByName
-* @param ***REMOVED***string***REMOVED*** name - The name to search for.
-* @return ***REMOVED***any***REMOVED*** The first child with a matching name, or null if none were found.
+* @param {string} name - The name to search for.
+* @return {any} The first child with a matching name, or null if none were found.
 */
-Phaser.Group.prototype.getByName = function (name) ***REMOVED***
+Phaser.Group.prototype.getByName = function (name) {
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         if (this.children[i].name === name)
-        ***REMOVED***
+        {
             return this.children[i];
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return null;
 
-***REMOVED***;
+};
 
 /**
 * Replaces a child of this Group with the given newChild. The newChild cannot be a member of this Group.
@@ -4819,36 +4819,36 @@ Phaser.Group.prototype.getByName = function (name) ***REMOVED***
 * If `Group.inputEnableChildren` is set, then an Input Handler will be created on the object, so long as one does not already exist.
 *
 * @method Phaser.Group#replace
-* @param ***REMOVED***any***REMOVED*** oldChild - The child in this group that will be replaced.
-* @param ***REMOVED***any***REMOVED*** newChild - The child to be inserted into this group.
-* @return ***REMOVED***any***REMOVED*** Returns the oldChild that was replaced within this group.
+* @param {any} oldChild - The child in this group that will be replaced.
+* @param {any} newChild - The child to be inserted into this group.
+* @return {any} Returns the oldChild that was replaced within this group.
 */
-Phaser.Group.prototype.replace = function (oldChild, newChild) ***REMOVED***
+Phaser.Group.prototype.replace = function (oldChild, newChild) {
 
     var index = this.getIndex(oldChild);
 
     if (index !== -1)
-    ***REMOVED***
+    {
         if (newChild.parent)
-        ***REMOVED***
+        {
             if (newChild.parent instanceof Phaser.Group)
-            ***REMOVED***
+            {
                 newChild.parent.remove(newChild);
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 newChild.parent.removeChild(newChild);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         this.remove(oldChild);
 
         this.addAt(newChild, index);
 
         return oldChild;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Checks if the child has the given property.
@@ -4856,34 +4856,34 @@ Phaser.Group.prototype.replace = function (oldChild, newChild) ***REMOVED***
 * Will scan up to 4 levels deep only.
 *
 * @method Phaser.Group#hasProperty
-* @param ***REMOVED***any***REMOVED*** child - The child to check for the existence of the property on.
-* @param ***REMOVED***string[]***REMOVED*** key - An array of strings that make up the property.
-* @return ***REMOVED***boolean***REMOVED*** True if the child has the property, otherwise false.
+* @param {any} child - The child to check for the existence of the property on.
+* @param {string[]} key - An array of strings that make up the property.
+* @return {boolean} True if the child has the property, otherwise false.
 */
-Phaser.Group.prototype.hasProperty = function (child, key) ***REMOVED***
+Phaser.Group.prototype.hasProperty = function (child, key) {
 
     var len = key.length;
 
     if (len === 1 && key[0] in child)
-    ***REMOVED***
+    {
         return true;
-    ***REMOVED***
+    }
     else if (len === 2 && key[0] in child && key[1] in child[key[0]])
-    ***REMOVED***
+    {
         return true;
-    ***REMOVED***
+    }
     else if (len === 3 && key[0] in child && key[1] in child[key[0]] && key[2] in child[key[0]][key[1]])
-    ***REMOVED***
+    {
         return true;
-    ***REMOVED***
+    }
     else if (len === 4 && key[0] in child && key[1] in child[key[0]] && key[2] in child[key[0]][key[1]] && key[3] in child[key[0]][key[1]][key[2]])
-    ***REMOVED***
+    {
         return true;
-    ***REMOVED***
+    }
 
     return false;
 
-***REMOVED***;
+};
 
 /**
 * Sets a property to the given value on the child. The operation parameter controls how the value is set.
@@ -4896,16 +4896,16 @@ Phaser.Group.prototype.hasProperty = function (child, key) ***REMOVED***
 * - 4: will divide the value already present by the given value.
 *
 * @method Phaser.Group#setProperty
-* @param ***REMOVED***any***REMOVED*** child - The child to set the property value on.
-* @param ***REMOVED***array***REMOVED*** key - An array of strings that make up the property that will be set.
-* @param ***REMOVED***any***REMOVED*** value - The value that will be set.
-* @param ***REMOVED***integer***REMOVED*** [operation=0] - Controls how the value is assigned. A value of 0 replaces the value with the new one. A value of 1 adds it, 2 subtracts it, 3 multiplies it and 4 divides it.
-* @param ***REMOVED***boolean***REMOVED*** [force=false] - If `force` is true then the property will be set on the child regardless if it already exists or not. If false and the property doesn't exist, nothing will be set.
-* @return ***REMOVED***boolean***REMOVED*** True if the property was set, false if not.
+* @param {any} child - The child to set the property value on.
+* @param {array} key - An array of strings that make up the property that will be set.
+* @param {any} value - The value that will be set.
+* @param {integer} [operation=0] - Controls how the value is assigned. A value of 0 replaces the value with the new one. A value of 1 adds it, 2 subtracts it, 3 multiplies it and 4 divides it.
+* @param {boolean} [force=false] - If `force` is true then the property will be set on the child regardless if it already exists or not. If false and the property doesn't exist, nothing will be set.
+* @return {boolean} True if the property was set, false if not.
 */
-Phaser.Group.prototype.setProperty = function (child, key, value, operation, force) ***REMOVED***
+Phaser.Group.prototype.setProperty = function (child, key, value, operation, force) {
 
-    if (force === undefined) ***REMOVED*** force = false; ***REMOVED***
+    if (force === undefined) { force = false; }
 
     operation = operation || 0;
 
@@ -4920,77 +4920,77 @@ Phaser.Group.prototype.setProperty = function (child, key, value, operation, for
     //  We can't force a property in and the child doesn't have it, so abort.
     //  Equally we can't add, subtract, multiply or divide a property value if it doesn't exist, so abort in those cases too.
     if (!this.hasProperty(child, key) && (!force || operation > 0))
-    ***REMOVED***
+    {
         return false;
-    ***REMOVED***
+    }
 
     var len = key.length;
 
     if (len === 1)
-    ***REMOVED***
-        if (operation === 0) ***REMOVED*** child[key[0]] = value; ***REMOVED***
-        else if (operation === 1) ***REMOVED*** child[key[0]] += value; ***REMOVED***
-        else if (operation === 2) ***REMOVED*** child[key[0]] -= value; ***REMOVED***
-        else if (operation === 3) ***REMOVED*** child[key[0]] *= value; ***REMOVED***
-        else if (operation === 4) ***REMOVED*** child[key[0]] /= value; ***REMOVED***
-    ***REMOVED***
+    {
+        if (operation === 0) { child[key[0]] = value; }
+        else if (operation === 1) { child[key[0]] += value; }
+        else if (operation === 2) { child[key[0]] -= value; }
+        else if (operation === 3) { child[key[0]] *= value; }
+        else if (operation === 4) { child[key[0]] /= value; }
+    }
     else if (len === 2)
-    ***REMOVED***
-        if (operation === 0) ***REMOVED*** child[key[0]][key[1]] = value; ***REMOVED***
-        else if (operation === 1) ***REMOVED*** child[key[0]][key[1]] += value; ***REMOVED***
-        else if (operation === 2) ***REMOVED*** child[key[0]][key[1]] -= value; ***REMOVED***
-        else if (operation === 3) ***REMOVED*** child[key[0]][key[1]] *= value; ***REMOVED***
-        else if (operation === 4) ***REMOVED*** child[key[0]][key[1]] /= value; ***REMOVED***
-    ***REMOVED***
+    {
+        if (operation === 0) { child[key[0]][key[1]] = value; }
+        else if (operation === 1) { child[key[0]][key[1]] += value; }
+        else if (operation === 2) { child[key[0]][key[1]] -= value; }
+        else if (operation === 3) { child[key[0]][key[1]] *= value; }
+        else if (operation === 4) { child[key[0]][key[1]] /= value; }
+    }
     else if (len === 3)
-    ***REMOVED***
-        if (operation === 0) ***REMOVED*** child[key[0]][key[1]][key[2]] = value; ***REMOVED***
-        else if (operation === 1) ***REMOVED*** child[key[0]][key[1]][key[2]] += value; ***REMOVED***
-        else if (operation === 2) ***REMOVED*** child[key[0]][key[1]][key[2]] -= value; ***REMOVED***
-        else if (operation === 3) ***REMOVED*** child[key[0]][key[1]][key[2]] *= value; ***REMOVED***
-        else if (operation === 4) ***REMOVED*** child[key[0]][key[1]][key[2]] /= value; ***REMOVED***
-    ***REMOVED***
+    {
+        if (operation === 0) { child[key[0]][key[1]][key[2]] = value; }
+        else if (operation === 1) { child[key[0]][key[1]][key[2]] += value; }
+        else if (operation === 2) { child[key[0]][key[1]][key[2]] -= value; }
+        else if (operation === 3) { child[key[0]][key[1]][key[2]] *= value; }
+        else if (operation === 4) { child[key[0]][key[1]][key[2]] /= value; }
+    }
     else if (len === 4)
-    ***REMOVED***
-        if (operation === 0) ***REMOVED*** child[key[0]][key[1]][key[2]][key[3]] = value; ***REMOVED***
-        else if (operation === 1) ***REMOVED*** child[key[0]][key[1]][key[2]][key[3]] += value; ***REMOVED***
-        else if (operation === 2) ***REMOVED*** child[key[0]][key[1]][key[2]][key[3]] -= value; ***REMOVED***
-        else if (operation === 3) ***REMOVED*** child[key[0]][key[1]][key[2]][key[3]] *= value; ***REMOVED***
-        else if (operation === 4) ***REMOVED*** child[key[0]][key[1]][key[2]][key[3]] /= value; ***REMOVED***
-    ***REMOVED***
+    {
+        if (operation === 0) { child[key[0]][key[1]][key[2]][key[3]] = value; }
+        else if (operation === 1) { child[key[0]][key[1]][key[2]][key[3]] += value; }
+        else if (operation === 2) { child[key[0]][key[1]][key[2]][key[3]] -= value; }
+        else if (operation === 3) { child[key[0]][key[1]][key[2]][key[3]] *= value; }
+        else if (operation === 4) { child[key[0]][key[1]][key[2]][key[3]] /= value; }
+    }
 
     return true;
 
-***REMOVED***;
+};
 
 /**
 * Checks a property for the given value on the child.
 *
 * @method Phaser.Group#checkProperty
-* @param ***REMOVED***any***REMOVED*** child - The child to check the property value on.
-* @param ***REMOVED***array***REMOVED*** key - An array of strings that make up the property that will be set.
-* @param ***REMOVED***any***REMOVED*** value - The value that will be checked.
-* @param ***REMOVED***boolean***REMOVED*** [force=false] - If `force` is true then the property will be checked on the child regardless if it already exists or not. If true and the property doesn't exist, false will be returned.
-* @return ***REMOVED***boolean***REMOVED*** True if the property was was equal to value, false if not.
+* @param {any} child - The child to check the property value on.
+* @param {array} key - An array of strings that make up the property that will be set.
+* @param {any} value - The value that will be checked.
+* @param {boolean} [force=false] - If `force` is true then the property will be checked on the child regardless if it already exists or not. If true and the property doesn't exist, false will be returned.
+* @return {boolean} True if the property was was equal to value, false if not.
 */
-Phaser.Group.prototype.checkProperty = function (child, key, value, force) ***REMOVED***
+Phaser.Group.prototype.checkProperty = function (child, key, value, force) {
 
-    if (force === undefined) ***REMOVED*** force = false; ***REMOVED***
+    if (force === undefined) { force = false; }
 
     //  We can't force a property in and the child doesn't have it, so abort.
     if (!Phaser.Utils.getProperty(child, key) && force)
-    ***REMOVED***
+    {
         return false;
-    ***REMOVED***
+    }
 
     if (Phaser.Utils.getProperty(child, key) !== value)
-    ***REMOVED***
+    {
         return false;
-    ***REMOVED***
+    }
 
     return true;
 
-***REMOVED***;
+};
 
 /**
 * Quickly set a property on a single child of this group to a new value.
@@ -4998,30 +4998,30 @@ Phaser.Group.prototype.checkProperty = function (child, key, value, force) ***RE
 * The operation parameter controls how the new value is assigned to the property, from simple replacement to addition and multiplication.
 *
 * @method Phaser.Group#set
-* @param ***REMOVED***Phaser.Sprite***REMOVED*** child - The child to set the property on.
-* @param ***REMOVED***string***REMOVED*** key - The property, as a string, to be set. For example: 'body.velocity.x'
-* @param ***REMOVED***any***REMOVED*** value - The value that will be set.
-* @param ***REMOVED***boolean***REMOVED*** [checkAlive=false] - If set then the child will only be updated if alive=true.
-* @param ***REMOVED***boolean***REMOVED*** [checkVisible=false] - If set then the child will only be updated if visible=true.
-* @param ***REMOVED***integer***REMOVED*** [operation=0] - Controls how the value is assigned. A value of 0 replaces the value with the new one. A value of 1 adds it, 2 subtracts it, 3 multiplies it and 4 divides it.
-* @param ***REMOVED***boolean***REMOVED*** [force=false] - If `force` is true then the property will be set on the child regardless if it already exists or not. If false and the property doesn't exist, nothing will be set.
-* @return ***REMOVED***boolean***REMOVED*** True if the property was set, false if not.
+* @param {Phaser.Sprite} child - The child to set the property on.
+* @param {string} key - The property, as a string, to be set. For example: 'body.velocity.x'
+* @param {any} value - The value that will be set.
+* @param {boolean} [checkAlive=false] - If set then the child will only be updated if alive=true.
+* @param {boolean} [checkVisible=false] - If set then the child will only be updated if visible=true.
+* @param {integer} [operation=0] - Controls how the value is assigned. A value of 0 replaces the value with the new one. A value of 1 adds it, 2 subtracts it, 3 multiplies it and 4 divides it.
+* @param {boolean} [force=false] - If `force` is true then the property will be set on the child regardless if it already exists or not. If false and the property doesn't exist, nothing will be set.
+* @return {boolean} True if the property was set, false if not.
 */
-Phaser.Group.prototype.set = function (child, key, value, checkAlive, checkVisible, operation, force) ***REMOVED***
+Phaser.Group.prototype.set = function (child, key, value, checkAlive, checkVisible, operation, force) {
 
-    if (force === undefined) ***REMOVED*** force = false; ***REMOVED***
+    if (force === undefined) { force = false; }
 
     key = key.split('.');
 
-    if (checkAlive === undefined) ***REMOVED*** checkAlive = false; ***REMOVED***
-    if (checkVisible === undefined) ***REMOVED*** checkVisible = false; ***REMOVED***
+    if (checkAlive === undefined) { checkAlive = false; }
+    if (checkVisible === undefined) { checkVisible = false; }
 
     if ((checkAlive === false || (checkAlive && child.alive)) && (checkVisible === false || (checkVisible && child.visible)))
-    ***REMOVED***
+    {
         return this.setProperty(child, key, value, operation, force);
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Quickly set the same property across all children of this group to a new value.
@@ -5032,31 +5032,31 @@ Phaser.Group.prototype.set = function (child, key, value, checkAlive, checkVisib
 * The operation parameter controls how the new value is assigned to the property, from simple replacement to addition and multiplication.
 *
 * @method Phaser.Group#setAll
-* @param ***REMOVED***string***REMOVED*** key - The property, as a string, to be set. For example: 'body.velocity.x'
-* @param ***REMOVED***any***REMOVED*** value - The value that will be set.
-* @param ***REMOVED***boolean***REMOVED*** [checkAlive=false] - If set then only children with alive=true will be updated. This includes any Groups that are children.
-* @param ***REMOVED***boolean***REMOVED*** [checkVisible=false] - If set then only children with visible=true will be updated. This includes any Groups that are children.
-* @param ***REMOVED***integer***REMOVED*** [operation=0] - Controls how the value is assigned. A value of 0 replaces the value with the new one. A value of 1 adds it, 2 subtracts it, 3 multiplies it and 4 divides it.
-* @param ***REMOVED***boolean***REMOVED*** [force=false] - If `force` is true then the property will be set on the child regardless if it already exists or not. If false and the property doesn't exist, nothing will be set.
+* @param {string} key - The property, as a string, to be set. For example: 'body.velocity.x'
+* @param {any} value - The value that will be set.
+* @param {boolean} [checkAlive=false] - If set then only children with alive=true will be updated. This includes any Groups that are children.
+* @param {boolean} [checkVisible=false] - If set then only children with visible=true will be updated. This includes any Groups that are children.
+* @param {integer} [operation=0] - Controls how the value is assigned. A value of 0 replaces the value with the new one. A value of 1 adds it, 2 subtracts it, 3 multiplies it and 4 divides it.
+* @param {boolean} [force=false] - If `force` is true then the property will be set on the child regardless if it already exists or not. If false and the property doesn't exist, nothing will be set.
 */
-Phaser.Group.prototype.setAll = function (key, value, checkAlive, checkVisible, operation, force) ***REMOVED***
+Phaser.Group.prototype.setAll = function (key, value, checkAlive, checkVisible, operation, force) {
 
-    if (checkAlive === undefined) ***REMOVED*** checkAlive = false; ***REMOVED***
-    if (checkVisible === undefined) ***REMOVED*** checkVisible = false; ***REMOVED***
-    if (force === undefined) ***REMOVED*** force = false; ***REMOVED***
+    if (checkAlive === undefined) { checkAlive = false; }
+    if (checkVisible === undefined) { checkVisible = false; }
+    if (force === undefined) { force = false; }
 
     key = key.split('.');
     operation = operation || 0;
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         if ((!checkAlive || (checkAlive && this.children[i].alive)) && (!checkVisible || (checkVisible && this.children[i].visible)))
-        ***REMOVED***
+        {
             this.setProperty(this.children[i], key, value, operation, force);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
-***REMOVED***;
+};
 
 /**
 * Quickly set the same property across all children of this group, and any child Groups, to a new value.
@@ -5067,37 +5067,37 @@ Phaser.Group.prototype.setAll = function (key, value, checkAlive, checkVisible, 
 * The operation parameter controls how the new value is assigned to the property, from simple replacement to addition and multiplication.
 *
 * @method Phaser.Group#setAllChildren
-* @param ***REMOVED***string***REMOVED*** key - The property, as a string, to be set. For example: 'body.velocity.x'
-* @param ***REMOVED***any***REMOVED*** value - The value that will be set.
-* @param ***REMOVED***boolean***REMOVED*** [checkAlive=false] - If set then only children with alive=true will be updated. This includes any Groups that are children.
-* @param ***REMOVED***boolean***REMOVED*** [checkVisible=false] - If set then only children with visible=true will be updated. This includes any Groups that are children.
-* @param ***REMOVED***integer***REMOVED*** [operation=0] - Controls how the value is assigned. A value of 0 replaces the value with the new one. A value of 1 adds it, 2 subtracts it, 3 multiplies it and 4 divides it.
-* @param ***REMOVED***boolean***REMOVED*** [force=false] - If `force` is true then the property will be set on the child regardless if it already exists or not. If false and the property doesn't exist, nothing will be set.
+* @param {string} key - The property, as a string, to be set. For example: 'body.velocity.x'
+* @param {any} value - The value that will be set.
+* @param {boolean} [checkAlive=false] - If set then only children with alive=true will be updated. This includes any Groups that are children.
+* @param {boolean} [checkVisible=false] - If set then only children with visible=true will be updated. This includes any Groups that are children.
+* @param {integer} [operation=0] - Controls how the value is assigned. A value of 0 replaces the value with the new one. A value of 1 adds it, 2 subtracts it, 3 multiplies it and 4 divides it.
+* @param {boolean} [force=false] - If `force` is true then the property will be set on the child regardless if it already exists or not. If false and the property doesn't exist, nothing will be set.
 */
-Phaser.Group.prototype.setAllChildren = function (key, value, checkAlive, checkVisible, operation, force) ***REMOVED***
+Phaser.Group.prototype.setAllChildren = function (key, value, checkAlive, checkVisible, operation, force) {
 
-    if (checkAlive === undefined) ***REMOVED*** checkAlive = false; ***REMOVED***
-    if (checkVisible === undefined) ***REMOVED*** checkVisible = false; ***REMOVED***
-    if (force === undefined) ***REMOVED*** force = false; ***REMOVED***
+    if (checkAlive === undefined) { checkAlive = false; }
+    if (checkVisible === undefined) { checkVisible = false; }
+    if (force === undefined) { force = false; }
 
     operation = operation || 0;
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         if ((!checkAlive || (checkAlive && this.children[i].alive)) && (!checkVisible || (checkVisible && this.children[i].visible)))
-        ***REMOVED***
+        {
             if (this.children[i] instanceof Phaser.Group)
-            ***REMOVED***
+            {
                 this.children[i].setAllChildren(key, value, checkAlive, checkVisible, operation, force);
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this.setProperty(this.children[i], key.split('.'), value, operation, force);
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
-***REMOVED***;
+};
 
 /**
 * Quickly check that the same property across all children of this group is equal to the given value.
@@ -5105,32 +5105,32 @@ Phaser.Group.prototype.setAllChildren = function (key, value, checkAlive, checkV
 * This call doesn't descend down children, so if you have a Group inside of this group, the property will be checked on the group but not its children.
 *
 * @method Phaser.Group#checkAll
-* @param ***REMOVED***string***REMOVED*** key - The property, as a string, to be set. For example: 'body.velocity.x'
-* @param ***REMOVED***any***REMOVED*** value - The value that will be checked.
-* @param ***REMOVED***boolean***REMOVED*** [checkAlive=false] - If set then only children with alive=true will be checked. This includes any Groups that are children.
-* @param ***REMOVED***boolean***REMOVED*** [checkVisible=false] - If set then only children with visible=true will be checked. This includes any Groups that are children.
-* @param ***REMOVED***boolean***REMOVED*** [force=false] - If `force` is true then the property will be checked on the child regardless if it already exists or not. If true and the property doesn't exist, false will be returned.
+* @param {string} key - The property, as a string, to be set. For example: 'body.velocity.x'
+* @param {any} value - The value that will be checked.
+* @param {boolean} [checkAlive=false] - If set then only children with alive=true will be checked. This includes any Groups that are children.
+* @param {boolean} [checkVisible=false] - If set then only children with visible=true will be checked. This includes any Groups that are children.
+* @param {boolean} [force=false] - If `force` is true then the property will be checked on the child regardless if it already exists or not. If true and the property doesn't exist, false will be returned.
 */
-Phaser.Group.prototype.checkAll = function (key, value, checkAlive, checkVisible, force) ***REMOVED***
+Phaser.Group.prototype.checkAll = function (key, value, checkAlive, checkVisible, force) {
 
-    if (checkAlive === undefined) ***REMOVED*** checkAlive = false; ***REMOVED***
-    if (checkVisible === undefined) ***REMOVED*** checkVisible = false; ***REMOVED***
-    if (force === undefined) ***REMOVED*** force = false; ***REMOVED***
+    if (checkAlive === undefined) { checkAlive = false; }
+    if (checkVisible === undefined) { checkVisible = false; }
+    if (force === undefined) { force = false; }
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         if ((!checkAlive || (checkAlive && this.children[i].alive)) && (!checkVisible || (checkVisible && this.children[i].visible)))
-        ***REMOVED***
+        {
             if (!this.checkProperty(this.children[i], key, value, force))
-            ***REMOVED***
+            {
                 return false;
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
     return true;
 
-***REMOVED***;
+};
 
 /**
 * Adds the amount to the given property on all children in this group.
@@ -5138,16 +5138,16 @@ Phaser.Group.prototype.checkAll = function (key, value, checkAlive, checkVisible
 * `Group.addAll('x', 10)` will add 10 to the child.x value for each child.
 *
 * @method Phaser.Group#addAll
-* @param ***REMOVED***string***REMOVED*** property - The property to increment, for example 'body.velocity.x' or 'angle'.
-* @param ***REMOVED***number***REMOVED*** amount - The amount to increment the property by. If child.x = 10 then addAll('x', 40) would make child.x = 50.
-* @param ***REMOVED***boolean***REMOVED*** checkAlive - If true the property will only be changed if the child is alive.
-* @param ***REMOVED***boolean***REMOVED*** checkVisible - If true the property will only be changed if the child is visible.
+* @param {string} property - The property to increment, for example 'body.velocity.x' or 'angle'.
+* @param {number} amount - The amount to increment the property by. If child.x = 10 then addAll('x', 40) would make child.x = 50.
+* @param {boolean} checkAlive - If true the property will only be changed if the child is alive.
+* @param {boolean} checkVisible - If true the property will only be changed if the child is visible.
 */
-Phaser.Group.prototype.addAll = function (property, amount, checkAlive, checkVisible) ***REMOVED***
+Phaser.Group.prototype.addAll = function (property, amount, checkAlive, checkVisible) {
 
     this.setAll(property, amount, checkAlive, checkVisible, 1);
 
-***REMOVED***;
+};
 
 /**
 * Subtracts the amount from the given property on all children in this group.
@@ -5155,16 +5155,16 @@ Phaser.Group.prototype.addAll = function (property, amount, checkAlive, checkVis
 * `Group.subAll('x', 10)` will minus 10 from the child.x value for each child.
 *
 * @method Phaser.Group#subAll
-* @param ***REMOVED***string***REMOVED*** property - The property to decrement, for example 'body.velocity.x' or 'angle'.
-* @param ***REMOVED***number***REMOVED*** amount - The amount to subtract from the property. If child.x = 50 then subAll('x', 40) would make child.x = 10.
-* @param ***REMOVED***boolean***REMOVED*** checkAlive - If true the property will only be changed if the child is alive.
-* @param ***REMOVED***boolean***REMOVED*** checkVisible - If true the property will only be changed if the child is visible.
+* @param {string} property - The property to decrement, for example 'body.velocity.x' or 'angle'.
+* @param {number} amount - The amount to subtract from the property. If child.x = 50 then subAll('x', 40) would make child.x = 10.
+* @param {boolean} checkAlive - If true the property will only be changed if the child is alive.
+* @param {boolean} checkVisible - If true the property will only be changed if the child is visible.
 */
-Phaser.Group.prototype.subAll = function (property, amount, checkAlive, checkVisible) ***REMOVED***
+Phaser.Group.prototype.subAll = function (property, amount, checkAlive, checkVisible) {
 
     this.setAll(property, amount, checkAlive, checkVisible, 2);
 
-***REMOVED***;
+};
 
 /**
 * Multiplies the given property by the amount on all children in this group.
@@ -5172,16 +5172,16 @@ Phaser.Group.prototype.subAll = function (property, amount, checkAlive, checkVis
 * `Group.multiplyAll('x', 2)` will x2 the child.x value for each child.
 *
 * @method Phaser.Group#multiplyAll
-* @param ***REMOVED***string***REMOVED*** property - The property to multiply, for example 'body.velocity.x' or 'angle'.
-* @param ***REMOVED***number***REMOVED*** amount - The amount to multiply the property by. If child.x = 10 then multiplyAll('x', 2) would make child.x = 20.
-* @param ***REMOVED***boolean***REMOVED*** checkAlive - If true the property will only be changed if the child is alive.
-* @param ***REMOVED***boolean***REMOVED*** checkVisible - If true the property will only be changed if the child is visible.
+* @param {string} property - The property to multiply, for example 'body.velocity.x' or 'angle'.
+* @param {number} amount - The amount to multiply the property by. If child.x = 10 then multiplyAll('x', 2) would make child.x = 20.
+* @param {boolean} checkAlive - If true the property will only be changed if the child is alive.
+* @param {boolean} checkVisible - If true the property will only be changed if the child is visible.
 */
-Phaser.Group.prototype.multiplyAll = function (property, amount, checkAlive, checkVisible) ***REMOVED***
+Phaser.Group.prototype.multiplyAll = function (property, amount, checkAlive, checkVisible) {
 
     this.setAll(property, amount, checkAlive, checkVisible, 3);
 
-***REMOVED***;
+};
 
 /**
 * Divides the given property by the amount on all children in this group.
@@ -5189,16 +5189,16 @@ Phaser.Group.prototype.multiplyAll = function (property, amount, checkAlive, che
 * `Group.divideAll('x', 2)` will half the child.x value for each child.
 *
 * @method Phaser.Group#divideAll
-* @param ***REMOVED***string***REMOVED*** property - The property to divide, for example 'body.velocity.x' or 'angle'.
-* @param ***REMOVED***number***REMOVED*** amount - The amount to divide the property by. If child.x = 100 then divideAll('x', 2) would make child.x = 50.
-* @param ***REMOVED***boolean***REMOVED*** checkAlive - If true the property will only be changed if the child is alive.
-* @param ***REMOVED***boolean***REMOVED*** checkVisible - If true the property will only be changed if the child is visible.
+* @param {string} property - The property to divide, for example 'body.velocity.x' or 'angle'.
+* @param {number} amount - The amount to divide the property by. If child.x = 100 then divideAll('x', 2) would make child.x = 50.
+* @param {boolean} checkAlive - If true the property will only be changed if the child is alive.
+* @param {boolean} checkVisible - If true the property will only be changed if the child is visible.
 */
-Phaser.Group.prototype.divideAll = function (property, amount, checkAlive, checkVisible) ***REMOVED***
+Phaser.Group.prototype.divideAll = function (property, amount, checkAlive, checkVisible) {
 
     this.setAll(property, amount, checkAlive, checkVisible, 4);
 
-***REMOVED***;
+};
 
 /**
 * Calls a function, specified by name, on all children in the group who exist (or do not exist).
@@ -5206,83 +5206,83 @@ Phaser.Group.prototype.divideAll = function (property, amount, checkAlive, check
 * After the existsValue parameter you can add as many parameters as you like, which will all be passed to the child callback.
 *
 * @method Phaser.Group#callAllExists
-* @param ***REMOVED***string***REMOVED*** callback - Name of the function on the children to call.
-* @param ***REMOVED***boolean***REMOVED*** existsValue - Only children with exists=existsValue will be called.
-* @param ***REMOVED***...any***REMOVED*** parameter - Additional parameters that will be passed to the callback.
+* @param {string} callback - Name of the function on the children to call.
+* @param {boolean} existsValue - Only children with exists=existsValue will be called.
+* @param {...any} parameter - Additional parameters that will be passed to the callback.
 */
-Phaser.Group.prototype.callAllExists = function (callback, existsValue) ***REMOVED***
+Phaser.Group.prototype.callAllExists = function (callback, existsValue) {
 
     var args;
 
     if (arguments.length > 2)
-    ***REMOVED***
+    {
         args = [];
 
         for (var i = 2; i < arguments.length; i++)
-        ***REMOVED***
+        {
             args.push(arguments[i]);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         if (this.children[i].exists === existsValue && this.children[i][callback])
-        ***REMOVED***
+        {
             this.children[i][callback].apply(this.children[i], args);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
-***REMOVED***;
+};
 
 /**
 * Returns a reference to a function that exists on a child of the group based on the given callback array.
 *
 * @method Phaser.Group#callbackFromArray
-* @param ***REMOVED***object***REMOVED*** child - The object to inspect.
-* @param ***REMOVED***array***REMOVED*** callback - The array of function names.
-* @param ***REMOVED***integer***REMOVED*** length - The size of the array (pre-calculated in callAll).
+* @param {object} child - The object to inspect.
+* @param {array} callback - The array of function names.
+* @param {integer} length - The size of the array (pre-calculated in callAll).
 * @protected
 */
-Phaser.Group.prototype.callbackFromArray = function (child, callback, length) ***REMOVED***
+Phaser.Group.prototype.callbackFromArray = function (child, callback, length) {
 
     //  Kinda looks like a Christmas tree
 
     if (length === 1)
-    ***REMOVED***
+    {
         if (child[callback[0]])
-        ***REMOVED***
+        {
             return child[callback[0]];
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     else if (length === 2)
-    ***REMOVED***
+    {
         if (child[callback[0]][callback[1]])
-        ***REMOVED***
+        {
             return child[callback[0]][callback[1]];
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     else if (length === 3)
-    ***REMOVED***
+    {
         if (child[callback[0]][callback[1]][callback[2]])
-        ***REMOVED***
+        {
             return child[callback[0]][callback[1]][callback[2]];
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     else if (length === 4)
-    ***REMOVED***
+    {
         if (child[callback[0]][callback[1]][callback[2]][callback[3]])
-        ***REMOVED***
+        {
             return child[callback[0]][callback[1]][callback[2]][callback[3]];
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     else if (child[callback])
-    ***REMOVED***
+    {
         return child[callback];
-    ***REMOVED***
+    }
 
     return false;
 
-***REMOVED***;
+};
 
 /**
 * Calls a function, specified by name, on all on children.
@@ -5291,16 +5291,16 @@ Phaser.Group.prototype.callbackFromArray = function (child, callback, length) **
 * After the method parameter and context you can add as many extra parameters as you like, which will all be passed to the child.
 *
 * @method Phaser.Group#callAll
-* @param ***REMOVED***string***REMOVED*** method - Name of the function on the child to call. Deep property lookup is supported.
-* @param ***REMOVED***string***REMOVED*** [context=null] - A string containing the context under which the method will be executed. Set to null to default to the child.
-* @param ***REMOVED***...any***REMOVED*** args - Additional parameters that will be passed to the method.
+* @param {string} method - Name of the function on the child to call. Deep property lookup is supported.
+* @param {string} [context=null] - A string containing the context under which the method will be executed. Set to null to default to the child.
+* @param {...any} args - Additional parameters that will be passed to the method.
 */
-Phaser.Group.prototype.callAll = function (method, context) ***REMOVED***
+Phaser.Group.prototype.callAll = function (method, context) {
 
     if (method === undefined)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     //  Extract the method into an array
     method = method.split('.');
@@ -5308,160 +5308,160 @@ Phaser.Group.prototype.callAll = function (method, context) ***REMOVED***
     var methodLength = method.length;
 
     if (context === undefined || context === null || context === '')
-    ***REMOVED***
+    {
         context = null;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         //  Extract the context into an array
         if (typeof context === 'string')
-        ***REMOVED***
+        {
             context = context.split('.');
             var contextLength = context.length;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     var args;
 
     if (arguments.length > 2)
-    ***REMOVED***
+    {
         args = [];
 
         for (var i = 2; i < arguments.length; i++)
-        ***REMOVED***
+        {
             args.push(arguments[i]);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     var callback = null;
     var callbackContext = null;
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         callback = this.callbackFromArray(this.children[i], method, methodLength);
 
         if (context && callback)
-        ***REMOVED***
+        {
             callbackContext = this.callbackFromArray(this.children[i], context, contextLength);
 
             if (callback)
-            ***REMOVED***
+            {
                 callback.apply(callbackContext, args);
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else if (callback)
-        ***REMOVED***
+        {
             callback.apply(this.children[i], args);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
-***REMOVED***;
+};
 
 /**
 * The core preUpdate - as called by World.
 * @method Phaser.Group#preUpdate
 * @protected
 */
-Phaser.Group.prototype.preUpdate = function () ***REMOVED***
+Phaser.Group.prototype.preUpdate = function () {
 
     if (this.pendingDestroy)
-    ***REMOVED***
+    {
         this.destroy();
         return false;
-    ***REMOVED***
+    }
 
     if (!this.exists || !this.parent.exists)
-    ***REMOVED***
+    {
         this.renderOrderID = -1;
         return false;
-    ***REMOVED***
+    }
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         this.children[i].preUpdate();
-    ***REMOVED***
+    }
 
     return true;
 
-***REMOVED***;
+};
 
 /**
 * The core update - as called by World.
 * @method Phaser.Group#update
 * @protected
 */
-Phaser.Group.prototype.update = function () ***REMOVED***
+Phaser.Group.prototype.update = function () {
 
     //  Goes in reverse, because it's highly likely the child will destroy itself in `update`
     var i = this.children.length;
 
     while (i--)
-    ***REMOVED***
+    {
         this.children[i].update();
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * The core postUpdate - as called by World.
 * @method Phaser.Group#postUpdate
 * @protected
 */
-Phaser.Group.prototype.postUpdate = function () ***REMOVED***
+Phaser.Group.prototype.postUpdate = function () {
 
     //  Fixed to Camera?
     if (this.fixedToCamera)
-    ***REMOVED***
+    {
         this.x = this.game.camera.view.x + this.cameraOffset.x;
         this.y = this.game.camera.view.y + this.cameraOffset.y;
-    ***REMOVED***
+    }
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         this.children[i].postUpdate();
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Find children matching a certain predicate.
 *
 * For example:
 *
-*     var healthyList = Group.filter(function(child, index, children) ***REMOVED***
+*     var healthyList = Group.filter(function(child, index, children) {
 *         return child.health > 10 ? true : false;
-*     ***REMOVED***, true);
+*     }, true);
 *     healthyList.callAll('attack');
 *
 * Note: Currently this will skip any children which are Groups themselves.
 *
 * @method Phaser.Group#filter
-* @param ***REMOVED***function***REMOVED*** predicate - The function that each child will be evaluated against. Each child of the group will be passed to it as its first parameter, the index as the second, and the entire child array as the third
-* @param ***REMOVED***boolean***REMOVED*** [checkExists=false] - If true, only existing can be selected; otherwise all children can be selected and will be passed to the predicate.
-* @return ***REMOVED***Phaser.ArraySet***REMOVED*** Returns an array list containing all the children that the predicate returned true for
+* @param {function} predicate - The function that each child will be evaluated against. Each child of the group will be passed to it as its first parameter, the index as the second, and the entire child array as the third
+* @param {boolean} [checkExists=false] - If true, only existing can be selected; otherwise all children can be selected and will be passed to the predicate.
+* @return {Phaser.ArraySet} Returns an array list containing all the children that the predicate returned true for
 */
-Phaser.Group.prototype.filter = function (predicate, checkExists) ***REMOVED***
+Phaser.Group.prototype.filter = function (predicate, checkExists) {
 
     var index = -1;
     var length = this.children.length;
     var results = [];
 
     while (++index < length)
-    ***REMOVED***
+    {
         var child = this.children[index];
 
         if (!checkExists || (checkExists && child.exists))
-        ***REMOVED***
+        {
             if (predicate(child, index, this.children))
-            ***REMOVED***
+            {
                 results.push(child);
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
     return new Phaser.ArraySet(results);
 
-***REMOVED***;
+};
 
 /**
 * Call a function on each child in this group.
@@ -5475,131 +5475,131 @@ Phaser.Group.prototype.filter = function (predicate, checkExists) ***REMOVED***
 * Note: This check will skip any children which are Groups themselves.
 *
 * @method Phaser.Group#forEach
-* @param ***REMOVED***function***REMOVED*** callback - The function that will be called for each applicable child. The child will be passed as the first argument.
-* @param ***REMOVED***object***REMOVED*** callbackContext - The context in which the function should be called (usually 'this').
-* @param ***REMOVED***boolean***REMOVED*** [checkExists=false] - If set only children matching for which `exists` is true will be passed to the callback, otherwise all children will be passed.
-* @param ***REMOVED***...any***REMOVED*** [args=(none)] - Additional arguments to pass to the callback function, after the child item.
+* @param {function} callback - The function that will be called for each applicable child. The child will be passed as the first argument.
+* @param {object} callbackContext - The context in which the function should be called (usually 'this').
+* @param {boolean} [checkExists=false] - If set only children matching for which `exists` is true will be passed to the callback, otherwise all children will be passed.
+* @param {...any} [args=(none)] - Additional arguments to pass to the callback function, after the child item.
 */
-Phaser.Group.prototype.forEach = function (callback, callbackContext, checkExists) ***REMOVED***
+Phaser.Group.prototype.forEach = function (callback, callbackContext, checkExists) {
 
-    if (checkExists === undefined) ***REMOVED*** checkExists = false; ***REMOVED***
+    if (checkExists === undefined) { checkExists = false; }
 
     if (arguments.length <= 3)
-    ***REMOVED***
+    {
         for (var i = 0; i < this.children.length; i++)
-        ***REMOVED***
+        {
             if (!checkExists || (checkExists && this.children[i].exists))
-            ***REMOVED***
+            {
                 callback.call(callbackContext, this.children[i]);
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
     else
-    ***REMOVED***
+    {
         // Assigning to arguments properties causes Extreme Deoptimization in Chrome, FF, and IE.
         // Using an array and pushing each element (not a slice!) is _significantly_ faster.
         var args = [null];
 
         for (var i = 3; i < arguments.length; i++)
-        ***REMOVED***
+        {
             args.push(arguments[i]);
-        ***REMOVED***
+        }
 
         for (var i = 0; i < this.children.length; i++)
-        ***REMOVED***
+        {
             if (!checkExists || (checkExists && this.children[i].exists))
-            ***REMOVED***
+            {
                 args[0] = this.children[i];
                 callback.apply(callbackContext, args);
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
-***REMOVED***;
+};
 
 /**
 * Call a function on each existing child in this group.
 *
-* See ***REMOVED***@link Phaser.Group#forEach forEach***REMOVED*** for details.
+* See {@link Phaser.Group#forEach forEach} for details.
 *
 * @method Phaser.Group#forEachExists
-* @param ***REMOVED***function***REMOVED*** callback - The function that will be called for each applicable child. The child will be passed as the first argument.
-* @param ***REMOVED***object***REMOVED*** callbackContext - The context in which the function should be called (usually 'this').
-* @param ***REMOVED***...any***REMOVED*** [args=(none)] - Additional arguments to pass to the callback function, after the child item.
+* @param {function} callback - The function that will be called for each applicable child. The child will be passed as the first argument.
+* @param {object} callbackContext - The context in which the function should be called (usually 'this').
+* @param {...any} [args=(none)] - Additional arguments to pass to the callback function, after the child item.
 */
-Phaser.Group.prototype.forEachExists = function (callback, callbackContext) ***REMOVED***
+Phaser.Group.prototype.forEachExists = function (callback, callbackContext) {
 
     var args;
 
     if (arguments.length > 2)
-    ***REMOVED***
+    {
         args = [null];
 
         for (var i = 2; i < arguments.length; i++)
-        ***REMOVED***
+        {
             args.push(arguments[i]);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     this.iterate('exists', true, Phaser.Group.RETURN_TOTAL, callback, callbackContext, args);
 
-***REMOVED***;
+};
 
 /**
 * Call a function on each alive child in this group.
 *
-* See ***REMOVED***@link Phaser.Group#forEach forEach***REMOVED*** for details.
+* See {@link Phaser.Group#forEach forEach} for details.
 *
 * @method Phaser.Group#forEachAlive
-* @param ***REMOVED***function***REMOVED*** callback - The function that will be called for each applicable child. The child will be passed as the first argument.
-* @param ***REMOVED***object***REMOVED*** callbackContext - The context in which the function should be called (usually 'this').
-* @param ***REMOVED***...any***REMOVED*** [args=(none)] - Additional arguments to pass to the callback function, after the child item.
+* @param {function} callback - The function that will be called for each applicable child. The child will be passed as the first argument.
+* @param {object} callbackContext - The context in which the function should be called (usually 'this').
+* @param {...any} [args=(none)] - Additional arguments to pass to the callback function, after the child item.
 */
-Phaser.Group.prototype.forEachAlive = function (callback, callbackContext) ***REMOVED***
+Phaser.Group.prototype.forEachAlive = function (callback, callbackContext) {
 
     var args;
 
     if (arguments.length > 2)
-    ***REMOVED***
+    {
         args = [null];
 
         for (var i = 2; i < arguments.length; i++)
-        ***REMOVED***
+        {
             args.push(arguments[i]);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     this.iterate('alive', true, Phaser.Group.RETURN_TOTAL, callback, callbackContext, args);
 
-***REMOVED***;
+};
 
 /**
 * Call a function on each dead child in this group.
 *
-* See ***REMOVED***@link Phaser.Group#forEach forEach***REMOVED*** for details.
+* See {@link Phaser.Group#forEach forEach} for details.
 *
 * @method Phaser.Group#forEachDead
-* @param ***REMOVED***function***REMOVED*** callback - The function that will be called for each applicable child. The child will be passed as the first argument.
-* @param ***REMOVED***object***REMOVED*** callbackContext - The context in which the function should be called (usually 'this').
-* @param ***REMOVED***...any***REMOVED*** [args=(none)] - Additional arguments to pass to the callback function, after the child item.
+* @param {function} callback - The function that will be called for each applicable child. The child will be passed as the first argument.
+* @param {object} callbackContext - The context in which the function should be called (usually 'this').
+* @param {...any} [args=(none)] - Additional arguments to pass to the callback function, after the child item.
 */
-Phaser.Group.prototype.forEachDead = function (callback, callbackContext) ***REMOVED***
+Phaser.Group.prototype.forEachDead = function (callback, callbackContext) {
 
     var args;
 
     if (arguments.length > 2)
-    ***REMOVED***
+    {
         args = [null];
 
         for (var i = 2; i < arguments.length; i++)
-        ***REMOVED***
+        {
             args.push(arguments[i]);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     this.iterate('alive', false, Phaser.Group.RETURN_TOTAL, callback, callbackContext, args);
 
-***REMOVED***;
+};
 
 /**
 * Sort the children in the group according to a particular key and ordering.
@@ -5612,34 +5612,34 @@ Phaser.Group.prototype.forEachDead = function (callback, callbackContext) ***REM
 * alphabetical sorting, mixing strings and numbers, and Unicode sorting. See MDN for more details.
 *
 * @method Phaser.Group#sort
-* @param ***REMOVED***string***REMOVED*** [key='z'] - The name of the property to sort on. Defaults to the objects z-depth value.
-* @param ***REMOVED***integer***REMOVED*** [order=Phaser.Group.SORT_ASCENDING] - Order ascending (***REMOVED***@link Phaser.Group.SORT_ASCENDING SORT_ASCENDING***REMOVED***) or descending (***REMOVED***@link Phaser.Group.SORT_DESCENDING SORT_DESCENDING***REMOVED***).
+* @param {string} [key='z'] - The name of the property to sort on. Defaults to the objects z-depth value.
+* @param {integer} [order=Phaser.Group.SORT_ASCENDING] - Order ascending ({@link Phaser.Group.SORT_ASCENDING SORT_ASCENDING}) or descending ({@link Phaser.Group.SORT_DESCENDING SORT_DESCENDING}).
 */
-Phaser.Group.prototype.sort = function (key, order) ***REMOVED***
+Phaser.Group.prototype.sort = function (key, order) {
 
     if (this.children.length < 2)
-    ***REMOVED***
+    {
         //  Nothing to swap
         return;
-    ***REMOVED***
+    }
 
-    if (key === undefined) ***REMOVED*** key = 'z'; ***REMOVED***
-    if (order === undefined) ***REMOVED*** order = Phaser.Group.SORT_ASCENDING; ***REMOVED***
+    if (key === undefined) { key = 'z'; }
+    if (order === undefined) { order = Phaser.Group.SORT_ASCENDING; }
 
     this._sortProperty = key;
 
     if (order === Phaser.Group.SORT_ASCENDING)
-    ***REMOVED***
+    {
         this.children.sort(this.ascendingSortHandler.bind(this));
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         this.children.sort(this.descendingSortHandler.bind(this));
-    ***REMOVED***
+    }
 
     this.updateZ();
 
-***REMOVED***;
+};
 
 /**
 * Sort the children in the group according to custom sort function.
@@ -5648,79 +5648,79 @@ Phaser.Group.prototype.sort = function (key, order) ***REMOVED***
 * It should return -1 if `a > b`, 1 if `a < b` or 0 if `a === b`.
 *
 * @method Phaser.Group#customSort
-* @param ***REMOVED***function***REMOVED*** sortHandler - The custom sort function.
-* @param ***REMOVED***object***REMOVED*** [context=undefined] - The context in which the sortHandler is called.
+* @param {function} sortHandler - The custom sort function.
+* @param {object} [context=undefined] - The context in which the sortHandler is called.
 */
-Phaser.Group.prototype.customSort = function (sortHandler, context) ***REMOVED***
+Phaser.Group.prototype.customSort = function (sortHandler, context) {
 
     if (this.children.length < 2)
-    ***REMOVED***
+    {
         //  Nothing to swap
         return;
-    ***REMOVED***
+    }
 
     this.children.sort(sortHandler.bind(context));
 
     this.updateZ();
 
-***REMOVED***;
+};
 
 /**
 * An internal helper function for the sort process.
 *
 * @method Phaser.Group#ascendingSortHandler
 * @protected
-* @param ***REMOVED***object***REMOVED*** a - The first object being sorted.
-* @param ***REMOVED***object***REMOVED*** b - The second object being sorted.
+* @param {object} a - The first object being sorted.
+* @param {object} b - The second object being sorted.
 */
-Phaser.Group.prototype.ascendingSortHandler = function (a, b) ***REMOVED***
+Phaser.Group.prototype.ascendingSortHandler = function (a, b) {
 
     if (a[this._sortProperty] < b[this._sortProperty])
-    ***REMOVED***
+    {
         return -1;
-    ***REMOVED***
+    }
     else if (a[this._sortProperty] > b[this._sortProperty])
-    ***REMOVED***
+    {
         return 1;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         if (a.z < b.z)
-        ***REMOVED***
+        {
             return -1;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return 1;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
-***REMOVED***;
+};
 
 /**
 * An internal helper function for the sort process.
 *
 * @method Phaser.Group#descendingSortHandler
 * @protected
-* @param ***REMOVED***object***REMOVED*** a - The first object being sorted.
-* @param ***REMOVED***object***REMOVED*** b - The second object being sorted.
+* @param {object} a - The first object being sorted.
+* @param {object} b - The second object being sorted.
 */
-Phaser.Group.prototype.descendingSortHandler = function (a, b) ***REMOVED***
+Phaser.Group.prototype.descendingSortHandler = function (a, b) {
 
     if (a[this._sortProperty] < b[this._sortProperty])
-    ***REMOVED***
+    {
         return 1;
-    ***REMOVED***
+    }
     else if (a[this._sortProperty] > b[this._sortProperty])
-    ***REMOVED***
+    {
         return -1;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         return 0;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Iterates over the children of the group performing one of several actions for matched children.
@@ -5730,11 +5730,11 @@ Phaser.Group.prototype.descendingSortHandler = function (a, b) ***REMOVED***
 *
 * The result depends on the `returnType`:
 *
-* - ***REMOVED***@link Phaser.Group.RETURN_TOTAL RETURN_TOTAL***REMOVED***:
+* - {@link Phaser.Group.RETURN_TOTAL RETURN_TOTAL}:
 *     The callback, if any, is applied to all matching children. The number of matched children is returned.
-* - ***REMOVED***@link Phaser.Group.RETURN_NONE RETURN_NONE***REMOVED***:
+* - {@link Phaser.Group.RETURN_NONE RETURN_NONE}:
 *     The callback, if any, is applied to all matching children. No value is returned.
-* - ***REMOVED***@link Phaser.Group.RETURN_CHILD RETURN_CHILD***REMOVED***:
+* - {@link Phaser.Group.RETURN_CHILD RETURN_CHILD}:
 *     The callback, if any, is applied to the *first* matching child and the *first* matched child is returned.
 *     If there is no matching child then null is returned.
 *
@@ -5742,80 +5742,80 @@ Phaser.Group.prototype.descendingSortHandler = function (a, b) ***REMOVED***
 * element and the entire array will be applied to the callback function.
 *
 * @method Phaser.Group#iterate
-* @param ***REMOVED***string***REMOVED*** key - The child property to check, i.e. 'exists', 'alive', 'health'
-* @param ***REMOVED***any***REMOVED*** value - A child matches if `child[key] === value` is true.
-* @param ***REMOVED***integer***REMOVED*** returnType - How to iterate the children and what to return.
-* @param ***REMOVED***function***REMOVED*** [callback=null] - Optional function that will be called on each matching child. The matched child is supplied as the first argument.
-* @param ***REMOVED***object***REMOVED*** [callbackContext] - The context in which the function should be called (usually 'this').
-* @param ***REMOVED***any[]***REMOVED*** [args=(none)] - The arguments supplied to to the callback; the first array index (argument) will be replaced with the matched child.
-* @return ***REMOVED***any***REMOVED*** Returns either an integer (for RETURN_TOTAL), the first matched child (for RETURN_CHILD), or null.
+* @param {string} key - The child property to check, i.e. 'exists', 'alive', 'health'
+* @param {any} value - A child matches if `child[key] === value` is true.
+* @param {integer} returnType - How to iterate the children and what to return.
+* @param {function} [callback=null] - Optional function that will be called on each matching child. The matched child is supplied as the first argument.
+* @param {object} [callbackContext] - The context in which the function should be called (usually 'this').
+* @param {any[]} [args=(none)] - The arguments supplied to to the callback; the first array index (argument) will be replaced with the matched child.
+* @return {any} Returns either an integer (for RETURN_TOTAL), the first matched child (for RETURN_CHILD), or null.
 */
-Phaser.Group.prototype.iterate = function (key, value, returnType, callback, callbackContext, args) ***REMOVED***
+Phaser.Group.prototype.iterate = function (key, value, returnType, callback, callbackContext, args) {
 
     if (this.children.length === 0)
-    ***REMOVED***
+    {
         if (returnType === Phaser.Group.RETURN_TOTAL)
-        ***REMOVED***
+        {
             return 0;
-        ***REMOVED***
+        }
         else if (returnType === Phaser.Group.RETURN_ALL)
-        ***REMOVED***
+        {
             return [];
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     var total = 0;
 
     if (returnType === Phaser.Group.RETURN_ALL)
-    ***REMOVED***
+    {
         var output = [];
-    ***REMOVED***
+    }
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         if (this.children[i][key] === value)
-        ***REMOVED***
+        {
             total++;
 
             if (callback)
-            ***REMOVED***
+            {
                 if (args)
-                ***REMOVED***
+                {
                     args[0] = this.children[i];
                     callback.apply(callbackContext, args);
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     callback.call(callbackContext, this.children[i]);
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
 
             if (returnType === Phaser.Group.RETURN_CHILD)
-            ***REMOVED***
+            {
                 return this.children[i];
-            ***REMOVED***
+            }
             else if (returnType === Phaser.Group.RETURN_ALL)
-            ***REMOVED***
+            {
                 output.push(this.children[i]);
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
     if (returnType === Phaser.Group.RETURN_TOTAL)
-    ***REMOVED***
+    {
         return total;
-    ***REMOVED***
+    }
     else if (returnType === Phaser.Group.RETURN_ALL)
-    ***REMOVED***
+    {
         return output;
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
+    {
         //  RETURN_CHILD or RETURN_NONE
         return null;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Get the first display object that exists, or doesn't exist.
@@ -5828,28 +5828,28 @@ Phaser.Group.prototype.iterate = function (key, value, returnType, callback, cal
 * will be reset and/or have a new texture loaded on it. This is handled by `Group.resetChild`.
 *
 * @method Phaser.Group#getFirstExists
-* @param ***REMOVED***boolean***REMOVED*** [exists=true] - If true, find the first existing child; otherwise find the first non-existing child.
-* @param ***REMOVED***boolean***REMOVED*** [createIfNull=false] - If `true` and no alive children are found a new one is created.
-* @param ***REMOVED***number***REMOVED*** [x] - The x coordinate to reset the child to. The value is in relation to the group.x point.
-* @param ***REMOVED***number***REMOVED*** [y] - The y coordinate to reset the child to. The value is in relation to the group.y point.
-* @param ***REMOVED***string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture***REMOVED*** [key] - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
-* @param ***REMOVED***string|number***REMOVED*** [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
-* @return ***REMOVED***DisplayObject***REMOVED*** The first child, or `null` if none found and `createIfNull` was false.
+* @param {boolean} [exists=true] - If true, find the first existing child; otherwise find the first non-existing child.
+* @param {boolean} [createIfNull=false] - If `true` and no alive children are found a new one is created.
+* @param {number} [x] - The x coordinate to reset the child to. The value is in relation to the group.x point.
+* @param {number} [y] - The y coordinate to reset the child to. The value is in relation to the group.y point.
+* @param {string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture} [key] - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
+* @param {string|number} [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
+* @return {DisplayObject} The first child, or `null` if none found and `createIfNull` was false.
 */
-Phaser.Group.prototype.getFirstExists = function (exists, createIfNull, x, y, key, frame) ***REMOVED***
+Phaser.Group.prototype.getFirstExists = function (exists, createIfNull, x, y, key, frame) {
 
-    if (createIfNull === undefined) ***REMOVED*** createIfNull = false; ***REMOVED***
+    if (createIfNull === undefined) { createIfNull = false; }
 
     if (typeof exists !== 'boolean')
-    ***REMOVED***
+    {
         exists = true;
-    ***REMOVED***
+    }
 
     var child = this.iterate('exists', exists, Phaser.Group.RETURN_CHILD);
 
     return (child === null && createIfNull) ? this.create(x, y, key, frame) : this.resetChild(child, x, y, key, frame);
 
-***REMOVED***;
+};
 
 /**
 * Get the first child that is alive (`child.alive === true`).
@@ -5864,22 +5864,22 @@ Phaser.Group.prototype.getFirstExists = function (exists, createIfNull, x, y, ke
 * will be reset and/or have a new texture loaded on it. This is handled by `Group.resetChild`.
 *
 * @method Phaser.Group#getFirstAlive
-* @param ***REMOVED***boolean***REMOVED*** [createIfNull=false] - If `true` and no alive children are found a new one is created.
-* @param ***REMOVED***number***REMOVED*** [x] - The x coordinate to reset the child to. The value is in relation to the group.x point.
-* @param ***REMOVED***number***REMOVED*** [y] - The y coordinate to reset the child to. The value is in relation to the group.y point.
-* @param ***REMOVED***string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture***REMOVED*** [key] - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
-* @param ***REMOVED***string|number***REMOVED*** [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
-* @return ***REMOVED***DisplayObject***REMOVED*** The alive dead child, or `null` if none found and `createIfNull` was false.
+* @param {boolean} [createIfNull=false] - If `true` and no alive children are found a new one is created.
+* @param {number} [x] - The x coordinate to reset the child to. The value is in relation to the group.x point.
+* @param {number} [y] - The y coordinate to reset the child to. The value is in relation to the group.y point.
+* @param {string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture} [key] - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
+* @param {string|number} [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
+* @return {DisplayObject} The alive dead child, or `null` if none found and `createIfNull` was false.
 */
-Phaser.Group.prototype.getFirstAlive = function (createIfNull, x, y, key, frame) ***REMOVED***
+Phaser.Group.prototype.getFirstAlive = function (createIfNull, x, y, key, frame) {
 
-    if (createIfNull === undefined) ***REMOVED*** createIfNull = false; ***REMOVED***
+    if (createIfNull === undefined) { createIfNull = false; }
 
     var child = this.iterate('alive', true, Phaser.Group.RETURN_CHILD);
 
     return (child === null && createIfNull) ? this.create(x, y, key, frame) : this.resetChild(child, x, y, key, frame);
 
-***REMOVED***;
+};
 
 /**
 * Get the first child that is dead (`child.alive === false`).
@@ -5894,22 +5894,22 @@ Phaser.Group.prototype.getFirstAlive = function (createIfNull, x, y, key, frame)
 * will be reset and/or have a new texture loaded on it. This is handled by `Group.resetChild`.
 *
 * @method Phaser.Group#getFirstDead
-* @param ***REMOVED***boolean***REMOVED*** [createIfNull=false] - If `true` and no dead children are found a new one is created.
-* @param ***REMOVED***number***REMOVED*** [x] - The x coordinate to reset the child to. The value is in relation to the group.x point.
-* @param ***REMOVED***number***REMOVED*** [y] - The y coordinate to reset the child to. The value is in relation to the group.y point.
-* @param ***REMOVED***string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture***REMOVED*** [key] - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
-* @param ***REMOVED***string|number***REMOVED*** [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
-* @return ***REMOVED***DisplayObject***REMOVED*** The first dead child, or `null` if none found and `createIfNull` was false.
+* @param {boolean} [createIfNull=false] - If `true` and no dead children are found a new one is created.
+* @param {number} [x] - The x coordinate to reset the child to. The value is in relation to the group.x point.
+* @param {number} [y] - The y coordinate to reset the child to. The value is in relation to the group.y point.
+* @param {string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture} [key] - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
+* @param {string|number} [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
+* @return {DisplayObject} The first dead child, or `null` if none found and `createIfNull` was false.
 */
-Phaser.Group.prototype.getFirstDead = function (createIfNull, x, y, key, frame) ***REMOVED***
+Phaser.Group.prototype.getFirstDead = function (createIfNull, x, y, key, frame) {
 
-    if (createIfNull === undefined) ***REMOVED*** createIfNull = false; ***REMOVED***
+    if (createIfNull === undefined) { createIfNull = false; }
 
     var child = this.iterate('alive', false, Phaser.Group.RETURN_CHILD);
 
     return (child === null && createIfNull) ? this.create(x, y, key, frame) : this.resetChild(child, x, y, key, frame);
 
-***REMOVED***;
+};
 
 /**
 * Takes a child and if the `x` and `y` arguments are given it calls `child.reset(x, y)` on it.
@@ -5919,36 +5919,36 @@ Phaser.Group.prototype.getFirstDead = function (createIfNull, x, y, key, frame) 
 * The two operations are separate. For example if you just wish to load a new texture then pass `null` as the x and y values.
 *
 * @method Phaser.Group#resetChild
-* @param ***REMOVED***DisplayObject***REMOVED*** child - The child to reset and/or load the texture on.
-* @param ***REMOVED***number***REMOVED*** [x] - The x coordinate to reset the child to. The value is in relation to the group.x point.
-* @param ***REMOVED***number***REMOVED*** [y] - The y coordinate to reset the child to. The value is in relation to the group.y point.
-* @param ***REMOVED***string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture***REMOVED*** [key] - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
-* @param ***REMOVED***string|number***REMOVED*** [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
-* @return ***REMOVED***DisplayObject***REMOVED*** The child that was reset: usually a ***REMOVED***@link Phaser.Sprite***REMOVED***.
+* @param {DisplayObject} child - The child to reset and/or load the texture on.
+* @param {number} [x] - The x coordinate to reset the child to. The value is in relation to the group.x point.
+* @param {number} [y] - The y coordinate to reset the child to. The value is in relation to the group.y point.
+* @param {string|Phaser.RenderTexture|Phaser.BitmapData|Phaser.Video|PIXI.Texture} [key] - This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache Image entry, or an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
+* @param {string|number} [frame] - If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
+* @return {DisplayObject} The child that was reset: usually a {@link Phaser.Sprite}.
 */
-Phaser.Group.prototype.resetChild = function (child, x, y, key, frame) ***REMOVED***
+Phaser.Group.prototype.resetChild = function (child, x, y, key, frame) {
 
     if (child === null)
-    ***REMOVED***
+    {
         return null;
-    ***REMOVED***
+    }
 
-    if (x === undefined) ***REMOVED*** x = null; ***REMOVED***
-    if (y === undefined) ***REMOVED*** y = null; ***REMOVED***
+    if (x === undefined) { x = null; }
+    if (y === undefined) { y = null; }
 
     if (x !== null && y !== null)
-    ***REMOVED***
+    {
         child.reset(x, y);
-    ***REMOVED***
+    }
 
     if (key !== undefined)
-    ***REMOVED***
+    {
         child.loadTexture(key, frame);
-    ***REMOVED***
+    }
 
     return child;
 
-***REMOVED***;
+};
 
 /**
 * Return the child at the top of this group.
@@ -5956,16 +5956,16 @@ Phaser.Group.prototype.resetChild = function (child, x, y, key, frame) ***REMOVE
 * The top child is the child displayed (rendered) above every other child.
 *
 * @method Phaser.Group#getTop
-* @return ***REMOVED***any***REMOVED*** The child at the top of the Group.
+* @return {any} The child at the top of the Group.
 */
-Phaser.Group.prototype.getTop = function () ***REMOVED***
+Phaser.Group.prototype.getTop = function () {
 
     if (this.children.length > 0)
-    ***REMOVED***
+    {
         return this.children[this.children.length - 1];
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Returns the child at the bottom of this group.
@@ -5973,16 +5973,16 @@ Phaser.Group.prototype.getTop = function () ***REMOVED***
 * The bottom child the child being displayed (rendered) below every other child.
 *
 * @method Phaser.Group#getBottom
-* @return ***REMOVED***any***REMOVED*** The child at the bottom of the Group.
+* @return {any} The child at the bottom of the Group.
 */
-Phaser.Group.prototype.getBottom = function () ***REMOVED***
+Phaser.Group.prototype.getBottom = function () {
 
     if (this.children.length > 0)
-    ***REMOVED***
+    {
         return this.children[0];
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Get the closest child to given Object, with optional callback to filter children.
@@ -5997,36 +5997,36 @@ Phaser.Group.prototype.getBottom = function () ***REMOVED***
 * filtering criteria, otherwise it should return `false`.
 *
 * @method Phaser.Group#getClosestTo
-* @param ***REMOVED***any***REMOVED*** object - The object used to determine the distance. This can be a Sprite, Group, Image or any object with public x and y properties.
-* @param ***REMOVED***function***REMOVED*** [callback] - The function that each child will be evaluated against. Each child of the group will be passed to it as its first parameter, with the distance as the second. It should return `true` if the child passes the matching criteria.
-* @param ***REMOVED***object***REMOVED*** [callbackContext] - The context in which the function should be called (usually 'this').
-* @return ***REMOVED***any***REMOVED*** The child closest to given object, or `null` if no child was found.
+* @param {any} object - The object used to determine the distance. This can be a Sprite, Group, Image or any object with public x and y properties.
+* @param {function} [callback] - The function that each child will be evaluated against. Each child of the group will be passed to it as its first parameter, with the distance as the second. It should return `true` if the child passes the matching criteria.
+* @param {object} [callbackContext] - The context in which the function should be called (usually 'this').
+* @return {any} The child closest to given object, or `null` if no child was found.
 */
-Phaser.Group.prototype.getClosestTo = function (object, callback, callbackContext) ***REMOVED***
+Phaser.Group.prototype.getClosestTo = function (object, callback, callbackContext) {
 
     var distance = Number.MAX_VALUE;
     var tempDistance = 0;
     var result = null;
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         var child = this.children[i];
 
         if (child.exists)
-        ***REMOVED***
+        {
             tempDistance = Math.abs(Phaser.Point.distance(object, child));
 
             if (tempDistance < distance && (!callback || callback.call(callbackContext, child, tempDistance)))
-            ***REMOVED***
+            {
                 distance = tempDistance;
                 result = child;
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
     return result;
 
-***REMOVED***;
+};
 
 /**
 * Get the child furthest away from the given Object, with optional callback to filter children.
@@ -6041,82 +6041,82 @@ Phaser.Group.prototype.getClosestTo = function (object, callback, callbackContex
 * filtering criteria, otherwise it should return `false`.
 *
 * @method Phaser.Group#getFurthestFrom
-* @param ***REMOVED***any***REMOVED*** object - The object used to determine the distance. This can be a Sprite, Group, Image or any object with public x and y properties.
-* @param ***REMOVED***function***REMOVED*** [callback] - The function that each child will be evaluated against. Each child of the group will be passed to it as its first parameter, with the distance as the second. It should return `true` if the child passes the matching criteria.
-* @param ***REMOVED***object***REMOVED*** [callbackContext] - The context in which the function should be called (usually 'this').
-* @return ***REMOVED***any***REMOVED*** The child furthest from the given object, or `null` if no child was found.
+* @param {any} object - The object used to determine the distance. This can be a Sprite, Group, Image or any object with public x and y properties.
+* @param {function} [callback] - The function that each child will be evaluated against. Each child of the group will be passed to it as its first parameter, with the distance as the second. It should return `true` if the child passes the matching criteria.
+* @param {object} [callbackContext] - The context in which the function should be called (usually 'this').
+* @return {any} The child furthest from the given object, or `null` if no child was found.
 */
-Phaser.Group.prototype.getFurthestFrom = function (object, callback, callbackContext) ***REMOVED***
+Phaser.Group.prototype.getFurthestFrom = function (object, callback, callbackContext) {
 
     var distance = 0;
     var tempDistance = 0;
     var result = null;
 
     for (var i = 0; i < this.children.length; i++)
-    ***REMOVED***
+    {
         var child = this.children[i];
 
         if (child.exists)
-        ***REMOVED***
+        {
             tempDistance = Math.abs(Phaser.Point.distance(object, child));
 
             if (tempDistance > distance && (!callback || callback.call(callbackContext, child, tempDistance)))
-            ***REMOVED***
+            {
                 distance = tempDistance;
                 result = child;
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
     return result;
 
-***REMOVED***;
+};
 
 /**
 * Get the number of living children in this group.
 *
 * @method Phaser.Group#countLiving
-* @return ***REMOVED***integer***REMOVED*** The number of children flagged as alive.
+* @return {integer} The number of children flagged as alive.
 */
-Phaser.Group.prototype.countLiving = function () ***REMOVED***
+Phaser.Group.prototype.countLiving = function () {
 
     return this.iterate('alive', true, Phaser.Group.RETURN_TOTAL);
 
-***REMOVED***;
+};
 
 /**
 * Get the number of dead children in this group.
 *
 * @method Phaser.Group#countDead
-* @return ***REMOVED***integer***REMOVED*** The number of children flagged as dead.
+* @return {integer} The number of children flagged as dead.
 */
-Phaser.Group.prototype.countDead = function () ***REMOVED***
+Phaser.Group.prototype.countDead = function () {
 
     return this.iterate('alive', false, Phaser.Group.RETURN_TOTAL);
 
-***REMOVED***;
+};
 
 /**
 * Returns a random child from the group.
 *
 * @method Phaser.Group#getRandom
-* @param ***REMOVED***integer***REMOVED*** [startIndex=0] - Offset from the front of the group (lowest child).
-* @param ***REMOVED***integer***REMOVED*** [length=(to top)] - Restriction on the number of values you want to randomly select from.
-* @return ***REMOVED***any***REMOVED*** A random child of this Group.
+* @param {integer} [startIndex=0] - Offset from the front of the group (lowest child).
+* @param {integer} [length=(to top)] - Restriction on the number of values you want to randomly select from.
+* @return {any} A random child of this Group.
 */
-Phaser.Group.prototype.getRandom = function (startIndex, length) ***REMOVED***
+Phaser.Group.prototype.getRandom = function (startIndex, length) {
 
-    if (startIndex === undefined) ***REMOVED*** startIndex = 0; ***REMOVED***
-    if (length === undefined) ***REMOVED*** length = this.children.length; ***REMOVED***
+    if (startIndex === undefined) { startIndex = 0; }
+    if (length === undefined) { length = this.children.length; }
 
     if (length === 0)
-    ***REMOVED***
+    {
         return null;
-    ***REMOVED***
+    }
 
     return Phaser.ArrayUtils.getRandomItem(this.children, startIndex, length);
 
-***REMOVED***;
+};
 
 /**
 * Returns a random child from the Group that has `exists` set to `true`.
@@ -6126,17 +6126,17 @@ Phaser.Group.prototype.getRandom = function (startIndex, length) ***REMOVED***
 * the first 50 children in the Group.
 *
 * @method Phaser.Group#getRandomExists
-* @param ***REMOVED***integer***REMOVED*** [startIndex=0] - The first child index to start the search from.
-* @param ***REMOVED***integer***REMOVED*** [endIndex] - The last child index to search up to.
-* @return ***REMOVED***any***REMOVED*** A random child of this Group that exists.
+* @param {integer} [startIndex=0] - The first child index to start the search from.
+* @param {integer} [endIndex] - The last child index to search up to.
+* @return {any} A random child of this Group that exists.
 */
-Phaser.Group.prototype.getRandomExists = function (startIndex, endIndex) ***REMOVED***
+Phaser.Group.prototype.getRandomExists = function (startIndex, endIndex) {
 
     var list = this.getAll('exists', true, startIndex, endIndex);
 
     return this.game.rnd.pick(list);
 
-***REMOVED***;
+};
 
 /**
 * Returns all children in this Group.
@@ -6150,32 +6150,32 @@ Phaser.Group.prototype.getRandomExists = function (startIndex, endIndex) ***REMO
 * the first 50 children in the Group.
 *
 * @method Phaser.Group#getAll
-* @param ***REMOVED***string***REMOVED*** [property] - An optional property to test against the value argument.
-* @param ***REMOVED***any***REMOVED*** [value] - If property is set then Child.property must strictly equal this value to be included in the results.
-* @param ***REMOVED***integer***REMOVED*** [startIndex=0] - The first child index to start the search from.
-* @param ***REMOVED***integer***REMOVED*** [endIndex] - The last child index to search up until.
-* @return ***REMOVED***any***REMOVED*** A random existing child of this Group.
+* @param {string} [property] - An optional property to test against the value argument.
+* @param {any} [value] - If property is set then Child.property must strictly equal this value to be included in the results.
+* @param {integer} [startIndex=0] - The first child index to start the search from.
+* @param {integer} [endIndex] - The last child index to search up until.
+* @return {any} A random existing child of this Group.
 */
-Phaser.Group.prototype.getAll = function (property, value, startIndex, endIndex) ***REMOVED***
+Phaser.Group.prototype.getAll = function (property, value, startIndex, endIndex) {
 
-    if (startIndex === undefined) ***REMOVED*** startIndex = 0; ***REMOVED***
-    if (endIndex === undefined) ***REMOVED*** endIndex = this.children.length; ***REMOVED***
+    if (startIndex === undefined) { startIndex = 0; }
+    if (endIndex === undefined) { endIndex = this.children.length; }
 
     var output = [];
 
     for (var i = startIndex; i < endIndex; i++)
-    ***REMOVED***
+    {
         var child = this.children[i];
 
         if (property && child[property] === value)
-        ***REMOVED***
+        {
             output.push(child);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     return output;
 
-***REMOVED***;
+};
 
 /**
 * Removes the given child from this group.
@@ -6185,25 +6185,25 @@ Phaser.Group.prototype.getAll = function (property, value, startIndex, endIndex)
 * If the group cursor was referring to the removed child it is updated to refer to the next child.
 *
 * @method Phaser.Group#remove
-* @param ***REMOVED***any***REMOVED*** child - The child to remove.
-* @param ***REMOVED***boolean***REMOVED*** [destroy=false] - If true `destroy` will be invoked on the removed child.
-* @param ***REMOVED***boolean***REMOVED*** [silent=false] - If true the the child will not dispatch the `onRemovedFromGroup` event.
-* @return ***REMOVED***boolean***REMOVED*** true if the child was removed from this group, otherwise false.
+* @param {any} child - The child to remove.
+* @param {boolean} [destroy=false] - If true `destroy` will be invoked on the removed child.
+* @param {boolean} [silent=false] - If true the the child will not dispatch the `onRemovedFromGroup` event.
+* @return {boolean} true if the child was removed from this group, otherwise false.
 */
-Phaser.Group.prototype.remove = function (child, destroy, silent) ***REMOVED***
+Phaser.Group.prototype.remove = function (child, destroy, silent) {
 
-    if (destroy === undefined) ***REMOVED*** destroy = false; ***REMOVED***
-    if (silent === undefined) ***REMOVED*** silent = false; ***REMOVED***
+    if (destroy === undefined) { destroy = false; }
+    if (silent === undefined) { silent = false; }
 
     if (this.children.length === 0 || this.children.indexOf(child) === -1)
-    ***REMOVED***
+    {
         return false;
-    ***REMOVED***
+    }
 
     if (!silent && child.events && !child.destroyPhase)
-    ***REMOVED***
+    {
         child.events.onRemovedFromGroup$dispatch(child, this);
-    ***REMOVED***
+    }
 
     var removed = this.removeChild(child);
 
@@ -6212,47 +6212,47 @@ Phaser.Group.prototype.remove = function (child, destroy, silent) ***REMOVED***
     this.updateZ();
 
     if (this.cursor === child)
-    ***REMOVED***
+    {
         this.next();
-    ***REMOVED***
+    }
 
     if (destroy && removed)
-    ***REMOVED***
+    {
         removed.destroy(true);
-    ***REMOVED***
+    }
 
     return true;
 
-***REMOVED***;
+};
 
 /**
 * Moves all children from this Group to the Group given.
 *
 * @method Phaser.Group#moveAll
-* @param ***REMOVED***Phaser.Group***REMOVED*** group - The new Group to which the children will be moved to.
-* @param ***REMOVED***boolean***REMOVED*** [silent=false] - If true the children will not dispatch the `onAddedToGroup` event for the new Group.
-* @return ***REMOVED***Phaser.Group***REMOVED*** The Group to which all the children were moved.
+* @param {Phaser.Group} group - The new Group to which the children will be moved to.
+* @param {boolean} [silent=false] - If true the children will not dispatch the `onAddedToGroup` event for the new Group.
+* @return {Phaser.Group} The Group to which all the children were moved.
 */
-Phaser.Group.prototype.moveAll = function (group, silent) ***REMOVED***
+Phaser.Group.prototype.moveAll = function (group, silent) {
 
-    if (silent === undefined) ***REMOVED*** silent = false; ***REMOVED***
+    if (silent === undefined) { silent = false; }
 
     if (this.children.length > 0 && group instanceof Phaser.Group)
-    ***REMOVED***
+    {
         do
-        ***REMOVED***
+        {
             group.add(this.children[0], silent);
-        ***REMOVED***
+        }
         while (this.children.length > 0);
 
         this.hash = [];
 
         this.cursor = null;
-    ***REMOVED***
+    }
 
     return group;
 
-***REMOVED***;
+};
 
 /**
 * Removes all children from this Group, but does not remove the group from its parent.
@@ -6263,99 +6263,99 @@ Phaser.Group.prototype.moveAll = function (group, silent) ***REMOVED***
 * more than one Game Object sharing the same BaseTexture.
 *
 * @method Phaser.Group#removeAll
-* @param ***REMOVED***boolean***REMOVED*** [destroy=false] - If true `destroy` will be invoked on each removed child.
-* @param ***REMOVED***boolean***REMOVED*** [silent=false] - If true the children will not dispatch their `onRemovedFromGroup` events.
-* @param ***REMOVED***boolean***REMOVED*** [destroyTexture=false] - If true, and if the `destroy` argument is also true, the BaseTexture belonging to the Child is also destroyed. Note that if another Game Object is sharing the same BaseTexture it will invalidate it.
+* @param {boolean} [destroy=false] - If true `destroy` will be invoked on each removed child.
+* @param {boolean} [silent=false] - If true the children will not dispatch their `onRemovedFromGroup` events.
+* @param {boolean} [destroyTexture=false] - If true, and if the `destroy` argument is also true, the BaseTexture belonging to the Child is also destroyed. Note that if another Game Object is sharing the same BaseTexture it will invalidate it.
 */
-Phaser.Group.prototype.removeAll = function (destroy, silent, destroyTexture) ***REMOVED***
+Phaser.Group.prototype.removeAll = function (destroy, silent, destroyTexture) {
 
-    if (destroy === undefined) ***REMOVED*** destroy = false; ***REMOVED***
-    if (silent === undefined) ***REMOVED*** silent = false; ***REMOVED***
-    if (destroyTexture === undefined) ***REMOVED*** destroyTexture = false; ***REMOVED***
+    if (destroy === undefined) { destroy = false; }
+    if (silent === undefined) { silent = false; }
+    if (destroyTexture === undefined) { destroyTexture = false; }
 
     if (this.children.length === 0)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     do
-    ***REMOVED***
+    {
         if (!silent && this.children[0].events)
-        ***REMOVED***
+        {
             this.children[0].events.onRemovedFromGroup$dispatch(this.children[0], this);
-        ***REMOVED***
+        }
 
         var removed = this.removeChild(this.children[0]);
 
         this.removeFromHash(removed);
 
         if (destroy && removed)
-        ***REMOVED***
+        {
             removed.destroy(true, destroyTexture);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     while (this.children.length > 0);
 
     this.hash = [];
 
     this.cursor = null;
 
-***REMOVED***;
+};
 
 /**
 * Removes all children from this group whose index falls beteen the given startIndex and endIndex values.
 *
 * @method Phaser.Group#removeBetween
-* @param ***REMOVED***integer***REMOVED*** startIndex - The index to start removing children from.
-* @param ***REMOVED***integer***REMOVED*** [endIndex] - The index to stop removing children at. Must be higher than startIndex. If undefined this method will remove all children between startIndex and the end of the group.
-* @param ***REMOVED***boolean***REMOVED*** [destroy=false] - If true `destroy` will be invoked on each removed child.
-* @param ***REMOVED***boolean***REMOVED*** [silent=false] - If true the children will not dispatch their `onRemovedFromGroup` events.
+* @param {integer} startIndex - The index to start removing children from.
+* @param {integer} [endIndex] - The index to stop removing children at. Must be higher than startIndex. If undefined this method will remove all children between startIndex and the end of the group.
+* @param {boolean} [destroy=false] - If true `destroy` will be invoked on each removed child.
+* @param {boolean} [silent=false] - If true the children will not dispatch their `onRemovedFromGroup` events.
 */
-Phaser.Group.prototype.removeBetween = function (startIndex, endIndex, destroy, silent) ***REMOVED***
+Phaser.Group.prototype.removeBetween = function (startIndex, endIndex, destroy, silent) {
 
-    if (endIndex === undefined) ***REMOVED*** endIndex = this.children.length - 1; ***REMOVED***
-    if (destroy === undefined) ***REMOVED*** destroy = false; ***REMOVED***
-    if (silent === undefined) ***REMOVED*** silent = false; ***REMOVED***
+    if (endIndex === undefined) { endIndex = this.children.length - 1; }
+    if (destroy === undefined) { destroy = false; }
+    if (silent === undefined) { silent = false; }
 
     if (this.children.length === 0)
-    ***REMOVED***
+    {
         return;
-    ***REMOVED***
+    }
 
     if (startIndex > endIndex || startIndex < 0 || endIndex > this.children.length)
-    ***REMOVED***
+    {
         return false;
-    ***REMOVED***
+    }
 
     var i = endIndex;
 
     while (i >= startIndex)
-    ***REMOVED***
+    {
         if (!silent && this.children[i].events)
-        ***REMOVED***
+        {
             this.children[i].events.onRemovedFromGroup$dispatch(this.children[i], this);
-        ***REMOVED***
+        }
 
         var removed = this.removeChild(this.children[i]);
 
         this.removeFromHash(removed);
 
         if (destroy && removed)
-        ***REMOVED***
+        {
             removed.destroy(true);
-        ***REMOVED***
+        }
 
         if (this.cursor === this.children[i])
-        ***REMOVED***
+        {
             this.cursor = null;
-        ***REMOVED***
+        }
 
         i--;
-    ***REMOVED***
+    }
 
     this.updateZ();
 
-***REMOVED***;
+};
 
 /**
 * Destroys this group.
@@ -6363,15 +6363,15 @@ Phaser.Group.prototype.removeBetween = function (startIndex, endIndex, destroy, 
 * Removes all children, then removes this group from its parent and nulls references.
 *
 * @method Phaser.Group#destroy
-* @param ***REMOVED***boolean***REMOVED*** [destroyChildren=true] - If true `destroy` will be invoked on each removed child.
-* @param ***REMOVED***boolean***REMOVED*** [soft=false] - A 'soft destroy' (set to true) doesn't remove this group from its parent or null the game reference. Set to false and it does.
+* @param {boolean} [destroyChildren=true] - If true `destroy` will be invoked on each removed child.
+* @param {boolean} [soft=false] - A 'soft destroy' (set to true) doesn't remove this group from its parent or null the game reference. Set to false and it does.
 */
-Phaser.Group.prototype.destroy = function (destroyChildren, soft) ***REMOVED***
+Phaser.Group.prototype.destroy = function (destroyChildren, soft) {
 
-    if (this.game === null || this.ignoreDestroy) ***REMOVED*** return; ***REMOVED***
+    if (this.game === null || this.ignoreDestroy) { return; }
 
-    if (destroyChildren === undefined) ***REMOVED*** destroyChildren = true; ***REMOVED***
-    if (soft === undefined) ***REMOVED*** soft = false; ***REMOVED***
+    if (destroyChildren === undefined) { destroyChildren = true; }
+    if (soft === undefined) { soft = false; }
 
     this.onDestroy.dispatch(this, destroyChildren, soft);
 
@@ -6382,51 +6382,51 @@ Phaser.Group.prototype.destroy = function (destroyChildren, soft) ***REMOVED***
     this.pendingDestroy = false;
 
     if (!soft)
-    ***REMOVED***
+    {
         if (this.parent)
-        ***REMOVED***
+        {
             this.parent.removeChild(this);
-        ***REMOVED***
+        }
 
         this.game = null;
         this.exists = false;
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 /**
 * Total number of existing children in the group.
 *
 * @name Phaser.Group#total
-* @property ***REMOVED***integer***REMOVED*** total
+* @property {integer} total
 * @readonly
 */
-Object.defineProperty(Phaser.Group.prototype, "total", ***REMOVED***
+Object.defineProperty(Phaser.Group.prototype, "total", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.iterate('exists', true, Phaser.Group.RETURN_TOTAL);
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * Total number of children in this group, regardless of exists/alive status.
 *
 * @name Phaser.Group#length
-* @property ***REMOVED***integer***REMOVED*** length 
+* @property {integer} length 
 * @readonly
 */
-Object.defineProperty(Phaser.Group.prototype, "length", ***REMOVED***
+Object.defineProperty(Phaser.Group.prototype, "length", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.children.length;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * The angle of rotation of the group container, in degrees.
@@ -6437,19 +6437,19 @@ Object.defineProperty(Phaser.Group.prototype, "length", ***REMOVED***
 * and on-screen orientation and position.
 *
 * @name Phaser.Group#angle
-* @property ***REMOVED***number***REMOVED*** angle
+* @property {number} angle
 */
-Object.defineProperty(Phaser.Group.prototype, "angle", ***REMOVED***
+Object.defineProperty(Phaser.Group.prototype, "angle", {
 
-    get: function() ***REMOVED***
+    get: function() {
         return Phaser.Math.radToDeg(this.rotation);
-    ***REMOVED***,
+    },
 
-    set: function(value) ***REMOVED***
+    set: function(value) {
         this.rotation = Phaser.Math.degToRad(value);
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * The center x coordinate of this Group.
@@ -6458,26 +6458,26 @@ Object.defineProperty(Phaser.Group.prototype, "angle", ***REMOVED***
 * visible children.
 * 
 * @name Phaser.Group#centerX
-* @property ***REMOVED***number***REMOVED*** centerX
+* @property {number} centerX
 */
-Object.defineProperty(Phaser.Group.prototype, "centerX", ***REMOVED***
+Object.defineProperty(Phaser.Group.prototype, "centerX", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.getBounds(this.parent).centerX;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         var r = this.getBounds(this.parent);
         var offset = this.x - r.x;
 
         this.x = (value + offset) - r.halfWidth;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * The center y coordinate of this Group.
@@ -6486,26 +6486,26 @@ Object.defineProperty(Phaser.Group.prototype, "centerX", ***REMOVED***
 * visible children.
 * 
 * @name Phaser.Group#centerY
-* @property ***REMOVED***number***REMOVED*** centerY
+* @property {number} centerY
 */
-Object.defineProperty(Phaser.Group.prototype, "centerY", ***REMOVED***
+Object.defineProperty(Phaser.Group.prototype, "centerY", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.getBounds(this.parent).centerY;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         var r = this.getBounds(this.parent);
         var offset = this.y - r.y;
 
         this.y = (value + offset) - r.halfHeight;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * The left coordinate of this Group.
@@ -6514,26 +6514,26 @@ Object.defineProperty(Phaser.Group.prototype, "centerY", ***REMOVED***
 * visible children.
 * 
 * @name Phaser.Group#left
-* @property ***REMOVED***number***REMOVED*** left
+* @property {number} left
 */
-Object.defineProperty(Phaser.Group.prototype, "left", ***REMOVED***
+Object.defineProperty(Phaser.Group.prototype, "left", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.getBounds(this.parent).left;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         var r = this.getBounds(this.parent);
         var offset = this.x - r.x;
 
         this.x = value + offset;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * The right coordinate of this Group.
@@ -6542,26 +6542,26 @@ Object.defineProperty(Phaser.Group.prototype, "left", ***REMOVED***
 * visible children.
 *
 * @name Phaser.Group#right
-* @property ***REMOVED***number***REMOVED*** right
+* @property {number} right
 */
-Object.defineProperty(Phaser.Group.prototype, "right", ***REMOVED***
+Object.defineProperty(Phaser.Group.prototype, "right", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.getBounds(this.parent).right;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         var r = this.getBounds(this.parent);
         var offset = this.x - r.x;
 
         this.x = (value + offset) - r.width;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * The top coordinate of this Group.
@@ -6570,26 +6570,26 @@ Object.defineProperty(Phaser.Group.prototype, "right", ***REMOVED***
 * visible children.
 *
 * @name Phaser.Group#top
-* @property ***REMOVED***number***REMOVED*** top
+* @property {number} top
 */
-Object.defineProperty(Phaser.Group.prototype, "top", ***REMOVED***
+Object.defineProperty(Phaser.Group.prototype, "top", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.getBounds(this.parent).top;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         var r = this.getBounds(this.parent);
         var offset = this.y - r.y;
 
         this.y = (value + offset);
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * The bottom coordinate of this Group.
@@ -6598,26 +6598,26 @@ Object.defineProperty(Phaser.Group.prototype, "top", ***REMOVED***
 * visible children.
 * 
 * @name Phaser.Group#bottom
-* @property ***REMOVED***number***REMOVED*** bottom
+* @property {number} bottom
 */
-Object.defineProperty(Phaser.Group.prototype, "bottom", ***REMOVED***
+Object.defineProperty(Phaser.Group.prototype, "bottom", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         return this.getBounds(this.parent).bottom;
 
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         var r = this.getBounds(this.parent);
         var offset = this.y - r.y;
 
         this.y = (value + offset) - r.height;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * Aligns this Group within another Game Object, or Rectangle, known as the
@@ -6652,11 +6652,11 @@ Object.defineProperty(Phaser.Group.prototype, "bottom", ***REMOVED***
 * one expands it.
 *
 * @method Phaser.Group#alignIn
-* @param ***REMOVED***Phaser.Rectangle|Phaser.Sprite|Phaser.Image|Phaser.Text|Phaser.BitmapText|Phaser.Button|Phaser.Graphics|Phaser.TileSprite***REMOVED*** container - The Game Object or Rectangle with which to align this Group to. Can also include properties such as `World.bounds` or `Camera.view`.
-* @param ***REMOVED***integer***REMOVED*** [position] - The position constant. One of `Phaser.TOP_LEFT` (default), `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_CENTER`, `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-* @param ***REMOVED***integer***REMOVED*** [offsetX=0] - A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-* @param ***REMOVED***integer***REMOVED*** [offsetY=0] - A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-* @return ***REMOVED***Phaser.Group***REMOVED*** This Group.
+* @param {Phaser.Rectangle|Phaser.Sprite|Phaser.Image|Phaser.Text|Phaser.BitmapText|Phaser.Button|Phaser.Graphics|Phaser.TileSprite} container - The Game Object or Rectangle with which to align this Group to. Can also include properties such as `World.bounds` or `Camera.view`.
+* @param {integer} [position] - The position constant. One of `Phaser.TOP_LEFT` (default), `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_CENTER`, `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
+* @param {integer} [offsetX=0] - A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
+* @param {integer} [offsetY=0] - A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
+* @return {Phaser.Group} This Group.
 */
 
 //  This function is set at the bottom of src/gameobjects/components/Bounds.js
@@ -6695,11 +6695,11 @@ Object.defineProperty(Phaser.Group.prototype, "bottom", ***REMOVED***
 * one expands it.
 *
 * @method Phaser.Group#alignTo
-* @param ***REMOVED***Phaser.Rectangle|Phaser.Sprite|Phaser.Image|Phaser.Text|Phaser.BitmapText|Phaser.Button|Phaser.Graphics|Phaser.TileSprite***REMOVED*** parent - The Game Object or Rectangle with which to align this Group to. Can also include properties such as `World.bounds` or `Camera.view`.
-* @param ***REMOVED***integer***REMOVED*** [position] - The position constant. One of `Phaser.TOP_LEFT`, `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_TOP`, `Phaser.LEFT_CENTER`, `Phaser.LEFT_BOTTOM`, `Phaser.RIGHT_TOP`, `Phaser.RIGHT_CENTER`, `Phaser.RIGHT_BOTTOM`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-* @param ***REMOVED***integer***REMOVED*** [offsetX=0] - A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-* @param ***REMOVED***integer***REMOVED*** [offsetY=0] - A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-* @return ***REMOVED***Phaser.Group***REMOVED*** This Group.
+* @param {Phaser.Rectangle|Phaser.Sprite|Phaser.Image|Phaser.Text|Phaser.BitmapText|Phaser.Button|Phaser.Graphics|Phaser.TileSprite} parent - The Game Object or Rectangle with which to align this Group to. Can also include properties such as `World.bounds` or `Camera.view`.
+* @param {integer} [position] - The position constant. One of `Phaser.TOP_LEFT`, `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_TOP`, `Phaser.LEFT_CENTER`, `Phaser.LEFT_BOTTOM`, `Phaser.RIGHT_TOP`, `Phaser.RIGHT_CENTER`, `Phaser.RIGHT_BOTTOM`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
+* @param {integer} [offsetX=0] - A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
+* @param {integer} [offsetY=0] - A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
+* @return {Phaser.Group} This Group.
 */
 
 //  This function is set at the bottom of src/gameobjects/components/Bounds.js
@@ -6707,11 +6707,11 @@ Object.defineProperty(Phaser.Group.prototype, "bottom", ***REMOVED***
 /**
 * A display object is any object that can be rendered in the Phaser/pixi.js scene graph.
 *
-* This includes ***REMOVED***@link Phaser.Group***REMOVED*** (groups are display objects!),
-* ***REMOVED***@link Phaser.Sprite***REMOVED***, ***REMOVED***@link Phaser.Button***REMOVED***, ***REMOVED***@link Phaser.Text***REMOVED***
-* as well as ***REMOVED***@link PIXI.DisplayObject***REMOVED*** and all derived types.
+* This includes {@link Phaser.Group} (groups are display objects!),
+* {@link Phaser.Sprite}, {@link Phaser.Button}, {@link Phaser.Text}
+* as well as {@link PIXI.DisplayObject} and all derived types.
 *
-* @typedef ***REMOVED***object***REMOVED*** DisplayObject
+* @typedef {object} DisplayObject
 */
 // Documentation stub for linking.
 
@@ -6721,7 +6721,7 @@ Object.defineProperty(Phaser.Group.prototype, "bottom", ***REMOVED***
 * You can adjust the group container itself by modifying its coordinates.
 * This will have no impact on the x/y coordinates of its children, but it will update their worldTransform and on-screen position.
 * @name Phaser.Group#x
-* @property ***REMOVED***number***REMOVED*** x
+* @property {number} x
 */
 
 /**
@@ -6730,7 +6730,7 @@ Object.defineProperty(Phaser.Group.prototype, "bottom", ***REMOVED***
 * You can adjust the group container itself by modifying its coordinates.
 * This will have no impact on the x/y coordinates of its children, but it will update their worldTransform and on-screen position.
 * @name Phaser.Group#y
-* @property ***REMOVED***number***REMOVED*** y
+* @property {number} y
 */
 
 /**
@@ -6739,27 +6739,27 @@ Object.defineProperty(Phaser.Group.prototype, "bottom", ***REMOVED***
 * This will adjust the group container itself by modifying its rotation.
 * This will have no impact on the rotation value of its children, but it will update their worldTransform and on-screen position.
 * @name Phaser.Group#rotation
-* @property ***REMOVED***number***REMOVED*** rotation
+* @property {number} rotation
 */
 
 /**
 * The visible state of the group. Non-visible Groups and all of their children are not rendered.
 *
 * @name Phaser.Group#visible
-* @property ***REMOVED***boolean***REMOVED*** visible
+* @property {boolean} visible
 */
 
 /**
 * The alpha value of the group container.
 *
 * @name Phaser.Group#alpha
-* @property ***REMOVED***number***REMOVED*** alpha
+* @property {number} alpha
 */
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -6772,9 +6772,9 @@ Object.defineProperty(Phaser.Group.prototype, "bottom", ***REMOVED***
 * @class Phaser.World
 * @extends Phaser.Group
 * @constructor
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - Reference to the current game instance.
+* @param {Phaser.Game} game - Reference to the current game instance.
 */
-Phaser.World = function (game) ***REMOVED***
+Phaser.World = function (game) {
 
     Phaser.Group.call(this, game, null, '__world', false);
 
@@ -6783,34 +6783,34 @@ Phaser.World = function (game) ***REMOVED***
     * By default we set the Bounds to be from 0,0 to Game.width,Game.height. I.e. it will match the size given to the game constructor with 0,0 representing the top-left of the display.
     * However 0,0 is actually the center of the world, and if you rotate or scale the world all of that will happen from 0,0.
     * So if you want to make a game in which the world itself will rotate you should adjust the bounds so that 0,0 is the center point, i.e. set them to -1000,-1000,2000,2000 for a 2000x2000 sized world centered around 0,0.
-    * @property ***REMOVED***Phaser.Rectangle***REMOVED*** bounds - Bound of this world that objects can not escape from.
+    * @property {Phaser.Rectangle} bounds - Bound of this world that objects can not escape from.
     */
     this.bounds = new Phaser.Rectangle(0, 0, game.width, game.height);
 
     /**
-    * @property ***REMOVED***Phaser.Camera***REMOVED*** camera - Camera instance.
+    * @property {Phaser.Camera} camera - Camera instance.
     */
     this.camera = null;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _definedSize - True if the World has been given a specifically defined size (i.e. from a Tilemap or direct in code) or false if it's just matched to the Game dimensions.
+    * @property {boolean} _definedSize - True if the World has been given a specifically defined size (i.e. from a Tilemap or direct in code) or false if it's just matched to the Game dimensions.
     * @readonly
     */
     this._definedSize = false;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** width - The defined width of the World. Sometimes the bounds needs to grow larger than this (if you resize the game) but this retains the original requested dimension.
+    * @property {number} width - The defined width of the World. Sometimes the bounds needs to grow larger than this (if you resize the game) but this retains the original requested dimension.
     */
     this._width = game.width;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** height - The defined height of the World. Sometimes the bounds needs to grow larger than this (if you resize the game) but this retains the original requested dimension.
+    * @property {number} height - The defined height of the World. Sometimes the bounds needs to grow larger than this (if you resize the game) but this retains the original requested dimension.
     */
     this._height = game.height;
 
     this.game.state.onStateChange.add(this.stateChange, this);
 
-***REMOVED***;
+};
 
 Phaser.World.prototype = Object.create(Phaser.Group.prototype);
 Phaser.World.prototype.constructor = Phaser.World;
@@ -6821,7 +6821,7 @@ Phaser.World.prototype.constructor = Phaser.World;
 * @method Phaser.World#boot
 * @protected
 */
-Phaser.World.prototype.boot = function () ***REMOVED***
+Phaser.World.prototype.boot = function () {
 
     this.camera = new Phaser.Camera(this.game, 0, 0, 0, this.game.width, this.game.height);
 
@@ -6829,7 +6829,7 @@ Phaser.World.prototype.boot = function () ***REMOVED***
 
     this.camera.boot();
 
-***REMOVED***;
+};
 
 /**
 * Called whenever the State changes or resets.
@@ -6840,26 +6840,26 @@ Phaser.World.prototype.boot = function () ***REMOVED***
 * @method Phaser.World#stateChange
 * @protected
 */
-Phaser.World.prototype.stateChange = function () ***REMOVED***
+Phaser.World.prototype.stateChange = function () {
 
     this.x = 0;
     this.y = 0;
 
     this.camera.reset();
 
-***REMOVED***;
+};
 
 /**
 * Updates the size of this world and sets World.x/y to the given values
 * The Camera bounds and Physics bounds (if set) are also updated to match the new World bounds.
 *
 * @method Phaser.World#setBounds
-* @param ***REMOVED***number***REMOVED*** x - Top left most corner of the world.
-* @param ***REMOVED***number***REMOVED*** y - Top left most corner of the world.
-* @param ***REMOVED***number***REMOVED*** width - New width of the game world in pixels.
-* @param ***REMOVED***number***REMOVED*** height - New height of the game world in pixels.
+* @param {number} x - Top left most corner of the world.
+* @param {number} y - Top left most corner of the world.
+* @param {number} width - New width of the game world in pixels.
+* @param {number} height - New height of the game world in pixels.
 */
-Phaser.World.prototype.setBounds = function (x, y, width, height) ***REMOVED***
+Phaser.World.prototype.setBounds = function (x, y, width, height) {
 
     this._definedSize = true;
     this._width = width;
@@ -6871,38 +6871,38 @@ Phaser.World.prototype.setBounds = function (x, y, width, height) ***REMOVED***
     this.y = y;
 
     if (this.camera.bounds)
-    ***REMOVED***
+    {
         //  The Camera can never be smaller than the game size
         this.camera.bounds.setTo(x, y, Math.max(width, this.game.width), Math.max(height, this.game.height));
-    ***REMOVED***
+    }
 
     this.game.physics.setBoundsToWorld();
 
-***REMOVED***;
+};
 
 /**
 * Updates the size of this world. Note that this doesn't modify the world x/y coordinates, just the width and height.
 *
 * @method Phaser.World#resize
-* @param ***REMOVED***number***REMOVED*** width - New width of the game world in pixels.
-* @param ***REMOVED***number***REMOVED*** height - New height of the game world in pixels.
+* @param {number} width - New width of the game world in pixels.
+* @param {number} height - New height of the game world in pixels.
 */
-Phaser.World.prototype.resize = function (width, height) ***REMOVED***
+Phaser.World.prototype.resize = function (width, height) {
 
     //  Don't ever scale the World bounds lower than the original requested dimensions if it's a defined world size
 
     if (this._definedSize)
-    ***REMOVED***
+    {
         if (width < this._width)
-        ***REMOVED***
+        {
             width = this._width;
-        ***REMOVED***
+        }
 
         if (height < this._height)
-        ***REMOVED***
+        {
             height = this._height;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     this.bounds.width = width;
     this.bounds.height = height;
@@ -6911,19 +6911,19 @@ Phaser.World.prototype.resize = function (width, height) ***REMOVED***
 
     this.game.physics.setBoundsToWorld();
 
-***REMOVED***;
+};
 
 /**
 * Destroyer of worlds.
 *
 * @method Phaser.World#shutdown
 */
-Phaser.World.prototype.shutdown = function () ***REMOVED***
+Phaser.World.prototype.shutdown = function () {
 
     //  World is a Group, so run a soft destruction on this and all children.
     this.destroy(true, true);
 
-***REMOVED***;
+};
 
 /**
 * This will take the given game object and check if its x/y coordinates fall outside of the world bounds.
@@ -6934,194 +6934,194 @@ Phaser.World.prototype.shutdown = function () ***REMOVED***
 * then objects won't always be re-positioned correctly, and you'll need to employ your own wrapping function.
 *
 * @method Phaser.World#wrap
-* @param ***REMOVED***Phaser.Sprite|Phaser.Image|Phaser.TileSprite|Phaser.Text***REMOVED*** sprite - The object you wish to wrap around the world bounds.
-* @param ***REMOVED***number***REMOVED*** [padding=0] - Extra padding added equally to the sprite.x and y coordinates before checking if within the world bounds. Ignored if useBounds is true.
-* @param ***REMOVED***boolean***REMOVED*** [useBounds=false] - If useBounds is false wrap checks the object.x/y coordinates. If true it does a more accurate bounds check, which is more expensive.
-* @param ***REMOVED***boolean***REMOVED*** [horizontal=true] - If horizontal is false, wrap will not wrap the object.x coordinates horizontally.
-* @param ***REMOVED***boolean***REMOVED*** [vertical=true] - If vertical is false, wrap will not wrap the object.y coordinates vertically.
+* @param {Phaser.Sprite|Phaser.Image|Phaser.TileSprite|Phaser.Text} sprite - The object you wish to wrap around the world bounds.
+* @param {number} [padding=0] - Extra padding added equally to the sprite.x and y coordinates before checking if within the world bounds. Ignored if useBounds is true.
+* @param {boolean} [useBounds=false] - If useBounds is false wrap checks the object.x/y coordinates. If true it does a more accurate bounds check, which is more expensive.
+* @param {boolean} [horizontal=true] - If horizontal is false, wrap will not wrap the object.x coordinates horizontally.
+* @param {boolean} [vertical=true] - If vertical is false, wrap will not wrap the object.y coordinates vertically.
 */
-Phaser.World.prototype.wrap = function (sprite, padding, useBounds, horizontal, vertical) ***REMOVED***
+Phaser.World.prototype.wrap = function (sprite, padding, useBounds, horizontal, vertical) {
 
-    if (padding === undefined) ***REMOVED*** padding = 0; ***REMOVED***
-    if (useBounds === undefined) ***REMOVED*** useBounds = false; ***REMOVED***
-    if (horizontal === undefined) ***REMOVED*** horizontal = true; ***REMOVED***
-    if (vertical === undefined) ***REMOVED*** vertical = true; ***REMOVED***
+    if (padding === undefined) { padding = 0; }
+    if (useBounds === undefined) { useBounds = false; }
+    if (horizontal === undefined) { horizontal = true; }
+    if (vertical === undefined) { vertical = true; }
 
     if (!useBounds)
-    ***REMOVED***
+    {
         if (horizontal && sprite.x + padding < this.bounds.x)
-        ***REMOVED***
+        {
             sprite.x = this.bounds.right + padding;
-        ***REMOVED***
+        }
         else if (horizontal && sprite.x - padding > this.bounds.right)
-        ***REMOVED***
+        {
             sprite.x = this.bounds.left - padding;
-        ***REMOVED***
+        }
 
         if (vertical && sprite.y + padding < this.bounds.top)
-        ***REMOVED***
+        {
             sprite.y = this.bounds.bottom + padding;
-        ***REMOVED***
+        }
         else if (vertical && sprite.y - padding > this.bounds.bottom)
-        ***REMOVED***
+        {
             sprite.y = this.bounds.top - padding;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
     else
-    ***REMOVED***
+    {
         sprite.getBounds();
 
         if (horizontal)
-        ***REMOVED***
+        {
             if ((sprite.x + sprite._currentBounds.width) < this.bounds.x)
-            ***REMOVED***
+            {
                 sprite.x = this.bounds.right;
-            ***REMOVED***
+            }
             else if (sprite.x > this.bounds.right)
-            ***REMOVED***
+            {
                 sprite.x = this.bounds.left;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         if (vertical)
-        ***REMOVED***
+        {
             if ((sprite.y + sprite._currentBounds.height) < this.bounds.top)
-            ***REMOVED***
+            {
                 sprite.y = this.bounds.bottom;
-            ***REMOVED***
+            }
             else if (sprite.y > this.bounds.bottom)
-            ***REMOVED***
+            {
                 sprite.y = this.bounds.top;
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
-***REMOVED***;
+};
 
 /**
 * @name Phaser.World#width
-* @property ***REMOVED***number***REMOVED*** width - Gets or sets the current width of the game world. The world can never be smaller than the game (canvas) dimensions.
+* @property {number} width - Gets or sets the current width of the game world. The world can never be smaller than the game (canvas) dimensions.
 */
-Object.defineProperty(Phaser.World.prototype, "width", ***REMOVED***
+Object.defineProperty(Phaser.World.prototype, "width", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this.bounds.width;
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         if (value < this.game.width)
-        ***REMOVED***
+        {
             value = this.game.width;
-        ***REMOVED***
+        }
 
         this.bounds.width = value;
         this._width = value;
         this._definedSize = true;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.World#height
-* @property ***REMOVED***number***REMOVED*** height - Gets or sets the current height of the game world. The world can never be smaller than the game (canvas) dimensions.
+* @property {number} height - Gets or sets the current height of the game world. The world can never be smaller than the game (canvas) dimensions.
 */
-Object.defineProperty(Phaser.World.prototype, "height", ***REMOVED***
+Object.defineProperty(Phaser.World.prototype, "height", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this.bounds.height;
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         if (value < this.game.height)
-        ***REMOVED***
+        {
             value = this.game.height;
-        ***REMOVED***
+        }
 
         this.bounds.height = value;
         this._height = value;
         this._definedSize = true;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.World#centerX
-* @property ***REMOVED***number***REMOVED*** centerX - Gets the X position corresponding to the center point of the world.
+* @property {number} centerX - Gets the X position corresponding to the center point of the world.
 * @readonly
 */
-Object.defineProperty(Phaser.World.prototype, "centerX", ***REMOVED***
+Object.defineProperty(Phaser.World.prototype, "centerX", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this.bounds.halfWidth + this.bounds.x;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.World#centerY
-* @property ***REMOVED***number***REMOVED*** centerY - Gets the Y position corresponding to the center point of the world.
+* @property {number} centerY - Gets the Y position corresponding to the center point of the world.
 * @readonly
 */
-Object.defineProperty(Phaser.World.prototype, "centerY", ***REMOVED***
+Object.defineProperty(Phaser.World.prototype, "centerY", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this.bounds.halfHeight + this.bounds.y;
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.World#randomX
-* @property ***REMOVED***number***REMOVED*** randomX - Gets a random integer which is lesser than or equal to the current width of the game world.
+* @property {number} randomX - Gets a random integer which is lesser than or equal to the current width of the game world.
 * @readonly
 */
-Object.defineProperty(Phaser.World.prototype, "randomX", ***REMOVED***
+Object.defineProperty(Phaser.World.prototype, "randomX", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         if (this.bounds.x < 0)
-        ***REMOVED***
+        {
             return this.game.rnd.between(this.bounds.x, (this.bounds.width - Math.abs(this.bounds.x)));
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return this.game.rnd.between(this.bounds.x, this.bounds.width);
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @name Phaser.World#randomY
-* @property ***REMOVED***number***REMOVED*** randomY - Gets a random integer which is lesser than or equal to the current height of the game world.
+* @property {number} randomY - Gets a random integer which is lesser than or equal to the current height of the game world.
 * @readonly
 */
-Object.defineProperty(Phaser.World.prototype, "randomY", ***REMOVED***
+Object.defineProperty(Phaser.World.prototype, "randomY", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         if (this.bounds.y < 0)
-        ***REMOVED***
+        {
             return this.game.rnd.between(this.bounds.y, (this.bounds.height - Math.abs(this.bounds.y)));
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             return this.game.rnd.between(this.bounds.y, this.bounds.height);
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -7133,35 +7133,35 @@ Object.defineProperty(Phaser.World.prototype, "randomY", ***REMOVED***
 *
 * @class Phaser.Game
 * @constructor
-* @param ***REMOVED***number|string***REMOVED*** [width=800] - The width of your game in game pixels. If given as a string the value must be between 0 and 100 and will be used as the percentage width of the parent container, or the browser window if no parent is given.
-* @param ***REMOVED***number|string***REMOVED*** [height=600] - The height of your game in game pixels. If given as a string the value must be between 0 and 100 and will be used as the percentage height of the parent container, or the browser window if no parent is given.
-* @param ***REMOVED***number***REMOVED*** [renderer=Phaser.AUTO] - Which renderer to use: Phaser.AUTO will auto-detect, Phaser.WEBGL, Phaser.CANVAS or Phaser.HEADLESS (no rendering at all).
-* @param ***REMOVED***string|HTMLElement***REMOVED*** [parent=''] - The DOM element into which this games canvas will be injected. Either a DOM ID (string) or the element itself.
-* @param ***REMOVED***object***REMOVED*** [state=null] - The default state object. A object consisting of Phaser.State functions (preload, create, update, render) or null.
-* @param ***REMOVED***boolean***REMOVED*** [transparent=false] - Use a transparent canvas background or not.
-* @param ***REMOVED***boolean***REMOVED*** [antialias=true] - Draw all image textures anti-aliased or not. The default is for smooth textures, but disable if your game features pixel art.
-* @param ***REMOVED***object***REMOVED*** [physicsConfig=null] - A physics configuration object to pass to the Physics world on creation.
+* @param {number|string} [width=800] - The width of your game in game pixels. If given as a string the value must be between 0 and 100 and will be used as the percentage width of the parent container, or the browser window if no parent is given.
+* @param {number|string} [height=600] - The height of your game in game pixels. If given as a string the value must be between 0 and 100 and will be used as the percentage height of the parent container, or the browser window if no parent is given.
+* @param {number} [renderer=Phaser.AUTO] - Which renderer to use: Phaser.AUTO will auto-detect, Phaser.WEBGL, Phaser.CANVAS or Phaser.HEADLESS (no rendering at all).
+* @param {string|HTMLElement} [parent=''] - The DOM element into which this games canvas will be injected. Either a DOM ID (string) or the element itself.
+* @param {object} [state=null] - The default state object. A object consisting of Phaser.State functions (preload, create, update, render) or null.
+* @param {boolean} [transparent=false] - Use a transparent canvas background or not.
+* @param {boolean} [antialias=true] - Draw all image textures anti-aliased or not. The default is for smooth textures, but disable if your game features pixel art.
+* @param {object} [physicsConfig=null] - A physics configuration object to pass to the Physics world on creation.
 */
-Phaser.Game = function (width, height, renderer, parent, state, transparent, antialias, physicsConfig) ***REMOVED***
+Phaser.Game = function (width, height, renderer, parent, state, transparent, antialias, physicsConfig) {
 
     /**
-    * @property ***REMOVED***number***REMOVED*** id - Phaser Game ID (for when Pixi supports multiple instances).
+    * @property {number} id - Phaser Game ID (for when Pixi supports multiple instances).
     * @readonly
     */
     this.id = Phaser.GAMES.push(this) - 1;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** config - The Phaser.Game configuration object.
+    * @property {object} config - The Phaser.Game configuration object.
     */
     this.config = null;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** physicsConfig - The Phaser.Physics.World configuration object.
+    * @property {object} physicsConfig - The Phaser.Physics.World configuration object.
     */
     this.physicsConfig = physicsConfig;
 
     /**
-    * @property ***REMOVED***string|HTMLElement***REMOVED*** parent - The Games DOM parent.
+    * @property {string|HTMLElement} parent - The Games DOM parent.
     * @default
     */
     this.parent = '';
@@ -7169,9 +7169,9 @@ Phaser.Game = function (width, height, renderer, parent, state, transparent, ant
     /**
     * The current Game Width in pixels.
     *
-    * _Do not modify this property directly:_ use ***REMOVED***@link Phaser.ScaleManager#setGameSize***REMOVED*** - eg. `game.scale.setGameSize(width, height)` - instead.
+    * _Do not modify this property directly:_ use {@link Phaser.ScaleManager#setGameSize} - eg. `game.scale.setGameSize(width, height)` - instead.
     *
-    * @property ***REMOVED***integer***REMOVED*** width
+    * @property {integer} width
     * @readonly
     * @default
     */
@@ -7180,9 +7180,9 @@ Phaser.Game = function (width, height, renderer, parent, state, transparent, ant
     /**
     * The current Game Height in pixels.
     *
-    * _Do not modify this property directly:_ use ***REMOVED***@link Phaser.ScaleManager#setGameSize***REMOVED*** - eg. `game.scale.setGameSize(width, height)` - instead.
+    * _Do not modify this property directly:_ use {@link Phaser.ScaleManager#setGameSize} - eg. `game.scale.setGameSize(width, height)` - instead.
     *
-    * @property ***REMOVED***integer***REMOVED*** height
+    * @property {integer} height
     * @readonly
     * @default
     */
@@ -7191,38 +7191,38 @@ Phaser.Game = function (width, height, renderer, parent, state, transparent, ant
     /**
     * The resolution of your game. This value is read only, but can be changed at start time it via a game configuration object.
     *
-    * @property ***REMOVED***integer***REMOVED*** resolution
+    * @property {integer} resolution
     * @readonly
     * @default
     */
     this.resolution = 1;
 
     /**
-    * @property ***REMOVED***integer***REMOVED*** _width - Private internal var.
+    * @property {integer} _width - Private internal var.
     * @private
     */
     this._width = 800;
 
     /**
-    * @property ***REMOVED***integer***REMOVED*** _height - Private internal var.
+    * @property {integer} _height - Private internal var.
     * @private
     */
     this._height = 600;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** transparent - Use a transparent canvas background or not.
+    * @property {boolean} transparent - Use a transparent canvas background or not.
     * @default
     */
     this.transparent = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** antialias - Anti-alias graphics. By default scaled images are smoothed in Canvas and WebGL, set anti-alias to false to disable this globally.
+    * @property {boolean} antialias - Anti-alias graphics. By default scaled images are smoothed in Canvas and WebGL, set anti-alias to false to disable this globally.
     * @default
     */
     this.antialias = true;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** preserveDrawingBuffer - The value of the preserveDrawingBuffer flag affects whether or not the contents of the stencil buffer is retained after rendering.
+    * @property {boolean} preserveDrawingBuffer - The value of the preserveDrawingBuffer flag affects whether or not the contents of the stencil buffer is retained after rendering.
     * @default
     */
     this.preserveDrawingBuffer = false;
@@ -7230,158 +7230,158 @@ Phaser.Game = function (width, height, renderer, parent, state, transparent, ant
     /**
     * Clear the Canvas each frame before rendering the display list.
     * You can set this to `false` to gain some performance if your game always contains a background that completely fills the display.
-    * @property ***REMOVED***boolean***REMOVED*** clearBeforeRender
+    * @property {boolean} clearBeforeRender
     * @default
     */
     this.clearBeforeRender = true;
 
     /**
-    * @property ***REMOVED***PIXI.CanvasRenderer|PIXI.WebGLRenderer***REMOVED*** renderer - The Pixi Renderer.
+    * @property {PIXI.CanvasRenderer|PIXI.WebGLRenderer} renderer - The Pixi Renderer.
     * @protected
     */
     this.renderer = null;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** renderType - The Renderer this game will use. Either Phaser.AUTO, Phaser.CANVAS, Phaser.WEBGL, or Phaser.HEADLESS.
+    * @property {number} renderType - The Renderer this game will use. Either Phaser.AUTO, Phaser.CANVAS, Phaser.WEBGL, or Phaser.HEADLESS.
     * @readonly
     */
     this.renderType = Phaser.AUTO;
 
     /**
-    * @property ***REMOVED***Phaser.StateManager***REMOVED*** state - The StateManager.
+    * @property {Phaser.StateManager} state - The StateManager.
     */
     this.state = null;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** isBooted - Whether the game engine is booted, aka available.
+    * @property {boolean} isBooted - Whether the game engine is booted, aka available.
     * @readonly
     */
     this.isBooted = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** isRunning - Is game running or paused?
+    * @property {boolean} isRunning - Is game running or paused?
     * @readonly
     */
     this.isRunning = false;
 
     /**
-    * @property ***REMOVED***Phaser.RequestAnimationFrame***REMOVED*** raf - Automatically handles the core game loop via requestAnimationFrame or setTimeout
+    * @property {Phaser.RequestAnimationFrame} raf - Automatically handles the core game loop via requestAnimationFrame or setTimeout
     * @protected
     */
     this.raf = null;
 
     /**
-    * @property ***REMOVED***Phaser.GameObjectFactory***REMOVED*** add - Reference to the Phaser.GameObjectFactory.
+    * @property {Phaser.GameObjectFactory} add - Reference to the Phaser.GameObjectFactory.
     */
     this.add = null;
 
     /**
-    * @property ***REMOVED***Phaser.GameObjectCreator***REMOVED*** make - Reference to the GameObject Creator.
+    * @property {Phaser.GameObjectCreator} make - Reference to the GameObject Creator.
     */
     this.make = null;
 
     /**
-    * @property ***REMOVED***Phaser.Cache***REMOVED*** cache - Reference to the assets cache.
+    * @property {Phaser.Cache} cache - Reference to the assets cache.
     */
     this.cache = null;
 
     /**
-    * @property ***REMOVED***Phaser.Input***REMOVED*** input - Reference to the input manager
+    * @property {Phaser.Input} input - Reference to the input manager
     */
     this.input = null;
 
     /**
-    * @property ***REMOVED***Phaser.Loader***REMOVED*** load - Reference to the assets loader.
+    * @property {Phaser.Loader} load - Reference to the assets loader.
     */
     this.load = null;
 
     /**
-    * @property ***REMOVED***Phaser.Math***REMOVED*** math - Reference to the math helper.
+    * @property {Phaser.Math} math - Reference to the math helper.
     */
     this.math = null;
 
     /**
-    * @property ***REMOVED***Phaser.Net***REMOVED*** net - Reference to the network class.
+    * @property {Phaser.Net} net - Reference to the network class.
     */
     this.net = null;
 
     /**
-    * @property ***REMOVED***Phaser.ScaleManager***REMOVED*** scale - The game scale manager.
+    * @property {Phaser.ScaleManager} scale - The game scale manager.
     */
     this.scale = null;
 
     /**
-    * @property ***REMOVED***Phaser.SoundManager***REMOVED*** sound - Reference to the sound manager.
+    * @property {Phaser.SoundManager} sound - Reference to the sound manager.
     */
     this.sound = null;
 
     /**
-    * @property ***REMOVED***Phaser.Stage***REMOVED*** stage - Reference to the stage.
+    * @property {Phaser.Stage} stage - Reference to the stage.
     */
     this.stage = null;
 
     /**
-    * @property ***REMOVED***Phaser.Time***REMOVED*** time - Reference to the core game clock.
+    * @property {Phaser.Time} time - Reference to the core game clock.
     */
     this.time = null;
 
     /**
-    * @property ***REMOVED***Phaser.TweenManager***REMOVED*** tweens - Reference to the tween manager.
+    * @property {Phaser.TweenManager} tweens - Reference to the tween manager.
     */
     this.tweens = null;
 
     /**
-    * @property ***REMOVED***Phaser.World***REMOVED*** world - Reference to the world.
+    * @property {Phaser.World} world - Reference to the world.
     */
     this.world = null;
 
     /**
-    * @property ***REMOVED***Phaser.Physics***REMOVED*** physics - Reference to the physics manager.
+    * @property {Phaser.Physics} physics - Reference to the physics manager.
     */
     this.physics = null;
     
     /**
-    * @property ***REMOVED***Phaser.PluginManager***REMOVED*** plugins - Reference to the plugin manager.
+    * @property {Phaser.PluginManager} plugins - Reference to the plugin manager.
     */
     this.plugins = null;
 
     /**
-    * @property ***REMOVED***Phaser.RandomDataGenerator***REMOVED*** rnd - Instance of repeatable random data generator helper.
+    * @property {Phaser.RandomDataGenerator} rnd - Instance of repeatable random data generator helper.
     */
     this.rnd = null;
 
     /**
-    * @property ***REMOVED***Phaser.Device***REMOVED*** device - Contains device information and capabilities.
+    * @property {Phaser.Device} device - Contains device information and capabilities.
     */
     this.device = Phaser.Device;
 
     /**
-    * @property ***REMOVED***Phaser.Camera***REMOVED*** camera - A handy reference to world.camera.
+    * @property {Phaser.Camera} camera - A handy reference to world.camera.
     */
     this.camera = null;
 
     /**
-    * @property ***REMOVED***HTMLCanvasElement***REMOVED*** canvas - A handy reference to renderer.view, the canvas that the game is being rendered in to.
+    * @property {HTMLCanvasElement} canvas - A handy reference to renderer.view, the canvas that the game is being rendered in to.
     */
     this.canvas = null;
 
     /**
-    * @property ***REMOVED***CanvasRenderingContext2D***REMOVED*** context - A handy reference to renderer.context (only set for CANVAS games, not WebGL)
+    * @property {CanvasRenderingContext2D} context - A handy reference to renderer.context (only set for CANVAS games, not WebGL)
     */
     this.context = null;
 
     /**
-    * @property ***REMOVED***Phaser.Utils.Debug***REMOVED*** debug - A set of useful debug utilities.
+    * @property {Phaser.Utils.Debug} debug - A set of useful debug utilities.
     */
     this.debug = null;
 
     /**
-    * @property ***REMOVED***Phaser.Particles***REMOVED*** particles - The Particle Manager.
+    * @property {Phaser.Particles} particles - The Particle Manager.
     */
     this.particles = null;
 
     /**
-    * @property ***REMOVED***Phaser.Create***REMOVED*** create - The Asset Generator.
+    * @property {Phaser.Create} create - The Asset Generator.
     */
     this.create = null;
 
@@ -7389,60 +7389,60 @@ Phaser.Game = function (width, height, renderer, parent, state, transparent, ant
     * If `false` Phaser will automatically render the display list every update. If `true` the render loop will be skipped.
     * You can toggle this value at run-time to gain exact control over when Phaser renders. This can be useful in certain types of game or application.
     * Please note that if you don't render the display list then none of the game object transforms will be updated, so use this value carefully.
-    * @property ***REMOVED***boolean***REMOVED*** lockRender
+    * @property {boolean} lockRender
     * @default
     */
     this.lockRender = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** stepping - Enable core loop stepping with Game.enableStep().
+    * @property {boolean} stepping - Enable core loop stepping with Game.enableStep().
     * @default
     * @readonly
     */
     this.stepping = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** pendingStep - An internal property used by enableStep, but also useful to query from your own game objects.
+    * @property {boolean} pendingStep - An internal property used by enableStep, but also useful to query from your own game objects.
     * @default
     * @readonly
     */
     this.pendingStep = false;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** stepCount - When stepping is enabled this contains the current step cycle.
+    * @property {number} stepCount - When stepping is enabled this contains the current step cycle.
     * @default
     * @readonly
     */
     this.stepCount = 0;
 
     /**
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onPause - This event is fired when the game pauses.
+    * @property {Phaser.Signal} onPause - This event is fired when the game pauses.
     */
     this.onPause = null;
 
     /**
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onResume - This event is fired when the game resumes from a paused state.
+    * @property {Phaser.Signal} onResume - This event is fired when the game resumes from a paused state.
     */
     this.onResume = null;
 
     /**
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onBlur - This event is fired when the game no longer has focus (typically on page hide).
+    * @property {Phaser.Signal} onBlur - This event is fired when the game no longer has focus (typically on page hide).
     */
     this.onBlur = null;
 
     /**
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onFocus - This event is fired when the game has focus (typically on page show).
+    * @property {Phaser.Signal} onFocus - This event is fired when the game has focus (typically on page show).
     */
     this.onFocus = null;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _paused - Is game paused?
+    * @property {boolean} _paused - Is game paused?
     * @private
     */
     this._paused = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _codePaused - Was the game paused via code or a visibility change?
+    * @property {boolean} _codePaused - Was the game paused via code or a visibility change?
     * @private
     */
     this._codePaused = false;
@@ -7450,112 +7450,112 @@ Phaser.Game = function (width, height, renderer, parent, state, transparent, ant
     /**
     * The ID of the current/last logic update applied this render frame, starting from 0.
     * The first update is `currentUpdateID === 0` and the last update is `currentUpdateID === updatesThisFrame.`
-    * @property ***REMOVED***integer***REMOVED*** currentUpdateID
+    * @property {integer} currentUpdateID
     * @protected
     */
     this.currentUpdateID = 0;
 
     /**
     * Number of logic updates expected to occur this render frame; will be 1 unless there are catch-ups required (and allowed).
-    * @property ***REMOVED***integer***REMOVED*** updatesThisFrame
+    * @property {integer} updatesThisFrame
     * @protected
     */
     this.updatesThisFrame = 1;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _deltaTime - Accumulate elapsed time until a logic update is due.
+    * @property {number} _deltaTime - Accumulate elapsed time until a logic update is due.
     * @private
     */
     this._deltaTime = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _lastCount - Remember how many 'catch-up' iterations were used on the logicUpdate last frame.
+    * @property {number} _lastCount - Remember how many 'catch-up' iterations were used on the logicUpdate last frame.
     * @private
     */
     this._lastCount = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _spiraling - If the 'catch-up' iterations are spiraling out of control, this counter is incremented.
+    * @property {number} _spiraling - If the 'catch-up' iterations are spiraling out of control, this counter is incremented.
     * @private
     */
     this._spiraling = 0;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** _kickstart - Force a logic update + render by default (always set on Boot and State swap)
+    * @property {boolean} _kickstart - Force a logic update + render by default (always set on Boot and State swap)
     * @private
     */
     this._kickstart = true;
 
     /**
     * If the game is struggling to maintain the desired FPS, this signal will be dispatched.
-    * The desired/chosen FPS should probably be closer to the ***REMOVED***@link Phaser.Time#suggestedFps***REMOVED*** value.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** fpsProblemNotifier
+    * The desired/chosen FPS should probably be closer to the {@link Phaser.Time#suggestedFps} value.
+    * @property {Phaser.Signal} fpsProblemNotifier
     * @public
     */
     this.fpsProblemNotifier = new Phaser.Signal();
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** forceSingleUpdate - Should the game loop force a logic update, regardless of the delta timer? Set to true if you know you need this. You can toggle it on the fly.
+    * @property {boolean} forceSingleUpdate - Should the game loop force a logic update, regardless of the delta timer? Set to true if you know you need this. You can toggle it on the fly.
     */
     this.forceSingleUpdate = true;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _nextNotification - The soonest game.time.time value that the next fpsProblemNotifier can be dispatched.
+    * @property {number} _nextNotification - The soonest game.time.time value that the next fpsProblemNotifier can be dispatched.
     * @private
     */
     this._nextFpsNotification = 0;
 
     //  Parse the configuration object (if any)
     if (arguments.length === 1 && typeof arguments[0] === 'object')
-    ***REMOVED***
+    {
         this.parseConfig(arguments[0]);
-    ***REMOVED***
+    }
     else
-    ***REMOVED***
-        this.config = ***REMOVED*** enableDebug: true ***REMOVED***;
+    {
+        this.config = { enableDebug: true };
 
         if (typeof width !== 'undefined')
-        ***REMOVED***
+        {
             this._width = width;
-        ***REMOVED***
+        }
 
         if (typeof height !== 'undefined')
-        ***REMOVED***
+        {
             this._height = height;
-        ***REMOVED***
+        }
 
         if (typeof renderer !== 'undefined')
-        ***REMOVED***
+        {
             this.renderType = renderer;
-        ***REMOVED***
+        }
 
         if (typeof parent !== 'undefined')
-        ***REMOVED***
+        {
             this.parent = parent;
-        ***REMOVED***
+        }
 
         if (typeof transparent !== 'undefined')
-        ***REMOVED***
+        {
             this.transparent = transparent;
-        ***REMOVED***
+        }
 
         if (typeof antialias !== 'undefined')
-        ***REMOVED***
+        {
             this.antialias = antialias;
-        ***REMOVED***
+        }
 
         this.rnd = new Phaser.RandomDataGenerator([(Date.now() * Math.random()).toString()]);
 
         this.state = new Phaser.StateManager(this, state);
-    ***REMOVED***
+    }
 
     this.device.whenReady(this.boot, this);
 
     return this;
 
-***REMOVED***;
+};
 
-Phaser.Game.prototype = ***REMOVED***
+Phaser.Game.prototype = {
 
     /**
     * Parses a Game configuration object.
@@ -7563,79 +7563,79 @@ Phaser.Game.prototype = ***REMOVED***
     * @method Phaser.Game#parseConfig
     * @protected
     */
-    parseConfig: function (config) ***REMOVED***
+    parseConfig: function (config) {
 
         this.config = config;
 
         if (config['enableDebug'] === undefined)
-        ***REMOVED***
+        {
             this.config.enableDebug = true;
-        ***REMOVED***
+        }
 
         if (config['width'])
-        ***REMOVED***
+        {
             this._width = config['width'];
-        ***REMOVED***
+        }
 
         if (config['height'])
-        ***REMOVED***
+        {
             this._height = config['height'];
-        ***REMOVED***
+        }
 
         if (config['renderer'])
-        ***REMOVED***
+        {
             this.renderType = config['renderer'];
-        ***REMOVED***
+        }
 
         if (config['parent'])
-        ***REMOVED***
+        {
             this.parent = config['parent'];
-        ***REMOVED***
+        }
 
         if (config['transparent'] !== undefined)
-        ***REMOVED***
+        {
             this.transparent = config['transparent'];
-        ***REMOVED***
+        }
 
         if (config['antialias'] !== undefined)
-        ***REMOVED***
+        {
             this.antialias = config['antialias'];
-        ***REMOVED***
+        }
 
         if (config['resolution'])
-        ***REMOVED***
+        {
             this.resolution = config['resolution'];
-        ***REMOVED***
+        }
 
         if (config['preserveDrawingBuffer'] !== undefined)
-        ***REMOVED***
+        {
             this.preserveDrawingBuffer = config['preserveDrawingBuffer'];
-        ***REMOVED***
+        }
 
         if (config['physicsConfig'])
-        ***REMOVED***
+        {
             this.physicsConfig = config['physicsConfig'];
-        ***REMOVED***
+        }
 
         var seed = [(Date.now() * Math.random()).toString()];
 
         if (config['seed'])
-        ***REMOVED***
+        {
             seed = config['seed'];
-        ***REMOVED***
+        }
 
         this.rnd = new Phaser.RandomDataGenerator(seed);
 
         var state = null;
 
         if (config['state'])
-        ***REMOVED***
+        {
             state = config['state'];
-        ***REMOVED***
+        }
 
         this.state = new Phaser.StateManager(this, state);
 
-    ***REMOVED***,
+    },
 
     /**
     * Initialize engine sub modules and start the game.
@@ -7643,12 +7643,12 @@ Phaser.Game.prototype = ***REMOVED***
     * @method Phaser.Game#boot
     * @protected
     */
-    boot: function () ***REMOVED***
+    boot: function () {
 
         if (this.isBooted)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         this.onPause = new Phaser.Signal();
         this.onResume = new Phaser.Signal();
@@ -7690,41 +7690,41 @@ Phaser.Game.prototype = ***REMOVED***
         this.state.boot();
 
         if (this.config['enableDebug'])
-        ***REMOVED***
+        {
             this.debug = new Phaser.Utils.Debug(this);
             this.debug.boot();
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
-            this.debug = ***REMOVED*** preUpdate: function () ***REMOVED******REMOVED***, update: function () ***REMOVED******REMOVED***, reset: function () ***REMOVED******REMOVED*** ***REMOVED***;
-        ***REMOVED***
+        {
+            this.debug = { preUpdate: function () {}, update: function () {}, reset: function () {} };
+        }
 
         this.showDebugHeader();
 
         this.isRunning = true;
 
         if (this.config && this.config['forceSetTimeOut'])
-        ***REMOVED***
+        {
             this.raf = new Phaser.RequestAnimationFrame(this, this.config['forceSetTimeOut']);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this.raf = new Phaser.RequestAnimationFrame(this, false);
-        ***REMOVED***
+        }
 
         this._kickstart = true;
 
         if (window['focus'])
-        ***REMOVED***
+        {
             if (!window['PhaserGlobal'] || (window['PhaserGlobal'] && !window['PhaserGlobal'].stopFocus))
-            ***REMOVED***
+            {
                 window.focus();
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         this.raf.start();
 
-    ***REMOVED***,
+    },
 
     /**
     * Displays a Phaser version debug header in the console.
@@ -7732,12 +7732,12 @@ Phaser.Game.prototype = ***REMOVED***
     * @method Phaser.Game#showDebugHeader
     * @protected
     */
-    showDebugHeader: function () ***REMOVED***
+    showDebugHeader: function () {
 
         if (window['PhaserGlobal'] && window['PhaserGlobal'].hideBanner)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         var v = Phaser.VERSION;
         var r = 'Canvas';
@@ -7745,23 +7745,23 @@ Phaser.Game.prototype = ***REMOVED***
         var c = 1;
 
         if (this.renderType === Phaser.WEBGL)
-        ***REMOVED***
+        {
             r = 'WebGL';
             c++;
-        ***REMOVED***
+        }
         else if (this.renderType === Phaser.HEADLESS)
-        ***REMOVED***
+        {
             r = 'Headless';
-        ***REMOVED***
+        }
 
         if (this.device.webAudio)
-        ***REMOVED***
+        {
             a = 'WebAudio';
             c++;
-        ***REMOVED***
+        }
 
         if (this.device.chrome)
-        ***REMOVED***
+        {
             var args = [
                 '%c %c %c Phaser v' + v + ' | Pixi.js | ' + r + ' | ' + a + '  %c %c ' + '%c http://phaser.io %c\u2665%c\u2665%c\u2665',
                 'background: #fb8cb3',
@@ -7773,25 +7773,25 @@ Phaser.Game.prototype = ***REMOVED***
             ];
 
             for (var i = 0; i < 3; i++)
-            ***REMOVED***
+            {
                 if (i < c)
-                ***REMOVED***
+                {
                     args.push('color: #ff2424; background: #fff');
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     args.push('color: #959595; background: #fff');
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
 
             console.log.apply(console, args);
-        ***REMOVED***
+        }
         else if (window['console'])
-        ***REMOVED***
+        {
             console.log('Phaser v' + v + ' | Pixi.js ' + PIXI.VERSION + ' | ' + r + ' | ' + a + ' | http://phaser.io');
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Checks if the device is capable of using the requested renderer and sets it up or an alternative if not.
@@ -7799,44 +7799,44 @@ Phaser.Game.prototype = ***REMOVED***
     * @method Phaser.Game#setUpRenderer
     * @protected
     */
-    setUpRenderer: function () ***REMOVED***
+    setUpRenderer: function () {
 
         if (this.config['canvas'])
-        ***REMOVED***
+        {
             this.canvas = this.config['canvas'];
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this.canvas = Phaser.Canvas.create(this, this.width, this.height, this.config['canvasID'], true);
-        ***REMOVED***
+        }
 
         if (this.config['canvasStyle'])
-        ***REMOVED***
+        {
             this.canvas.style = this.config['canvasStyle'];
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this.canvas.style['-webkit-full-screen'] = 'width: 100%; height: 100%';
-        ***REMOVED***
+        }
 
         if (this.renderType === Phaser.HEADLESS || this.renderType === Phaser.CANVAS || (this.renderType === Phaser.AUTO && !this.device.webGL))
-        ***REMOVED***
+        {
             if (this.device.canvas)
-            ***REMOVED***
+            {
                 //  They requested Canvas and their browser supports it
                 this.renderType = Phaser.CANVAS;
 
                 this.renderer = new PIXI.CanvasRenderer(this);
 
                 this.context = this.renderer.context;
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 throw new Error('Phaser.Game - Cannot create Canvas or WebGL context, aborting.');
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         else
-        ***REMOVED***
+        {
             //  They requested WebGL and their browser supports it
             this.renderType = Phaser.WEBGL;
 
@@ -7846,37 +7846,37 @@ Phaser.Game.prototype = ***REMOVED***
 
             this.canvas.addEventListener('webglcontextlost', this.contextLost.bind(this), false);
             this.canvas.addEventListener('webglcontextrestored', this.contextRestored.bind(this), false);
-        ***REMOVED***
+        }
 
         if (this.device.cocoonJS)
-        ***REMOVED***
+        {
             this.canvas.screencanvas = (this.renderType === Phaser.CANVAS) ? true : false;
-        ***REMOVED***
+        }
 
         if (this.renderType !== Phaser.HEADLESS)
-        ***REMOVED***
+        {
             this.stage.smoothed = this.antialias;
             
             Phaser.Canvas.addToDOM(this.canvas, this.parent, false);
             Phaser.Canvas.setTouchAction(this.canvas);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Handles WebGL context loss.
     *
     * @method Phaser.Game#contextLost
     * @private
-    * @param ***REMOVED***Event***REMOVED*** event - The webglcontextlost event.
+    * @param {Event} event - The webglcontextlost event.
     */
-    contextLost: function (event) ***REMOVED***
+    contextLost: function (event) {
 
         event.preventDefault();
 
         this.renderer.contextLost = true;
 
-    ***REMOVED***,
+    },
 
     /**
     * Handles WebGL context restoration.
@@ -7884,7 +7884,7 @@ Phaser.Game.prototype = ***REMOVED***
     * @method Phaser.Game#contextRestored
     * @private
     */
-    contextRestored: function () ***REMOVED***
+    contextRestored: function () {
 
         this.renderer.initContext();
 
@@ -7892,21 +7892,21 @@ Phaser.Game.prototype = ***REMOVED***
 
         this.renderer.contextLost = false;
 
-    ***REMOVED***,
+    },
 
     /**
     * The core game loop.
     *
     * @method Phaser.Game#update
     * @protected
-    * @param ***REMOVED***number***REMOVED*** time - The current time as provided by RequestAnimationFrame.
+    * @param {number} time - The current time as provided by RequestAnimationFrame.
     */
-    update: function (time) ***REMOVED***
+    update: function (time) {
 
         this.time.update(time);
 
         if (this._kickstart)
-        ***REMOVED***
+        {
             this.updateLogic(this.time.desiredFpsMult);
 
             // call the game render update exactly once every frame
@@ -7915,20 +7915,20 @@ Phaser.Game.prototype = ***REMOVED***
             this._kickstart = false;
 
             return;
-        ***REMOVED***
+        }
 
         // if the logic time is spiraling upwards, skip a frame entirely
         if (this._spiraling > 1 && !this.forceSingleUpdate)
-        ***REMOVED***
+        {
             // cause an event to warn the program that this CPU can't keep up with the current desiredFps rate
             if (this.time.time > this._nextFpsNotification)
-            ***REMOVED***
+            {
                 // only permit one fps notification per 10 seconds
                 this._nextFpsNotification = this.time.time + 10000;
 
                 // dispatch the notification signal
                 this.fpsProblemNotifier.dispatch();
-            ***REMOVED***
+            }
 
             // reset the _deltaTime accumulator which will cause all pending dropped frames to be permanently skipped
             this._deltaTime = 0;
@@ -7936,9 +7936,9 @@ Phaser.Game.prototype = ***REMOVED***
 
             // call the game render update exactly once every frame
             this.updateRender(this.time.slowMotion * this.time.desiredFps);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             // step size taking into account the slow motion speed
             var slowStep = this.time.slowMotion * 1000.0 / this.time.desiredFps;
 
@@ -7952,12 +7952,12 @@ Phaser.Game.prototype = ***REMOVED***
             this.updatesThisFrame = Math.floor(this._deltaTime / slowStep);
 
             if (this.forceSingleUpdate)
-            ***REMOVED***
+            {
                 this.updatesThisFrame = Math.min(1, this.updatesThisFrame);
-            ***REMOVED***
+            }
 
             while (this._deltaTime >= slowStep)
-            ***REMOVED***
+            {
                 this._deltaTime -= slowStep;
                 this.currentUpdateID = count;
 
@@ -7966,49 +7966,49 @@ Phaser.Game.prototype = ***REMOVED***
                 count++;
 
                 if (this.forceSingleUpdate && count === 1)
-                ***REMOVED***
+                {
                     break;
-                ***REMOVED***
+                }
                 else
-                ***REMOVED***
+                {
                     this.time.refresh();
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
 
             // detect spiraling (if the catch-up loop isn't fast enough, the number of iterations will increase constantly)
             if (count > this._lastCount)
-            ***REMOVED***
+            {
                 this._spiraling++;
-            ***REMOVED***
+            }
             else if (count < this._lastCount)
-            ***REMOVED***
+            {
                 // looks like it caught up successfully, reset the spiral alert counter
                 this._spiraling = 0;
-            ***REMOVED***
+            }
 
             this._lastCount = count;
 
             // call the game render update exactly once every frame unless we're playing catch-up from a spiral condition
             this.updateRender(this._deltaTime / slowStep);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Updates all logic subsystems in Phaser. Called automatically by Game.update.
     *
     * @method Phaser.Game#updateLogic
     * @protected
-    * @param ***REMOVED***number***REMOVED*** timeStep - The current timeStep value as determined by Game.update.
+    * @param {number} timeStep - The current timeStep value as determined by Game.update.
     */
-    updateLogic: function (timeStep) ***REMOVED***
+    updateLogic: function (timeStep) {
 
         if (!this._paused && !this.pendingStep)
-        ***REMOVED***
+        {
             if (this.stepping)
-            ***REMOVED***
+            {
                 this.pendingStep = true;
-            ***REMOVED***
+            }
 
             this.scale.preUpdate();
             this.debug.preUpdate();
@@ -8029,18 +8029,18 @@ Phaser.Game.prototype = ***REMOVED***
 
             this.stage.postUpdate();
             this.plugins.postUpdate();
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             // Scaling and device orientation changes are still reflected when paused.
             this.scale.pauseUpdate();
             this.state.pauseUpdate();
             this.debug.preUpdate();
-        ***REMOVED***
+        }
 
         this.stage.updateTransform();
 
-    ***REMOVED***,
+    },
 
     /**
     * Runs the Render cycle.
@@ -8055,29 +8055,29 @@ Phaser.Game.prototype = ***REMOVED***
     *
     * @method Phaser.Game#updateRender
     * @protected
-    * @param ***REMOVED***number***REMOVED*** elapsedTime - The time elapsed since the last update.
+    * @param {number} elapsedTime - The time elapsed since the last update.
     */
-    updateRender: function (elapsedTime) ***REMOVED***
+    updateRender: function (elapsedTime) {
 
         if (this.lockRender)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         this.state.preRender(elapsedTime);
 
         if (this.renderType !== Phaser.HEADLESS)
-        ***REMOVED***
+        {
             this.renderer.render(this.stage);
 
             this.plugins.render(elapsedTime);
 
             this.state.render(elapsedTime);
-        ***REMOVED***
+        }
 
         this.plugins.postRender(elapsedTime);
 
-    ***REMOVED***,
+    },
 
     /**
     * Enable core game loop stepping. When enabled you must call game.step() directly (perhaps via a DOM button?)
@@ -8085,25 +8085,25 @@ Phaser.Game.prototype = ***REMOVED***
     *
     * @method Phaser.Game#enableStep
     */
-    enableStep: function () ***REMOVED***
+    enableStep: function () {
 
         this.stepping = true;
         this.pendingStep = false;
         this.stepCount = 0;
 
-    ***REMOVED***,
+    },
 
     /**
     * Disables core game loop stepping.
     *
     * @method Phaser.Game#disableStep
     */
-    disableStep: function () ***REMOVED***
+    disableStep: function () {
 
         this.stepping = false;
         this.pendingStep = false;
 
-    ***REMOVED***,
+    },
 
     /**
     * When stepping is enabled you must call this function directly (perhaps via a DOM button?) to advance the game loop by one frame.
@@ -8111,12 +8111,12 @@ Phaser.Game.prototype = ***REMOVED***
     *
     * @method Phaser.Game#step
     */
-    step: function () ***REMOVED***
+    step: function () {
 
         this.pendingStep = false;
         this.stepCount++;
 
-    ***REMOVED***,
+    },
 
     /**
     * Nukes the entire game from orbit.
@@ -8128,7 +8128,7 @@ Phaser.Game.prototype = ***REMOVED***
     *
     * @method Phaser.Game#destroy
     */
-    destroy: function () ***REMOVED***
+    destroy: function () {
 
         this.raf.stop();
 
@@ -8163,52 +8163,52 @@ Phaser.Game.prototype = ***REMOVED***
 
         Phaser.GAMES[this.id] = null;
 
-    ***REMOVED***,
+    },
 
     /**
     * Called by the Stage visibility handler.
     *
     * @method Phaser.Game#gamePaused
-    * @param ***REMOVED***object***REMOVED*** event - The DOM event that caused the game to pause, if any.
+    * @param {object} event - The DOM event that caused the game to pause, if any.
     * @protected
     */
-    gamePaused: function (event) ***REMOVED***
+    gamePaused: function (event) {
 
         //   If the game is already paused it was done via game code, so don't re-pause it
         if (!this._paused)
-        ***REMOVED***
+        {
             this._paused = true;
 
             this.time.gamePaused();
 
             if (this.sound.muteOnPause)
-            ***REMOVED***
+            {
                 this.sound.setMute();
-            ***REMOVED***
+            }
 
             this.onPause.dispatch(event);
 
             //  Avoids Cordova iOS crash event: https://github.com/photonstorm/phaser/issues/1800
             if (this.device.cordova && this.device.iOS)
-            ***REMOVED***
+            {
                 this.lockRender = true;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Called by the Stage visibility handler.
     *
     * @method Phaser.Game#gameResumed
-    * @param ***REMOVED***object***REMOVED*** event - The DOM event that caused the game to pause, if any.
+    * @param {object} event - The DOM event that caused the game to pause, if any.
     * @protected
     */
-    gameResumed: function (event) ***REMOVED***
+    gameResumed: function (event) {
 
         //  Game is paused, but wasn't paused via code, so resume it
         if (this._paused && !this._codePaused)
-        ***REMOVED***
+        {
             this._paused = false;
 
             this.time.gameResumed();
@@ -8216,58 +8216,58 @@ Phaser.Game.prototype = ***REMOVED***
             this.input.reset();
 
             if (this.sound.muteOnPause)
-            ***REMOVED***
+            {
                 this.sound.unsetMute();
-            ***REMOVED***
+            }
 
             this.onResume.dispatch(event);
 
             //  Avoids Cordova iOS crash event: https://github.com/photonstorm/phaser/issues/1800
             if (this.device.cordova && this.device.iOS)
-            ***REMOVED***
+            {
                 this.lockRender = false;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Called by the Stage visibility handler.
     *
     * @method Phaser.Game#focusLoss
-    * @param ***REMOVED***object***REMOVED*** event - The DOM event that caused the game to pause, if any.
+    * @param {object} event - The DOM event that caused the game to pause, if any.
     * @protected
     */
-    focusLoss: function (event) ***REMOVED***
+    focusLoss: function (event) {
 
         this.onBlur.dispatch(event);
 
         if (!this.stage.disableVisibilityChange)
-        ***REMOVED***
+        {
             this.gamePaused(event);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Called by the Stage visibility handler.
     *
     * @method Phaser.Game#focusGain
-    * @param ***REMOVED***object***REMOVED*** event - The DOM event that caused the game to pause, if any.
+    * @param {object} event - The DOM event that caused the game to pause, if any.
     * @protected
     */
-    focusGain: function (event) ***REMOVED***
+    focusGain: function (event) {
 
         this.onFocus.dispatch(event);
 
         if (!this.stage.disableVisibilityChange)
-        ***REMOVED***
+        {
             this.gameResumed(event);
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.Game.prototype.constructor = Phaser.Game;
 
@@ -8275,43 +8275,43 @@ Phaser.Game.prototype.constructor = Phaser.Game;
 * The paused state of the Game. A paused game doesn't update any of its subsystems.
 * When a game is paused the onPause event is dispatched. When it is resumed the onResume event is dispatched.
 * @name Phaser.Game#paused
-* @property ***REMOVED***boolean***REMOVED*** paused - Gets and sets the paused state of the Game.
+* @property {boolean} paused - Gets and sets the paused state of the Game.
 */
-Object.defineProperty(Phaser.Game.prototype, "paused", ***REMOVED***
+Object.defineProperty(Phaser.Game.prototype, "paused", {
 
-    get: function () ***REMOVED***
+    get: function () {
         return this._paused;
-    ***REMOVED***,
+    },
 
-    set: function (value) ***REMOVED***
+    set: function (value) {
 
         if (value === true)
-        ***REMOVED***
+        {
             if (this._paused === false)
-            ***REMOVED***
+            {
                 this._paused = true;
                 this.sound.setMute();
                 this.time.gamePaused();
                 this.onPause.dispatch(this);
-            ***REMOVED***
+            }
             this._codePaused = true;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             if (this._paused)
-            ***REMOVED***
+            {
                 this._paused = false;
                 this.input.reset();
                 this.sound.unsetMute();
                 this.time.gameResumed();
                 this.onResume.dispatch(this);
-            ***REMOVED***
+            }
             this._codePaused = false;
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});
 
 /**
  * 

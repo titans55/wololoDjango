@@ -10,15 +10,15 @@
  * @constructor
  */
 PIXI.ColorStepFilter = function()
-***REMOVED***
+{
     PIXI.AbstractFilter.call( this );
 
     this.passes = [this];
 
     // set the uniforms
-    this.uniforms = ***REMOVED***
-        step: ***REMOVED***type: '1f', value: 5***REMOVED***
-    ***REMOVED***;
+    this.uniforms = {
+        step: {type: '1f', value: 5}
+    };
 
     this.fragmentSrc = [
         'precision mediump float;',
@@ -27,13 +27,13 @@ PIXI.ColorStepFilter = function()
         'uniform sampler2D uSampler;',
         'uniform float step;',
 
-        'void main(void) ***REMOVED***',
+        'void main(void) {',
         '   vec4 color = texture2D(uSampler, vTextureCoord);',
         '   color = floor(color * step) / step;',
         '   gl_FragColor = color;',
-        '***REMOVED***'
+        '}'
     ];
-***REMOVED***;
+};
 
 PIXI.ColorStepFilter.prototype = Object.create( PIXI.AbstractFilter.prototype );
 PIXI.ColorStepFilter.prototype.constructor = PIXI.ColorStepFilter;
@@ -44,11 +44,11 @@ PIXI.ColorStepFilter.prototype.constructor = PIXI.ColorStepFilter;
  * @property step
  * @type Number
  */
-Object.defineProperty(PIXI.ColorStepFilter.prototype, 'step', ***REMOVED***
-    get: function() ***REMOVED***
+Object.defineProperty(PIXI.ColorStepFilter.prototype, 'step', {
+    get: function() {
         return this.uniforms.step.value;
-    ***REMOVED***,
-    set: function(value) ***REMOVED***
+    },
+    set: function(value) {
         this.uniforms.step.value = value;
-    ***REMOVED***
-***REMOVED***);
+    }
+});

@@ -1,15 +1,15 @@
-***REMOVED***% extends "partials/layout.html" %***REMOVED***
-***REMOVED***% load static %***REMOVED***
-***REMOVED***% load custom_template_tags %***REMOVED***
+{% extends "partials/layout.html" %}
+{% load static %}
+{% load custom_template_tags %}
 
-***REMOVED***% block headcdn %***REMOVED***
+{% block headcdn %}
 
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block content %***REMOVED***
-    <div id="villageDataJSON" data='***REMOVED******REMOVED***data.selectedVillage***REMOVED******REMOVED***'></div>
-    <div id="gameConfigData" data='***REMOVED******REMOVED***data.gameConfig***REMOVED******REMOVED***'></div>
-    ***REMOVED***% include "partials/villageResources.html" %***REMOVED***
+{% block content %}
+    <div id="villageDataJSON" data='{{data.selectedVillage}}'></div>
+    <div id="gameConfigData" data='{{data.gameConfig}}'></div>
+    {% include "partials/villageResources.html" %}
 
 
     <table class="table table-bordered text-center">
@@ -23,44 +23,44 @@
           </tr>
         </thead>
         <tbody>
-            ***REMOVED***% for infantryUnitName, infantryUnit in data.gameConfig.units.infantry.items %***REMOVED***
+            {% for infantryUnitName, infantryUnit in data.gameConfig.units.infantry.items %}
             <tr>
-                <th style="width: 20%">***REMOVED******REMOVED***infantryUnitName***REMOVED******REMOVED***</th>
+                <th style="width: 20%">{{infantryUnitName}}</th>
                 <td style="width: 55%"> 
-                    ***REMOVED***% for resourceName, resourceAmount in infantryUnit.Cost.items %***REMOVED***
+                    {% for resourceName, resourceAmount in infantryUnit.Cost.items %}
                         <span class="badge badge-info">
-                            ***REMOVED******REMOVED***resourceAmount***REMOVED******REMOVED***<div>***REMOVED******REMOVED***resourceName***REMOVED******REMOVED***</div>
+                            {{resourceAmount}}<div>{{resourceName}}</div>
                         </span>
-                    ***REMOVED***%endfor%***REMOVED***
+                    {%endfor%}
                     <span class="badge badge-info">
-                        ***REMOVED******REMOVED***infantryUnit.neededPopulation***REMOVED******REMOVED*** <div>Population</div>
+                        {{infantryUnit.neededPopulation}} <div>Population</div>
                     </span>
-                    <span class="badge badge-info neededTime" unitName="***REMOVED******REMOVED***infantryUnitName***REMOVED******REMOVED***">
+                    <span class="badge badge-info neededTime" unitName="{{infantryUnitName}}">
                         
                     </span>
                 </td>
 
                 <td style="width: 10%">
-                    ***REMOVED******REMOVED***data.selectedVillage.troops.inVillage.infantry|keyvalue:infantryUnitName***REMOVED******REMOVED*** / ***REMOVED******REMOVED***data.selectedVillage.troops.total.infantry|keyvalue:infantryUnitName***REMOVED******REMOVED***
+                    {{data.selectedVillage.troops.inVillage.infantry|keyvalue:infantryUnitName}} / {{data.selectedVillage.troops.total.infantry|keyvalue:infantryUnitName}}
                 </td>
                 <td style="width: 15%">  
                     <input type="number" class="form-control">
-                    ***REMOVED***% if data.selectedVillage.barracks.level < infantryUnit.neededBuildings.barracks.level %***REMOVED***
-                            <a class="dropdown-item" href="/game/***REMOVED******REMOVED***village.index***REMOVED******REMOVED***">***REMOVED******REMOVED***village.villageName***REMOVED******REMOVED***</a>
-                    ***REMOVED***% endif %***REMOVED*** 
+                    {% if data.selectedVillage.barracks.level < infantryUnit.neededBuildings.barracks.level %}
+                            <a class="dropdown-item" href="/game/{{village.index}}">{{village.villageName}}</a>
+                    {% endif %} 
                 </td>
             </tr>
-            ***REMOVED***%endfor%***REMOVED***
+            {%endfor%}
 
         </tbody>
     </table>
 
 
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
 
-***REMOVED***% block footerjs %***REMOVED***
-<script type="text/javascript" src="***REMOVED***% static 'wololo/js/villageResources.js' %***REMOVED***"></script>
-<script type="text/javascript" src="***REMOVED***% static 'wololo/js/barracks.js' %***REMOVED***"></script>
+{% block footerjs %}
+<script type="text/javascript" src="{% static 'wololo/js/villageResources.js' %}"></script>
+<script type="text/javascript" src="{% static 'wololo/js/barracks.js' %}"></script>
 
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}

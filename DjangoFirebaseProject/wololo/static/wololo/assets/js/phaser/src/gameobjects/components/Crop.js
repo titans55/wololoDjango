@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -10,21 +10,21 @@
 *
 * @class
 */
-Phaser.Component.Crop = function () ***REMOVED******REMOVED***;
+Phaser.Component.Crop = function () {};
 
-Phaser.Component.Crop.prototype = ***REMOVED***
+Phaser.Component.Crop.prototype = {
 
     /**
     * The Rectangle used to crop the texture this Game Object uses.
     * Set this property via `crop`. 
     * If you modify this property directly you must call `updateCrop` in order to have the change take effect.
-    * @property ***REMOVED***Phaser.Rectangle***REMOVED*** cropRect
+    * @property {Phaser.Rectangle} cropRect
     * @default
     */
     cropRect: null,
 
     /**
-    * @property ***REMOVED***Phaser.Rectangle***REMOVED*** _crop - Internal cache var.
+    * @property {Phaser.Rectangle} _crop - Internal cache var.
     * @private
     */
     _crop: null,
@@ -43,39 +43,39 @@ Phaser.Component.Crop.prototype = ***REMOVED***
     * in which case the values are duplicated to a local object.
     *
     * @method
-    * @param ***REMOVED***Phaser.Rectangle***REMOVED*** rect - The Rectangle used during cropping. Pass null or no parameters to clear a previously set crop rectangle.
-    * @param ***REMOVED***boolean***REMOVED*** [copy=false] - If false `cropRect` will be stored as a reference to the given rect. If true it will copy the rect values into a local Phaser Rectangle object stored in cropRect.
+    * @param {Phaser.Rectangle} rect - The Rectangle used during cropping. Pass null or no parameters to clear a previously set crop rectangle.
+    * @param {boolean} [copy=false] - If false `cropRect` will be stored as a reference to the given rect. If true it will copy the rect values into a local Phaser Rectangle object stored in cropRect.
     */
-    crop: function (rect, copy) ***REMOVED***
+    crop: function (rect, copy) {
 
-        if (copy === undefined) ***REMOVED*** copy = false; ***REMOVED***
+        if (copy === undefined) { copy = false; }
 
         if (rect)
-        ***REMOVED***
+        {
             if (copy && this.cropRect !== null)
-            ***REMOVED***
+            {
                 this.cropRect.setTo(rect.x, rect.y, rect.width, rect.height);
-            ***REMOVED***
+            }
             else if (copy && this.cropRect === null)
-            ***REMOVED***
+            {
                 this.cropRect = new Phaser.Rectangle(rect.x, rect.y, rect.width, rect.height);
-            ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 this.cropRect = rect;
-            ***REMOVED***
+            }
 
             this.updateCrop();
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this._crop = null;
             this.cropRect = null;
 
             this.resetFrame();
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * If you have set a crop rectangle on this Game Object via `crop` and since modified the `cropRect` property,
@@ -83,12 +83,12 @@ Phaser.Component.Crop.prototype = ***REMOVED***
     *
     * @method
     */
-    updateCrop: function () ***REMOVED***
+    updateCrop: function () {
 
         if (!this.cropRect)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         var oldX = this.texture.crop.x;
         var oldY = this.texture.crop.y;
@@ -118,10 +118,10 @@ Phaser.Component.Crop.prototype = ***REMOVED***
         this.texture._updateUvs();
 
         if (this.tint !== 0xffffff && (oldX !== cx || oldY !== cy || oldW !== cw || oldH !== ch))
-        ***REMOVED***
+        {
             this.texture.requiresReTint = true;
-        ***REMOVED***
+        }
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};

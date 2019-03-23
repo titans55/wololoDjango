@@ -24,7 +24,7 @@ It is used internally by the likes of PIXI.Sprite.
 The value of this property does not reflect any positioning happening further up the display list.
 To obtain that value please see the `worldPosition` property.
 * @member PIXI.PIXI.DisplayObject#position
-* @type ***REMOVED***PIXIPoint***REMOVED***
+* @type {PIXIPoint}
 * @default 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 20
@@ -36,7 +36,7 @@ at its default size. A value of 0.5 would scale this DisplayObject by half, and 
 The value of this property does not reflect any scaling happening further up the display list.
 To obtain that value please see the `worldScale` property.
 * @member PIXI.PIXI.DisplayObject#scale
-* @type ***REMOVED***PIXIPoint***REMOVED***
+* @type {PIXIPoint}
 * @default 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 31
@@ -45,7 +45,7 @@ To obtain that value please see the `worldScale` property.
 * @description The pivot point of this DisplayObject that it rotates around. The values are expressed
 in pixel values.
 * @member PIXI.PIXI.DisplayObject#pivot
-* @type ***REMOVED***PIXIPoint***REMOVED***
+* @type {PIXIPoint}
 * @default 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 43
@@ -57,7 +57,7 @@ a right-handed orientation.
 The value of this property does not reflect any rotation happening further up the display list.
 To obtain that value please see the `worldRotation` property.
 * @member PIXI.PIXI.DisplayObject#rotation
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @default 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 51
@@ -69,7 +69,7 @@ Please note that an object with an alpha value of 0 is skipped during the render
 The value of this property does not reflect any alpha values set further up the display list.
 To obtain that value please see the `worldAlpha` property.
 * @member PIXI.PIXI.DisplayObject#alpha
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @default 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 63
@@ -83,7 +83,7 @@ not render any of its children.
 The value of this property does not reflect any visible values set further up the display list.
 To obtain that value please see the `worldVisible` property.
 * @member PIXI.PIXI.DisplayObject#visible
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @default 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 75
@@ -92,7 +92,7 @@ To obtain that value please see the `worldVisible` property.
 * @description This is the defined area that will pick up mouse / touch events. It is null by default.
 Setting it is a neat way of optimising the hitTest function that the interactionManager will use (as it will not need to hit test all the children)
 * @member PIXI.PIXI.DisplayObject#hitArea
-* @type ***REMOVED***(Rectangle|Circle|Ellipse|Polygon)***REMOVED***
+* @type {(Rectangle|Circle|Ellipse|Polygon)}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 89
 */
@@ -100,7 +100,7 @@ Setting it is a neat way of optimising the hitTest function that the interaction
 * @description Should this DisplayObject be rendered by the renderer? An object with a renderable value of
 `false` is skipped during the render pass.
 * @member PIXI.PIXI.DisplayObject#renderable
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @default 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 98
@@ -111,7 +111,7 @@ All DisplayObjects must belong to a parent in order to be rendered.
 The root parent is the Stage object. This property is set automatically when the
 DisplayObject is added to, or removed from, a DisplayObjectContainer.
 * @member PIXI.PIXI.DisplayObject#parent
-* @type ***REMOVED***PIXIDisplayObjectContainer***REMOVED***
+* @type {PIXIDisplayObjectContainer}
 * @readonly 
 * @default 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
@@ -128,7 +128,7 @@ Note: This property is only updated at the end of the `updateTransform` call, on
 that happens this property will contain values based on the previous frame. Be mindful of this if
 accessing this property outside of the normal game flow, i.e. from an asynchronous event callback.
 * @member PIXI.PIXI.DisplayObject#worldAlpha
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @readonly 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 119
@@ -143,7 +143,7 @@ Note: This property is only updated at the end of the `updateTransform` call, on
 that happens this property will contain values based on the previous frame. Be mindful of this if
 accessing this property outside of the normal game flow, i.e. from an asynchronous event callback.
 * @member PIXI.PIXI.DisplayObject#worldTransform
-* @type ***REMOVED***PIXIMatrix***REMOVED***
+* @type {PIXIMatrix}
 * @readonly 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 135
@@ -158,7 +158,7 @@ Note: This property is only updated at the end of the `updateTransform` call, on
 that happens this property will contain values based on the previous frame. Be mindful of this if
 accessing this property outside of the normal game flow, i.e. from an asynchronous event callback.
 * @member PIXI.PIXI.DisplayObject#worldPosition
-* @type ***REMOVED***PIXIPoint***REMOVED***
+* @type {PIXIPoint}
 * @readonly 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 150
@@ -173,7 +173,7 @@ Note: This property is only updated at the end of the `updateTransform` call, on
 that happens this property will contain values based on the previous frame. Be mindful of this if
 accessing this property outside of the normal game flow, i.e. from an asynchronous event callback.
 * @member PIXI.PIXI.DisplayObject#worldScale
-* @type ***REMOVED***PIXIPoint***REMOVED***
+* @type {PIXIPoint}
 * @readonly 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 165
@@ -188,7 +188,7 @@ Note: This property is only updated at the end of the `updateTransform` call, on
 that happens this property will contain values based on the previous frame. Be mindful of this if
 accessing this property outside of the normal game flow, i.e. from an asynchronous event callback.
 * @member PIXI.PIXI.DisplayObject#worldRotation
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @readonly 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 180
@@ -196,56 +196,56 @@ accessing this property outside of the normal game flow, i.e. from an asynchrono
 /**
 * @description The rectangular area used by filters when rendering a shader for this DisplayObject.
 * @member PIXI.PIXI.DisplayObject#filterArea
-* @type ***REMOVED***Rectangle***REMOVED***
+* @type {Rectangle}
 * @default 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 195
 */
 /**
 * @member PIXI.PIXI.DisplayObject#_sr - Cached rotation value.
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 204
 */
 /**
 * @member PIXI.PIXI.DisplayObject#_cr - Cached rotation value.
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 210
 */
 /**
 * @member PIXI.PIXI.DisplayObject#_bounds - The cached bounds of this object.
-* @type ***REMOVED***PIXIRectangle***REMOVED***
+* @type {PIXIRectangle}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 216
 */
 /**
 * @member PIXI.PIXI.DisplayObject#_currentBounds - The most recently calculated bounds of this object.
-* @type ***REMOVED***PIXIRectangle***REMOVED***
+* @type {PIXIRectangle}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 222
 */
 /**
 * @member PIXI.PIXI.DisplayObject#_mask - The cached mask of this object.
-* @type ***REMOVED***PIXIRectangle***REMOVED***
+* @type {PIXIRectangle}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 228
 */
 /**
 * @member PIXI.PIXI.DisplayObject#_cacheAsBitmap - Internal cache as bitmap flag.
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 234
 */
 /**
 * @member PIXI.PIXI.DisplayObject#_cacheIsDirty - Internal dirty cache flag.
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 240
@@ -273,41 +273,41 @@ This can be useful if your DisplayObject is static, or complicated, and needs to
 Please note that no garbage collection takes place on old textures. It is up to you to destroy old textures,
 and references to them, so they don't linger in memory.
 * @method PIXI.PIXI.DisplayObject#PIXI.DisplayObject#generateTexture
-* @param ***REMOVED***Number***REMOVED*** [resolution=1] - - The resolution of the texture being generated.
-* @param ***REMOVED***Number***REMOVED*** [scaleMode=PIXI.scaleModes.DEFAULT] - - See ***REMOVED******REMOVED***#crossLink "PIXI/scaleModes:property"***REMOVED******REMOVED***PIXI.scaleModes***REMOVED******REMOVED***/crossLink***REMOVED******REMOVED*** for possible values.
-* @param ***REMOVED***(PIXICanvasRenderer|PIXIWebGLRenderer)***REMOVED*** renderer - - The renderer used to generate the texture.
-* @return ***REMOVED***PIXIRenderTexture***REMOVED*** - A RenderTexture containing an image of this DisplayObject at the time it was invoked.
+* @param {Number} [resolution=1] - - The resolution of the texture being generated.
+* @param {Number} [scaleMode=PIXI.scaleModes.DEFAULT] - - See {{#crossLink "PIXI/scaleModes:property"}}PIXI.scaleModes{{/crossLink}} for possible values.
+* @param {(PIXICanvasRenderer|PIXIWebGLRenderer)} renderer - - The renderer used to generate the texture.
+* @return {PIXIRenderTexture} - A RenderTexture containing an image of this DisplayObject at the time it was invoked.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 412
 */
 /**
 * @description If this DisplayObject has a cached Sprite, this method generates and updates it.
 * @method PIXI.PIXI.DisplayObject#PIXI.DisplayObject#updateCache
-* @return ***REMOVED***PIXIDisplayObject***REMOVED*** - A reference to this DisplayObject.
+* @return {PIXIDisplayObject} - A reference to this DisplayObject.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 440
 */
 /**
 * @description Calculates the global position of this DisplayObject, based on the position given.
 * @method PIXI.PIXI.DisplayObject#PIXI.DisplayObject#toGlobal
-* @param ***REMOVED***PIXIPoint***REMOVED*** position - - The global position to calculate from.
-* @return ***REMOVED***PIXIPoint***REMOVED*** - A point object representing the position of this DisplayObject based on the global position given.
+* @param {PIXIPoint} position - - The global position to calculate from.
+* @return {PIXIPoint} - A point object representing the position of this DisplayObject based on the global position given.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 454
 */
 /**
 * @description Calculates the local position of this DisplayObject, relative to another point.
 * @method PIXI.PIXI.DisplayObject#PIXI.DisplayObject#toLocal
-* @param ***REMOVED***PIXIPoint***REMOVED*** position - - The world origin to calculate from.
-* @param ***REMOVED***PIXIDisplayObject***REMOVED*** [from] - - An optional DisplayObject to calculate the global position from.
-* @return ***REMOVED***PIXIPoint***REMOVED*** - A point object representing the position of this DisplayObject based on the global position given.
+* @param {PIXIPoint} position - - The world origin to calculate from.
+* @param {PIXIDisplayObject} [from] - - An optional DisplayObject to calculate the global position from.
+* @return {PIXIPoint} - A point object representing the position of this DisplayObject based on the global position given.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 469
 */
 /**
 * @description Internal method.
 * @method PIXI.PIXI.DisplayObject#PIXI.DisplayObject#_renderCachedSprite
-* @param ***REMOVED***Object***REMOVED*** renderSession - - The render session
+* @param {Object} renderSession - - The render session
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 490
@@ -330,7 +330,7 @@ and references to them, so they don't linger in memory.
 * @description The horizontal position of the DisplayObject, in pixels, relative to its parent.
 If you need the world position of the DisplayObject, use `DisplayObject.worldPosition` instead.
 * @member PIXI.PIXI.DisplayObject#x - The horizontal position of the DisplayObject, in pixels, relative to its parent.
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 586
 */
@@ -338,14 +338,14 @@ If you need the world position of the DisplayObject, use `DisplayObject.worldPos
 * @description The vertical position of the DisplayObject, in pixels, relative to its parent.
 If you need the world position of the DisplayObject, use `DisplayObject.worldPosition` instead.
 * @member PIXI.PIXI.DisplayObject#y - The vertical position of the DisplayObject, in pixels, relative to its parent.
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 608
 */
 /**
 * @description Indicates if this DisplayObject is visible, based on it, and all of its parents, `visible` property values.
 * @member PIXI.PIXI.DisplayObject#worldVisible - Indicates if this DisplayObject is visible, based on it, and all of its parents, `visible` property values.
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 630
 */
@@ -355,7 +355,7 @@ When applied it limits the visible area of this DisplayObject to the shape of th
 Under a Canvas renderer it uses shape clipping. Under a WebGL renderer it uses a Stencil Buffer.
 To remove a mask, set this property to `null`.
 * @member PIXI.PIXI.DisplayObject#mask - The mask applied to this DisplayObject. Set to `null` to remove an existing mask.
-* @type ***REMOVED***PIXIGraphics***REMOVED***
+* @type {PIXIGraphics}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 673
 */
@@ -369,7 +369,7 @@ To remove filters, set this property to `null`.
 Note: You cannot have a filter set, and a MULTIPLY Blend Mode active, at the same time. Setting a 
 filter will reset this DisplayObjects blend mode to NORMAL.
 * @member PIXI.PIXI.DisplayObject#filters - An Array of PIXI.AbstractFilter objects, or objects that extend them.
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 708
 */
@@ -385,7 +385,7 @@ re-generate the cached bitmap automatically. To do that you need to call `Displa
 
 To remove a cached bitmap, set this property to `null`.
 * @member PIXI.PIXI.DisplayObject#cacheAsBitmap - Cache this DisplayObject as a Bitmap. Set to `null` to remove an existing cached bitmap.
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObject.js
 * @sourceline 761
 */
@@ -406,7 +406,7 @@ It is the base class of all display objects that act as a container for other ob
 /**
 * @description [read-only] The array of children of this container.
 * @member PIXI.DisplayObjectContainer#children
-* @type ***REMOVED***Array<DisplayObject>***REMOVED***
+* @type {Array<DisplayObject>}
 * @readonly 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObjectContainer.js
 * @sourceline 17
@@ -418,7 +418,7 @@ If this property is `true` then the children will _not_ be considered as valid f
 
 Note that this property isn't recursive: only immediate children are influenced, it doesn't scan further down.
 * @member PIXI.DisplayObjectContainer#ignoreChildInput
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @default 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObjectContainer.js
 * @sourceline 26
@@ -426,103 +426,103 @@ Note that this property isn't recursive: only immediate children are influenced,
 /**
 * @description Adds a child to the container.
 * @method PIXI.DisplayObjectContainer#addChild
-* @param ***REMOVED***DisplayObject***REMOVED*** child - The DisplayObject to add to the container
-* @return ***REMOVED***DisplayObject***REMOVED*** The child that was added.
+* @param {DisplayObject} child - The DisplayObject to add to the container
+* @return {DisplayObject} The child that was added.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObjectContainer.js
 * @sourceline 42
 */
 /**
 * @description Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
 * @method PIXI.DisplayObjectContainer#addChildAt
-* @param ***REMOVED***DisplayObject***REMOVED*** child - The child to add
-* @param ***REMOVED***Number***REMOVED*** index - The index to place the child in
-* @return ***REMOVED***DisplayObject***REMOVED*** The child that was added.
+* @param {DisplayObject} child - The child to add
+* @param {Number} index - The index to place the child in
+* @return {DisplayObject} The child that was added.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObjectContainer.js
 * @sourceline 55
 */
 /**
 * @description Swaps the position of 2 Display Objects within this container.
 * @method PIXI.DisplayObjectContainer#swapChildren
-* @param ***REMOVED***DisplayObject***REMOVED*** child - 
-* @param ***REMOVED***DisplayObject***REMOVED*** child2 - 
+* @param {DisplayObject} child - 
+* @param {DisplayObject} child2 - 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObjectContainer.js
 * @sourceline 85
 */
 /**
 * @description Returns the index position of a child DisplayObject instance
 * @method PIXI.DisplayObjectContainer#getChildIndex
-* @param ***REMOVED***DisplayObject***REMOVED*** child - The DisplayObject instance to identify
-* @return ***REMOVED***Number***REMOVED*** The index position of the child display object to identify
+* @param {DisplayObject} child - The DisplayObject instance to identify
+* @return {Number} The index position of the child display object to identify
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObjectContainer.js
 * @sourceline 112
 */
 /**
 * @description Changes the position of an existing child in the display object container
 * @method PIXI.DisplayObjectContainer#setChildIndex
-* @param ***REMOVED***DisplayObject***REMOVED*** child - The child DisplayObject instance for which you want to change the index number
-* @param ***REMOVED***Number***REMOVED*** index - The resulting index number for the child display object
+* @param {DisplayObject} child - The child DisplayObject instance for which you want to change the index number
+* @param {Number} index - The resulting index number for the child display object
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObjectContainer.js
 * @sourceline 132
 */
 /**
 * @description Returns the child at the specified index
 * @method PIXI.DisplayObjectContainer#getChildAt
-* @param ***REMOVED***Number***REMOVED*** index - The index to get the child from
-* @return ***REMOVED***DisplayObject***REMOVED*** The child at the given index, if any.
+* @param {Number} index - The index to get the child from
+* @return {DisplayObject} The child at the given index, if any.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObjectContainer.js
 * @sourceline 153
 */
 /**
 * @description Removes a child from the container.
 * @method PIXI.DisplayObjectContainer#removeChild
-* @param ***REMOVED***DisplayObject***REMOVED*** child - The DisplayObject to remove
-* @return ***REMOVED***DisplayObject***REMOVED*** The child that was removed.
+* @param {DisplayObject} child - The DisplayObject to remove
+* @return {DisplayObject} The child that was removed.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObjectContainer.js
 * @sourceline 171
 */
 /**
 * @description Removes a child from the specified index position.
 * @method PIXI.DisplayObjectContainer#removeChildAt
-* @param ***REMOVED***Number***REMOVED*** index - The index to get the child from
-* @return ***REMOVED***DisplayObject***REMOVED*** The child that was removed.
+* @param {Number} index - The index to get the child from
+* @return {DisplayObject} The child that was removed.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObjectContainer.js
 * @sourceline 191
 */
 /**
 * @description Removes all children from this container that are within the begin and end indexes.
 * @method PIXI.DisplayObjectContainer#removeChildren
-* @param ***REMOVED***Number***REMOVED*** beginIndex - The beginning position. Default value is 0.
-* @param ***REMOVED***Number***REMOVED*** endIndex - The ending position. Default value is size of the container.
+* @param {Number} beginIndex - The beginning position. Default value is 0.
+* @param {Number} endIndex - The ending position. Default value is size of the container.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObjectContainer.js
 * @sourceline 213
 */
 /**
 * @description Retrieves the global bounds of the displayObjectContainer as a rectangle. The bounds calculation takes all visible children into consideration.
 * @method PIXI.DisplayObjectContainer#getBounds
-* @param ***REMOVED***(PIXIDisplayObject|PIXIMatrix)***REMOVED*** [targetCoordinateSpace] - Returns a rectangle that defines the area of the display object relative to the coordinate system of the targetCoordinateSpace object.
-* @return ***REMOVED***Rectangle***REMOVED*** The rectangular bounding area
+* @param {(PIXIDisplayObject|PIXIMatrix)} [targetCoordinateSpace] - Returns a rectangle that defines the area of the display object relative to the coordinate system of the targetCoordinateSpace object.
+* @return {Rectangle} The rectangular bounding area
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObjectContainer.js
 * @sourceline 280
 */
 /**
 * @description Retrieves the non-global local bounds of the displayObjectContainer as a rectangle without any transformations. The calculation takes all visible children into consideration.
 * @method PIXI.DisplayObjectContainer#getLocalBounds
-* @return ***REMOVED***Rectangle***REMOVED*** The rectangular bounding area
+* @return {Rectangle} The rectangular bounding area
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObjectContainer.js
 * @sourceline 437
 */
 /**
 * @description Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself.
 * @method PIXI.DisplayObjectContainer#contains
-* @param ***REMOVED***DisplayObject***REMOVED*** child - 
-* @return ***REMOVED***Boolean***REMOVED*** 
+* @param {DisplayObject} child - 
+* @return {Boolean} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObjectContainer.js
 * @sourceline 449
 */
 /**
 * @description Renders the object using the WebGL renderer
 * @method PIXI.DisplayObjectContainer#_renderWebGL
-* @param ***REMOVED***RenderSession***REMOVED*** renderSession - 
+* @param {RenderSession} renderSession - 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObjectContainer.js
 * @sourceline 472
@@ -530,7 +530,7 @@ Note that this property isn't recursive: only immediate children are influenced,
 /**
 * @description Renders the object using the Canvas renderer
 * @method PIXI.DisplayObjectContainer#_renderCanvas
-* @param ***REMOVED***RenderSession***REMOVED*** renderSession - 
+* @param {RenderSession} renderSession - 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObjectContainer.js
 * @sourceline 534
@@ -538,14 +538,14 @@ Note that this property isn't recursive: only immediate children are influenced,
 /**
 * @description The width of the displayObjectContainer, setting this will actually modify the scale to achieve the value set
 * @member PIXI.DisplayObjectContainer#width
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObjectContainer.js
 * @sourceline 571
 */
 /**
 * @description The height of the displayObjectContainer, setting this will actually modify the scale to achieve the value set
 * @member PIXI.DisplayObjectContainer#height
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/DisplayObjectContainer.js
 * @sourceline 600
 */
@@ -559,7 +559,7 @@ Note that this property isn't recursive: only immediate children are influenced,
 * @class PIXI.Sprite
 * @description The Sprite object is the base for all textured objects that are rendered to the screen
 * @augments PIXI.DisplayObjectContainer
-* @param ***REMOVED***PIXI.Texture***REMOVED*** texture - The texture for this sprite
+* @param {PIXI.Texture} texture - The texture for this sprite
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/Sprite.js
 * @sourceline 5
 */
@@ -569,21 +569,21 @@ The default is 0,0 this means the texture's origin is the top left
 Setting than anchor to 0.5,0.5 means the textures origin is centered
 Setting the anchor to 1,1 would mean the textures origin points will be the bottom right corner
 * @member PIXI.Sprite#anchor
-* @type ***REMOVED***Point***REMOVED***
+* @type {Point}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/Sprite.js
 * @sourceline 17
 */
 /**
 * @description The texture that the sprite is using
 * @member PIXI.Sprite#texture
-* @type ***REMOVED***PIXI.Texture***REMOVED***
+* @type {PIXI.Texture}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/Sprite.js
 * @sourceline 28
 */
 /**
 * @description The width of the sprite (this is initially set by the texture)
 * @member PIXI.Sprite#_width
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/Sprite.js
 * @sourceline 36
@@ -591,7 +591,7 @@ Setting the anchor to 1,1 would mean the textures origin points will be the bott
 /**
 * @description The height of the sprite (this is initially set by the texture)
 * @member PIXI.Sprite#_height
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/Sprite.js
 * @sourceline 45
@@ -599,7 +599,7 @@ Setting the anchor to 1,1 would mean the textures origin points will be the bott
 /**
 * @description The tint applied to the sprite. This is a hex value. A value of 0xFFFFFF will remove any tint effect.
 * @member PIXI.Sprite#tint
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @default 0xFFFFFF
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/Sprite.js
 * @sourceline 54
@@ -607,7 +607,7 @@ Setting the anchor to 1,1 would mean the textures origin points will be the bott
 /**
 * @description The tint applied to the sprite. This is a hex value. A value of 0xFFFFFF will remove any tint effect.
 * @member PIXI.Sprite#cachedTint
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @default -1
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/Sprite.js
@@ -616,7 +616,7 @@ Setting the anchor to 1,1 would mean the textures origin points will be the bott
 /**
 * @description A canvas that contains the tinted version of the Sprite (in Canvas mode, WebGL doesn't populate this)
 * @member PIXI.Sprite#tintedTexture
-* @type ***REMOVED***Canvas***REMOVED***
+* @type {Canvas}
 * @default null
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/Sprite.js
 * @sourceline 73
@@ -626,7 +626,7 @@ Setting the anchor to 1,1 would mean the textures origin points will be the bott
 
 Warning: You cannot have a blend mode and a filter active on the same Sprite. Doing so will render the sprite invisible.
 * @member PIXI.Sprite#blendMode
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @default PIXI.blendModes.NORMAL;
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/Sprite.js
 * @sourceline 82
@@ -635,7 +635,7 @@ Warning: You cannot have a blend mode and a filter active on the same Sprite. Do
 * @description The shader that will be used to render this Sprite.
 Set to null to remove a current shader.
 * @member PIXI.Sprite#shader
-* @type ***REMOVED***PIXI.AbstractFilter***REMOVED***
+* @type {PIXI.AbstractFilter}
 * @default null
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/Sprite.js
 * @sourceline 93
@@ -643,7 +643,7 @@ Set to null to remove a current shader.
 /**
 * @description Controls if this Sprite is processed by the core Phaser game loops and Group loops.
 * @member PIXI.Sprite#exists
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @default true
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/Sprite.js
 * @sourceline 103
@@ -651,14 +651,14 @@ Set to null to remove a current shader.
 /**
 * @description The width of the sprite, setting this will actually modify the scale to achieve the value set
 * @member PIXI.Sprite#width
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/Sprite.js
 * @sourceline 125
 */
 /**
 * @description The height of the sprite, setting this will actually modify the scale to achieve the value set
 * @member PIXI.Sprite#height
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/Sprite.js
 * @sourceline 144
 */
@@ -666,15 +666,15 @@ Set to null to remove a current shader.
 * @description Sets the texture of the sprite. Be warned that this doesn't remove or destroy the previous
 texture this Sprite was using.
 * @method PIXI.Sprite#setTexture
-* @param ***REMOVED***PIXI.Texture***REMOVED*** texture - The PIXI texture that is displayed by the sprite
-* @param ***REMOVED***Boolean***REMOVED*** [destroy=false] - Call Texture.destroy on the current texture before replacing it with the new one?
+* @param {PIXI.Texture} texture - The PIXI texture that is displayed by the sprite
+* @param {Boolean} [destroy=false] - Call Texture.destroy on the current texture before replacing it with the new one?
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/Sprite.js
 * @sourceline 163
 */
 /**
 * @description When the texture is updated, this event will fire to update the scale and frame
 * @method PIXI.Sprite#onTextureUpdate
-* @param ***REMOVED******REMOVED*** event - 
+* @param {} event - 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/Sprite.js
 * @sourceline 185
@@ -690,23 +690,23 @@ to this Sprites worldTransform. If you need to ensure that all parent transforms
 are factored into this getBounds operation then you should call `updateTransform`
 on the root most object in this Sprites display list first.
 * @method PIXI.Sprite#getBounds
-* @param ***REMOVED***Matrix***REMOVED*** matrix - the transformation matrix of the sprite
-* @return ***REMOVED***Rectangle***REMOVED*** the framing rectangle
+* @param {Matrix} matrix - the transformation matrix of the sprite
+* @return {Rectangle} the framing rectangle
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/Sprite.js
 * @sourceline 199
 */
 /**
 * @description Retrieves the non-global local bounds of the Sprite as a rectangle. The calculation takes all visible children into consideration.
 * @method PIXI.Sprite#getLocalBounds
-* @return ***REMOVED***Rectangle***REMOVED*** The rectangular bounding area
+* @return {Rectangle} The rectangular bounding area
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/Sprite.js
 * @sourceline 315
 */
 /**
 * @description Renders the object using the WebGL renderer
 * @method PIXI.Sprite#_renderWebGL
-* @param ***REMOVED***RenderSession***REMOVED*** renderSession - 
-* @param ***REMOVED***Matrix***REMOVED*** [matrix] - - Optional matrix. If provided the Display Object will be rendered using this matrix, otherwise it will use its worldTransform.
+* @param {RenderSession} renderSession - 
+* @param {Matrix} [matrix] - - Optional matrix. If provided the Display Object will be rendered using this matrix, otherwise it will use its worldTransform.
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/Sprite.js
 * @sourceline 345
@@ -714,8 +714,8 @@ on the root most object in this Sprites display list first.
 /**
 * @description Renders the object using the Canvas renderer
 * @method PIXI.Sprite#_renderCanvas
-* @param ***REMOVED***RenderSession***REMOVED*** renderSession - 
-* @param ***REMOVED***Matrix***REMOVED*** [matrix] - - Optional matrix. If provided the Display Object will be rendered using this matrix, otherwise it will use its worldTransform.
+* @param {RenderSession} renderSession - 
+* @param {Matrix} [matrix] - - Optional matrix. If provided the Display Object will be rendered using this matrix, otherwise it will use its worldTransform.
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/Sprite.js
 * @sourceline 415
@@ -735,19 +735,19 @@ And it's extremely easy to use :
    var container = new PIXI.SpriteBatch();
 
    for(var i  = 0; i < 100; i++)
-   ***REMOVED***
+   {
        var sprite = new PIXI.Sprite.fromImage("myImage.png");
        container.addChild(sprite);
-   ***REMOVED***
+   }
 And here you have a hundred sprites that will be renderer at the speed of light
-* @param ***REMOVED***PIXI.Texture***REMOVED*** texture - 
+* @param {PIXI.Texture} texture - 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/SpriteBatch.js
 * @sourceline 5
 */
 /**
 * @description Renders the object using the WebGL renderer
 * @method PIXI.SpriteBatch#_renderWebGL
-* @param ***REMOVED***RenderSession***REMOVED*** renderSession - 
+* @param {RenderSession} renderSession - 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/SpriteBatch.js
 * @sourceline 62
@@ -755,7 +755,7 @@ And here you have a hundred sprites that will be renderer at the speed of light
 /**
 * @description Renders the object using the Canvas renderer
 * @method PIXI.SpriteBatch#_renderCanvas
-* @param ***REMOVED***RenderSession***REMOVED*** renderSession - 
+* @param {RenderSession} renderSession - 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/display/SpriteBatch.js
 * @sourceline 94
@@ -769,8 +769,8 @@ And here you have a hundred sprites that will be renderer at the speed of light
 /**
 * @class PIXI.Rope
 * @augments PIXI.Strip
-* @param ***REMOVED***PIXI.Texture***REMOVED*** texture - - The texture to use on the rope.
-* @param ***REMOVED***Array***REMOVED*** points - - An array of ***REMOVED***PIXI.Point***REMOVED***.
+* @param {PIXI.Texture} texture - - The texture to use on the rope.
+* @param {Array} points - - An array of {PIXI.Point}.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/Rope.js
 * @sourceline 6
 */
@@ -783,30 +783,30 @@ And here you have a hundred sprites that will be renderer at the speed of light
 /**
 * @class PIXI.Strip
 * @augments PIXI.DisplayObjectContainer
-* @param ***REMOVED***PIXI.Texture***REMOVED*** texture - The texture to use
-* @param ***REMOVED***Number***REMOVED*** width - the width
-* @param ***REMOVED***Number***REMOVED*** height - the height
+* @param {PIXI.Texture} texture - The texture to use
+* @param {Number} width - the width
+* @param {Number} height - the height
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/Strip.js
 * @sourceline 5
 */
 /**
 * @description The texture of the strip
 * @member PIXI.Strip#texture
-* @type ***REMOVED***PIXI.Texture***REMOVED***
+* @type {PIXI.Texture}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/Strip.js
 * @sourceline 20
 */
 /**
 * @description Whether the strip is dirty or not
 * @member PIXI.Strip#dirty
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/Strip.js
 * @sourceline 43
 */
 /**
 * @description The blend mode to be applied to the sprite. Set to PIXI.blendModes.NORMAL to remove any blend mode.
 * @member PIXI.Strip#blendMode
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @default PIXI.blendModes.NORMAL;
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/Strip.js
 * @sourceline 51
@@ -814,14 +814,14 @@ And here you have a hundred sprites that will be renderer at the speed of light
 /**
 * @description Triangles in canvas mode are automatically antialiased, use this value to force triangles to overlap a bit with each other.
 * @member PIXI.Strip#canvasPadding
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/Strip.js
 * @sourceline 60
 */
 /**
 * @description Renders a flat strip
 * @method PIXI.Strip#renderStripFlat
-* @param ***REMOVED***PIXI.Strip***REMOVED*** strip - The Strip to render
+* @param {PIXI.Strip} strip - The Strip to render
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/Strip.js
 * @sourceline 344
@@ -829,7 +829,7 @@ And here you have a hundred sprites that will be renderer at the speed of light
 /**
 * @description When the texture is updated, this event will fire to update the scale and frame
 * @method PIXI.Strip#onTextureUpdate
-* @param ***REMOVED******REMOVED*** event - 
+* @param {} event - 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/Strip.js
 * @sourceline 392
@@ -837,15 +837,15 @@ And here you have a hundred sprites that will be renderer at the speed of light
 /**
 * @description Returns the bounds of the mesh as a rectangle. The bounds calculation takes the worldTransform into account.
 * @method PIXI.Strip#getBounds
-* @param ***REMOVED***Matrix***REMOVED*** matrix - the transformation matrix of the sprite
-* @return ***REMOVED***Rectangle***REMOVED*** the framing rectangle
+* @param {Matrix} matrix - the transformation matrix of the sprite
+* @return {Rectangle} the framing rectangle
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/Strip.js
 * @sourceline 405
 */
 /**
 * @description Different drawing buffer modes supported
 * @member PIXI.Strip.
-* @type ***REMOVED******REMOVED***TRIANGLE_STRIP: number, TRIANGLES: number***REMOVED******REMOVED***
+* @type {{TRIANGLE_STRIP: number, TRIANGLES: number}}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/Strip.js
 * @sourceline 462
 */
@@ -859,51 +859,51 @@ And here you have a hundred sprites that will be renderer at the speed of light
 * @class PIXI.TilingSprite
 * @description A tiling sprite is a fast way of rendering a tiling image
 * @augments PIXI.Sprite
-* @param ***REMOVED***PIXI.Texture***REMOVED*** texture - the texture of the tiling sprite
-* @param ***REMOVED***Number***REMOVED*** width - the width of the tiling sprite
-* @param ***REMOVED***Number***REMOVED*** height - the height of the tiling sprite
+* @param {PIXI.Texture} texture - the texture of the tiling sprite
+* @param {Number} width - the width of the tiling sprite
+* @param {Number} height - the height of the tiling sprite
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 5
 */
 /**
 * @description The width of the tiling sprite
 * @member PIXI.TilingSprite#width
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 19
 */
 /**
 * @description The height of the tiling sprite
 * @member PIXI.TilingSprite#height
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 27
 */
 /**
 * @description The scaling of the image that is being tiled
 * @member PIXI.TilingSprite#tileScale
-* @type ***REMOVED***Point***REMOVED***
+* @type {Point}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 35
 */
 /**
 * @description A point that represents the scale of the texture object
 * @member PIXI.TilingSprite#tileScaleOffset
-* @type ***REMOVED***Point***REMOVED***
+* @type {Point}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 43
 */
 /**
 * @description The offset position of the image that is being tiled
 * @member PIXI.TilingSprite#tilePosition
-* @type ***REMOVED***Point***REMOVED***
+* @type {Point}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 51
 */
 /**
 * @description Whether this sprite is renderable or not
 * @member PIXI.TilingSprite#renderable
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @default true
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 59
@@ -911,7 +911,7 @@ And here you have a hundred sprites that will be renderer at the speed of light
 /**
 * @description The tint applied to the sprite. This is a hex value
 * @member PIXI.TilingSprite#tint
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @default 0xFFFFFF
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 68
@@ -920,14 +920,14 @@ And here you have a hundred sprites that will be renderer at the speed of light
 * @description If enabled a green rectangle will be drawn behind the generated tiling texture, allowing you to visually
 debug the texture being used.
 * @member PIXI.TilingSprite#textureDebug
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 77
 */
 /**
 * @description The blend mode to be applied to the sprite
 * @member PIXI.TilingSprite#blendMode
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @default PIXI.blendModes.NORMAL;
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 86
@@ -935,21 +935,21 @@ debug the texture being used.
 /**
 * @description The CanvasBuffer object that the tiled texture is drawn to.
 * @member PIXI.TilingSprite#canvasBuffer
-* @type ***REMOVED***PIXICanvasBuffer***REMOVED***
+* @type {PIXICanvasBuffer}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 95
 */
 /**
 * @description An internal Texture object that holds the tiling texture that was generated from TilingSprite.texture.
 * @member PIXI.TilingSprite#tilingTexture
-* @type ***REMOVED***PIXITexture***REMOVED***
+* @type {PIXITexture}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 103
 */
 /**
 * @description The Context fill pattern that is used to draw the TilingSprite in Canvas mode only (will be null in WebGL).
 * @member PIXI.TilingSprite#tilePattern
-* @type ***REMOVED***PIXITexture***REMOVED***
+* @type {PIXITexture}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 111
 */
@@ -957,7 +957,7 @@ debug the texture being used.
 * @description If true the TilingSprite will run generateTexture on its **next** render pass.
 This is set by the likes of Phaser.LoadTexture.setFrame.
 * @member PIXI.TilingSprite#refreshTexture
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @default true
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 119
@@ -965,7 +965,7 @@ This is set by the likes of Phaser.LoadTexture.setFrame.
 /**
 * @description Renders the object using the WebGL renderer
 * @method PIXI.TilingSprite#_renderWebGL
-* @param ***REMOVED***RenderSession***REMOVED*** renderSession - 
+* @param {RenderSession} renderSession - 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 148
@@ -973,7 +973,7 @@ This is set by the likes of Phaser.LoadTexture.setFrame.
 /**
 * @description Renders the object using the Canvas renderer
 * @method PIXI.TilingSprite#_renderCanvas
-* @param ***REMOVED***RenderSession***REMOVED*** renderSession - 
+* @param {RenderSession} renderSession - 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 216
@@ -981,36 +981,36 @@ This is set by the likes of Phaser.LoadTexture.setFrame.
 /**
 * @description When the texture is updated, this event will fire to update the scale and frame
 * @method PIXI.TilingSprite#onTextureUpdate
-* @param ***REMOVED******REMOVED*** event - 
+* @param {} event - 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 320
 */
 /**
 * @method PIXI.TilingSprite#generateTilingTexture
-* @param ***REMOVED***Boolean***REMOVED*** forcePowerOfTwo - Whether we want to force the texture to be a power of two
-* @param ***REMOVED***RenderSession***REMOVED*** renderSession - 
+* @param {Boolean} forcePowerOfTwo - Whether we want to force the texture to be a power of two
+* @param {RenderSession} renderSession - 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 332
 */
 /**
 * @description Returns the framing rectangle of the sprite as a PIXI.Rectangle object
 * @method PIXI.TilingSprite#getBounds
-* @return ***REMOVED***Rectangle***REMOVED*** the framing rectangle
+* @return {Rectangle} the framing rectangle
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 417
 */
 /**
 * @description The width of the sprite, setting this will actually modify the scale to achieve the value set
 * @member PIXI.TilingSprite#width
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 517
 */
 /**
 * @description The height of the TilingSprite, setting this will actually modify the scale to achieve the value set
 * @member PIXI.TilingSprite#height
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/extras/TilingSprite.js
 * @sourceline 535
 */
@@ -1024,8 +1024,8 @@ This is set by the likes of Phaser.LoadTexture.setFrame.
 * @class PIXI.AbstractFilter
 * @description This is the base class for creating a PIXI filter. Currently only webGL supports filters.
 If you want to make a custom filter this should be your base class.
-* @param ***REMOVED***Array***REMOVED*** fragmentSrc - The fragment source in an array of strings.
-* @param ***REMOVED***Object***REMOVED*** uniforms - An object containing the uniforms for this filter.
+* @param {Array} fragmentSrc - The fragment source in an array of strings.
+* @param {Object} uniforms - An object containing the uniforms for this filter.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/filters/AbstractFilter.js
 * @sourceline 5
 */
@@ -1033,40 +1033,40 @@ If you want to make a custom filter this should be your base class.
 * @description An array of passes - some filters contain a few steps this array simply stores the steps in a liniear fashion.
 For example the blur filter has two passes blurX and blurY.
 * @member PIXI.AbstractFilter#passes
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/filters/AbstractFilter.js
 * @sourceline 16
 */
 /**
 * @member PIXI.AbstractFilter#shaders
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/filters/AbstractFilter.js
 * @sourceline 25
 */
 /**
 * @member PIXI.AbstractFilter#dirty
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/filters/AbstractFilter.js
 * @sourceline 32
 */
 /**
 * @member PIXI.AbstractFilter#padding
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/filters/AbstractFilter.js
 * @sourceline 38
 */
 /**
 * @member PIXI.AbstractFilter#uniforms
-* @type ***REMOVED***Object***REMOVED***
+* @type {Object}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/filters/AbstractFilter.js
 * @sourceline 44
 */
 /**
 * @member PIXI.AbstractFilter#fragmentSrc
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/filters/AbstractFilter.js
 * @sourceline 51
@@ -1093,21 +1093,21 @@ For example the blur filter has two passes blurX and blurY.
 /**
 * @description The alpha value used when filling the Graphics object.
 * @member PIXI.Graphics#fillAlpha
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 18
 */
 /**
 * @description The width (thickness) of any lines drawn.
 * @member PIXI.Graphics#lineWidth
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 26
 */
 /**
 * @description The color of any lines drawn.
 * @member PIXI.Graphics#lineColor
-* @type ***REMOVED***String***REMOVED***
+* @type {String}
 * @default 0
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 34
@@ -1115,7 +1115,7 @@ For example the blur filter has two passes blurX and blurY.
 /**
 * @description Graphics data
 * @member PIXI.Graphics#graphicsData
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 43
@@ -1123,7 +1123,7 @@ For example the blur filter has two passes blurX and blurY.
 /**
 * @description The tint applied to the graphic shape. This is a hex value. Apply a value of 0xFFFFFF to reset the tint.
 * @member PIXI.Graphics#tint
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @default 0xFFFFFF
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 52
@@ -1131,7 +1131,7 @@ For example the blur filter has two passes blurX and blurY.
 /**
 * @description The blend mode to be applied to the graphic shape. Apply a value of PIXI.blendModes.NORMAL to reset the blend mode.
 * @member PIXI.Graphics#blendMode
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @default PIXI.blendModes.NORMAL;
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 61
@@ -1139,7 +1139,7 @@ For example the blur filter has two passes blurX and blurY.
 /**
 * @description Current path
 * @member PIXI.Graphics#currentPath
-* @type ***REMOVED***Object***REMOVED***
+* @type {Object}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 70
@@ -1147,7 +1147,7 @@ For example the blur filter has two passes blurX and blurY.
 /**
 * @description Array containing some WebGL-related properties used by the WebGL renderer.
 * @member PIXI.Graphics#_webGL
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 79
@@ -1155,21 +1155,21 @@ For example the blur filter has two passes blurX and blurY.
 /**
 * @description Whether this shape is being used as a mask.
 * @member PIXI.Graphics#isMask
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 88
 */
 /**
 * @description The bounds' padding used for bounds calculation.
 * @member PIXI.Graphics#boundsPadding
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 96
 */
 /**
 * @description Used to detect if the graphics object has changed. If this is set to true then the graphics object will be recalculated.
 * @member PIXI.Graphics#dirty
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 106
@@ -1178,7 +1178,7 @@ For example the blur filter has two passes blurX and blurY.
 * @description Used to detect if the bounds have been invalidated, by this Graphics being cleared or drawn to.
 If this is set to true then the updateLocalBounds is called once in the postUpdate method.
 * @member PIXI.Graphics#_boundsDirty
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 115
@@ -1186,7 +1186,7 @@ If this is set to true then the updateLocalBounds is called once in the postUpda
 /**
 * @description Used to detect if the webgl graphics object has changed. If this is set to true then the graphics object will be recalculated.
 * @member PIXI.Graphics#webGLDirty
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 125
@@ -1194,7 +1194,7 @@ If this is set to true then the updateLocalBounds is called once in the postUpda
 /**
 * @description Used to detect if the cached sprite object needs to be updated.
 * @member PIXI.Graphics#cachedSpriteDirty
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 134
@@ -1202,19 +1202,19 @@ If this is set to true then the updateLocalBounds is called once in the postUpda
 /**
 * @description Specifies the line style used for subsequent calls to Graphics methods such as the lineTo() method or the drawCircle() method.
 * @method PIXI.Graphics#lineStyle
-* @param ***REMOVED***Number***REMOVED*** lineWidth - width of the line to draw, will update the objects stored style
-* @param ***REMOVED***Number***REMOVED*** color - color of the line to draw, will update the objects stored style
-* @param ***REMOVED***Number***REMOVED*** alpha - alpha of the line to draw, will update the objects stored style
-* @return ***REMOVED***PIXI.Graphics***REMOVED*** 
+* @param {Number} lineWidth - width of the line to draw, will update the objects stored style
+* @param {Number} color - color of the line to draw, will update the objects stored style
+* @param {Number} alpha - alpha of the line to draw, will update the objects stored style
+* @return {PIXI.Graphics} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 149
 */
 /**
 * @description Moves the current drawing position to x, y.
 * @method PIXI.Graphics#moveTo
-* @param ***REMOVED***Number***REMOVED*** x - the X coordinate to move to
-* @param ***REMOVED***Number***REMOVED*** y - the Y coordinate to move to
-* @return ***REMOVED***PIXI.Graphics***REMOVED*** 
+* @param {Number} x - the X coordinate to move to
+* @param {Number} y - the Y coordinate to move to
+* @return {PIXI.Graphics} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 183
 */
@@ -1222,9 +1222,9 @@ If this is set to true then the updateLocalBounds is called once in the postUpda
 * @description Draws a line using the current line style from the current drawing position to (x, y);
 The current drawing position is then set to (x, y).
 * @method PIXI.Graphics#lineTo
-* @param ***REMOVED***Number***REMOVED*** x - the X coordinate to draw to
-* @param ***REMOVED***Number***REMOVED*** y - the Y coordinate to draw to
-* @return ***REMOVED***PIXI.Graphics***REMOVED*** 
+* @param {Number} x - the X coordinate to draw to
+* @param {Number} y - the Y coordinate to draw to
+* @return {PIXI.Graphics} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 198
 */
@@ -1232,38 +1232,38 @@ The current drawing position is then set to (x, y).
 * @description Calculate the points for a quadratic bezier curve and then draws it.
 Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier-curve-in-c
 * @method PIXI.Graphics#quadraticCurveTo
-* @param ***REMOVED***Number***REMOVED*** cpX - Control point x
-* @param ***REMOVED***Number***REMOVED*** cpY - Control point y
-* @param ***REMOVED***Number***REMOVED*** toX - Destination point x
-* @param ***REMOVED***Number***REMOVED*** toY - Destination point y
-* @return ***REMOVED***PIXI.Graphics***REMOVED*** 
+* @param {Number} cpX - Control point x
+* @param {Number} cpY - Control point y
+* @param {Number} toX - Destination point x
+* @param {Number} toY - Destination point y
+* @return {PIXI.Graphics} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 221
 */
 /**
 * @description Calculate the points for a bezier curve and then draws it.
 * @method PIXI.Graphics#bezierCurveTo
-* @param ***REMOVED***Number***REMOVED*** cpX - Control point x
-* @param ***REMOVED***Number***REMOVED*** cpY - Control point y
-* @param ***REMOVED***Number***REMOVED*** cpX2 - Second Control point x
-* @param ***REMOVED***Number***REMOVED*** cpY2 - Second Control point y
-* @param ***REMOVED***Number***REMOVED*** toX - Destination point x
-* @param ***REMOVED***Number***REMOVED*** toY - Destination point y
-* @return ***REMOVED***PIXI.Graphics***REMOVED*** 
+* @param {Number} cpX - Control point x
+* @param {Number} cpY - Control point y
+* @param {Number} cpX2 - Second Control point x
+* @param {Number} cpY2 - Second Control point y
+* @param {Number} toX - Destination point x
+* @param {Number} toY - Destination point y
+* @return {PIXI.Graphics} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 276
 */
 /**
 * @description The arc method creates an arc/curve (used to create circles, or parts of circles).
 * @method PIXI.Graphics#arc
-* @param ***REMOVED***Number***REMOVED*** cx - The x-coordinate of the center of the circle
-* @param ***REMOVED***Number***REMOVED*** cy - The y-coordinate of the center of the circle
-* @param ***REMOVED***Number***REMOVED*** radius - The radius of the circle
-* @param ***REMOVED***Number***REMOVED*** startAngle - The starting angle, in radians (0 is at the 3 o'clock position of the arc's circle)
-* @param ***REMOVED***Number***REMOVED*** endAngle - The ending angle, in radians
-* @param ***REMOVED***Boolean***REMOVED*** anticlockwise - Optional. Specifies whether the drawing should be counterclockwise or clockwise. False is default, and indicates clockwise, while true indicates counter-clockwise.
-* @param ***REMOVED***Number***REMOVED*** segments - Optional. The number of segments to use when calculating the arc. The default is 40. If you need more fidelity use a higher number.
-* @return ***REMOVED***PIXI.Graphics***REMOVED*** 
+* @param {Number} cx - The x-coordinate of the center of the circle
+* @param {Number} cy - The y-coordinate of the center of the circle
+* @param {Number} radius - The radius of the circle
+* @param {Number} startAngle - The starting angle, in radians (0 is at the 3 o'clock position of the arc's circle)
+* @param {Number} endAngle - The ending angle, in radians
+* @param {Boolean} anticlockwise - Optional. Specifies whether the drawing should be counterclockwise or clockwise. False is default, and indicates clockwise, while true indicates counter-clockwise.
+* @param {Number} segments - Optional. The number of segments to use when calculating the arc. The default is 40. If you need more fidelity use a higher number.
+* @return {PIXI.Graphics} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 405
 */
@@ -1271,72 +1271,72 @@ Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier
 * @description Specifies a simple one-color fill that subsequent calls to other Graphics methods
 (such as lineTo() or drawCircle()) use when drawing.
 * @method PIXI.Graphics#beginFill
-* @param ***REMOVED***Number***REMOVED*** color - the color of the fill
-* @param ***REMOVED***Number***REMOVED*** alpha - the alpha of the fill
-* @return ***REMOVED***PIXI.Graphics***REMOVED*** 
+* @param {Number} color - the color of the fill
+* @param {Number} alpha - the alpha of the fill
+* @return {PIXI.Graphics} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 491
 */
 /**
 * @description Applies a fill to the lines and shapes that were added since the last call to the beginFill() method.
 * @method PIXI.Graphics#endFill
-* @return ***REMOVED***PIXI.Graphics***REMOVED*** 
+* @return {PIXI.Graphics} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 519
 */
 /**
 * @method PIXI.Graphics#drawRect
-* @param ***REMOVED***Number***REMOVED*** x - The X coord of the top-left of the rectangle
-* @param ***REMOVED***Number***REMOVED*** y - The Y coord of the top-left of the rectangle
-* @param ***REMOVED***Number***REMOVED*** width - The width of the rectangle
-* @param ***REMOVED***Number***REMOVED*** height - The height of the rectangle
-* @return ***REMOVED***PIXI.Graphics***REMOVED*** 
+* @param {Number} x - The X coord of the top-left of the rectangle
+* @param {Number} y - The Y coord of the top-left of the rectangle
+* @param {Number} width - The width of the rectangle
+* @param {Number} height - The height of the rectangle
+* @return {PIXI.Graphics} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 534
 */
 /**
 * @method PIXI.Graphics#drawRoundedRect
-* @param ***REMOVED***Number***REMOVED*** x - The X coord of the top-left of the rectangle
-* @param ***REMOVED***Number***REMOVED*** y - The Y coord of the top-left of the rectangle
-* @param ***REMOVED***Number***REMOVED*** width - The width of the rectangle
-* @param ***REMOVED***Number***REMOVED*** height - The height of the rectangle
-* @param ***REMOVED***Number***REMOVED*** radius - Radius of the rectangle corners. In WebGL this must be a value between 0 and 9.
+* @param {Number} x - The X coord of the top-left of the rectangle
+* @param {Number} y - The Y coord of the top-left of the rectangle
+* @param {Number} width - The width of the rectangle
+* @param {Number} height - The height of the rectangle
+* @param {Number} radius - Radius of the rectangle corners. In WebGL this must be a value between 0 and 9.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 550
 */
 /**
 * @description Draws a circle.
 * @method PIXI.Graphics#drawCircle
-* @param ***REMOVED***Number***REMOVED*** x - The X coordinate of the center of the circle
-* @param ***REMOVED***Number***REMOVED*** y - The Y coordinate of the center of the circle
-* @param ***REMOVED***Number***REMOVED*** diameter - The diameter of the circle
-* @return ***REMOVED***PIXI.Graphics***REMOVED*** 
+* @param {Number} x - The X coordinate of the center of the circle
+* @param {Number} y - The Y coordinate of the center of the circle
+* @param {Number} diameter - The diameter of the circle
+* @return {PIXI.Graphics} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 565
 */
 /**
 * @description Draws an ellipse.
 * @method PIXI.Graphics#drawEllipse
-* @param ***REMOVED***Number***REMOVED*** x - The X coordinate of the center of the ellipse
-* @param ***REMOVED***Number***REMOVED*** y - The Y coordinate of the center of the ellipse
-* @param ***REMOVED***Number***REMOVED*** width - The half width of the ellipse
-* @param ***REMOVED***Number***REMOVED*** height - The half height of the ellipse
-* @return ***REMOVED***PIXI.Graphics***REMOVED*** 
+* @param {Number} x - The X coordinate of the center of the ellipse
+* @param {Number} y - The Y coordinate of the center of the ellipse
+* @param {Number} width - The half width of the ellipse
+* @param {Number} height - The half height of the ellipse
+* @return {PIXI.Graphics} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 581
 */
 /**
 * @description Draws a polygon using the given path.
 * @method PIXI.Graphics#drawPolygon
-* @param ***REMOVED***(Array|PhaserPolygon)***REMOVED*** path - The path data used to construct the polygon. Can either be an array of points or a Phaser.Polygon object.
-* @return ***REMOVED***PIXI.Graphics***REMOVED*** 
+* @param {(Array|PhaserPolygon)} path - The path data used to construct the polygon. Can either be an array of points or a Phaser.Polygon object.
+* @return {PIXI.Graphics} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 598
 */
 /**
 * @description Clears the graphics that were drawn to this Graphics object, and resets fill and line style settings.
 * @method PIXI.Graphics#clear
-* @return ***REMOVED***PIXI.Graphics***REMOVED*** 
+* @return {PIXI.Graphics} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 633
 */
@@ -1344,17 +1344,17 @@ Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier
 * @description Useful function that returns a texture of the graphics object that can then be used to create sprites
 This can be quite useful if your geometry is complicated and needs to be reused multiple times.
 * @method PIXI.Graphics#generateTexture
-* @param ***REMOVED***Number***REMOVED*** [resolution=1] - The resolution of the texture being generated
-* @param ***REMOVED***Number***REMOVED*** [scaleMode=0] - Should be one of the PIXI.scaleMode consts
-* @param ***REMOVED***Number***REMOVED*** [padding=0] - Add optional extra padding to the generated texture (default 0)
-* @return ***REMOVED***PIXI.Texture***REMOVED*** a texture of the graphics object
+* @param {Number} [resolution=1] - The resolution of the texture being generated
+* @param {Number} [scaleMode=0] - Should be one of the PIXI.scaleMode consts
+* @param {Number} [padding=0] - Add optional extra padding to the generated texture (default 0)
+* @return {PIXI.Texture} a texture of the graphics object
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 654
 */
 /**
 * @description Renders the object using the WebGL renderer
 * @method PIXI.Graphics#_renderWebGL
-* @param ***REMOVED***RenderSession***REMOVED*** renderSession - 
+* @param {RenderSession} renderSession - 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 690
@@ -1362,7 +1362,7 @@ This can be quite useful if your geometry is complicated and needs to be reused 
 /**
 * @description Renders the object using the Canvas renderer
 * @method PIXI.Graphics#_renderCanvas
-* @param ***REMOVED***RenderSession***REMOVED*** renderSession - 
+* @param {RenderSession} renderSession - 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 769
@@ -1370,14 +1370,14 @@ This can be quite useful if your geometry is complicated and needs to be reused 
 /**
 * @description Retrieves the bounds of the graphic shape as a rectangle object
 * @method PIXI.Graphics#getBounds
-* @return ***REMOVED***Rectangle***REMOVED*** the rectangular bounding area
+* @return {Rectangle} the rectangular bounding area
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 848
 */
 /**
 * @description Retrieves the non-global local bounds of the graphic shape as a rectangle. The calculation takes all visible children into consideration.
 * @method PIXI.Graphics#getLocalBounds
-* @return ***REMOVED***Rectangle***REMOVED*** The rectangular bounding area
+* @return {Rectangle} The rectangular bounding area
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 936
 */
@@ -1411,8 +1411,8 @@ This can be quite useful if your geometry is complicated and needs to be reused 
 /**
 * @description Draws the given shape to this Graphics object. Can be any of Circle, Rectangle, Ellipse, Line or Polygon.
 * @method PIXI.Graphics#drawShape
-* @param ***REMOVED***(Circle|Rectangle|Ellipse|Line|Polygon)***REMOVED*** shape - The Shape object to draw.
-* @return ***REMOVED***PIXI.GraphicsData***REMOVED*** The generated GraphicsData object.
+* @param {(Circle|Rectangle|Ellipse|Line|Polygon)} shape - The Shape object to draw.
+* @return {PIXI.GraphicsData} The generated GraphicsData object.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
 * @sourceline 1184
 */
@@ -1422,7 +1422,7 @@ This is useful if your graphics element does not change often, as it will speed 
 It is also useful if you need the graphics object to be anti-aliased, because it will be rendered using canvas.
 This is not recommended if you are constantly redrawing the graphics element.
 * @member PIXI.Graphics#cacheAsBitmap
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @default false
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/Graphics.js
@@ -1437,13 +1437,13 @@ This is not recommended if you are constantly redrawing the graphics element.
 /**
 * @class 
 * @description A GraphicsData object.
-* @param ***REMOVED***Number***REMOVED*** lineWidth - the width of the line to draw
-* @param ***REMOVED***Number***REMOVED*** lineColor - the color of the line to draw
-* @param ***REMOVED***Number***REMOVED*** lineAlpha - the alpha of the line to draw
-* @param ***REMOVED***Number***REMOVED*** fillColor - the color of the fill
-* @param ***REMOVED***Number***REMOVED*** fillAlpha - the alpha of the fill
-* @param ***REMOVED***Boolean***REMOVED*** fill - whether or not the shape is filled with a colour
-* @param ***REMOVED***(Circle|Rectangle|Ellipse|Line|Polygon)***REMOVED*** shape - The shape object to draw.
+* @param {Number} lineWidth - the width of the line to draw
+* @param {Number} lineColor - the color of the line to draw
+* @param {Number} lineAlpha - the alpha of the line to draw
+* @param {Number} fillColor - the color of the fill
+* @param {Number} fillAlpha - the alpha of the fill
+* @param {Boolean} fill - whether or not the shape is filled with a colour
+* @param {(Circle|Rectangle|Ellipse|Line|Polygon)} shape - The shape object to draw.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/primitives/GraphicsData.js
 * @sourceline 23
 */
@@ -1455,8 +1455,8 @@ This is not recommended if you are constantly redrawing the graphics element.
 /**
 * @class PIXI.CanvasBuffer
 * @description Creates a Canvas element of the given size.
-* @param ***REMOVED***Number***REMOVED*** width - the width for the newly created canvas
-* @param ***REMOVED***Number***REMOVED*** height - the height for the newly created canvas
+* @param {Number} width - the width for the newly created canvas
+* @param {Number} height - the height for the newly created canvas
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/utils/CanvasBuffer.js
 * @sourceline 5
 */
@@ -1464,28 +1464,28 @@ This is not recommended if you are constantly redrawing the graphics element.
 /**
 * @description The width of the Canvas in pixels.
 * @member PIXI.CanvasBuffer#width
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/utils/CanvasBuffer.js
 * @sourceline 15
 */
 /**
 * @description The height of the Canvas in pixels.
 * @member PIXI.CanvasBuffer#height
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/utils/CanvasBuffer.js
 * @sourceline 23
 */
 /**
 * @description The Canvas object that belongs to this CanvasBuffer.
 * @member PIXI.CanvasBuffer#canvas
-* @type ***REMOVED***HTMLCanvasElement***REMOVED***
+* @type {HTMLCanvasElement}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/utils/CanvasBuffer.js
 * @sourceline 31
 */
 /**
 * @description A CanvasRenderingContext2D object representing a two-dimensional rendering context.
 * @member PIXI.CanvasBuffer#context
-* @type ***REMOVED***CanvasRenderingContext2D***REMOVED***
+* @type {CanvasRenderingContext2D}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/utils/CanvasBuffer.js
 * @sourceline 39
 */
@@ -1499,8 +1499,8 @@ This is not recommended if you are constantly redrawing the graphics element.
 /**
 * @description Resizes the canvas to the specified width and height.
 * @method PIXI.CanvasBuffer#resize
-* @param ***REMOVED***Number***REMOVED*** width - the new width of the canvas
-* @param ***REMOVED***Number***REMOVED*** height - the new height of the canvas
+* @param {Number} width - the new width of the canvas
+* @param {Number} height - the new height of the canvas
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/utils/CanvasBuffer.js
 * @sourceline 65
 */
@@ -1525,15 +1525,15 @@ This is not recommended if you are constantly redrawing the graphics element.
 /**
 * @description This method adds it to the current stack of masks.
 * @method PIXI.CanvasMaskManager#pushMask
-* @param ***REMOVED***Object***REMOVED*** maskData - the maskData that will be pushed
-* @param ***REMOVED***Object***REMOVED*** renderSession - The renderSession whose context will be used for this mask manager.
+* @param {Object} maskData - the maskData that will be pushed
+* @param {Object} renderSession - The renderSession whose context will be used for this mask manager.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/utils/CanvasMaskManager.js
 * @sourceline 17
 */
 /**
 * @description Restores the current drawing context to the state it was before the mask was applied.
 * @method PIXI.CanvasMaskManager#popMask
-* @param ***REMOVED***Object***REMOVED*** renderSession - The renderSession whose context will be used for this mask manager.
+* @param {Object} renderSession - The renderSession whose context will be used for this mask manager.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/utils/CanvasMaskManager.js
 * @sourceline 49
 */
@@ -1552,27 +1552,27 @@ This is not recommended if you are constantly redrawing the graphics element.
 /**
 * @description Basically this method just needs a sprite and a color and tints the sprite with the given color.
 * @method PIXI.CanvasTinter.getTintedTexture
-* @param ***REMOVED***PIXI.Sprite***REMOVED*** sprite - the sprite to tint
-* @param ***REMOVED***Number***REMOVED*** color - the color to use to tint the sprite with
-* @return ***REMOVED***HTMLCanvasElement***REMOVED*** The tinted canvas
+* @param {PIXI.Sprite} sprite - the sprite to tint
+* @param {Number} color - the color to use to tint the sprite with
+* @return {HTMLCanvasElement} The tinted canvas
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/utils/CanvasTinter.js
 * @sourceline 13
 */
 /**
 * @description Tint a texture using the "multiply" operation.
 * @method PIXI.CanvasTinter.tintWithMultiply
-* @param ***REMOVED***PIXI.Texture***REMOVED*** texture - the texture to tint
-* @param ***REMOVED***Number***REMOVED*** color - the color to use to tint the sprite with
-* @param ***REMOVED***HTMLCanvasElement***REMOVED*** canvas - the current canvas
+* @param {PIXI.Texture} texture - the texture to tint
+* @param {Number} color - the color to use to tint the sprite with
+* @param {HTMLCanvasElement} canvas - the current canvas
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/utils/CanvasTinter.js
 * @sourceline 31
 */
 /**
 * @description Tint a texture pixel per pixel.
 * @method PIXI.CanvasTinter.tintPerPixel
-* @param ***REMOVED***PIXI.Texture***REMOVED*** texture - the texture to tint
-* @param ***REMOVED***Number***REMOVED*** color - the color to use to tint the sprite with
-* @param ***REMOVED***HTMLCanvasElement***REMOVED*** canvas - the current canvas
+* @param {PIXI.Texture} texture - the texture to tint
+* @param {Number} color - the color to use to tint the sprite with
+* @param {HTMLCanvasElement} canvas - the current canvas
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/utils/CanvasTinter.js
 * @sourceline 65
 */
@@ -1586,14 +1586,14 @@ This is not recommended if you are constantly redrawing the graphics element.
 * @description If the browser isn't capable of handling tinting with alpha this will be false.
 This property is only applicable if using tintWithPerPixel.
 * @member PIXI.CanvasTinter.canHandleAlpha
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/utils/CanvasTinter.js
 * @sourceline 146
 */
 /**
 * @description Whether or not the Canvas BlendModes are supported, consequently the ability to tint using the multiply method.
 * @member PIXI.CanvasTinter.canUseMultiply
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/utils/CanvasTinter.js
 * @sourceline 156
 */
@@ -1625,27 +1625,27 @@ This property is only applicable if using tintWithPerPixel.
 * @class PIXI.CanvasRenderer
 * @description The CanvasRenderer draws the Stage and all its content onto a 2d canvas. This renderer should be used for browsers that do not support webGL.
 Don't forget to add the CanvasRenderer.view to your DOM or you will not see anything :)
-* @param ***REMOVED***PhaserGame***REMOVED*** game - A reference to the Phaser Game instance
+* @param {PhaserGame} game - A reference to the Phaser Game instance
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/CanvasRenderer.js
 * @sourceline 5
 */
 /**
 * @member PIXI.CanvasRenderer#game - A reference to the Phaser Game instance.
-* @type ***REMOVED***PhaserGame***REMOVED***
+* @type {PhaserGame}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/CanvasRenderer.js
 * @sourceline 15
 */
 /**
 * @description The renderer type.
 * @member PIXI.CanvasRenderer#type
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/CanvasRenderer.js
 * @sourceline 25
 */
 /**
 * @description The resolution of the canvas.
 * @member PIXI.CanvasRenderer#resolution
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/CanvasRenderer.js
 * @sourceline 33
 */
@@ -1655,7 +1655,7 @@ If the Stage is NOT transparent Pixi will use a canvas sized fillRect operation 
 If the Stage is transparent Pixi will use clearRect to clear the canvas every frame.
 Disable this by setting this to false. For example if your game has a canvas filling background image you often don't need this set.
 * @member PIXI.CanvasRenderer#clearBeforeRender
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @default 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/CanvasRenderer.js
 * @sourceline 41
@@ -1663,21 +1663,21 @@ Disable this by setting this to false. For example if your game has a canvas fil
 /**
 * @description Whether the render view is transparent
 * @member PIXI.CanvasRenderer#transparent
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/CanvasRenderer.js
 * @sourceline 53
 */
 /**
 * @description Whether the render view should be resized automatically
 * @member PIXI.CanvasRenderer#autoResize
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/CanvasRenderer.js
 * @sourceline 61
 */
 /**
 * @description The width of the canvas view
 * @member PIXI.CanvasRenderer#width
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @default 800
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/CanvasRenderer.js
 * @sourceline 69
@@ -1685,7 +1685,7 @@ Disable this by setting this to false. For example if your game has a canvas fil
 /**
 * @description The height of the canvas view
 * @member PIXI.CanvasRenderer#height
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @default 600
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/CanvasRenderer.js
 * @sourceline 78
@@ -1693,42 +1693,42 @@ Disable this by setting this to false. For example if your game has a canvas fil
 /**
 * @description The canvas element that everything is drawn to.
 * @member PIXI.CanvasRenderer#view
-* @type ***REMOVED***HTMLCanvasElement***REMOVED***
+* @type {HTMLCanvasElement}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/CanvasRenderer.js
 * @sourceline 87
 */
 /**
 * @description The canvas 2d context that everything is drawn with
 * @member PIXI.CanvasRenderer#context
-* @type ***REMOVED***CanvasRenderingContext2D***REMOVED***
+* @type {CanvasRenderingContext2D}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/CanvasRenderer.js
 * @sourceline 95
 */
 /**
 * @description Boolean flag controlling canvas refresh.
 * @member PIXI.CanvasRenderer#refresh
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/CanvasRenderer.js
 * @sourceline 102
 */
 /**
 * @description Internal var.
 * @member PIXI.CanvasRenderer#count
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/CanvasRenderer.js
 * @sourceline 110
 */
 /**
 * @description Instance of a PIXI.CanvasMaskManager, handles masking when using the canvas renderer
 * @member PIXI.CanvasRenderer#CanvasMaskManager
-* @type ***REMOVED***PIXI.CanvasMaskManager***REMOVED***
+* @type {PIXI.CanvasMaskManager}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/CanvasRenderer.js
 * @sourceline 118
 */
 /**
 * @description The render session is just a bunch of parameter used for rendering
 * @member PIXI.CanvasRenderer#renderSession
-* @type ***REMOVED***Object***REMOVED***
+* @type {Object}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/CanvasRenderer.js
 * @sourceline 125
 */
@@ -1736,31 +1736,31 @@ Disable this by setting this to false. For example if your game has a canvas fil
 /**
 * @description Renders the DisplayObjectContainer, usually the Phaser.Stage, to this canvas view.
 * @method PIXI.CanvasRenderer#render
-* @param ***REMOVED***(PhaserStage|PIXIDisplayObjectContainer)***REMOVED*** root - The root element to be rendered.
+* @param {(PhaserStage|PIXIDisplayObjectContainer)} root - The root element to be rendered.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/CanvasRenderer.js
 * @sourceline 152
 */
 /**
 * @description Removes everything from the renderer and optionally removes the Canvas DOM element.
 * @method PIXI.CanvasRenderer#destroy
-* @param ***REMOVED***Boolean***REMOVED*** [removeView=true] - Removes the Canvas element from the DOM.
+* @param {Boolean} [removeView=true] - Removes the Canvas element from the DOM.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/CanvasRenderer.js
 * @sourceline 194
 */
 /**
 * @description Resizes the canvas view to the specified width and height
 * @method PIXI.CanvasRenderer#resize
-* @param ***REMOVED***Number***REMOVED*** width - the new width of the canvas view
-* @param ***REMOVED***Number***REMOVED*** height - the new height of the canvas view
+* @param {Number} width - the new width of the canvas view
+* @param {Number} height - the new height of the canvas view
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/CanvasRenderer.js
 * @sourceline 216
 */
 /**
 * @description Renders a display object
 * @method PIXI.CanvasRenderer#renderDisplayObject
-* @param ***REMOVED***DisplayObject***REMOVED*** displayObject - The displayObject to render
-* @param ***REMOVED***CanvasRenderingContext2D***REMOVED*** context - the context 2d method of the canvas
-* @param ***REMOVED***Matrix***REMOVED*** [matrix] - Optional matrix to apply to the display object before rendering.
+* @param {DisplayObject} displayObject - The displayObject to render
+* @param {CanvasRenderingContext2D} context - the context 2d method of the canvas
+* @param {Matrix} [matrix] - Optional matrix to apply to the display object before rendering.
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/canvas/CanvasRenderer.js
 * @sourceline 244
@@ -1780,41 +1780,41 @@ Disable this by setting this to false. For example if your game has a canvas fil
 */
 /**
 * @class PIXI.ComplexPrimitiveShader
-* @param ***REMOVED***WebGLContext***REMOVED*** gl - the current WebGL drawing context
+* @param {WebGLContext} gl - the current WebGL drawing context
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/ComplexPrimitiveShader.js
 * @sourceline 5
 */
 /**
 * @member PIXI.ComplexPrimitiveShader#_UID
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/ComplexPrimitiveShader.js
 * @sourceline 12
 */
 /**
 * @member PIXI.ComplexPrimitiveShader#gl
-* @type ***REMOVED***WebGLContext***REMOVED***
+* @type {WebGLContext}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/ComplexPrimitiveShader.js
 * @sourceline 19
 */
 /**
 * @description The WebGL program.
 * @member PIXI.ComplexPrimitiveShader#program
-* @type ***REMOVED******REMOVED***
+* @type {}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/ComplexPrimitiveShader.js
 * @sourceline 25
 */
 /**
 * @description The fragment shader.
 * @member PIXI.ComplexPrimitiveShader#fragmentSrc
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/ComplexPrimitiveShader.js
 * @sourceline 32
 */
 /**
 * @description The vertex shader.
 * @member PIXI.ComplexPrimitiveShader#vertexSrc
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/ComplexPrimitiveShader.js
 * @sourceline 48
 */
@@ -1838,48 +1838,48 @@ Disable this by setting this to false. For example if your game has a canvas fil
 */
 /**
 * @class PIXI.PixiFastShader
-* @param ***REMOVED***WebGLContext***REMOVED*** gl - the current WebGL drawing context
+* @param {WebGLContext} gl - the current WebGL drawing context
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PixiFastShader.js
 * @sourceline 5
 */
 /**
 * @member PIXI.PixiFastShader#_UID
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PixiFastShader.js
 * @sourceline 12
 */
 /**
 * @member PIXI.PixiFastShader#gl
-* @type ***REMOVED***WebGLContext***REMOVED***
+* @type {WebGLContext}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PixiFastShader.js
 * @sourceline 19
 */
 /**
 * @description The WebGL program.
 * @member PIXI.PixiFastShader#program
-* @type ***REMOVED******REMOVED***
+* @type {}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PixiFastShader.js
 * @sourceline 25
 */
 /**
 * @description The fragment shader.
 * @member PIXI.PixiFastShader#fragmentSrc
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PixiFastShader.js
 * @sourceline 32
 */
 /**
 * @description The vertex shader.
 * @member PIXI.PixiFastShader#vertexSrc
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PixiFastShader.js
 * @sourceline 47
 */
 /**
 * @description A local texture counter for multi-texture shaders.
 * @member PIXI.PixiFastShader#textureCount
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PixiFastShader.js
 * @sourceline 82
 */
@@ -1903,48 +1903,48 @@ Disable this by setting this to false. For example if your game has a canvas fil
 */
 /**
 * @class PIXI.PixiShader
-* @param ***REMOVED***WebGLContext***REMOVED*** gl - the current WebGL drawing context
+* @param {WebGLContext} gl - the current WebGL drawing context
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PixiShader.js
 * @sourceline 6
 */
 /**
 * @member PIXI.PixiShader#_UID
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PixiShader.js
 * @sourceline 13
 */
 /**
 * @member PIXI.PixiShader#gl
-* @type ***REMOVED***WebGLContext***REMOVED***
+* @type {WebGLContext}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PixiShader.js
 * @sourceline 20
 */
 /**
 * @description The WebGL program.
 * @member PIXI.PixiShader#program
-* @type ***REMOVED******REMOVED***
+* @type {}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PixiShader.js
 * @sourceline 26
 */
 /**
 * @description The fragment shader.
 * @member PIXI.PixiShader#fragmentSrc
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PixiShader.js
 * @sourceline 33
 */
 /**
 * @description A local texture counter for multi-texture shaders.
 * @member PIXI.PixiShader#textureCount
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PixiShader.js
 * @sourceline 48
 */
 /**
 * @description A local flag
 * @member PIXI.PixiShader#firstRun
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PixiShader.js
 * @sourceline 55
@@ -1952,14 +1952,14 @@ Disable this by setting this to false. For example if your game has a canvas fil
 /**
 * @description A dirty flag
 * @member PIXI.PixiShader#dirty
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PixiShader.js
 * @sourceline 63
 */
 /**
 * @description Uniform attributes cache.
 * @member PIXI.PixiShader#attributes
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PixiShader.js
 * @sourceline 70
@@ -2000,7 +2000,7 @@ http://www.khronos.org/registry/gles/specs/2.0/GLSL_ES_Specification_1.0.17.pdf
 /**
 * @description The Default Vertex shader source.
 * @member PIXI.PixiShader#defaultVertexSrc
-* @type ***REMOVED***String***REMOVED***
+* @type {String}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PixiShader.js
 * @sourceline 365
 */
@@ -2012,41 +2012,41 @@ http://www.khronos.org/registry/gles/specs/2.0/GLSL_ES_Specification_1.0.17.pdf
 */
 /**
 * @class PIXI.PrimitiveShader
-* @param ***REMOVED***WebGLContext***REMOVED*** gl - the current WebGL drawing context
+* @param {WebGLContext} gl - the current WebGL drawing context
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PrimitiveShader.js
 * @sourceline 5
 */
 /**
 * @member PIXI.PrimitiveShader#_UID
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PrimitiveShader.js
 * @sourceline 12
 */
 /**
 * @member PIXI.PrimitiveShader#gl
-* @type ***REMOVED***WebGLContext***REMOVED***
+* @type {WebGLContext}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PrimitiveShader.js
 * @sourceline 19
 */
 /**
 * @description The WebGL program.
 * @member PIXI.PrimitiveShader#program
-* @type ***REMOVED******REMOVED***
+* @type {}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PrimitiveShader.js
 * @sourceline 25
 */
 /**
 * @description The fragment shader.
 * @member PIXI.PrimitiveShader#fragmentSrc
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PrimitiveShader.js
 * @sourceline 32
 */
 /**
 * @description The vertex shader.
 * @member PIXI.PrimitiveShader#vertexSrc
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/PrimitiveShader.js
 * @sourceline 46
 */
@@ -2070,41 +2070,41 @@ http://www.khronos.org/registry/gles/specs/2.0/GLSL_ES_Specification_1.0.17.pdf
 */
 /**
 * @class PIXI.StripShader
-* @param ***REMOVED***WebGLContext***REMOVED*** gl - the current WebGL drawing context
+* @param {WebGLContext} gl - the current WebGL drawing context
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/StripShader.js
 * @sourceline 5
 */
 /**
 * @member PIXI.StripShader#_UID
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/StripShader.js
 * @sourceline 12
 */
 /**
 * @member PIXI.StripShader#gl
-* @type ***REMOVED***WebGLContext***REMOVED***
+* @type {WebGLContext}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/StripShader.js
 * @sourceline 19
 */
 /**
 * @description The WebGL program.
 * @member PIXI.StripShader#program
-* @type ***REMOVED******REMOVED***
+* @type {}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/StripShader.js
 * @sourceline 25
 */
 /**
 * @description The fragment shader.
 * @member PIXI.StripShader#fragmentSrc
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/StripShader.js
 * @sourceline 32
 */
 /**
 * @description The vertex shader.
 * @member PIXI.StripShader#vertexSrc
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/shaders/StripShader.js
 * @sourceline 50
 */
@@ -2128,34 +2128,34 @@ http://www.khronos.org/registry/gles/specs/2.0/GLSL_ES_Specification_1.0.17.pdf
 */
 /**
 * @class PIXI.FilterTexture
-* @param ***REMOVED***WebGLContext***REMOVED*** gl - the current WebGL drawing context
-* @param ***REMOVED***Number***REMOVED*** width - the horizontal range of the filter
-* @param ***REMOVED***Number***REMOVED*** height - the vertical range of the filter
-* @param ***REMOVED***Number***REMOVED*** scaleMode - See ***REMOVED******REMOVED***#crossLink "PIXI/scaleModes:property"***REMOVED******REMOVED***PIXI.scaleModes***REMOVED******REMOVED***/crossLink***REMOVED******REMOVED*** for possible values
+* @param {WebGLContext} gl - the current WebGL drawing context
+* @param {Number} width - the horizontal range of the filter
+* @param {Number} height - the vertical range of the filter
+* @param {Number} scaleMode - See {{#crossLink "PIXI/scaleModes:property"}}PIXI.scaleModes{{/crossLink}} for possible values
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/FilterTexture.js
 * @sourceline 5
 */
 /**
 * @member PIXI.FilterTexture#gl
-* @type ***REMOVED***WebGLContext***REMOVED***
+* @type {WebGLContext}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/FilterTexture.js
 * @sourceline 15
 */
 /**
 * @member PIXI.FilterTexture#frameBuffer
-* @type ***REMOVED******REMOVED***
+* @type {}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/FilterTexture.js
 * @sourceline 23
 */
 /**
 * @member PIXI.FilterTexture#texture
-* @type ***REMOVED******REMOVED***
+* @type {}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/FilterTexture.js
 * @sourceline 29
 */
 /**
 * @member PIXI.FilterTexture#scaleMode
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/FilterTexture.js
 * @sourceline 35
 */
@@ -2168,8 +2168,8 @@ http://www.khronos.org/registry/gles/specs/2.0/GLSL_ES_Specification_1.0.17.pdf
 /**
 * @description Resizes the texture to the specified width and height
 * @method PIXI.FilterTexture#resize
-* @param ***REMOVED***Number***REMOVED*** width - the new width of the texture
-* @param ***REMOVED***Number***REMOVED*** height - the new height of the texture
+* @param {Number} width - the new width of the texture
+* @param {Number} height - the new height of the texture
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/FilterTexture.js
 * @sourceline 74
 */
@@ -2187,27 +2187,27 @@ http://www.khronos.org/registry/gles/specs/2.0/GLSL_ES_Specification_1.0.17.pdf
 */
 /**
 * @class PIXI.WebGLBlendModeManager
-* @param ***REMOVED***WebGLContext***REMOVED*** gl - the current WebGL drawing context
+* @param {WebGLContext} gl - the current WebGL drawing context
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLBlendModeManager.js
 * @sourceline 5
 */
 /**
 * @member PIXI.WebGLBlendModeManager#currentBlendMode
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLBlendModeManager.js
 * @sourceline 12
 */
 /**
 * @description Sets the WebGL Context.
 * @method PIXI.WebGLBlendModeManager#setContext
-* @param ***REMOVED***WebGLContext***REMOVED*** gl - the current WebGL drawing context
+* @param {WebGLContext} gl - the current WebGL drawing context
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLBlendModeManager.js
 * @sourceline 21
 */
 /**
 * @description Sets-up the given blendMode from WebGL's point of view.
 * @method PIXI.WebGLBlendModeManager#setBlendMode
-* @param ***REMOVED***Number***REMOVED*** blendMode - the blendMode, should be a Pixi const, such as PIXI.BlendModes.ADD
+* @param {Number} blendMode - the blendMode, should be a Pixi const, such as PIXI.BlendModes.ADD
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLBlendModeManager.js
 * @sourceline 32
 */
@@ -2236,107 +2236,107 @@ https://github.com/libgdx/libgdx/blob/master/gdx/src/com/badlogic/gdx/graphics/g
 */
 /**
 * @member PIXI.WebGLFastSpriteBatch#vertSize
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFastSpriteBatch.js
 * @sourceline 17
 */
 /**
 * @member PIXI.WebGLFastSpriteBatch#maxSize
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFastSpriteBatch.js
 * @sourceline 23
 */
 /**
 * @member PIXI.WebGLFastSpriteBatch#size
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFastSpriteBatch.js
 * @sourceline 29
 */
 /**
 * @description Vertex data
 * @member PIXI.WebGLFastSpriteBatch#vertices
-* @type ***REMOVED***Float32Array***REMOVED***
+* @type {Float32Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFastSpriteBatch.js
 * @sourceline 41
 */
 /**
 * @description Index data
 * @member PIXI.WebGLFastSpriteBatch#indices
-* @type ***REMOVED***Uint16Array***REMOVED***
+* @type {Uint16Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFastSpriteBatch.js
 * @sourceline 48
 */
 /**
 * @member PIXI.WebGLFastSpriteBatch#vertexBuffer
-* @type ***REMOVED***Object***REMOVED***
+* @type {Object}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFastSpriteBatch.js
 * @sourceline 55
 */
 /**
 * @member PIXI.WebGLFastSpriteBatch#indexBuffer
-* @type ***REMOVED***Object***REMOVED***
+* @type {Object}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFastSpriteBatch.js
 * @sourceline 61
 */
 /**
 * @member PIXI.WebGLFastSpriteBatch#lastIndexCount
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFastSpriteBatch.js
 * @sourceline 67
 */
 /**
 * @member PIXI.WebGLFastSpriteBatch#drawing
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFastSpriteBatch.js
 * @sourceline 83
 */
 /**
 * @member PIXI.WebGLFastSpriteBatch#currentBatchSize
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFastSpriteBatch.js
 * @sourceline 89
 */
 /**
 * @member PIXI.WebGLFastSpriteBatch#currentBaseTexture
-* @type ***REMOVED***PIXI.BaseTexture***REMOVED***
+* @type {PIXI.BaseTexture}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFastSpriteBatch.js
 * @sourceline 95
 */
 /**
 * @member PIXI.WebGLFastSpriteBatch#currentBlendMode
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFastSpriteBatch.js
 * @sourceline 101
 */
 /**
 * @member PIXI.WebGLFastSpriteBatch#renderSession
-* @type ***REMOVED***Object***REMOVED***
+* @type {Object}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFastSpriteBatch.js
 * @sourceline 107
 */
 /**
 * @member PIXI.WebGLFastSpriteBatch#shader
-* @type ***REMOVED***Object***REMOVED***
+* @type {Object}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFastSpriteBatch.js
 * @sourceline 113
 */
 /**
 * @member PIXI.WebGLFastSpriteBatch#matrix
-* @type ***REMOVED***Matrix***REMOVED***
+* @type {Matrix}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFastSpriteBatch.js
 * @sourceline 119
 */
 /**
 * @description Sets the WebGL Context.
 * @method PIXI.WebGLFastSpriteBatch#setContext
-* @param ***REMOVED***WebGLContext***REMOVED*** gl - the current WebGL drawing context
+* @param {WebGLContext} gl - the current WebGL drawing context
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFastSpriteBatch.js
 * @sourceline 130
 */
 /**
 * @method PIXI.WebGLFastSpriteBatch#begin
-* @param ***REMOVED***PIXI.WebGLSpriteBatch***REMOVED*** spriteBatch - 
-* @param ***REMOVED***Object***REMOVED*** renderSession - 
+* @param {PIXI.WebGLSpriteBatch} spriteBatch - 
+* @param {Object} renderSession - 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFastSpriteBatch.js
 * @sourceline 154
 */
@@ -2347,13 +2347,13 @@ https://github.com/libgdx/libgdx/blob/master/gdx/src/com/badlogic/gdx/graphics/g
 */
 /**
 * @method PIXI.WebGLFastSpriteBatch#render
-* @param ***REMOVED***PIXI.WebGLSpriteBatch***REMOVED*** spriteBatch - 
+* @param {PIXI.WebGLSpriteBatch} spriteBatch - 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFastSpriteBatch.js
 * @sourceline 177
 */
 /**
 * @method PIXI.WebGLFastSpriteBatch#renderSprite
-* @param ***REMOVED***PIXI.Sprite***REMOVED*** sprite - 
+* @param {PIXI.Sprite} sprite - 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFastSpriteBatch.js
 * @sourceline 208
 */
@@ -2385,40 +2385,40 @@ https://github.com/libgdx/libgdx/blob/master/gdx/src/com/badlogic/gdx/graphics/g
 */
 /**
 * @member PIXI.WebGLFilterManager#filterStack
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFilterManager.js
 * @sourceline 11
 */
 /**
 * @member PIXI.WebGLFilterManager#offsetX
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFilterManager.js
 * @sourceline 17
 */
 /**
 * @member PIXI.WebGLFilterManager#offsetY
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFilterManager.js
 * @sourceline 23
 */
 /**
 * @description Initialises the context and the properties.
 * @method PIXI.WebGLFilterManager#setContext
-* @param ***REMOVED***WebGLContext***REMOVED*** gl - the current WebGL drawing context
+* @param {WebGLContext} gl - the current WebGL drawing context
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFilterManager.js
 * @sourceline 32
 */
 /**
 * @method PIXI.WebGLFilterManager#begin
-* @param ***REMOVED***RenderSession***REMOVED*** renderSession - 
-* @param ***REMOVED***ArrayBuffer***REMOVED*** buffer - 
+* @param {RenderSession} renderSession - 
+* @param {ArrayBuffer} buffer - 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFilterManager.js
 * @sourceline 46
 */
 /**
 * @description Applies the filter and adds it to the current filter stack.
 * @method PIXI.WebGLFilterManager#pushFilter
-* @param ***REMOVED***Object***REMOVED*** filterBlock - the filter that will be pushed to the current filter stack
+* @param {Object} filterBlock - the filter that will be pushed to the current filter stack
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFilterManager.js
 * @sourceline 62
 */
@@ -2431,10 +2431,10 @@ https://github.com/libgdx/libgdx/blob/master/gdx/src/com/badlogic/gdx/graphics/g
 /**
 * @description Applies the filter to the specified area.
 * @method PIXI.WebGLFilterManager#applyFilterPass
-* @param ***REMOVED***PIXI.AbstractFilter***REMOVED*** filter - the filter that needs to be applied
-* @param ***REMOVED***PIXI.Texture***REMOVED*** filterArea - TODO - might need an update
-* @param ***REMOVED***Number***REMOVED*** width - the horizontal range of the filter
-* @param ***REMOVED***Number***REMOVED*** height - the vertical range of the filter
+* @param {PIXI.AbstractFilter} filter - the filter that needs to be applied
+* @param {PIXI.Texture} filterArea - TODO - might need an update
+* @param {Number} width - the horizontal range of the filter
+* @param {Number} height - the vertical range of the filter
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLFilterManager.js
 * @sourceline 336
 */
@@ -2467,8 +2467,8 @@ https://github.com/libgdx/libgdx/blob/master/gdx/src/com/badlogic/gdx/graphics/g
 /**
 * @description Renders the graphics object
 * @method PIXI.WebGLGraphics.renderGraphics
-* @param ***REMOVED***PIXI.Graphics***REMOVED*** graphics - 
-* @param ***REMOVED***Object***REMOVED*** renderSession - 
+* @param {PIXI.Graphics} graphics - 
+* @param {Object} renderSession - 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLGraphics.js
 * @sourceline 23
@@ -2476,16 +2476,16 @@ https://github.com/libgdx/libgdx/blob/master/gdx/src/com/badlogic/gdx/graphics/g
 /**
 * @description Updates the graphics object
 * @method PIXI.WebGLGraphics.updateGraphics
-* @param ***REMOVED***PIXI.Graphics***REMOVED*** graphicsData - The graphics object to update
-* @param ***REMOVED***WebGLContext***REMOVED*** gl - the current WebGL drawing context
+* @param {PIXI.Graphics} graphicsData - The graphics object to update
+* @param {WebGLContext} gl - the current WebGL drawing context
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLGraphics.js
 * @sourceline 93
 */
 /**
 * @method PIXI.WebGLGraphics.switchMode
-* @param ***REMOVED***WebGLContext***REMOVED*** webGL - 
-* @param ***REMOVED***Number***REMOVED*** type - 
+* @param {WebGLContext} webGL - 
+* @param {Number} type - 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLGraphics.js
 * @sourceline 218
@@ -2493,8 +2493,8 @@ https://github.com/libgdx/libgdx/blob/master/gdx/src/com/badlogic/gdx/graphics/g
 /**
 * @description Builds a rectangle to draw
 * @method PIXI.WebGLGraphics.buildRectangle
-* @param ***REMOVED***PIXI.Graphics***REMOVED*** graphicsData - The graphics object containing all the necessary properties
-* @param ***REMOVED***Object***REMOVED*** webGLData - 
+* @param {PIXI.Graphics} graphicsData - The graphics object containing all the necessary properties
+* @param {Object} webGLData - 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLGraphics.js
 * @sourceline 252
@@ -2502,8 +2502,8 @@ https://github.com/libgdx/libgdx/blob/master/gdx/src/com/badlogic/gdx/graphics/g
 /**
 * @description Builds a rounded rectangle to draw
 * @method PIXI.WebGLGraphics.buildRoundedRectangle
-* @param ***REMOVED***PIXI.Graphics***REMOVED*** graphicsData - The graphics object containing all the necessary properties
-* @param ***REMOVED***Object***REMOVED*** webGLData - 
+* @param {PIXI.Graphics} graphicsData - The graphics object containing all the necessary properties
+* @param {Object} webGLData - 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLGraphics.js
 * @sourceline 320
@@ -2512,13 +2512,13 @@ https://github.com/libgdx/libgdx/blob/master/gdx/src/com/badlogic/gdx/graphics/g
 * @description Calculate the points for a quadratic bezier curve. (helper function..)
 Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier-curve-in-c
 * @method PIXI.WebGLGraphics.quadraticBezierCurve
-* @param ***REMOVED***Number***REMOVED*** fromX - Origin point x
-* @param ***REMOVED***Number***REMOVED*** fromY - Origin point x
-* @param ***REMOVED***Number***REMOVED*** cpX - Control point x
-* @param ***REMOVED***Number***REMOVED*** cpY - Control point y
-* @param ***REMOVED***Number***REMOVED*** toX - Destination point x
-* @param ***REMOVED***Number***REMOVED*** toY - Destination point y
-* @return ***REMOVED***Array<Number>***REMOVED*** 
+* @param {Number} fromX - Origin point x
+* @param {Number} fromY - Origin point x
+* @param {Number} cpX - Control point x
+* @param {Number} cpY - Control point y
+* @param {Number} toX - Destination point x
+* @param {Number} toY - Destination point y
+* @return {Array<Number>} 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLGraphics.js
 * @sourceline 390
@@ -2526,8 +2526,8 @@ Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier
 /**
 * @description Builds a circle to draw
 * @method PIXI.WebGLGraphics.buildCircle
-* @param ***REMOVED***PIXI.Graphics***REMOVED*** graphicsData - The graphics object to draw
-* @param ***REMOVED***Object***REMOVED*** webGLData - 
+* @param {PIXI.Graphics} graphicsData - The graphics object to draw
+* @param {Object} webGLData - 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLGraphics.js
 * @sourceline 442
@@ -2535,8 +2535,8 @@ Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier
 /**
 * @description Builds a line to draw
 * @method PIXI.WebGLGraphics.buildLine
-* @param ***REMOVED***PIXI.Graphics***REMOVED*** graphicsData - The graphics object containing all the necessary properties
-* @param ***REMOVED***Object***REMOVED*** webGLData - 
+* @param {PIXI.Graphics} graphicsData - The graphics object containing all the necessary properties
+* @param {Object} webGLData - 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLGraphics.js
 * @sourceline 525
@@ -2544,8 +2544,8 @@ Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier
 /**
 * @description Builds a complex polygon to draw
 * @method PIXI.WebGLGraphics.buildComplexPoly
-* @param ***REMOVED***PIXI.Graphics***REMOVED*** graphicsData - The graphics object containing all the necessary properties
-* @param ***REMOVED***Object***REMOVED*** webGLData - 
+* @param {PIXI.Graphics} graphicsData - The graphics object containing all the necessary properties
+* @param {Object} webGLData - 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLGraphics.js
 * @sourceline 737
@@ -2553,8 +2553,8 @@ Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier
 /**
 * @description Builds a polygon to draw
 * @method PIXI.WebGLGraphics.buildPoly
-* @param ***REMOVED***PIXI.Graphics***REMOVED*** graphicsData - The graphics object containing all the necessary properties
-* @param ***REMOVED***Object***REMOVED*** webGLData - 
+* @param {PIXI.Graphics} graphicsData - The graphics object containing all the necessary properties
+* @param {Object} webGLData - 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLGraphics.js
 * @sourceline 799
@@ -2590,23 +2590,23 @@ Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier
 /**
 * @description Sets the drawing context to the one given in parameter.
 * @method PIXI.WebGLMaskManager#setContext
-* @param ***REMOVED***WebGLContext***REMOVED*** gl - the current WebGL drawing context
+* @param {WebGLContext} gl - the current WebGL drawing context
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLMaskManager.js
 * @sourceline 16
 */
 /**
 * @description Applies the Mask and adds it to the current filter stack.
 * @method PIXI.WebGLMaskManager#pushMask
-* @param ***REMOVED***Array***REMOVED*** maskData - 
-* @param ***REMOVED***Object***REMOVED*** renderSession - 
+* @param {Array} maskData - 
+* @param {Object} renderSession - 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLMaskManager.js
 * @sourceline 27
 */
 /**
 * @description Removes the last filter from the filter stack and doesn't return it.
 * @method PIXI.WebGLMaskManager#popMask
-* @param ***REMOVED***Array***REMOVED*** maskData - 
-* @param ***REMOVED***Object***REMOVED*** renderSession - an object containing all the useful parameters
+* @param {Array} maskData - 
+* @param {Object} renderSession - an object containing all the useful parameters
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLMaskManager.js
 * @sourceline 51
 */
@@ -2630,46 +2630,46 @@ Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier
 */
 /**
 * @member PIXI.WebGLShaderManager#maxAttibs
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLShaderManager.js
 * @sourceline 12
 */
 /**
 * @member PIXI.WebGLShaderManager#attribState
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLShaderManager.js
 * @sourceline 18
 */
 /**
 * @member PIXI.WebGLShaderManager#tempAttribState
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLShaderManager.js
 * @sourceline 24
 */
 /**
 * @member PIXI.WebGLShaderManager#stack
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLShaderManager.js
 * @sourceline 35
 */
 /**
 * @description Initialises the context and the properties.
 * @method PIXI.WebGLShaderManager#setContext
-* @param ***REMOVED***WebGLContext***REMOVED*** gl - the current WebGL drawing context
+* @param {WebGLContext} gl - the current WebGL drawing context
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLShaderManager.js
 * @sourceline 45
 */
 /**
 * @description Takes the attributes given in parameters.
 * @method PIXI.WebGLShaderManager#setAttribs
-* @param ***REMOVED***Array***REMOVED*** attribs - attribs
+* @param {Array} attribs - attribs
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLShaderManager.js
 * @sourceline 73
 */
 /**
 * @description Sets the current shader.
 * @method PIXI.WebGLShaderManager#setShader
-* @param ***REMOVED******REMOVED*** shader - 
+* @param {} shader - 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLShaderManager.js
 * @sourceline 116
 */
@@ -2699,150 +2699,150 @@ Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier
 */
 /**
 * @method PIXI.WebGLSpriteBatch.CompileVertexShader
-* @param ***REMOVED***WebGLContext***REMOVED*** gl - the current WebGL drawing context
-* @param ***REMOVED***Array***REMOVED*** shaderSrc - 
-* @return ***REMOVED******REMOVED*** 
+* @param {WebGLContext} gl - the current WebGL drawing context
+* @param {Array} shaderSrc - 
+* @return {} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLShaderUtils.js
 * @sourceline 14
 */
 /**
 * @method PIXI.WebGLSpriteBatch.CompileFragmentShader
-* @param ***REMOVED***WebGLContext***REMOVED*** gl - the current WebGL drawing context
-* @param ***REMOVED***Array***REMOVED*** shaderSrc - 
-* @return ***REMOVED******REMOVED*** 
+* @param {WebGLContext} gl - the current WebGL drawing context
+* @param {Array} shaderSrc - 
+* @return {} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLShaderUtils.js
 * @sourceline 26
 */
 /**
 * @method PIXI.WebGLSpriteBatch._CompileShader
-* @param ***REMOVED***WebGLContext***REMOVED*** gl - the current WebGL drawing context
-* @param ***REMOVED***Array***REMOVED*** shaderSrc - 
-* @param ***REMOVED***Number***REMOVED*** shaderType - 
-* @return ***REMOVED******REMOVED*** 
+* @param {WebGLContext} gl - the current WebGL drawing context
+* @param {Array} shaderSrc - 
+* @param {Number} shaderType - 
+* @return {} 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLShaderUtils.js
 * @sourceline 38
 */
 /**
 * @method PIXI.WebGLSpriteBatch.compileProgram
-* @param ***REMOVED***WebGLContext***REMOVED*** gl - the current WebGL drawing context
-* @param ***REMOVED***Array***REMOVED*** vertexSrc - 
-* @param ***REMOVED***Array***REMOVED*** fragmentSrc - 
-* @return ***REMOVED******REMOVED*** 
+* @param {WebGLContext} gl - the current WebGL drawing context
+* @param {Array} vertexSrc - 
+* @param {Array} fragmentSrc - 
+* @return {} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLShaderUtils.js
 * @sourceline 69
 */
 
 /**
 * @member PIXI.WebGLSpriteBatch#vertSize
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 20
 */
 /**
 * @description The number of images in the SpriteBatch before it flushes
 * @member PIXI.WebGLSpriteBatch#size
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 26
 */
 /**
 * @description Holds the vertices
 * @member PIXI.WebGLSpriteBatch#vertices
-* @type ***REMOVED***ArrayBuffer***REMOVED***
+* @type {ArrayBuffer}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 38
 */
 /**
 * @description View on the vertices as a Float32Array
 * @member PIXI.WebGLSpriteBatch#positions
-* @type ***REMOVED***Float32Array***REMOVED***
+* @type {Float32Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 46
 */
 /**
 * @description View on the vertices as a Uint32Array
 * @member PIXI.WebGLSpriteBatch#colors
-* @type ***REMOVED***Uint32Array***REMOVED***
+* @type {Uint32Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 54
 */
 /**
 * @description Holds the indices
 * @member PIXI.WebGLSpriteBatch#indices
-* @type ***REMOVED***Uint16Array***REMOVED***
+* @type {Uint16Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 62
 */
 /**
 * @member PIXI.WebGLSpriteBatch#lastIndexCount
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 70
 */
 /**
 * @member PIXI.WebGLSpriteBatch#drawing
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 86
 */
 /**
 * @member PIXI.WebGLSpriteBatch#currentBatchSize
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 92
 */
 /**
 * @member PIXI.WebGLSpriteBatch#currentBaseTexture
-* @type ***REMOVED***PIXI.BaseTexture***REMOVED***
+* @type {PIXI.BaseTexture}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 98
 */
 /**
 * @member PIXI.WebGLSpriteBatch#dirty
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 104
 */
 /**
 * @member PIXI.WebGLSpriteBatch#textures
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 110
 */
 /**
 * @member PIXI.WebGLSpriteBatch#blendModes
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 116
 */
 /**
 * @member PIXI.WebGLSpriteBatch#shaders
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 122
 */
 /**
 * @member PIXI.WebGLSpriteBatch#sprites
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 128
 */
 /**
 * @member PIXI.WebGLSpriteBatch#defaultShader
-* @type ***REMOVED***PIXI.AbstractFilter***REMOVED***
+* @type {PIXI.AbstractFilter}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 134
 */
 /**
 * @method PIXI.WebGLSpriteBatch#setContext
-* @param ***REMOVED***WebGLContext***REMOVED*** gl - the current WebGL drawing context
+* @param {WebGLContext} gl - the current WebGL drawing context
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 149
 */
 /**
 * @method PIXI.WebGLSpriteBatch#begin
-* @param ***REMOVED***Object***REMOVED*** renderSession - The RenderSession object
+* @param {Object} renderSession - The RenderSession object
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 181
 */
@@ -2853,15 +2853,15 @@ Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier
 */
 /**
 * @method PIXI.WebGLSpriteBatch#render
-* @param ***REMOVED***PIXI.Sprite***REMOVED*** sprite - the sprite to render when using this spritebatch
-* @param ***REMOVED***Matrix***REMOVED*** [matrix] - - Optional matrix. If provided the Display Object will be rendered using this matrix, otherwise it will use its worldTransform.
+* @param {PIXI.Sprite} sprite - the sprite to render when using this spritebatch
+* @param {Matrix} [matrix] - - Optional matrix. If provided the Display Object will be rendered using this matrix, otherwise it will use its worldTransform.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 201
 */
 /**
 * @description Renders a TilingSprite using the spriteBatch.
 * @method PIXI.WebGLSpriteBatch#renderTilingSprite
-* @param ***REMOVED***PIXI.TilingSprite***REMOVED*** sprite - the sprite to render
+* @param {PIXI.TilingSprite} sprite - the sprite to render
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 335
 */
@@ -2873,9 +2873,9 @@ Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier
 */
 /**
 * @method PIXI.WebGLSpriteBatch#renderBatch
-* @param ***REMOVED***PIXI.Texture***REMOVED*** texture - 
-* @param ***REMOVED***Number***REMOVED*** size - 
-* @param ***REMOVED***Number***REMOVED*** startIndex - 
+* @param {PIXI.Texture} texture - 
+* @param {Number} size - 
+* @param {Number} startIndex - 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLSpriteBatch.js
 * @sourceline 610
 */
@@ -2910,33 +2910,33 @@ Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier
 /**
 * @description Sets the drawing context to the one given in parameter.
 * @method PIXI.WebGLStencilManager#setContext
-* @param ***REMOVED***WebGLContext***REMOVED*** gl - the current WebGL drawing context
+* @param {WebGLContext} gl - the current WebGL drawing context
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLStencilManager.js
 * @sourceline 17
 */
 /**
 * @description Applies the Mask and adds it to the current filter stack.
 * @method PIXI.WebGLStencilManager#pushMask
-* @param ***REMOVED***PIXI.Graphics***REMOVED*** graphics - 
-* @param ***REMOVED***Array***REMOVED*** webGLData - 
-* @param ***REMOVED***Object***REMOVED*** renderSession - 
+* @param {PIXI.Graphics} graphics - 
+* @param {Array} webGLData - 
+* @param {Object} renderSession - 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLStencilManager.js
 * @sourceline 28
 */
 /**
 * @description TODO this does not belong here!
 * @method PIXI.WebGLStencilManager#bindGraphics
-* @param ***REMOVED***PIXI.Graphics***REMOVED*** graphics - 
-* @param ***REMOVED***Array***REMOVED*** webGLData - 
-* @param ***REMOVED***Object***REMOVED*** renderSession - 
+* @param {PIXI.Graphics} graphics - 
+* @param {Array} webGLData - 
+* @param {Object} renderSession - 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLStencilManager.js
 * @sourceline 120
 */
 /**
 * @method PIXI.WebGLStencilManager#popStencil
-* @param ***REMOVED***PIXI.Graphics***REMOVED*** graphics - 
-* @param ***REMOVED***Array***REMOVED*** webGLData - 
-* @param ***REMOVED***Object***REMOVED*** renderSession - 
+* @param {PIXI.Graphics} graphics - 
+* @param {Array} webGLData - 
+* @param {Object} renderSession - 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/utils/WebGLStencilManager.js
 * @sourceline 193
 */
@@ -2958,26 +2958,26 @@ Based on: https://stackoverflow.com/questions/785097/how-do-i-implement-a-bezier
 should be used for browsers that support webGL. This Render works by automatically managing webGLBatchs.
 So no need for Sprite Batches or Sprite Clouds.
 Don't forget to add the view to your DOM or you will not see anything :)
-* @param ***REMOVED***PhaserGame***REMOVED*** game - A reference to the Phaser Game instance
+* @param {PhaserGame} game - A reference to the Phaser Game instance
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 8
 */
 /**
 * @member PIXI.WebGLRenderer#game - A reference to the Phaser Game instance.
-* @type ***REMOVED***PhaserGame***REMOVED***
+* @type {PhaserGame}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 20
 */
 /**
 * @member PIXI.WebGLRenderer#type
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 30
 */
 /**
 * @description The resolution of the renderer
 * @member PIXI.WebGLRenderer#resolution
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @default 1
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 36
@@ -2985,21 +2985,21 @@ Don't forget to add the view to your DOM or you will not see anything :)
 /**
 * @description Whether the render view is transparent
 * @member PIXI.WebGLRenderer#transparent
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 45
 */
 /**
 * @description Whether the render view should be resized automatically
 * @member PIXI.WebGLRenderer#autoResize
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 53
 */
 /**
 * @description The value of the preserveDrawingBuffer flag affects whether or not the contents of the stencil buffer is retained after rendering.
 * @member PIXI.WebGLRenderer#preserveDrawingBuffer
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 61
 */
@@ -3009,7 +3009,7 @@ If the Stage is NOT transparent, Pixi will clear to alpha (0, 0, 0, 0).
 If the Stage is transparent, Pixi will clear to the target Stage's background color.
 Disable this by setting this to false. For example: if your game has a canvas filling background image, you often don't need this set.
 * @member PIXI.WebGLRenderer#clearBeforeRender
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @default 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 69
@@ -3017,88 +3017,88 @@ Disable this by setting this to false. For example: if your game has a canvas fi
 /**
 * @description The width of the canvas view
 * @member PIXI.WebGLRenderer#width
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 81
 */
 /**
 * @description The height of the canvas view
 * @member PIXI.WebGLRenderer#height
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 89
 */
 /**
 * @description The canvas element that everything is drawn to
 * @member PIXI.WebGLRenderer#view
-* @type ***REMOVED***HTMLCanvasElement***REMOVED***
+* @type {HTMLCanvasElement}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 97
 */
 /**
 * @member PIXI.WebGLRenderer#_contextOptions
-* @type ***REMOVED***Object***REMOVED***
+* @type {Object}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 105
 */
 /**
 * @member PIXI.WebGLRenderer#projection
-* @type ***REMOVED***Point***REMOVED***
+* @type {Point}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 118
 */
 /**
 * @member PIXI.WebGLRenderer#offset
-* @type ***REMOVED***Point***REMOVED***
+* @type {Point}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 124
 */
 /**
 * @description Deals with managing the shader programs and their attribs
 * @member PIXI.WebGLRenderer#shaderManager
-* @type ***REMOVED***PIXI.WebGLShaderManager***REMOVED***
+* @type {PIXI.WebGLShaderManager}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 132
 */
 /**
 * @description Manages the rendering of sprites
 * @member PIXI.WebGLRenderer#spriteBatch
-* @type ***REMOVED***PIXI.WebGLSpriteBatch***REMOVED***
+* @type {PIXI.WebGLSpriteBatch}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 139
 */
 /**
 * @description Manages the masks using the stencil buffer
 * @member PIXI.WebGLRenderer#maskManager
-* @type ***REMOVED***PIXI.WebGLMaskManager***REMOVED***
+* @type {PIXI.WebGLMaskManager}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 146
 */
 /**
 * @description Manages the filters
 * @member PIXI.WebGLRenderer#filterManager
-* @type ***REMOVED***PIXI.WebGLFilterManager***REMOVED***
+* @type {PIXI.WebGLFilterManager}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 153
 */
 /**
 * @description Manages the stencil buffer
 * @member PIXI.WebGLRenderer#stencilManager
-* @type ***REMOVED***PIXI.WebGLStencilManager***REMOVED***
+* @type {PIXI.WebGLStencilManager}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 160
 */
 /**
 * @description Manages the blendModes
 * @member PIXI.WebGLRenderer#blendModeManager
-* @type ***REMOVED***PIXI.WebGLBlendModeManager***REMOVED***
+* @type {PIXI.WebGLBlendModeManager}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 167
 */
 /**
 * @member PIXI.WebGLRenderer#renderSession
-* @type ***REMOVED***Object***REMOVED***
+* @type {Object}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 174
 */
@@ -3110,32 +3110,32 @@ Disable this by setting this to false. For example: if your game has a canvas fi
 /**
 * @description Renders the stage to its webGL view
 * @method PIXI.WebGLRenderer#render
-* @param ***REMOVED***Stage***REMOVED*** stage - the Stage element to be rendered
+* @param {Stage} stage - the Stage element to be rendered
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 243
 */
 /**
 * @description Renders a Display Object.
 * @method PIXI.WebGLRenderer#renderDisplayObject
-* @param ***REMOVED***DisplayObject***REMOVED*** displayObject - The DisplayObject to render
-* @param ***REMOVED***Point***REMOVED*** projection - The projection
-* @param ***REMOVED***Array***REMOVED*** buffer - a standard WebGL buffer
+* @param {DisplayObject} displayObject - The DisplayObject to render
+* @param {Point} projection - The projection
+* @param {Array} buffer - a standard WebGL buffer
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 278
 */
 /**
 * @description Resizes the webGL view to the specified width and height.
 * @method PIXI.WebGLRenderer#resize
-* @param ***REMOVED***Number***REMOVED*** width - the new width of the webGL view
-* @param ***REMOVED***Number***REMOVED*** height - the new height of the webGL view
+* @param {Number} width - the new width of the webGL view
+* @param {Number} height - the new height of the webGL view
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 315
 */
 /**
 * @description Updates and Creates a WebGL texture for the renderers context.
 * @method PIXI.WebGLRenderer#updateTexture
-* @param ***REMOVED***PIXI.Texture***REMOVED*** texture - the texture to update
-* @return ***REMOVED***Boolean***REMOVED*** True if the texture was successfully bound, otherwise false.
+* @param {PIXI.Texture} texture - the texture to update
+* @return {Boolean} True if the texture was successfully bound, otherwise false.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/renderers/webgl/WebGLRenderer.js
 * @sourceline 341
 */
@@ -3160,22 +3160,22 @@ Disable this by setting this to false. For example: if your game has a canvas fi
 /**
 * @class PIXI.BaseTexture
 * @description A texture stores the information that represents an image. All textures have a base texture.
-* @param ***REMOVED***(String|Canvas)***REMOVED*** source - the source object (image or canvas)
-* @param ***REMOVED***Number***REMOVED*** scaleMode - See ***REMOVED******REMOVED***#crossLink "PIXI/scaleModes:property"***REMOVED******REMOVED***PIXI.scaleModes***REMOVED******REMOVED***/crossLink***REMOVED******REMOVED*** for possible values
+* @param {(String|Canvas)} source - the source object (image or canvas)
+* @param {Number} scaleMode - See {{#crossLink "PIXI/scaleModes:property"}}PIXI.scaleModes{{/crossLink}} for possible values
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/BaseTexture.js
 * @sourceline 5
 */
 /**
 * @description The Resolution of the texture.
 * @member PIXI.BaseTexture#resolution
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/BaseTexture.js
 * @sourceline 16
 */
 /**
 * @description [read-only] The width of the base texture set when the image has loaded
 * @member PIXI.BaseTexture#width
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @readonly 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/BaseTexture.js
 * @sourceline 24
@@ -3183,7 +3183,7 @@ Disable this by setting this to false. For example: if your game has a canvas fi
 /**
 * @description [read-only] The height of the base texture set when the image has loaded
 * @member PIXI.BaseTexture#height
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @readonly 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/BaseTexture.js
 * @sourceline 33
@@ -3191,7 +3191,7 @@ Disable this by setting this to false. For example: if your game has a canvas fi
 /**
 * @description The scale mode to apply when scaling this texture
 * @member PIXI.BaseTexture#scaleMode
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @default PIXI.scaleModes.LINEAR
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/BaseTexture.js
 * @sourceline 42
@@ -3199,7 +3199,7 @@ Disable this by setting this to false. For example: if your game has a canvas fi
 /**
 * @description [read-only] Set to true once the base texture has loaded
 * @member PIXI.BaseTexture#hasLoaded
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @readonly 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/BaseTexture.js
 * @sourceline 51
@@ -3207,21 +3207,21 @@ Disable this by setting this to false. For example: if your game has a canvas fi
 /**
 * @description The image source that is used to create the texture.
 * @member PIXI.BaseTexture#source
-* @type ***REMOVED***Image***REMOVED***
+* @type {Image}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/BaseTexture.js
 * @sourceline 60
 */
 /**
 * @description Controls if RGB channels should be pre-multiplied by Alpha  (WebGL only)
 * @member PIXI.BaseTexture#premultipliedAlpha
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @default true
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/BaseTexture.js
 * @sourceline 68
 */
 /**
 * @member PIXI.BaseTexture#_glTextures
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/BaseTexture.js
 * @sourceline 79
@@ -3230,13 +3230,13 @@ Disable this by setting this to false. For example: if your game has a canvas fi
 * @description Set this to true if a mipmap of this texture needs to be generated. This value needs to be set before the texture is used
 Also the texture must be a power of two size to work
 * @member PIXI.BaseTexture#mipmap
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/BaseTexture.js
 * @sourceline 86
 */
 /**
 * @member PIXI.BaseTexture#_dirty
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/BaseTexture.js
 * @sourceline 95
@@ -3247,13 +3247,13 @@ Also the texture must be a power of two size to work
 You may want to do this if you have a parent Sprite with no visible texture (i.e. uses the internal `__default` texture)
 that has children that you do want to render, without causing a batch flush in the process.
 * @member PIXI.BaseTexture#skipRender
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/BaseTexture.js
 * @sourceline 115
 */
 /**
 * @member PIXI.BaseTexture#_powerOf2
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/BaseTexture.js
 * @sourceline 126
@@ -3263,8 +3263,8 @@ that has children that you do want to render, without causing a batch flush in t
 Then calls BaseTexture.dirty.
 Important for when you don't want to modify the source object by forcing in `complete` or dimension properties it may not have.
 * @method PIXI.BaseTexture#forceLoaded
-* @param ***REMOVED***Number***REMOVED*** width - - The new width to force the BaseTexture to be.
-* @param ***REMOVED***Number***REMOVED*** height - - The new height to force the BaseTexture to be.
+* @param {Number} width - - The new width to force the BaseTexture to be.
+* @param {Number} height - - The new height to force the BaseTexture to be.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/BaseTexture.js
 * @sourceline 137
 */
@@ -3277,7 +3277,7 @@ Important for when you don't want to modify the source object by forcing in `com
 /**
 * @description Changes the source image of the texture
 * @method PIXI.BaseTexture#updateSourceImage
-* @param ***REMOVED***String***REMOVED*** newSrc - the path of the image
+* @param {String} newSrc - the path of the image
 * @deprecated true
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/BaseTexture.js
 * @sourceline 171
@@ -3298,9 +3298,9 @@ Atexture is still 100% usable and will simply be reuploaded if there is a sprite
 /**
 * @description Helper function that creates a base texture from the given canvas element.
 * @method PIXI.BaseTexture.fromCanvas
-* @param ***REMOVED***Canvas***REMOVED*** canvas - The canvas element source of the texture
-* @param ***REMOVED***Number***REMOVED*** scaleMode - See ***REMOVED******REMOVED***#crossLink "PIXI/scaleModes:property"***REMOVED******REMOVED***PIXI.scaleModes***REMOVED******REMOVED***/crossLink***REMOVED******REMOVED*** for possible values
-* @return ***REMOVED***PIXI.BaseTexture***REMOVED*** 
+* @param {Canvas} canvas - The canvas element source of the texture
+* @param {Number} scaleMode - See {{#crossLink "PIXI/scaleModes:property"}}PIXI.scaleModes{{/crossLink}} for possible values
+* @return {PIXI.BaseTexture} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/BaseTexture.js
 * @sourceline 224
 */
@@ -3332,39 +3332,39 @@ The Sprite in this case will be rendered to a position of 0,0. To render this sp
    doc.addChild(sprite);
    renderTexture.render(doc);  // Renders to center of renderTexture
 * @augments PIXI.Texture
-* @param ***REMOVED***Number***REMOVED*** width - The width of the render texture
-* @param ***REMOVED***Number***REMOVED*** height - The height of the render texture
-* @param ***REMOVED***(PIXI.CanvasRenderer|PIXI.WebGLRenderer)***REMOVED*** renderer - The renderer used for this RenderTexture
-* @param ***REMOVED***Number***REMOVED*** scaleMode - See ***REMOVED******REMOVED***#crossLink "PIXI/scaleModes:property"***REMOVED******REMOVED***PIXI.scaleModes***REMOVED******REMOVED***/crossLink***REMOVED******REMOVED*** for possible values
-* @param ***REMOVED***Number***REMOVED*** resolution - The resolution of the texture being generated
+* @param {Number} width - The width of the render texture
+* @param {Number} height - The height of the render texture
+* @param {(PIXI.CanvasRenderer|PIXI.WebGLRenderer)} renderer - The renderer used for this RenderTexture
+* @param {Number} scaleMode - See {{#crossLink "PIXI/scaleModes:property"}}PIXI.scaleModes{{/crossLink}} for possible values
+* @param {Number} resolution - The resolution of the texture being generated
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/RenderTexture.js
 * @sourceline 5
 */
 /**
 * @description The with of the render texture
 * @member PIXI.RenderTexture#width
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/RenderTexture.js
 * @sourceline 37
 */
 /**
 * @description The height of the render texture
 * @member PIXI.RenderTexture#height
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/RenderTexture.js
 * @sourceline 45
 */
 /**
 * @description The Resolution of the texture.
 * @member PIXI.RenderTexture#resolution
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/RenderTexture.js
 * @sourceline 53
 */
 /**
 * @description The framing rectangle of the render texture
 * @member PIXI.RenderTexture#frame
-* @type ***REMOVED***Rectangle***REMOVED***
+* @type {Rectangle}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/RenderTexture.js
 * @sourceline 61
 */
@@ -3372,36 +3372,36 @@ The Sprite in this case will be rendered to a position of 0,0. To render this sp
 * @description This is the area of the BaseTexture image to actually copy to the Canvas / WebGL when rendering,
 irrespective of the actual frame size or placement (which can be influenced by trimmed texture atlases)
 * @member PIXI.RenderTexture#crop
-* @type ***REMOVED***Rectangle***REMOVED***
+* @type {Rectangle}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/RenderTexture.js
 * @sourceline 69
 */
 /**
 * @description The base texture object that this texture uses
 * @member PIXI.RenderTexture#baseTexture
-* @type ***REMOVED***PIXI.BaseTexture***REMOVED***
+* @type {PIXI.BaseTexture}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/RenderTexture.js
 * @sourceline 78
 */
 /**
 * @description The renderer this RenderTexture uses. A RenderTexture can only belong to one renderer at the moment if its webGL.
 * @member PIXI.RenderTexture#renderer
-* @type ***REMOVED***(PIXI.CanvasRenderer|PIXI.WebGLRenderer)***REMOVED***
+* @type {(PIXI.CanvasRenderer|PIXI.WebGLRenderer)}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/RenderTexture.js
 * @sourceline 99
 */
 /**
 * @member PIXI.RenderTexture#valid
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/RenderTexture.js
 * @sourceline 125
 */
 /**
 * @description Resizes the RenderTexture.
 * @method PIXI.RenderTexture#resize
-* @param ***REMOVED***Number***REMOVED*** width - The width to resize to.
-* @param ***REMOVED***Number***REMOVED*** height - The height to resize to.
-* @param ***REMOVED***Boolean***REMOVED*** updateBase - Should the baseTexture.width and height values be resized as well?
+* @param {Number} width - The width to resize to.
+* @param {Number} height - The height to resize to.
+* @param {Boolean} updateBase - Should the baseTexture.width and height values be resized as well?
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/RenderTexture.js
 * @sourceline 139
 */
@@ -3414,9 +3414,9 @@ irrespective of the actual frame size or placement (which can be influenced by t
 /**
 * @description This function will draw the display object to the texture.
 * @method PIXI.RenderTexture#renderWebGL
-* @param ***REMOVED***DisplayObject***REMOVED*** displayObject - The display object to render this texture on
-* @param ***REMOVED***Matrix***REMOVED*** [matrix] - Optional matrix to apply to the display object before rendering.
-* @param ***REMOVED***Boolean***REMOVED*** [clear] - If true the texture will be cleared before the displayObject is drawn
+* @param {DisplayObject} displayObject - The display object to render this texture on
+* @param {Matrix} [matrix] - Optional matrix to apply to the display object before rendering.
+* @param {Boolean} [clear] - If true the texture will be cleared before the displayObject is drawn
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/RenderTexture.js
 * @sourceline 195
@@ -3424,9 +3424,9 @@ irrespective of the actual frame size or placement (which can be influenced by t
 /**
 * @description This function will draw the display object to the texture.
 * @method PIXI.RenderTexture#renderCanvas
-* @param ***REMOVED***DisplayObject***REMOVED*** displayObject - The display object to render this texture on
-* @param ***REMOVED***Matrix***REMOVED*** [matrix] - Optional matrix to apply to the display object before rendering.
-* @param ***REMOVED***Boolean***REMOVED*** [clear] - If true the texture will be cleared before the displayObject is drawn
+* @param {DisplayObject} displayObject - The display object to render this texture on
+* @param {Matrix} [matrix] - Optional matrix to apply to the display object before rendering.
+* @param {Boolean} [clear] - If true the texture will be cleared before the displayObject is drawn
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/RenderTexture.js
 * @sourceline 250
@@ -3434,21 +3434,21 @@ irrespective of the actual frame size or placement (which can be influenced by t
 /**
 * @description Will return a HTML Image of the texture
 * @method PIXI.RenderTexture#getImage
-* @return ***REMOVED***Image***REMOVED*** 
+* @return {Image} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/RenderTexture.js
 * @sourceline 296
 */
 /**
 * @description Will return a base64 encoded string of this texture. It works by calling RenderTexture.getCanvas and then running toDataURL on that.
 * @method PIXI.RenderTexture#getBase64
-* @return ***REMOVED***String***REMOVED*** A base64 encoded string of the texture.
+* @return {String} A base64 encoded string of the texture.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/RenderTexture.js
 * @sourceline 309
 */
 /**
 * @description Creates a Canvas element, renders this RenderTexture to it and then returns it.
 * @method PIXI.RenderTexture#getCanvas
-* @return ***REMOVED***HTMLCanvasElement***REMOVED*** A Canvas element with the texture rendered on.
+* @return {HTMLCanvasElement} A Canvas element with the texture rendered on.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/RenderTexture.js
 * @sourceline 320
 */
@@ -3462,10 +3462,10 @@ irrespective of the actual frame size or placement (which can be influenced by t
 * @class PIXI.Texture
 * @description A texture stores the information that represents an image or part of an image. It cannot be added
 to the display list directly. Instead use it as the texture for a PIXI.Sprite. If no frame is provided then the whole image is used.
-* @param ***REMOVED***PIXI.BaseTexture***REMOVED*** baseTexture - The base texture source to create the texture from
-* @param ***REMOVED***Rectangle***REMOVED*** frame - The rectangle frame of the texture to show
-* @param ***REMOVED***Rectangle***REMOVED*** [crop] - The area of original texture
-* @param ***REMOVED***Rectangle***REMOVED*** [trim] - Trimmed texture rectangle
+* @param {PIXI.BaseTexture} baseTexture - The base texture source to create the texture from
+* @param {Rectangle} frame - The rectangle frame of the texture to show
+* @param {Rectangle} [crop] - The area of original texture
+* @param {Rectangle} [trim] - Trimmed texture rectangle
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/Texture.js
 * @sourceline 14
 */
@@ -3473,63 +3473,63 @@ to the display list directly. Instead use it as the texture for a PIXI.Sprite. I
 /**
 * @description Does this Texture have any frame data assigned to it?
 * @member PIXI.Texture#noFrame
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/Texture.js
 * @sourceline 28
 */
 /**
 * @description The base texture that this texture uses.
 * @member PIXI.Texture#baseTexture
-* @type ***REMOVED***PIXI.BaseTexture***REMOVED***
+* @type {PIXI.BaseTexture}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/Texture.js
 * @sourceline 47
 */
 /**
 * @description The frame specifies the region of the base texture that this texture uses
 * @member PIXI.Texture#frame
-* @type ***REMOVED***Rectangle***REMOVED***
+* @type {Rectangle}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/Texture.js
 * @sourceline 55
 */
 /**
 * @description The texture trim data.
 * @member PIXI.Texture#trim
-* @type ***REMOVED***Rectangle***REMOVED***
+* @type {Rectangle}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/Texture.js
 * @sourceline 63
 */
 /**
 * @description This will let the renderer know if the texture is valid. If it's not then it cannot be rendered.
 * @member PIXI.Texture#valid
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/Texture.js
 * @sourceline 71
 */
 /**
 * @description Is this a tiling texture? As used by the likes of a TilingSprite.
 * @member PIXI.Texture#isTiling
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/Texture.js
 * @sourceline 79
 */
 /**
 * @description This will let a renderer know that a texture has been updated (used mainly for webGL uv updates)
 * @member PIXI.Texture#requiresUpdate
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/Texture.js
 * @sourceline 87
 */
 /**
 * @description This will let a renderer know that a tinted parent has updated its texture.
 * @member PIXI.Texture#requiresReTint
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/Texture.js
 * @sourceline 95
 */
 /**
 * @description The WebGL UV data cache.
 * @member PIXI.Texture#_uvs
-* @type ***REMOVED***Object***REMOVED***
+* @type {Object}
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/Texture.js
 * @sourceline 103
@@ -3537,14 +3537,14 @@ to the display list directly. Instead use it as the texture for a PIXI.Sprite. I
 /**
 * @description The width of the Texture in pixels.
 * @member PIXI.Texture#width
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/Texture.js
 * @sourceline 112
 */
 /**
 * @description The height of the Texture in pixels.
 * @member PIXI.Texture#height
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/Texture.js
 * @sourceline 120
 */
@@ -3552,7 +3552,7 @@ to the display list directly. Instead use it as the texture for a PIXI.Sprite. I
 * @description This is the area of the BaseTexture image to actually copy to the Canvas / WebGL when rendering,
 irrespective of the actual frame size or placement (which can be influenced by trimmed texture atlases)
 * @member PIXI.Texture#crop
-* @type ***REMOVED***Rectangle***REMOVED***
+* @type {Rectangle}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/Texture.js
 * @sourceline 128
 */
@@ -3566,14 +3566,14 @@ irrespective of the actual frame size or placement (which can be influenced by t
 /**
 * @description Destroys this texture
 * @method PIXI.Texture#destroy
-* @param ***REMOVED***Boolean***REMOVED*** destroyBase - Whether to destroy the base texture as well
+* @param {Boolean} destroyBase - Whether to destroy the base texture as well
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/Texture.js
 * @sourceline 165
 */
 /**
 * @description Specifies the region of the baseTexture that this texture will use.
 * @method PIXI.Texture#setFrame
-* @param ***REMOVED***Rectangle***REMOVED*** frame - The frame of the texture to set it to
+* @param {Rectangle} frame - The frame of the texture to set it to
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/Texture.js
 * @sourceline 178
 */
@@ -3587,9 +3587,9 @@ irrespective of the actual frame size or placement (which can be influenced by t
 /**
 * @description Helper function that creates a new a Texture based on the given canvas element.
 * @method PIXI.Texture.fromCanvas
-* @param ***REMOVED***Canvas***REMOVED*** canvas - The canvas element source of the texture
-* @param ***REMOVED***Number***REMOVED*** scaleMode - See ***REMOVED******REMOVED***#crossLink "PIXI/scaleModes:property"***REMOVED******REMOVED***PIXI.scaleModes***REMOVED******REMOVED***/crossLink***REMOVED******REMOVED*** for possible values
-* @return ***REMOVED***PIXI.Texture***REMOVED*** 
+* @param {Canvas} canvas - The canvas element source of the texture
+* @param {Number} scaleMode - See {{#crossLink "PIXI/scaleModes:property"}}PIXI.scaleModes{{/crossLink}} for possible values
+* @return {PIXI.Texture} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/textures/Texture.js
 * @sourceline 249
 */
@@ -3608,52 +3608,52 @@ irrespective of the actual frame size or placement (which can be influenced by t
 /**
 * @description Creates a new Canvas DOM element, or pulls one from the pool if free.
 * @method PIXI.CanvasPool.create
-* @param ***REMOVED******REMOVED*** parent - The parent of the canvas element.
-* @param ***REMOVED***Number***REMOVED*** width - The width of the canvas element.
-* @param ***REMOVED***Number***REMOVED*** height - The height of the canvas element.
-* @return ***REMOVED***HTMLCanvasElement***REMOVED*** The canvas element.
+* @param {} parent - The parent of the canvas element.
+* @param {Number} width - The width of the canvas element.
+* @param {Number} height - The height of the canvas element.
+* @return {HTMLCanvasElement} The canvas element.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/CanvasPool.js
 * @sourceline 15
 */
 /**
 * @description Gets the first free canvas index from the pool.
 * @method PIXI.CanvasPool.getFirst
-* @return ***REMOVED***Number***REMOVED*** 
+* @return {Number} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/CanvasPool.js
 * @sourceline 58
 */
 /**
 * @description Removes the parent from a canvas element from the pool, freeing it up for re-use.
 * @method PIXI.CanvasPool.remove
-* @param ***REMOVED******REMOVED*** parent - The parent of the canvas element.
+* @param {} parent - The parent of the canvas element.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/CanvasPool.js
 * @sourceline 81
 */
 /**
 * @description Removes the parent from a canvas element from the pool, freeing it up for re-use.
 * @method PIXI.CanvasPool.removeByCanvas
-* @param ***REMOVED***HTMLCanvasElement***REMOVED*** canvas - The canvas element to remove
+* @param {HTMLCanvasElement} canvas - The canvas element to remove
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/CanvasPool.js
 * @sourceline 104
 */
 /**
 * @description Gets the total number of used canvas elements in the pool.
 * @method PIXI.CanvasPool.getTotal
-* @return ***REMOVED***Number***REMOVED*** The number of in-use (parented) canvas elements in the pool.
+* @return {Number} The number of in-use (parented) canvas elements in the pool.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/CanvasPool.js
 * @sourceline 127
 */
 /**
 * @description Gets the total number of free canvas elements in the pool.
 * @method PIXI.CanvasPool.getFree
-* @return ***REMOVED***Number***REMOVED*** The number of free (un-parented) canvas elements in the pool.
+* @return {Number} The number of free (un-parented) canvas elements in the pool.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/CanvasPool.js
 * @sourceline 151
 */
 /**
 * @description The pool into which the canvas dom elements are placed.
 * @member PIXI.CanvasPool.pool
-* @type ***REMOVED***Array***REMOVED***
+* @type {Array}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/CanvasPool.js
 * @sourceline 177
 */
@@ -3679,54 +3679,54 @@ irrespective of the actual frame size or placement (which can be influenced by t
 /**
 * @description Mixes in the properties of the EventTarget prototype onto another object
 * @method PIXI.EventTarget#mixin
-* @param ***REMOVED***Object***REMOVED*** object - The obj to mix into
+* @param {Object} object - The obj to mix into
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/EventTarget.js
 * @sourceline 34
 */
 /**
 * @description Return a list of assigned event listeners.
 * @method PIXI.EventTarget#listeners
-* @param ***REMOVED***String***REMOVED*** eventName - The events that should be listed.
-* @return ***REMOVED***Array***REMOVED*** An array of listener functions
+* @param {String} eventName - The events that should be listed.
+* @return {Array} An array of listener functions
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/EventTarget.js
 * @sourceline 41
 */
 /**
 * @description Emit an event to all registered event listeners.
 * @method PIXI.EventTarget#emit
-* @param ***REMOVED***String***REMOVED*** eventName - The name of the event.
-* @return ***REMOVED***Boolean***REMOVED*** Indication if we've emitted an event.
+* @param {String} eventName - The name of the event.
+* @return {Boolean} Indication if we've emitted an event.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/EventTarget.js
 * @sourceline 54
 */
 /**
 * @description Register a new EventListener for the given event.
 * @method PIXI.EventTarget#on
-* @param ***REMOVED***String***REMOVED*** eventName - Name of the event.
-* @param ***REMOVED***Functon***REMOVED*** callback - fn Callback function.
+* @param {String} eventName - Name of the event.
+* @param {Functon} callback - fn Callback function.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/EventTarget.js
 * @sourceline 107
 */
 /**
 * @description Add an EventListener that's only called once.
 * @method PIXI.EventTarget#once
-* @param ***REMOVED***String***REMOVED*** eventName - Name of the event.
-* @param ***REMOVED***Function***REMOVED*** callback - Callback function.
+* @param {String} eventName - Name of the event.
+* @param {Function} callback - Callback function.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/EventTarget.js
 * @sourceline 124
 */
 /**
 * @description Remove event listeners.
 * @method PIXI.EventTarget#off
-* @param ***REMOVED***String***REMOVED*** eventName - The event we want to remove.
-* @param ***REMOVED***Function***REMOVED*** callback - The listener that we need to find.
+* @param {String} eventName - The event we want to remove.
+* @param {Function} callback - The listener that we need to find.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/EventTarget.js
 * @sourceline 143
 */
 /**
 * @description Remove all listeners or only the listeners for the specified event.
 * @method PIXI.EventTarget#removeAllListeners
-* @param ***REMOVED***String***REMOVED*** eventName - The event you want to remove all listeners for.
+* @param {String} eventName - The event you want to remove all listeners for.
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/EventTarget.js
 * @sourceline 173
 */
@@ -3734,9 +3734,9 @@ irrespective of the actual frame size or placement (which can be influenced by t
 * @class PIXI.Event
 * @description Creates an homogenous object for tracking events so users can know what to expect.
 * @augments Object
-* @param ***REMOVED***Object***REMOVED*** target - The target object that the event is called on
-* @param ***REMOVED***String***REMOVED*** name - The string name of the event that was triggered
-* @param ***REMOVED***Object***REMOVED*** data - Arbitrary event data to pass along
+* @param {Object} target - The target object that the event is called on
+* @param {String} name - The string name of the event that was triggered
+* @param {Object} data - Arbitrary event data to pass along
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/EventTarget.js
 * @sourceline 192
 */
@@ -3744,7 +3744,7 @@ irrespective of the actual frame size or placement (which can be influenced by t
 * @description Tracks the state of bubbling propagation. Do not
 set this directly, instead use `event.stopPropagation()`
 * @member PIXI.Event#stopped
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @readonly 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/EventTarget.js
@@ -3754,7 +3754,7 @@ set this directly, instead use `event.stopPropagation()`
 * @description Tracks the state of sibling listener propagation. Do not
 set this directly, instead use `event.stopImmediatePropagation()`
 * @member PIXI.Event#stoppedImmediate
-* @type ***REMOVED***Boolean***REMOVED***
+* @type {Boolean}
 * @readonly 
 * @access private
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/EventTarget.js
@@ -3763,7 +3763,7 @@ set this directly, instead use `event.stopImmediatePropagation()`
 /**
 * @description The original target the event triggered on.
 * @member PIXI.Event#target
-* @type ***REMOVED***Object***REMOVED***
+* @type {Object}
 * @readonly 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/EventTarget.js
 * @sourceline 228
@@ -3771,7 +3771,7 @@ set this directly, instead use `event.stopImmediatePropagation()`
 /**
 * @description The string name of the event that this represents.
 * @member PIXI.Event#type
-* @type ***REMOVED***String***REMOVED***
+* @type {String}
 * @readonly 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/EventTarget.js
 * @sourceline 237
@@ -3779,7 +3779,7 @@ set this directly, instead use `event.stopImmediatePropagation()`
 /**
 * @description The data that was passed in with this event.
 * @member PIXI.Event#data
-* @type ***REMOVED***Object***REMOVED***
+* @type {Object}
 * @readonly 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/EventTarget.js
 * @sourceline 246
@@ -3787,7 +3787,7 @@ set this directly, instead use `event.stopImmediatePropagation()`
 /**
 * @description The timestamp when the event occurred.
 * @member PIXI.Event#timeStamp
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @readonly 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/EventTarget.js
 * @sourceline 258
@@ -3821,21 +3821,21 @@ Contains assorted static properties and enumerations.
 /**
 * @description Converts a hex color number to an [R, G, B] array
 * @method PIXI.PIXI#hex2rgb
-* @param ***REMOVED***Number***REMOVED*** hex - 
+* @param {Number} hex - 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/Utils.js
 * @sourceline 5
 */
 /**
 * @description Converts a color as an [R, G, B] array to a hex number
 * @method PIXI.PIXI#rgb2hex
-* @param ***REMOVED***Array***REMOVED*** rgb - 
+* @param {Array} rgb - 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/Utils.js
 * @sourceline 15
 */
 /**
 * @description Checks whether the Canvas BlendModes are supported by the current browser for drawImage
 * @method PIXI.PIXI#canUseNewCanvasBlendModes
-* @return ***REMOVED***Boolean***REMOVED*** whether they are supported
+* @return {Boolean} whether they are supported
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/Utils.js
 * @sourceline 25
 */
@@ -3843,17 +3843,17 @@ Contains assorted static properties and enumerations.
 * @description Given a number, this function returns the closest number that is a power of two
 this function is taken from Starling Framework as its pretty neat ;)
 * @method PIXI.PIXI#getNextPowerOfTwo
-* @param ***REMOVED***Number***REMOVED*** number - 
-* @return ***REMOVED***Number***REMOVED*** the closest number that is a power of two
+* @param {Number} number - 
+* @return {Number} the closest number that is a power of two
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/Utils.js
 * @sourceline 63
 */
 /**
 * @description checks if the given width and height make a power of two texture
 * @method PIXI.PIXI#isPowerOfTwo
-* @param ***REMOVED***Number***REMOVED*** width - 
-* @param ***REMOVED***Number***REMOVED*** height - 
-* @return ***REMOVED***Boolean***REMOVED*** 
+* @param {Number} width - 
+* @param {Number} height - 
+* @return {Boolean} 
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/utils/Utils.js
 * @sourceline 83
 */
@@ -3863,20 +3863,20 @@ this function is taken from Starling Framework as its pretty neat ;)
 /**
 * @description A reference to the Phaser Game instance that owns this Pixi renderer.
 * @member PIXI.PIXI.game
-* @type ***REMOVED***PhaserGame***REMOVED***
+* @type {PhaserGame}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/Pixi.js
 * @sourceline 21
 */
 /**
 * @member PIXI.PIXI.WEBGL_RENDERER
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @access protected
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/Pixi.js
 * @sourceline 28
 */
 /**
 * @member PIXI.PIXI.CANVAS_RENDERER
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @access protected
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/Pixi.js
 * @sourceline 35
@@ -3884,40 +3884,40 @@ this function is taken from Starling Framework as its pretty neat ;)
 /**
 * @description Version of pixi that is loaded.
 * @member PIXI.PIXI.VERSION
-* @type ***REMOVED***String***REMOVED***
+* @type {String}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/Pixi.js
 * @sourceline 42
 */
 /**
 * @member PIXI.PIXI.PI_2
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/Pixi.js
 * @sourceline 71
 */
 /**
 * @member PIXI.PIXI.RAD_TO_DEG
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/Pixi.js
 * @sourceline 77
 */
 /**
 * @member PIXI.PIXI.DEG_TO_RAD
-* @type ***REMOVED***Number***REMOVED***
+* @type {Number}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/Pixi.js
 * @sourceline 83
 */
 /**
 * @member PIXI.PIXI.RETINA_PREFIX
-* @type ***REMOVED***String***REMOVED***
+* @type {String}
 * @access protected
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/Pixi.js
 * @sourceline 89
 */
 /**
 * @description The default render options if none are supplied to
-***REMOVED******REMOVED***#crossLink "WebGLRenderer"***REMOVED******REMOVED******REMOVED******REMOVED***/crossLink***REMOVED******REMOVED*** or ***REMOVED******REMOVED***#crossLink "CanvasRenderer"***REMOVED******REMOVED******REMOVED******REMOVED***/crossLink***REMOVED******REMOVED***.
+{{#crossLink "WebGLRenderer"}}{{/crossLink}} or {{#crossLink "CanvasRenderer"}}{{/crossLink}}.
 * @member PIXI.PIXI.defaultRenderOptions
-* @type ***REMOVED***Object***REMOVED***
+* @type {Object}
 * @sourcefile /Users/rich/Documents/phaser/src/pixi/Pixi.js
 * @sourceline 96
 */

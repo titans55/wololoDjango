@@ -1,7 +1,7 @@
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -10,53 +10,53 @@
 * @class Phaser.Particle
 * @constructor
 * @extends Phaser.Sprite
-* @param ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
-* @param ***REMOVED***number***REMOVED*** x - The x coordinate (in world space) to position the Particle at.
-* @param ***REMOVED***number***REMOVED*** y - The y coordinate (in world space) to position the Particle at.
-* @param ***REMOVED***string|Phaser.RenderTexture|Phaser.BitmapData|PIXI.Texture***REMOVED*** key - This is the image or texture used by the Particle during rendering. It can be a string which is a reference to the Cache entry, or an instance of a RenderTexture or PIXI.Texture.
-* @param ***REMOVED***string|number***REMOVED*** frame - If this Particle is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
+* @param {Phaser.Game} game - A reference to the currently running game.
+* @param {number} x - The x coordinate (in world space) to position the Particle at.
+* @param {number} y - The y coordinate (in world space) to position the Particle at.
+* @param {string|Phaser.RenderTexture|Phaser.BitmapData|PIXI.Texture} key - This is the image or texture used by the Particle during rendering. It can be a string which is a reference to the Cache entry, or an instance of a RenderTexture or PIXI.Texture.
+* @param {string|number} frame - If this Particle is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
 */
-Phaser.Particle = function (game, x, y, key, frame) ***REMOVED***
+Phaser.Particle = function (game, x, y, key, frame) {
 
     Phaser.Sprite.call(this, game, x, y, key, frame);
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** autoScale - If this Particle automatically scales this is set to true by Particle.setScaleData.
+    * @property {boolean} autoScale - If this Particle automatically scales this is set to true by Particle.setScaleData.
     * @protected
     */
     this.autoScale = false;
 
     /**
-    * @property ***REMOVED***array***REMOVED*** scaleData - A reference to the scaleData array owned by the Emitter that emitted this Particle.
+    * @property {array} scaleData - A reference to the scaleData array owned by the Emitter that emitted this Particle.
     * @protected
     */
     this.scaleData = null;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _s - Internal cache var for tracking auto scale.
+    * @property {number} _s - Internal cache var for tracking auto scale.
     * @private
     */
     this._s = 0;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** autoAlpha - If this Particle automatically changes alpha this is set to true by Particle.setAlphaData.
+    * @property {boolean} autoAlpha - If this Particle automatically changes alpha this is set to true by Particle.setAlphaData.
     * @protected
     */
     this.autoAlpha = false;
 
     /**
-    * @property ***REMOVED***array***REMOVED*** alphaData - A reference to the alphaData array owned by the Emitter that emitted this Particle.
+    * @property {array} alphaData - A reference to the alphaData array owned by the Emitter that emitted this Particle.
     * @protected
     */
     this.alphaData = null;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** _a - Internal cache var for tracking auto alpha.
+    * @property {number} _a - Internal cache var for tracking auto alpha.
     * @private
     */
     this._a = 0;
 
-***REMOVED***;
+};
 
 Phaser.Particle.prototype = Object.create(Phaser.Sprite.prototype);
 Phaser.Particle.prototype.constructor = Phaser.Particle;
@@ -67,37 +67,37 @@ Phaser.Particle.prototype.constructor = Phaser.Particle;
 * @method Phaser.Particle#update
 * @memberof Phaser.Particle
 */
-Phaser.Particle.prototype.update = function() ***REMOVED***
+Phaser.Particle.prototype.update = function() {
 
     if (this.autoScale)
-    ***REMOVED***
+    {
         this._s--;
 
         if (this._s)
-        ***REMOVED***
+        {
             this.scale.set(this.scaleData[this._s].x, this.scaleData[this._s].y);
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this.autoScale = false;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     if (this.autoAlpha)
-    ***REMOVED***
+    {
         this._a--;
 
         if (this._a)
-        ***REMOVED***
+        {
             this.alpha = this.alphaData[this._a].v;
-        ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             this.autoAlpha = false;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
-***REMOVED***;
+};
 
 /**
 * Called by the Emitter when this particle is emitted. Left empty for you to over-ride as required.
@@ -105,8 +105,8 @@ Phaser.Particle.prototype.update = function() ***REMOVED***
 * @method Phaser.Particle#onEmit
 * @memberof Phaser.Particle
 */
-Phaser.Particle.prototype.onEmit = function() ***REMOVED***
-***REMOVED***;
+Phaser.Particle.prototype.onEmit = function() {
+};
 
 /**
 * Called by the Emitter if autoAlpha has been enabled. Passes over the alpha ease data and resets the alpha counter.
@@ -114,14 +114,14 @@ Phaser.Particle.prototype.onEmit = function() ***REMOVED***
 * @method Phaser.Particle#setAlphaData
 * @memberof Phaser.Particle
 */
-Phaser.Particle.prototype.setAlphaData = function(data) ***REMOVED***
+Phaser.Particle.prototype.setAlphaData = function(data) {
 
     this.alphaData = data;
     this._a = data.length - 1;
     this.alpha = this.alphaData[this._a].v;
     this.autoAlpha = true;
 
-***REMOVED***;
+};
 
 /**
 * Called by the Emitter if autoScale has been enabled. Passes over the scale ease data and resets the scale counter.
@@ -129,14 +129,14 @@ Phaser.Particle.prototype.setAlphaData = function(data) ***REMOVED***
 * @method Phaser.Particle#setScaleData
 * @memberof Phaser.Particle
 */
-Phaser.Particle.prototype.setScaleData = function(data) ***REMOVED***
+Phaser.Particle.prototype.setScaleData = function(data) {
 
     this.scaleData = data;
     this._s = data.length - 1;
     this.scale.set(this.scaleData[this._s].x, this.scaleData[this._s].y);
     this.autoScale = true;
 
-***REMOVED***;
+};
 
 /**
 * Resets the Particle. This places the Particle at the given x/y world coordinates and then
@@ -145,12 +145,12 @@ Phaser.Particle.prototype.setScaleData = function(data) ***REMOVED***
 *
 * @method Phaser.Particle#reset
 * @memberof Phaser.Particle
-* @param ***REMOVED***number***REMOVED*** x - The x coordinate (in world space) to position the Particle at.
-* @param ***REMOVED***number***REMOVED*** y - The y coordinate (in world space) to position the Particle at.
-* @param ***REMOVED***number***REMOVED*** [health=1] - The health to give the Particle.
-* @return ***REMOVED***Phaser.Particle***REMOVED*** This instance.
+* @param {number} x - The x coordinate (in world space) to position the Particle at.
+* @param {number} y - The y coordinate (in world space) to position the Particle at.
+* @param {number} [health=1] - The health to give the Particle.
+* @return {Phaser.Particle} This instance.
 */
-Phaser.Particle.prototype.reset = function(x, y, health) ***REMOVED***
+Phaser.Particle.prototype.reset = function(x, y, health) {
 
     Phaser.Component.Reset.prototype.reset.call(this, x, y, health);
 
@@ -162,4 +162,4 @@ Phaser.Particle.prototype.reset = function(x, y, health) ***REMOVED***
 
     return this;
 
-***REMOVED***;
+};

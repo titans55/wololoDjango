@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -1289,7 +1289,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
             <pre class="sunlight-highlight-javascript linenums">/**
 * @author       Richard Davey &lt;rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -1299,20 +1299,20 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 * @class Phaser.Canvas
 * @static
 */
-Phaser.Canvas = ***REMOVED***
+Phaser.Canvas = {
 
     /**
     * Creates a `canvas` DOM element. The element is not automatically added to the document.
     *
     * @method Phaser.Canvas.create
-    * @param ***REMOVED***object***REMOVED*** parent - The object that will own the canvas that is created.
-    * @param ***REMOVED***number***REMOVED*** [width=256] - The width of the canvas element.
-    * @param ***REMOVED***number***REMOVED*** [height=256] - The height of the canvas element..
-    * @param ***REMOVED***string***REMOVED*** [id=(none)] - If specified, and not the empty string, this will be set as the ID of the canvas element. Otherwise no ID will be set.
-    * @param ***REMOVED***boolean***REMOVED*** [skipPool=false] - If `true` the canvas will not be placed in the CanvasPool global.
-    * @return ***REMOVED***HTMLCanvasElement***REMOVED*** The newly created canvas element.
+    * @param {object} parent - The object that will own the canvas that is created.
+    * @param {number} [width=256] - The width of the canvas element.
+    * @param {number} [height=256] - The height of the canvas element..
+    * @param {string} [id=(none)] - If specified, and not the empty string, this will be set as the ID of the canvas element. Otherwise no ID will be set.
+    * @param {boolean} [skipPool=false] - If `true` the canvas will not be placed in the CanvasPool global.
+    * @return {HTMLCanvasElement} The newly created canvas element.
     */
-    create: function (parent, width, height, id, skipPool) ***REMOVED***
+    create: function (parent, width, height, id, skipPool) {
 
         width = width || 256;
         height = height || 256;
@@ -1320,9 +1320,9 @@ Phaser.Canvas = ***REMOVED***
         var canvas = (skipPool) ? document.createElement('canvas') : PIXI.CanvasPool.create(parent, width, height);
 
         if (typeof id === 'string' &amp;&amp; id !== '')
-        ***REMOVED***
+        {
             canvas.id = id;
-        ***REMOVED***
+        }
 
         canvas.width = width;
         canvas.height = height;
@@ -1330,17 +1330,17 @@ Phaser.Canvas = ***REMOVED***
 
         return canvas;
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the background color behind the canvas. This changes the canvas style property.
     *
     * @method Phaser.Canvas.setBackgroundColor
-    * @param ***REMOVED***HTMLCanvasElement***REMOVED*** canvas - The canvas to set the background color on.
-    * @param ***REMOVED***string***REMOVED*** [color='rgb(0,0,0)'] - The color to set. Can be in the format 'rgb(r,g,b)', or '#RRGGBB' or any valid CSS color.
-    * @return ***REMOVED***HTMLCanvasElement***REMOVED*** Returns the source canvas.
+    * @param {HTMLCanvasElement} canvas - The canvas to set the background color on.
+    * @param {string} [color='rgb(0,0,0)'] - The color to set. Can be in the format 'rgb(r,g,b)', or '#RRGGBB' or any valid CSS color.
+    * @return {HTMLCanvasElement} Returns the source canvas.
     */
-    setBackgroundColor: function (canvas, color) ***REMOVED***
+    setBackgroundColor: function (canvas, color) {
 
         color = color || 'rgb(0,0,0)';
 
@@ -1348,17 +1348,17 @@ Phaser.Canvas = ***REMOVED***
 
         return canvas;
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the touch-action property on the canvas style. Can be used to disable default browser touch actions.
     *
     * @method Phaser.Canvas.setTouchAction
-    * @param ***REMOVED***HTMLCanvasElement***REMOVED*** canvas - The canvas to set the touch action on.
-    * @param ***REMOVED***string***REMOVED*** [value] - The touch action to set. Defaults to 'none'.
-    * @return ***REMOVED***HTMLCanvasElement***REMOVED*** The source canvas.
+    * @param {HTMLCanvasElement} canvas - The canvas to set the touch action on.
+    * @param {string} [value] - The touch action to set. Defaults to 'none'.
+    * @return {HTMLCanvasElement} The source canvas.
     */
-    setTouchAction: function (canvas, value) ***REMOVED***
+    setTouchAction: function (canvas, value) {
 
         value = value || 'none';
 
@@ -1368,17 +1368,17 @@ Phaser.Canvas = ***REMOVED***
 
         return canvas;
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the user-select property on the canvas style. Can be used to disable default browser selection actions.
     *
     * @method Phaser.Canvas.setUserSelect
-    * @param ***REMOVED***HTMLCanvasElement***REMOVED*** canvas - The canvas to set the touch action on.
-    * @param ***REMOVED***string***REMOVED*** [value] - The touch action to set. Defaults to 'none'.
-    * @return ***REMOVED***HTMLCanvasElement***REMOVED*** The source canvas.
+    * @param {HTMLCanvasElement} canvas - The canvas to set the touch action on.
+    * @param {string} [value] - The touch action to set. Defaults to 'none'.
+    * @return {HTMLCanvasElement} The source canvas.
     */
-    setUserSelect: function (canvas, value) ***REMOVED***
+    setUserSelect: function (canvas, value) {
 
         value = value || 'none';
 
@@ -1392,90 +1392,90 @@ Phaser.Canvas = ***REMOVED***
 
         return canvas;
 
-    ***REMOVED***,
+    },
 
     /**
     * Adds the given canvas element to the DOM. The canvas will be added as a child of the given parent.
     * If no parent is given it will be added as a child of the document.body.
     *
     * @method Phaser.Canvas.addToDOM
-    * @param ***REMOVED***HTMLCanvasElement***REMOVED*** canvas - The canvas to be added to the DOM.
-    * @param ***REMOVED***string|HTMLElement***REMOVED*** parent - The DOM element to add the canvas to.
-    * @param ***REMOVED***boolean***REMOVED*** [overflowHidden=true] - If set to true it will add the overflow='hidden' style to the parent DOM element.
-    * @return ***REMOVED***HTMLCanvasElement***REMOVED*** Returns the source canvas.
+    * @param {HTMLCanvasElement} canvas - The canvas to be added to the DOM.
+    * @param {string|HTMLElement} parent - The DOM element to add the canvas to.
+    * @param {boolean} [overflowHidden=true] - If set to true it will add the overflow='hidden' style to the parent DOM element.
+    * @return {HTMLCanvasElement} Returns the source canvas.
     */
-    addToDOM: function (canvas, parent, overflowHidden) ***REMOVED***
+    addToDOM: function (canvas, parent, overflowHidden) {
 
         var target;
 
-        if (overflowHidden === undefined) ***REMOVED*** overflowHidden = true; ***REMOVED***
+        if (overflowHidden === undefined) { overflowHidden = true; }
 
         if (parent)
-        ***REMOVED***
+        {
             if (typeof parent === 'string')
-            ***REMOVED***
+            {
                 // hopefully an element ID
                 target = document.getElementById(parent);
-            ***REMOVED***
+            }
             else if (typeof parent === 'object' &amp;&amp; parent.nodeType === 1)
-            ***REMOVED***
+            {
                 // quick test for a HTMLelement
                 target = parent;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         // Fallback, covers an invalid ID and a non HTMLelement object
         if (!target)
-        ***REMOVED***
+        {
             target = document.body;
-        ***REMOVED***
+        }
 
         if (overflowHidden &amp;&amp; target.style)
-        ***REMOVED***
+        {
             target.style.overflow = 'hidden';
-        ***REMOVED***
+        }
 
         target.appendChild(canvas);
 
         return canvas;
 
-    ***REMOVED***,
+    },
 
     /**
     * Removes the given canvas element from the DOM.
     *
     * @method Phaser.Canvas.removeFromDOM
-    * @param ***REMOVED***HTMLCanvasElement***REMOVED*** canvas - The canvas to be removed from the DOM.
+    * @param {HTMLCanvasElement} canvas - The canvas to be removed from the DOM.
     */
-    removeFromDOM: function (canvas) ***REMOVED***
+    removeFromDOM: function (canvas) {
 
         if (canvas.parentNode)
-        ***REMOVED***
+        {
             canvas.parentNode.removeChild(canvas);
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the transform of the given canvas to the matrix values provided.
     *
     * @method Phaser.Canvas.setTransform
-    * @param ***REMOVED***CanvasRenderingContext2D***REMOVED*** context - The context to set the transform on.
-    * @param ***REMOVED***number***REMOVED*** translateX - The value to translate horizontally by.
-    * @param ***REMOVED***number***REMOVED*** translateY - The value to translate vertically by.
-    * @param ***REMOVED***number***REMOVED*** scaleX - The value to scale horizontally by.
-    * @param ***REMOVED***number***REMOVED*** scaleY - The value to scale vertically by.
-    * @param ***REMOVED***number***REMOVED*** skewX - The value to skew horizontaly by.
-    * @param ***REMOVED***number***REMOVED*** skewY - The value to skew vertically by.
-    * @return ***REMOVED***CanvasRenderingContext2D***REMOVED*** Returns the source context.
+    * @param {CanvasRenderingContext2D} context - The context to set the transform on.
+    * @param {number} translateX - The value to translate horizontally by.
+    * @param {number} translateY - The value to translate vertically by.
+    * @param {number} scaleX - The value to scale horizontally by.
+    * @param {number} scaleY - The value to scale vertically by.
+    * @param {number} skewX - The value to skew horizontaly by.
+    * @param {number} skewY - The value to skew vertically by.
+    * @return {CanvasRenderingContext2D} Returns the source context.
     */
-    setTransform: function (context, translateX, translateY, scaleX, scaleY, skewX, skewY) ***REMOVED***
+    setTransform: function (context, translateX, translateY, scaleX, scaleY, skewX, skewY) {
 
         context.setTransform(scaleX, skewX, skewY, scaleY, translateX, translateY);
 
         return context;
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the Image Smoothing property on the given context. Set to false to disable image smoothing.
@@ -1485,107 +1485,107 @@ Phaser.Canvas = ***REMOVED***
     * patchy on earlier browsers, especially on mobile.
     *
     * @method Phaser.Canvas.setSmoothingEnabled
-    * @param ***REMOVED***CanvasRenderingContext2D***REMOVED*** context - The context to enable or disable the image smoothing on.
-    * @param ***REMOVED***boolean***REMOVED*** value - If set to true it will enable image smoothing, false will disable it.
-    * @return ***REMOVED***CanvasRenderingContext2D***REMOVED*** Returns the source context.
+    * @param {CanvasRenderingContext2D} context - The context to enable or disable the image smoothing on.
+    * @param {boolean} value - If set to true it will enable image smoothing, false will disable it.
+    * @return {CanvasRenderingContext2D} Returns the source context.
     */
-    setSmoothingEnabled: function (context, value) ***REMOVED***
+    setSmoothingEnabled: function (context, value) {
 
         var s = Phaser.Canvas.getSmoothingPrefix(context);
 
         if (s)
-        ***REMOVED***
+        {
             context[s] = value;
-        ***REMOVED***
+        }
 
         return context;
 
-    ***REMOVED***,
+    },
 
     /**
     * Gets the Smoothing Enabled vendor prefix being used on the given context, or null if not set.
     *
     * @method Phaser.Canvas.getSmoothingPrefix
-    * @param ***REMOVED***CanvasRenderingContext2D***REMOVED*** context - The context to enable or disable the image smoothing on.
-    * @return ***REMOVED***string|null***REMOVED*** Returns the smoothingEnabled vendor prefix, or null if not set on the context.
+    * @param {CanvasRenderingContext2D} context - The context to enable or disable the image smoothing on.
+    * @return {string|null} Returns the smoothingEnabled vendor prefix, or null if not set on the context.
     */
-    getSmoothingPrefix: function (context) ***REMOVED***
+    getSmoothingPrefix: function (context) {
 
         var vendor = [ 'i', 'webkitI', 'msI', 'mozI', 'oI' ];
 
         for (var prefix in vendor)
-        ***REMOVED***
+        {
             var s = vendor[prefix] + 'mageSmoothingEnabled';
 
             if (s in context)
-            ***REMOVED***
+            {
                 return s;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return null;
 
-    ***REMOVED***,
+    },
 
     /**
      * Returns `true` if the given context has image smoothing enabled, otherwise returns `false`.
      *
      * @method Phaser.Canvas.getSmoothingEnabled
-     * @param ***REMOVED***CanvasRenderingContext2D***REMOVED*** context - The context to check for smoothing on.
-     * @return ***REMOVED***boolean***REMOVED*** True if the given context has image smoothing enabled, otherwise false.
+     * @param {CanvasRenderingContext2D} context - The context to check for smoothing on.
+     * @return {boolean} True if the given context has image smoothing enabled, otherwise false.
      */
-    getSmoothingEnabled: function (context) ***REMOVED***
+    getSmoothingEnabled: function (context) {
 
         var s = Phaser.Canvas.getSmoothingPrefix(context);
 
         if (s)
-        ***REMOVED***
+        {
             return context[s];
-        ***REMOVED***
+        }
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the CSS image-rendering property on the given canvas to be 'crisp' (aka 'optimize contrast' on webkit).
     * Note that if this doesn't given the desired result then see the setSmoothingEnabled.
     *
     * @method Phaser.Canvas.setImageRenderingCrisp
-    * @param ***REMOVED***HTMLCanvasElement***REMOVED*** canvas - The canvas to set image-rendering crisp on.
-    * @return ***REMOVED***HTMLCanvasElement***REMOVED*** Returns the source canvas.
+    * @param {HTMLCanvasElement} canvas - The canvas to set image-rendering crisp on.
+    * @return {HTMLCanvasElement} Returns the source canvas.
     */
-    setImageRenderingCrisp: function (canvas) ***REMOVED***
+    setImageRenderingCrisp: function (canvas) {
 
         var types = [ 'optimizeSpeed', 'crisp-edges', '-moz-crisp-edges', '-webkit-optimize-contrast', 'optimize-contrast', 'pixelated' ];
 
         for (var i = 0; i &lt; types.length; i++)
-        ***REMOVED***
+        {
             canvas.style['image-rendering'] = types[i];
-        ***REMOVED***
+        }
 
         canvas.style.msInterpolationMode = 'nearest-neighbor';
 
         return canvas;
 
-    ***REMOVED***,
+    },
 
     /**
     * Sets the CSS image-rendering property on the given canvas to be 'bicubic' (aka 'auto').
     * Note that if this doesn't given the desired result then see the CanvasUtils.setSmoothingEnabled method.
     *
     * @method Phaser.Canvas.setImageRenderingBicubic
-    * @param ***REMOVED***HTMLCanvasElement***REMOVED*** canvas The canvas to set image-rendering bicubic on.
-    * @return ***REMOVED***HTMLCanvasElement***REMOVED*** Returns the source canvas.
+    * @param {HTMLCanvasElement} canvas The canvas to set image-rendering bicubic on.
+    * @return {HTMLCanvasElement} Returns the source canvas.
     */
-    setImageRenderingBicubic: function (canvas) ***REMOVED***
+    setImageRenderingBicubic: function (canvas) {
 
         canvas.style['image-rendering'] = 'auto';
         canvas.style.msInterpolationMode = 'bicubic';
 
         return canvas;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 </pre>
         </article>
     </section>
@@ -1628,22 +1628,22 @@ Phaser.Canvas = ***REMOVED***
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

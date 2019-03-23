@@ -2,7 +2,7 @@
 * @author       Richard Davey <rich@photonstorm.com>
 * @author       @karlmacklin <tacklemcclean@gmail.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -25,47 +25,47 @@
 * 
 * @class Phaser.DeviceButton
 * @constructor
-* @param ***REMOVED***Phaser.Pointer|Phaser.SinglePad***REMOVED*** parent - A reference to the parent of this button. Either a Pointer or a Gamepad.
-* @param ***REMOVED***number***REMOVED*** buttonCode - The button code this DeviceButton is responsible for.
+* @param {Phaser.Pointer|Phaser.SinglePad} parent - A reference to the parent of this button. Either a Pointer or a Gamepad.
+* @param {number} buttonCode - The button code this DeviceButton is responsible for.
 */
-Phaser.DeviceButton = function (parent, buttonCode) ***REMOVED***
+Phaser.DeviceButton = function (parent, buttonCode) {
 
     /**
-    * @property ***REMOVED***Phaser.Pointer|Phaser.SinglePad***REMOVED*** parent - A reference to the Pointer or Gamepad that owns this button.
+    * @property {Phaser.Pointer|Phaser.SinglePad} parent - A reference to the Pointer or Gamepad that owns this button.
     */
     this.parent = parent;
 
     /**
-    * @property ***REMOVED***Phaser.Game***REMOVED*** game - A reference to the currently running game.
+    * @property {Phaser.Game} game - A reference to the currently running game.
     */
     this.game = parent.game;
 
     /**
-    * @property ***REMOVED***object***REMOVED*** event - The DOM event that caused the change in button state.
+    * @property {object} event - The DOM event that caused the change in button state.
     * @default
     */
     this.event = null;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** isDown - The "down" state of the button.
+    * @property {boolean} isDown - The "down" state of the button.
     * @default
     */
     this.isDown = false;
 
     /**
-    * @property ***REMOVED***boolean***REMOVED*** isUp - The "up" state of the button.
+    * @property {boolean} isUp - The "up" state of the button.
     * @default
     */
     this.isUp = true;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** timeDown - The timestamp when the button was last pressed down.
+    * @property {number} timeDown - The timestamp when the button was last pressed down.
     * @default
     */
     this.timeDown = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** timeUp - The timestamp when the button was last released.
+    * @property {number} timeUp - The timestamp when the button was last released.
     * @default
     */
     this.timeUp = 0;
@@ -73,7 +73,7 @@ Phaser.DeviceButton = function (parent, buttonCode) ***REMOVED***
     /**
     * Gamepad only.
     * If a button is held down this holds down the number of times the button has 'repeated'.
-    * @property ***REMOVED***number***REMOVED*** repeats
+    * @property {number} repeats
     * @default
     */
     this.repeats = 0;
@@ -81,7 +81,7 @@ Phaser.DeviceButton = function (parent, buttonCode) ***REMOVED***
     /**
     * True if the alt key was held down when this button was last pressed or released.
     * Not supported on Gamepads.
-    * @property ***REMOVED***boolean***REMOVED*** altKey
+    * @property {boolean} altKey
     * @default
     */
     this.altKey = false;
@@ -89,7 +89,7 @@ Phaser.DeviceButton = function (parent, buttonCode) ***REMOVED***
     /**
     * True if the shift key was held down when this button was last pressed or released.
     * Not supported on Gamepads.
-    * @property ***REMOVED***boolean***REMOVED*** shiftKey
+    * @property {boolean} shiftKey
     * @default
     */
     this.shiftKey = false;
@@ -97,19 +97,19 @@ Phaser.DeviceButton = function (parent, buttonCode) ***REMOVED***
     /**
     * True if the control key was held down when this button was last pressed or released.
     * Not supported on Gamepads.
-    * @property ***REMOVED***boolean***REMOVED*** ctrlKey
+    * @property {boolean} ctrlKey
     * @default
     */
     this.ctrlKey = false;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** value - Button value. Mainly useful for checking analog buttons (like shoulder triggers) on Gamepads.
+    * @property {number} value - Button value. Mainly useful for checking analog buttons (like shoulder triggers) on Gamepads.
     * @default
     */
     this.value = 0;
 
     /**
-    * @property ***REMOVED***number***REMOVED*** buttonCode - The buttoncode of this button if a Gamepad, or the DOM button event value if a Pointer.
+    * @property {number} buttonCode - The buttoncode of this button if a Gamepad, or the DOM button event value if a Pointer.
     */
     this.buttonCode = buttonCode;
 
@@ -117,7 +117,7 @@ Phaser.DeviceButton = function (parent, buttonCode) ***REMOVED***
     * This Signal is dispatched every time this DeviceButton is pressed down.
     * It is only dispatched once (until the button is released again).
     * When dispatched it sends 2 arguments: A reference to this DeviceButton and the value of the button.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onDown
+    * @property {Phaser.Signal} onDown
     */
     this.onDown = new Phaser.Signal();
 
@@ -125,7 +125,7 @@ Phaser.DeviceButton = function (parent, buttonCode) ***REMOVED***
     * This Signal is dispatched every time this DeviceButton is released from a down state.
     * It is only dispatched once (until the button is pressed again).
     * When dispatched it sends 2 arguments: A reference to this DeviceButton and the value of the button.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onUp
+    * @property {Phaser.Signal} onUp
     */
     this.onUp = new Phaser.Signal();
 
@@ -133,13 +133,13 @@ Phaser.DeviceButton = function (parent, buttonCode) ***REMOVED***
     * Gamepad only.
     * This Signal is dispatched every time this DeviceButton changes floating value (between, but not exactly, 0 and 1).
     * When dispatched it sends 2 arguments: A reference to this DeviceButton and the value of the button.
-    * @property ***REMOVED***Phaser.Signal***REMOVED*** onFloat
+    * @property {Phaser.Signal} onFloat
     */
     this.onFloat = new Phaser.Signal();
 
-***REMOVED***;
+};
 
-Phaser.DeviceButton.prototype = ***REMOVED***
+Phaser.DeviceButton.prototype = {
 
     /**
     * Called automatically by Phaser.Pointer and Phaser.SinglePad.
@@ -147,15 +147,15 @@ Phaser.DeviceButton.prototype = ***REMOVED***
     * 
     * @method Phaser.DeviceButton#start
     * @protected
-    * @param ***REMOVED***object***REMOVED*** [event] - The DOM event that triggered the button change.
-    * @param ***REMOVED***number***REMOVED*** [value] - The button value. Only get for Gamepads.
+    * @param {object} [event] - The DOM event that triggered the button change.
+    * @param {number} [value] - The button value. Only get for Gamepads.
     */
-    start: function (event, value) ***REMOVED***
+    start: function (event, value) {
 
         if (this.isDown)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         this.isDown = true;
         this.isUp = false;
@@ -166,15 +166,15 @@ Phaser.DeviceButton.prototype = ***REMOVED***
         this.value = value;
 
         if (event)
-        ***REMOVED***
+        {
             this.altKey = event.altKey;
             this.shiftKey = event.shiftKey;
             this.ctrlKey = event.ctrlKey;
-        ***REMOVED***
+        }
 
         this.onDown.dispatch(this, value);
 
-    ***REMOVED***,
+    },
 
     /**
     * Called automatically by Phaser.Pointer and Phaser.SinglePad.
@@ -182,15 +182,15 @@ Phaser.DeviceButton.prototype = ***REMOVED***
     * 
     * @method Phaser.DeviceButton#stop
     * @protected
-    * @param ***REMOVED***object***REMOVED*** [event] - The DOM event that triggered the button change.
-    * @param ***REMOVED***number***REMOVED*** [value] - The button value. Only get for Gamepads.
+    * @param {object} [event] - The DOM event that triggered the button change.
+    * @param {number} [value] - The button value. Only get for Gamepads.
     */
-    stop: function (event, value) ***REMOVED***
+    stop: function (event, value) {
 
         if (this.isUp)
-        ***REMOVED***
+        {
             return;
-        ***REMOVED***
+        }
 
         this.isDown = false;
         this.isUp = true;
@@ -200,69 +200,69 @@ Phaser.DeviceButton.prototype = ***REMOVED***
         this.value = value;
 
         if (event)
-        ***REMOVED***
+        {
             this.altKey = event.altKey;
             this.shiftKey = event.shiftKey;
             this.ctrlKey = event.ctrlKey;
-        ***REMOVED***
+        }
 
         this.onUp.dispatch(this, value);
 
-    ***REMOVED***,
+    },
 
     /**
     * Called automatically by Phaser.SinglePad.
     * 
     * @method Phaser.DeviceButton#padFloat
     * @protected
-    * @param ***REMOVED***number***REMOVED*** value - Button value
+    * @param {number} value - Button value
     */
-    padFloat: function (value) ***REMOVED***
+    padFloat: function (value) {
 
         this.value = value;
 
         this.onFloat.dispatch(this, value);
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns the "just pressed" state of this button.
     * Just pressed is considered true if the button was pressed down within the duration given (default 250ms).
     * 
     * @method Phaser.DeviceButton#justPressed
-    * @param ***REMOVED***number***REMOVED*** [duration=250] - The duration in ms below which the button is considered as being just pressed.
-    * @return ***REMOVED***boolean***REMOVED*** True if the button is just pressed otherwise false.
+    * @param {number} [duration=250] - The duration in ms below which the button is considered as being just pressed.
+    * @return {boolean} True if the button is just pressed otherwise false.
     */
-    justPressed: function (duration) ***REMOVED***
+    justPressed: function (duration) {
 
         duration = duration || 250;
 
         return (this.isDown && (this.timeDown + duration) > this.game.time.time);
 
-    ***REMOVED***,
+    },
 
     /**
     * Returns the "just released" state of this button.
     * Just released is considered as being true if the button was released within the duration given (default 250ms).
     * 
     * @method Phaser.DeviceButton#justReleased
-    * @param ***REMOVED***number***REMOVED*** [duration=250] - The duration in ms below which the button is considered as being just released.
-    * @return ***REMOVED***boolean***REMOVED*** True if the button is just released otherwise false.
+    * @param {number} [duration=250] - The duration in ms below which the button is considered as being just released.
+    * @return {boolean} True if the button is just released otherwise false.
     */
-    justReleased: function (duration) ***REMOVED***
+    justReleased: function (duration) {
 
         duration = duration || 250;
 
         return (this.isUp && (this.timeUp + duration) > this.game.time.time);
 
-    ***REMOVED***,
+    },
 
     /**
     * Resets this DeviceButton, changing it to an isUp state and resetting the duration and repeats counters.
     * 
     * @method Phaser.DeviceButton#reset
     */
-    reset: function () ***REMOVED***
+    reset: function () {
 
         this.isDown = false;
         this.isUp = true;
@@ -274,7 +274,7 @@ Phaser.DeviceButton.prototype = ***REMOVED***
         this.shiftKey = false;
         this.ctrlKey = false;
 
-    ***REMOVED***,
+    },
 
     /**
     * Destroys this DeviceButton, this disposes of the onDown, onUp and onFloat signals 
@@ -282,7 +282,7 @@ Phaser.DeviceButton.prototype = ***REMOVED***
     * 
     * @method Phaser.DeviceButton#destroy
     */
-    destroy: function () ***REMOVED***
+    destroy: function () {
 
         this.onDown.dispose();
         this.onUp.dispose();
@@ -291,9 +291,9 @@ Phaser.DeviceButton.prototype = ***REMOVED***
         this.parent = null;
         this.game = null;
 
-    ***REMOVED***
+    }
 
-***REMOVED***;
+};
 
 Phaser.DeviceButton.prototype.constructor = Phaser.DeviceButton;
 
@@ -302,20 +302,20 @@ Phaser.DeviceButton.prototype.constructor = Phaser.DeviceButton;
 * If not currently down it returns -1.
 * 
 * @name Phaser.DeviceButton#duration
-* @property ***REMOVED***number***REMOVED*** duration
+* @property {number} duration
 * @readonly
 */
-Object.defineProperty(Phaser.DeviceButton.prototype, "duration", ***REMOVED***
+Object.defineProperty(Phaser.DeviceButton.prototype, "duration", {
 
-    get: function () ***REMOVED***
+    get: function () {
 
         if (this.isUp)
-        ***REMOVED***
+        {
             return -1;
-        ***REMOVED***
+        }
 
         return this.game.time.time - this.timeDown;
 
-    ***REMOVED***
+    }
 
-***REMOVED***);
+});

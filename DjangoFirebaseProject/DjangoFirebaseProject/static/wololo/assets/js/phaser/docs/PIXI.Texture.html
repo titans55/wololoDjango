@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -2166,7 +2166,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
             
 <dt>
     <h4 class="name "
-        id=".fromCanvas"><span class="type-signature">&lt;static> </span>fromCanvas<span class="signature">(canvas, scaleMode)</span><span class="type-signature"> &rarr; ***REMOVED***<a href="PIXI.Texture.html">PIXI.Texture</a>***REMOVED***</span></h4>
+        id=".fromCanvas"><span class="type-signature">&lt;static> </span>fromCanvas<span class="signature">(canvas, scaleMode)</span><span class="type-signature"> &rarr; {<a href="PIXI.Texture.html">PIXI.Texture</a>}</span></h4>
     
     
 </dt>
@@ -2248,7 +2248,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 
             
 
-            <td class="description last"><p>See ***REMOVED******REMOVED***#crossLink &quot;PIXI/scaleModes:property&quot;***REMOVED******REMOVED***PIXI.scaleModes***REMOVED******REMOVED***/crossLink***REMOVED******REMOVED*** for possible values</p></td>
+            <td class="description last"><p>See {{#crossLink &quot;PIXI/scaleModes:property&quot;}}PIXI.scaleModes{{/crossLink}} for possible values</p></td>
         </tr>
 
 	
@@ -2613,22 +2613,22 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

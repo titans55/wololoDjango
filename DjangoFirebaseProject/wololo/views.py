@@ -78,11 +78,11 @@ def createAccount(request):
 
         user = auth.sign_in_with_email_and_password(email, password)
         user_id = user['localId']
-        db.collection('players').document(user_id).set(***REMOVED***
+        db.collection('players').document(user_id).set({
             "clan": "",
             "regionSelected": False,
             "username": username
-        ***REMOVED***)
+        })
         user = auth.refresh(user['refreshToken']) #now we have 1 hour expiry token
         auth.send_email_verification(user['idToken'])
         print(user)
@@ -152,87 +152,87 @@ def selectingRegion(request):
         firstVillage._data['id'] = firstVillage.reference.id
         print(firstVillage._data['id'])
         now = datetime.datetime.now()
-        villageInfo = ***REMOVED***
+        villageInfo = {
             "villageName" : "Yigidin Harman Oldugu Yer",
-            "townCenter" : ***REMOVED***
+            "townCenter" : {
                 "level" : "1"
-            ***REMOVED***,
-            "barracks" : ***REMOVED***
+            },
+            "barracks" : {
                 "level" : "0"
-            ***REMOVED***,
-            "stable" : ***REMOVED***
+            },
+            "stable" : {
                 "level" : "0"
-            ***REMOVED***,
-            "workshop" : ***REMOVED***
+            },
+            "workshop" : {
                 "level" : "0"
-            ***REMOVED***,
-            "storage" : ***REMOVED***
+            },
+            "storage" : {
                 "level" : "1"
-            ***REMOVED***,
-            "farm" : ***REMOVED***
+            },
+            "farm" : {
                 "level" : "1"
-            ***REMOVED***,
-            "resources" : ***REMOVED***
-                "woodCamp" : ***REMOVED***
+            },
+            "resources" : {
+                "woodCamp" : {
                     "lastInteractionDate" : now,
                     "level" : "0",
                     "sum" : 0,
-                ***REMOVED***,
-                "ironMine" : ***REMOVED***
+                },
+                "ironMine" : {
                     "lastInteractionDate" : now,
                     "level" : "0",
                     "sum" : 0,
-                ***REMOVED***,
-                "clayPit" : ***REMOVED***
+                },
+                "clayPit" : {
                     "lastInteractionDate" : now,
                     "level" : "0",
                     "sum" : 0,
-                ***REMOVED***
-            ***REMOVED***,
-            "troops" : ***REMOVED***
-                "inVillage" : ***REMOVED***
-                    "infantry" :  ***REMOVED***
+                }
+            },
+            "troops" : {
+                "inVillage" : {
+                    "infantry" :  {
                         "Spearman" : 0,
                         "Swordsman" : 0,
                         "Axeman" : 0,
                         "Archer" : 0
-                    ***REMOVED***,
-                    "cavalry" : ***REMOVED***
+                    },
+                    "cavalry" : {
                         "Scout" : 0,
                         "Light Cavalry": 0,
                         "Heavy Cavalry" : 0
-                    ***REMOVED***,
-                    "siegeWeapons" : ***REMOVED***
+                    },
+                    "siegeWeapons" : {
                         "Ram" : 0,
                         "Catapult": 0
-                    ***REMOVED***
-                ***REMOVED***,
+                    }
+                },
                 "onMove" : [
                 ],
-                "total" : ***REMOVED***
-                    "infantry" :  ***REMOVED***
+                "total" : {
+                    "infantry" :  {
                         "Spearman" : 0,
                         "Swordsman" : 0,
                         "Axeman" : 0,
                         "Archer" : 0
-                    ***REMOVED***,
-                    "cavalry" : ***REMOVED***
+                    },
+                    "cavalry" : {
                         "Scout" : 0,
                         "Light Cavalry": 0,
                         "Heavy Cavalry" : 0
-                    ***REMOVED***,
-                    "siegeWeapons" : ***REMOVED***
+                    },
+                    "siegeWeapons" : {
                         "Ram" : 0,
                         "Catapult": 0
-                    ***REMOVED***
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                    }
+                }
+            }
+        }
         db.collection('players').document(user_id).collection('villages').document(firstVillage._data['id']).set(villageInfo)
-        db.collection('villages').document(firstVillage._data['id']).update(***REMOVED***'user_id': user_id***REMOVED***)
-        db.collection('villages').document(firstVillage._data['id']).update(***REMOVED***'playerName':userInfo['username']***REMOVED***)
-        db.collection('villages').document(firstVillage._data['id']).update(***REMOVED***'villageName':'Yigidin Harman Oldugu Yer'***REMOVED***)
-        db.collection('players').document(user_id).update(***REMOVED***'regionSelected' : True***REMOVED***)
+        db.collection('villages').document(firstVillage._data['id']).update({'user_id': user_id})
+        db.collection('villages').document(firstVillage._data['id']).update({'playerName':userInfo['username']})
+        db.collection('villages').document(firstVillage._data['id']).update({'villageName':'Yigidin Harman Oldugu Yer'})
+        db.collection('players').document(user_id).update({'regionSelected' : True})
     return redirect('myVillage')
 
 @myuser_login_required
@@ -293,101 +293,101 @@ def villages(request, village_index=None):
         return redirect("selectRegion")
     
         # db.collection('players').document(user_id).collection('villages').document(village._data['id']).update(
-        #     ***REMOVED***
-        #         "troops" : ***REMOVED***
-        #             "inVillage" : ***REMOVED***
-        #                 "infantry" :  ***REMOVED***
+        #     {
+        #         "troops" : {
+        #             "inVillage" : {
+        #                 "infantry" :  {
         #                     "Spearman" : 0,
         #                     "Swordsman" : 0,
         #                     "Axeman" : 0,
         #                     "Archer" : 0
-        #                 ***REMOVED***,
-        #                 "cavalry" : ***REMOVED***
+        #                 },
+        #                 "cavalry" : {
         #                     "Scout" : 0,
         #                     "Light Cavalry": 0,
         #                     "Heavy Cavalry" : 0
-        #                 ***REMOVED***,
-        #                 "siegeWeapons" : ***REMOVED***
+        #                 },
+        #                 "siegeWeapons" : {
         #                     "Ram" : 0,
         #                     "Catapult": 0
-        #                 ***REMOVED***
-        #             ***REMOVED***,
+        #                 }
+        #             },
         #             "onMove" : [
-        #                 # ***REMOVED***
+        #                 # {
         #                 #     "from" : "fromVillageID",
         #                 #     "to" : "targetVillageID",
         #                 #     "movementType" : "Attack/Support",
         #                 #     "state" : "going/returning",
         #                 #     "arrivalTime" : "timestamp"
         #                 #     "troops": [
-        #                 #         ***REMOVED***
+        #                 #         {
         #                 #             "unitName" : "Spearman"
         #                 #             "unitType" : "Infantry",
         #                 #             "size" : 0
-        #                 #         ***REMOVED***,
-        #                 #         ***REMOVED***
+        #                 #         },
+        #                 #         {
         #                 #             "unitName" : "Swordsman",
         #                 #             "unitType" : "Infantry",
         #                 #             "size" : 0
-        #                 #         ***REMOVED***
+        #                 #         }
         #                 #     ]
-        #                 # ***REMOVED***
+        #                 # }
         #             ],
-        #             "total" : ***REMOVED***
-        #                 "infantry" :  ***REMOVED***
+        #             "total" : {
+        #                 "infantry" :  {
         #                     "Spearman" : 40,
         #                     "Swordsman" : 0,
         #                     "Axeman" : 0,
         #                     "Archer" : 0
-        #                 ***REMOVED***,
-        #                 "cavalry" : ***REMOVED***
+        #                 },
+        #                 "cavalry" : {
         #                     "Scout" : 0,
         #                     "Light Cavalry": 0,
         #                     "Heavy Cavalry" : 0
-        #                 ***REMOVED***,
-        #                 "siegeWeapons" : ***REMOVED***
+        #                 },
+        #                 "siegeWeapons" : {
         #                     "Ram" : 0,
         #                     "Catapult": 0
-        #                 ***REMOVED***
-        #             ***REMOVED***,
-        #         ***REMOVED***
-        #     ***REMOVED***
+        #                 }
+        #             },
+        #         }
+        #     }
         # )
 
         # now = datetime.datetime.now()
         # db.collection('players').document(user_id).collection('villages').document(village._data['id']).update(
-        #     ***REMOVED***
-        #         "resources" : ***REMOVED***
-        #             "woodCamp" : ***REMOVED***
+        #     {
+        #         "resources" : {
+        #             "woodCamp" : {
         #                 "lastInteractionDate" : now,
         #                 "level" : "0",
         #                 "sum" : 0,
-        #             ***REMOVED***,
-        #             "ironMine" : ***REMOVED***
+        #             },
+        #             "ironMine" : {
         #                 "lastInteractionDate" : now,
         #                 "level" : "0",
         #                 "sum" : 0,
-        #             ***REMOVED***,
-        #             "clayPit" : ***REMOVED***
+        #             },
+        #             "clayPit" : {
         #                 "lastInteractionDate" : now,
         #                 "level" : "0",
         #                 "sum" : 0,
-        #             ***REMOVED***
-        #         ***REMOVED***
-        #     ***REMOVED***
+        #             }
+        #         }
+        #     }
         # )
 
     selected_village_index = getVillageIndex(request, user, village_index)
     if(selected_village_index is 'outOfList'):
         return('barracks')
 
-    data = ***REMOVED*** 
+    data = { 
         'villages_info' : user.myVillages,
         'selectedVillage': user.myVillages[selected_village_index],
         'gameConfig' : gameConfig,
         'page' : 'myVillages'
-    ***REMOVED***
-    return render(request, 'villages.html', ***REMOVED***'myVillages':user.myVillages, 'data' : data***REMOVED***)
+    }
+    return render(request, 'villages.html', {'myVillages':user.myVillages, 'data' : data})
 @myuser_login_required
 def map(request, village_index=None):
 
@@ -408,19 +408,19 @@ def map(request, village_index=None):
                 village._data['owner'] = True
                 for myVillage in user.myVillages:
                     if (village._data['village_id'] == myVillage['id']):
-                        myVillage['coords'] = ***REMOVED***
+                        myVillage['coords'] = {
                             'x' : village._data['coords']['x'],
                             'y' : village._data['coords']['y']
-                        ***REMOVED***
+                        }
             publicVillagesInfo.append(village._data)
 
-    data = ***REMOVED*** 
+    data = { 
         'selectedVillage': user.myVillages[selected_village_index],
         'gameConfig' : gameConfig,
         'page' : 'map'
-    ***REMOVED***
+    }
 
-    return render(request, 'map.html', ***REMOVED***'publicVillages' : json.dumps(publicVillagesInfo), 'myVillages':user.myVillages, 'data' : data ***REMOVED***)
+    return render(request, 'map.html', {'publicVillages' : json.dumps(publicVillagesInfo), 'myVillages':user.myVillages, 'data' : data })
 @myuser_login_required    
 def clans(request):
     user_id = request.session['userID']
@@ -450,10 +450,10 @@ def barracks(request, village_index=None):
         return('barracks')
 
     print (user.myVillages)
-    data = ***REMOVED*** 
+    data = { 
         'selectedVillage': user.myVillages[selected_village_index],
         'gameConfig' : gameConfig,
         'page' : 'barracks'
-    ***REMOVED***
+    }
 
-    return render(request, 'barracks.html', ***REMOVED***'myVillages':user.myVillages, 'data' : data ***REMOVED***)
+    return render(request, 'barracks.html', {'myVillages':user.myVillages, 'data' : data })

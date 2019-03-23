@@ -1028,7 +1028,7 @@
 						
 						<li class="class-depth-2">
 							<a href="global.html#Phaser.Path#numPointsreturn%257Bnumber%257DThetotalnumberofPathPointsinthisPath.">Phaser.Path#numPoints
-return ***REMOVED***number***REMOVED*** The total number of PathPoints in this Path.</a>
+return {number} The total number of PathPoints in this Path.</a>
 						</li>
 						
 						<li class="class-depth-0">
@@ -3350,7 +3350,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
             
 <dt>
     <h4 class="name "
-        id="deltaAbsX"><span class="type-signature"></span>deltaAbsX<span class="signature">()</span><span class="type-signature"> &rarr; ***REMOVED***number***REMOVED***</span></h4>
+        id="deltaAbsX"><span class="type-signature"></span>deltaAbsX<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span></h4>
     
     
 </dt>
@@ -3440,7 +3440,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
             
 <dt>
     <h4 class="name "
-        id="deltaAbsY"><span class="type-signature"></span>deltaAbsY<span class="signature">()</span><span class="type-signature"> &rarr; ***REMOVED***number***REMOVED***</span></h4>
+        id="deltaAbsY"><span class="type-signature"></span>deltaAbsY<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span></h4>
     
     
 </dt>
@@ -3530,7 +3530,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
             
 <dt>
     <h4 class="name "
-        id="deltaX"><span class="type-signature"></span>deltaX<span class="signature">()</span><span class="type-signature"> &rarr; ***REMOVED***number***REMOVED***</span></h4>
+        id="deltaX"><span class="type-signature"></span>deltaX<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span></h4>
     
     
 </dt>
@@ -3620,7 +3620,7 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
             
 <dt>
     <h4 class="name "
-        id="deltaY"><span class="type-signature"></span>deltaY<span class="signature">()</span><span class="type-signature"> &rarr; ***REMOVED***number***REMOVED***</span></h4>
+        id="deltaY"><span class="type-signature"></span>deltaY<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span></h4>
     
     
 </dt>
@@ -4369,22 +4369,22 @@ return ***REMOVED***number***REMOVED*** The total number of PathPoints in this P
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/toc.js"></script>
 
-	<script>  Sunlight.highlightAll(***REMOVED***lineNumbers:true,  showMenu: true, enableDoclinks :true***REMOVED***); </script>
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
 
 	<script>
-		$( function () ***REMOVED***
-			$( "#toc" ).toc( ***REMOVED***
-				anchorName  : function(i, heading, prefix) ***REMOVED***
+		$( function () {
+			$( "#toc" ).toc( {
+				anchorName  : function(i, heading, prefix) {
 					return $(heading).attr("id") || ( prefix + i );
-				***REMOVED***,
+				},
 				selectors   : "h1,h2,h3,h4",
 				showAndHide : false,
 				scrollTo    : 60
-			***REMOVED*** );
+			} );
 			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
 			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
 
-		***REMOVED*** );
+		} );
 	</script>
 
 	

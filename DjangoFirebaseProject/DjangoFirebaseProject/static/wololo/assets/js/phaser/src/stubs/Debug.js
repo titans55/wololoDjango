@@ -1,7 +1,7 @@
 /**
 * @author       Steven Rogers <soldoutactivist@gmail.com>
 * @copyright    2016 Photon Storm Ltd.
-* @license      ***REMOVED***@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License***REMOVED***
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
 /**
@@ -9,11 +9,11 @@
 * It allows you to exclude the default Debug from your build, without making Game crash.
 */
 
-var debugNoop = function () ***REMOVED******REMOVED***;
+var debugNoop = function () {};
 
 Phaser.Utils.Debug = debugNoop;
 
-Phaser.Utils.Debug.prototype = ***REMOVED***
+Phaser.Utils.Debug.prototype = {
     isDisabled: true,
 
     boot: debugNoop,
@@ -43,6 +43,6 @@ Phaser.Utils.Debug.prototype = ***REMOVED***
     bodyInfo: debugNoop,
     box2dWorld: debugNoop,
     box2dBody: debugNoop
-***REMOVED***;
+};
 
 Phaser.Utils.Debug.prototype.constructor = Phaser.Utils.Debug;

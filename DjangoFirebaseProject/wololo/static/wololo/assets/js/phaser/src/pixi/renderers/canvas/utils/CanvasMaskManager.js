@@ -9,8 +9,8 @@
  * @constructor
  */
 PIXI.CanvasMaskManager = function()
-***REMOVED***
-***REMOVED***;
+{
+};
 
 PIXI.CanvasMaskManager.prototype.constructor = PIXI.CanvasMaskManager;
 
@@ -18,10 +18,10 @@ PIXI.CanvasMaskManager.prototype.constructor = PIXI.CanvasMaskManager;
  * This method adds it to the current stack of masks.
  *
  * @method pushMask
- * @param maskData ***REMOVED***Object***REMOVED*** the maskData that will be pushed
- * @param renderSession ***REMOVED***Object***REMOVED*** The renderSession whose context will be used for this mask manager.
+ * @param maskData {Object} the maskData that will be pushed
+ * @param renderSession {Object} The renderSession whose context will be used for this mask manager.
  */
-PIXI.CanvasMaskManager.prototype.pushMask = function(maskData, renderSession) ***REMOVED***
+PIXI.CanvasMaskManager.prototype.pushMask = function(maskData, renderSession) {
 
 	var context = renderSession.context;
 
@@ -44,15 +44,15 @@ PIXI.CanvasMaskManager.prototype.pushMask = function(maskData, renderSession) **
     context.clip();
 
     maskData.worldAlpha = cacheAlpha;
-***REMOVED***;
+};
 
 /**
  * Restores the current drawing context to the state it was before the mask was applied.
  *
  * @method popMask
- * @param renderSession ***REMOVED***Object***REMOVED*** The renderSession whose context will be used for this mask manager.
+ * @param renderSession {Object} The renderSession whose context will be used for this mask manager.
  */
 PIXI.CanvasMaskManager.prototype.popMask = function(renderSession)
-***REMOVED***
+{
     renderSession.context.restore();
-***REMOVED***;
+};

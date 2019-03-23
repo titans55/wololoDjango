@@ -1,62 +1,62 @@
 ﻿/// <reference path="phaser.d.ts" />
 /// <reference path="box2d.d.ts" />
 
-declare module Phaser ***REMOVED***
+declare module Phaser {
 
-    module Physics ***REMOVED***
+    module Physics {
 
-        class Box2D ***REMOVED***
+        class Box2D {
 
             constructor(game: Phaser.Game, config?: any);
 
-            // @property ***REMOVED***Phaser.Game***REMOVED*** game - Local reference to game.
+            // @property {Phaser.Game} game - Local reference to game.
             game: Phaser.Game;
-            // @property ***REMOVED***string***REMOVED*** version - The version of the Box2D Plugin that is running.
+            // @property {string} version - The version of the Box2D Plugin that is running.
             version: string;
-            // @property ***REMOVED***number***REMOVED*** ptmRatio - Pixels to Meters ratio - @default 50
+            // @property {number} ptmRatio - Pixels to Meters ratio - @default 50
             ptmRatio: number;
-            // @property ***REMOVED***box2d.b2World***REMOVED*** world - The Box2D world in which the simulation is run.
+            // @property {box2d.b2World} world - The Box2D world in which the simulation is run.
             world: box2d.b2World;
-            // @property ***REMOVED***Phaser.Physics.Box2D.DefaultDebugDraw***REMOVED*** - used for rendering debug information
+            // @property {Phaser.Physics.Box2D.DefaultDebugDraw} - used for rendering debug information
             debugDraw: Box2D.DefaultDebugDraw;
-            // @property ***REMOVED***Phaser.Physics.Box2D.DefaultContactListener***REMOVED*** - used to check if bodies have contact callbacks set
+            // @property {Phaser.Physics.Box2D.DefaultContactListener} - used to check if bodies have contact callbacks set
             contactListener: Box2D.DefaultContactListener;
-            // @property ***REMOVED***number***REMOVED*** nextBodyId - The id to give the next created body
+            // @property {number} nextBodyId - The id to give the next created body
             nextBodyId: number;
-            //  @property ***REMOVED***number***REMOVED*** nextFixtureId - The id to give the next created fixture
+            //  @property {number} nextFixtureId - The id to give the next created fixture
             nextFixtureId: number;
-            // @property ***REMOVED***box2d.b2Vec2***REMOVED*** gravity - The gravity of the Box2D world.
+            // @property {box2d.b2Vec2} gravity - The gravity of the Box2D world.
             gravity: Box2D.PointProxy;
-            // @property ***REMOVED***number***REMOVED*** friction - The default friction for fixtures created by 'enable', or other functions like setRectangle, setPolygon etc
+            // @property {number} friction - The default friction for fixtures created by 'enable', or other functions like setRectangle, setPolygon etc
             friction: number;
-            // @property ***REMOVED***number***REMOVED*** restitution - The default restitution for fixtures created by 'enable', or other functions like setRectangle, setPolygon etc
+            // @property {number} restitution - The default restitution for fixtures created by 'enable', or other functions like setRectangle, setPolygon etc
             restitution: number;
-            // @property ***REMOVED***number***REMOVED*** density - The default density for fixtures created by 'enable', or other functions like setRectangle, setPolygon etc
+            // @property {number} density - The default density for fixtures created by 'enable', or other functions like setRectangle, setPolygon etc
             density: number;
-            // @property ***REMOVED***number***REMOVED*** frameRate - The frame rate the world will be stepped at. Defaults to 1 / 60, but you can change here. Also see useElapsedTime property.
+            // @property {number} frameRate - The frame rate the world will be stepped at. Defaults to 1 / 60, but you can change here. Also see useElapsedTime property.
             frameRate: number;
-            // @property ***REMOVED***number***REMOVED*** velocityIterations - The maximum number of iterations allowed to adjust velocities to match constraints. Defaults to 8.
+            // @property {number} velocityIterations - The maximum number of iterations allowed to adjust velocities to match constraints. Defaults to 8.
             velocityIterations: number;
-            // @property ***REMOVED***number***REMOVED*** positionIterations - The maximum number of iterations allowed to adjust positions to match constraints. Defaults to 3.
+            // @property {number} positionIterations - The maximum number of iterations allowed to adjust positions to match constraints. Defaults to 3.
             positionIterations: number;
-            // @property ***REMOVED***boolean***REMOVED*** useElapsedTime - If true the frameRate value will be ignored and instead Box2D will step with the value of Game.Time.physicsElapsed, which is a delta time value.
+            // @property {boolean} useElapsedTime - If true the frameRate value will be ignored and instead Box2D will step with the value of Game.Time.physicsElapsed, which is a delta time value.
             useElapsedTime: boolean;
-            // @property ***REMOVED***boolean***REMOVED*** paused - The paused state of the Box2D world.
+            // @property {boolean} paused - The paused state of the Box2D world.
             paused: boolean;
-            // @property ***REMOVED***box2d.b2ParticleSystem***REMOVED*** particleSystem - The World Particle System. Enabled with World.createParticleSystem.
+            // @property {box2d.b2ParticleSystem} particleSystem - The World Particle System. Enabled with World.createParticleSystem.
             particleSystem: box2d.b2ParticleSystem;
-            // @property ***REMOVED***box2d.b2Body***REMOVED*** mouseJointBody - A static body with no fixtures, used internally as the 'body A' for mouse joints when dragging dynamic bodies.
+            // @property {box2d.b2Body} mouseJointBody - A static body with no fixtures, used internally as the 'body A' for mouse joints when dragging dynamic bodies.
             mouseJointBody: box2d.b2Body;
-            // @property ***REMOVED***box2d.b2MouseJoint***REMOVED*** mouseJoint - The active mouse joint for dragging dynamic bodies.
+            // @property {box2d.b2MouseJoint} mouseJoint - The active mouse joint for dragging dynamic bodies.
             mouseJoint: box2d.b2MouseJoint;
             // Pixel to meter function overrides. 
             // mpx: Function;
             // pxm: Function;
-            // @property ***REMOVED***object***REMOVED*** walls - An object containing the 4 wall bodies that bound the physics world.
+            // @property {object} walls - An object containing the 4 wall bodies that bound the physics world.
             walls: Box2D.WallsObject;
-            // @property ***REMOVED***Phaser.Signal***REMOVED*** onBodyAdded - Dispatched when a new Body is added to the World.
+            // @property {Phaser.Signal} onBodyAdded - Dispatched when a new Body is added to the World.
             onBodyAdded: Phaser.Signal;
-            // @property ***REMOVED***Phaser.Signal***REMOVED*** onBodyRemoved - Dispatched when a Body is removed from the World.
+            // @property {Phaser.Signal} onBodyRemoved - Dispatched when a Body is removed from the World.
             onBodyRemoved: Phaser.Signal;
 
             static worldBoundsFilterCategory: number;
@@ -209,12 +209,12 @@ declare module Phaser ***REMOVED***
 
             // If the PTM ratio is changed after creating the world, the debug draw scale needs to be updated.
             setPTMRatio(newRatio: number): void;
-        ***REMOVED***
+        }
 
 
-        module Box2D ***REMOVED***
+        module Box2D {
 
-            class DefaultDebugDraw ***REMOVED***
+            class DefaultDebugDraw {
 
                 constructor(pixelsPerMeter: number);
 
@@ -253,16 +253,16 @@ declare module Phaser ***REMOVED***
                 shapes: boolean;
                 // joints - Specifies whether the debug draw should render joints.
                 joints: boolean;
-                //  @property ***REMOVED***boolean***REMOVED*** aabbs - Specifies whether the debug draw should render fixture AABBs.
+                //  @property {boolean} aabbs - Specifies whether the debug draw should render fixture AABBs.
                 aabbs: boolean;
-                // @property ***REMOVED***boolean***REMOVED*** pairs - Specifies whether the debug draw should render contact pairs.
+                // @property {boolean} pairs - Specifies whether the debug draw should render contact pairs.
                 pairs: boolean;
-                // @property ***REMOVED***boolean***REMOVED*** centerOfMass - Specifies whether the debug draw should render the center of mass of bodies.
+                // @property {boolean} centerOfMass - Specifies whether the debug draw should render the center of mass of bodies.
                 centerOfMass: boolean;
-            ***REMOVED***
+            }
 
 
-            class DefaultContactListener ***REMOVED***
+            class DefaultContactListener {
 
                 constructor();
 
@@ -278,41 +278,41 @@ declare module Phaser ***REMOVED***
                 PreSolve(contact: box2d.b2Contact, oldManifold: box2d.b2Manifold): void;
                 // This lets you inspect a contact after the solver is finished. 
                 PostSolve(contact: box2d.b2Contact, impulse: box2d.b2ContactImpulse): void;
-            ***REMOVED***
+            }
 
 
-            class PointProxy ***REMOVED***
+            class PointProxy {
 
                 constructor(world: Physics.Box2D, object: any, gettor: Function, settor: Function);
 
                 x: number;
                 y: number;
-            ***REMOVED***
+            }
 
 
-            class Body ***REMOVED***
+            class Body {
 
                 constructor(game: Phaser.Game, sprite: Phaser.Sprite, x?: number, y?: number, density?: number, world?: Physics.Box2D);
 
-                // @property ***REMOVED***Phaser.Game***REMOVED*** game - Local reference to game.
+                // @property {Phaser.Game} game - Local reference to game.
                 game: Phaser.Game;
-                // @property ***REMOVED***Phaser.Physics.Box2D***REMOVED*** world - Local reference to the Box2D World.
+                // @property {Phaser.Physics.Box2D} world - Local reference to the Box2D World.
                 world: Physics.Box2D;
-                // @property ***REMOVED***number***REMOVED*** id - a unique id for this body in the world
+                // @property {number} id - a unique id for this body in the world
                 id: number;
-                // @property ***REMOVED***Phaser.Sprite***REMOVED*** sprite - Reference to the parent Sprite.
+                // @property {Phaser.Sprite} sprite - Reference to the parent Sprite.
                 sprite: Phaser.Sprite;
-                // @property ***REMOVED***number***REMOVED*** type - The type of physics system this body belongs to.
+                // @property {number} type - The type of physics system this body belongs to.
                 type: number;
-                // @property ***REMOVED***Phaser.Point***REMOVED*** offset - The offset of the Physics Body from the Sprite x/y position.
+                // @property {Phaser.Point} offset - The offset of the Physics Body from the Sprite x/y position.
                 offset: Phaser.Point;
-                // @property ***REMOVED***box2d.b2BodyDef***REMOVED*** bodyDef - The Box2D body definition
+                // @property {box2d.b2BodyDef} bodyDef - The Box2D body definition
                 bodyDef: box2d.b2BodyDef;
-                // @property ***REMOVED***box2d.b2Body***REMOVED*** data - The Box2D body data.
+                // @property {box2d.b2Body} data - The Box2D body data.
                 data: box2d.b2Body;
-                // @property ***REMOVED***Phaser.Physics.Box2D.PointProxy***REMOVED*** velocity - The velocity of the body. Set velocity.x to a negative value to move to the left, position to the right. velocity.y negative values move up, positive move down.
+                // @property {Phaser.Physics.Box2D.PointProxy} velocity - The velocity of the body. Set velocity.x to a negative value to move to the left, position to the right. velocity.y negative values move up, positive move down.
                 velocity: Box2D.PointProxy;
-                // @property ***REMOVED***boolean***REMOVED*** removeNextStep - To avoid deleting this body during a physics step, and causing all kinds of problems, set removeNextStep to true to have it removed in the next preUpdate.
+                // @property {boolean} removeNextStep - To avoid deleting this body during a physics step, and causing all kinds of problems, set removeNextStep to true to have it removed in the next preUpdate.
                 removeNextStep: boolean;
 
                 //  Sets a callback to be fired any time a fixture in this Body begins or ends contact with a fixture in the given Body. 
@@ -445,64 +445,64 @@ declare module Phaser ***REMOVED***
                 // Phaser.Physics.Box2D.getBodiesAtPoint for that.)
                 containsPoint(point: Phaser.Point): boolean;
 
-                // @property ***REMOVED***boolean***REMOVED*** static - Returns true if the Body is static. Setting Body.static to 'false' will make it dynamic.
+                // @property {boolean} static - Returns true if the Body is static. Setting Body.static to 'false' will make it dynamic.
                 static: boolean;
-                // @property ***REMOVED***boolean***REMOVED*** dynamic - Returns true if the Body is dynamic. Setting Body.dynamic to 'false' will make it static.
+                // @property {boolean} dynamic - Returns true if the Body is dynamic. Setting Body.dynamic to 'false' will make it static.
                 dynamic: boolean;
-                // @property ***REMOVED***boolean***REMOVED*** kinematic - Returns true if the Body is kinematic. Setting Body.kinematic to 'false' will make it static.
+                // @property {boolean} kinematic - Returns true if the Body is kinematic. Setting Body.kinematic to 'false' will make it static.
                 kinematic: boolean;
 
-                // @property ***REMOVED***number***REMOVED*** angle - The angle of this Body in degrees.
+                // @property {number} angle - The angle of this Body in degrees.
                 angle: number;
-                // @property ***REMOVED***number***REMOVED*** linearDamping - The linear damping acting acting on the body.
+                // @property {number} linearDamping - The linear damping acting acting on the body.
                 linearDamping: number;
-                // @property ***REMOVED***number***REMOVED*** angularDamping - The angular damping acting acting on the body.
+                // @property {number} angularDamping - The angular damping acting acting on the body.
                 angularDamping: number;
-                // @property ***REMOVED***number***REMOVED*** angularVelocity - The angular velocity of the body.
+                // @property {number} angularVelocity - The angular velocity of the body.
                 angularVelocity: number;
-                // @property ***REMOVED***boolean***REMOVED*** fixedRotation - If true, the body will not rotate.
+                // @property {boolean} fixedRotation - If true, the body will not rotate.
                 fixedRotation: boolean;
-                // @property ***REMOVED***number***REMOVED*** gravityScale - Set to zero to completely ignore gravity, or negative values to reverse gravity for this body.
+                // @property {number} gravityScale - Set to zero to completely ignore gravity, or negative values to reverse gravity for this body.
                 gravityScale: number;
-                // @property ***REMOVED***number***REMOVED*** friction - When setting, all fixtures on the body will be set to the given friction. When getting, the friction of the first fixture will be returned, or zero if no fixtures are present.
+                // @property {number} friction - When setting, all fixtures on the body will be set to the given friction. When getting, the friction of the first fixture will be returned, or zero if no fixtures are present.
                 friction: number;
-                // @property ***REMOVED***number***REMOVED*** restitution - When setting, all fixtures on the body will be set to the given restitution. When getting, the restitution of the first fixture will be returned, or zero if no fixtures are present.
+                // @property {number} restitution - When setting, all fixtures on the body will be set to the given restitution. When getting, the restitution of the first fixture will be returned, or zero if no fixtures are present.
                 restitution: number;
-                // @property ***REMOVED***boolean***REMOVED*** sensor - When setting, all fixtures on the body will be set to the given sensor status. When getting, the sensor status of the first fixture will be returned, or false if no fixtures are present.
+                // @property {boolean} sensor - When setting, all fixtures on the body will be set to the given sensor status. When getting, the sensor status of the first fixture will be returned, or false if no fixtures are present.
                 sensor: boolean;
-                // @property ***REMOVED***boolean***REMOVED*** bullet - Set to true to give the body 'bullet' status, and use continous collision detection when moving it.
+                // @property {boolean} bullet - Set to true to give the body 'bullet' status, and use continous collision detection when moving it.
                 bullet: boolean;
-                // @property ***REMOVED***number***REMOVED*** mass - the new mass for the body. Setting this to zero will cause the body to become a static body.
+                // @property {number} mass - the new mass for the body. Setting this to zero will cause the body to become a static body.
                 mass: number;
-                // @property ***REMOVED***number***REMOVED*** rotation - The angle of this Body in radians.
+                // @property {number} rotation - The angle of this Body in radians.
                 rotation: number;
-                // @property ***REMOVED***number***REMOVED*** x - The x coordinate of this Body.
+                // @property {number} x - The x coordinate of this Body.
                 x: number;
-                // @property ***REMOVED***number***REMOVED*** y - The y coordinate of this Body.
+                // @property {number} y - The y coordinate of this Body.
                 y: number;
-                // @property ***REMOVED***boolean***REMOVED*** collideWorldBounds - Should the Body collide with the World bounds?
+                // @property {boolean} collideWorldBounds - Should the Body collide with the World bounds?
                 collideWorldBounds: boolean;
-            ***REMOVED***
+            }
 
 
-            class WallsObject ***REMOVED***
+            class WallsObject {
                 left: any;
                 right: any;
                 top: any;
                 bottom: any;
-            ***REMOVED***
+            }
 
 
-            class AABBHit ***REMOVED***
+            class AABBHit {
                 body: Box2D.Body;
                 fixture: box2d.b2Fixture;
-            ***REMOVED***
+            }
 
 
-            class RaycastHit extends AABBHit ***REMOVED***
+            class RaycastHit extends AABBHit {
                 point: Phaser.Point;
                 normal: Phaser.Point;
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
-***REMOVED***
+            }
+        }
+    }
+}
