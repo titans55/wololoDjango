@@ -1,0 +1,264 @@
+body ***REMOVED***
+    direction: rtl;
+***REMOVED***
+
+/* LOGIN */
+
+.login .form-row ***REMOVED***
+    float: right;
+***REMOVED***
+
+.login .form-row label ***REMOVED***
+    float: right;
+    padding-left: 0.5em;
+    padding-right: 0;
+    text-align: left;
+***REMOVED***
+
+.login .submit-row ***REMOVED***
+    clear: both;
+    padding: 1em 9.4em 0 0;
+***REMOVED***
+
+/* GLOBAL */
+
+th ***REMOVED***
+    text-align: right;
+***REMOVED***
+
+.module h2, .module caption ***REMOVED***
+    text-align: right;
+***REMOVED***
+
+.module ul, .module ol ***REMOVED***
+    margin-left: 0;
+    margin-right: 1.5em;
+***REMOVED***
+
+.viewlink, .addlink, .changelink ***REMOVED***
+    padding-left: 0;
+    padding-right: 16px;
+    background-position: 100% 1px;
+***REMOVED***
+
+.deletelink ***REMOVED***
+    padding-left: 0;
+    padding-right: 16px;
+    background-position: 100% 1px;
+***REMOVED***
+
+.object-tools ***REMOVED***
+    float: left;
+***REMOVED***
+
+thead th:first-child,
+tfoot td:first-child ***REMOVED***
+    border-left: none;
+***REMOVED***
+
+/* LAYOUT */
+
+#user-tools ***REMOVED***
+    right: auto;
+    left: 0;
+    text-align: left;
+***REMOVED***
+
+div.breadcrumbs ***REMOVED***
+    text-align: right;
+***REMOVED***
+
+#content-main ***REMOVED***
+    float: right;
+***REMOVED***
+
+#content-related ***REMOVED***
+    float: left;
+    margin-left: -300px;
+    margin-right: auto;
+***REMOVED***
+
+.colMS ***REMOVED***
+    margin-left: 300px;
+    margin-right: 0;
+***REMOVED***
+
+/* SORTABLE TABLES */
+
+table thead th.sorted .sortoptions ***REMOVED***
+   float: left;
+***REMOVED***
+
+thead th.sorted .text ***REMOVED***
+    padding-right: 0;
+    padding-left: 42px;
+***REMOVED***
+
+/* dashboard styles */
+
+.dashboard .module table td a ***REMOVED***
+    padding-left: .6em;
+    padding-right: 16px;
+***REMOVED***
+
+/* changelists styles */
+
+.change-list .filtered table ***REMOVED***
+    border-left: none;
+    border-right: 0px none;
+***REMOVED***
+
+#changelist-filter ***REMOVED***
+    right: auto;
+    left: 0;
+    border-left: none;
+    border-right: none;
+***REMOVED***
+
+.change-list .filtered .results, .change-list .filtered .paginator, .filtered #toolbar, .filtered div.xfull ***REMOVED***
+    margin-right: 0;
+    margin-left: 280px;
+***REMOVED***
+
+#changelist-filter li.selected ***REMOVED***
+    border-left: none;
+    padding-left: 10px;
+    margin-left: 0;
+    border-right: 5px solid #eaeaea;
+    padding-right: 10px;
+    margin-right: -15px;
+***REMOVED***
+
+.filtered .actions ***REMOVED***
+    margin-left: 280px;
+    margin-right: 0;
+***REMOVED***
+
+#changelist table tbody td:first-child, #changelist table tbody th:first-child ***REMOVED***
+    border-right: none;
+    border-left: none;
+***REMOVED***
+
+/* FORMS */
+
+.aligned label ***REMOVED***
+    padding: 0 0 3px 1em;
+    float: right;
+***REMOVED***
+
+.submit-row ***REMOVED***
+    text-align: left
+***REMOVED***
+
+.submit-row p.deletelink-box ***REMOVED***
+    float: right;
+***REMOVED***
+
+.submit-row input.default ***REMOVED***
+    margin-left: 0;
+***REMOVED***
+
+.vDateField, .vTimeField ***REMOVED***
+    margin-left: 2px;
+***REMOVED***
+
+.aligned .form-row input ***REMOVED***
+    margin-left: 5px;
+***REMOVED***
+
+form .aligned p.help, form .aligned div.help ***REMOVED***
+    clear: right;
+***REMOVED***
+
+form ul.inline li ***REMOVED***
+    float: right;
+    padding-right: 0;
+    padding-left: 7px;
+***REMOVED***
+
+input[type=submit].default, .submit-row input.default ***REMOVED***
+    float: left;
+***REMOVED***
+
+fieldset .fieldBox ***REMOVED***
+    float: right;
+    margin-left: 20px;
+    margin-right: 0;
+***REMOVED***
+
+.errorlist li ***REMOVED***
+    background-position: 100% 12px;
+    padding: 0;
+***REMOVED***
+
+.errornote ***REMOVED***
+    background-position: 100% 12px;
+    padding: 10px 12px;
+***REMOVED***
+
+/* WIDGETS */
+
+.calendarnav-previous ***REMOVED***
+    top: 0;
+    left: auto;
+    right: 10px;
+***REMOVED***
+
+.calendarnav-next ***REMOVED***
+    top: 0;
+    right: auto;
+    left: 10px;
+***REMOVED***
+
+.calendar caption, .calendarbox h2 ***REMOVED***
+    text-align: center;
+***REMOVED***
+
+.selector ***REMOVED***
+    float: right;
+***REMOVED***
+
+.selector .selector-filter ***REMOVED***
+    text-align: right;
+***REMOVED***
+
+.inline-deletelink ***REMOVED***
+    float: left;
+***REMOVED***
+
+form .form-row p.datetime ***REMOVED***
+    overflow: hidden;
+***REMOVED***
+
+.related-widget-wrapper ***REMOVED***
+    float: right;
+***REMOVED***
+
+/* MISC */
+
+.inline-related h2, .inline-group h2 ***REMOVED***
+    text-align: right
+***REMOVED***
+
+.inline-related h3 span.delete ***REMOVED***
+    padding-right: 20px;
+    padding-left: inherit;
+    left: 10px;
+    right: inherit;
+    float:left;
+***REMOVED***
+
+.inline-related h3 span.delete label ***REMOVED***
+    margin-left: inherit;
+    margin-right: 2px;
+***REMOVED***
+
+/* IE7 specific bug fixes */
+
+div.colM ***REMOVED***
+    position: relative;
+***REMOVED***
+
+.submit-row input ***REMOVED***
+    float: left;
+***REMOVED***

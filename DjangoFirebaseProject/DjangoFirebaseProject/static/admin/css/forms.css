@@ -1,0 +1,532 @@
+@import url('widgets.css');
+
+/* FORM ROWS */
+
+.form-row ***REMOVED***
+    overflow: hidden;
+    padding: 10px;
+    font-size: 13px;
+    border-bottom: 1px solid #eee;
+***REMOVED***
+
+.form-row img, .form-row input ***REMOVED***
+    vertical-align: middle;
+***REMOVED***
+
+.form-row label input[type="checkbox"] ***REMOVED***
+    margin-top: 0;
+    vertical-align: 0;
+***REMOVED***
+
+form .form-row p ***REMOVED***
+    padding-left: 0;
+***REMOVED***
+
+.hidden ***REMOVED***
+    display: none;
+***REMOVED***
+
+/* FORM LABELS */
+
+label ***REMOVED***
+    font-weight: normal;
+    color: #666;
+    font-size: 13px;
+***REMOVED***
+
+.required label, label.required ***REMOVED***
+    font-weight: bold;
+    color: #333;
+***REMOVED***
+
+/* RADIO BUTTONS */
+
+form ul.radiolist li ***REMOVED***
+    list-style-type: none;
+***REMOVED***
+
+form ul.radiolist label ***REMOVED***
+    float: none;
+    display: inline;
+***REMOVED***
+
+form ul.radiolist input[type="radio"] ***REMOVED***
+    margin: -2px 4px 0 0;
+    padding: 0;
+***REMOVED***
+
+form ul.inline ***REMOVED***
+    margin-left: 0;
+    padding: 0;
+***REMOVED***
+
+form ul.inline li ***REMOVED***
+    float: left;
+    padding-right: 7px;
+***REMOVED***
+
+/* ALIGNED FIELDSETS */
+
+.aligned label ***REMOVED***
+    display: block;
+    padding: 4px 10px 0 0;
+    float: left;
+    width: 160px;
+    word-wrap: break-word;
+    line-height: 1;
+***REMOVED***
+
+.aligned label:not(.vCheckboxLabel):after ***REMOVED***
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 26px;
+***REMOVED***
+
+.aligned label + p, .aligned label + div.help, .aligned label + div.readonly ***REMOVED***
+    padding: 6px 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 170px;
+***REMOVED***
+
+.aligned ul label ***REMOVED***
+    display: inline;
+    float: none;
+    width: auto;
+***REMOVED***
+
+.aligned .form-row input ***REMOVED***
+    margin-bottom: 0;
+***REMOVED***
+
+.colMS .aligned .vLargeTextField, .colMS .aligned .vXMLLargeTextField ***REMOVED***
+    width: 350px;
+***REMOVED***
+
+form .aligned ul ***REMOVED***
+    margin-left: 160px;
+    padding-left: 10px;
+***REMOVED***
+
+form .aligned ul.radiolist ***REMOVED***
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+***REMOVED***
+
+form .aligned p.help,
+form .aligned div.help ***REMOVED***
+    clear: left;
+    margin-top: 0;
+    margin-left: 160px;
+    padding-left: 10px;
+***REMOVED***
+
+form .aligned label + p.help,
+form .aligned label + div.help ***REMOVED***
+    margin-left: 0;
+    padding-left: 0;
+***REMOVED***
+
+form .aligned p.help:last-child,
+form .aligned div.help:last-child ***REMOVED***
+    margin-bottom: 0;
+    padding-bottom: 0;
+***REMOVED***
+
+form .aligned input + p.help,
+form .aligned textarea + p.help,
+form .aligned select + p.help,
+form .aligned input + div.help,
+form .aligned textarea + div.help,
+form .aligned select + div.help ***REMOVED***
+    margin-left: 160px;
+    padding-left: 10px;
+***REMOVED***
+
+form .aligned ul li ***REMOVED***
+    list-style: none;
+***REMOVED***
+
+form .aligned table p ***REMOVED***
+    margin-left: 0;
+    padding-left: 0;
+***REMOVED***
+
+.aligned .vCheckboxLabel ***REMOVED***
+    float: none;
+    width: auto;
+    display: inline-block;
+    vertical-align: -3px;
+    padding: 0 0 5px 5px;
+***REMOVED***
+
+.aligned .vCheckboxLabel + p.help,
+.aligned .vCheckboxLabel + div.help ***REMOVED***
+    margin-top: -4px;
+***REMOVED***
+
+.colM .aligned .vLargeTextField, .colM .aligned .vXMLLargeTextField ***REMOVED***
+    width: 610px;
+***REMOVED***
+
+.checkbox-row p.help,
+.checkbox-row div.help ***REMOVED***
+    margin-left: 0;
+    padding-left: 0;
+***REMOVED***
+
+fieldset .fieldBox ***REMOVED***
+    float: left;
+    margin-right: 20px;
+***REMOVED***
+
+/* WIDE FIELDSETS */
+
+.wide label ***REMOVED***
+    width: 200px;
+***REMOVED***
+
+form .wide p,
+form .wide input + p.help,
+form .wide input + div.help ***REMOVED***
+    margin-left: 200px;
+***REMOVED***
+
+form .wide p.help,
+form .wide div.help ***REMOVED***
+    padding-left: 38px;
+***REMOVED***
+
+form div.help ul ***REMOVED***
+    padding-left: 0;
+    margin-left: 0;
+***REMOVED***
+
+.colM fieldset.wide .vLargeTextField, .colM fieldset.wide .vXMLLargeTextField ***REMOVED***
+    width: 450px;
+***REMOVED***
+
+/* COLLAPSED FIELDSETS */
+
+fieldset.collapsed * ***REMOVED***
+    display: none;
+***REMOVED***
+
+fieldset.collapsed h2, fieldset.collapsed ***REMOVED***
+    display: block;
+***REMOVED***
+
+fieldset.collapsed ***REMOVED***
+    border: 1px solid #eee;
+    border-radius: 4px;
+    overflow: hidden;
+***REMOVED***
+
+fieldset.collapsed h2 ***REMOVED***
+    background: #f8f8f8;
+    color: #666;
+***REMOVED***
+
+fieldset .collapse-toggle ***REMOVED***
+    color: #fff;
+***REMOVED***
+
+fieldset.collapsed .collapse-toggle ***REMOVED***
+    background: transparent;
+    display: inline;
+    color: #447e9b;
+***REMOVED***
+
+/* MONOSPACE TEXTAREAS */
+
+fieldset.monospace textarea ***REMOVED***
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+***REMOVED***
+
+/* SUBMIT ROW */
+
+.submit-row ***REMOVED***
+    padding: 12px 14px;
+    margin: 0 0 20px;
+    background: #f8f8f8;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    text-align: right;
+    overflow: hidden;
+***REMOVED***
+
+body.popup .submit-row ***REMOVED***
+    overflow: auto;
+***REMOVED***
+
+.submit-row input ***REMOVED***
+    height: 35px;
+    line-height: 15px;
+    margin: 0 0 0 5px;
+***REMOVED***
+
+.submit-row input.default ***REMOVED***
+    margin: 0 0 0 8px;
+    text-transform: uppercase;
+***REMOVED***
+
+.submit-row p ***REMOVED***
+    margin: 0.3em;
+***REMOVED***
+
+.submit-row p.deletelink-box ***REMOVED***
+    float: left;
+    margin: 0;
+***REMOVED***
+
+.submit-row a.deletelink ***REMOVED***
+    display: block;
+    background: #ba2121;
+    border-radius: 4px;
+    padding: 10px 15px;
+    height: 15px;
+    line-height: 15px;
+    color: #fff;
+***REMOVED***
+
+.submit-row a.closelink ***REMOVED***
+    display: inline-block;
+    background: #bbbbbb;
+    border-radius: 4px;
+    padding: 10px 15px;
+    height: 15px;
+    line-height: 15px;
+    margin: 0 0 0 5px;
+    color: #fff;
+***REMOVED***
+
+.submit-row a.deletelink:focus,
+.submit-row a.deletelink:hover,
+.submit-row a.deletelink:active ***REMOVED***
+    background: #a41515;
+***REMOVED***
+
+.submit-row a.closelink:focus,
+.submit-row a.closelink:hover,
+.submit-row a.closelink:active ***REMOVED***
+    background: #aaaaaa;
+***REMOVED***
+
+/* CUSTOM FORM FIELDS */
+
+.vSelectMultipleField ***REMOVED***
+    vertical-align: top;
+***REMOVED***
+
+.vCheckboxField ***REMOVED***
+    border: none;
+***REMOVED***
+
+.vDateField, .vTimeField ***REMOVED***
+    margin-right: 2px;
+    margin-bottom: 4px;
+***REMOVED***
+
+.vDateField ***REMOVED***
+    min-width: 6.85em;
+***REMOVED***
+
+.vTimeField ***REMOVED***
+    min-width: 4.7em;
+***REMOVED***
+
+.vURLField ***REMOVED***
+    width: 30em;
+***REMOVED***
+
+.vLargeTextField, .vXMLLargeTextField ***REMOVED***
+    width: 48em;
+***REMOVED***
+
+.flatpages-flatpage #id_content ***REMOVED***
+    height: 40.2em;
+***REMOVED***
+
+.module table .vPositiveSmallIntegerField ***REMOVED***
+    width: 2.2em;
+***REMOVED***
+
+.vTextField ***REMOVED***
+    width: 20em;
+***REMOVED***
+
+.vIntegerField ***REMOVED***
+    width: 5em;
+***REMOVED***
+
+.vBigIntegerField ***REMOVED***
+    width: 10em;
+***REMOVED***
+
+.vForeignKeyRawIdAdminField ***REMOVED***
+    width: 5em;
+***REMOVED***
+
+/* INLINES */
+
+.inline-group ***REMOVED***
+    padding: 0;
+    margin: 0 0 30px;
+***REMOVED***
+
+.inline-group thead th ***REMOVED***
+    padding: 8px 10px;
+***REMOVED***
+
+.inline-group .aligned label ***REMOVED***
+    width: 160px;
+***REMOVED***
+
+.inline-related ***REMOVED***
+    position: relative;
+***REMOVED***
+
+.inline-related h3 ***REMOVED***
+    margin: 0;
+    color: #666;
+    padding: 5px;
+    font-size: 13px;
+    background: #f8f8f8;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+***REMOVED***
+
+.inline-related h3 span.delete ***REMOVED***
+    float: right;
+***REMOVED***
+
+.inline-related h3 span.delete label ***REMOVED***
+    margin-left: 2px;
+    font-size: 11px;
+***REMOVED***
+
+.inline-related fieldset ***REMOVED***
+    margin: 0;
+    background: #fff;
+    border: none;
+    width: 100%;
+***REMOVED***
+
+.inline-related fieldset.module h3 ***REMOVED***
+    margin: 0;
+    padding: 2px 5px 3px 5px;
+    font-size: 11px;
+    text-align: left;
+    font-weight: bold;
+    background: #bcd;
+    color: #fff;
+***REMOVED***
+
+.inline-group .tabular fieldset.module ***REMOVED***
+    border: none;
+***REMOVED***
+
+.inline-related.tabular fieldset.module table ***REMOVED***
+    width: 100%;
+***REMOVED***
+
+.last-related fieldset ***REMOVED***
+    border: none;
+***REMOVED***
+
+.inline-group .tabular tr.has_original td ***REMOVED***
+    padding-top: 2em;
+***REMOVED***
+
+.inline-group .tabular tr td.original ***REMOVED***
+    padding: 2px 0 0 0;
+    width: 0;
+    _position: relative;
+***REMOVED***
+
+.inline-group .tabular th.original ***REMOVED***
+    width: 0px;
+    padding: 0;
+***REMOVED***
+
+.inline-group .tabular td.original p ***REMOVED***
+    position: absolute;
+    left: 0;
+    height: 1.1em;
+    padding: 2px 9px;
+    overflow: hidden;
+    font-size: 9px;
+    font-weight: bold;
+    color: #666;
+    _width: 700px;
+***REMOVED***
+
+.inline-group ul.tools ***REMOVED***
+    padding: 0;
+    margin: 0;
+    list-style: none;
+***REMOVED***
+
+.inline-group ul.tools li ***REMOVED***
+    display: inline;
+    padding: 0 5px;
+***REMOVED***
+
+.inline-group div.add-row,
+.inline-group .tabular tr.add-row td ***REMOVED***
+    color: #666;
+    background: #f8f8f8;
+    padding: 8px 10px;
+    border-bottom: 1px solid #eee;
+***REMOVED***
+
+.inline-group .tabular tr.add-row td ***REMOVED***
+    padding: 8px 10px;
+    border-bottom: 1px solid #eee;
+***REMOVED***
+
+.inline-group ul.tools a.add,
+.inline-group div.add-row a,
+.inline-group .tabular tr.add-row td a ***REMOVED***
+    background: url(../img/icon-addlink.svg) 0 1px no-repeat;
+    padding-left: 16px;
+    font-size: 12px;
+***REMOVED***
+
+.empty-form ***REMOVED***
+    display: none;
+***REMOVED***
+
+/* RELATED FIELD ADD ONE / LOOKUP */
+
+.add-another, .related-lookup ***REMOVED***
+    margin-left: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-size: 14px;
+***REMOVED***
+
+.add-another ***REMOVED***
+    width: 16px;
+    height: 16px;
+    background-image: url(../img/icon-addlink.svg);
+***REMOVED***
+
+.related-lookup ***REMOVED***
+    width: 16px;
+    height: 16px;
+    background-image: url(../img/search.svg);
+***REMOVED***
+
+form .related-widget-wrapper ul ***REMOVED***
+    display: inline-block;
+    margin-left: 0;
+    padding-left: 0;
+***REMOVED***
+
+.clearable-file-input input ***REMOVED***
+    margin-top: 0;
+***REMOVED***

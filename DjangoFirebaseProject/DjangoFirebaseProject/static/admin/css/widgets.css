@@ -1,0 +1,565 @@
+/* SELECTOR (FILTER INTERFACE) */
+
+.selector ***REMOVED***
+    width: 800px;
+    float: left;
+***REMOVED***
+
+.selector select ***REMOVED***
+    width: 380px;
+    height: 17.2em;
+***REMOVED***
+
+.selector-available, .selector-chosen ***REMOVED***
+    float: left;
+    width: 380px;
+    text-align: center;
+    margin-bottom: 5px;
+***REMOVED***
+
+.selector-chosen select ***REMOVED***
+    border-top: none;
+***REMOVED***
+
+.selector-available h2, .selector-chosen h2 ***REMOVED***
+    border: 1px solid #ccc;
+    border-radius: 4px 4px 0 0;
+***REMOVED***
+
+.selector-chosen h2 ***REMOVED***
+    background: #79aec8;
+    color: #fff;
+***REMOVED***
+
+.selector .selector-available h2 ***REMOVED***
+    background: #f8f8f8;
+    color: #666;
+***REMOVED***
+
+.selector .selector-filter ***REMOVED***
+    background: white;
+    border: 1px solid #ccc;
+    border-width: 0 1px;
+    padding: 8px;
+    color: #999;
+    font-size: 10px;
+    margin: 0;
+    text-align: left;
+***REMOVED***
+
+.selector .selector-filter label,
+.inline-group .aligned .selector .selector-filter label ***REMOVED***
+    float: left;
+    margin: 7px 0 0;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    overflow: hidden;
+    line-height: 1;
+***REMOVED***
+
+.selector .selector-available input ***REMOVED***
+    width: 320px;
+    margin-left: 8px;
+***REMOVED***
+
+.selector ul.selector-chooser ***REMOVED***
+    float: left;
+    width: 22px;
+    background-color: #eee;
+    border-radius: 10px;
+    margin: 10em 5px 0 5px;
+    padding: 0;
+***REMOVED***
+
+.selector-chooser li ***REMOVED***
+    margin: 0;
+    padding: 3px;
+    list-style-type: none;
+***REMOVED***
+
+.selector select ***REMOVED***
+    padding: 0 10px;
+    margin: 0 0 10px;
+    border-radius: 0 0 4px 4px;
+***REMOVED***
+
+.selector-add, .selector-remove ***REMOVED***
+    width: 16px;
+    height: 16px;
+    display: block;
+    text-indent: -3000px;
+    overflow: hidden;
+    cursor: default;
+    opacity: 0.3;
+***REMOVED***
+
+.active.selector-add, .active.selector-remove ***REMOVED***
+    opacity: 1;
+***REMOVED***
+
+.active.selector-add:hover, .active.selector-remove:hover ***REMOVED***
+    cursor: pointer;
+***REMOVED***
+
+.selector-add ***REMOVED***
+    background: url(../img/selector-icons.svg) 0 -96px no-repeat;
+***REMOVED***
+
+.active.selector-add:focus, .active.selector-add:hover ***REMOVED***
+    background-position: 0 -112px;
+***REMOVED***
+
+.selector-remove ***REMOVED***
+    background: url(../img/selector-icons.svg) 0 -64px no-repeat;
+***REMOVED***
+
+.active.selector-remove:focus, .active.selector-remove:hover ***REMOVED***
+    background-position: 0 -80px;
+***REMOVED***
+
+a.selector-chooseall, a.selector-clearall ***REMOVED***
+    display: inline-block;
+    height: 16px;
+    text-align: left;
+    margin: 1px auto 3px;
+    overflow: hidden;
+    font-weight: bold;
+    line-height: 16px;
+    color: #666;
+    text-decoration: none;
+    opacity: 0.3;
+***REMOVED***
+
+a.active.selector-chooseall:focus, a.active.selector-clearall:focus,
+a.active.selector-chooseall:hover, a.active.selector-clearall:hover ***REMOVED***
+    color: #447e9b;
+***REMOVED***
+
+a.active.selector-chooseall, a.active.selector-clearall ***REMOVED***
+    opacity: 1;
+***REMOVED***
+
+a.active.selector-chooseall:hover, a.active.selector-clearall:hover ***REMOVED***
+    cursor: pointer;
+***REMOVED***
+
+a.selector-chooseall ***REMOVED***
+    padding: 0 18px 0 0;
+    background: url(../img/selector-icons.svg) right -160px no-repeat;
+    cursor: default;
+***REMOVED***
+
+a.active.selector-chooseall:focus, a.active.selector-chooseall:hover ***REMOVED***
+    background-position: 100% -176px;
+***REMOVED***
+
+a.selector-clearall ***REMOVED***
+    padding: 0 0 0 18px;
+    background: url(../img/selector-icons.svg) 0 -128px no-repeat;
+    cursor: default;
+***REMOVED***
+
+a.active.selector-clearall:focus, a.active.selector-clearall:hover ***REMOVED***
+    background-position: 0 -144px;
+***REMOVED***
+
+/* STACKED SELECTORS */
+
+.stacked ***REMOVED***
+    float: left;
+    width: 490px;
+***REMOVED***
+
+.stacked select ***REMOVED***
+    width: 480px;
+    height: 10.1em;
+***REMOVED***
+
+.stacked .selector-available, .stacked .selector-chosen ***REMOVED***
+    width: 480px;
+***REMOVED***
+
+.stacked .selector-available ***REMOVED***
+    margin-bottom: 0;
+***REMOVED***
+
+.stacked .selector-available input ***REMOVED***
+    width: 422px;
+***REMOVED***
+
+.stacked ul.selector-chooser ***REMOVED***
+    height: 22px;
+    width: 50px;
+    margin: 0 0 10px 40%;
+    background-color: #eee;
+    border-radius: 10px;
+***REMOVED***
+
+.stacked .selector-chooser li ***REMOVED***
+    float: left;
+    padding: 3px 3px 3px 5px;
+***REMOVED***
+
+.stacked .selector-chooseall, .stacked .selector-clearall ***REMOVED***
+    display: none;
+***REMOVED***
+
+.stacked .selector-add ***REMOVED***
+    background: url(../img/selector-icons.svg) 0 -32px no-repeat;
+    cursor: default;
+***REMOVED***
+
+.stacked .active.selector-add ***REMOVED***
+    background-position: 0 -48px;
+    cursor: pointer;
+***REMOVED***
+
+.stacked .selector-remove ***REMOVED***
+    background: url(../img/selector-icons.svg) 0 0 no-repeat;
+    cursor: default;
+***REMOVED***
+
+.stacked .active.selector-remove ***REMOVED***
+    background-position: 0 -16px;
+    cursor: pointer;
+***REMOVED***
+
+.selector .help-icon ***REMOVED***
+    background: url(../img/icon-unknown.svg) 0 0 no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    margin: -2px 0 0 2px;
+    width: 13px;
+    height: 13px;
+***REMOVED***
+
+.selector .selector-chosen .help-icon ***REMOVED***
+    background: url(../img/icon-unknown-alt.svg) 0 0 no-repeat;
+***REMOVED***
+
+.selector .search-label-icon ***REMOVED***
+    background: url(../img/search.svg) 0 0 no-repeat;
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+***REMOVED***
+
+/* DATE AND TIME */
+
+p.datetime ***REMOVED***
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    color: #666;
+    font-weight: bold;
+***REMOVED***
+
+.datetime span ***REMOVED***
+    white-space: nowrap;
+    font-weight: normal;
+    font-size: 11px;
+    color: #ccc;
+***REMOVED***
+
+.datetime input, .form-row .datetime input.vDateField, .form-row .datetime input.vTimeField ***REMOVED***
+    min-width: 0;
+    margin-left: 5px;
+    margin-bottom: 4px;
+***REMOVED***
+
+table p.datetime ***REMOVED***
+    font-size: 11px;
+    margin-left: 0;
+    padding-left: 0;
+***REMOVED***
+
+.datetimeshortcuts .clock-icon, .datetimeshortcuts .date-icon ***REMOVED***
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    height: 16px;
+    width: 16px;
+    overflow: hidden;
+***REMOVED***
+
+.datetimeshortcuts .clock-icon ***REMOVED***
+    background: url(../img/icon-clock.svg) 0 0 no-repeat;
+***REMOVED***
+
+.datetimeshortcuts a:focus .clock-icon,
+.datetimeshortcuts a:hover .clock-icon ***REMOVED***
+    background-position: 0 -16px;
+***REMOVED***
+
+.datetimeshortcuts .date-icon ***REMOVED***
+    background: url(../img/icon-calendar.svg) 0 0 no-repeat;
+    top: -1px;
+***REMOVED***
+
+.datetimeshortcuts a:focus .date-icon,
+.datetimeshortcuts a:hover .date-icon ***REMOVED***
+    background-position: 0 -16px;
+***REMOVED***
+
+.timezonewarning ***REMOVED***
+    font-size: 11px;
+    color: #999;
+***REMOVED***
+
+/* URL */
+
+p.url ***REMOVED***
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    color: #666;
+    font-size: 11px;
+    font-weight: bold;
+***REMOVED***
+
+.url a ***REMOVED***
+    font-weight: normal;
+***REMOVED***
+
+/* FILE UPLOADS */
+
+p.file-upload ***REMOVED***
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    color: #666;
+    font-size: 11px;
+    font-weight: bold;
+***REMOVED***
+
+.aligned p.file-upload ***REMOVED***
+    margin-left: 170px;
+***REMOVED***
+
+.file-upload a ***REMOVED***
+    font-weight: normal;
+***REMOVED***
+
+.file-upload .deletelink ***REMOVED***
+    margin-left: 5px;
+***REMOVED***
+
+span.clearable-file-input label ***REMOVED***
+    color: #333;
+    font-size: 11px;
+    display: inline;
+    float: none;
+***REMOVED***
+
+/* CALENDARS & CLOCKS */
+
+.calendarbox, .clockbox ***REMOVED***
+    margin: 5px auto;
+    font-size: 12px;
+    width: 19em;
+    text-align: center;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    position: relative;
+***REMOVED***
+
+.clockbox ***REMOVED***
+    width: auto;
+***REMOVED***
+
+.calendar ***REMOVED***
+    margin: 0;
+    padding: 0;
+***REMOVED***
+
+.calendar table ***REMOVED***
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    background: white;
+    width: 100%;
+***REMOVED***
+
+.calendar caption, .calendarbox h2 ***REMOVED***
+    margin: 0;
+    text-align: center;
+    border-top: none;
+    background: #f5dd5d;
+    font-weight: 700;
+    font-size: 12px;
+    color: #333;
+***REMOVED***
+
+.calendar th ***REMOVED***
+    padding: 8px 5px;
+    background: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+    font-weight: 400;
+    font-size: 12px;
+    text-align: center;
+    color: #666;
+***REMOVED***
+
+.calendar td ***REMOVED***
+    font-weight: 400;
+    font-size: 12px;
+    text-align: center;
+    padding: 0;
+    border-top: 1px solid #eee;
+    border-bottom: none;
+***REMOVED***
+
+.calendar td.selected a ***REMOVED***
+    background: #79aec8;
+    color: #fff;
+***REMOVED***
+
+.calendar td.nonday ***REMOVED***
+    background: #f8f8f8;
+***REMOVED***
+
+.calendar td.today a ***REMOVED***
+    font-weight: 700;
+***REMOVED***
+
+.calendar td a, .timelist a ***REMOVED***
+    display: block;
+    font-weight: 400;
+    padding: 6px;
+    text-decoration: none;
+    color: #444;
+***REMOVED***
+
+.calendar td a:focus, .timelist a:focus,
+.calendar td a:hover, .timelist a:hover ***REMOVED***
+    background: #79aec8;
+    color: white;
+***REMOVED***
+
+.calendar td a:active, .timelist a:active ***REMOVED***
+    background: #417690;
+    color: white;
+***REMOVED***
+
+.calendarnav ***REMOVED***
+    font-size: 10px;
+    text-align: center;
+    color: #ccc;
+    margin: 0;
+    padding: 1px 3px;
+***REMOVED***
+
+.calendarnav a:link, #calendarnav a:visited,
+#calendarnav a:focus, #calendarnav a:hover ***REMOVED***
+    color: #999;
+***REMOVED***
+
+.calendar-shortcuts ***REMOVED***
+    background: white;
+    font-size: 11px;
+    line-height: 11px;
+    border-top: 1px solid #eee;
+    padding: 8px 0;
+    color: #ccc;
+***REMOVED***
+
+.calendarbox .calendarnav-previous, .calendarbox .calendarnav-next ***REMOVED***
+    display: block;
+    position: absolute;
+    top: 8px;
+    width: 15px;
+    height: 15px;
+    text-indent: -9999px;
+    padding: 0;
+***REMOVED***
+
+.calendarnav-previous ***REMOVED***
+    left: 10px;
+    background: url(../img/calendar-icons.svg) 0 0 no-repeat;
+***REMOVED***
+
+.calendarbox .calendarnav-previous:focus,
+.calendarbox .calendarnav-previous:hover ***REMOVED***
+    background-position: 0 -15px;
+***REMOVED***
+
+.calendarnav-next ***REMOVED***
+    right: 10px;
+    background: url(../img/calendar-icons.svg) 0 -30px no-repeat;
+***REMOVED***
+
+.calendarbox .calendarnav-next:focus,
+.calendarbox .calendarnav-next:hover ***REMOVED***
+    background-position: 0 -45px;
+***REMOVED***
+
+.calendar-cancel ***REMOVED***
+    margin: 0;
+    padding: 4px 0;
+    font-size: 12px;
+    background: #eee;
+    border-top: 1px solid #ddd;
+    color: #333;
+***REMOVED***
+
+.calendar-cancel:focus, .calendar-cancel:hover ***REMOVED***
+    background: #ddd;
+***REMOVED***
+
+.calendar-cancel a ***REMOVED***
+    color: black;
+    display: block;
+***REMOVED***
+
+ul.timelist, .timelist li ***REMOVED***
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+***REMOVED***
+
+.timelist a ***REMOVED***
+    padding: 2px;
+***REMOVED***
+
+/* EDIT INLINE */
+
+.inline-deletelink ***REMOVED***
+    float: right;
+    text-indent: -9999px;
+    background: url(../img/inline-delete.svg) 0 0 no-repeat;
+    width: 16px;
+    height: 16px;
+    border: 0px none;
+***REMOVED***
+
+.inline-deletelink:focus, .inline-deletelink:hover ***REMOVED***
+    cursor: pointer;
+***REMOVED***
+
+/* RELATED WIDGET WRAPPER */
+.related-widget-wrapper ***REMOVED***
+    float: left;       /* display properly in form rows with multiple fields */
+    overflow: hidden;  /* clear floated contents */
+***REMOVED***
+
+.related-widget-wrapper-link ***REMOVED***
+    opacity: 0.3;
+***REMOVED***
+
+.related-widget-wrapper-link:link ***REMOVED***
+    opacity: .8;
+***REMOVED***
+
+.related-widget-wrapper-link:link:focus,
+.related-widget-wrapper-link:link:hover ***REMOVED***
+    opacity: 1;
+***REMOVED***
+
+select + .related-widget-wrapper-link,
+.related-widget-wrapper-link + .related-widget-wrapper-link ***REMOVED***
+    margin-left: 7px;
+***REMOVED***

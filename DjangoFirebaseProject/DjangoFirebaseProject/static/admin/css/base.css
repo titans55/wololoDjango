@@ -1,0 +1,983 @@
+/*
+    DJANGO Admin styles
+*/
+
+@import url(fonts.css);
+
+body ***REMOVED***
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+    color: #333;
+    background: #fff;
+***REMOVED***
+
+/* LINKS */
+
+a:link, a:visited ***REMOVED***
+    color: #447e9b;
+    text-decoration: none;
+***REMOVED***
+
+a:focus, a:hover ***REMOVED***
+    color: #036;
+***REMOVED***
+
+a:focus ***REMOVED***
+    text-decoration: underline;
+***REMOVED***
+
+a img ***REMOVED***
+    border: none;
+***REMOVED***
+
+a.section:link, a.section:visited ***REMOVED***
+    color: #fff;
+    text-decoration: none;
+***REMOVED***
+
+a.section:focus, a.section:hover ***REMOVED***
+    text-decoration: underline;
+***REMOVED***
+
+/* GLOBAL DEFAULTS */
+
+p, ol, ul, dl ***REMOVED***
+    margin: .2em 0 .8em 0;
+***REMOVED***
+
+p ***REMOVED***
+    padding: 0;
+    line-height: 140%;
+***REMOVED***
+
+h1,h2,h3,h4,h5 ***REMOVED***
+    font-weight: bold;
+***REMOVED***
+
+h1 ***REMOVED***
+    margin: 0 0 20px;
+    font-weight: 300;
+    font-size: 20px;
+    color: #666;
+***REMOVED***
+
+h2 ***REMOVED***
+    font-size: 16px;
+    margin: 1em 0 .5em 0;
+***REMOVED***
+
+h2.subhead ***REMOVED***
+    font-weight: normal;
+    margin-top: 0;
+***REMOVED***
+
+h3 ***REMOVED***
+    font-size: 14px;
+    margin: .8em 0 .3em 0;
+    color: #666;
+    font-weight: bold;
+***REMOVED***
+
+h4 ***REMOVED***
+    font-size: 12px;
+    margin: 1em 0 .8em 0;
+    padding-bottom: 3px;
+***REMOVED***
+
+h5 ***REMOVED***
+    font-size: 10px;
+    margin: 1.5em 0 .5em 0;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+***REMOVED***
+
+ul li ***REMOVED***
+    list-style-type: square;
+    padding: 1px 0;
+***REMOVED***
+
+li ul ***REMOVED***
+    margin-bottom: 0;
+***REMOVED***
+
+li, dt, dd ***REMOVED***
+    font-size: 13px;
+    line-height: 20px;
+***REMOVED***
+
+dt ***REMOVED***
+    font-weight: bold;
+    margin-top: 4px;
+***REMOVED***
+
+dd ***REMOVED***
+    margin-left: 0;
+***REMOVED***
+
+form ***REMOVED***
+    margin: 0;
+    padding: 0;
+***REMOVED***
+
+fieldset ***REMOVED***
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-top: 1px solid #eee;
+***REMOVED***
+
+blockquote ***REMOVED***
+    font-size: 11px;
+    color: #777;
+    margin-left: 2px;
+    padding-left: 10px;
+    border-left: 5px solid #ddd;
+***REMOVED***
+
+code, pre ***REMOVED***
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+    color: #666;
+    font-size: 12px;
+***REMOVED***
+
+pre.literal-block ***REMOVED***
+    margin: 10px;
+    background: #eee;
+    padding: 6px 8px;
+***REMOVED***
+
+code strong ***REMOVED***
+    color: #930;
+***REMOVED***
+
+hr ***REMOVED***
+    clear: both;
+    color: #eee;
+    background-color: #eee;
+    height: 1px;
+    border: none;
+    margin: 0;
+    padding: 0;
+    font-size: 1px;
+    line-height: 1px;
+***REMOVED***
+
+/* TEXT STYLES & MODIFIERS */
+
+.small ***REMOVED***
+    font-size: 11px;
+***REMOVED***
+
+.tiny ***REMOVED***
+    font-size: 10px;
+***REMOVED***
+
+p.tiny ***REMOVED***
+    margin-top: -2px;
+***REMOVED***
+
+.mini ***REMOVED***
+    font-size: 10px;
+***REMOVED***
+
+p.mini ***REMOVED***
+    margin-top: -3px;
+***REMOVED***
+
+.help, p.help, form p.help, div.help, form div.help, div.help li ***REMOVED***
+    font-size: 11px;
+    color: #999;
+***REMOVED***
+
+div.help ul ***REMOVED***
+     margin-bottom: 0;
+***REMOVED***
+
+.help-tooltip ***REMOVED***
+    cursor: help;
+***REMOVED***
+
+p img, h1 img, h2 img, h3 img, h4 img, td img ***REMOVED***
+    vertical-align: middle;
+***REMOVED***
+
+.quiet, a.quiet:link, a.quiet:visited ***REMOVED***
+    color: #999;
+    font-weight: normal;
+***REMOVED***
+
+.float-right ***REMOVED***
+    float: right;
+***REMOVED***
+
+.float-left ***REMOVED***
+    float: left;
+***REMOVED***
+
+.clear ***REMOVED***
+    clear: both;
+***REMOVED***
+
+.align-left ***REMOVED***
+    text-align: left;
+***REMOVED***
+
+.align-right ***REMOVED***
+    text-align: right;
+***REMOVED***
+
+.example ***REMOVED***
+    margin: 10px 0;
+    padding: 5px 10px;
+    background: #efefef;
+***REMOVED***
+
+.nowrap ***REMOVED***
+    white-space: nowrap;
+***REMOVED***
+
+/* TABLES */
+
+table ***REMOVED***
+    border-collapse: collapse;
+    border-color: #ccc;
+***REMOVED***
+
+td, th ***REMOVED***
+    font-size: 13px;
+    line-height: 16px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+    padding: 8px;
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+***REMOVED***
+
+th ***REMOVED***
+    font-weight: 600;
+    text-align: left;
+***REMOVED***
+
+thead th,
+tfoot td ***REMOVED***
+    color: #666;
+    padding: 5px 10px;
+    font-size: 11px;
+    background: #fff;
+    border: none;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+***REMOVED***
+
+tfoot td ***REMOVED***
+    border-bottom: none;
+    border-top: 1px solid #eee;
+***REMOVED***
+
+thead th.required ***REMOVED***
+    color: #000;
+***REMOVED***
+
+tr.alt ***REMOVED***
+    background: #f6f6f6;
+***REMOVED***
+
+.row1 ***REMOVED***
+    background: #fff;
+***REMOVED***
+
+.row2 ***REMOVED***
+    background: #f9f9f9;
+***REMOVED***
+
+/* SORTABLE TABLES */
+
+thead th ***REMOVED***
+    padding: 5px 10px;
+    line-height: normal;
+    text-transform: uppercase;
+    background: #f6f6f6;
+***REMOVED***
+
+thead th a:link, thead th a:visited ***REMOVED***
+    color: #666;
+***REMOVED***
+
+thead th.sorted ***REMOVED***
+    background: #eee;
+***REMOVED***
+
+thead th.sorted .text ***REMOVED***
+    padding-right: 42px;
+***REMOVED***
+
+table thead th .text span ***REMOVED***
+    padding: 8px 10px;
+    display: block;
+***REMOVED***
+
+table thead th .text a ***REMOVED***
+    display: block;
+    cursor: pointer;
+    padding: 8px 10px;
+***REMOVED***
+
+table thead th .text a:focus, table thead th .text a:hover ***REMOVED***
+    background: #eee;
+***REMOVED***
+
+thead th.sorted a.sortremove ***REMOVED***
+    visibility: hidden;
+***REMOVED***
+
+table thead th.sorted:hover a.sortremove ***REMOVED***
+    visibility: visible;
+***REMOVED***
+
+table thead th.sorted .sortoptions ***REMOVED***
+    display: block;
+    padding: 9px 5px 0 5px;
+    float: right;
+    text-align: right;
+***REMOVED***
+
+table thead th.sorted .sortpriority ***REMOVED***
+    font-size: .8em;
+    min-width: 12px;
+    text-align: center;
+    vertical-align: 3px;
+    margin-left: 2px;
+    margin-right: 2px;
+***REMOVED***
+
+table thead th.sorted .sortoptions a ***REMOVED***
+    position: relative;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    background: url(../img/sorting-icons.svg) 0 0 no-repeat;
+    background-size: 14px auto;
+***REMOVED***
+
+table thead th.sorted .sortoptions a.sortremove ***REMOVED***
+    background-position: 0 0;
+***REMOVED***
+
+table thead th.sorted .sortoptions a.sortremove:after ***REMOVED***
+    content: '\\';
+    position: absolute;
+    top: -6px;
+    left: 3px;
+    font-weight: 200;
+    font-size: 18px;
+    color: #999;
+***REMOVED***
+
+table thead th.sorted .sortoptions a.sortremove:focus:after,
+table thead th.sorted .sortoptions a.sortremove:hover:after ***REMOVED***
+    color: #447e9b;
+***REMOVED***
+
+table thead th.sorted .sortoptions a.sortremove:focus,
+table thead th.sorted .sortoptions a.sortremove:hover ***REMOVED***
+    background-position: 0 -14px;
+***REMOVED***
+
+table thead th.sorted .sortoptions a.ascending ***REMOVED***
+    background-position: 0 -28px;
+***REMOVED***
+
+table thead th.sorted .sortoptions a.ascending:focus,
+table thead th.sorted .sortoptions a.ascending:hover ***REMOVED***
+    background-position: 0 -42px;
+***REMOVED***
+
+table thead th.sorted .sortoptions a.descending ***REMOVED***
+    top: 1px;
+    background-position: 0 -56px;
+***REMOVED***
+
+table thead th.sorted .sortoptions a.descending:focus,
+table thead th.sorted .sortoptions a.descending:hover ***REMOVED***
+    background-position: 0 -70px;
+***REMOVED***
+
+/* FORM DEFAULTS */
+
+input, textarea, select, .form-row p, form .button ***REMOVED***
+    margin: 2px 0;
+    padding: 2px 3px;
+    vertical-align: middle;
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 13px;
+***REMOVED***
+.form-row div.help ***REMOVED***
+    padding: 2px 3px;
+***REMOVED***
+
+textarea ***REMOVED***
+    vertical-align: top;
+***REMOVED***
+
+input[type=text], input[type=password], input[type=email], input[type=url],
+input[type=number], input[type=tel], textarea, select, .vTextField ***REMOVED***
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 6px;
+    margin-top: 0;
+***REMOVED***
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus,
+input[type=url]:focus, input[type=number]:focus, input[type=tel]:focus,
+textarea:focus, select:focus, .vTextField:focus ***REMOVED***
+    border-color: #999;
+***REMOVED***
+
+select ***REMOVED***
+    height: 30px;
+***REMOVED***
+
+select[multiple] ***REMOVED***
+    min-height: 150px;
+***REMOVED***
+
+/* FORM BUTTONS */
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button ***REMOVED***
+    background: #79aec8;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+***REMOVED***
+
+a.button ***REMOVED***
+    padding: 4px 5px;
+***REMOVED***
+
+.button:active, input[type=submit]:active, input[type=button]:active,
+.button:focus, input[type=submit]:focus, input[type=button]:focus,
+.button:hover, input[type=submit]:hover, input[type=button]:hover ***REMOVED***
+    background: #609ab6;
+***REMOVED***
+
+.button[disabled], input[type=submit][disabled], input[type=button][disabled] ***REMOVED***
+    opacity: 0.4;
+***REMOVED***
+
+.button.default, input[type=submit].default, .submit-row input.default ***REMOVED***
+    float: right;
+    border: none;
+    font-weight: 400;
+    background: #417690;
+***REMOVED***
+
+.button.default:active, input[type=submit].default:active,
+.button.default:focus, input[type=submit].default:focus,
+.button.default:hover, input[type=submit].default:hover ***REMOVED***
+    background: #205067;
+***REMOVED***
+
+.button[disabled].default,
+input[type=submit][disabled].default,
+input[type=button][disabled].default ***REMOVED***
+    opacity: 0.4;
+***REMOVED***
+
+
+/* MODULES */
+
+.module ***REMOVED***
+    border: none;
+    margin-bottom: 30px;
+    background: #fff;
+***REMOVED***
+
+.module p, .module ul, .module h3, .module h4, .module dl, .module pre ***REMOVED***
+    padding-left: 10px;
+    padding-right: 10px;
+***REMOVED***
+
+.module blockquote ***REMOVED***
+    margin-left: 12px;
+***REMOVED***
+
+.module ul, .module ol ***REMOVED***
+    margin-left: 1.5em;
+***REMOVED***
+
+.module h3 ***REMOVED***
+    margin-top: .6em;
+***REMOVED***
+
+.module h2, .module caption, .inline-group h2 ***REMOVED***
+    margin: 0;
+    padding: 8px;
+    font-weight: 400;
+    font-size: 13px;
+    text-align: left;
+    background: #79aec8;
+    color: #fff;
+***REMOVED***
+
+.module caption,
+.inline-group h2 ***REMOVED***
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+***REMOVED***
+
+.module table ***REMOVED***
+    border-collapse: collapse;
+***REMOVED***
+
+/* MESSAGES & ERRORS */
+
+ul.messagelist ***REMOVED***
+    padding: 0;
+    margin: 0;
+***REMOVED***
+
+ul.messagelist li ***REMOVED***
+    display: block;
+    font-weight: 400;
+    font-size: 13px;
+    padding: 10px 10px 10px 65px;
+    margin: 0 0 10px 0;
+    background: #dfd url(../img/icon-yes.svg) 40px 12px no-repeat;
+    background-size: 16px auto;
+    color: #333;
+***REMOVED***
+
+ul.messagelist li.warning ***REMOVED***
+    background: #ffc url(../img/icon-alert.svg) 40px 14px no-repeat;
+    background-size: 14px auto;
+***REMOVED***
+
+ul.messagelist li.error ***REMOVED***
+    background: #ffefef url(../img/icon-no.svg) 40px 12px no-repeat;
+    background-size: 16px auto;
+***REMOVED***
+
+.errornote ***REMOVED***
+    font-size: 14px;
+    font-weight: 700;
+    display: block;
+    padding: 10px 12px;
+    margin: 0 0 10px 0;
+    color: #ba2121;
+    border: 1px solid #ba2121;
+    border-radius: 4px;
+    background-color: #fff;
+    background-position: 5px 12px;
+***REMOVED***
+
+ul.errorlist ***REMOVED***
+    margin: 0 0 4px;
+    padding: 0;
+    color: #ba2121;
+    background: #fff;
+***REMOVED***
+
+ul.errorlist li ***REMOVED***
+    font-size: 13px;
+    display: block;
+    margin-bottom: 4px;
+***REMOVED***
+
+ul.errorlist li:first-child ***REMOVED***
+    margin-top: 0;
+***REMOVED***
+
+ul.errorlist li a ***REMOVED***
+    color: inherit;
+    text-decoration: underline;
+***REMOVED***
+
+td ul.errorlist ***REMOVED***
+    margin: 0;
+    padding: 0;
+***REMOVED***
+
+td ul.errorlist li ***REMOVED***
+    margin: 0;
+***REMOVED***
+
+.form-row.errors ***REMOVED***
+    margin: 0;
+    border: none;
+    border-bottom: 1px solid #eee;
+    background: none;
+***REMOVED***
+
+.form-row.errors ul.errorlist li ***REMOVED***
+    padding-left: 0;
+***REMOVED***
+
+.errors input, .errors select, .errors textarea ***REMOVED***
+    border: 1px solid #ba2121;
+***REMOVED***
+
+div.system-message ***REMOVED***
+    background: #ffc;
+    margin: 10px;
+    padding: 6px 8px;
+    font-size: .8em;
+***REMOVED***
+
+div.system-message p.system-message-title ***REMOVED***
+    padding: 4px 5px 4px 25px;
+    margin: 0;
+    color: #c11;
+    background: #ffefef url(../img/icon-no.svg) 5px 5px no-repeat;
+***REMOVED***
+
+.description ***REMOVED***
+    font-size: 12px;
+    padding: 5px 0 0 12px;
+***REMOVED***
+
+/* BREADCRUMBS */
+
+div.breadcrumbs ***REMOVED***
+    background: #79aec8;
+    padding: 10px 40px;
+    border: none;
+    font-size: 14px;
+    color: #c4dce8;
+    text-align: left;
+***REMOVED***
+
+div.breadcrumbs a ***REMOVED***
+    color: #fff;
+***REMOVED***
+
+div.breadcrumbs a:focus, div.breadcrumbs a:hover ***REMOVED***
+    color: #c4dce8;
+***REMOVED***
+
+/* ACTION ICONS */
+
+.viewlink, .inlineviewlink ***REMOVED***
+    padding-left: 16px;
+    background: url(../img/icon-viewlink.svg) 0 1px no-repeat;
+***REMOVED***
+
+.addlink ***REMOVED***
+    padding-left: 16px;
+    background: url(../img/icon-addlink.svg) 0 1px no-repeat;
+***REMOVED***
+
+.changelink, .inlinechangelink ***REMOVED***
+    padding-left: 16px;
+    background: url(../img/icon-changelink.svg) 0 1px no-repeat;
+***REMOVED***
+
+.deletelink ***REMOVED***
+    padding-left: 16px;
+    background: url(../img/icon-deletelink.svg) 0 1px no-repeat;
+***REMOVED***
+
+a.deletelink:link, a.deletelink:visited ***REMOVED***
+    color: #CC3434;
+***REMOVED***
+
+a.deletelink:focus, a.deletelink:hover ***REMOVED***
+    color: #993333;
+    text-decoration: none;
+***REMOVED***
+
+/* OBJECT TOOLS */
+
+.object-tools ***REMOVED***
+    font-size: 10px;
+    font-weight: bold;
+    padding-left: 0;
+    float: right;
+    position: relative;
+    margin-top: -48px;
+***REMOVED***
+
+.form-row .object-tools ***REMOVED***
+    margin-top: 5px;
+    margin-bottom: 5px;
+    float: none;
+    height: 2em;
+    padding-left: 3.5em;
+***REMOVED***
+
+.object-tools li ***REMOVED***
+    display: block;
+    float: left;
+    margin-left: 5px;
+    height: 16px;
+***REMOVED***
+
+.object-tools a ***REMOVED***
+    border-radius: 15px;
+***REMOVED***
+
+.object-tools a:link, .object-tools a:visited ***REMOVED***
+    display: block;
+    float: left;
+    padding: 3px 12px;
+    background: #999;
+    font-weight: 400;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #fff;
+***REMOVED***
+
+.object-tools a:focus, .object-tools a:hover ***REMOVED***
+    background-color: #417690;
+***REMOVED***
+
+.object-tools a:focus***REMOVED***
+    text-decoration: none;
+***REMOVED***
+
+.object-tools a.viewsitelink, .object-tools a.golink,.object-tools a.addlink ***REMOVED***
+    background-repeat: no-repeat;
+    background-position: right 7px center;
+    padding-right: 26px;
+***REMOVED***
+
+.object-tools a.viewsitelink, .object-tools a.golink ***REMOVED***
+    background-image: url(../img/tooltag-arrowright.svg);
+***REMOVED***
+
+.object-tools a.addlink ***REMOVED***
+    background-image: url(../img/tooltag-add.svg);
+***REMOVED***
+
+/* OBJECT HISTORY */
+
+table#change-history ***REMOVED***
+    width: 100%;
+***REMOVED***
+
+table#change-history tbody th ***REMOVED***
+    width: 16em;
+***REMOVED***
+
+/* PAGE STRUCTURE */
+
+#container ***REMOVED***
+    position: relative;
+    width: 100%;
+    min-width: 980px;
+    padding: 0;
+***REMOVED***
+
+#content ***REMOVED***
+    padding: 20px 40px;
+***REMOVED***
+
+.dashboard #content ***REMOVED***
+    width: 600px;
+***REMOVED***
+
+#content-main ***REMOVED***
+    float: left;
+    width: 100%;
+***REMOVED***
+
+#content-related ***REMOVED***
+    float: right;
+    width: 260px;
+    position: relative;
+    margin-right: -300px;
+***REMOVED***
+
+#footer ***REMOVED***
+    clear: both;
+    padding: 10px;
+***REMOVED***
+
+/* COLUMN TYPES */
+
+.colMS ***REMOVED***
+    margin-right: 300px;
+***REMOVED***
+
+.colSM ***REMOVED***
+    margin-left: 300px;
+***REMOVED***
+
+.colSM #content-related ***REMOVED***
+    float: left;
+    margin-right: 0;
+    margin-left: -300px;
+***REMOVED***
+
+.colSM #content-main ***REMOVED***
+    float: right;
+***REMOVED***
+
+.popup .colM ***REMOVED***
+    width: auto;
+***REMOVED***
+
+/* HEADER */
+
+#header ***REMOVED***
+    width: auto;
+    height: 40px;
+    padding: 10px 40px;
+    background: #417690;
+    line-height: 40px;
+    color: #ffc;
+    overflow: hidden;
+***REMOVED***
+
+#header a:link, #header a:visited ***REMOVED***
+    color: #fff;
+***REMOVED***
+
+#header a:focus , #header a:hover ***REMOVED***
+    text-decoration: underline;
+***REMOVED***
+
+#branding ***REMOVED***
+    float: left;
+***REMOVED***
+
+#branding h1 ***REMOVED***
+    padding: 0;
+    margin: 0 20px 0 0;
+    font-weight: 300;
+    font-size: 24px;
+    color: #f5dd5d;
+***REMOVED***
+
+#branding h1, #branding h1 a:link, #branding h1 a:visited ***REMOVED***
+    color: #f5dd5d;
+***REMOVED***
+
+#branding h2 ***REMOVED***
+    padding: 0 10px;
+    font-size: 14px;
+    margin: -8px 0 8px 0;
+    font-weight: normal;
+    color: #ffc;
+***REMOVED***
+
+#branding a:hover ***REMOVED***
+    text-decoration: none;
+***REMOVED***
+
+#user-tools ***REMOVED***
+    float: right;
+    padding: 0;
+    margin: 0 0 0 20px;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-align: right;
+***REMOVED***
+
+#user-tools a ***REMOVED***
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+***REMOVED***
+
+#user-tools a:focus, #user-tools a:hover ***REMOVED***
+    text-decoration: none;
+    border-bottom-color: #79aec8;
+    color: #79aec8;
+***REMOVED***
+
+/* SIDEBAR */
+
+#content-related ***REMOVED***
+    background: #f8f8f8;
+***REMOVED***
+
+#content-related .module ***REMOVED***
+    background: none;
+***REMOVED***
+
+#content-related h3 ***REMOVED***
+    font-size: 14px;
+    color: #666;
+    padding: 0 16px;
+    margin: 0 0 16px;
+***REMOVED***
+
+#content-related h4 ***REMOVED***
+    font-size: 13px;
+***REMOVED***
+
+#content-related p ***REMOVED***
+    padding-left: 16px;
+    padding-right: 16px;
+***REMOVED***
+
+#content-related .actionlist ***REMOVED***
+    padding: 0;
+    margin: 16px;
+***REMOVED***
+
+#content-related .actionlist li ***REMOVED***
+    line-height: 1.2;
+    margin-bottom: 10px;
+    padding-left: 18px;
+***REMOVED***
+
+#content-related .module h2 ***REMOVED***
+    background: none;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 18px;
+    color: #333;
+***REMOVED***
+
+.delete-confirmation form input[type="submit"] ***REMOVED***
+    background: #ba2121;
+    border-radius: 4px;
+    padding: 10px 15px;
+    color: #fff;
+***REMOVED***
+
+.delete-confirmation form input[type="submit"]:active,
+.delete-confirmation form input[type="submit"]:focus,
+.delete-confirmation form input[type="submit"]:hover ***REMOVED***
+    background: #a41515;
+***REMOVED***
+
+.delete-confirmation form .cancel-link ***REMOVED***
+    display: inline-block;
+    vertical-align: middle;
+    height: 15px;
+    line-height: 15px;
+    background: #ddd;
+    border-radius: 4px;
+    padding: 10px 15px;
+    color: #333;
+    margin: 0 0 0 10px;
+***REMOVED***
+
+.delete-confirmation form .cancel-link:active,
+.delete-confirmation form .cancel-link:focus,
+.delete-confirmation form .cancel-link:hover ***REMOVED***
+    background: #ccc;
+***REMOVED***
+
+/* POPUP */
+.popup #content ***REMOVED***
+    padding: 20px;
+***REMOVED***
+
+.popup #container ***REMOVED***
+    min-width: 0;
+***REMOVED***
+
+.popup #header ***REMOVED***
+    padding: 10px 20px;
+***REMOVED***

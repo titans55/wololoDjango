@@ -1,0 +1,994 @@
+/* Tablets */
+
+input[type="submit"], button ***REMOVED***
+    -webkit-appearance: none;
+    appearance: none;
+***REMOVED***
+
+@media (max-width: 1024px) ***REMOVED***
+    /* Basic */
+
+    html ***REMOVED***
+        -webkit-text-size-adjust: 100%;
+    ***REMOVED***
+
+    td, th ***REMOVED***
+        padding: 10px;
+        font-size: 14px;
+    ***REMOVED***
+
+    .small ***REMOVED***
+        font-size: 12px;
+    ***REMOVED***
+
+    /* Layout */
+
+    #container ***REMOVED***
+        min-width: 0;
+    ***REMOVED***
+
+    #content ***REMOVED***
+        padding: 20px 30px 30px;
+    ***REMOVED***
+
+    div.breadcrumbs ***REMOVED***
+        padding: 10px 30px;
+    ***REMOVED***
+
+    /* Header */
+
+    #header ***REMOVED***
+        display: flex;
+        flex-direction: column;
+        padding: 15px 30px;
+        height: auto;
+        line-height: 1;
+    ***REMOVED***
+
+    #branding h1 ***REMOVED***
+        margin: 0 0 8px;
+        font-size: 20px;
+        line-height: 1.2;
+    ***REMOVED***
+
+    #user-tools ***REMOVED***
+        margin: 0;
+        font-weight: 400;
+        line-height: 1.85;
+        text-align: left;
+    ***REMOVED***
+
+    #user-tools a ***REMOVED***
+        display: inline-block;
+        line-height: 1.4;
+    ***REMOVED***
+
+    /* Dashboard */
+
+    .dashboard #content ***REMOVED***
+        width: auto;
+    ***REMOVED***
+
+    #content-related ***REMOVED***
+        margin-right: -290px;
+    ***REMOVED***
+
+    .colSM #content-related ***REMOVED***
+        margin-left: -290px;
+    ***REMOVED***
+
+    .colMS ***REMOVED***
+        margin-right: 290px;
+    ***REMOVED***
+
+    .colSM ***REMOVED***
+        margin-left: 290px;
+    ***REMOVED***
+
+    .dashboard .module table td a ***REMOVED***
+        padding-right: 0;
+    ***REMOVED***
+
+    td .changelink, td .addlink ***REMOVED***
+        font-size: 13px;
+    ***REMOVED***
+
+    /* Changelist */
+
+    #changelist #toolbar ***REMOVED***
+        border: none;
+        padding: 15px;
+    ***REMOVED***
+
+    #changelist-search > div ***REMOVED***
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        max-width: 480px;
+    ***REMOVED***
+
+    #changelist-search label ***REMOVED***
+        line-height: 22px;
+    ***REMOVED***
+
+    #changelist #toolbar form #searchbar ***REMOVED***
+        -webkit-flex: 1 0 auto;
+        flex: 1 0 auto;
+        width: 0;
+        height: 22px;
+        margin: 0 10px 0 6px;
+    ***REMOVED***
+
+    #changelist-search .quiet ***REMOVED***
+        width: 100%;
+        margin: 5px 0 0 25px;
+    ***REMOVED***
+
+    #changelist .actions ***REMOVED***
+        display: flex;
+        flex-wrap: wrap;
+        padding: 15px 0;
+    ***REMOVED***
+
+    #changelist .actions.selected ***REMOVED***
+        border: none;
+    ***REMOVED***
+
+    #changelist .actions label ***REMOVED***
+        display: flex;
+    ***REMOVED***
+
+    #changelist .actions select ***REMOVED***
+        background: #fff;
+    ***REMOVED***
+
+    #changelist .actions .button ***REMOVED***
+        min-width: 48px;
+        margin: 0 10px;
+    ***REMOVED***
+
+    #changelist .actions span.all,
+    #changelist .actions span.clear,
+    #changelist .actions span.question,
+    #changelist .actions span.action-counter ***REMOVED***
+        font-size: 11px;
+        margin: 0 10px 0 0;
+    ***REMOVED***
+
+    #changelist-filter ***REMOVED***
+        width: 200px;
+    ***REMOVED***
+
+    .change-list .filtered .results,
+    .change-list .filtered .paginator,
+    .filtered #toolbar,
+    .filtered .actions,
+    .filtered div.xfull ***REMOVED***
+        margin-right: 230px;
+    ***REMOVED***
+
+    #changelist .paginator ***REMOVED***
+        border-top-color: #eee;
+    ***REMOVED***
+
+    #changelist .results + .paginator ***REMOVED***
+        border-top: none;
+    ***REMOVED***
+
+    /* Forms */
+
+    label ***REMOVED***
+        font-size: 14px;
+    ***REMOVED***
+
+    .form-row input[type=text],
+    .form-row input[type=password],
+    .form-row input[type=email],
+    .form-row input[type=url],
+    .form-row input[type=tel],
+    .form-row input[type=number],
+    .form-row textarea,
+    .form-row select,
+    .form-row .vTextField ***REMOVED***
+        box-sizing: border-box;
+        margin: 0;
+        padding: 6px 8px;
+        min-height: 36px;
+        font-size: 14px;
+    ***REMOVED***
+
+    .form-row select ***REMOVED***
+        height: 36px;
+    ***REMOVED***
+
+    .form-row select[multiple] ***REMOVED***
+        height: auto;
+        min-height: 0;
+    ***REMOVED***
+
+    fieldset .fieldBox ***REMOVED***
+        float: none;
+        margin: 0 -10px;
+        padding: 0 10px;
+    ***REMOVED***
+
+    fieldset .fieldBox + .fieldBox ***REMOVED***
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid #eee;
+    ***REMOVED***
+
+    textarea ***REMOVED***
+        max-width: 518px;
+        max-height: 120px;
+    ***REMOVED***
+
+    .aligned label ***REMOVED***
+        padding-top: 6px;
+    ***REMOVED***
+
+    .aligned .add-another,
+    .aligned .related-lookup,
+    .aligned .datetimeshortcuts,
+    .aligned .related-lookup + strong ***REMOVED***
+        align-self: center;
+        margin-left: 15px;
+    ***REMOVED***
+
+    form .aligned ul.radiolist ***REMOVED***
+        margin-left: 2px;
+    ***REMOVED***
+
+    /* Related widget */
+
+    .related-widget-wrapper ***REMOVED***
+        float: none;
+    ***REMOVED***
+
+    .related-widget-wrapper-link + .selector ***REMOVED***
+        max-width: calc(100% - 30px);
+        margin-right: 15px;
+    ***REMOVED***
+
+    select + .related-widget-wrapper-link,
+    .related-widget-wrapper-link + .related-widget-wrapper-link ***REMOVED***
+        margin-left: 10px;
+    ***REMOVED***
+
+    /* Selector */
+
+    .selector ***REMOVED***
+        display: flex;
+        width: 100%;
+    ***REMOVED***
+
+    .selector .selector-filter ***REMOVED***
+        display: flex;
+        align-items: center;
+    ***REMOVED***
+
+    .selector .selector-filter label ***REMOVED***
+        margin: 0 8px 0 0;
+    ***REMOVED***
+
+    .selector .selector-filter input ***REMOVED***
+        width: auto;
+        min-height: 0;
+        flex: 1 1;
+    ***REMOVED***
+
+    .selector-available, .selector-chosen ***REMOVED***
+        width: auto;
+        flex: 1 1;
+        display: flex;
+        flex-direction: column;
+    ***REMOVED***
+
+    .selector select ***REMOVED***
+        width: 100%;
+        flex: 1 0 auto;
+        margin-bottom: 5px;
+    ***REMOVED***
+
+    .selector ul.selector-chooser ***REMOVED***
+        width: 26px;
+        height: 52px;
+        padding: 2px 0;
+        margin: auto 15px;
+        border-radius: 20px;
+        transform: translateY(-10px);
+    ***REMOVED***
+
+    .selector-add, .selector-remove ***REMOVED***
+        width: 20px;
+        height: 20px;
+        background-size: 20px auto;
+    ***REMOVED***
+
+    .selector-add ***REMOVED***
+        background-position: 0 -120px;
+    ***REMOVED***
+
+    .selector-remove ***REMOVED***
+        background-position: 0 -80px;
+    ***REMOVED***
+
+    a.selector-chooseall, a.selector-clearall ***REMOVED***
+        align-self: center;
+    ***REMOVED***
+
+    .stacked ***REMOVED***
+        flex-direction: column;
+        max-width: 480px;
+    ***REMOVED***
+
+    .stacked > * ***REMOVED***
+        flex: 0 1 auto;
+    ***REMOVED***
+
+    .stacked select ***REMOVED***
+        margin-bottom: 0;
+    ***REMOVED***
+
+    .stacked .selector-available, .stacked .selector-chosen ***REMOVED***
+        width: auto;
+    ***REMOVED***
+
+    .stacked ul.selector-chooser ***REMOVED***
+        width: 52px;
+        height: 26px;
+        padding: 0 2px;
+        margin: 15px auto;
+        transform: none;
+    ***REMOVED***
+
+    .stacked .selector-chooser li ***REMOVED***
+        padding: 3px;
+    ***REMOVED***
+
+    .stacked .selector-add, .stacked .selector-remove ***REMOVED***
+        background-size: 20px auto;
+    ***REMOVED***
+
+    .stacked .selector-add ***REMOVED***
+        background-position: 0 -40px;
+    ***REMOVED***
+
+    .stacked .active.selector-add ***REMOVED***
+        background-position: 0 -60px;
+    ***REMOVED***
+
+    .stacked .selector-remove ***REMOVED***
+        background-position: 0 0;
+    ***REMOVED***
+
+    .stacked .active.selector-remove ***REMOVED***
+        background-position: 0 -20px;
+    ***REMOVED***
+
+    .help-tooltip, .selector .help-icon ***REMOVED***
+        display: none;
+    ***REMOVED***
+
+    form .form-row p.datetime ***REMOVED***
+        width: 100%;
+    ***REMOVED***
+
+    .datetime input ***REMOVED***
+        width: 50%;
+        max-width: 120px;
+    ***REMOVED***
+
+    .datetime span ***REMOVED***
+        font-size: 13px;
+    ***REMOVED***
+
+    .datetime .timezonewarning ***REMOVED***
+        display: block;
+        font-size: 11px;
+        color: #999;
+    ***REMOVED***
+
+    .datetimeshortcuts ***REMOVED***
+        color: #ccc;
+    ***REMOVED***
+
+    .inline-group ***REMOVED***
+        overflow: auto;
+    ***REMOVED***
+
+    /* Messages */
+
+    ul.messagelist li ***REMOVED***
+        padding-left: 55px;
+        background-position: 30px 12px;
+    ***REMOVED***
+
+    ul.messagelist li.error ***REMOVED***
+        background-position: 30px 12px;
+    ***REMOVED***
+
+    ul.messagelist li.warning ***REMOVED***
+        background-position: 30px 14px;
+    ***REMOVED***
+
+    /* Login */
+
+    .login #header ***REMOVED***
+        padding: 15px 20px;
+    ***REMOVED***
+
+    .login #branding h1 ***REMOVED***
+        margin: 0;
+    ***REMOVED***
+
+    /* GIS */
+
+    div.olMap ***REMOVED***
+        max-width: calc(100vw - 30px);
+        max-height: 300px;
+    ***REMOVED***
+
+    .olMap + .clear_features ***REMOVED***
+        display: block;
+        margin-top: 10px;
+    ***REMOVED***
+
+    /* Docs */
+
+    .module table.xfull ***REMOVED***
+        width: 100%;
+    ***REMOVED***
+
+    pre.literal-block ***REMOVED***
+        overflow: auto;
+    ***REMOVED***
+***REMOVED***
+
+/* Mobile */
+
+@media (max-width: 767px) ***REMOVED***
+    /* Layout */
+
+    #header, #content, #footer ***REMOVED***
+        padding: 15px;
+    ***REMOVED***
+
+    #footer:empty ***REMOVED***
+        padding: 0;
+    ***REMOVED***
+
+    div.breadcrumbs ***REMOVED***
+        padding: 10px 15px;
+    ***REMOVED***
+
+    /* Dashboard */
+
+    .colMS, .colSM ***REMOVED***
+        margin: 0;
+    ***REMOVED***
+
+    #content-related, .colSM #content-related ***REMOVED***
+        width: 100%;
+        margin: 0;
+    ***REMOVED***
+
+    #content-related .module ***REMOVED***
+        margin-bottom: 0;
+    ***REMOVED***
+
+    #content-related .module h2 ***REMOVED***
+        padding: 10px 15px;
+        font-size: 16px;
+    ***REMOVED***
+
+    /* Changelist */
+
+    #changelist ***REMOVED***
+        display: flex;
+        flex-direction: column;
+    ***REMOVED***
+
+    #changelist #toolbar ***REMOVED***
+        order: 1;
+        padding: 10px;
+    ***REMOVED***
+
+    #changelist .xfull ***REMOVED***
+        order: 2;
+    ***REMOVED***
+
+    #changelist-form ***REMOVED***
+        order: 3;
+    ***REMOVED***
+
+    #changelist-filter ***REMOVED***
+        order: 4;
+    ***REMOVED***
+
+    #changelist .actions label ***REMOVED***
+        flex: 1 1;
+    ***REMOVED***
+
+    #changelist .actions select ***REMOVED***
+        flex: 1 0;
+        width: 100%;
+    ***REMOVED***
+
+    #changelist .actions span ***REMOVED***
+        flex: 1 0 100%;
+    ***REMOVED***
+
+    .change-list .filtered .results, .change-list .filtered .paginator,
+    .filtered #toolbar, .filtered .actions, .filtered div.xfull ***REMOVED***
+        margin-right: 0;
+    ***REMOVED***
+
+    #changelist-filter ***REMOVED***
+        position: static;
+        width: auto;
+        margin-top: 30px;
+    ***REMOVED***
+
+    .object-tools ***REMOVED***
+        float: none;
+        margin: 0 0 15px;
+        padding: 0;
+        overflow: hidden;
+    ***REMOVED***
+
+    .object-tools li ***REMOVED***
+        height: auto;
+        margin-left: 0;
+    ***REMOVED***
+
+    .object-tools li + li ***REMOVED***
+        margin-left: 15px;
+    ***REMOVED***
+
+    /* Forms */
+
+    .form-row ***REMOVED***
+        padding: 15px 0;
+    ***REMOVED***
+
+    .aligned .form-row,
+    .aligned .form-row > div ***REMOVED***
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 100vw;
+    ***REMOVED***
+
+    .aligned .form-row > div ***REMOVED***
+        width: calc(100vw - 30px);
+    ***REMOVED***
+
+    textarea ***REMOVED***
+        max-width: none;
+    ***REMOVED***
+
+    .vURLField ***REMOVED***
+        width: auto;
+    ***REMOVED***
+
+    fieldset .fieldBox + .fieldBox ***REMOVED***
+        margin-top: 15px;
+        padding-top: 15px;
+    ***REMOVED***
+
+    fieldset.collapsed .form-row ***REMOVED***
+        display: none;
+    ***REMOVED***
+
+    .aligned label ***REMOVED***
+        width: 100%;
+        padding: 0 0 10px;
+    ***REMOVED***
+
+    .aligned label:after ***REMOVED***
+        max-height: 0;
+    ***REMOVED***
+
+    .aligned .form-row input,
+    .aligned .form-row select,
+    .aligned .form-row textarea ***REMOVED***
+        flex: 1 1 auto;
+        max-width: 100%;
+    ***REMOVED***
+
+    .aligned .checkbox-row ***REMOVED***
+        align-items: center;
+    ***REMOVED***
+
+    .aligned .checkbox-row input ***REMOVED***
+        flex: 0 1 auto;
+        margin: 0;
+    ***REMOVED***
+
+    .aligned .vCheckboxLabel ***REMOVED***
+        flex: 1 0;
+        padding: 1px 0 0 5px;
+    ***REMOVED***
+
+    .aligned label + p,
+    .aligned label + div.help,
+    .aligned label + div.readonly ***REMOVED***
+        padding: 0;
+        margin-left: 0;
+    ***REMOVED***
+
+    .aligned p.file-upload ***REMOVED***
+        margin-left: 0;
+        font-size: 13px;
+    ***REMOVED***
+
+    span.clearable-file-input ***REMOVED***
+        margin-left: 15px;
+    ***REMOVED***
+
+    span.clearable-file-input label ***REMOVED***
+        font-size: 13px;
+        padding-bottom: 0;
+    ***REMOVED***
+
+    .aligned .timezonewarning ***REMOVED***
+        flex: 1 0 100%;
+        margin-top: 5px;
+    ***REMOVED***
+
+    form .aligned .form-row div.help ***REMOVED***
+        width: 100%;
+        margin: 5px 0 0;
+        padding: 0;
+    ***REMOVED***
+
+    form .aligned ul ***REMOVED***
+        margin-left: 0;
+        padding-left: 0;
+    ***REMOVED***
+
+    form .aligned ul.radiolist ***REMOVED***
+        margin-right: 15px;
+        margin-bottom: -3px;
+    ***REMOVED***
+
+    form .aligned ul.radiolist li + li ***REMOVED***
+        margin-top: 5px;
+    ***REMOVED***
+
+    /* Related widget */
+
+    .related-widget-wrapper ***REMOVED***
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+    ***REMOVED***
+
+    .related-widget-wrapper .selector ***REMOVED***
+        order: 1;
+    ***REMOVED***
+
+    .related-widget-wrapper > a ***REMOVED***
+        order: 2;
+    ***REMOVED***
+
+    .related-widget-wrapper .radiolist ~ a ***REMOVED***
+        align-self: flex-end;
+    ***REMOVED***
+
+    .related-widget-wrapper > select ~ a ***REMOVED***
+        align-self: center;
+    ***REMOVED***
+
+    select + .related-widget-wrapper-link,
+    .related-widget-wrapper-link + .related-widget-wrapper-link ***REMOVED***
+        margin-left: 15px;
+    ***REMOVED***
+
+    /* Selector */
+
+    .selector ***REMOVED***
+        flex-direction: column;
+    ***REMOVED***
+
+    .selector > * ***REMOVED***
+        float: none;
+    ***REMOVED***
+
+    .selector-available, .selector-chosen ***REMOVED***
+        margin-bottom: 0;
+        flex: 1 1 auto;
+    ***REMOVED***
+
+    .selector select ***REMOVED***
+        max-height: 96px;
+    ***REMOVED***
+
+    .selector ul.selector-chooser ***REMOVED***
+        display: block;
+        float: none;
+        width: 52px;
+        height: 26px;
+        padding: 0 2px;
+        margin: 15px auto 20px;
+        transform: none;
+    ***REMOVED***
+
+    .selector ul.selector-chooser li ***REMOVED***
+        float: left;
+    ***REMOVED***
+
+    .selector-remove ***REMOVED***
+        background-position: 0 0;
+    ***REMOVED***
+
+    .selector-add  ***REMOVED***
+        background-position: 0 -40px;
+    ***REMOVED***
+
+    /* Inlines */
+
+    .inline-group[data-inline-type="stacked"] .inline-related ***REMOVED***
+        border: 2px solid #eee;
+        border-radius: 4px;
+        margin-top: 15px;
+        overflow: auto;
+    ***REMOVED***
+
+    .inline-group[data-inline-type="stacked"] .inline-related > * ***REMOVED***
+        box-sizing: border-box;
+    ***REMOVED***
+
+    .inline-group[data-inline-type="stacked"] .inline-related + .inline-related ***REMOVED***
+        margin-top: 30px;
+    ***REMOVED***
+
+    .inline-group[data-inline-type="stacked"] .inline-related .module ***REMOVED***
+        padding: 0 10px;
+    ***REMOVED***
+
+    .inline-group[data-inline-type="stacked"] .inline-related .module .form-row:last-child ***REMOVED***
+        border-bottom: none;
+    ***REMOVED***
+
+    .inline-group[data-inline-type="stacked"] .inline-related h3 ***REMOVED***
+        padding: 10px;
+        border-top-width: 0;
+        border-bottom-width: 2px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    ***REMOVED***
+
+    .inline-group[data-inline-type="stacked"] .inline-related h3 .inline_label ***REMOVED***
+        margin-right: auto;
+    ***REMOVED***
+
+    .inline-group[data-inline-type="stacked"] .inline-related h3 span.delete ***REMOVED***
+        float: none;
+        flex: 1 1 100%;
+        margin-top: 5px;
+    ***REMOVED***
+
+    .inline-group[data-inline-type="stacked"] .aligned .form-row > div:not([class]) ***REMOVED***
+        width: 100%;
+    ***REMOVED***
+
+    .inline-group[data-inline-type="stacked"] .aligned label ***REMOVED***
+        width: 100%;
+    ***REMOVED***
+
+    .inline-group[data-inline-type="stacked"] div.add-row ***REMOVED***
+        margin-top: 15px;
+        border: 1px solid #eee;
+        border-radius: 4px;
+    ***REMOVED***
+
+    .inline-group div.add-row,
+    .inline-group .tabular tr.add-row td ***REMOVED***
+        padding: 0;
+    ***REMOVED***
+
+    .inline-group div.add-row a,
+    .inline-group .tabular tr.add-row td a ***REMOVED***
+        display: block;
+        padding: 8px 10px 8px 26px;
+        background-position: 8px 9px;
+    ***REMOVED***
+
+    /* Submit row */
+
+    .submit-row ***REMOVED***
+        padding: 10px 10px 0;
+        margin: 0 0 15px;
+        display: flex;
+        flex-direction: column;
+    ***REMOVED***
+
+    .submit-row > * ***REMOVED***
+        width: 100%;
+    ***REMOVED***
+
+    .submit-row input, .submit-row input.default, .submit-row a, .submit-row a.closelink ***REMOVED***
+        float: none;
+        margin: 0 0 10px;
+        text-align: center;
+    ***REMOVED***
+
+    .submit-row a.closelink ***REMOVED***
+        padding: 10px 0;
+    ***REMOVED***
+
+    .submit-row p.deletelink-box ***REMOVED***
+        order: 4;
+    ***REMOVED***
+
+    /* Messages */
+
+    ul.messagelist li ***REMOVED***
+        padding-left: 40px;
+        background-position: 15px 12px;
+    ***REMOVED***
+
+    ul.messagelist li.error ***REMOVED***
+        background-position: 15px 12px;
+    ***REMOVED***
+
+    ul.messagelist li.warning ***REMOVED***
+        background-position: 15px 14px;
+    ***REMOVED***
+
+    /* Paginator */
+
+    .paginator .this-page, .paginator a:link, .paginator a:visited ***REMOVED***
+        padding: 4px 10px;
+    ***REMOVED***
+
+    /* Login */
+
+    body.login ***REMOVED***
+        padding: 0 15px;
+    ***REMOVED***
+
+    .login #container ***REMOVED***
+        width: auto;
+        max-width: 480px;
+        margin: 50px auto;
+    ***REMOVED***
+
+    .login #header,
+    .login #content ***REMOVED***
+        padding: 15px;
+    ***REMOVED***
+
+    .login #content-main ***REMOVED***
+        float: none;
+    ***REMOVED***
+
+    .login .form-row ***REMOVED***
+        padding: 0;
+    ***REMOVED***
+
+    .login .form-row + .form-row ***REMOVED***
+        margin-top: 15px;
+    ***REMOVED***
+
+    .login .form-row label ***REMOVED***
+        display: block;
+        margin: 0 0 5px;
+        padding: 0;
+        line-height: 1.2;
+    ***REMOVED***
+
+    .login .submit-row ***REMOVED***
+        padding: 15px 0 0;
+    ***REMOVED***
+
+    .login br, .login .submit-row label ***REMOVED***
+        display: none;
+    ***REMOVED***
+
+    .login .submit-row input ***REMOVED***
+        margin: 0;
+        text-transform: uppercase;
+    ***REMOVED***
+
+    .errornote ***REMOVED***
+        margin: 0 0 20px;
+        padding: 8px 12px;
+        font-size: 13px;
+    ***REMOVED***
+
+    /* Calendar and clock */
+
+    .calendarbox, .clockbox ***REMOVED***
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        border: none;
+        overflow: visible;
+    ***REMOVED***
+
+    .calendarbox:before, .clockbox:before ***REMOVED***
+        content: '';
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.75);
+        transform: translate(-50%, -50%);
+    ***REMOVED***
+
+    .calendarbox > *, .clockbox > * ***REMOVED***
+        position: relative;
+        z-index: 1;
+    ***REMOVED***
+
+    .calendarbox > div:first-child ***REMOVED***
+        z-index: 2;
+    ***REMOVED***
+
+    .calendarbox .calendar, .clockbox h2 ***REMOVED***
+        border-radius: 4px 4px 0 0;
+        overflow: hidden;
+    ***REMOVED***
+
+    .calendarbox .calendar-cancel, .clockbox .calendar-cancel ***REMOVED***
+        border-radius: 0 0 4px 4px;
+        overflow: hidden;
+    ***REMOVED***
+
+    .calendar-shortcuts ***REMOVED***
+        padding: 10px 0;
+        font-size: 12px;
+        line-height: 12px;
+    ***REMOVED***
+
+    .calendar-shortcuts a ***REMOVED***
+        margin: 0 4px;
+    ***REMOVED***
+
+    .timelist a ***REMOVED***
+        background: #fff;
+        padding: 4px;
+    ***REMOVED***
+
+    .calendar-cancel ***REMOVED***
+        padding: 8px 10px;
+    ***REMOVED***
+
+    .clockbox h2 ***REMOVED***
+        padding: 8px 15px;
+    ***REMOVED***
+
+    .calendar caption ***REMOVED***
+        padding: 10px;
+    ***REMOVED***
+
+    .calendarbox .calendarnav-previous, .calendarbox .calendarnav-next ***REMOVED***
+        z-index: 1;
+        top: 10px;
+    ***REMOVED***
+
+    /* History */
+
+    table#change-history tbody th, table#change-history tbody td ***REMOVED***
+        font-size: 13px;
+        word-break: break-word;
+    ***REMOVED***
+
+    table#change-history tbody th ***REMOVED***
+        width: auto;
+    ***REMOVED***
+
+    /* Docs */
+
+    table.model tbody th, table.model tbody td ***REMOVED***
+        font-size: 13px;
+        word-break: break-word;
+    ***REMOVED***
+***REMOVED***

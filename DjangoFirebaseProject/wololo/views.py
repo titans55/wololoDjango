@@ -6,6 +6,8 @@ from .tasks import add_village
 from .tasks import upgrade_building
 from .upgradeMethods import getCurrentResource, updateSumAndLastInteractionDateOfResource, getRequiredTimeForUpgrade
 from .initFirestore import get_db, get_auth
+from .firebaseUser import firebaseUser
+from .commonFunctions import getGameConfig, getVillageIndex
 import time
 import urllib.request
 import urllib.error
@@ -19,10 +21,12 @@ import dateutil.parser
 
 db = get_db()
 auth = get_auth()
+gameConfig = getGameConfig()
+
 def myuser_login_required(f):
     def wrap(request, *args, **kwargs):
         #this check the session if userid key exist, if not it will redirect to login page
-        if(not auth.current_user):
+        if( 'loggedIn' not in request.session):
             messages.error(request,'Log in in order to continue.')
             return redirect('landingPage')
              
@@ -33,6 +37,10 @@ def myuser_login_required(f):
 # Create your views here.
 
 def landingPage(request):
+    if('loggedIn' in request.session):
+        if (request.session['loggedIn']):
+            return redirect('myVillage')
+
     return render(request, 'beforeLogin/landingPage.html')
 
 def registerPage(request):
@@ -43,14 +51,37 @@ def createAccount(request):
     if request.method == "POST":
         email = request.POST.get("email")
         password = request.POST.get("password")
+        username = request.POST.get("username")
+        if email is '' or password is '' or username is '':
+            messages.error(request, 'Please fill all the fields.')
+            return redirect("registerPage")
 
-        auth.create_user_with_email_and_password(email, password)
+        print(db.collection('players').get())
+        
+        import urllib.request as urllib2
+        try: 
+            auth.create_user_with_email_and_password(email, password)
+        except urllib2.HTTPError as err:
+            if err.code == 400:
+                messages.error(request, 'That email is already registered.')
+            else:
+                raise
+            return redirect("registerPage")
+
+
+        for player in db.collection('players').get():
+            userInfo = player._data
+            print (userInfo['username'])
+            if userInfo['username'] == username:
+                messages.error(request, 'Username exists.')
+                return redirect("registerPage")
+
         user = auth.sign_in_with_email_and_password(email, password)
-        user_id = auth.current_user['localId']
+        user_id = user['localId']
         db.collection('players').document(user_id).set(***REMOVED***
             "clan": "",
             "regionSelected": False,
-            "username": "userrrr"
+            "username": username
         ***REMOVED***)
         user = auth.refresh(user['refreshToken']) #now we have 1 hour expiry token
         auth.send_email_verification(user['idToken'])
@@ -68,30 +99,32 @@ def verifyLogin(request):
                 messages.error(request,'Email is not verified.')
                 # auth.send_email_verification(user['idToken'])
                 return redirect("landingPage")
-            user_id = auth.current_user['localId']
-            request.session['user_id'] = user_id
-            userInfo = db.collection('players').document(user_id).get()._data
-            
-            # print(userInfo['regionSelected'])
-            if userInfo['regionSelected'] is False :
+                
+            request.session['userID'] = user['localId']
+            request.session['loggedIn'] = True
+            user = firebaseUser(request.session['userID'])
+            print(user.regionSelected)
+            if user.regionSelected == False :
                 return redirect("selectRegion")
-
             
         except:
             messages.error(request,'Email or password is not correct.')
             return redirect("landingPage")
         
-
         return redirect(settings.LOGIN_REDIRECT_URL)
     return HttpResponse("why y r here")
 
 def logout(request):
-    auth.current_user = None
+    del request.session['userID']
+    del request.session['selected_village_index']
+    del request.session['loggedIn']
+    request.session.modified = True
+
     return redirect(settings.LANDING_PAGE_REDIRECT_URL)
 
 @myuser_login_required
 def selectRegionOnFirstLoginView(request):
-    user_id = auth.current_user['localId']
+    user_id = request.session['user']['localId']
     userInfo = db.collection('players').document(user_id).get()._data
     if userInfo['regionSelected'] is True :
         return redirect('myVillage')
@@ -100,7 +133,7 @@ def selectRegionOnFirstLoginView(request):
 
 @myuser_login_required
 def selectingRegion(request):
-    user_id = auth.current_user['localId']
+    user_id = request.session['user']['localId']
     userInfo = db.collection('players').document(user_id).get()._data
     if userInfo['regionSelected'] is True :
         return redirect('myVillage')
@@ -197,20 +230,20 @@ def selectingRegion(request):
         ***REMOVED***
         db.collection('players').document(user_id).collection('villages').document(firstVillage._data['id']).set(villageInfo)
         db.collection('villages').document(firstVillage._data['id']).update(***REMOVED***'user_id': user_id***REMOVED***)
-        db.collection('villages').document(firstVillage._data['id']).update(***REMOVED***'playerName':'Player Naaame'***REMOVED***)
-        db.collection('villages').document(firstVillage._data['id']).update(***REMOVED***'villageName':'village Naaame'***REMOVED***)
+        db.collection('villages').document(firstVillage._data['id']).update(***REMOVED***'playerName':userInfo['username']***REMOVED***)
+        db.collection('villages').document(firstVillage._data['id']).update(***REMOVED***'villageName':'Yigidin Harman Oldugu Yer'***REMOVED***)
         db.collection('players').document(user_id).update(***REMOVED***'regionSelected' : True***REMOVED***)
     return redirect('myVillage')
 
 @myuser_login_required
 def upgrade(request):
     if request.method == "POST":
-        script_dir = os.path.dirname(__file__)
-        file_path = os.path.join(script_dir, 'gameConfig.json')
-        with open(file_path, 'r') as f:
-            gameConfig = json.load(f)
 
-        user_id = auth.current_user['localId']
+        user_id = request.session['userID']
+        user = firebaseUser(user_id)
+        if user.regionSelected is False :
+            return redirect("selectRegion")
+
         village_id = request.POST.get("village_id") #this should come from request
         building_path = request.POST.get("building_path") #this should also come from request
         firing_time = request.POST.get("firingTime")
@@ -254,37 +287,11 @@ def upgrade(request):
 ######## MAIN PAGES ########
 @myuser_login_required
 def villages(request, village_index=None):
-
-    
-
-    user_id = auth.current_user['localId']
-    userInfo= db.collection('players').document(user_id).get()._data
-    if userInfo['regionSelected'] is False :
+    user_id = request.session['userID']
+    user = firebaseUser(user_id)
+    if user.regionSelected is False :
         return redirect("selectRegion")
     
-
-    script_dir = os.path.dirname(__file__)
-    file_path = os.path.join(script_dir, 'gameConfig.json')
-    with open(file_path, 'r') as f:
-        gameConfig = json.load(f)
-    #print(gameConfig)
-
-    #add_village.apply_async((user_id,'6thSense', 'Murat Kekili'),countdown = 5)
-
-    villages_ref = db.collection('players').document(user_id).collection('villages')
-    villages = villages_ref.get()
-    myVillages = []
-    
-    i = 0
-    for village in villages:
-        village._data['index'] = i 
-        village._data['id'] = village.reference.id
-        village._data['resources']['woodCamp']['lastInteractionDate'] = str(village._data['resources']['woodCamp']['lastInteractionDate'])
-        village._data['resources']['ironMine']['lastInteractionDate'] = str(village._data['resources']['ironMine']['lastInteractionDate'])
-        village._data['resources']['clayPit']['lastInteractionDate'] = str(village._data['resources']['clayPit']['lastInteractionDate'])
-        myVillages.append(village._data)
-        i += 1
-
         # db.collection('players').document(user_id).collection('villages').document(village._data['id']).update(
         #     ***REMOVED***
         #         "troops" : ***REMOVED***
@@ -370,64 +377,26 @@ def villages(request, village_index=None):
         #     ***REMOVED***
         # )
 
-    if village_index is not None and i>=village_index:
-        selected_village_index = int(village_index)
-        request.session['selected_village_index'] = selected_village_index
-    elif 'selected_village_index' in request.session and i>request.session['selected_village_index']:
-        selected_village_index = request.session['selected_village_index']
-    else: 
-        selected_village_index = 0
-        request.session['selected_village_index'] = 0
-    print(selected_village_index)
-
-    if village_index is not None and i <= village_index:
-        request.session['selected_village_index'] = 0
-        return redirect('myVillage')
+    selected_village_index = getVillageIndex(request, user, village_index)
+    if(selected_village_index is 'outOfList'):
+        return('barracks')
 
     data = ***REMOVED*** 
-        'villages_info' : myVillages,
-        'selectedVillage': myVillages[selected_village_index],
+        'villages_info' : user.myVillages,
+        'selectedVillage': user.myVillages[selected_village_index],
         'gameConfig' : gameConfig,
         'page' : 'myVillages'
     ***REMOVED***
-    return render(request, 'villages.html', ***REMOVED***'myVillages':myVillages, 'data' : data***REMOVED***)
+    return render(request, 'villages.html', ***REMOVED***'myVillages':user.myVillages, 'data' : data***REMOVED***)
 @myuser_login_required
 def map(request, village_index=None):
 
-    user_id = auth.current_user['localId']
-    userInfo= db.collection('players').document(user_id).get()._data
-    if userInfo['regionSelected'] is False :
-        return redirect("selectRegion")
+    user_id = request.session['userID']
+    user = firebaseUser(user_id)
 
-   
-    script_dir = os.path.dirname(__file__)
-    file_path = os.path.join(script_dir, 'gameConfig.json')
-    with open(file_path, 'r') as f:
-        gameConfig = json.load(f)
-
-    villages_ref = db.collection('players').document(user_id).collection('villages')
-    villages = villages_ref.get()
-    myVillages = []
-
-    i = 0
-    for village in villages:
-        village._data['index'] = i 
-        village._data['id'] = village.reference.id
-        village._data['resources']['woodCamp']['lastInteractionDate'] = str(village._data['resources']['woodCamp']['lastInteractionDate'])
-        village._data['resources']['ironMine']['lastInteractionDate'] = str(village._data['resources']['ironMine']['lastInteractionDate'])
-        village._data['resources']['clayPit']['lastInteractionDate'] = str(village._data['resources']['clayPit']['lastInteractionDate'])
-        myVillages.append(village._data)
-        i += 1
-
-    if village_index is not None and i>=village_index:
-        selected_village_index = int(village_index)
-        request.session['selected_village_index'] = selected_village_index
-    elif 'selected_village_index' in request.session and i>request.session['selected_village_index']:
-        selected_village_index = request.session['selected_village_index']
-    else: 
-        selected_village_index = 0
-        request.session['selected_village_index'] = 0
-    print(selected_village_index)
+    selected_village_index = getVillageIndex(request, user, village_index)
+    if(selected_village_index is 'outOfList'):
+        return('barracks')
 
     public_villages_ref = db.collection('villages')
     publicVillages = public_villages_ref.get()
@@ -435,9 +404,9 @@ def map(request, village_index=None):
     for village in publicVillages:
         if(village._data['user_id']!=''):
             village._data['village_id'] = village.reference.id
-            if(village._data['user_id'] == auth.current_user['localId']):
+            if(village._data['user_id'] == user_id):
                 village._data['owner'] = True
-                for myVillage in myVillages:
+                for myVillage in user.myVillages:
                     if (village._data['village_id'] == myVillage['id']):
                         myVillage['coords'] = ***REMOVED***
                             'x' : village._data['coords']['x'],
@@ -445,30 +414,26 @@ def map(request, village_index=None):
                         ***REMOVED***
             publicVillagesInfo.append(village._data)
 
-    if village_index is not None and i <= village_index:
-        request.session['selected_village_index'] = 0
-        return redirect('map')
-
     data = ***REMOVED*** 
-        'selectedVillage': myVillages[selected_village_index],
+        'selectedVillage': user.myVillages[selected_village_index],
         'gameConfig' : gameConfig,
         'page' : 'map'
     ***REMOVED***
 
-    return render(request, 'map.html', ***REMOVED***'publicVillages' : json.dumps(publicVillagesInfo), 'myVillages':myVillages, 'data' : data ***REMOVED***)
-    
+    return render(request, 'map.html', ***REMOVED***'publicVillages' : json.dumps(publicVillagesInfo), 'myVillages':user.myVillages, 'data' : data ***REMOVED***)
+@myuser_login_required    
 def clans(request):
-    user_id = auth.current_user['localId']
-    userInfo= db.collection('players').document(user_id).get()._data
-    if userInfo['regionSelected'] is False :
+    user_id = request.session['userID']
+    user = firebaseUser(user_id)
+    if user.regionSelected is False :
         return redirect("selectRegion")
 
     return render(request, 'clans.html')
-
+@myuser_login_required    
 def reports(request):
-    user_id = auth.current_user['localId']
-    userInfo= db.collection('players').document(user_id).get()._data
-    if userInfo['regionSelected'] is False :
+    user_id = request.session['userID']
+    user = firebaseUser(user_id)
+    if user.regionSelected is False :
         return redirect("selectRegion")
 
     return render(request, 'reports.html')
@@ -478,49 +443,17 @@ def reports(request):
 
 def barracks(request, village_index=None):
 
-    user_id = auth.current_user['localId']
-    userInfo= db.collection('players').document(user_id).get()._data
-    if userInfo['regionSelected'] is False :
-        return redirect("selectRegion")
+    user_id = request.session['userID']
+    user = firebaseUser(user_id)
+    selected_village_index = getVillageIndex(request, user, village_index)
+    if(selected_village_index is 'outOfList'):
+        return('barracks')
 
-    user_id = auth.current_user['localId']
-    userInfo= db.collection('players').document(user_id).get()._data
-    if userInfo['regionSelected'] is False :
-        return redirect("selectRegion")
-
-   
-    script_dir = os.path.dirname(__file__)
-    file_path = os.path.join(script_dir, 'gameConfig.json')
-    with open(file_path, 'r') as f:
-        gameConfig = json.load(f)
-
-    villages_ref = db.collection('players').document(user_id).collection('villages')
-    villages = villages_ref.get()
-    myVillages = []
-
-    i = 0
-    for village in villages:
-        village._data['index'] = i 
-        village._data['id'] = village.reference.id
-        village._data['resources']['woodCamp']['lastInteractionDate'] = str(village._data['resources']['woodCamp']['lastInteractionDate'])
-        village._data['resources']['ironMine']['lastInteractionDate'] = str(village._data['resources']['ironMine']['lastInteractionDate'])
-        village._data['resources']['clayPit']['lastInteractionDate'] = str(village._data['resources']['clayPit']['lastInteractionDate'])
-        myVillages.append(village._data)
-        i += 1
-
-    if village_index is not None and i>=village_index:
-        selected_village_index = int(village_index)
-        request.session['selected_village_index'] = selected_village_index
-    elif 'selected_village_index' in request.session and i>request.session['selected_village_index']:
-        selected_village_index = request.session['selected_village_index']
-    else: 
-        selected_village_index = 0
-        request.session['selected_village_index'] = 0
-
+    print (user.myVillages)
     data = ***REMOVED*** 
-        'selectedVillage': myVillages[selected_village_index],
+        'selectedVillage': user.myVillages[selected_village_index],
         'gameConfig' : gameConfig,
         'page' : 'barracks'
     ***REMOVED***
 
-    return render(request, 'barracks.html', ***REMOVED***'myVillages':myVillages, 'data' : data ***REMOVED***)
+    return render(request, 'barracks.html', ***REMOVED***'myVillages':user.myVillages, 'data' : data ***REMOVED***)

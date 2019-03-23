@@ -1,0 +1,80 @@
+/* TABLETS */
+
+@media (max-width: 1024px) ***REMOVED***
+    [dir="rtl"] .colMS ***REMOVED***
+        margin-right: 0;
+    ***REMOVED***
+
+    [dir="rtl"] #user-tools ***REMOVED***
+        text-align: right;
+    ***REMOVED***
+
+    [dir="rtl"] #changelist .actions label ***REMOVED***
+        padding-left: 10px;
+        padding-right: 0;
+    ***REMOVED***
+
+    [dir="rtl"] #changelist .actions select ***REMOVED***
+        margin-left: 0;
+        margin-right: 15px;
+    ***REMOVED***
+
+    [dir="rtl"] .change-list .filtered .results,
+    [dir="rtl"] .change-list .filtered .paginator,
+    [dir="rtl"] .filtered #toolbar,
+    [dir="rtl"] .filtered div.xfull,
+    [dir="rtl"] .filtered .actions ***REMOVED***
+        margin-right: 0;
+        margin-left: 230px;
+    ***REMOVED***
+
+    [dir="rtl"] .inline-group ul.tools a.add,
+    [dir="rtl"] .inline-group div.add-row a,
+    [dir="rtl"] .inline-group .tabular tr.add-row td a ***REMOVED***
+        padding: 8px 26px 8px 10px;
+        background-position: calc(100% - 8px) 9px;
+    ***REMOVED***
+
+    [dir="rtl"] .related-widget-wrapper-link + .selector ***REMOVED***
+        margin-right: 0;
+        margin-left: 15px;
+    ***REMOVED***
+
+    [dir="rtl"] .selector .selector-filter label ***REMOVED***
+        margin-right: 0;
+        margin-left: 8px;
+    ***REMOVED***
+
+    [dir="rtl"] .object-tools li ***REMOVED***
+        float: right;
+    ***REMOVED***
+
+    [dir="rtl"] .object-tools li + li ***REMOVED***
+        margin-left: 0;
+        margin-right: 15px;
+    ***REMOVED***
+
+    [dir="rtl"] .dashboard .module table td a ***REMOVED***
+        padding-left: 0;
+        padding-right: 16px;
+    ***REMOVED***
+***REMOVED***
+
+/* MOBILE */
+
+@media (max-width: 767px) ***REMOVED***
+    [dir="rtl"] .change-list .filtered .results,
+    [dir="rtl"] .change-list .filtered .paginator,
+    [dir="rtl"] .filtered #toolbar,
+    [dir="rtl"] .filtered div.xfull,
+    [dir="rtl"] .filtered .actions ***REMOVED***
+        margin-left: 0;
+    ***REMOVED***
+
+    [dir="rtl"] .aligned .add-another,
+    [dir="rtl"] .aligned .related-lookup,
+    [dir="rtl"] .aligned .datetimeshortcuts ***REMOVED***
+        margin-left: 0;
+        margin-right: 15px;
+    ***REMOVED***
+***REMOVED***
