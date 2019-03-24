@@ -52,8 +52,13 @@ def upgrade_building(user_id, village_id, building_path, upgrade_level):
     channel_layer = get_channel_layer()
     print(channel_layer, "wololo")
    
+
+    data = {
+        'messageType': 'upgradeBuilding',
+        'target': building_path
+    }    
     async_to_sync ( channel_layer. group_send ) (
-        user_id , { "type" : "notify.user" , "text" : 'selamalaeyys' }
+        user_id , { "type" : "notify.user" , "json" : data }
     )
     
     # if '.' in villageDict :

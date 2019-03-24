@@ -23,4 +23,5 @@ class ChatConsumer(WebsocketConsumer):
     # Method `notify_user` - event handler` notify.user`
     def notify_user ( self, event ) :
         # Sends a message on the web socket
-        self. send ( text_data = event [ "text" ] )
+        data = event['json']
+        self. send ( text_data=json.dumps(data))

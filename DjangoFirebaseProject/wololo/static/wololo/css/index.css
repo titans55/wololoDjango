@@ -88,3 +88,19 @@
     }
   }
   
+  .popup {
+    position: absolute;
+    min-height: 50px;
+    max-height: 80%;
+    z-index: 1;
+    color: green;
+    /*
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    */
+    background-color: white;
+    -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.33);
+    -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.33);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.33);
+}

@@ -10,13 +10,23 @@
 {% include "partials/villageResources.html" %}
 
 <div class="village-content">
-    <!-- {{data.selectedVillage}} -->
     <ul class="list-group">
-        <!-- {{data.selectedVillage.villageName}}  -->
         <li class="list-group-item">
             <div class="row">
                 <div class="col">
-                    Town center level {{data.selectedVillage.townCenter.level}}
+                    <div class="row">
+                        <div class="col">
+                            Town center
+                        </div>
+                        <div class="col">
+                            <span id="townCenter-level" class="badge badge-info">
+                                Level 
+                                <div class="level">
+                                    {{data.selectedVillage.townCenter.level}}
+                                </div>
+                            </span>                            
+                        </div>
+                    </div>
                 </div>
                 <div class="col">
                     <div buildingName="townCenter" class="upgradeBuildings">
@@ -47,7 +57,19 @@
         <li class="list-group-item">
             <div class="row">
                 <div class="col">
-                        Wood Camp level {{data.selectedVillage.resources.woodCamp.level}}
+                    <div class="row">
+                        <div class="col">
+                            Wood Camp
+                        </div>
+                        <div  class="col">
+                            <span id="resources.woodCamp-level" class="badge badge-info">
+                                Level 
+                                <div class="level">
+                                    {{data.selectedVillage.resources.woodCamp.level}}
+                                </div>
+                            </span>                            
+                        </div>
+                    </div>
                 </div>
                 <div class="col">
                     <div buildingName="woodCamp" class="upgradeResources" resourceType="wood">
@@ -77,7 +99,19 @@
         <li class="list-group-item">
             <div class="row">
                 <div class="col">
-                    Iron Mine level {{data.selectedVillage.resources.ironMine.level}}
+                    <div class="row">
+                        <div class="col">
+                            Iron Mine
+                        </div>
+                        <div  class="col">
+                            <span id="resources.ironMine-level" class="badge badge-info">
+                                Level 
+                                <div class="level">
+                                    {{data.selectedVillage.resources.ironMine.level}}
+                                </div>
+                            </span>                            
+                        </div>
+                    </div>
                 </div>
                 <div class="col">
                     <div buildingName="ironMine" class="upgradeResources" resourceType="iron">
@@ -107,7 +141,19 @@
         <li class="list-group-item">
             <div class="row">
                 <div class="col">
-                    Clay Pit level {{data.selectedVillage.resources.clayPit.level}}
+                    <div class="row">
+                        <div class="col">
+                            Clay Pit
+                        </div>
+                        <div class="col">
+                            <span id="resources.clayPit-level" class="badge badge-info">
+                                Level 
+                                <div class="level">
+                                    {{data.selectedVillage.resources.clayPit.level}}
+                                </div>
+                            </span>                            
+                        </div>
+                    </div>
                 </div>
                 <div class="col">
                     <div buildingName="clayPit" class="upgradeResources" resourceType="clay">
@@ -130,14 +176,26 @@
                     </div>
                 </div>
                 <div class="col">
-                    <button class="upgrade btn btn-primary" id="resources.clayPit">Upgrade</button>
+                    <button id="resources.clayPit" class="upgrade btn btn-primary">Upgrade</button>
                 </div>
             </div>
         </li>
         <li class="list-group-item">
             <div class="row">
                 <div class="col">
-                    Storage level {{data.selectedVillage.storage.level}}
+                    <div class="row">
+                        <div class="col">
+                            Storage
+                        </div>
+                        <div class="col">
+                            <span id="storage-level" class="badge badge-info">
+                                Level 
+                                <div class="level">
+                                    {{data.selectedVillage.storage.level}}
+                                </div>
+                            </span>                            
+                        </div>
+                    </div>
                 </div>
                 <div class="col">
                     <div buildingName="storage" class="upgradeBuildings">
@@ -160,14 +218,26 @@
                     </div> 
                 </div>
                 <div class="col">
-                    <button class="upgrade .popover-dismiss btn btn-primary" buildingName="storage" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Upgrade</button>
+                    <button class="upgrade .popover-dismiss btn btn-primary" id="storage">Upgrade</button>
                 </div>
             </div>
         </li>
         <li class="list-group-item">
             <div class="row">
                 <div class="col">
-                    <a href="/game/barracks" >Barracks</a> level {{data.selectedVillage.barracks.level}}
+                    <div class="row">
+                        <a class="col" href="/game/barracks">
+                            Barracks
+                        </a>
+                        <div class="col">
+                            <span id="barracks-level" class="badge badge-info">
+                                Level 
+                                <div class="level">
+                                    {{data.selectedVillage.barracks.level}}
+                                </div>
+                            </span>                            
+                        </div>
+                    </div>
                 </div>
                 <div class="col">
                     <div buildingName="barracks" class="upgradeBuildings">
@@ -197,7 +267,19 @@
         <li class="list-group-item">
             <div class="row">
                 <div class="col">
-                    Farm level {{data.selectedVillage.farm.level}}
+                    <div class="row">
+                        <div class="col">
+                            Farm
+                        </div>
+                        <div class="col">
+                            <span id="farm-level" class="badge badge-info">
+                                Level 
+                                <div class="level">
+                                    {{data.selectedVillage.farm.level}}
+                                </div>
+                            </span>                            
+                        </div>
+                    </div>
                 </div>
                 <div class="col">
                     <div buildingName="farm" class="upgradeBuildings">
