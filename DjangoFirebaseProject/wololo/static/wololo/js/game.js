@@ -70,18 +70,20 @@ function loadVillages(infos) {
     tile_dimensions = new Phaser.Point(map.tileWidth, map.tileHeight);
     pathfinding = this.game.plugins.add(PathfindingExample.Pathfinding, map.layers[1].data, [-1], tile_dimensions);
     infos.forEach(function(element) {
-        sprite = game.add.sprite(element.coords.x, element.coords.y, 'castle');
-        sprite.village_id = element.village_id;
-        sprite.user_id = element.user_id;
-        sprite.owner = element.owner ? 'yours' : ''
-        sprite.villageName = element.villageName;
-        sprite.playerName = element.playerName;
-        sprite.x = element.coords.x;
-        sprite.y = element.coords.y;
-        sprite.inputEnabled = true;
-        sprite.events.onInputDown.add(onClickListener, sprite);
-        sprite.events.onInputOver.add(onHoverListener, sprite);
-        sprite.events.onInputOut.add(onOutListener, sprite);
+        if(element.playerName != ''){
+            sprite = game.add.sprite(element.coords.x, element.coords.y, 'castle');
+            sprite.village_id = element.village_id;
+            sprite.user_id = element.user_id;
+            sprite.owner = element.owner ? 'yours' : ''
+            sprite.villageName = element.villageName;
+            sprite.playerName = element.playerName;
+            sprite.x = element.coords.x;
+            sprite.y = element.coords.y;
+            sprite.inputEnabled = true;
+            sprite.events.onInputDown.add(onClickListener, sprite);
+            sprite.events.onInputOver.add(onHoverListener, sprite);
+            sprite.events.onInputOut.add(onOutListener, sprite);
+        }
     })
 }
 

@@ -1,5 +1,6 @@
 {% extends "partials/layout.html" %} 
 {% load static %} 
+{% load custom_template_tags %}
 
 {% block headcdn %} 
 {% endblock %}
@@ -11,301 +12,111 @@
 
 <div class="village-content">
     <ul class="list-group">
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col">
+        {% for buildingName, building in data.selectedVillage.buildings.items %}
+            {% if buildingName != 'resources' %}
+                <li class="list-group-item">
                     <div class="row">
                         <div class="col">
-                            Town center
+                            <div class="row">
+                                <div class="col">
+                                    {{buildingName|humanizeCamelCase}}
+                                </div>
+                                <div class="col">
+                                    <span id="{{buildingName}}-level" class="badge badge-info">
+                                        Level 
+                                        <div class="level">
+                                            {{building.level}}
+                                        </div>
+                                    </span>                            
+                                </div>
+                            </div>
                         </div>
                         <div class="col">
-                            <span id="townCenter-level" class="badge badge-info">
-                                Level 
-                                <div class="level">
-                                    {{data.selectedVillage.townCenter.level}}
+                            <div buildingName="townCenter" class="upgradeBuildings">
+                                <div class="row">
+                                    {% if building.state == 'true' %}
+                                        <div class="progress">
+                                            <div id="{{buildingName}}-progressBar" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                                <span id="current-progress"></span>
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <div class="col">
+                                            <div class="neededWood">XXX</div> Wood
+                                        </div>
+                                        <div class="col">
+                                            <div class="neededIron">XXX</div> Iron
+                
+                                        </div>
+                                        <div class="col">
+                                            <div class="neededClay">XXX</div> Clay
+                                        </div>
+                                        <div class="col">
+                                            <div class="neededTime">
+                                                XXX
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
                                 </div>
-                            </span>                            
+                            </div>
+                        </div>
+                        <div class="col">
+                            {% if building.state == 'true' %}
+                                <button class="cancelUpgrade btn btn-danger" id="{{buildingName}}">Cancel</button>
+                            {% else %}
+                                <button class="upgrade btn btn-primary" id="{{buildingName}}">Upgrade</button>
+                            {% endif %}
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div buildingName="townCenter" class="upgradeBuildings">
+                </li>
+            {% else %}
+                {% for resourceBuildingName, resourceBuilding in building.items %}
+                    <li class="list-group-item">
                         <div class="row">
                             <div class="col">
-                                <div class="neededWood">XXX</div> Wood
-                            </div>
-                            <div class="col">
-                                <div class="neededIron">XXX</div> Iron
-    
-                            </div>
-                            <div class="col">
-                                <div class="neededClay">XXX</div> Clay
-                            </div>
-                            <div class="col">
-                                <div class="neededTime">
-                                    XXX
+                                <div class="row">
+                                    <div class="col">
+                                        {{resourceBuildingName|humanizeCamelCase}}
+                                    </div>
+                                    <div  class="col">
+                                        <span id="resources.{{resourceBuildingName}}-level" class="badge badge-info">
+                                            Level 
+                                            <div class="level">
+                                                {{resourceBuilding.level}}
+                                            </div>
+                                        </span>                            
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <button class="upgrade btn btn-primary" id="townCenter">Upgrade</button>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col">
-                    <div class="row">
-                        <div class="col">
-                            Wood Camp
-                        </div>
-                        <div  class="col">
-                            <span id="resources.woodCamp-level" class="badge badge-info">
-                                Level 
-                                <div class="level">
-                                    {{data.selectedVillage.resources.woodCamp.level}}
-                                </div>
-                            </span>                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div buildingName="woodCamp" class="upgradeResources" resourceType="wood">
-                        <div class="row">
                             <div class="col">
-                                <div class="neededWood">XXX</div> Wood
-                            </div>
-                            <div class="col">
-                                <div class="neededIron">XXX</div> Iron
-                            </div>
-                            <div class="col">
-                                <div class="neededClay">XXX</div> Clay
-                            </div>
-                            <div class="col">
-                                <div class="neededTime">
-                                    XXX
+                                <div buildingName="{{resourceBuildingName}}" class="upgradeResources" resourceType="wood">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="neededWood">XXX</div> Wood
+                                        </div>
+                                        <div class="col">
+                                            <div class="neededIron">XXX</div> Iron
+                                        </div>
+                                        <div class="col">
+                                            <div class="neededClay">XXX</div> Clay
+                                        </div>
+                                        <div class="col">
+                                            <div class="neededTime">
+                                                XXX
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <button class="upgrade btn btn-primary" id="resources.woodCamp">Upgrade</button>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col">
-                    <div class="row">
-                        <div class="col">
-                            Iron Mine
-                        </div>
-                        <div  class="col">
-                            <span id="resources.ironMine-level" class="badge badge-info">
-                                Level 
-                                <div class="level">
-                                    {{data.selectedVillage.resources.ironMine.level}}
-                                </div>
-                            </span>                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div buildingName="ironMine" class="upgradeResources" resourceType="iron">
-                        <div class="row">
                             <div class="col">
-                                <div class="neededWood">XXX</div> Wood
-                            </div>
-                            <div class="col">
-                                <div class="neededIron">XXX</div> Iron
-                            </div>
-                            <div class="col">
-                                <div class="neededClay">XXX</div> Clay
-                            </div>
-                            <div class="col">
-                                <div class="neededTime">
-                                    XXX
-                                </div>
+                                <button class="upgrade btn btn-primary" id="resources.{{resourceBuildingName}}">Upgrade</button>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <button class="upgrade btn btn-primary" id="resources.ironMine">Upgrade</button>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col">
-                    <div class="row">
-                        <div class="col">
-                            Clay Pit
-                        </div>
-                        <div class="col">
-                            <span id="resources.clayPit-level" class="badge badge-info">
-                                Level 
-                                <div class="level">
-                                    {{data.selectedVillage.resources.clayPit.level}}
-                                </div>
-                            </span>                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div buildingName="clayPit" class="upgradeResources" resourceType="clay">
-                        <div class="row">
-                            <div class="col">
-                                <div class="neededWood">XXX</div> Wood
-                            </div>
-                            <div class="col">
-                                <div class="neededIron">XXX</div> Iron
-                            </div>
-                            <div class="col">
-                                <div class="neededClay">XXX</div> Clay
-                            </div>
-                            <div class="col">
-                                <div class="neededTime">
-                                    XXX
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <button id="resources.clayPit" class="upgrade btn btn-primary">Upgrade</button>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col">
-                    <div class="row">
-                        <div class="col">
-                            Storage
-                        </div>
-                        <div class="col">
-                            <span id="storage-level" class="badge badge-info">
-                                Level 
-                                <div class="level">
-                                    {{data.selectedVillage.storage.level}}
-                                </div>
-                            </span>                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div buildingName="storage" class="upgradeBuildings">
-                        <div class="row">
-                            <div class="col">
-                                <div class="neededWood">XXX</div> Wood
-                            </div>
-                            <div class="col">
-                                <div class="neededIron">XXX</div> Iron
-                            </div>
-                            <div class="col">
-                                <div class="neededClay">XXX</div> Clay
-                            </div>
-                            <div class="col">
-                                <div class="neededTime">
-                                    XXX
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                <div class="col">
-                    <button class="upgrade .popover-dismiss btn btn-primary" id="storage">Upgrade</button>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col">
-                    <div class="row">
-                        <a class="col" href="/game/barracks">
-                            Barracks
-                        </a>
-                        <div class="col">
-                            <span id="barracks-level" class="badge badge-info">
-                                Level 
-                                <div class="level">
-                                    {{data.selectedVillage.barracks.level}}
-                                </div>
-                            </span>                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div buildingName="barracks" class="upgradeBuildings">
-                        <div class="row">
-                            <div class="col">
-                                <div class="neededWood">XXX</div> Wood
-                            </div>
-                            <div class="col">
-                                <div class="neededIron">XXX</div> Iron
-                            </div>
-                            <div class="col">
-                                <div class="neededClay">XXX</div> Clay
-                            </div>
-                            <div class="col">
-                                <div class="neededTime">
-                                    XXX
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                <div class="col">
-                    <button class="upgrade btn btn-primary" id="barracks">Upgrade</button>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col">
-                    <div class="row">
-                        <div class="col">
-                            Farm
-                        </div>
-                        <div class="col">
-                            <span id="farm-level" class="badge badge-info">
-                                Level 
-                                <div class="level">
-                                    {{data.selectedVillage.farm.level}}
-                                </div>
-                            </span>                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div buildingName="farm" class="upgradeBuildings">
-                        <div class="row">
-                            <div class="col">
-                                <div class="neededWood">XXX</div> Wood
-                            </div>
-                            <div class="col">
-                                <div class="neededIron">XXX</div> Iron
-                            </div>
-                            <div class="col">
-                                <div class="neededClay">XXX</div> Clay
-                            </div>
-                            <div class="col">
-                                <div class="neededTime">
-                                    XXX
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                <div class="col">
-                    <button class="upgrade btn btn-primary" id="farm">Upgrade</button>
-                </div>
-            </div>
-        </li>
+                    </li>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
     </ul> 
     
     <div class="modal fade" id="insufficentResources" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

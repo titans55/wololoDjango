@@ -351,8 +351,7 @@
                 "9": {"wood": 2500, "iron":1600, "clay":2500},
                 "10": {"wood": 3000, "iron":1900, "clay":3000} 
             }
-        },
-        "other building" : "wololo"
+        }
     },
     "units" : {
         "infantry": {

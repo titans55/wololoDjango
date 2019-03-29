@@ -7,7 +7,7 @@ import datetime
 import json
 import os
 from .initFirestore import get_db
-from .upgradeMethods import getCurrentResource
+from .upgradeMethods import getCurrentResource, upgradingEnds
 import pytz
 from DjangoFirebaseProject import settings
 
@@ -60,16 +60,16 @@ def upgrade_building(user_id, village_id, building_path, upgrade_level):
     async_to_sync ( channel_layer. group_send ) (
         user_id , { "type" : "notify.user" , "json" : data }
     )
+    upgradingEnds(user_id, village_id, building_path)
     
     # if '.' in villageDict :
     #     now = datetime.datetime.now(pytz.utc)
     #     newSum = getCurrentResource(villageDict, building_path.split('.')[1], now)
-    #     print("readyyty")
 
     #     village.update({
-    #         building_path+'.sum' : newSum,
-    #         building_path+'.lastInteractionDate' : now,
-    #         building_path+'.level' : upgrade_level
+    #         'buildings.'+building_path+'.sum' : newSum,
+    #         'buildings.'+building_path+'.lastInteractionDate' : now,
+    #         'buildings.'+building_path+'.level' : upgrade_level
     #     })
     #     print("sueccesfullll")
         
@@ -77,7 +77,7 @@ def upgrade_building(user_id, village_id, building_path, upgrade_level):
 
     # else:
     #     village.update({
-    #         building_path+'.level' : upgrade_level
+    #         'buildings.'+building_path+'.level' : upgrade_level
     #     })
 
         

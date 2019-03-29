@@ -16,7 +16,7 @@ function displayNeededTimeForInfantryUnits(){
     $(".neededTime").each(function(){
         const unitName = $(this).attr("unitName");
         const baseTrainingTime = gameConfigs.units.infantry[unitName].neededTrainingBaseTime
-        const barracksLevel = villageData.barracks.level
+        const barracksLevel = villageData.buildings.barracks.level
         const speedPercantageOfBarracks = gameConfigs.buildings.barracks.trainingSpeed[barracksLevel]
         const neededTrainingTime = calculateTimeFromMinutes(lowerByPercantage(baseTrainingTime, speedPercantageOfBarracks))
         $(this).html(neededTrainingTime)

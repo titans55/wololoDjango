@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from .tasks import add_village
 from .tasks import upgrade_building
-from .upgradeMethods import getCurrentResource, updateSumAndLastInteractionDateOfResource, getRequiredTimeForUpgrade
+from .upgradeMethods import getCurrentResource, updateSumAndLastInteractionDateOfResource, getRequiredTimeForUpgrade, setUpgradingTime
 from .initFirestore import get_db, get_auth
 from .firebaseUser import firebaseUser
 from .commonFunctions import getGameConfig, getVillageIndex
@@ -253,12 +253,12 @@ def upgrade(request):
         #upgrade_levelTo = village[building_path]['level'] + 1
         if '.' in building_path : 
             # print(village['resources'],"kololo")
-            upgrade_levelTo = str(int(village['resources'][building_path.split('.')[1]]['level']) + 1)
+            upgrade_levelTo = str(int(village['buildings']['resources'][building_path.split('.')[1]]['level']) + 1)
             required_clay = gameConfig['buildings']['resources'][building_path.split('.')[1]]['upgradingCosts'][upgrade_levelTo]['clay']
             required_iron = gameConfig['buildings']['resources'][building_path.split('.')[1]]['upgradingCosts'][upgrade_levelTo]['iron']
             required_wood = gameConfig['buildings']['resources'][building_path.split('.')[1]]['upgradingCosts'][upgrade_levelTo]['wood']
         else :
-            upgrade_levelTo = str(int(village[building_path]['level']) + 1)
+            upgrade_levelTo = str(int(village['buildings'][building_path]['level']) + 1)
             required_clay = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['clay']
             required_iron = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['iron']
             required_wood = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['wood']
@@ -277,6 +277,7 @@ def upgrade(request):
             # updateSumAndLastInteractionDateOfResource(request, village_id, 'ironMine', iron_total-required_iron, now)
             
             upgrade_building.apply_async((user_id, village_id, building_path, upgrade_levelTo),countdown = reqiured_time)
+            setUpgradingTime(request, village_id, building_path, reqiured_time)
             print("upgrading")
             return HttpResponse("Success")
         else:
@@ -291,95 +292,13 @@ def villages(request, village_index=None):
     user = firebaseUser(user_id)
     if user.regionSelected is False :
         return redirect("selectRegion")
-    
-        # db.collection('players').document(user_id).collection('villages').document(village._data['id']).update(
-        #     {
-        #         "troops" : {
-        #             "inVillage" : {
-        #                 "infantry" :  {
-        #                     "Spearman" : 0,
-        #                     "Swordsman" : 0,
-        #                     "Axeman" : 0,
-        #                     "Archer" : 0
-        #                 },
-        #                 "cavalry" : {
-        #                     "Scout" : 0,
-        #                     "Light Cavalry": 0,
-        #                     "Heavy Cavalry" : 0
-        #                 },
-        #                 "siegeWeapons" : {
-        #                     "Ram" : 0,
-        #                     "Catapult": 0
-        #                 }
-        #             },
-        #             "onMove" : [
-        #                 # {
-        #                 #     "from" : "fromVillageID",
-        #                 #     "to" : "targetVillageID",
-        #                 #     "movementType" : "Attack/Support",
-        #                 #     "state" : "going/returning",
-        #                 #     "arrivalTime" : "timestamp"
-        #                 #     "troops": [
-        #                 #         {
-        #                 #             "unitName" : "Spearman"
-        #                 #             "unitType" : "Infantry",
-        #                 #             "size" : 0
-        #                 #         },
-        #                 #         {
-        #                 #             "unitName" : "Swordsman",
-        #                 #             "unitType" : "Infantry",
-        #                 #             "size" : 0
-        #                 #         }
-        #                 #     ]
-        #                 # }
-        #             ],
-        #             "total" : {
-        #                 "infantry" :  {
-        #                     "Spearman" : 40,
-        #                     "Swordsman" : 0,
-        #                     "Axeman" : 0,
-        #                     "Archer" : 0
-        #                 },
-        #                 "cavalry" : {
-        #                     "Scout" : 0,
-        #                     "Light Cavalry": 0,
-        #                     "Heavy Cavalry" : 0
-        #                 },
-        #                 "siegeWeapons" : {
-        #                     "Ram" : 0,
-        #                     "Catapult": 0
-        #                 }
-        #             },
-        #         }
-        #     }
-        # )
-
-        # now = datetime.datetime.now()
-        # db.collection('players').document(user_id).collection('villages').document(village._data['id']).update(
-        #     {
-        #         "resources" : {
-        #             "woodCamp" : {
-        #                 "lastInteractionDate" : now,
-        #                 "level" : "0",
-        #                 "sum" : 0,
-        #             },
-        #             "ironMine" : {
-        #                 "lastInteractionDate" : now,
-        #                 "level" : "0",
-        #                 "sum" : 0,
-        #             },
-        #             "clayPit" : {
-        #                 "lastInteractionDate" : now,
-        #                 "level" : "0",
-        #                 "sum" : 0,
-        #             }
-        #         }
-        #     }
-        # )
-
+       
     selected_village_index = getVillageIndex(request, user, village_index)
     if(selected_village_index is 'outOfList'):
         return('barracks')
+
+         
+    
 
     data = { 
         'villages_info' : user.myVillages,

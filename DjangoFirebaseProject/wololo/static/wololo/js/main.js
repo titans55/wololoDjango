@@ -19,7 +19,7 @@ function calculateTimeFromMinutes(mins){
 }
 
 function lowerByPercantage(value, percantage){
-    return parseInt(value - (value * percantage / 100))
+    return parseFloat(value - (value * percantage / 100))
 }
 
 function getCookie(name) {
@@ -90,3 +90,8 @@ function listenUpgradeBuilding(incomingJson){
     } , 3000);
 
 }
+
+// class progressBar(){
+  
+    
+// }
