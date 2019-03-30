@@ -19,9 +19,9 @@ function initVillage(){
 function initUpgradeButtons(){
 
     let csrftoken = getCookie('csrftoken');
-    
+
     $(".upgrade").on('click', function(){
-        let now = new Date()
+        let firingTime = new Date() //now
         let building_path = $(this).attr('id')
         $.ajax({
             type: 'POST',
@@ -29,14 +29,25 @@ function initUpgradeButtons(){
             data: {
                 building_path: building_path,
                 village_id: village_id,
-                firingTime: now,
+                firingTime: firingTime,
                 csrfmiddlewaretoken: csrftoken 
             },
             success:function(data){
+                if(data['result'] == 'Success'){
+                    console.log(data['newResources'])
 
-                if(data == 'Success'){
-                    
-                }else if(data == 'Fail'){
+                    if(!building_path.includes('.')){
+                        villageData.buildings[building_path] = data['newBuilding']
+                    }
+                    villageData.buildings.resources = data['newResources']
+
+                    let targetRow = getTargetBuildingRow(building_path)
+                    targetRow.find(".buildingDetailsSection").html(getProgressBarHtml(building_path))
+                    targetRow.find(".upgradeOrCancelBtn").html(getCnclBtnHtml(building_path))
+                    //initCancelButtons
+                    initProgressBar(building_path)
+
+                }else if(data['result'] == 'Fail'){
                     // alert("Fail")
                     console.log("WOLOLO")
                     $('#insufficentResources').modal('show')
@@ -54,64 +65,20 @@ function displayNeededResourcesAndTimeForUpgrading(){
         let buildingName = $(this).attr('buildingName')
 
         if(villageData.buildings[String(buildingName)].upgrading.state == 'true'){
-            let now = moment(new Date())
-            let buildingUpgrading = villageData.buildings[String(buildingName)].upgrading
-            let startedUpgradingAt = moment(buildingUpgrading.time.startedUpgradingAt).format()
-            let willBeUpgradedAt =  moment(buildingUpgrading.time.willBeUpgradedAt).format()
-            let totalUpgradingSeconds =  moment(willBeUpgradedAt).diff(moment(startedUpgradingAt))/1000 //seconds
-            let timeDone = moment(now).diff(moment(startedUpgradingAt).format())/1000 //seconds
-            let period = totalUpgradingSeconds / 100
-            let current_progress = (parseInt(timeDone / period) >= 100 ? 100 : parseInt(timeDone / period))
-            console.log(totalUpgradingSeconds)
-            console.log(period)
-
-            console.log(willBeUpgradedAt)
-            console.log(startedUpgradingAt, typeof(startedUpgradingAt))
-            
-            $("#"+buildingName+"-progressBar")
-            .css("width", current_progress + "%")
-            .attr("aria-valuenow", current_progress)
-            .text(current_progress + "% Complete");
-            if(current_progress!=100){
-                let interval = setInterval(function() {
-                    current_progress += 1;
-                    $("#"+buildingName+"-progressBar")
-                    .css("width", current_progress + "%")
-                    .attr("aria-valuenow", current_progress)
-                    .text(current_progress + "% Complete");
-                    if (current_progress >= 100)
-                        clearInterval(interval);
-                }, period*1000);
-            }
+            initProgressBar(buildingName)
         }else{
-            let buildingLevel = String(parseInt(villageData.buildings[String(buildingName)].level) + 1)
-            let neededResources = gameConfigs.buildings[String(buildingName)].upgradingCosts[buildingLevel]
-            let mins = gameConfigs.buildings[String(buildingName)].upgradeTime[buildingLevel]
-            if(buildingName!='townCenter') mins = lowerByPercantage(mins, speedPercantageOfTownCenter)
-            let neededTime = calculateTimeFromMinutes(mins)
-
-            $(this).find(".neededWood").html(neededResources.wood)
-            $(this).find(".neededIron").html(neededResources.iron)
-            $(this).find(".neededClay").html(neededResources.clay)
-            $(this).find(".neededTime").html(neededTime)
+            fillUpgReq(buildingName)
         }
     })
     $('.upgradeResources').each(function(){
-        let resourceBuilding = $(this).attr('buildingName')
+        let resourceBuildingName = $(this).attr('buildingName')
         // let resourceType = $(this).attr('resourceType')
-        let buildingLevel = String(parseInt(villageData.buildings.resources[String(resourceBuilding)].level) + 1)
-        let neededResources = gameConfigs.buildings.resources[String(resourceBuilding)].upgradingCosts[buildingLevel]
-        let mins = gameConfigs.buildings.resources[String(resourceBuilding)].upgradeTime[buildingLevel]
-        mins = lowerByPercantage(mins, speedPercantageOfTownCenter)
-        let neededTime = calculateTimeFromMinutes(mins)
-        $(this).find(".neededWood").html(neededResources.wood)
-        $(this).find(".neededIron").html(neededResources.iron)
-        $(this).find(".neededClay").html(neededResources.clay)
-        $(this).find(".neededTime").html(neededTime)
+        if(villageData.buildings.resources[String(resourceBuildingName)].upgrading.state == 'true'){
+            initProgressBar('resources.'+resourceBuildingName)
+        }else{
+            fillUpgReq("resources."+resourceBuildingName)
+        }
     })
-
-    //upgrading times
-
 }
 
 
@@ -120,10 +87,10 @@ function initSwitchVillageDropdownButton(){
 }
 
 function initToggleVisualVillageSwitch(){
-    let textBasedVillageContent = $(".village-content").html()
     $("#toggleVisualVillage").val('off')
 
     $(".toggleVisualVillage").on("change",function(){
+        if(!textBasedVillageContent){let textBasedVillageContent = $(".village-content").html()}
         ($("#toggleVisualVillage").val() == 'on' ? $("#toggleVisualVillage").val('off')   : $("#toggleVisualVillage").val('on') )
         console.log($("#toggleVisualVillage").val())
 
@@ -135,4 +102,9 @@ function initToggleVisualVillageSwitch(){
             initVillage()
         }
     })
+}
+
+function getCnclBtnHtml(building_path){
+    const progressBarHtml = '<button class="cancelUpgrade btn btn-danger" id="'+building_path+'">Cancel</button>';
+    return progressBarHtml;
 }

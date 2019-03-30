@@ -1,10 +1,10 @@
 from django.conf import settings
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from .tasks import add_village
-from .tasks import upgrade_building
-from .upgradeMethods import getCurrentResource, updateSumAndLastInteractionDateOfResource, getRequiredTimeForUpgrade, setUpgradingTime
+from .tasks import schedule_upgrade_building
+from .upgradeMethods import updateSumAndLastInteractionDateOfResource, getRequiredTimeForUpgrade, setUpgradingTimeAndState
 from .initFirestore import get_db, get_auth
 from .firebaseUser import firebaseUser
 from .commonFunctions import getGameConfig, getVillageIndex
@@ -263,26 +263,42 @@ def upgrade(request):
             required_iron = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['iron']
             required_wood = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['wood']
         #retrieve required resources from gameConfig.json with upgrade_level
-        # reqiured_time = getRequiredTimeForUpgrade(village, building_path, upgrade_levelTo)
-        reqiured_time = 1
+        reqiured_time = getRequiredTimeForUpgrade(village, building_path, upgrade_levelTo)
+        # reqiured_time = 10
         now = datetime.datetime.now(pytz.utc)
-        wood_total = getCurrentResource(village, 'woodCamp', now)
-        clay_total = getCurrentResource(village, 'clayPit', now)
-        iron_total = getCurrentResource(village, 'ironMine', now)
+        wood_total = user.getCurrentResource(village_id, 'woodCamp')
+        clay_total = user.getCurrentResource(village_id, 'clayPit')
+        iron_total = user.getCurrentResource(village_id, 'ironMine')
 
         if(wood_total >= required_wood and iron_total >= required_iron and clay_total >= required_clay):
             #update sum and lastInteractionDate of resources (-cost)
-            # updateSumAndLastInteractionDateOfResource(request, village_id, 'woodCamp', wood_total-required_wood, now)
-            # updateSumAndLastInteractionDateOfResource(request, village_id, 'clayPit', clay_total-required_clay, now)
-            # updateSumAndLastInteractionDateOfResource(request, village_id, 'ironMine', iron_total-required_iron, now)
+            updateSumAndLastInteractionDateOfResource(request, village_id, 'woodCamp', wood_total-required_wood, now)
+            updateSumAndLastInteractionDateOfResource(request, village_id, 'clayPit', clay_total-required_clay, now)
+            updateSumAndLastInteractionDateOfResource(request, village_id, 'ironMine', iron_total-required_iron, now)
             
-            upgrade_building.apply_async((user_id, village_id, building_path, upgrade_levelTo),countdown = reqiured_time)
-            setUpgradingTime(request, village_id, building_path, reqiured_time)
+            schedule_upgrade_building.apply_async((user_id, village_id, building_path, upgrade_levelTo),countdown = reqiured_time)
+            setUpgradingTimeAndState(request, village_id, building_path, reqiured_time)
+
+            selected_village_index = getVillageIndex(request, user, None)  
+            user.update()
+            newResources = user.myVillages[selected_village_index]['buildings']['resources']
+
+            data = {
+                'result' : 'Success',
+                'newResources' : newResources
+            }
+            if( '.' not in building_path):
+                data['newBuilding'] = user.myVillages[selected_village_index]['buildings'][building_path]
+            
+
             print("upgrading")
-            return HttpResponse("Success")
+            return JsonResponse(data)
         else:
+            data = {
+                'result' : 'Fail',
+            }
             print("not enough resources")
-            return HttpResponse("Fail")
+            return JsonResponse(data)
         # return render(request, 'villages.html')
 
 ######## MAIN PAGES ########

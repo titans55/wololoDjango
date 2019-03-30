@@ -7,9 +7,9 @@ import datetime
 import json
 import os
 from .initFirestore import get_db
-from .upgradeMethods import getCurrentResource, upgradingEnds
 import pytz
 from DjangoFirebaseProject import settings
+from .firebaseUser import firebaseUser
 
 from asgiref.sync import async_to_sync
 
@@ -40,46 +40,29 @@ def add_village(user_id, user_name, village_name):
 
 
 @app.task(name='wololo.tasks.upgrade_building')
-def upgrade_building(user_id, village_id, building_path, upgrade_level):
-    village = db.collection('players').document(user_id).collection('villages').document(village_id)
-    villageDict = db.collection('players').document(user_id).collection('villages').document(village_id).get().to_dict()
-    # print(villageDict)
-    # print(building_path.split('.')[1],"tasdsada")
-  
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'DjangoFirebaseProject.settings'
+def schedule_upgrade_building(user_id, village_id, building_path, upgrade_level):
+    
 
+    user = firebaseUser(user_id)
+    user.upgradeBuilding(village_id, building_path)
+
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'DjangoFirebaseProject.settings'
     from channels.layers import get_channel_layer
     channel_layer = get_channel_layer()
     print(channel_layer, "wololo")
-   
+    
+    user.update()
 
+    village = user.getVillageById(village_id)
+    newBuildings = village['buildings']
     data = {
         'messageType': 'upgradeBuilding',
-        'target': building_path
+        'target': building_path,
+        'newBuildings' : newBuildings
     }    
     async_to_sync ( channel_layer. group_send ) (
         user_id , { "type" : "notify.user" , "json" : data }
     )
-    upgradingEnds(user_id, village_id, building_path)
-    
-    # if '.' in villageDict :
-    #     now = datetime.datetime.now(pytz.utc)
-    #     newSum = getCurrentResource(villageDict, building_path.split('.')[1], now)
-
-    #     village.update({
-    #         'buildings.'+building_path+'.sum' : newSum,
-    #         'buildings.'+building_path+'.lastInteractionDate' : now,
-    #         'buildings.'+building_path+'.level' : upgrade_level
-    #     })
-    #     print("sueccesfullll")
-        
-        
-
-    # else:
-    #     village.update({
-    #         'buildings.'+building_path+'.level' : upgrade_level
-    #     })
-
         
     
     return True

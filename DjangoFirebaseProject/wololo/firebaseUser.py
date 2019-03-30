@@ -2,14 +2,20 @@ from .initFirestore import get_db
 from .commonFunctions import getGameConfig
 import os
 import json
+import pytz, datetime
 
 db = get_db()
 gameConfig = getGameConfig()
 class firebaseUser():
     def __init__(self, id):
         self.id = id
-        villages_ref = db.collection('players').document(self.id).collection('villages')
-        villages = villages_ref.get()
+        self.initUser()
+
+    def update(self):
+        self.initUser()
+        
+    def initUser(self):
+        villages = db.collection('players').document(self.id).collection('villages').get()
         myVillages = []
         numberOfVillages = 0
         for village in villages:
@@ -223,3 +229,46 @@ class firebaseUser():
         self.myVillages = myVillages
         self.numberOfVillages = numberOfVillages
         self.regionSelected = db.collection('players').document(self.id).get()._data['regionSelected']
+
+    def upgradeBuilding(self, village_id, building_path):
+        village_ref = db.collection('players').document(self.id).collection('villages').document(village_id)
+        village = village_ref.get().to_dict()
+        if('.' in building_path):
+            upgrade_level_to = str(int(village['buildings']['resources'][building_path.split('.')[1]]['level']) + 1)
+        else:
+            upgrade_level_to = str(int(village['buildings'][building_path]['level']) + 1)
+        
+        village_ref.update({
+            'buildings.'+building_path+'.upgrading.state' : False,
+            'buildings.'+building_path+'.level' : upgrade_level_to
+        })
+
+        if('.' in building_path):
+
+            now = datetime.datetime.now(pytz.utc)
+            newSum = self.getCurrentResource(village_id, building_path.split('.')[1])
+           
+            village_ref.update({
+                'buildings.'+building_path+'.sum' : newSum,
+                'buildings.'+building_path+'.lastInteractionDate' : now
+            })
+            print("sueccesfullll")
+
+    def getCurrentResource(self, village_id, resourceBuilding):
+
+        now = datetime.datetime.now(pytz.utc)
+        village = db.collection('players').document(self.id).collection('villages').document(village_id).get().to_dict()
+        resourceSum = village['buildings']['resources'][resourceBuilding]['sum']
+        resourceLevel = village['buildings']['resources'][resourceBuilding]['level']
+        resourceLastInteractionDate = village['buildings']['resources'][resourceBuilding]['lastInteractionDate']
+        hourlyProductionByLevel = gameConfig['buildings']['resources'][resourceBuilding]['hourlyProductionByLevel'][resourceLevel]
+        totalHoursOfProduction = (now-resourceLastInteractionDate).total_seconds() / 60 / 60
+        totalCurrentResource = (totalHoursOfProduction * hourlyProductionByLevel) + resourceSum
+        if totalCurrentResource >= gameConfig['buildings']['storage']['capacity'][village['buildings']['storage']['level']]:
+            totalCurrentResource = gameConfig['buildings']['storage']['capacity'][village['buildings']['storage']['level']]
+        return int(totalCurrentResource)
+
+    def getVillageById(self, village_id):
+        for village in self.myVillages:
+            if(village['id'] == village_id):
+                return village
