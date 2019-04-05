@@ -78,19 +78,20 @@ function incomingMessageEndpoints(incomingJson){
 
 function listenUpgradeBuilding(incomingJson){
     console.log(incomingJson)
-    incrementLevelOfBuilding(incomingJson.target)
-    villageData.buildings = incomingJson.newBuildings
-    const htmlTarget = $("[id='"+incomingJson.target+"-level']")
-    $("body").append("<div id='"+ incomingJson.target +"-popup', class='popup' style='display:none;'>+1</div>")
-    const popperObj = $("[id='"+incomingJson.target+"-popup']")
-    const popper = new Popper(htmlTarget, popperObj, {
-        placement: 'right'
-    }); 
-    popperObj.show()
-    setTimeout(function(){
-        popperObj.remove() 
-    } , 3000);
-
+    if(incomingJson.village_id == village_id){
+        villageData.buildings = incomingJson.newBuildings
+        incrementLevelOfBuilding(incomingJson.target)
+        const htmlTarget = $("[id='"+incomingJson.target+"-level']")
+        $("body").append("<div id='"+ incomingJson.target +"-popup', class='popup' style='display:none;'>+1</div>")
+        const popperObj = $("[id='"+incomingJson.target+"-popup']")
+        const popper = new Popper(htmlTarget, popperObj, {
+            placement: 'right'
+        }); 
+        popperObj.show()
+        setTimeout(function(){
+            popperObj.remove() 
+        } , 3000);
+    }
 }
 function incrementLevelOfBuilding(target){
     let targetRow

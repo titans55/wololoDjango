@@ -4,7 +4,7 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from .tasks import add_village
 from .tasks import schedule_upgrade_building
-from .upgradeMethods import updateSumAndLastInteractionDateOfResource, getRequiredTimeForUpgrade, setUpgradingTimeAndState
+from .upgradeMethods import updateSumAndLastInteractionDateOfResource, getRequiredTimeForUpgrade
 from .initFirestore import get_db, get_auth
 from .firebaseUser import firebaseUser
 from .commonFunctions import getGameConfig, getVillageIndex
@@ -247,7 +247,7 @@ def upgrade(request):
         village_id = request.POST.get("village_id") #this should come from request
         building_path = request.POST.get("building_path") #this should also come from request
         firing_time = request.POST.get("firingTime")
-        print(firing_time)
+        now = datetime.datetime.now(pytz.utc)
 
         village = db.collection('players').document(user_id).collection('villages').document(village_id).get().to_dict()
         #upgrade_levelTo = village[building_path]['level'] + 1
@@ -264,23 +264,27 @@ def upgrade(request):
             required_wood = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['wood']
         #retrieve required resources from gameConfig.json with upgrade_level
         reqiured_time = getRequiredTimeForUpgrade(village, building_path, upgrade_levelTo)
-        # reqiured_time = 10
-        now = datetime.datetime.now(pytz.utc)
+        reqiured_time = 10
         wood_total = user.getCurrentResource(village_id, 'woodCamp')
         clay_total = user.getCurrentResource(village_id, 'clayPit')
         iron_total = user.getCurrentResource(village_id, 'ironMine')
 
         if(wood_total >= required_wood and iron_total >= required_iron and clay_total >= required_clay):
             #update sum and lastInteractionDate of resources (-cost)
-            updateSumAndLastInteractionDateOfResource(request, village_id, 'woodCamp', wood_total-required_wood, now)
-            updateSumAndLastInteractionDateOfResource(request, village_id, 'clayPit', clay_total-required_clay, now)
-            updateSumAndLastInteractionDateOfResource(request, village_id, 'ironMine', iron_total-required_iron, now)
+            updateSumAndLastInteractionDateOfResource(user_id, village_id, 'woodCamp', wood_total-required_wood, now)
+            updateSumAndLastInteractionDateOfResource(user_id, village_id, 'clayPit', clay_total-required_clay, now)
+            updateSumAndLastInteractionDateOfResource(user_id, village_id, 'ironMine', iron_total-required_iron, now)
             
-            schedule_upgrade_building.apply_async((user_id, village_id, building_path, upgrade_levelTo),countdown = reqiured_time)
-            setUpgradingTimeAndState(request, village_id, building_path, reqiured_time)
+            task_id = schedule_upgrade_building.apply_async((user_id, village_id, building_path, upgrade_levelTo),countdown = reqiured_time)
+            task_id = task_id.id
+            print(str(task_id) + " adadas")
+            
+            user.setUpgradingTimeAndState(village_id, building_path, reqiured_time, str(task_id), now)
 
             selected_village_index = getVillageIndex(request, user, None)  
+            print(datetime.datetime.now(pytz.utc))
             user.update()
+            print(datetime.datetime.now(pytz.utc))
             newResources = user.myVillages[selected_village_index]['buildings']['resources']
 
             data = {
@@ -300,6 +304,28 @@ def upgrade(request):
             print("not enough resources")
             return JsonResponse(data)
         # return render(request, 'villages.html')
+
+def cancelUpgrade(request):
+    user_id = request.session['userID']
+    user = firebaseUser(user_id)
+
+    village_id = request.POST.get("village_id") 
+    building_path = request.POST.get("building_path")
+    firing_time = request.POST.get("firingTime")
+    now = datetime.datetime.now(pytz.utc)
+
+
+    user.cancelUpgrading(village_id, building_path, now)
+
+    user.update()
+    selected_village_index = getVillageIndex(request, user, None)  
+    newResources = user.myVillages[selected_village_index]['buildings']['resources']
+
+    data = {
+        'result' : 'Success',
+        'newResources' : newResources
+    }
+    return JsonResponse(data)
 
 ######## MAIN PAGES ########
 @myuser_login_required

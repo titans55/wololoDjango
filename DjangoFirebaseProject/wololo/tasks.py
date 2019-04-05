@@ -12,6 +12,7 @@ from DjangoFirebaseProject import settings
 from .firebaseUser import firebaseUser
 
 from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
 
 db = get_db()
 script_dir = os.path.dirname(__file__)
@@ -38,6 +39,7 @@ def add_village(user_id, user_name, village_name):
     return True
 
 
+import urllib.request
 
 @app.task(name='wololo.tasks.upgrade_building')
 def schedule_upgrade_building(user_id, village_id, building_path, upgrade_level):
@@ -47,7 +49,6 @@ def schedule_upgrade_building(user_id, village_id, building_path, upgrade_level)
     user.upgradeBuilding(village_id, building_path)
 
     os.environ['DJANGO_SETTINGS_MODULE'] = 'DjangoFirebaseProject.settings'
-    from channels.layers import get_channel_layer
     channel_layer = get_channel_layer()
     print(channel_layer, "wololo")
     
@@ -58,8 +59,10 @@ def schedule_upgrade_building(user_id, village_id, building_path, upgrade_level)
     data = {
         'messageType': 'upgradeBuilding',
         'target': building_path,
-        'newBuildings' : newBuildings
+        'newBuildings' : newBuildings,
+        'village_id' : village_id
     }    
+
     async_to_sync ( channel_layer. group_send ) (
         user_id , { "type" : "notify.user" , "json" : data }
     )

@@ -25,7 +25,8 @@ urlpatterns = [
 
     #AJAX CALL
     path('game/upgrade', views.upgrade, name='upgrade'),
-    
+    path('game/cancelUpgrade', views.cancelUpgrade, name='cancelUpgrade'),
+
     #FORM CALL
     path('game/selectingRegion', views.selectingRegion),
     path('verifyLogin', views.verifyLogin, name='verifyLogin'),

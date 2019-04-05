@@ -11,6 +11,7 @@ $(function(){
 
 function initVillage(){
     initUpgradeButtons()
+    initCancelButtons()
     displayNeededResourcesAndTimeForUpgrading()
 }
 
@@ -20,41 +21,94 @@ function initUpgradeButtons(){
 
     let csrftoken = getCookie('csrftoken');
 
-    $(".upgrade").on('click', function(){
-        let firingTime = new Date() //now
-        let building_path = $(this).attr('id')
-        $.ajax({
-            type: 'POST',
-            url: '/game/upgrade',
-            data: {
-                building_path: building_path,
-                village_id: village_id,
-                firingTime: firingTime,
-                csrfmiddlewaretoken: csrftoken 
-            },
-            success:function(data){
-                if(data['result'] == 'Success'){
-                    console.log(data['newResources'])
+    $(".upgrade").each(function(){
+        if(!$(this).data('click-init')){
+            $(this).data('click-init', true)
+            $(this).on('click', function(){
+                let firingTime = new Date() //now
+                let building_path = $(this).attr('id')
+                $.ajax({
+                    type: 'POST',
+                    url: '/game/upgrade',
+                    data: {
+                        building_path: building_path,
+                        village_id: village_id,
+                        firingTime: firingTime,
+                        csrfmiddlewaretoken: csrftoken 
+                    },
+                    success:function(data){
+                        if(data['result'] == 'Success'){
+                            console.log(data['newResources'])
 
-                    if(!building_path.includes('.')){
-                        villageData.buildings[building_path] = data['newBuilding']
+                            if(!building_path.includes('.')){
+                                villageData.buildings[building_path] = data['newBuilding']
+                            }
+                            villageData.buildings.resources = data['newResources']
+
+                            let targetRow = getTargetBuildingRow(building_path)
+                            targetRow.find(".buildingDetailsSection").html(getProgressBarHtml(building_path))
+                            targetRow.find(".upgradeOrCancelBtn").html(getCnclBtnHtml(building_path))
+                            initProgressBar(building_path)
+                            initCancelButtons()
+
+                        }else if(data['result'] == 'Fail'){
+                            // alert("Fail")
+                            console.log("WOLOLO")
+                            $('#insufficentResources').modal('show')
+                        }
+            
                     }
-                    villageData.buildings.resources = data['newResources']
+                })
+            })
+        }
+    });
+}
 
-                    let targetRow = getTargetBuildingRow(building_path)
-                    targetRow.find(".buildingDetailsSection").html(getProgressBarHtml(building_path))
-                    targetRow.find(".upgradeOrCancelBtn").html(getCnclBtnHtml(building_path))
-                    //initCancelButtons
-                    initProgressBar(building_path)
+function initCancelButtons(){
 
-                }else if(data['result'] == 'Fail'){
-                    // alert("Fail")
-                    console.log("WOLOLO")
-                    $('#insufficentResources').modal('show')
-                }
-    
-            }
-        })
+    let csrftoken = getCookie('csrftoken');
+
+    $(".cancelUpgrade").each(function(){
+        if(!$(this).data('click-init')){
+            $(this).data('click-init', true)
+            $(this).on('click', function(){
+                let firingTime = new Date() //now
+                let building_path = $(this).attr('id')
+                $.ajax({
+                    type: 'POST',
+                    url: '/game/cancelUpgrade',
+                    data: {
+                        building_path: building_path,
+                        village_id: village_id,
+                        firingTime: firingTime,
+                        csrfmiddlewaretoken: csrftoken 
+                    },
+                    success:function(data){
+                        if(data['result'] == 'Success'){
+                            console.log(data['newResources'])
+
+                            // if(!building_path.includes('.')){
+                            //     villageData.buildings[building_path] = data['newBuilding']
+                            // }
+                            villageData.buildings.resources = data['newResources']
+
+                            let targetRow = getTargetBuildingRow(building_path)
+                            targetRow.find(".buildingDetailsSection").html(getUpgReqHtml())
+                            fillUpgReq(building_path)
+                            targetRow.find(".upgradeOrCancelBtn").html(getUpgBtnHtml())
+                            initUpgradeButtons()
+
+
+                        }else if(data['result'] == 'Fail'){
+                            // alert("Fail")
+                            // console.log("WOLOLO")
+                            // $('#insufficentResources').modal('show')
+                        }
+            
+                    }
+                })
+            })
+        }
     });
 }
 
@@ -105,6 +159,11 @@ function initToggleVisualVillageSwitch(){
 }
 
 function getCnclBtnHtml(building_path){
-    const progressBarHtml = '<button class="cancelUpgrade btn btn-danger" id="'+building_path+'">Cancel</button>';
-    return progressBarHtml;
+    const cnclBtnHtml = '<button class="cancelUpgrade btn btn-danger" id="'+building_path+'">Cancel</button>';
+    return cnclBtnHtml;
+}
+
+function getUpgrdBtnHtml(building_path){
+    const upgrdBtnHtml = '<button class="upgrade btn btn-primary" id="'+building_path+'">Upgrade</button>';
+    return upgrdBtnHtml;
 }

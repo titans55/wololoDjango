@@ -3,10 +3,15 @@ from .commonFunctions import getGameConfig
 import os
 import json
 import pytz, datetime
+from celery import current_app
+from .upgradeMethods import updateSumAndLastInteractionDateOfResource
 
 db = get_db()
 gameConfig = getGameConfig()
 class firebaseUser():
+
+    refreshVillages = False #change this true to refresh villages to level 1
+
     def __init__(self, id):
         self.id = id
         self.initUser()
@@ -19,171 +24,180 @@ class firebaseUser():
         myVillages = []
         numberOfVillages = 0
         for village in villages:
-            # import datetime
-            # now = datetime.datetime.now()
-            # db.collection('players').document(self.id).collection('villages').document(village.reference.id).set(
-            #     {   
-            #         "villageName" : 'Village -' + str(numberOfVillages),
-            #         "buildings" : {
-            #             "townCenter" : {
-            #                 "level" : "1",
-            #                 "upgrading" : {
-            #                     "state": True,
-            #                     "time" : {
-            #                         "startedUpgradingAt" : now,
-            #                         "willBeUpgradedAt" : now 
-            #                     }
-            #                 }
-            #             },
-            #             "barracks" : {
-            #                 "level" : "0",
-            #                 "upgrading" : {
-            #                     "state": False,
-            #                     "time" : {
-            #                         "startedUpgradingAt" : now,
-            #                         "willBeUpgradedAt" : now 
-            #                     }
-            #                 }
-            #             },
-            #             "stable" : {
-            #                 "level" : "0",
-            #                 "upgrading" : {
-            #                     "state": False ,
-            #                     "time" : {
-            #                         "startedUpgradingAt" : now,
-            #                         "willBeUpgradedAt" : now 
-            #                     }
-            #                 }
-            #             },
-            #             "workshop" : {
-            #                 "level" : "0",
-            #                 "upgrading" : {
-            #                     "state": False ,
-            #                     "time" : {
-            #                         "startedUpgradingAt" : now,
-            #                         "willBeUpgradedAt" : now 
-            #                     }
-            #                 }
-            #             },
-            #             "storage" : {
-            #                 "level" : "1",
-            #                 "upgrading" : {
-            #                     "state": False ,
-            #                     "time" : {
-            #                         "startedUpgradingAt" : now,
-            #                         "willBeUpgradedAt" : now 
-            #                     }
-            #                 }
-            #             },
-            #             "farm" : {
-            #                 "level" : "1",
-            #                 "upgrading" : {
-            #                     "state": False ,
-            #                     "time" : {
-            #                         "startedUpgradingAt" : now,
-            #                         "willBeUpgradedAt" : now 
-            #                     }
-            #                 }
-            #             },
-            #             "resources" : {
-            #                 "woodCamp" : {
-            #                     "lastInteractionDate" : now,
-            #                     "level" : "0",
-            #                     "sum" : 0,
-            #                     "upgrading" : {
-            #                         "state": False ,
-            #                         "time" : {
-            #                             "startedUpgradingAt" : now,
-            #                             "willBeUpgradedAt" : now 
-            #                         }
-            #                     }
-            #                 },
-            #                 "ironMine" : {
-            #                     "lastInteractionDate" : now,
-            #                     "level" : "0",
-            #                     "sum" : 0,
-            #                     "upgrading" : {
-            #                         "state": False ,
-            #                         "time" : {
-            #                             "startedUpgradingAt" : now,
-            #                             "willBeUpgradedAt" : now 
-            #                         }
-            #                     }
-            #                 },
-            #                 "clayPit" : {
-            #                     "lastInteractionDate" : now,
-            #                     "level" : "0",
-            #                     "sum" : 0,
-            #                     "upgrading" : {
-            #                         "state": False ,
-            #                         "time" : {
-            #                             "startedUpgradingAt" : now,
-            #                             "willBeUpgradedAt" : now 
-            #                         }
-            #                     }
-            #                 }
-            #             }
-            #         },
-            #         "troops" : {
-            #             "inVillage" : {
-            #                 "infantry" :  {
-            #                     "Spearman" : 0,
-            #                     "Swordsman" : 0,
-            #                     "Axeman" : 0,
-            #                     "Archer" : 0
-            #                 },
-            #                 "cavalry" : {
-            #                     "Scout" : 0,
-            #                     "Light Cavalry": 0,
-            #                     "Heavy Cavalry" : 0
-            #                 },
-            #                 "siegeWeapons" : {
-            #                     "Ram" : 0,
-            #                     "Catapult": 0
-            #                 }
-            #             },
-            #             "onMove" : [
-            #                 # {
-            #                 #     "from" : "fromVillageID",
-            #                 #     "to" : "targetVillageID",
-            #                 #     "movementType" : "Attack/Support",
-            #                 #     "state" : "going/returning",
-            #                 #     "arrivalTime" : "timestamp"
-            #                 #     "troops": [
-            #                 #         {
-            #                 #             "unitName" : "Spearman"
-            #                 #             "unitType" : "Infantry",
-            #                 #             "size" : 0
-            #                 #         },
-            #                 #         {
-            #                 #             "unitName" : "Swordsman",
-            #                 #             "unitType" : "Infantry",
-            #                 #             "size" : 0
-            #                 #         }
-            #                 #     ]
-            #                 # }
-            #             ],
-            #             "total" : {
-            #                 "infantry" :  {
-            #                     "Spearman" : 40,
-            #                     "Swordsman" : 0,
-            #                     "Axeman" : 0,
-            #                     "Archer" : 0
-            #                 },
-            #                 "cavalry" : {
-            #                     "Scout" : 0,
-            #                     "Light Cavalry": 0,
-            #                     "Heavy Cavalry" : 0
-            #                 },
-            #                 "siegeWeapons" : {
-            #                     "Ram" : 0,
-            #                     "Catapult": 0
-            #                 }
-            #             },
-            #         }
-            #     }
-            # )
-
+            import datetime
+            now = datetime.datetime.now()
+            if(self.refreshVillages):
+                db.collection('players').document(self.id).collection('villages').document(village.reference.id).set(
+                    {   
+                        "villageName" : 'Village -' + str(numberOfVillages),
+                        "buildings" : {
+                            "townCenter" : {
+                                "level" : "1",
+                                "upgrading" : {
+                                    "state": False,
+                                    "time" : {
+                                        "startedUpgradingAt" : now,
+                                        "willBeUpgradedAt" : now 
+                                    },
+                                    "task_id" : ''
+                                }
+                            },
+                            "barracks" : {
+                                "level" : "0",
+                                "upgrading" : {
+                                    "state": False,
+                                    "time" : {
+                                        "startedUpgradingAt" : now,
+                                        "willBeUpgradedAt" : now 
+                                    },
+                                    "task_id" : ''
+                                }
+                            },
+                            "stable" : {
+                                "level" : "0",
+                                "upgrading" : {
+                                    "state": False ,
+                                    "time" : {
+                                        "startedUpgradingAt" : now,
+                                        "willBeUpgradedAt" : now 
+                                    },
+                                    "task_id" : ''
+                                }
+                            },
+                            "workshop" : {
+                                "level" : "0",
+                                "upgrading" : {
+                                    "state": False ,
+                                    "time" : {
+                                        "startedUpgradingAt" : now,
+                                        "willBeUpgradedAt" : now 
+                                    },
+                                    "task_id" : ''
+                                }
+                            },
+                            "storage" : {
+                                "level" : "1",
+                                "upgrading" : {
+                                    "state": False ,
+                                    "time" : {
+                                        "startedUpgradingAt" : now,
+                                        "willBeUpgradedAt" : now 
+                                    },
+                                    "task_id" : ''
+                                }
+                            },
+                            "farm" : {
+                                "level" : "1",
+                                "upgrading" : {
+                                    "state": False ,
+                                    "time" : {
+                                        "startedUpgradingAt" : now,
+                                        "willBeUpgradedAt" : now 
+                                    },
+                                    "task_id" : ''
+                                }
+                            },
+                            "resources" : {
+                                "woodCamp" : {
+                                    "lastInteractionDate" : now,
+                                    "level" : "0",
+                                    "sum" : 0,
+                                    "upgrading" : {
+                                        "state": False ,
+                                        "time" : {
+                                            "startedUpgradingAt" : now,
+                                            "willBeUpgradedAt" : now 
+                                        },
+                                        "task_id" : ''
+                                    }
+                                },
+                                "ironMine" : {
+                                    "lastInteractionDate" : now,
+                                    "level" : "0",
+                                    "sum" : 0,
+                                    "upgrading" : {
+                                        "state": False ,
+                                        "time" : {
+                                            "startedUpgradingAt" : now,
+                                            "willBeUpgradedAt" : now 
+                                        },
+                                        "task_id" : ''
+                                    }
+                                },
+                                "clayPit" : {
+                                    "lastInteractionDate" : now,
+                                    "level" : "0",
+                                    "sum" : 0,
+                                    "upgrading" : {
+                                        "state": False ,
+                                        "time" : {
+                                            "startedUpgradingAt" : now,
+                                            "willBeUpgradedAt" : now 
+                                        },
+                                        "task_id" : ''
+                                    }
+                                }
+                            }
+                        },
+                        "troops" : {
+                            "inVillage" : {
+                                "infantry" :  {
+                                    "Spearman" : 0,
+                                    "Swordsman" : 0,
+                                    "Axeman" : 0,
+                                    "Archer" : 0
+                                },
+                                "cavalry" : {
+                                    "Scout" : 0,
+                                    "Light Cavalry": 0,
+                                    "Heavy Cavalry" : 0
+                                },
+                                "siegeWeapons" : {
+                                    "Ram" : 0,
+                                    "Catapult": 0
+                                }
+                            },
+                            "onMove" : [
+                                # {
+                                #     "from" : "fromVillageID",
+                                #     "to" : "targetVillageID",
+                                #     "movementType" : "Attack/Support",
+                                #     "state" : "going/returning",
+                                #     "arrivalTime" : "timestamp"
+                                #     "troops": [
+                                #         {
+                                #             "unitName" : "Spearman"
+                                #             "unitType" : "Infantry",
+                                #             "size" : 0
+                                #         },
+                                #         {
+                                #             "unitName" : "Swordsman",
+                                #             "unitType" : "Infantry",
+                                #             "size" : 0
+                                #         }
+                                #     ]
+                                # }
+                            ],
+                            "total" : {
+                                "infantry" :  {
+                                    "Spearman" : 40,
+                                    "Swordsman" : 0,
+                                    "Axeman" : 0,
+                                    "Archer" : 0
+                                },
+                                "cavalry" : {
+                                    "Scout" : 0,
+                                    "Light Cavalry": 0,
+                                    "Heavy Cavalry" : 0
+                                },
+                                "siegeWeapons" : {
+                                    "Ram" : 0,
+                                    "Catapult": 0
+                                }
+                            },
+                        }
+                    }
+                )
             # print(village)
             village._data['index'] = numberOfVillages 
             village._data['id'] = village.reference.id
@@ -221,7 +235,7 @@ class firebaseUser():
                 else: 
                     village._data['buildings'][building] = temp[building]
         
-            print(village._data['buildings'])
+            # print(village._data['buildings'])
                 
             myVillages.append(village._data)
             numberOfVillages += 1
@@ -254,6 +268,64 @@ class firebaseUser():
             })
             print("sueccesfullll")
 
+    def setUpgradingTimeAndState(self, village_id, building_path, reqiured_time, task_id, now):
+        user_id = self.id
+        village = db.collection('players').document(user_id).collection('villages').document(village_id)
+        # now = datetime.datetime.now()
+        # now = datetime.datetime.fromtimestamp(now)
+        willEnd = now+datetime.timedelta(0, reqiured_time)
+    
+        village.update({
+            'buildings.'+building_path+'.upgrading.time.startedUpgradingAt' : now,
+            'buildings.'+building_path+'.upgrading.time.willBeUpgradedAt' : willEnd,
+            'buildings.'+building_path+'.upgrading.state' : True,
+            'buildings.'+building_path+'.upgrading.task_id' : task_id
+        })
+
+
+    def cancelUpgrading(self, village_id, building_path, now):
+        task_id_to_revoke = self.getBuildingUpgradeTaskId(village_id, building_path)
+        current_app.control.revoke(task_id_to_revoke)
+        print("task is revoked")
+        user_id = self.id
+        village = db.collection('players').document(user_id).collection('villages').document(village_id)
+        village.update({
+            'buildings.'+building_path+'.upgrading.state' : False
+        })
+        
+        
+        capacity = gameConfig['buildings']['storage']['capacity'][str(self.getBuildingLevel(village_id, 'storage'))]
+
+        oldWood = self.getCurrentResource(village_id, 'woodCamp')
+        oldIron = self.getCurrentResource(village_id, 'ironMine')
+        oldClay = self.getCurrentResource(village_id, 'clayPit')
+
+        if '.' in building_path : 
+            upgrade_levelTo = str(int(self.getBuildingLevel(village_id, building_path)) + 1)
+            returned_clay = gameConfig['buildings']['resources'][building_path.split('.')[1]]['upgradingCosts'][upgrade_levelTo]['clay'] *20/100
+            returned_iron = gameConfig['buildings']['resources'][building_path.split('.')[1]]['upgradingCosts'][upgrade_levelTo]['iron'] *20/100
+            returned_wood = gameConfig['buildings']['resources'][building_path.split('.')[1]]['upgradingCosts'][upgrade_levelTo]['wood'] *20/100
+        else :
+            upgrade_levelTo = str(int(self.getBuildingLevel(village_id, building_path)) + 1)
+            returned_clay = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['clay'] *20/100
+            returned_iron = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['iron'] *20/100
+            returned_wood = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['wood'] *20/100
+
+        newWood = oldWood + returned_wood if oldWood + returned_wood < capacity else capacity
+        newIron = oldIron + returned_iron if oldIron + returned_iron < capacity else capacity
+        newClay = oldClay + returned_clay if oldClay + returned_clay < capacity else capacity
+        #20% of cost
+
+
+        updateSumAndLastInteractionDateOfResource(self.id, village_id, 'woodCamp', newWood, now)
+        updateSumAndLastInteractionDateOfResource(self.id, village_id, 'ironMine', newIron, now)
+        updateSumAndLastInteractionDateOfResource(self.id, village_id, 'clayPit', newClay, now)
+
+    
+
+
+
+
     def getCurrentResource(self, village_id, resourceBuilding):
 
         now = datetime.datetime.now(pytz.utc)
@@ -272,3 +344,21 @@ class firebaseUser():
         for village in self.myVillages:
             if(village['id'] == village_id):
                 return village
+        
+        return False
+
+
+    def getBuildingLevel(self, village_id, building_path):
+        villageDict = db.collection('players').document(self.id).collection('villages').document(village_id).get().to_dict()
+        if('.' in building_path):
+            return villageDict['buildings']['resources'][building_path.split('.')[1]]['level']
+        else:
+            return villageDict['buildings'][building_path]['level']
+
+    
+    def getBuildingUpgradeTaskId(self, village_id, building_path):
+        villageDict = db.collection('players').document(self.id).collection('villages').document(village_id).get().to_dict()
+        if('.' in building_path):
+            return villageDict['buildings']['resources'][building_path.split('.')[1]]['upgrading']['task_id']
+        else:
+            return villageDict['buildings'][building_path]['upgrading']['task_id']
