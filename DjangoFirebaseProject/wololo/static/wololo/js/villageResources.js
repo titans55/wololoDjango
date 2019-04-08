@@ -81,6 +81,12 @@ function calculatePopulationAndWrite(){
             usedPopulation += unitSize*gameConfigs.units[unitType][unit].neededPopulation
         }
     }
+
+    for(let [unitTypeName, unitTypeQueueList] of Object.entries(villageData.troops.trainingQueue)){
+        for(let queue in unitTypeQueueList){
+            usedPopulation += unitTypeQueueList[queue]['unitsLeft']*gameConfigs.units[unitTypeName][unitTypeQueueList[queue]['unitName']].neededPopulation
+        }
+    }
     
     console.log(usedPopulation,"wololo")
     $("#population").html(usedPopulation + " / " + farmLimit)

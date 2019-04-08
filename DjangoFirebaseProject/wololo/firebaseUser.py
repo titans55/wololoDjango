@@ -4,13 +4,15 @@ import os
 import json
 import pytz, datetime
 from celery import current_app
-from .upgradeMethods import updateSumAndLastInteractionDateOfResource
-
+from .helperFunctions import setSumAndLastInteractionDateOfResource
+from google.cloud.firestore_v1beta1 import ArrayRemove, ArrayUnion
+from django.core.serializers.json import DjangoJSONEncoder
+from dateutil import parser
 db = get_db()
 gameConfig = getGameConfig()
 class firebaseUser():
 
-    refreshVillages = False #change this true to refresh villages to level 1
+    refreshVillages = False #change this true to refresh villages to level 1 of logged in user
 
     def __init__(self, id):
         self.id = id
@@ -180,7 +182,7 @@ class firebaseUser():
                             ],
                             "total" : {
                                 "infantry" :  {
-                                    "Spearman" : 40,
+                                    "Spearman" : 0,
                                     "Swordsman" : 0,
                                     "Axeman" : 0,
                                     "Archer" : 0
@@ -195,6 +197,12 @@ class firebaseUser():
                                     "Catapult": 0
                                 }
                             },
+                            "trainingQueue" : {
+                                "infantry" : [],
+                                "cavalry" : [],
+                                "siegeWeapons" : [],
+                                "folkHero" : []
+                            }
                         }
                     }
                 )
@@ -208,22 +216,16 @@ class firebaseUser():
             for buildingName, building in village._data['buildings'].items():
                 if buildingName == 'resources': 
                     for resource in building:
-                        if(village._data['buildings']['resources'][resource]['upgrading']['state']):
-                            state = 'true'
-                        else:
-                            state = 'false'
-                        village._data['buildings']['resources'][resource]['upgrading']['state'] = state
+                        village._data['buildings']['resources'][resource]['upgrading']['state'] = 'true' if village._data['buildings']['resources'][resource]['upgrading']['state'] else 'false'
                         village._data['buildings']['resources'][resource]['upgrading']['time']['startedUpgradingAt'] = str(village._data['buildings']['resources'][resource]['upgrading']['time']['startedUpgradingAt'])
                         village._data['buildings']['resources'][resource]['upgrading']['time']['willBeUpgradedAt'] = str(village._data['buildings']['resources'][resource]['upgrading']['time']['willBeUpgradedAt'])
                 else :
-                    if(village._data['buildings'][buildingName]['upgrading']['state']):
-                        state = 'true'
-                    else:
-                        state = 'false'
-                    village._data['buildings'][buildingName]['upgrading']['state'] = state
+                    village._data['buildings'][buildingName]['upgrading']['state'] = 'true' if village._data['buildings'][buildingName]['upgrading']['state'] else 'false'
                     village._data['buildings'][buildingName]['upgrading']['time']['startedUpgradingAt'] = str(village._data['buildings'][buildingName]['upgrading']['time']['startedUpgradingAt'])
                     village._data['buildings'][buildingName]['upgrading']['time']['willBeUpgradedAt'] = str(village._data['buildings'][buildingName]['upgrading']['time']['willBeUpgradedAt'])
 
+            village._data['troops']['trainingQueue'] = json.loads(json.dumps(village._data['troops']['trainingQueue'], cls=DjangoJSONEncoder))
+            
             temp = village._data['buildings']
             village._data['buildings'] = {}
             for building in gameConfig['buildings'].keys():
@@ -317,9 +319,9 @@ class firebaseUser():
         #20% of cost
 
 
-        updateSumAndLastInteractionDateOfResource(self.id, village_id, 'woodCamp', newWood, now)
-        updateSumAndLastInteractionDateOfResource(self.id, village_id, 'ironMine', newIron, now)
-        updateSumAndLastInteractionDateOfResource(self.id, village_id, 'clayPit', newClay, now)
+        setSumAndLastInteractionDateOfResource(self.id, village_id, 'woodCamp', newWood, now)
+        setSumAndLastInteractionDateOfResource(self.id, village_id, 'ironMine', newIron, now)
+        setSumAndLastInteractionDateOfResource(self.id, village_id, 'clayPit', newClay, now)
 
     
 
@@ -329,10 +331,10 @@ class firebaseUser():
     def getCurrentResource(self, village_id, resourceBuilding):
 
         now = datetime.datetime.now(pytz.utc)
-        village = db.collection('players').document(self.id).collection('villages').document(village_id).get().to_dict()
+        village = self.getVillageById(village_id)
         resourceSum = village['buildings']['resources'][resourceBuilding]['sum']
         resourceLevel = village['buildings']['resources'][resourceBuilding]['level']
-        resourceLastInteractionDate = village['buildings']['resources'][resourceBuilding]['lastInteractionDate']
+        resourceLastInteractionDate = parser.parse(village['buildings']['resources'][resourceBuilding]['lastInteractionDate'])
         hourlyProductionByLevel = gameConfig['buildings']['resources'][resourceBuilding]['hourlyProductionByLevel'][resourceLevel]
         totalHoursOfProduction = (now-resourceLastInteractionDate).total_seconds() / 60 / 60
         totalCurrentResource = (totalHoursOfProduction * hourlyProductionByLevel) + resourceSum
@@ -357,8 +359,112 @@ class firebaseUser():
 
     
     def getBuildingUpgradeTaskId(self, village_id, building_path):
-        villageDict = db.collection('players').document(self.id).collection('villages').document(village_id).get().to_dict()
+        villageDict = self.getVillageById(village_id)
         if('.' in building_path):
             return villageDict['buildings']['resources'][building_path.split('.')[1]]['upgrading']['task_id']
         else:
             return villageDict['buildings'][building_path]['upgrading']['task_id']
+
+    def getUnitsLeft(self, village_id, unitType, unitName):
+        #villageDict = self.getVillageById(village_id)
+        #return villageDict['troops']['trainingUnits'][unitType][unitName]['timeAndQuantity']['unitsLeft']
+
+        unitsLeft = db.collection('players').document(self.id).collection('villages').document(village_id).get({'troops.trainingQueue.'+ unitType}).to_dict()['troops']['trainingQueue'][unitType][0]['unitsLeft']
+        return unitsLeft
+
+    def setUnitsLeft(self, village_id, unitType, unitName, newUnitsLeft):
+        village_ref = db.collection('players').document(self.id).collection('villages').document(village_id)
+        village_ref.update({
+            'troops.trainingUnits.'+ unitType +'.'+ unitName +'.timeAndQuantity.unitsLeft' : newUnitsLeft,
+        })
+    
+    def setUnitsTrainingState(self, village_id, unitType, unitName, newState):
+        village_ref = db.collection('players').document(self.id).collection('villages').document(village_id)
+        village_ref.update({
+            'troops.trainingUnits.'+ unitType +'.'+ unitName +'.state' : newState,
+        })
+
+    def setUnitstrainingTime(self, village_id, unitType, unitName, startedAt, totalRequiredTime):
+        willEnd = startedAt + datetime.timedelta(0, totalRequiredTime)
+        village_ref = db.collection('players').document(self.id).collection('villages').document(village_id)
+        village_ref.update({
+            'troops.trainingUnits.'+ unitType +'.'+ unitName +'.timeAndQuantity.startedAt' : startedAt,
+            'troops.trainingUnits.'+ unitType +'.'+ unitName +'.timeAndQuantity.willEndAt' : willEnd
+        })
+
+    def getTotalUnitsQuantity(self, village_id, unitType, unitName):
+        villageDict = self.getVillageById(village_id)
+        return villageDict['troops']['total'][unitType][unitName]
+
+    def getInVallageUnitsQuantity(self, village_id, unitType, unitName):
+        villageDict = self.getVillageById(village_id)
+        return villageDict['troops']['inVillage'][unitType][unitName]
+
+    def trainUnit(self, village_id, unitType, unitName):
+        village_ref = db.collection('players').document(self.id).collection('villages').document(village_id)
+        unitsLeft = self.getUnitsLeft(village_id, unitType, unitName)
+        totalUnitsQuantity = self.getTotalUnitsQuantity(village_id, unitType, unitName)
+        inVillageUnitsQuantity = self.getInVallageUnitsQuantity(village_id, unitType, unitName)
+
+        unitsLeft -= 1 if unitsLeft > 0 else 0
+        totalUnitsQuantity += 1
+        inVillageUnitsQuantity += 1
+
+        ###
+        village_ref.update({
+            'troops.total.'+ unitType+'.'+ unitName : totalUnitsQuantity,
+            'troops.inVillage.'+ unitType+'.'+ unitName : inVillageUnitsQuantity,
+        })
+        ###
+        allQueue = db.collection('players').document(self.id).collection('villages').document(village_id).get({'troops.trainingQueue.'+ unitType}).to_dict()['troops']['trainingQueue'][unitType]
+
+        print('unitsLeft => ', unitsLeft)
+        if unitsLeft == 0 :
+            village_ref.update({
+                'troops.trainingQueue.'+unitType : ArrayRemove(
+                    [allQueue[0]]
+                )
+            })
+        else:
+            allQueue[0]['unitsLeft'] = unitsLeft
+            village_ref.update({ 
+                'troops.trainingQueue.'+unitType : allQueue
+            })
+            
+    def addToTrainingQueue(self, village_id, chain_id, unitType, unitName, unitsLeft, startedAt, totalRequiredTime):
+        willEndAt = startedAt + datetime.timedelta(0, totalRequiredTime)
+
+        village_ref = db.collection('players').document(self.id).collection('villages').document(village_id)
+        village_ref.update({
+            'troops.trainingQueue.'+unitType : ArrayUnion([{
+                'chain_id': chain_id,
+                'unitName' : unitName,
+                'unitsLeft' : unitsLeft,
+                'startedAt' : startedAt,
+                'willEndAt' : willEndAt
+            }])
+        })
+
+
+    def checkTrainingQueueReturnLastOneIfExists(self, village_id, unitType):
+
+        trainingQueue = db.collection('players').document(self.id).collection('villages').document(village_id).get({'troops.trainingQueue.'+ unitType}).to_dict()['troops']['trainingQueue'][unitType]
+    
+        return False if len(trainingQueue) == 0 else trainingQueue[-1]
+
+
+    def weHaveResourcesToTrainUnit(self, village_id, unitType, unitName, numberOfUnitsToTrain):
+
+        currentWood = self.getCurrentResource(village_id, 'woodCamp')
+        currentIron = self.getCurrentResource(village_id, 'ironMine')
+        currentClay = self.getCurrentResource(village_id, 'clayPit')
+
+        reqiuredWood = gameConfig['units'][unitType][unitName]['Cost']['Wood'] * numberOfUnitsToTrain
+        reqiuredIron = gameConfig['units'][unitType][unitName]['Cost']['Iron'] * numberOfUnitsToTrain
+        reqiuredClay = gameConfig['units'][unitType][unitName]['Cost']['Clay'] * numberOfUnitsToTrain
+
+        if(currentWood >= reqiuredWood and currentIron >= reqiuredIron and currentClay >= reqiuredClay):
+
+            return True
+        else:
+            return False

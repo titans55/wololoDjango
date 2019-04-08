@@ -19,7 +19,7 @@ with open(file_path, 'r') as f:
     gameConfig = json.load(f)
 
 
-def updateSumAndLastInteractionDateOfResource(user_id, village_id, resourceBuilding, newSum, now):
+def setSumAndLastInteractionDateOfResource(user_id, village_id, resourceBuilding, newSum, now):
     village = db.collection('players').document(user_id).collection('villages').document(village_id)
     village.update({
         'buildings.resources.'+resourceBuilding+'.sum' : newSum,
@@ -38,5 +38,14 @@ def getRequiredTimeForUpgrade(village, building_path, upgrade_levelTo):
 
     speedPercantageOfTownCenter = gameConfig['buildings']['townCenter']['buildingSpeed'][str(village['buildings']['townCenter']['level'])]
     reqiured_time = int(reqiured_time - (reqiured_time * speedPercantageOfTownCenter / 100 )) * 60 #seconds
+    
+    return reqiured_time
+
+
+def getRequiredTimeForTrainUnits(village, unitType, unitName):
+
+    reqiured_time = gameConfig['units'][unitType][unitName]['neededTrainingBaseTime']
+    speedPercantageOfBarracks = gameConfig['buildings']['barracks']['trainingSpeed'][str(village['buildings']['barracks']['level'])]
+    reqiured_time = int(reqiured_time - (reqiured_time * speedPercantageOfBarracks / 100 )) * 60 #seconds
     
     return reqiured_time

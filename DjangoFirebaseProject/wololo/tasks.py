@@ -67,6 +67,15 @@ def schedule_upgrade_building(user_id, village_id, building_path, upgrade_level)
         user_id , { "type" : "notify.user" , "json" : data }
     )
         
-    
     return True
+
+@app.task(bind=True, name='wololo.tasks.train_unit')
+def train_unit(self, user_id, village_id, unit_type, unit_name):
+    
+    user = firebaseUser(user_id)
+    if user.getUnitsLeft(village_id, unit_type, unit_name) == 0: ##if unitsLeft is 0 
+        print("cancelled unit")
+        self.request.chain = None #For cancelling training units
+    else :
+        user.trainUnit(village_id, unit_type, unit_name)
 

@@ -95,7 +95,8 @@ function listenUpgradeBuilding(incomingJson){
 }
 function incrementLevelOfBuilding(target){
     let targetRow
-    let newLevel = String(parseInt(getBuildingCurrentLevel(target)) + 1)
+    let newLevel = getBuildingCurrentLevel(target)
+    console.log("incrementing Level")
     if(target.includes('.')){
         targetBuildingName = target.split('.')[1]
         // villageData.buildings.resources[targetBuildingName].level = newLevel
@@ -201,7 +202,7 @@ function getUpgBtnHtml(target){
 
 
 function initProgressBar(buildingName){
-    const experimentalDelay = 200 // in milliseconds
+    const experimentalDelay = 3000 // in milliseconds
     let now = moment(new Date())
     let buildingUpgrading
     if(buildingName.includes('.')){

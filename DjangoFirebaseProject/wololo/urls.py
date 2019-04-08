@@ -26,6 +26,7 @@ urlpatterns = [
     #AJAX CALL
     path('game/upgrade', views.upgrade, name='upgrade'),
     path('game/cancelUpgrade', views.cancelUpgrade, name='cancelUpgrade'),
+    path('game/barracks/trainUnits', views.trainUnits, name='trainUnits'),
 
     #FORM CALL
     path('game/selectingRegion', views.selectingRegion),

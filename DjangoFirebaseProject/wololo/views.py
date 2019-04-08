@@ -3,8 +3,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from .tasks import add_village
-from .tasks import schedule_upgrade_building
-from .upgradeMethods import updateSumAndLastInteractionDateOfResource, getRequiredTimeForUpgrade
+from .tasks import schedule_upgrade_building, train_unit
+from .helperFunctions import setSumAndLastInteractionDateOfResource, getRequiredTimeForUpgrade, getRequiredTimeForTrainUnits
 from .initFirestore import get_db, get_auth
 from .firebaseUser import firebaseUser
 from .commonFunctions import getGameConfig, getVillageIndex
@@ -17,7 +17,8 @@ import os
 import datetime
 import pytz
 import dateutil.parser
-
+from celery import chain
+import math
 
 db = get_db()
 auth = get_auth()
@@ -238,18 +239,20 @@ def selectingRegion(request):
 @myuser_login_required
 def upgrade(request):
     if request.method == "POST":
+        now = datetime.datetime.now(pytz.utc)
+        firing_time = request.POST.get("firingTime") #we should use this instead of now
+        village_id = request.POST.get("village_id")
+        building_path = request.POST.get("building_path")
 
         user_id = request.session['userID']
         user = firebaseUser(user_id)
         if user.regionSelected is False :
             return redirect("selectRegion")
 
-        village_id = request.POST.get("village_id") #this should come from request
-        building_path = request.POST.get("building_path") #this should also come from request
-        firing_time = request.POST.get("firingTime")
-        now = datetime.datetime.now(pytz.utc)
+        selected_village_index = getVillageIndex(request, user, None)  
 
-        village = db.collection('players').document(user_id).collection('villages').document(village_id).get().to_dict()
+
+        village = user.myVillages[selected_village_index]
         #upgrade_levelTo = village[building_path]['level'] + 1
         if '.' in building_path : 
             # print(village['resources'],"kololo")
@@ -271,9 +274,9 @@ def upgrade(request):
 
         if(wood_total >= required_wood and iron_total >= required_iron and clay_total >= required_clay):
             #update sum and lastInteractionDate of resources (-cost)
-            updateSumAndLastInteractionDateOfResource(user_id, village_id, 'woodCamp', wood_total-required_wood, now)
-            updateSumAndLastInteractionDateOfResource(user_id, village_id, 'clayPit', clay_total-required_clay, now)
-            updateSumAndLastInteractionDateOfResource(user_id, village_id, 'ironMine', iron_total-required_iron, now)
+            setSumAndLastInteractionDateOfResource(user_id, village_id, 'woodCamp', wood_total-required_wood, now)
+            setSumAndLastInteractionDateOfResource(user_id, village_id, 'clayPit', clay_total-required_clay, now)
+            setSumAndLastInteractionDateOfResource(user_id, village_id, 'ironMine', iron_total-required_iron, now)
             
             task_id = schedule_upgrade_building.apply_async((user_id, village_id, building_path, upgrade_levelTo),countdown = reqiured_time)
             task_id = task_id.id
@@ -281,7 +284,6 @@ def upgrade(request):
             
             user.setUpgradingTimeAndState(village_id, building_path, reqiured_time, str(task_id), now)
 
-            selected_village_index = getVillageIndex(request, user, None)  
             print(datetime.datetime.now(pytz.utc))
             user.update()
             print(datetime.datetime.now(pytz.utc))
@@ -304,15 +306,16 @@ def upgrade(request):
             print("not enough resources")
             return JsonResponse(data)
         # return render(request, 'villages.html')
-
+@myuser_login_required
 def cancelUpgrade(request):
-    user_id = request.session['userID']
-    user = firebaseUser(user_id)
-
+    now = datetime.datetime.now(pytz.utc)
     village_id = request.POST.get("village_id") 
     building_path = request.POST.get("building_path")
     firing_time = request.POST.get("firingTime")
-    now = datetime.datetime.now(pytz.utc)
+
+    user_id = request.session['userID']
+    user = firebaseUser(user_id)
+
 
 
     user.cancelUpgrading(village_id, building_path, now)
@@ -348,6 +351,7 @@ def villages(request, village_index=None):
         'gameConfig' : gameConfig,
         'page' : 'myVillages'
     }
+    # data = json.dumps(data)
     return render(request, 'villages.html', {'myVillages':user.myVillages, 'data' : data})
 @myuser_login_required
 def map(request, village_index=None):
@@ -401,7 +405,7 @@ def reports(request):
 ##########
 
 ######## BUILDING PAGES ######
-
+@myuser_login_required    
 def barracks(request, village_index=None):
 
     user_id = request.session['userID']
@@ -410,11 +414,104 @@ def barracks(request, village_index=None):
     if(selected_village_index is 'outOfList'):
         return('barracks')
 
-    print (user.myVillages)
+    # print (user.myVillages)
     data = { 
         'selectedVillage': user.myVillages[selected_village_index],
         'gameConfig' : gameConfig,
         'page' : 'barracks'
     }
 
-    return render(request, 'barracks.html', {'myVillages':user.myVillages, 'data' : data })
+    return render(request, 'buildingPages/barracks.html', {'myVillages':user.myVillages, 'data' : data })
+
+
+@myuser_login_required
+def trainUnits(request):
+    now = datetime.datetime.now(pytz.utc)
+    firing_time = request.POST.get("firingTime") #we should use this instead of now
+    user_id = request.session['userID']
+    user = firebaseUser(user_id)
+    selected_village_index = getVillageIndex(request, user, None)  
+
+    village_id = request.POST.get("village_id") 
+    unit_type = request.POST.get("unitType") 
+    unit_name = request.POST.get("unitName") 
+    numberOfUnitsToTrain = int(request.POST.get("value"))
+
+
+    #if we have resources
+    if(user.weHaveResourcesToTrainUnit(village_id, unit_type, unit_name, numberOfUnitsToTrain)):
+
+        village = db.collection('players').document(user_id).collection('villages').document(village_id).get().to_dict()
+        reqiured_time = getRequiredTimeForTrainUnits(village, unit_type, unit_name)
+
+
+
+        currentWood = user.getCurrentResource(village_id, 'woodCamp')
+        currentIron = user.getCurrentResource(village_id, 'ironMine')
+        currentClay = user.getCurrentResource(village_id, 'clayPit')
+
+        reqiuredWood = gameConfig['units'][unit_type][unit_name]['Cost']['Wood'] * numberOfUnitsToTrain
+        reqiuredIron = gameConfig['units'][unit_type][unit_name]['Cost']['Iron'] * numberOfUnitsToTrain
+        reqiuredClay = gameConfig['units'][unit_type][unit_name]['Cost']['Clay'] * numberOfUnitsToTrain
+
+        setSumAndLastInteractionDateOfResource(user_id, village_id, 'woodCamp', currentWood-reqiuredWood, now)
+        setSumAndLastInteractionDateOfResource(user_id, village_id, 'clayPit', currentIron-reqiuredIron, now)
+        setSumAndLastInteractionDateOfResource(user_id, village_id, 'ironMine', currentClay-reqiuredClay, now)
+        # reqiured_time = 3 
+
+        # user.setUnitstrainingTime(village_id, unit_type, unit_name, now, reqiured_time*numberOfUnitsToTrain)
+
+        result = user.checkTrainingQueueReturnLastOneIfExists(village_id, unit_type)
+
+        if(result == False):
+            subtasks = []
+            for i in range(numberOfUnitsToTrain):
+                subtasks.append(
+                    train_unit.si(user_id = user_id, village_id = village_id, unit_type = unit_type, unit_name = unit_name).set(countdown=reqiured_time)
+                )
+                
+            workflow = chain(*subtasks)
+            generatedChain = workflow.apply_async()
+            chain_id = generatedChain.id
+            user.addToTrainingQueue(village_id, chain_id, unit_type, unit_name, numberOfUnitsToTrain, now, reqiured_time*numberOfUnitsToTrain)
+        else:
+            willStartAt = result['willEndAt']
+            print("i will wait in queue totally seconds = >")
+            firstTaskDelayedCountdown = math.ceil(((result['willEndAt'] + datetime.timedelta(0, reqiured_time)) - now).total_seconds())
+            print(firstTaskDelayedCountdown)
+
+            subtasks = []
+            for i in range(numberOfUnitsToTrain):
+                if i == 0 :
+                    subtasks.append(
+                        train_unit.si(user_id = user_id, village_id = village_id, unit_type = unit_type, unit_name = unit_name).set(countdown=firstTaskDelayedCountdown)
+                    )
+                else:
+                    subtasks.append(
+                        train_unit.si(user_id = user_id, village_id = village_id, unit_type = unit_type, unit_name = unit_name).set(countdown=reqiured_time)
+                    )
+                
+            workflow = chain(*subtasks)
+            generatedChain = workflow.apply_async()
+            chain_id = generatedChain.id
+            user.addToTrainingQueue(village_id, chain_id, unit_type, unit_name, numberOfUnitsToTrain, willStartAt, reqiured_time*numberOfUnitsToTrain)
+
+        print(datetime.datetime.now(pytz.utc))
+        user.update()
+        print(datetime.datetime.now(pytz.utc))
+        newResources = user.myVillages[selected_village_index]['buildings']['resources']
+
+        data = {
+            'result' : 'Success',
+            'newResources' : newResources
+        }
+
+        return JsonResponse(data)
+
+    else:
+
+        data = {
+            "result" : 'Fail'
+        }
+
+        return JsonResponse(data)
