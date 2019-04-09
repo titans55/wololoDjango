@@ -334,6 +334,7 @@ def cancelUpgrade(request):
 @myuser_login_required
 def villages(request, village_index=None):
     user_id = request.session['userID']
+    print(user_id)
     user = firebaseUser(user_id)
     if user.regionSelected is False :
         return redirect("selectRegion")
@@ -473,7 +474,8 @@ def trainUnits(request):
             workflow = chain(*subtasks)
             generatedChain = workflow.apply_async()
             chain_id = generatedChain.id
-            user.addToTrainingQueue(village_id, chain_id, unit_type, unit_name, numberOfUnitsToTrain, now, reqiured_time*numberOfUnitsToTrain)
+            willEndAt = now + datetime.timedelta(0, reqiured_time*numberOfUnitsToTrain)
+            user.addToTrainingQueue(village_id, chain_id, unit_type, unit_name, numberOfUnitsToTrain, now, willEndAt)
         else:
             willStartAt = result['willEndAt']
             print("i will wait in queue totally seconds = >")
@@ -494,8 +496,8 @@ def trainUnits(request):
             workflow = chain(*subtasks)
             generatedChain = workflow.apply_async()
             chain_id = generatedChain.id
-            user.addToTrainingQueue(village_id, chain_id, unit_type, unit_name, numberOfUnitsToTrain, willStartAt, reqiured_time*numberOfUnitsToTrain)
-
+            willEndAt = willStartAt + datetime.timedelta(0, reqiured_time*numberOfUnitsToTrain)
+            user.addToTrainingQueue(village_id, chain_id, unit_type, unit_name, numberOfUnitsToTrain, willStartAt, willEndAt)
         print(datetime.datetime.now(pytz.utc))
         user.update()
         print(datetime.datetime.now(pytz.utc))
@@ -503,7 +505,12 @@ def trainUnits(request):
 
         data = {
             'result' : 'Success',
-            'newResources' : newResources
+            'newResources' : newResources,
+            'newQueueElement' : {
+                'willEndAt' : willEndAt,
+                'unitName' : unit_name,
+                'unitsLeft' : numberOfUnitsToTrain
+            }
         }
 
         return JsonResponse(data)

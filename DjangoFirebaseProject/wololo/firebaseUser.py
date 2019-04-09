@@ -431,8 +431,7 @@ class firebaseUser():
                 'troops.trainingQueue.'+unitType : allQueue
             })
             
-    def addToTrainingQueue(self, village_id, chain_id, unitType, unitName, unitsLeft, startedAt, totalRequiredTime):
-        willEndAt = startedAt + datetime.timedelta(0, totalRequiredTime)
+    def addToTrainingQueue(self, village_id, chain_id, unitType, unitName, unitsLeft, startedAt, willEndAt):
 
         village_ref = db.collection('players').document(self.id).collection('villages').document(village_id)
         village_ref.update({

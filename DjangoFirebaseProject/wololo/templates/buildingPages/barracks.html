@@ -20,7 +20,7 @@
                 <th scope="col">Time Left</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="queueElements">
             {% for infantryUnit in data.selectedVillage.troops.trainingQueue.infantry %}
                 <tr class="queueElement">
                     <td class="unitsLeft">{{infantryUnit.unitsLeft}} {{infantryUnit.unitName}}</td>

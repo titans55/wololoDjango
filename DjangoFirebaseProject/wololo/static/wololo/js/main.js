@@ -71,10 +71,16 @@ function incomingMessageEndpoints(incomingJson){
         case 'upgradeBuilding':
             listenUpgradeBuilding(incomingJson)
             break;
+        case 'trainUnit':
+            listenTrainUnit(incomingJson)
+            break;
         default :
             alert("message arrived endpoint is not defined")
     }
 }
+/* 
+    Listening Upgrade Building Notifications
+*/
 
 function listenUpgradeBuilding(incomingJson){
     console.log(incomingJson)
@@ -199,8 +205,6 @@ function getUpgBtnHtml(target){
     return upgradeBtn;
 }
 
-
-
 function initProgressBar(buildingName){
     const experimentalDelay = 3000 // in milliseconds
     let now = moment(new Date())
@@ -261,4 +265,25 @@ function getTargetBuildingRow(building_path){
         targetRow = $("#"+targetBuildingName+"-row")
     }
     return targetRow;
+}
+
+/* 
+    Listening Upgrade Building Notifications Ends
+*/
+
+function listenTrainUnit(incomingJson){
+    console.log(incomingJson)
+    if(incomingJson.village_id == village_id){
+        // villageData.buildings = incomingJson.newBuildings
+        if(page=='barracks'){
+            let targetQueueElement = $(".queueElement").first()
+            let oldUnitsLeft = parseInt(targetQueueElement.find(".unitsLeft").html().split(' ')[0])
+            let unitsLeft = oldUnitsLeft - 1
+            if(unitsLeft==0){ 
+                targetQueueElement.remove()
+            }else{
+                targetQueueElement.find(".unitsLeft").html(unitsLeft.toString() + ' ' +incomingJson.unit_name)
+            }
+        }
+    }
 }

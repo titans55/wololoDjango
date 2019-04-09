@@ -53,7 +53,13 @@ function initTrainUnitsButton(){
                 success:function(data){
                     if(data['result'] == 'Success'){
                         villageData.buildings.resources = data['newResources']
-                        alert("started to training units")
+                        let newQueueElement = data['newQueueElement']
+                        $(".queueElements").append(getQueueElementRowHtml(
+                            newQueueElement['unitsLeft'], newQueueElement['unitName'], newQueueElement['willEndAt']
+                        ))
+                        initTrainingQueue()                        
+                        console.log("started to training")
+                        
                     }else if(data['result'] == 'Fail'){
                         alert("Insufficent Resources!")
                       
@@ -73,24 +79,29 @@ function initTrainingQueue(){
 
         $(".queueElement").each(function(){
             let queueElement = $(this)
-            let willEndAt = moment(queueElement.find(".willEndAt").html())
-            queueElement.find(".willEndAt").html(willEndAt.format("DD-MM-YYYY HH:mm:ss:SSS")) //or .toString()
-            tick(queueElement, willEndAt)
-            setInterval(() => {
+            if(!queueElement.data("queue-init")){
+                console.log(queueElement, "wololo")
+                let willEndAt = moment(queueElement.find(".willEndAt").html())
+                queueElement.find(".willEndAt").html(willEndAt.format("DD-MM-YYYY HH:mm:ss:SSS")) //or .toString()
                 tick(queueElement, willEndAt)
-            },1000)
+                let interval = setInterval(() => {
+                    let cntdwn = tick(queueElement, willEndAt)
+                    if(cntdwn.split(':')[0] == '00' && cntdwn.split(':')[1] == '00' && cntdwn.split(':')[2] == '00'){
+                        alert("stopped")
+                        clearInterval(interval)
+                    }
+                },1000)
+                queueElement.data("queue-init", true)
+            }
         })
-
 
         function tick(queueElement, willEndAt){
             let now = moment(new Date())
             let countdown = moment(willEndAt.diff(now)).subtract({ hours: 2}).format("HH:mm:ss")//* TIME ZONE PROBLEM *//
             queueElement.find(".timeLeft").html(countdown)
+            return countdown
         }
     }
-
-  
-
 }
 
 function trainUnitQuantityFormControl(){
@@ -115,7 +126,16 @@ function trainUnitQuantityFormControl(){
                 unitRow.find(".required-Clay").html(requiredClay+"<div>Clay</div>")
                 unitRow.find(".required-pop").html(requiredPop+"<div>Population</div>")
             }
-            console.log("changed", val)
         })
     })
+}
+
+function getQueueElementRowHtml(unitsLeft, unitName, willEndAt){
+    const queueElementToAppend = '<tr class="queueElement">' +
+        '<td class="unitsLeft">' + unitsLeft + ' ' + unitName + '</td>' +
+        '<td class="willEndAt">' + willEndAt + '</td>' +
+        '<td class="timeLeft">' + 'X' + '</td>' +
+    '</tr>';
+
+    return queueElementToAppend;
 }
