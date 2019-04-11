@@ -11,27 +11,28 @@
     <div id="gameConfigData" data='{{data.gameConfig}}'></div>
     {% include "partials/villageResources.html" %}
 
-    {% if data.selectedVillage.troops.trainingQueue.infantry|length > 0 %}
-    <table class="table text-center" id="trainingQueue">
-        <thead>
-            <tr>
-                <th scope="col">Unit Name</th>
-                <th scope="col">Will End At</th>
-                <th scope="col">Time Left</th>
-            </tr>
-        </thead>
-        <tbody class="queueElements">
-            {% for infantryUnit in data.selectedVillage.troops.trainingQueue.infantry %}
-                <tr class="queueElement">
-                    <td class="unitsLeft">{{infantryUnit.unitsLeft}} {{infantryUnit.unitName}}</td>
-                    <td class="willEndAt">{{infantryUnit.willEndAt}}</td>
-                    <td class="timeLeft">X</td>
+    <div class = "trainingQueueHolder">
+        {% if data.selectedVillage.troops.trainingQueue.infantry|length > 0 %}
+        <table class="table text-center" id="trainingQueue">
+            <thead>
+                <tr>
+                    <th scope="col">Unit Name</th>
+                    <th scope="col">Will End At</th>
+                    <th scope="col">Time Left</th>
                 </tr>
-            {%endfor%}
-        </tbody>
-    </table>
-    {% endif %}
-
+            </thead>
+            <tbody class="queueElements">
+                {% for infantryUnit in data.selectedVillage.troops.trainingQueue.infantry %}
+                    <tr class="queueElement">
+                        <td class="unitsLeft">{{infantryUnit.unitsLeft}} {{infantryUnit.unitName}}</td>
+                        <td class="willEndAt">{{infantryUnit.willEndAt}}</td>
+                        <td class="timeLeft">X</td>
+                    </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
     <table class="table text-center">
         <thead>
           <tr>

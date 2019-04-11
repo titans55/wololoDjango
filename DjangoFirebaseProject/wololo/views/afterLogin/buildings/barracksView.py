@@ -71,7 +71,7 @@ def trainUnits(request):
         setSumAndLastInteractionDateOfResource(user_id, village_id, 'woodCamp', currentWood-reqiuredWood, now)
         setSumAndLastInteractionDateOfResource(user_id, village_id, 'clayPit', currentIron-reqiuredIron, now)
         setSumAndLastInteractionDateOfResource(user_id, village_id, 'ironMine', currentClay-reqiuredClay, now)
-        # reqiured_time = 3 
+        reqiured_time = 10
 
         # user.setUnitstrainingTime(village_id, unit_type, unit_name, now, reqiured_time*numberOfUnitsToTrain)
 

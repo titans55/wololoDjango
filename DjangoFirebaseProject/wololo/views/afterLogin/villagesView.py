@@ -27,7 +27,6 @@ def villages(request, village_index=None):
         return('barracks')
 
          
-    
 
     data = { 
         'villages_info' : user.myVillages,

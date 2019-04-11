@@ -54,9 +54,17 @@ function initTrainUnitsButton(){
                     if(data['result'] == 'Success'){
                         villageData.buildings.resources = data['newResources']
                         let newQueueElement = data['newQueueElement']
-                        $(".queueElements").append(getQueueElementRowHtml(
-                            newQueueElement['unitsLeft'], newQueueElement['unitName'], newQueueElement['willEndAt']
-                        ))
+
+                        if($(".queueElements").length){
+                            $(".queueElements").append(getQueueElementRowHtml(
+                                newQueueElement['unitsLeft'], newQueueElement['unitName'], newQueueElement['willEndAt']
+                            ))
+                        }else{
+                            $(".trainingQueueHolder").html(getTrainingQueueTableHtml())
+                            $(".queueElements").append(getQueueElementRowHtml(
+                                newQueueElement['unitsLeft'], newQueueElement['unitName'], newQueueElement['willEndAt']
+                            ))
+                        }
                         initTrainingQueue()                        
                         console.log("started to training")
                         
@@ -138,4 +146,20 @@ function getQueueElementRowHtml(unitsLeft, unitName, willEndAt){
     '</tr>';
 
     return queueElementToAppend;
+}
+
+function getTrainingQueueTableHtml(){
+    const trainingQueueTable = '<table class="table text-center" id="trainingQueue">' +
+        '<thead>' +
+            '<tr>' +
+                '<th scope="col">Unit Name</th>' +
+                '<th scope="col">Will End At</th>' +
+                '<th scope="col">Time Left</th>' +
+            '</tr>' +
+        '</thead>' +
+        '<tbody class="queueElements">' +
+        '</tbody>' +
+    '</table>';
+
+    return trainingQueueTable;
 }

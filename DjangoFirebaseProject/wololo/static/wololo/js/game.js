@@ -77,6 +77,7 @@ function loadVillages(infos) {
             sprite.owner = element.owner ? 'yours' : ''
             sprite.villageName = element.villageName;
             sprite.playerName = element.playerName;
+            sprite.villagePoints = element.points
             sprite.x = element.coords.x;
             sprite.y = element.coords.y;
             sprite.inputEnabled = true;
@@ -166,7 +167,8 @@ function initSideBar(sprite){
     $("#villageOverview").removeClass("d-none")
     $("#villageOverview").addClass("animated")
     $("#villageOverview").find(".card-title").html(sprite.villageName)
-    $("#villageOverview").find(".card-text").html("Belongs to "+ sprite.playerName)
+    $("#villageOverview").find(".card-text").html("Belongs to "+ sprite.playerName).append("<br>"+
+    "Village Points = " + sprite.villagePoints)
 }
 
 function initSwitchVillage(){

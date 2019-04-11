@@ -10,6 +10,7 @@ from .initFirestore import get_db
 import pytz
 from DjangoFirebaseProject import settings
 from .firebaseUser import firebaseUser
+from .helperFunctions import calculatePointsForVillage
 
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
@@ -65,6 +66,8 @@ def schedule_upgrade_building(user_id, village_id, building_path, upgrade_level)
     async_to_sync ( channel_layer. group_send ) (
         user_id , { "type" : "notify.user" , "json" : notifyData }
     )
+
+    calculatePointsForVillage(village_id) #put this into another task later
         
     return True
 

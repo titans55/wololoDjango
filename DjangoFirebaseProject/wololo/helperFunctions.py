@@ -49,3 +49,26 @@ def getRequiredTimeForTrainUnits(village, unitType, unitName):
     reqiured_time = int(reqiured_time - (reqiured_time * speedPercantageOfBarracks / 100 )) * 60 #seconds
     
     return reqiured_time
+
+def calculatePointsForVillage(village_id):
+
+    public_village_ref = db.collection('villages').document(village_id)
+    public_village = public_village_ref.get().to_dict()
+    user_id = public_village['user_id']
+    village = db.collection('players').document(user_id).collection('villages').document(village_id).get().to_dict()
+
+    calculatedPoints = 0
+    for buildingName, building in village['buildings'].items():
+        if buildingName == 'resources':
+            for resourceBuildingName, resourceBuilding in building.items():
+                pointOfBuilding = gameConfig['buildings']['resources'][resourceBuildingName]['pointByLevel'][resourceBuilding['level']]
+                calculatedPoints += pointOfBuilding
+        else:
+            pointOfBuilding = gameConfig['buildings'][buildingName]['pointByLevel'][building['level']]
+            calculatedPoints += pointOfBuilding
+
+    # calculatedPoints = 5
+
+    public_village_ref.update({
+        'points': calculatedPoints
+    })
