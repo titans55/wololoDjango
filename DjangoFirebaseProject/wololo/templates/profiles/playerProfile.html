@@ -38,7 +38,31 @@
                     </tr>
                 </tbody>
             </table>
-
+            <div class="card-header">
+                Villages
+            </div>
+            <ul class="list-group list-group-flush">
+                <table class="table table-bordered ">
+                    <thead>
+                        <tr>
+                            <th>Village Name</th>
+                            <th>Coordinates</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for village in data.profileOfPlayerInfo.playersVillages %}
+                            <tr>
+                                <td>
+                                    <a href="/game/villages/{{village.village_id}}">{{village.villageName}}</a>
+                                </td>
+                                <td>{{village.coords}}</td>
+                                <td>{{village.points}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </ul>
         </div>
         <div class="col">
             <div class="card">

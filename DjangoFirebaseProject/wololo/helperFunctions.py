@@ -111,9 +111,21 @@ def getPlayerInfo(player_id):
     playerInfo = players_ref.document(player_id).get().to_dict()
     playersVillages = []
     for village in villages_ref.get(): 
-        village = village.to_dict()
-        if(village['user_id'] == player_id): playersVillages.append(village)
-    
+        print(village.reference.id)
+        villageDict = village.to_dict()
+        if(villageDict['user_id'] == player_id):
+            villageDict['village_id'] = village.reference.id
+            playersVillages.append(villageDict)
+            
     playerInfo['playersVillages'] = playersVillages
     playerInfo['id'] = player_id
     return playerInfo            
+
+def getVillageInfo(village_id):
+    players_ref = db.collection('players')
+    villages_ref = db.collection('villages')
+    villageInfo = villages_ref.document(village_id).get().to_dict()
+    villageInfo['village_id'] = village_id
+    playerClan = players_ref.document(villageInfo['user_id']).get({'clan'}).to_dict()['clan']
+    villageInfo['clan'] = playerClan
+    return villageInfo

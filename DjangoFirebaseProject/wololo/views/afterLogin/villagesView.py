@@ -66,7 +66,7 @@ def upgrade(request):
             required_wood = gameConfig['buildings'][building_path]['upgradingCosts'][upgrade_levelTo]['wood']
         #retrieve required resources from gameConfig.json with upgrade_level
         reqiured_time = getRequiredTimeForUpgrade(village, building_path, upgrade_levelTo)
-        reqiured_time = 10
+        # reqiured_time = 10
         wood_total = user.getCurrentResource(village_id, 'woodCamp')
         clay_total = user.getCurrentResource(village_id, 'clayPit')
         iron_total = user.getCurrentResource(village_id, 'ironMine')

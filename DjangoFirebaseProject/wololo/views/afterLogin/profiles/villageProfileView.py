@@ -4,12 +4,12 @@ import urllib.request
 import urllib.error
 from wololo.views.auth import myuser_login_required
 from wololo.commonFunctions import getGameConfig, getVillageIndex
-from wololo.helperFunctions import getPlayerInfo
+from wololo.helperFunctions import getVillageInfo
 
 gameConfig = getGameConfig()
 
 @myuser_login_required    
-def playerProfile(request, player_id, village_index=None):
+def villageProfile(request, village_id, village_index=None):
     user_id = request.session['userID']
     user = firebaseUser(user_id)
     if user.regionSelected is False :
@@ -17,19 +17,19 @@ def playerProfile(request, player_id, village_index=None):
 
     selected_village_index = getVillageIndex(request, user, village_index)
     if(selected_village_index == 'outOfList'):
-        return redirect('playerProfile')
+        return redirect('villageProfile')
 
-    playerInfo = getPlayerInfo(player_id)
-    print(playerInfo)
+    villageInfo = getVillageInfo(village_id)
+    print(villageInfo)
 
     data = { 
         'selectedVillage': user.myVillages[selected_village_index],
         'gameConfig' : gameConfig,
-        'profileOfPlayerID' : player_id,
-        'profileOfPlayerInfo' : playerInfo,
-        'page' : 'playerProfile'
+        # 'profileOfPlayerID' : player_id,
+        'profileOfVillageInfo' : villageInfo,
+        'page' : 'villageProfile'
     }
     currentUser = {}
     currentUser['id'] = user_id
 
-    return render(request, 'profiles/playerProfile.html', {'currentUser':currentUser, 'myVillages':user.myVillages, 'data' : data})
+    return render(request, 'profiles/villageProfile.html', {'currentUser':currentUser, 'myVillages':user.myVillages, 'data' : data})

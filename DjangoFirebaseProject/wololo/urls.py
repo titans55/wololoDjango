@@ -4,7 +4,7 @@ from django.urls import path
 from wololo.views.afterLogin.buildings import barracksView
 from wololo.views.afterLogin import mapView, villagesView, clansView, reportsView, rankingView
 from wololo.views.beforeLogin import selectingRegionView, landingView, registerView
-from wololo.views.afterLogin.profiles import playerProfileView
+from wololo.views.afterLogin.profiles import playerProfileView, villageProfileView
 from wololo.views import auth
 urlpatterns = [
     path('', landingView.landingPage, name='landingPage'),
@@ -34,6 +34,9 @@ urlpatterns = [
 
     path('game/players/<str:player_id>', playerProfileView.playerProfile, name='playerProfile'),
     path('game/<int:village_index>/players/<str:player_id>', playerProfileView.playerProfile),
+
+    path('game/villages/<str:village_id>', villageProfileView.villageProfile, name='villageProfile'),
+    path('game/<int:village_index>/villages/<str:village_id>', villageProfileView.villageProfile),
 
     #AJAX CALL
     path('game/upgrade', villagesView.upgrade, name='upgrade'),

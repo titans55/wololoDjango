@@ -78,6 +78,8 @@ function loadVillages(infos) {
             sprite.villageName = element.villageName;
             sprite.playerName = element.playerName;
             sprite.villagePoints = element.points
+            sprite.village_id = element.village_id
+            sprite.player_id = element.user_id
             sprite.x = element.coords.x;
             sprite.y = element.coords.y;
             sprite.inputEnabled = true;
@@ -166,9 +168,11 @@ function initSideBar(sprite){
     // $("#villageOverview").show()
     $("#villageOverview").removeClass("d-none")
     $("#villageOverview").addClass("animated")
-    $("#villageOverview").find(".card-title").html(sprite.villageName)
-    $("#villageOverview").find(".card-text").html("Belongs to "+ sprite.playerName).append("<br>"+
-    "Village Points = " + sprite.villagePoints)
+    $("#villageOverview").find(".card-title").html("<a href='/game/villages/"+sprite.village_id+"'>"+ sprite.villageName +"</a>")
+    $("#villageOverview").find(".card-text")
+        .html("Belongs to <a href='/game/players/"+sprite.player_id+"'>"+ sprite.playerName +"</a>")
+            .append("<br>"+
+                "Village Points = " + sprite.villagePoints)
 }
 
 function initSwitchVillage(){
