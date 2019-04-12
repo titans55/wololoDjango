@@ -17,16 +17,13 @@ gameConfig = getGameConfig()
 @myuser_login_required
 def villages(request, village_index=None):
     user_id = request.session['userID']
-    print(user_id)
     user = firebaseUser(user_id)
     if user.regionSelected is False :
         return redirect("selectRegion")
        
     selected_village_index = getVillageIndex(request, user, village_index)
     if(selected_village_index is 'outOfList'):
-        return('barracks')
-
-         
+        return redirect('barracks')
 
     data = { 
         'villages_info' : user.myVillages,

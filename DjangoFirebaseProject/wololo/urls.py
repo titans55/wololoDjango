@@ -2,8 +2,9 @@ from django.urls import path
 
 # from . import views
 from wololo.views.afterLogin.buildings import barracksView
-from wololo.views.afterLogin import mapView, villagesView, clansView, reportsView
+from wololo.views.afterLogin import mapView, villagesView, clansView, reportsView, rankingView
 from wololo.views.beforeLogin import selectingRegionView, landingView, registerView
+from wololo.views.afterLogin.profiles import playerProfileView
 from wololo.views import auth
 urlpatterns = [
     path('', landingView.landingPage, name='landingPage'),
@@ -22,10 +23,17 @@ urlpatterns = [
     path('game/<int:village_index>/barracks', barracksView.barracks, name='barracks'),
     path('game/barracks/trainUnits', barracksView.trainUnits, name='trainUnits'), #AJAX CALL
 
-
-
     path('game/clans', clansView.clans, name='clans'),
+    path('game/<int:village_index>/clans', clansView.clans),
+
     path('game/reports', reportsView.reports, name='reports'),
+    path('game/<int:village_index>/reports', reportsView.reports),
+
+    path('game/ranking', rankingView.ranking, name='ranking'),
+    path('game/<int:village_index>/ranking', rankingView.ranking),
+
+    path('game/players/<str:player_id>', playerProfileView.playerProfile, name='playerProfile'),
+    path('game/<int:village_index>/players/<str:player_id>', playerProfileView.playerProfile),
 
     #AJAX CALL
     path('game/upgrade', villagesView.upgrade, name='upgrade'),

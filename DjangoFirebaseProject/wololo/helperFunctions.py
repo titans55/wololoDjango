@@ -72,3 +72,48 @@ def calculatePointsForVillage(village_id):
     public_village_ref.update({
         'points': calculatedPoints
     })
+    calculatePointsForPlayer(user_id)
+
+def calculatePointsForPlayer(user_id):
+    player_ref = db.collection('players').document(user_id)
+    villages_ref = db.collection('villages')
+    playersVillagesGenerator = player_ref.collection('villages').get()
+    calculatedPoints = 0
+    for village in playersVillagesGenerator: 
+        villagePoints = villages_ref.document(village.reference.id).get({'points'}).to_dict()['points']      
+        calculatedPoints+=villagePoints
+    player_ref.update({
+        'points': calculatedPoints
+    })
+    
+        
+def getAllPlayers():
+
+    players_ref = db.collection('players')
+    players = []
+    for player in players_ref.get(): 
+        numberOfVillages = 0
+        for village in players_ref.document(player.reference.id).collection('villages').get(): numberOfVillages += 1
+        print(numberOfVillages, " wololo")
+        playerDict = player.to_dict()
+        playerDict['numberOfVillages'] = numberOfVillages
+        playerDict['id'] = player.reference.id
+        players.append(playerDict)
+
+
+    players = sorted(players, key = lambda i: i['points'], reverse=True) 
+
+    return players
+
+def getPlayerInfo(player_id):
+    players_ref = db.collection('players')
+    villages_ref = db.collection('villages')
+    playerInfo = players_ref.document(player_id).get().to_dict()
+    playersVillages = []
+    for village in villages_ref.get(): 
+        village = village.to_dict()
+        if(village['user_id'] == player_id): playersVillages.append(village)
+    
+    playerInfo['playersVillages'] = playersVillages
+    playerInfo['id'] = player_id
+    return playerInfo            

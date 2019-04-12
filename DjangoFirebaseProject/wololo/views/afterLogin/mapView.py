@@ -22,8 +22,8 @@ def map(request, village_index=None):
     user = firebaseUser(user_id)
 
     selected_village_index = getVillageIndex(request, user, village_index)
-    if(selected_village_index is 'outOfList'):
-        return('barracks')
+    if(selected_village_index == 'outOfList'):
+        return redirect('map')
 
     public_villages_ref = db.collection('villages')
     publicVillages = public_villages_ref.get()

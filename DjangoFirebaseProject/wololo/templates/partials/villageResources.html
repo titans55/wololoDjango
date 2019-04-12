@@ -14,13 +14,12 @@
                     {% for village in myVillages %}
                         {% if data.page == 'myVillages' %}
                             <a class="dropdown-item" href="/game/{{village.index}}">{{village.villageName}}</a>
+                        {% elif data.page == 'playerProfile' %}
+                            <a class="dropdown-item" href="/game/{{village.index}}/players/{{data.profileOfPlayerID}}">{{village.villageName}}</a>
+                        {% else %}
+                        <a class="dropdown-item" href="/game/{{village.index}}/{{data.page}}">{{village.villageName}}</a>
                         {% endif %}
-                        {% if data.page == 'map' %}
-                        <a class="dropdown-item" href="/game/{{village.index}}/map">{{village.villageName}}</a>
-                        {% endif %}
-                        {% if data.page == 'barracks' %}
-                        <a class="dropdown-item" href="/game/{{village.index}}/barracks">{{village.villageName}}</a>
-                        {% endif %}
+
                     {%endfor%}
                 </div>
             </div>
