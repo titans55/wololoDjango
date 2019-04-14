@@ -20,12 +20,10 @@ def villageProfile(request, village_id, village_index=None):
         return redirect('villageProfile')
 
     villageInfo = getVillageInfo(village_id)
-    print(villageInfo)
-
+    
     data = { 
         'selectedVillage': user.myVillages[selected_village_index],
         'gameConfig' : gameConfig,
-        # 'profileOfPlayerID' : player_id,
         'profileOfVillageInfo' : villageInfo,
         'page' : 'villageProfile'
     }

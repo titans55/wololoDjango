@@ -50,12 +50,11 @@
                     Actions
                 </div>
                 <div class="card-body">
-                    {% if currentUser.id != data.profileOfVillageInfo.user_id %}
-                        <button type="button" class="btn btn-danger">Attack</button>
-                        <button type="button" class="btn btn-success">Support</button>
-                    {% else %}
-                        <button type="button" class="btn btn-success">Relocate Troops</button>
-                    {% endif %}
+                    <form action="/game/commandCenter" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="commandTargetVillageID" value="{{data.profileOfVillageInfo.village_id}}"/>
+                        <button type="submit" class="btn btn-info">Send Troops</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -67,6 +66,6 @@
 
 {% block footerjs %}
     <script type="text/javascript" src="{% static 'wololo/js/villageResources.js' %}"></script>
-    <!-- <script type="text/javascript" src="{% static 'wololo/js/profiles/playerProfile.js' %}"></script> -->
+    <script type="text/javascript" src="{% static 'wololo/js/profiles/villageProfile.js' %}"></script>
 
 {% endblock %}

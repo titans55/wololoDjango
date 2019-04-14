@@ -23,7 +23,7 @@ def villages(request, village_index=None):
        
     selected_village_index = getVillageIndex(request, user, village_index)
     if(selected_village_index is 'outOfList'):
-        return redirect('barracks')
+        return redirect('myVillage')
 
     data = { 
         'villages_info' : user.myVillages,

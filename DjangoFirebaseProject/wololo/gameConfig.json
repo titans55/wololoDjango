@@ -592,7 +592,8 @@
                         "level" : 1
                     }
                 },
-                "neededTrainingBaseTime" : 5
+                "neededTrainingBaseTime" : 5,
+                "speed" : 0.1
             },
             "Swordsman" : {
                 "Cost" : {
@@ -611,7 +612,8 @@
                         "level" : 3
                     }
                 },
-                "neededTrainingBaseTime" : 5
+                "neededTrainingBaseTime" : 5,
+                "speed" : 0.08
             },
             "Axeman" : {
                 "Cost" : {
@@ -630,7 +632,8 @@
                         "level" : 5
                     }
                 },
-                "neededTrainingBaseTime" : 6
+                "neededTrainingBaseTime" : 6,
+                "speed" : 0.125
             },
             "Archer" : {
                 "Cost" : {
@@ -649,7 +652,8 @@
                         "level" : 7
                     }
                 },
-                "neededTrainingBaseTime" : 7
+                "neededTrainingBaseTime" : 7,
+                "speed" : 0.08
             }
         },
         "cavalry":{
@@ -667,7 +671,8 @@
                     "Cavalry Defence" : 0
                 },
                 "neededPopulation" : 2,
-                "neededTrainingBaseTime" : 6
+                "neededTrainingBaseTime" : 6,
+                "speed" : 0.2
             },
             "Light Cavalry" : {
                 "Cost" : {
@@ -681,7 +686,8 @@
                     "Cavalry Defence" : 5
                 },
                 "neededPopulation" : 5,
-                "neededTrainingBaseTime" : 25
+                "neededTrainingBaseTime" : 25,
+                "speed" : 0.16
             },
             "Heavy Cavalry" : {
                 "Cost" : {
@@ -695,7 +701,8 @@
                     "Cavalry Defence" : 60
                 },
                 "neededPopulation" : 10,
-                "neededTrainingBaseTime" : 50
+                "neededTrainingBaseTime" : 50,
+                "speed" : 0.14
             }
         },
         "siegeWeapons":{
@@ -712,7 +719,8 @@
                     "Cavalry Defence" : 1
                 },
                 "neededPopulation" : 8,
-                "neededTrainingBaseTime" : 20
+                "neededTrainingBaseTime" : 20,
+                "speed" : 0.06
             },
             "Catapult" : {
                 "Cost" : {
@@ -728,7 +736,8 @@
                     "Cavalry Defence" : 5
                 },
                 "neededPopulation" : 10,
-                "neededTrainingBaseTime" : 60
+                "neededTrainingBaseTime" : 60,
+                "speed" : 0.06
             }
         },
         "folkHero" : {

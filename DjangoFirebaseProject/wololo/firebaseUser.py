@@ -202,7 +202,32 @@ class firebaseUser():
                                 "cavalry" : [],
                                 "siegeWeapons" : [],
                                 "folkHero" : []
-                            }
+                            },
+                            "incomingStrangerTroops" : [
+                                # {
+                                #     "from" : "fromVillageID",
+                                #     "to" : "targetVillageID",
+                                #     "movementType" : "Attack/Support",
+                                #     "arrivalTime" : "timestamp",
+                                #     "troops": {
+                                #         "infantry" :  {
+                                #             "Spearman" : 0,
+                                #             "Swordsman" : 0,
+                                #             "Axeman" : 0,
+                                #             "Archer" : 0
+                                #         },
+                                #         "cavalry" : {
+                                #             "Scout" : 0,
+                                #             "Light Cavalry": 0,
+                                #             "Heavy Cavalry" : 0
+                                #         },
+                                #         "siegeWeapons" : {
+                                #             "Ram" : 0,
+                                #             "Catapult": 0
+                                #         }
+                                #     }
+                                # }
+                            ]
                         }
                     }
                 )
@@ -467,3 +492,7 @@ class firebaseUser():
             return True
         else:
             return False
+
+    def getAllInVallageUnits(self, village_id):
+        villageDict = self.getVillageById(village_id)
+        return villageDict['troops']['inVillage']

@@ -4,6 +4,7 @@ var selectedVillage = JSON.parse(($('.selected-village').attr('data')).replace(/
 
 var winW = document.body.offsetWidth;
 var winH = document.body.offsetHeight;
+var pathfinding
 
 game = new Phaser.Game(winW / 2, winH / 3 * 2, Phaser.AUTO, 'game-container', { preload: preload, create: create, update: update });
 
@@ -193,3 +194,4 @@ function removePathSprites(){
         });
     }
 }
+

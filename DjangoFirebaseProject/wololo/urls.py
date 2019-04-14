@@ -2,7 +2,7 @@ from django.urls import path
 
 # from . import views
 from wololo.views.afterLogin.buildings import barracksView
-from wololo.views.afterLogin import mapView, villagesView, clansView, reportsView, rankingView
+from wololo.views.afterLogin import mapView, villagesView, clansView, reportsView, rankingView, commandCenterView
 from wololo.views.beforeLogin import selectingRegionView, landingView, registerView
 from wololo.views.afterLogin.profiles import playerProfileView, villageProfileView
 from wololo.views import auth
@@ -37,6 +37,10 @@ urlpatterns = [
 
     path('game/villages/<str:village_id>', villageProfileView.villageProfile, name='villageProfile'),
     path('game/<int:village_index>/villages/<str:village_id>', villageProfileView.villageProfile),
+
+    path('game/commandCenter', commandCenterView.commandCenter, name='commandCenter'), #FORM CALL AND NORMAL VIEW
+    path('game/<int:village_index>/commandCenter', commandCenterView.commandCenter),
+    path('game/commandCenter/attack', commandCenterView.sendAttack), #FORM CALL
 
     #AJAX CALL
     path('game/upgrade', villagesView.upgrade, name='upgrade'),

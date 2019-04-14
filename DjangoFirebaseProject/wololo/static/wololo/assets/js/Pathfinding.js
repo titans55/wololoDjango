@@ -49,6 +49,7 @@ PathfindingExample.Pathfinding.prototype.find_path = function (origin, target, c
     }
 };
 
+var pathLength = null
 PathfindingExample.Pathfinding.prototype.call_callback_function = function (callback, context, path) {
     "use strict";
     var path_positions;
@@ -62,11 +63,12 @@ PathfindingExample.Pathfinding.prototype.call_callback_function = function (call
             pathSprite.alpha = 0.65
             pathSprites.push(pathSprite)
         }, this);
-        console.log(path, "path")
         
-        console.log(path_positions, "path positions")
-        const pathLength = pathSprites.length
-        console.log(pathLength, "path length")
+        pathLength = pathSprites.length
+        console.log(pathLength, "=> global variable, pathLength")
+        if(page=='commandCenter'){
+            makeChangesForCommandCenterInPathfindingJS()
+        }
     }else{
         console.log("you cant travel through sea, you are not jesus!")
     }
