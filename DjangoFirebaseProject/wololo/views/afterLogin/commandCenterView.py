@@ -41,15 +41,31 @@ def commandCenter(request, village_index=None):
     return render(request, 'commandCenter.html', {'currentUser':currentUser, 'publicVillages':json.dumps(publicVillages), 'myVillages':user.myVillages, 'data' : data})
 
 def sendAttack(request):
+    user_id = request.session['userID']
+    user = firebaseUser(user_id)
+    
     now = datetime.datetime.now(pytz.utc)
-    estimatedMinutes = request.POST.get("estimatedMinutes")
+    estimatedSeconds = int(request.POST.get("estimatedMinutes"))*60
     attackerTroops = json.loads(request.POST.get("troops")) 
     fromVillageID = request.POST.get("fromVillageID")
     targetVillageID = request.POST.get("targetVillageID")
 
-    # print(attackerTroops)
 
-    task_id = attack.apply_async((fromVillageID, targetVillageID, attackerTroops),countdown = 2)
+    estimatedSeconds = 10
+
+    arrivalTime = now + datetime.timedelta(0, estimatedSeconds)
+
+    task_id = attack.apply_async((fromVillageID, targetVillageID, attackerTroops),countdown = estimatedSeconds)
     task_id = task_id.id
+
+    movementDetails = {
+        'countdown' : estimatedSeconds,
+        'home_village_id' : fromVillageID,
+        'target_village_id' : targetVillageID,
+        'movementType' : 'attack',
+        'state' : 'going',
+        'arrivalTime' : arrivalTime
+    }
+    user.addOnMoveTroops(task_id, movementDetails, attackerTroops)
 
     return redirect('myVillage')

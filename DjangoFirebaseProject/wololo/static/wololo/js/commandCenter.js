@@ -98,7 +98,23 @@ function listenTroopsToTrainInputChange(){
 
 function getSpeedOfSlowestUnitAndUpdateTroopsFormInput(){
     let slowestSpeed = Number.POSITIVE_INFINITY
-    let troopsToSend = {}
+    let troopsToSend = {
+        "infantry": {
+            "Spearman" : 0,
+            "Swordsman" : 0,
+            "Axeman" : 0,
+            "Archer" : 0
+        },
+        "cavalry" : {
+            "Scout" : 0,
+            "Light Cavalry": 0,
+            "Heavy Cavalry" : 0
+        },
+        "siegeWeapons" : {
+            "Ram" : 0,
+            "Catapult": 0
+        }
+    }
     $(".troopsToSend").each(function(){
         if(parseInt($(this).val())>0){
             const unitType = $(this).attr("unitType")
@@ -106,8 +122,7 @@ function getSpeedOfSlowestUnitAndUpdateTroopsFormInput(){
             let speedOfUnit = gameConfigs.units[unitType][unitName].speed
             if(speedOfUnit<slowestSpeed) slowestSpeed = speedOfUnit
 
-            if(troopsToSend[unitType] == undefined) troopsToSend[unitType] = {}
-            troopsToSend[unitType][unitName] = $(this).val()
+            troopsToSend[unitType][unitName] = parseInt($(this).val())
         }
     })
     $(".troops-form-input").val(JSON.stringify(troopsToSend))

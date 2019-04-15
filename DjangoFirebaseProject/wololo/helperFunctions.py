@@ -1,6 +1,3 @@
-import firebase_admin
-from firebase_admin import firestore
-from firebase_admin import credentials
 import datetime
 import json
 import os
@@ -8,15 +5,17 @@ import dateutil.parser
 import pytz
 import pyrebase
 from .initFirestore import get_db
+from .commonFunctions import getGameConfig
 import datetime
+import math
+from google.cloud.firestore_v1beta1 import ArrayRemove, ArrayUnion, DELETE_FIELD
 
 db = get_db()
 
+gameConfig = getGameConfig()
 
-script_dir = os.path.dirname(__file__)
-file_path = os.path.join(script_dir, 'gameConfig.json')
-with open(file_path, 'r') as f:
-    gameConfig = json.load(f)
+
+
 
 
 def setSumAndLastInteractionDateOfResource(user_id, village_id, resourceBuilding, newSum, now):
@@ -153,3 +152,71 @@ def getPublicVillages(firebaseUser):
 def getUserIdByVillageId(village_id):
     public_villages_ref = db.collection('villages')
     return public_villages_ref.document(village_id).get({'user_id'}).to_dict()['user_id']
+
+def createEmptyDictionaryForBattleReport():
+    attacker_result = {}
+    for unitTypeName, unitType in gameConfig['units'].items():
+        attacker_result[unitTypeName] = {}
+        for unitName, unitInfo in unitType.items():
+            attacker_result[unitTypeName][unitName] = {
+                'quantity' : 0,
+                'lost' : 0
+            }
+    return attacker_result
+
+
+def getResults(diff, date, attacker_info, defender_info, casualty_rate=None):
+    if(diff>0): #attacker wins
+
+        #Calculation of attacker losses
+        attacker_result = createEmptyDictionaryForBattleReport()
+
+        numberOfUnits = 0
+        for unitTypeName, unitType in attacker_info['troops'].items():
+            for unitName, unitQuantity in unitType.items():
+                if(unitQuantity>0): 
+                    numberOfUnits+=1
+                    attacker_result[unitTypeName][unitName]['quantity'] = unitQuantity
+        
+        casualty_rate_net = float(casualty_rate) / float(numberOfUnits)
+
+        for unitTypeName, unitType in attacker_info['troops'].items():
+            for unitName, unitQuantity in unitType.items():
+                if(unitQuantity>0): 
+                    numberOfUnits+=1
+                    attacker_result[unitTypeName][unitName]['lost'] = math.ceil(unitQuantity * casualty_rate_net)
+
+
+        #Calculation of defender losses
+        defender_result = createEmptyDictionaryForBattleReport()
+
+        for unitTypeName, unitType in defender_info['troops'].items():
+            for unitName, unitQuantity in unitType.items():
+                if(unitQuantity>0): 
+                    defender_result[unitTypeName][unitName]['quantity'] = unitQuantity
+                    defender_result[unitTypeName][unitName]['lost'] = unitQuantity
+
+        result = {
+            'attacker' : {
+                'user_id' : attacker_info['user_id'],
+                'village_id' : attacker_info['village_id'],
+                'units_result' : attacker_result,
+                'result' : 'won'
+            },
+            'defender' : {
+                'user_id' : defender_info['user_id'],
+                'village_id' : defender_info['village_id'],
+                'units_result' : defender_result,
+                'result' : 'lost'
+            }
+        }
+
+        return result
+
+    elif(diff<0): #defender wins
+        print("defender won")
+
+
+    else: #nobody wins
+        print("nobody won")
+

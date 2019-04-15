@@ -9,10 +9,11 @@ import os
 from .initFirestore import get_db
 import pytz
 from DjangoFirebaseProject import settings
-from .firebaseUser import firebaseUser
-from .helperFunctions import calculatePointsForVillage, getUserIdByVillageId
+from wololo.firebaseUser import firebaseUser
+from wololo.helperFunctions import calculatePointsForVillage, getUserIdByVillageId, getResults
 from wololo.commonFunctions import getGameConfig, getVillageIndex
 from random import randint
+from google.cloud.firestore_v1beta1 import ArrayRemove, ArrayUnion, DELETE_FIELD
 
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
@@ -98,6 +99,11 @@ def train_unit(self, user_id, village_id, unit_type, unit_name):
 #battle occures in that function
 @app.task(bind=True, name='wololo.tasks.attack')
 def attack(self, attacker_village_id, defender_village_id, attacker_troops):
+    now = datetime.datetime.now(pytz.utc)
+    current_task_id = self.request.id
+
+    attacker_user = firebaseUser(getUserIdByVillageId(attacker_village_id))
+
     defender_user = firebaseUser(getUserIdByVillageId(defender_village_id))
     defender_troops = defender_user.getAllInVallageUnits(defender_village_id)
     
@@ -146,13 +152,23 @@ def attack(self, attacker_village_id, defender_village_id, attacker_troops):
     total_defend_force = defend_force + cavalry_defend_force
     ## luck (for attacker)
     luck = randint(-25, 25)
-    luck = 0
     print(luck, " luck")
     total_attack_force += int(total_attack_force*(luck/100.0))
 
     ## wall (do the same thing for defender)
 
     ##
+
+    attacker_info = {
+        'user_id' : attacker_user.id,
+        'village_id' : attacker_village_id,
+        'troops' : attacker_troops
+    }
+    defender_info = {
+        'user_id' : defender_user.id,
+        'village_id' : defender_village_id,
+        'troops' : defender_troops
+    }
 
     diff = total_attack_force - total_defend_force
     print(diff, " diff")
@@ -164,12 +180,122 @@ def attack(self, attacker_village_id, defender_village_id, attacker_troops):
         print("defender won")
         casualty_rate = total_attack_force / total_defend_force
         print(casualty_rate, "casualty rate for defender")
-
     else:
         ##everyone dies
+        casualty_rate = 1
         print("nobody won wtf")
 
-@app.task(bind=True, name='wololo.tasks.return_from_attack')
-def return_from_attack(self, attacker_user_id, attacker_village_id, defender_user_id, defender_village_id, returning_attacker_troops):
+    report_content = getResults(diff, now, attacker_info, defender_info, casualty_rate)
     
-    print('a')
+    #attacker
+    if report_content['attacker']['result'] == 'won':
+        print(report_content['attacker']['user_id'], report_content['attacker']['village_id'])
+        village_ref = db.collection('players').document(report_content['attacker']['user_id']).collection('villages').document(report_content['attacker']['village_id'])
+        cntdwn = village_ref.get({'troops.onMove'}).to_dict()['troops']['onMove'][current_task_id]['countdown']
+        
+        returning_troops = {
+            "infantry": {
+                "Spearman" : 0,
+                "Swordsman" : 0,
+                "Axeman" : 0,
+                "Archer" : 0
+            },
+            "cavalry" : {
+                "Scout" : 0,
+                "Light Cavalry": 0,
+                "Heavy Cavalry" : 0
+            },
+            "siegeWeapons" : {
+                "Ram" : 0,
+                "Catapult": 0
+            }
+        }
+
+        total = village_ref.get({'troops.total'}).to_dict()['troops']['total']
+
+
+        for unitTypeName, unitType in report_content['attacker']['units_result'].items():
+            for unitName, unit in unitType.items():
+                if(unit['quantity']!=unit['lost']):
+                    returning_troops[unitTypeName][unitName] = unit['quantity'] - unit['lost']
+                total[unitTypeName][unitName] -= unit['lost'] #calculating new total
+
+        new_task_id = return_from_attack.apply_async((report_content['defender']['village_id'], report_content['attacker']['village_id'], returning_troops),countdown = cntdwn)
+        new_task_id = new_task_id.id
+        arrivalTime = now + datetime.timedelta(0, cntdwn)
+
+        
+        #delete attacker onMove, insert newOnMove(newtaskid), total
+        village_ref.update({
+            'troops.onMove.'+current_task_id: DELETE_FIELD
+        })
+
+        village_ref.update({
+            'troops.onMove': { 
+                new_task_id : {
+                    "home_village_id" : report_content['attacker']['village_id'],
+                    "target_village_id" : report_content['defender']['village_id'],
+                    "movementType" :  'attack', #attack/support
+                    "state" : 'returning', #going/returning
+                    "arrivalTime" : arrivalTime,
+                    "troops": returning_troops
+                }
+            },
+            'troops.total': total
+        })
+        
+    else:
+        village_ref = db.collection('players').document(report_content['attacker']['user_id']).collection('villages').document(report_content['attacker']['village_id'])
+        
+        total = village_ref.get({'troops.total'}).to_dict()['troops']['total']
+
+
+        for unitTypeName, unitType in report_content['attacker']['units_result'].items():
+            for unitName, unit in unitType.items():
+                total[unitTypeName][unitName] -= unit['lost'] #calculating new total
+        
+        #delete attacker onMove, update total 
+        village_ref.update({
+            'troops.onMove.'+current_task_id: DELETE_FIELD,
+            'troops.total': total
+        })
+
+    #defender
+    village_ref = db.collection('players').document(report_content['defender']['user_id']).collection('villages').document(report_content['defender']['village_id'])
+    total = village_ref.get({'troops.total'}).to_dict()['troops']['total']
+    inVillage = village_ref.get({'troops.inVillage'}).to_dict()['troops']['inVillage']
+
+    for unitTypeName, unitType in report_content['defender']['units_result'].items():
+        for unitName, unit in unitType.items():
+            total[unitTypeName][unitName] -= unit['lost'] #calculating new total
+            inVillage[unitTypeName][unitName] -= unit['lost'] #calculating new inVillage
+
+    #update defender inVillage, total
+    village_ref.update({
+        'troops.inVillage' :inVillage,
+        'troops.total': total
+    })
+
+    attacker_user.insertReport('battle', now, report_content)
+    defender_user.insertReport('battle', now, report_content)
+    ##send message to both attacker and defender clients
+
+
+        
+@app.task(bind=True, name='wololo.tasks.return_from_attack')
+def return_from_attack(self, target_village_id, home_village_id, returning_troops):
+    user_id = getUserIdByVillageId(home_village_id)
+    current_task_id = self.request.id
+
+    village_ref = db.collection('players').document(user_id).collection('villages').document(home_village_id)
+    inVillage = village_ref.get({'troops.inVillage'}).to_dict()['troops']['inVillage']
+
+    for unitTypeName, unitType in returning_troops.items():
+        for unitName, unit in unitType.items():
+            inVillage[unitTypeName][unitName] += unit
+
+    village_ref.update({
+        'troops.inVillage' : inVillage,
+        'troops.onMove.'+current_task_id: DELETE_FIELD
+    })
+    print("TROOPS RETURNED HOME")

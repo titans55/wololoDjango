@@ -4,10 +4,11 @@ import os
 import json
 import pytz, datetime
 from celery import current_app
-from .helperFunctions import setSumAndLastInteractionDateOfResource
+from wololo.helperFunctions import setSumAndLastInteractionDateOfResource, calculatePointsForPlayer
 from google.cloud.firestore_v1beta1 import ArrayRemove, ArrayUnion
 from django.core.serializers.json import DjangoJSONEncoder
 from dateutil import parser
+
 db = get_db()
 gameConfig = getGameConfig()
 class firebaseUser():
@@ -26,7 +27,6 @@ class firebaseUser():
         myVillages = []
         numberOfVillages = 0
         for village in villages:
-            import datetime
             now = datetime.datetime.now()
             if(self.refreshVillages):
                 db.collection('players').document(self.id).collection('villages').document(village.reference.id).set(
@@ -159,27 +159,32 @@ class firebaseUser():
                                     "Catapult": 0
                                 }
                             },
-                            "onMove" : [
-                                # {
+                            "onMove" : {
+                                # 'tsk_id' : {
                                 #     "from" : "fromVillageID",
                                 #     "to" : "targetVillageID",
                                 #     "movementType" : "Attack/Support",
                                 #     "state" : "going/returning",
-                                #     "arrivalTime" : "timestamp"
-                                #     "troops": [
-                                #         {
-                                #             "unitName" : "Spearman"
-                                #             "unitType" : "Infantry",
-                                #             "size" : 0
+                                #     "arrivalTime" : "timestamp",
+                                #     "troops": {
+                                #         "infantry": {
+                                #             "Spearman" : 0,
+                                #             "Swordsman" : 0,
+                                #             "Axeman" : 0,
+                                #             "Archer" : 0
                                 #         },
-                                #         {
-                                #             "unitName" : "Swordsman",
-                                #             "unitType" : "Infantry",
-                                #             "size" : 0
+                                #         "cavalry" : {
+                                #             "Scout" : 0,
+                                #             "Light Cavalry": 0,
+                                #             "Heavy Cavalry" : 0
+                                #         },
+                                #         "siegeWeapons" : {
+                                #             "Ram" : 0,
+                                #             "Catapult": 0
                                 #         }
-                                #     ]
+                                #     }
                                 # }
-                            ],
+                            },
                             "total" : {
                                 "infantry" :  {
                                     "Spearman" : 0,
@@ -231,6 +236,7 @@ class firebaseUser():
                         }
                     }
                 )
+                calculatePointsForPlayer(self.id)
             # print(village)
             village._data['index'] = numberOfVillages 
             village._data['id'] = village.reference.id
@@ -250,7 +256,8 @@ class firebaseUser():
                     village._data['buildings'][buildingName]['upgrading']['time']['willBeUpgradedAt'] = str(village._data['buildings'][buildingName]['upgrading']['time']['willBeUpgradedAt'])
 
             village._data['troops']['trainingQueue'] = json.loads(json.dumps(village._data['troops']['trainingQueue'], cls=DjangoJSONEncoder))
-            
+            village._data['troops']['onMove'] = json.loads(json.dumps(village._data['troops']['onMove'], cls=DjangoJSONEncoder))
+
             temp = village._data['buildings']
             village._data['buildings'] = {}
             for building in gameConfig['buildings'].keys():
@@ -409,14 +416,6 @@ class firebaseUser():
             'troops.trainingUnits.'+ unitType +'.'+ unitName +'.state' : newState,
         })
 
-    def setUnitstrainingTime(self, village_id, unitType, unitName, startedAt, totalRequiredTime):
-        willEnd = startedAt + datetime.timedelta(0, totalRequiredTime)
-        village_ref = db.collection('players').document(self.id).collection('villages').document(village_id)
-        village_ref.update({
-            'troops.trainingUnits.'+ unitType +'.'+ unitName +'.timeAndQuantity.startedAt' : startedAt,
-            'troops.trainingUnits.'+ unitType +'.'+ unitName +'.timeAndQuantity.willEndAt' : willEnd
-        })
-
     def getTotalUnitsQuantity(self, village_id, unitType, unitName):
         villageDict = self.getVillageById(village_id)
         return villageDict['troops']['total'][unitType][unitName]
@@ -496,3 +495,66 @@ class firebaseUser():
     def getAllInVallageUnits(self, village_id):
         villageDict = self.getVillageById(village_id)
         return villageDict['troops']['inVillage']
+
+    def addOnMoveTroops(self, task_id, movementDetails, troops):
+        
+        village_ref = db.collection('players').document(self.id).collection('villages').document(movementDetails['home_village_id'])
+        inVillageTroops = village_ref.get({'troops.inVillage'}).to_dict()['troops']['inVillage']
+        for unitTypeName, unitType in inVillageTroops.items():
+            for unitName, unit in unitType.items():
+                inVillageTroops[unitTypeName][unitName] -= troops[unitTypeName][unitName]
+
+        print(inVillageTroops)
+        village_ref.update({
+            'troops.onMove' : {
+                task_id : {
+                    "countdown" : movementDetails['countdown'],
+                    "home_village_id" : movementDetails['home_village_id'],
+                    "target_village_id" : movementDetails['target_village_id'],
+                    "movementType" :  movementDetails['movementType'], #attack/support
+                    "state" : movementDetails['state'], #going/returning
+                    "arrivalTime" : movementDetails['arrivalTime'],
+                    "troops": {
+                        "infantry": {
+                            "Spearman" : troops['infantry']['Spearman'],
+                            "Swordsman" : troops['infantry']['Swordsman'],
+                            "Axeman" : troops['infantry']['Axeman'],
+                            "Archer" : troops['infantry']['Archer']
+                        },
+                        "cavalry" : {
+                            "Scout" : troops['cavalry']['Scout'],
+                            "Light Cavalry": troops['cavalry']['Light Cavalry'],
+                            "Heavy Cavalry" : troops['cavalry']['Heavy Cavalry']
+                        },
+                        "siegeWeapons" : {
+                            "Ram" : troops['siegeWeapons']['Ram'],
+                            "Catapult": troops['siegeWeapons']['Catapult']
+                        }
+                    }
+                }
+            },
+            'troops.inVillage' : inVillageTroops
+        })
+
+    def insertReport(self, reportType, date, content):
+        player_ref = db.collection('players').document(self.id)
+
+        if(reportType=='battle'):
+            if(content['attacker']['user_id'] == self.id): 
+                if(content['attacker']['result'] == 'lost'):
+                    content['defender']['units_result'] == 'unknown'
+            
+
+
+            newReport = {
+                'type' : reportType,
+                'date' : date, 
+                'viewed' : False,
+                'content' : content
+            }
+
+            player_ref.update({
+                'reports': ArrayUnion([
+                    newReport
+                ])
+            })

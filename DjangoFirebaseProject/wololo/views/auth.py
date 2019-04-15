@@ -58,7 +58,9 @@ def createAccount(request):
         db.collection('players').document(user_id).set({
             "clan": "",
             "regionSelected": False,
-            "username": username
+            "username": username,
+            "points" : 0,
+            "reports" : []
         })
         user = auth.refresh(user['refreshToken']) #now we have 1 hour expiry token
         auth.send_email_verification(user['idToken'])

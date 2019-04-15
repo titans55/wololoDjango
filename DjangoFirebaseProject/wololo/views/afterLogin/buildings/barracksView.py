@@ -73,8 +73,6 @@ def trainUnits(request):
         setSumAndLastInteractionDateOfResource(user_id, village_id, 'ironMine', currentClay-reqiuredClay, now)
         # reqiured_time = 10
 
-        # user.setUnitstrainingTime(village_id, unit_type, unit_name, now, reqiured_time*numberOfUnitsToTrain)
-
         result = user.checkTrainingQueueReturnLastOneIfExists(village_id, unit_type)
 
         if(result == False):
