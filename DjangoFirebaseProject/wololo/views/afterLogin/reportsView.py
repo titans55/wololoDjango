@@ -4,9 +4,12 @@ import urllib.request
 import urllib.error
 from wololo.views.auth import myuser_login_required
 from wololo.commonFunctions import getGameConfig, getVillageIndex
+from wololo.helperFunctions import getUsernameByUserID, getVillagenameByVillageID
+
+gameConfig = getGameConfig()
 
 @myuser_login_required    
-def reports(request, village_index=None):
+def reportsList(request, village_index=None):
     user_id = request.session['userID']
     user = firebaseUser(user_id)
     if user.regionSelected is False :
@@ -14,6 +17,57 @@ def reports(request, village_index=None):
 
     selected_village_index = getVillageIndex(request, user, village_index)
     if(selected_village_index == 'outOfList'):
-        return redirect('reports')
+        return redirect('reportsList')
 
-    return render(request, 'reports.html')
+    reports = user.getReports()
+
+    data = {
+        'user_id' : user.id,
+        'villages_info' : user.myVillages,
+        'selectedVillage': user.myVillages[selected_village_index],
+        'gameConfig' : gameConfig,
+        'reports' : reports,
+        'unviewedReportExists' : user.unviewedReportExists,
+        'page' : 'reports'
+    }
+
+    return render(request, 'reports.html', {'myVillages':user.myVillages, 'data' : data})
+
+def report(request, report_index, village_index=None):
+    user_id = request.session['userID']
+    user = firebaseUser(user_id)
+    if user.regionSelected is False :
+        return redirect("selectRegion")
+
+    selected_village_index = getVillageIndex(request, user, village_index)
+    if(selected_village_index == 'outOfList'):
+        return redirect('reportsList')
+
+
+    reports = user.getReports()
+    reports[report_index]['viewed'] = True
+
+    if user.unviewedReportExists:
+        viewedAllReports = True
+        for reportElement in reports:
+            if reportElement['viewed'] == False:
+                viewedAllReports = False
+                break
+        if viewedAllReports:
+            user.unviewedReportExists = False
+            user.setUnviewedReportExists(False)
+        user.setReports(reports)
+
+
+    data = {
+        'report_index' : report_index,
+        'user_id' : user.id,
+        'villages_info' : user.myVillages,
+        'selectedVillage': user.myVillages[selected_village_index],
+        'gameConfig' : gameConfig,
+        'report' : reports[report_index],
+        'unviewedReportExists' : user.unviewedReportExists,
+        'page' : 'report'
+    }
+
+    return render(request, 'report.html', {'myVillages':user.myVillages, 'data' : data})

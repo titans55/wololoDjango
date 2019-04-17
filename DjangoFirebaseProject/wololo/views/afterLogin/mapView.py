@@ -44,6 +44,7 @@ def map(request, village_index=None):
     data = { 
         'selectedVillage': user.myVillages[selected_village_index],
         'gameConfig' : gameConfig,
+        'unviewedReportExists' : user.unviewedReportExists,
         'page' : 'map'
     }
 

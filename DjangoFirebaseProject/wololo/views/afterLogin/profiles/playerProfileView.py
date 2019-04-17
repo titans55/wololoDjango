@@ -27,6 +27,7 @@ def playerProfile(request, player_id, village_index=None):
         'gameConfig' : gameConfig,
         'profileOfPlayerID' : player_id,
         'profileOfPlayerInfo' : playerInfo,
+        'unviewedReportExists' : user.unviewedReportExists,
         'page' : 'playerProfile'
     }
     currentUser = {}

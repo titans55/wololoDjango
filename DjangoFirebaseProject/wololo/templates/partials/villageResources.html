@@ -16,6 +16,8 @@
                             <a class="dropdown-item" href="/game/{{village.index}}">{{village.villageName}}</a>
                         {% elif data.page == 'playerProfile' %}
                             <a class="dropdown-item" href="/game/{{village.index}}/players/{{data.profileOfPlayerID}}">{{village.villageName}}</a>
+                        {% elif data.page == 'report' %}
+                            <a class="dropdown-item" href="/game/{{village.index}}/reports/{{data.report_index}}">{{village.villageName}}</a>
                         {% else %}
                         <a class="dropdown-item" href="/game/{{village.index}}/{{data.page}}">{{village.villageName}}</a>
                         {% endif %}

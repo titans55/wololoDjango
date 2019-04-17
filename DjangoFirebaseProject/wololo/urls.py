@@ -26,8 +26,10 @@ urlpatterns = [
     path('game/clans', clansView.clans, name='clans'),
     path('game/<int:village_index>/clans', clansView.clans),
 
-    path('game/reports', reportsView.reports, name='reports'),
-    path('game/<int:village_index>/reports', reportsView.reports),
+    path('game/reports', reportsView.reportsList, name='reportsList'),
+    path('game/<int:village_index>/reports', reportsView.reportsList),
+    path('game/reports/<int:report_index>', reportsView.report, name='report'),
+    path('game/<int:village_index>/reports/<int:report_index>', reportsView.report),
 
     path('game/ranking', rankingView.ranking, name='ranking'),
     path('game/<int:village_index>/ranking', rankingView.ranking),

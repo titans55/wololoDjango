@@ -29,6 +29,7 @@ def villages(request, village_index=None):
         'villages_info' : user.myVillages,
         'selectedVillage': user.myVillages[selected_village_index],
         'gameConfig' : gameConfig,
+        'unviewedReportExists' : user.unviewedReportExists,
         'page' : 'myVillages'
     }
     # data = json.dumps(data)

@@ -4,7 +4,7 @@ import urllib.request
 import urllib.error
 from wololo.views.auth import myuser_login_required
 from wololo.commonFunctions import getGameConfig, getVillageIndex
-from wololo.helperFunctions import getAllPlayers
+from wololo.helperFunctions import getAllPlayersOrderedByPoints
 
 gameConfig = getGameConfig()
 
@@ -19,7 +19,7 @@ def ranking(request, village_index=None):
     if(selected_village_index == 'outOfList'):
         return redirect('ranking')
 
-    allPlayers = getAllPlayers()
+    allPlayers = getAllPlayersOrderedByPoints()
     print(allPlayers)
 
     data = { 
@@ -27,6 +27,7 @@ def ranking(request, village_index=None):
         'selectedVillage': user.myVillages[selected_village_index],
         'gameConfig' : gameConfig,
         'allPlayers' : allPlayers,
+        'unviewedReportExists' : user.unviewedReportExists,
         'page' : 'ranking'
     }
 

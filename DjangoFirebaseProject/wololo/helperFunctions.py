@@ -86,7 +86,7 @@ def calculatePointsForPlayer(user_id):
     })
     
         
-def getAllPlayers():
+def getAllPlayersOrderedByPoints():
 
     players_ref = db.collection('players')
     players = []
@@ -220,3 +220,10 @@ def getResults(diff, date, attacker_info, defender_info, casualty_rate=None):
     else: #nobody wins
         print("nobody won")
 
+def getUsernameByUserID(user_id):
+    players_ref = db.collection('players')
+    return players_ref.document(user_id).get({'username'}).to_dict()['username']
+
+def getVillagenameByVillageID(village_id):
+    villages_ref = db.collection('villages')
+    return villages_ref.document(village_id).get({'villageName'}).to_dict()['villageName']

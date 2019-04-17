@@ -33,6 +33,7 @@ def commandCenter(request, village_index=None):
         'selectedVillage': user.myVillages[selected_village_index],
         'gameConfig' : gameConfig,
         'targetVillage' : targetVillage,
+        'unviewedReportExists' : user.unviewedReportExists,
         'page' : 'commandCenter'
     }
     currentUser = {}

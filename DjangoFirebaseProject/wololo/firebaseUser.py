@@ -4,7 +4,7 @@ import os
 import json
 import pytz, datetime
 from celery import current_app
-from wololo.helperFunctions import setSumAndLastInteractionDateOfResource, calculatePointsForPlayer
+from wololo.helperFunctions import setSumAndLastInteractionDateOfResource, calculatePointsForPlayer, getUsernameByUserID, getVillagenameByVillageID
 from google.cloud.firestore_v1beta1 import ArrayRemove, ArrayUnion
 from django.core.serializers.json import DjangoJSONEncoder
 from dateutil import parser
@@ -276,7 +276,8 @@ class firebaseUser():
 
         self.myVillages = myVillages
         self.numberOfVillages = numberOfVillages
-        self.regionSelected = db.collection('players').document(self.id).get()._data['regionSelected']
+        self.regionSelected = db.collection('players').document(self.id).get({'regionSelected'}).to_dict()['regionSelected']
+        self.unviewedReportExists = self.getUnviewedReportExists()
 
     def upgradeBuilding(self, village_id, building_path):
         village_ref = db.collection('players').document(self.id).collection('villages').document(village_id)
@@ -556,5 +557,36 @@ class firebaseUser():
             player_ref.update({
                 'reports': ArrayUnion([
                     newReport
-                ])
+                ]),
+                'unviewedReportExists' : True
             })
+
+    def getReports(self):
+
+        reports = json.loads(json.dumps(db.collection('players').document(self.id).get({'reports'}).to_dict()['reports'], cls=DjangoJSONEncoder))
+        
+        for report in reports:
+            if report['type']=='battle':
+                report['content']['attacker']['username'] = getUsernameByUserID(report['content']['attacker']['user_id'])
+                report['content']['attacker']['villageName'] = getVillagenameByVillageID(report['content']['attacker']['village_id'])
+                report['content']['defender']['username'] = getUsernameByUserID(report['content']['defender']['user_id'])
+                report['content']['defender']['villageName'] = getVillagenameByVillageID(report['content']['defender']['village_id'])
+        
+        return reports
+
+
+    def setUnviewedReportExists(self, boolean):
+        player_ref = db.collection('players').document(self.id)
+        player_ref.update({
+            'unviewedReportExists' : boolean
+        })
+
+    def getUnviewedReportExists(self):
+        
+        return db.collection('players').document(self.id).get({'unviewedReportExists'}).to_dict()['unviewedReportExists']
+        
+    def setReports(self, reports):
+        player_ref = db.collection('players').document(self.id)
+        player_ref.update({
+            'reports' : reports
+        })

@@ -25,6 +25,7 @@ def villageProfile(request, village_id, village_index=None):
         'selectedVillage': user.myVillages[selected_village_index],
         'gameConfig' : gameConfig,
         'profileOfVillageInfo' : villageInfo,
+        'unviewedReportExists' : user.unviewedReportExists,
         'page' : 'villageProfile'
     }
     currentUser = {}
