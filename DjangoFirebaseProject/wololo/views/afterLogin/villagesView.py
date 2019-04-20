@@ -26,22 +26,24 @@ def villages(request, village_index=None):
         return redirect('myVillage')
 
     totalOnMove = []
-    totalIncomingStrangetTroops = []
+    totalIncomingStrangerTroops = []
 
     for village in user.myVillages:
         for task_id, onMoveElement in village['troops']['onMove'].items():
             onMoveElement['task_id'] = task_id
             totalOnMove.append(onMoveElement)
 
-        for task_id, incomingStrangetTroopsElement in village['troops']['incomingStrangerTroops'].items():
-            incomingStrangetTroopsElement['task_id'] = task_id
-            totalIncomingStrangetTroops.append(incomingStrangetTroopsElement)
+        for task_id, incomingStrangerTroopsElement in village['troops']['incomingStrangerTroops'].items():
+            incomingStrangerTroopsElement['task_id'] = task_id
+            totalIncomingStrangerTroops.append(incomingStrangerTroopsElement)
 
+    print("wololo")
     print(totalOnMove)
-    print(totalIncomingStrangetTroops)
+    print(totalIncomingStrangerTroops)
+    print("wololo")
 
     data = { 
-        'totalIncomingStrangetTroops' : totalIncomingStrangetTroops,
+        'totalIncomingStrangerTroops' : totalIncomingStrangerTroops,
         'totalOnMove' : totalOnMove,
         'villages_info' : user.myVillages,
         'selectedVillage': user.myVillages[selected_village_index],

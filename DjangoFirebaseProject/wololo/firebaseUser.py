@@ -257,6 +257,7 @@ class firebaseUser():
 
             village._data['troops']['trainingQueue'] = json.loads(json.dumps(village._data['troops']['trainingQueue'], cls=DjangoJSONEncoder))
             village._data['troops']['onMove'] = json.loads(json.dumps(village._data['troops']['onMove'], cls=DjangoJSONEncoder))
+            village._data['troops']['incomingStrangerTroops'] = json.loads(json.dumps(village._data['troops']['incomingStrangerTroops'], cls=DjangoJSONEncoder))
 
             temp = village._data['buildings']
             village._data['buildings'] = {}
@@ -535,6 +536,20 @@ class firebaseUser():
                 }
             },
             'troops.inVillage' : inVillageTroops
+        })
+
+    def addIncomingStrangerTroops(self, task_id, movementDetails):
+        village_ref = db.collection('players').document(self.id).collection('villages').document(movementDetails['target_village_id'])
+        village_ref.update({
+            'troops.incomingStrangerTroops' : {
+                task_id : {
+                    "countdown" : movementDetails['countdown'],
+                    "home_village_id" : movementDetails['home_village_id'],
+                    "target_village_id" : movementDetails['target_village_id'],
+                    "movementType" :  movementDetails['movementType'], #attack/support
+                    "arrivalTime" : movementDetails['arrivalTime']
+                }
+            }
         })
 
     def insertReport(self, reportType, date, content):

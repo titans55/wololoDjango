@@ -18,7 +18,7 @@ gameConfig = getGameConfig()
 
 @myuser_login_required
 def selectRegionOnFirstLoginView(request):
-    user_id = request.session['user']['localId']
+    user_id = request.session['userID']
     userInfo = db.collection('players').document(user_id).get()._data
     if userInfo['regionSelected'] is True :
         return redirect('myVillage')
@@ -27,7 +27,7 @@ def selectRegionOnFirstLoginView(request):
 
 @myuser_login_required
 def selectingRegion(request):
-    user_id = request.session['user']['localId']
+    user_id = request.session['userID']
     userInfo = db.collection('players').document(user_id).get()._data
     if userInfo['regionSelected'] is True :
         return redirect('myVillage')
@@ -47,40 +47,114 @@ def selectingRegion(request):
         print(firstVillage._data['id'])
         now = datetime.datetime.now()
         villageInfo = {
-            "villageName" : "Yigidin Harman Oldugu Yer",
-            "townCenter" : {
-                "level" : "1"
-            },
-            "barracks" : {
-                "level" : "0"
-            },
-            "stable" : {
-                "level" : "0"
-            },
-            "workshop" : {
-                "level" : "0"
-            },
-            "storage" : {
-                "level" : "1"
-            },
-            "farm" : {
-                "level" : "1"
-            },
-            "resources" : {
-                "woodCamp" : {
-                    "lastInteractionDate" : now,
-                    "level" : "0",
-                    "sum" : 0,
+            "villageName" : 'new Village',
+            "buildings" : {
+                "townCenter" : {
+                    "level" : "1",
+                    "upgrading" : {
+                        "state": False,
+                        "time" : {
+                            "startedUpgradingAt" : now,
+                            "willBeUpgradedAt" : now 
+                        },
+                        "task_id" : ''
+                    }
                 },
-                "ironMine" : {
-                    "lastInteractionDate" : now,
+                "barracks" : {
                     "level" : "0",
-                    "sum" : 0,
+                    "upgrading" : {
+                        "state": False,
+                        "time" : {
+                            "startedUpgradingAt" : now,
+                            "willBeUpgradedAt" : now 
+                        },
+                        "task_id" : ''
+                    }
                 },
-                "clayPit" : {
-                    "lastInteractionDate" : now,
+                "stable" : {
                     "level" : "0",
-                    "sum" : 0,
+                    "upgrading" : {
+                        "state": False ,
+                        "time" : {
+                            "startedUpgradingAt" : now,
+                            "willBeUpgradedAt" : now 
+                        },
+                        "task_id" : ''
+                    }
+                },
+                "workshop" : {
+                    "level" : "0",
+                    "upgrading" : {
+                        "state": False ,
+                        "time" : {
+                            "startedUpgradingAt" : now,
+                            "willBeUpgradedAt" : now 
+                        },
+                        "task_id" : ''
+                    }
+                },
+                "storage" : {
+                    "level" : "1",
+                    "upgrading" : {
+                        "state": False ,
+                        "time" : {
+                            "startedUpgradingAt" : now,
+                            "willBeUpgradedAt" : now 
+                        },
+                        "task_id" : ''
+                    }
+                },
+                "farm" : {
+                    "level" : "1",
+                    "upgrading" : {
+                        "state": False ,
+                        "time" : {
+                            "startedUpgradingAt" : now,
+                            "willBeUpgradedAt" : now 
+                        },
+                        "task_id" : ''
+                    }
+                },
+                "resources" : {
+                    "woodCamp" : {
+                        "lastInteractionDate" : now,
+                        "level" : "0",
+                        "sum" : 0,
+                        "upgrading" : {
+                            "state": False ,
+                            "time" : {
+                                "startedUpgradingAt" : now,
+                                "willBeUpgradedAt" : now 
+                            },
+                            "task_id" : ''
+                        }
+                    },
+                    "ironMine" : {
+                        "lastInteractionDate" : now,
+                        "level" : "0",
+                        "sum" : 0,
+                        "upgrading" : {
+                            "state": False ,
+                            "time" : {
+                                "startedUpgradingAt" : now,
+                                "willBeUpgradedAt" : now 
+                            },
+                            "task_id" : ''
+                        }
+                    },
+                    "clayPit" : {
+                        "lastInteractionDate" : now,
+                        "level" : "0",
+                        "sum" : 0,
+                        "upgrading" : {
+                            "state": False ,
+                            "time" : {
+                                "startedUpgradingAt" : now,
+                                "willBeUpgradedAt" : now 
+                            },
+                            "task_id" : ''
+                        }
+                    }
                 }
             },
             "troops" : {
@@ -101,8 +175,31 @@ def selectingRegion(request):
                         "Catapult": 0
                     }
                 },
-                "onMove" :{
-
+                "onMove" : {
+                    # 'tsk_id' : {
+                    #     "from" : "fromVillageID",
+                    #     "to" : "targetVillageID",
+                    #     "movementType" : "Attack/Support",
+                    #     "state" : "going/returning",
+                    #     "arrivalTime" : "timestamp",
+                    #     "troops": {
+                    #         "infantry": {
+                    #             "Spearman" : 0,
+                    #             "Swordsman" : 0,
+                    #             "Axeman" : 0,
+                    #             "Archer" : 0
+                    #         },
+                    #         "cavalry" : {
+                    #             "Scout" : 0,
+                    #             "Light Cavalry": 0,
+                    #             "Heavy Cavalry" : 0
+                    #         },
+                    #         "siegeWeapons" : {
+                    #             "Ram" : 0,
+                    #             "Catapult": 0
+                    #         }
+                    #     }
+                    # }
                 },
                 "total" : {
                     "infantry" :  {
@@ -121,14 +218,47 @@ def selectingRegion(request):
                         "Catapult": 0
                     }
                 },
-                "totalIncomingStrangetTroops": {
-
+                "trainingQueue" : {
+                    "infantry" : [],
+                    "cavalry" : [],
+                    "siegeWeapons" : [],
+                    "folkHero" : []
                 },
+                "incomingStrangerTroops" : {
+                    # 'tsk_id' : { 
+                    #     "from" : "fromVillageID",
+                    #     "to" : "targetVillageID",
+                    #     "movementType" : "Attack/Support",
+                    #     "arrivalTime" : "timestamp",
+                    #     "troops": {
+                    #         "infantry" :  {
+                    #             "Spearman" : 0,
+                    #             "Swordsman" : 0,
+                    #             "Axeman" : 0,
+                    #             "Archer" : 0
+                    #         },
+                    #         "cavalry" : {
+                    #             "Scout" : 0,
+                    #             "Light Cavalry": 0,
+                    #             "Heavy Cavalry" : 0
+                    #         },
+                    #         "siegeWeapons" : {
+                    #             "Ram" : 0,
+                    #             "Catapult": 0
+                    #         }
+                    #     }
+                    #   }
+                    #}
+                }
             }
         }
         db.collection('players').document(user_id).collection('villages').document(firstVillage._data['id']).set(villageInfo)
-        db.collection('villages').document(firstVillage._data['id']).update({'user_id': user_id})
-        db.collection('villages').document(firstVillage._data['id']).update({'playerName':userInfo['username']})
-        db.collection('villages').document(firstVillage._data['id']).update({'villageName':'Yigidin Harman Oldugu Yer'})
+        db.collection('villages').document(firstVillage._data['id']).update(
+            {
+                'user_id': user_id,
+                'playerName':userInfo['username'],
+                'villageName':'Yigidin Harman Oldugu Yer'
+            }
+        )
         db.collection('players').document(user_id).update({'regionSelected' : True})
     return redirect('myVillage')

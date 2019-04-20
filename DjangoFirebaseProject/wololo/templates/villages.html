@@ -174,7 +174,7 @@
                                             Our troops are attacking to {{onMove.target_village_id}}
 
                                         {% elif onMove.state == 'returning' %}
-                                            Our troops returning from war occured {% include '' %} {{onMove.target_village_id}}
+                                            Our troops returning from {{onMove.target_village_id}}
 
                                         {% endif %}
 
@@ -196,7 +196,7 @@
                 </table>
             </div>
             {% endif %}
-            {% if data.totalIncomingStrangetTroops|length > 0 %}
+            {% if data.totalIncomingStrangerTroops|length > 0 %}
             <div class="card">
                 <div class="card-header">
                     Incoming Troops
@@ -211,15 +211,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for incomingStrangerTroopsElement in data.totalIncomingStrangetTroops%}
+                        {% for incomingStrangerTroopsElement in data.totalIncomingStrangerTroops%}
                             <tr id="incomingStrangerTroopsElement-{{incomingStrangerTroopsElement.task_id}}">
                                 <td>
                                     {% if incomingStrangerTroopsElement.movementType == 'attack' %}
-                                        
-                                        {{incomingStrangerTroopsElement.village_id}} is attacking us.
+                                        {{incomingStrangerTroopsElement.home_village_id}} is attacking us.
 
                                     {% elif incomingStrangerTroopsElement.movementType == 'support' %}
-                                        {{incomingStrangerTroopsElement.village_id}} is supporting us.
+                                        {{incomingStrangerTroopsElement.home_village_id}} is supporting us.
 
                                     {% endif %}
                                 </td>

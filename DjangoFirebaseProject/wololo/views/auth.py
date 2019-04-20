@@ -60,7 +60,8 @@ def createAccount(request):
             "regionSelected": False,
             "username": username,
             "points" : 0,
-            "reports" : []
+            "reports" : [],
+            'unviewedReportExists' : False
         })
         user = auth.refresh(user['refreshToken']) #now we have 1 hour expiry token
         auth.send_email_verification(user['idToken'])

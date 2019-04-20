@@ -214,8 +214,52 @@ def getResults(diff, date, attacker_info, defender_info, casualty_rate=None):
         return result
 
     elif(diff<0): #defender wins
+
+        #Calculation of defender losses
+        defender_result = createEmptyDictionaryForBattleReport()
+
+        numberOfUnits = 0
+        for unitTypeName, unitType in defender_info['troops'].items():
+            for unitName, unitQuantity in unitType.items():
+                if(unitQuantity>0): 
+                    numberOfUnits+=1
+                    defender_result[unitTypeName][unitName]['quantity'] = unitQuantity
+        
+        casualty_rate_net = float(casualty_rate) / float(numberOfUnits)
+
+        for unitTypeName, unitType in defender_info['troops'].items():
+            for unitName, unitQuantity in unitType.items():
+                if(unitQuantity>0): 
+                    numberOfUnits+=1
+                    defender_result[unitTypeName][unitName]['lost'] = math.ceil(unitQuantity * casualty_rate_net)
+
+
+        #Calculation of attacker losses
+        attacker_result = createEmptyDictionaryForBattleReport()
+
+        for unitTypeName, unitType in attacker_info['troops'].items():
+            for unitName, unitQuantity in unitType.items():
+                if(unitQuantity>0): 
+                    attacker_result[unitTypeName][unitName]['quantity'] = unitQuantity
+                    attacker_result[unitTypeName][unitName]['lost'] = unitQuantity
+
+        result = {
+            'attacker' : {
+                'user_id' : attacker_info['user_id'],
+                'village_id' : attacker_info['village_id'],
+                'units_result' : attacker_result,
+                'result' : 'lost'
+            },
+            'defender' : {
+                'user_id' : defender_info['user_id'],
+                'village_id' : defender_info['village_id'],
+                'units_result' : defender_result,
+                'result' : 'won'
+            }
+        }
         print("defender won")
 
+        return result
 
     else: #nobody wins
         print("nobody won")

@@ -224,7 +224,6 @@ def attack(self, attacker_village_id, defender_village_id, attacker_troops):
         new_task_id = new_task_id.id
         arrivalTime = now + datetime.timedelta(0, cntdwn)
 
-        
         #delete attacker onMove, insert newOnMove(newtaskid), total
         village_ref.update({
             'troops.onMove.'+current_task_id: DELETE_FIELD
@@ -259,7 +258,7 @@ def attack(self, attacker_village_id, defender_village_id, attacker_troops):
             'troops.onMove.'+current_task_id: DELETE_FIELD,
             'troops.total': total
         })
-
+    print("removed onMove from attacker")
     #defender
     village_ref = db.collection('players').document(report_content['defender']['user_id']).collection('villages').document(report_content['defender']['village_id'])
     total = village_ref.get({'troops.total'}).to_dict()['troops']['total']
@@ -270,11 +269,13 @@ def attack(self, attacker_village_id, defender_village_id, attacker_troops):
             total[unitTypeName][unitName] -= unit['lost'] #calculating new total
             inVillage[unitTypeName][unitName] -= unit['lost'] #calculating new inVillage
 
-    #update defender inVillage, total
+    #update defender inVillage, total, delete incomingStrangerTroops
     village_ref.update({
+        'troops.incomingStrangerTroops.' + current_task_id: DELETE_FIELD,
         'troops.inVillage' :inVillage,
         'troops.total': total
     })
+    print("removed incomingStrangerTroops from defender")
 
     attacker_user.insertReport('battle', now, report_content)
     defender_user.insertReport('battle', now, report_content)
@@ -295,7 +296,9 @@ def return_from_attack(self, target_village_id, home_village_id, returning_troop
             inVillage[unitTypeName][unitName] += unit
 
     village_ref.update({
+        'troops.onMove.'+current_task_id: DELETE_FIELD,
         'troops.inVillage' : inVillage,
-        'troops.onMove.'+current_task_id: DELETE_FIELD
     })
+    print("removed onMove from attacker")
+
     print("TROOPS RETURNED HOME")

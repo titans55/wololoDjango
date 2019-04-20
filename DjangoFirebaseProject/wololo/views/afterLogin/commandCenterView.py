@@ -4,7 +4,7 @@ import urllib.request
 import urllib.error
 from wololo.views.auth import myuser_login_required
 from wololo.commonFunctions import getGameConfig, getVillageIndex
-from wololo.helperFunctions import getVillageInfo, getPublicVillages
+from wololo.helperFunctions import getVillageInfo, getPublicVillages, getUserIdByVillageId
 import json
 import datetime
 import pytz
@@ -67,5 +67,8 @@ def sendAttack(request):
         'arrivalTime' : arrivalTime
     }
     user.addOnMoveTroops(task_id, movementDetails, attackerTroops)
+
+    defenderUser = firebaseUser(getUserIdByVillageId(targetVillageID))
+    defenderUser.addIncomingStrangerTroops(task_id, movementDetails)
 
     return redirect('myVillage')
