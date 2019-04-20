@@ -43,6 +43,7 @@ function initUpgradeButtons(){
                             if(!building_path.includes('.')){
                                 villageData.buildings[building_path] = data['newBuilding']
                             }
+                            console.log(data['newResources'])
                             villageData.buildings.resources = data['newResources']
 
                             let targetRow = getTargetBuildingRow(building_path)

@@ -101,8 +101,9 @@ def selectingRegion(request):
                         "Catapult": 0
                     }
                 },
-                "onMove" : [
-                ],
+                "onMove" :{
+
+                },
                 "total" : {
                     "infantry" :  {
                         "Spearman" : 0,
@@ -119,7 +120,10 @@ def selectingRegion(request):
                         "Ram" : 0,
                         "Catapult": 0
                     }
-                }
+                },
+                "totalIncomingStrangetTroops": {
+
+                },
             }
         }
         db.collection('players').document(user_id).collection('villages').document(firstVillage._data['id']).set(villageInfo)

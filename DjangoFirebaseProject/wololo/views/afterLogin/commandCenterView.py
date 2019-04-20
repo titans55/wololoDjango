@@ -51,8 +51,7 @@ def sendAttack(request):
     fromVillageID = request.POST.get("fromVillageID")
     targetVillageID = request.POST.get("targetVillageID")
 
-
-    estimatedSeconds = 10
+    estimatedSeconds = 10 #FOR DEBUGGING
 
     arrivalTime = now + datetime.timedelta(0, estimatedSeconds)
 

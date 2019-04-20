@@ -163,7 +163,7 @@ class firebaseUser():
                                 # 'tsk_id' : {
                                 #     "from" : "fromVillageID",
                                 #     "to" : "targetVillageID",
-                                #     "movementType" : "Attack/Support",
+                                #     "movementType" : "attack/support",
                                 #     "state" : "going/returning",
                                 #     "arrivalTime" : "timestamp",
                                 #     "troops": {
@@ -208,11 +208,11 @@ class firebaseUser():
                                 "siegeWeapons" : [],
                                 "folkHero" : []
                             },
-                            "incomingStrangerTroops" : [
-                                # {
+                            "incomingStrangerTroops" : {
+                                # 'tsk_id' : {
                                 #     "from" : "fromVillageID",
                                 #     "to" : "targetVillageID",
-                                #     "movementType" : "Attack/Support",
+                                #     "movementType" : "attack/support",
                                 #     "arrivalTime" : "timestamp",
                                 #     "troops": {
                                 #         "infantry" :  {
@@ -232,7 +232,7 @@ class firebaseUser():
                                 #         }
                                 #     }
                                 # }
-                            ]
+                            }
                         }
                     }
                 )
@@ -545,6 +545,10 @@ class firebaseUser():
                 if(content['attacker']['result'] == 'lost'):
                     content['defender']['units_result'] == 'unknown'
             
+            content['attacker']['username'] = getUsernameByUserID(content['attacker']['user_id'])
+            content['attacker']['villageName'] = getVillagenameByVillageID(content['attacker']['village_id'])
+            content['defender']['username'] = getUsernameByUserID(content['defender']['user_id'])
+            content['defender']['villageName'] = getVillagenameByVillageID(content['defender']['village_id'])
 
 
             newReport = {
@@ -565,12 +569,12 @@ class firebaseUser():
 
         reports = json.loads(json.dumps(db.collection('players').document(self.id).get({'reports'}).to_dict()['reports'], cls=DjangoJSONEncoder))
         
-        for report in reports:
-            if report['type']=='battle':
-                report['content']['attacker']['username'] = getUsernameByUserID(report['content']['attacker']['user_id'])
-                report['content']['attacker']['villageName'] = getVillagenameByVillageID(report['content']['attacker']['village_id'])
-                report['content']['defender']['username'] = getUsernameByUserID(report['content']['defender']['user_id'])
-                report['content']['defender']['villageName'] = getVillagenameByVillageID(report['content']['defender']['village_id'])
+        # for report in reports:
+        #     if report['type']=='battle':
+        #         report['content']['attacker']['username'] = getUsernameByUserID(report['content']['attacker']['user_id'])
+        #         report['content']['attacker']['villageName'] = getVillagenameByVillageID(report['content']['attacker']['village_id'])
+        #         report['content']['defender']['username'] = getUsernameByUserID(report['content']['defender']['user_id'])
+        #         report['content']['defender']['villageName'] = getVillagenameByVillageID(report['content']['defender']['village_id'])
         
         return reports
 

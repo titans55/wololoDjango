@@ -25,7 +25,24 @@ def villages(request, village_index=None):
     if(selected_village_index is 'outOfList'):
         return redirect('myVillage')
 
+    totalOnMove = []
+    totalIncomingStrangetTroops = []
+
+    for village in user.myVillages:
+        for task_id, onMoveElement in village['troops']['onMove'].items():
+            onMoveElement['task_id'] = task_id
+            totalOnMove.append(onMoveElement)
+
+        for task_id, incomingStrangetTroopsElement in village['troops']['incomingStrangerTroops'].items():
+            incomingStrangetTroopsElement['task_id'] = task_id
+            totalIncomingStrangetTroops.append(incomingStrangetTroopsElement)
+
+    print(totalOnMove)
+    print(totalIncomingStrangetTroops)
+
     data = { 
+        'totalIncomingStrangetTroops' : totalIncomingStrangetTroops,
+        'totalOnMove' : totalOnMove,
         'villages_info' : user.myVillages,
         'selectedVillage': user.myVillages[selected_village_index],
         'gameConfig' : gameConfig,
@@ -80,15 +97,15 @@ def upgrade(request):
             
             task_id = schedule_upgrade_building.apply_async((user_id, village_id, building_path, upgrade_levelTo),countdown = reqiured_time)
             task_id = task_id.id
-            print(str(task_id) + " adadas")
-            
+                        
             user.setUpgradingTimeAndState(village_id, building_path, reqiured_time, str(task_id), now)
 
+            print(user.myVillages[selected_village_index]['buildings']['resources'])
             print(datetime.datetime.now(pytz.utc))
             user.update()
             print(datetime.datetime.now(pytz.utc))
             newResources = user.myVillages[selected_village_index]['buildings']['resources']
-
+            print(user.myVillages[selected_village_index]['buildings']['resources'])
             data = {
                 'result' : 'Success',
                 'newResources' : newResources

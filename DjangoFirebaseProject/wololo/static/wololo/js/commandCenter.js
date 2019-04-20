@@ -73,7 +73,8 @@ function loadVillages(infos) {
 }
 
 function initTargetSelection(){
-    let target_position = new Phaser.Point(100, 100)
+    var targetVillageData = JSON.parse(($("#targetVillageData").attr("data")).replace(/'/g, '"'))
+    let target_position = new Phaser.Point(targetVillageData.coords.x, targetVillageData.coords.y)
     let from = new Phaser.Point(selectedVillage.coords.x, selectedVillage.coords.y)
     pathfinding.find_path(from, target_position, this.move_through_path, this)  
 }

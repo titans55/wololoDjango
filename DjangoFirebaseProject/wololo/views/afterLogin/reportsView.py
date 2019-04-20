@@ -5,21 +5,28 @@ import urllib.error
 from wololo.views.auth import myuser_login_required
 from wololo.commonFunctions import getGameConfig, getVillageIndex
 from wololo.helperFunctions import getUsernameByUserID, getVillagenameByVillageID
+import datetime
 
 gameConfig = getGameConfig()
 
 @myuser_login_required    
 def reportsList(request, village_index=None):
+    print (0, str(datetime.datetime.now()))
+
     user_id = request.session['userID']
     user = firebaseUser(user_id)
     if user.regionSelected is False :
         return redirect("selectRegion")
+    print (1, str(datetime.datetime.now()))
 
     selected_village_index = getVillageIndex(request, user, village_index)
     if(selected_village_index == 'outOfList'):
         return redirect('reportsList')
+    print (2, str(datetime.datetime.now()))
+
 
     reports = user.getReports()
+    print (3, str(datetime.datetime.now()))
 
     data = {
         'user_id' : user.id,

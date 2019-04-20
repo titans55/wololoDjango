@@ -146,11 +146,96 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col">
+            {% if data.totalOnMove|length > 0 %}
+
+            <div class="card">
+                <div class="card-header">
+                        On Move(our Troops)
+                </div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Arrival Time</th>
+                            <th>Time Left</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for onMove in data.totalOnMove%}
+                            <tr id="onMove-{{onMove.task_id}}">
+                                <td>
+                                    {% if onMove.movementType == 'attack' %}
+                                        
+                                        {% if onMove.state == 'going' %}
+                                            Our troops are attacking to {{onMove.target_village_id}}
+
+                                        {% elif onMove.state == 'returning' %}
+                                            Our troops returning from war occured {% include '' %} {{onMove.target_village_id}}
+
+                                        {% endif %}
+
+
+
+                                    {% elif onMove.movementType == 'support' %}
+                                        {% if onMove.state == 'going' %}
+                                        
+                                        {% elif onMove.state == 'returning' %}
+            
+                                        {% endif %}        
+                                    {% endif %}
+                                </td>
+                                <td>{{onMove.arrivalTime}}</td>
+                                <td>X</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+            {% if data.totalIncomingStrangetTroops|length > 0 %}
+            <div class="card">
+                <div class="card-header">
+                    Incoming Troops
+                </div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Arrival Time</th>
+                            <th>Time Left</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for incomingStrangerTroopsElement in data.totalIncomingStrangetTroops%}
+                            <tr id="incomingStrangerTroopsElement-{{incomingStrangerTroopsElement.task_id}}">
+                                <td>
+                                    {% if incomingStrangerTroopsElement.movementType == 'attack' %}
+                                        
+                                        {{incomingStrangerTroopsElement.village_id}} is attacking us.
+
+                                    {% elif incomingStrangerTroopsElement.movementType == 'support' %}
+                                        {{incomingStrangerTroopsElement.village_id}} is supporting us.
+
+                                    {% endif %}
+                                </td>
+                                <td>{{incomingStrangerTroopsElement.arrivalTime}}</td>
+                                <td>X</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+        </div>
+    </div>
 </div>
 {% endblock %} 
 {% block footerjs %}
-
-<div id="wholeData" data='{{data}}'></div>
 
 <script type="text/javascript" src="{% static 'wololo/assets/js/phaser/build/phaser.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'wololo/js/villages.js' %}"></script>
