@@ -223,7 +223,7 @@ def attack(self, attacker_village_id, defender_village_id, attacker_troops):
         new_task_id = return_from_attack.apply_async((report_content['defender']['village_id'], report_content['attacker']['village_id'], returning_troops),countdown = cntdwn)
         new_task_id = new_task_id.id
         arrivalTime = now + datetime.timedelta(0, cntdwn)
-
+        print("new task id ", new_task_id)
         #delete attacker onMove, insert newOnMove(newtaskid), total
         village_ref.update({
             'troops.onMove.'+current_task_id: DELETE_FIELD
@@ -270,6 +270,8 @@ def attack(self, attacker_village_id, defender_village_id, attacker_troops):
             inVillage[unitTypeName][unitName] -= unit['lost'] #calculating new inVillage
 
     #update defender inVillage, total, delete incomingStrangerTroops
+    print("removing current task id incomingStrangerTroops")
+    print(current_task_id)
     village_ref.update({
         'troops.incomingStrangerTroops.' + current_task_id: DELETE_FIELD,
         'troops.inVillage' :inVillage,
@@ -295,8 +297,9 @@ def return_from_attack(self, target_village_id, home_village_id, returning_troop
         for unitName, unit in unitType.items():
             inVillage[unitTypeName][unitName] += unit
 
+    print(current_task_id)
     village_ref.update({
-        'troops.onMove.'+current_task_id: DELETE_FIELD,
+        'troops.onMove.' + current_task_id: DELETE_FIELD,
         'troops.inVillage' : inVillage,
     })
     print("removed onMove from attacker")
