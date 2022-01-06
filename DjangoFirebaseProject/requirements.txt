@@ -1,4 +1,4 @@
-celery==4.2.1
+celery==5.2.2
 firebase-admin==2.15.1
 Pyrebase4==4.2.0
 Django==2.1.11
